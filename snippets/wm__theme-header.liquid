@@ -1,0 +1,24 @@
+{% comment %} ---------------- {% endcomment %}
+{% comment %} CUSTOM CSS FILES {% endcomment %}
+{% comment %} ---------------- {% endcomment %}
+
+{{ 'tailwind.css' | asset_url | stylesheet_tag }}
+{{ 'wm__custom.css' | asset_url | stylesheet_tag }}
+{% # theme-check-disable %}<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>{% # theme-check-enable %}
+
+{% comment %} ----------------------- {% endcomment %}
+{% comment %} CUSTOM JAVASCRIPT FILES {% endcomment %}
+{% comment %} ----------------------- {% endcomment %}
+
+<script src="{{ 'wm__custom.js' | asset_url }}" defer="defer"></script>
+
+{% comment %} --------------------- {% endcomment %}
+{% comment %} CUSTOM HEADER SCRIPTS {% endcomment %}
+{% comment %} --------------------- {% endcomment %}
+
+{% comment %} Google Verification for Gareth {% endcomment %}
+{% comment %} TODO: {% endcomment %}
+
+<!-- Google Tag Manager -->
+{% comment %} TODO: {% endcomment %}
+<!-- End Google Tag Manager -->
