@@ -1,3 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer utilities {
+  ._font-heading-primary {
+    font-family: theme('fontFamily.heading-primary');
+    letter-spacing: -0.04rem;
+  }
+}

@@ -554,11 +554,24 @@ video {
   display: none;
 }
 
-._border-2 {
-  border-width: 2px;
+._py-12 {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
 }
 
-._border-green-500 {
-  --tw-border-opacity: 1;
-  border-color: rgb(34 197 94 / var(--tw-border-opacity, 1));
+._text-5xl {
+  font-size: 3rem;
+  line-height: 1;
+}
+
+._text-brand-primary-700 {
+  --tw-text-opacity: 1;
+  color: rgb(15 45 100 / var(--tw-text-opacity, 1));
+}
+
+@media (min-width: 768px) {
+  .md\:_py-20 {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+  }
 }

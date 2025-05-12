@@ -1,0 +1,27 @@
+<div class="section-{{ section.id }} _py-12 md:_py-20{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
+  <div class="page-width">
+    <h1 class="_text-brand-primary-700 _text-5xl">Testing</h1>
+    <h2>Testing</h2>
+    <h3>Testing</h3>
+    <h4>Testing</h4>
+    <p>Testing text here lorem ipsum testing text here lorem ipsum testing text here lorem ipsum testing text here lorem ipsum.</p>
+  </div>
+</div>
+
+{% schema %}
+{
+ "name": "WM TEST SECTION",
+ "class": "section",
+ "disabled_on": {
+   "groups": ["header", "footer"]
+ },
+ "settings": [
+
+ ],
+ "presets": [
+   {
+     "name": "WM TEST SECTION"
+   }
+ ]
+}
+{% endschema %}
