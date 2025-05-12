@@ -1,0 +1,29 @@
+{
+  "name": "wigmore-dawn",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "pull-production": "dotenv -- bash -c 'shopify theme pull --store $STORE --theme=$PRODUCTION_THEME'",
+    "pull-development": "dotenv -- bash -c 'shopify theme pull --store $STORE --theme=$DEVELOPMENT_THEME_ID'",
+    "pull-development-settings": "dotenv -- bash -c 'shopify theme pull --only=*.json --store $STORE --theme=$DEVELOPMENT_THEME_ID'",
+    "start-tailwind": "npx tailwindcss -i ./src/tailwindinput.css -o ./assets/tailwind.css --watch",
+    "purge-tailwind": "NODE_ENV=production npx tailwindcss -i ./src/tailwindinput.css -o ./assets/tailwind.css",
+    "start-shopify": "dotenv -- bash -c 'shopify theme dev --theme=$DEVELOPMENT_THEME_ID'",
+    "dev": "npm run pull-development-settings && npx concurrently \"npm run start-tailwind\" \"npm run start-shopify\"",
+    "dev-alone": "npx concurrently \"npm run start-tailwind\" \"npm run start-shopify\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.4.49",
+    "tailwindcss": "^3.4.15"
+  },
+  "devDependencies": {
+    "@shopify/cli": "^3.65.3",
+    "concurrently": "^9.1.0",
+    "dotenv-cli": "^7.4.4"
+  }
+}

@@ -1,0 +1,10 @@
+src/
+.env
+.gitignore
+dev.sh
+node_modules/
+package-lock.json
+package.json
+postcss.config.js
+tailwind.config.js
+README.md

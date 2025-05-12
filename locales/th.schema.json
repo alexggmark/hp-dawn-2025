@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin language editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "settings_schema": {
     "colors": {
@@ -54,40 +63,40 @@
       "name": "โซเชียลมีเดีย",
       "settings": {
         "social_twitter_link": {
-          "label": "X\/Twitter",
-          "info": "https:\/\/x.com\/shopify"
+          "label": "X/Twitter",
+          "info": "https://x.com/shopify"
         },
         "social_facebook_link": {
           "label": "Facebook",
-          "info": "https:\/\/facebook.com\/shopify"
+          "info": "https://facebook.com/shopify"
         },
         "social_pinterest_link": {
           "label": "Pinterest",
-          "info": "https:\/\/pinterest.com\/shopify"
+          "info": "https://pinterest.com/shopify"
         },
         "social_instagram_link": {
           "label": "Instagram",
-          "info": "http:\/\/instagram.com\/shopify"
+          "info": "http://instagram.com/shopify"
         },
         "social_tiktok_link": {
           "label": "TikTok",
-          "info": "https:\/\/tiktok.com\/@shopify"
+          "info": "https://tiktok.com/@shopify"
         },
         "social_tumblr_link": {
           "label": "Tumblr",
-          "info": "http:\/\/shopify.tumblr.com"
+          "info": "http://shopify.tumblr.com"
         },
         "social_snapchat_link": {
           "label": "Snapchat",
-          "info": "https:\/\/www.snapchat.com\/add\/shopify"
+          "info": "https://www.snapchat.com/add/shopify"
         },
         "social_youtube_link": {
           "label": "YouTube",
-          "info": "https:\/\/www.youtube.com\/shopify"
+          "info": "https://www.youtube.com/shopify"
         },
         "social_vimeo_link": {
           "label": "Vimeo",
-          "info": "https:\/\/vimeo.com\/shopify"
+          "info": "https://vimeo.com/shopify"
         },
         "header": {
           "content": "บัญชีผู้ใช้โซเชียลมีเดีย"
@@ -230,7 +239,7 @@
     },
     "variant_pills": {
       "name": "ตัวเลือกสินค้าทรงเม็ดยา",
-      "paragraph": "ตัวเลือกสินค้าทรงเม็ดยาเป็นวิธีหนึ่งในการแสดง [ตัวเลือกสินค้า](https:\/\/help.shopify.com\/manual\/online-store\/themes\/theme-structure\/page-types\/product-pages#variant-picker-block)"
+      "paragraph": "ตัวเลือกสินค้าทรงเม็ดยาเป็นวิธีหนึ่งในการแสดง [ตัวเลือกสินค้า](https://help.shopify.com/manual/online-store/themes/theme-structure/page-types/product-pages#variant-picker-block)"
     },
     "inputs": {
       "name": "อินพุต"
@@ -476,15 +485,15 @@
         },
         "show_social": {
           "label": "ไอคอนโซเชียลมีเดีย",
-          "info": "[จัดการบัญชีผู้ใช้โซเชียลมีเดีย](\/editor?context=theme&category=social%20media)"
+          "info": "[จัดการบัญชีผู้ใช้โซเชียลมีเดีย](/editor?context=theme&category=social%20media)"
         },
         "enable_country_selector": {
-          "label": "ตัวเลือกประเทศ\/ภูมิภาค",
-          "info": "[จัดการประเทศ\/ภูมิภาค](\/admin\/settings\/markets)"
+          "label": "ตัวเลือกประเทศ/ภูมิภาค",
+          "info": "[จัดการประเทศ/ภูมิภาค](/admin/settings/markets)"
         },
         "enable_language_selector": {
           "label": "ตัวเลือกภาษา",
-          "info": "[จัดการภาษา](\/admin\/settings\/languages)"
+          "info": "[จัดการภาษา](/admin/settings/languages)"
         },
         "heading_utilities": {
           "content": "สาธารณูปโภค"
@@ -524,7 +533,7 @@
         },
         "card_styles": {
           "label": "รูปแบบของการ์ด",
-          "info": "จัดการรูปแบบบัตรแต่ละใบใน [การตั้งค่าธีม](\/editor?context=theme&category=product%20cards)",
+          "info": "จัดการรูปแบบบัตรแต่ละใบใน [การตั้งค่าธีม](/editor?context=theme&category=product%20cards)",
           "options__1": {
             "label": "ใช้รูปแบบของการ์ดแบบแยกต่างหาก"
           },
@@ -579,7 +588,7 @@
             },
             "description": {
               "label": "ข้อความแสดงแทนวิดีโอ",
-              "info": "อธิบายวิดีโอให้กับลูกค้าที่ใช้ตัวอ่านออกเสียงหน้าจอ [ดูข้อมูลเพิ่มเติม](https:\/\/help.shopify.com\/manual\/online-store\/themes\/theme-structure\/theme-features#video-block)",
+              "info": "อธิบายวิดีโอให้กับลูกค้าที่ใช้ตัวอ่านออกเสียงหน้าจอ [ดูข้อมูลเพิ่มเติม](https://help.shopify.com/manual/online-store/themes/theme-structure/theme-features#video-block)",
               "default": "อธิบายวิดีโอ"
             }
           },
@@ -666,7 +675,7 @@
       "settings": {
         "custom_liquid": {
           "label": "โค้ด Liquid",
-          "info": "เพิ่มส่วนย่อยของแอปหรือโค้ดอื่นๆ เพื่อสร้างการปรับแต่งขั้นสูง [ดูข้อมูลเพิ่มเติม](https:\/\/shopify.dev\/docs\/api\/liquid)"
+          "info": "เพิ่มส่วนย่อยของแอปหรือโค้ดอื่นๆ เพื่อสร้างการปรับแต่งขั้นสูง [ดูข้อมูลเพิ่มเติม](https://shopify.dev/docs/api/liquid)"
         }
       },
       "presets": {
@@ -753,7 +762,7 @@
         },
         "show_rating": {
           "label": "การรีวิวสินค้า",
-          "info": "จำเป็นต้องมีแอปสำหรับการรีวิวสินค้า [ดูข้อมูลเพิ่มเติม](https:\/\/help.shopify.com\/manual\/online-store\/themes\/theme-structure\/theme-features#featured-collection-show-product-rating)"
+          "info": "จำเป็นต้องมีแอปสำหรับการรีวิวสินค้า [ดูข้อมูลเพิ่มเติม](https://help.shopify.com/manual/online-store/themes/theme-structure/theme-features#featured-collection-show-product-rating)"
         },
         "enable_quick_buy": {
           "label": "เพิ่มด่วน"
@@ -846,7 +855,7 @@
             },
             "subtext": {
               "label": "ข้อความรอง",
-              "default": "<p>แชร์ข้อมูลติดต่อ รายละเอียดร้านค้า และเนื้อหาแบรนด์กับลูกค้าของคุณ<\/p>"
+              "default": "<p>แชร์ข้อมูลติดต่อ รายละเอียดร้านค้า และเนื้อหาแบรนด์กับลูกค้าของคุณ</p>"
             }
           },
           "name": "ข้อความ"
@@ -855,11 +864,11 @@
           "name": "ข้อมูลแบรนด์",
           "settings": {
             "paragraph": {
-              "content": "จัดการข้อมูลแบรนด์ใน [การตั้งค่าธีม](\/editor?context=theme&category=brand%20information)"
+              "content": "จัดการข้อมูลแบรนด์ใน [การตั้งค่าธีม](/editor?context=theme&category=brand%20information)"
             },
             "show_social": {
               "label": "ไอคอนโซเชียลมีเดีย",
-              "info": "[จัดการบัญชีผู้ใช้โซเชียลมีเดีย](\/editor?context=theme&category=social%20media)"
+              "info": "[จัดการบัญชีผู้ใช้โซเชียลมีเดีย](/editor?context=theme&category=social%20media)"
             }
           }
         }
@@ -873,20 +882,20 @@
           "default": "สมัครรับข้อมูลของเราทางอีเมล"
         },
         "header__1": {
-          "info": "เพิ่มการสมัครใช้งาน [โปรไฟล์ลูกค้า](https:\/\/help.shopify.com\/manual\/customers\/manage-customers)",
+          "info": "เพิ่มการสมัครใช้งาน [โปรไฟล์ลูกค้า](https://help.shopify.com/manual/customers/manage-customers)",
           "content": "การลงทะเบียนอีเมล"
         },
         "show_social": {
           "label": "ไอคอนโซเชียลมีเดีย",
-          "info": "[จัดการบัญชีผู้ใช้โซเชียลมีเดีย](\/editor?context=theme&category=social%20media)"
+          "info": "[จัดการบัญชีผู้ใช้โซเชียลมีเดีย](/editor?context=theme&category=social%20media)"
         },
         "enable_country_selector": {
-          "label": "ตัวเลือกประเทศ\/ภูมิภาค",
-          "info": "[จัดการประเทศ\/ภูมิภาค](\/admin\/settings\/markets)"
+          "label": "ตัวเลือกประเทศ/ภูมิภาค",
+          "info": "[จัดการประเทศ/ภูมิภาค](/admin/settings/markets)"
         },
         "enable_language_selector": {
           "label": "ตัวเลือกภาษา",
-          "info": "[จัดการภาษา](\/admin\/settings\/languages)"
+          "info": "[จัดการภาษา](/admin/settings/languages)"
         },
         "payment_enable": {
           "label": "ไอคอนวิธีการชำระเงิน"
@@ -896,14 +905,14 @@
         },
         "show_policy": {
           "label": "ลิงก์นโยบาย",
-          "info": "[จัดการนโยบาย](\/admin\/settings\/legal)"
+          "info": "[จัดการนโยบาย](/admin/settings/legal)"
         },
         "header__9": {
           "content": "สาธารณูปโภค"
         },
         "enable_follow_on_shop": {
           "label": "ติดตามใน Shop",
-          "info": "ต้องเปิดใช้งาน Shop Pay [ดูข้อมูลเพิ่มเติม](https:\/\/help.shopify.com\/manual\/online-store\/themes\/customizing-themes\/follow-on-shop)"
+          "info": "ต้องเปิดใช้งาน Shop Pay [ดูข้อมูลเพิ่มเติม](https://help.shopify.com/manual/online-store/themes/customizing-themes/follow-on-shop)"
         }
       }
     },
@@ -956,7 +965,7 @@
           }
         },
         "logo_help": {
-          "content": "แก้ไขโลโก้ของคุณใน [การตั้งค่าธีม](\/editor?context=theme&category=logo)"
+          "content": "แก้ไขโลโก้ของคุณใน [การตั้งค่าธีม](/editor?context=theme&category=logo)"
         },
         "sticky_header_type": {
           "label": "ส่วนหัวแบบยึดตำแหน่ง",
@@ -974,12 +983,12 @@
           }
         },
         "enable_country_selector": {
-          "label": "ตัวเลือกประเทศ\/ภูมิภาค",
-          "info": "[จัดการประเทศ\/ภูมิภาค](\/admin\/settings\/markets)"
+          "label": "ตัวเลือกประเทศ/ภูมิภาค",
+          "info": "[จัดการประเทศ/ภูมิภาค](/admin/settings/markets)"
         },
         "enable_language_selector": {
           "label": "ตัวเลือกภาษา",
-          "info": "[จัดการภาษา](\/admin\/settings\/languages)"
+          "info": "[จัดการภาษา](/admin/settings/languages)"
         },
         "header__1": {
           "content": "สี"
@@ -989,7 +998,7 @@
         },
         "enable_customer_avatar": {
           "label": "ตัวแทนบัญชีผู้ใช้ของลูกค้า",
-          "info": "แสดงผลเมื่อลูกค้าลงชื่อเข้าใช้ใน Shop เท่านั้น [จัดการบัญชีผู้ใช้ของลูกค้า](\/admin\/settings\/customer_accounts)"
+          "info": "แสดงผลเมื่อลูกค้าลงชื่อเข้าใช้ใน Shop เท่านั้น [จัดการบัญชีผู้ใช้ของลูกค้า](/admin/settings/customer_accounts)"
         },
         "header__utilities": {
           "content": "สาธารณูปโภค"
@@ -1270,7 +1279,7 @@
           "settings": {
             "text": {
               "label": "ข้อความ",
-              "default": "<p>จับคู่ข้อความกับรูปภาพเพื่อให้ความสำคัญกับสินค้า คอลเลกชัน หรือบล็อกโพสต์ที่คุณเลือก เพิ่มรายละเอียดเกี่ยวกับความพร้อม สไตล์ หรือแม้กระทั่งเขียนรีวิว<\/p>"
+              "default": "<p>จับคู่ข้อความกับรูปภาพเพื่อให้ความสำคัญกับสินค้า คอลเลกชัน หรือบล็อกโพสต์ที่คุณเลือก เพิ่มรายละเอียดเกี่ยวกับความพร้อม สไตล์ หรือแม้กระทั่งเขียนรีวิว</p>"
             },
             "text_style": {
               "label": "รูปแบบ",
@@ -1439,7 +1448,7 @@
       "name": "แบนเนอร์คอลเลกชัน",
       "settings": {
         "paragraph": {
-          "content": "รายละเอียดคอลเลกชันมีการ [จัดการในส่วนผู้ดูแล](https:\/\/help.shopify.com\/manual\/products\/collections\/collection-layout)"
+          "content": "รายละเอียดคอลเลกชันมีการ [จัดการในส่วนผู้ดูแล](https://help.shopify.com/manual/products/collections/collection-layout)"
         },
         "show_collection_description": {
           "label": "คำอธิบาย"
@@ -1478,11 +1487,11 @@
         },
         "enable_tags": {
           "label": "ตัวกรอง",
-          "info": "ปรับแต่งตัวกรองด้วย [แอป Search & Discovery](https:\/\/help.shopify.com\/manual\/online-store\/search-and-discovery\/filters)"
+          "info": "ปรับแต่งตัวกรองด้วย [แอป Search & Discovery](https://help.shopify.com/manual/online-store/search-and-discovery/filters)"
         },
         "enable_filtering": {
           "label": "ตัวกรอง",
-          "info": "ปรับแต่งตัวกรองด้วย [แอป Search & Discovery](https:\/\/help.shopify.com\/manual\/online-store\/search-and-discovery\/filters)"
+          "info": "ปรับแต่งตัวกรองด้วย [แอป Search & Discovery](https://help.shopify.com/manual/online-store/search-and-discovery/filters)"
         },
         "enable_sorting": {
           "label": "การจัดเรียง"
@@ -1492,7 +1501,7 @@
         },
         "show_rating": {
           "label": "การรีวิวสินค้า",
-          "info": "จำเป็นต้องมีแอปสำหรับการรีวิวสินค้า [ดูข้อมูลเพิ่มเติม](https:\/\/help.shopify.com\/manual\/online-store\/themes\/theme-structure\/page-types\/collection-pages#product-grid-show-product-rating)"
+          "info": "จำเป็นต้องมีแอปสำหรับการรีวิวสินค้า [ดูข้อมูลเพิ่มเติม](https://help.shopify.com/manual/online-store/themes/theme-structure/page-types/collection-pages#product-grid-show-product-rating)"
         },
         "columns_desktop": {
           "label": "คอลัมน์"
@@ -1595,7 +1604,7 @@
       "name": "ส่วนหัวของรหัสผ่าน",
       "settings": {
         "logo_help": {
-          "content": "แก้ไขโลโก้ของคุณใน [การตั้งค่าธีม](\/editor?context=theme&category=logo)"
+          "content": "แก้ไขโลโก้ของคุณใน [การตั้งค่าธีม](/editor?context=theme&category=logo)"
         }
       }
     },
@@ -1637,7 +1646,7 @@
             },
             "swatch_shape": {
               "label": "ตัวอย่าง",
-              "info": "ดูข้อมูลเพิ่มเติมเกี่ยวกับ [แผงสี](https:\/\/help.shopify.com\/en\/manual\/online-store\/themes\/theme-structure\/theme-settings#options-with-swatches) ในตัวเลือกสินค้า",
+              "info": "ดูข้อมูลเพิ่มเติมเกี่ยวกับ [แผงสี](https://help.shopify.com/en/manual/online-store/themes/theme-structure/theme-settings#options-with-swatches) ในตัวเลือกสินค้า",
               "options__1": {
                 "label": "วงกลม"
               },
@@ -1654,11 +1663,11 @@
           "settings": {
             "show_dynamic_checkout": {
               "label": "ปุ่มชำระเงินแบบไดนามิก",
-              "info": "ลูกค้าจะเห็นตัวเลือกการชำระเงินที่ตนเองต้องการใช้ [ดูข้อมูลเพิ่มเติม](https:\/\/help.shopify.com\/manual\/using-themes\/change-the-layout\/dynamic-checkout)"
+              "info": "ลูกค้าจะเห็นตัวเลือกการชำระเงินที่ตนเองต้องการใช้ [ดูข้อมูลเพิ่มเติม](https://help.shopify.com/manual/using-themes/change-the-layout/dynamic-checkout)"
             },
             "show_gift_card_recipient": {
               "label": " ตัวเลือกการส่งบัตรของขวัญ",
-              "info": "ลูกค้าสามารถเพิ่มข้อความส่วนตัวและกำหนดวันที่ส่งได้ [ดูข้อมูลเพิ่มเติม](https:\/\/help.shopify.com\/manual\/online-store\/themes\/customizing-themes\/add-gift-card-recipient-fields)"
+              "info": "ลูกค้าสามารถเพิ่มข้อความส่วนตัวและกำหนดวันที่ส่งได้ [ดูข้อมูลเพิ่มเติม](https://help.shopify.com/manual/online-store/themes/customizing-themes/add-gift-card-recipient-fields)"
             }
           },
           "name": "ปุ่มซื้อ"
@@ -1853,7 +1862,7 @@
           "name": "คะแนนของสินค้า",
           "settings": {
             "paragraph": {
-              "content": "จำเป็นต้องมีแอปสำหรับการรีวิวสินค้า [ดูข้อมูลเพิ่มเติม](https:\/\/help.shopify.com\/manual\/online-store\/themes\/theme-structure\/page-types\/product-pages#product-rating-block)"
+              "content": "จำเป็นต้องมีแอปสำหรับการรีวิวสินค้า [ดูข้อมูลเพิ่มเติม](https://help.shopify.com/manual/online-store/themes/theme-structure/page-types/product-pages#product-rating-block)"
             }
           }
         },
@@ -1861,7 +1870,7 @@
           "name": "สินค้าเสริม",
           "settings": {
             "paragraph": {
-              "content": "จัดการสินค้าเสริมใน [แอป Search & Discovery](https:\/\/help.shopify.com\/manual\/online-store\/search-and-discovery\/product-recommendations)"
+              "content": "จัดการสินค้าเสริมใน [แอป Search & Discovery](https://help.shopify.com/manual/online-store/search-and-discovery/product-recommendations)"
             },
             "heading": {
               "label": "หัวเรื่อง",
@@ -2122,7 +2131,7 @@
         },
         "show_rating": {
           "label": "การรีวิวสินค้า",
-          "info": "จำเป็นต้องมีแอปสำหรับการรีวิวสินค้า [ดูข้อมูลเพิ่มเติม](https:\/\/help.shopify.com\/en\/manual\/online-store\/themes\/theme-structure\/page-types\/search-page)"
+          "info": "จำเป็นต้องมีแอปสำหรับการรีวิวสินค้า [ดูข้อมูลเพิ่มเติม](https://help.shopify.com/en/manual/online-store/themes/theme-structure/page-types/search-page)"
         },
         "columns_desktop": {
           "label": "คอลัมน์"
@@ -2241,7 +2250,7 @@
             },
             "text": {
               "label": "คำอธิบาย",
-              "default": "<p>จับคู่ข้อความกับรูปภาพเพื่อให้ความสำคัญกับสินค้า คอลเลกชัน หรือบล็อกโพสต์ที่คุณเลือก เพิ่มรายละเอียดเกี่ยวกับความพร้อม สไตล์ หรือแม้กระทั่งเขียนรีวิว<\/p>"
+              "default": "<p>จับคู่ข้อความกับรูปภาพเพื่อให้ความสำคัญกับสินค้า คอลเลกชัน หรือบล็อกโพสต์ที่คุณเลือก เพิ่มรายละเอียดเกี่ยวกับความพร้อม สไตล์ หรือแม้กระทั่งเขียนรีวิว</p>"
             },
             "link_label": {
               "label": "ป้ายกำกับลิงก์",
@@ -2265,7 +2274,7 @@
           "label": "เต็มความกว้าง"
         },
         "paragraph": {
-          "content": "เพิ่มการสมัครใช้งาน [โปรไฟล์ลูกค้า](https:\/\/help.shopify.com\/manual\/customers\/manage-customers)"
+          "content": "เพิ่มการสมัครใช้งาน [โปรไฟล์ลูกค้า](https://help.shopify.com/manual/customers/manage-customers)"
         }
       },
       "blocks": {
@@ -2282,7 +2291,7 @@
           "settings": {
             "paragraph": {
               "label": "ข้อความ",
-              "default": "<p>รับรู้ข่าวสารเกี่ยวกับคอลเลกชันใหม่และข้อเสนอพิเศษก่อนใคร<\/p>"
+              "default": "<p>รับรู้ข่าวสารเกี่ยวกับคอลเลกชันใหม่และข้อเสนอพิเศษก่อนใคร</p>"
             }
           },
           "name": "ข้อความ"
@@ -2351,7 +2360,7 @@
           "settings": {
             "text": {
               "label": "ข้อความ",
-              "default": "<p>แชร์ข้อมูลเกี่ยวกับแบรนด์ของคุณให้ลูกค้าทราบ โดยอธิบายคุณสมบัติของสินค้า แชร์ประกาศ หรือกล่าวต้อนรับลูกค้าสู่ร้านค้าของคุณ<\/p>"
+              "default": "<p>แชร์ข้อมูลเกี่ยวกับแบรนด์ของคุณให้ลูกค้าทราบ โดยอธิบายคุณสมบัติของสินค้า แชร์ประกาศ หรือกล่าวต้อนรับลูกค้าสู่ร้านค้าของคุณ</p>"
             }
           },
           "name": "ข้อความ"
@@ -2529,7 +2538,7 @@
             },
             "swatch_shape": {
               "label": "ตัวอย่าง",
-              "info": "ดูข้อมูลเพิ่มเติมเกี่ยวกับ [แผงสี](https:\/\/help.shopify.com\/en\/manual\/online-store\/themes\/theme-structure\/theme-settings#options-with-swatches) ในตัวเลือกสินค้า",
+              "info": "ดูข้อมูลเพิ่มเติมเกี่ยวกับ [แผงสี](https://help.shopify.com/en/manual/online-store/themes/theme-structure/theme-settings#options-with-swatches) ในตัวเลือกสินค้า",
               "options__1": {
                 "label": "วงกลม"
               },
@@ -2547,7 +2556,7 @@
           "settings": {
             "show_dynamic_checkout": {
               "label": "ปุ่มชำระเงินแบบไดนามิก",
-              "info": "ลูกค้าจะเห็นตัวเลือกการชำระเงินที่ตนเองต้องการใช้ [ดูข้อมูลเพิ่มเติม](https:\/\/help.shopify.com\/manual\/using-themes\/change-the-layout\/dynamic-checkout)"
+              "info": "ลูกค้าจะเห็นตัวเลือกการชำระเงินที่ตนเองต้องการใช้ [ดูข้อมูลเพิ่มเติม](https://help.shopify.com/manual/using-themes/change-the-layout/dynamic-checkout)"
             }
           }
         },
@@ -2558,10 +2567,10 @@
           "name": "แชร์",
           "settings": {
             "featured_image_info": {
-              "content": "หากคุณใส่ลิงก์ในโพสต์บนโซเชียลมีเดีย รูปภาพที่แสดงของหน้านั้นจะแสดงเป็นรูปภาพตัวอย่าง [ดูข้อมูลเพิ่มเติม](https:\/\/help.shopify.com\/manual\/online-store\/images\/showing-social-media-thumbnail-images)"
+              "content": "หากคุณใส่ลิงก์ในโพสต์บนโซเชียลมีเดีย รูปภาพที่แสดงของหน้านั้นจะแสดงเป็นรูปภาพตัวอย่าง [ดูข้อมูลเพิ่มเติม](https://help.shopify.com/manual/online-store/images/showing-social-media-thumbnail-images)"
             },
             "title_info": {
-              "content": "ชื่อร้านค้าและคำอธิบายจะรวมอยู่ในรูปภาพตัวอย่าง [ดูข้อมูลเพิ่มเติม](https:\/\/help.shopify.com\/manual\/promoting-marketing\/seo\/adding-keywords#set-a-title-and-description-for-your-online-store)"
+              "content": "ชื่อร้านค้าและคำอธิบายจะรวมอยู่ในรูปภาพตัวอย่าง [ดูข้อมูลเพิ่มเติม](https://help.shopify.com/manual/promoting-marketing/seo/adding-keywords#set-a-title-and-description-for-your-online-store)"
             },
             "text": {
               "label": "ข้อความ",
@@ -2573,7 +2582,7 @@
           "name": "คะแนนของสินค้า",
           "settings": {
             "paragraph": {
-              "content": "จำเป็นต้องมีแอปสำหรับการรีวิวสินค้า [ดูข้อมูลเพิ่มเติม](https:\/\/help.shopify.com\/manual\/online-store\/themes\/theme-structure\/theme-features#featured-product-rating)"
+              "content": "จำเป็นต้องมีแอปสำหรับการรีวิวสินค้า [ดูข้อมูลเพิ่มเติม](https://help.shopify.com/manual/online-store/themes/theme-structure/theme-features#featured-product-rating)"
             }
           }
         },
@@ -2630,7 +2639,7 @@
       "name": "แบนเนอร์การลงทะเบียนอีเมล",
       "settings": {
         "paragraph": {
-          "content": "เพิ่มการสมัครใช้งาน [โปรไฟล์ลูกค้า](https:\/\/help.shopify.com\/manual\/customers\/manage-customers)"
+          "content": "เพิ่มการสมัครใช้งาน [โปรไฟล์ลูกค้า](https://help.shopify.com/manual/customers/manage-customers)"
         },
         "image": {
           "label": "รูปภาพพื้นหลัง"
@@ -2741,7 +2750,7 @@
           "settings": {
             "paragraph": {
               "label": "ข้อความ",
-              "default": "<p>รับรู้ข่าวสารการเปิดตัวของเราก่อนใคร<\/p>"
+              "default": "<p>รับรู้ข่าวสารการเปิดตัวของเราก่อนใคร</p>"
             },
             "text_style": {
               "options__1": {
@@ -3192,7 +3201,7 @@
           "label": "คอลัมน์"
         },
         "paragraph__1": {
-          "content": "สามารถจัดการสินค้าที่เกี่ยวข้องได้ใน [แอป Search & Discovery](https:\/\/help.shopify.com\/manual\/online-store\/search-and-discovery\/product-recommendations)",
+          "content": "สามารถจัดการสินค้าที่เกี่ยวข้องได้ใน [แอป Search & Discovery](https://help.shopify.com/manual/online-store/search-and-discovery/product-recommendations)",
           "default": "สินค้าที่คุณอาจจะชอบ"
         },
         "header__2": {
@@ -3218,7 +3227,7 @@
         },
         "show_rating": {
           "label": "การรีวิวสินค้า",
-          "info": "จำเป็นต้องมีแอปสำหรับการรีวิวสินค้า [ดูข้อมูลเพิ่มเติม](https:\/\/help.shopify.com\/manual\/online-store\/themes\/customizing-themes\/add-product-recommendations)"
+          "info": "จำเป็นต้องมีแอปสำหรับการรีวิวสินค้า [ดูข้อมูลเพิ่มเติม](https://help.shopify.com/manual/online-store/themes/customizing-themes/add-product-recommendations)"
         },
         "columns_mobile": {
           "label": "คอลัมน์ในมือถือ",
@@ -3363,7 +3372,7 @@
             },
             "text": {
               "label": "ข้อความ",
-              "default": "<p>จับคู่ข้อความกับรูปภาพเพื่อให้ความสำคัญกับสินค้า คอลเลกชัน หรือบล็อกโพสต์ที่คุณเลือก เพิ่มรายละเอียดเกี่ยวกับความพร้อม สไตล์ หรือแม้กระทั่งเขียนรีวิว<\/p>"
+              "default": "<p>จับคู่ข้อความกับรูปภาพเพื่อให้ความสำคัญกับสินค้า คอลเลกชัน หรือบล็อกโพสต์ที่คุณเลือก เพิ่มรายละเอียดเกี่ยวกับความพร้อม สไตล์ หรือแม้กระทั่งเขียนรีวิว</p>"
             },
             "button_label": {
               "label": "ป้ายกำกับปุ่ม",

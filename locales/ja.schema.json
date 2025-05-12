@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin language editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "settings_schema": {
     "colors": {
@@ -54,40 +63,40 @@
       "name": "SNS",
       "settings": {
         "social_twitter_link": {
-          "label": "X \/ Twitter",
-          "info": "https:\/\/x.com\/shopify"
+          "label": "X / Twitter",
+          "info": "https://x.com/shopify"
         },
         "social_facebook_link": {
           "label": "Facebook",
-          "info": "https:\/\/facebook.com\/shopify"
+          "info": "https://facebook.com/shopify"
         },
         "social_pinterest_link": {
           "label": "Pinterest",
-          "info": "https:\/\/pinterest.com\/shopify"
+          "info": "https://pinterest.com/shopify"
         },
         "social_instagram_link": {
           "label": "Instagram",
-          "info": "http:\/\/instagram.com\/shopify"
+          "info": "http://instagram.com/shopify"
         },
         "social_tiktok_link": {
           "label": "TikTok",
-          "info": "https:\/\/tiktok.com\/@shopify"
+          "info": "https://tiktok.com/@shopify"
         },
         "social_tumblr_link": {
           "label": "Tumblr",
-          "info": "https:\/\/shopify.tumblr.com"
+          "info": "https://shopify.tumblr.com"
         },
         "social_snapchat_link": {
           "label": "Snapchat",
-          "info": "https:\/\/www.snapchat.com\/add\/shopify"
+          "info": "https://www.snapchat.com/add/shopify"
         },
         "social_youtube_link": {
           "label": "YouTube",
-          "info": "https:\/\/www.youtube.com\/shopify"
+          "info": "https://www.youtube.com/shopify"
         },
         "social_vimeo_link": {
           "label": "Vimeo",
-          "info": "https:\/\/vimeo.com\/shopify"
+          "info": "https://vimeo.com/shopify"
         },
         "header": {
           "content": "ソーシャルアカウント"
@@ -230,7 +239,7 @@
     },
     "variant_pills": {
       "name": "バリエーションのピル型ボタン",
-      "paragraph": "バリエーションのピル型ボタンは、商品バリエーションを表示する1つの方法です。](https:\/\/help.shopify.com\/manual\/online-store\/themes\/theme-structure\/page-types\/product-pages#variant-picker-block)"
+      "paragraph": "バリエーションのピル型ボタンは、商品バリエーションを表示する1つの方法です。](https://help.shopify.com/manual/online-store/themes/theme-structure/page-types/product-pages#variant-picker-block)"
     },
     "inputs": {
       "name": "入力"
@@ -476,15 +485,15 @@
         },
         "show_social": {
           "label": "SNSのアイコン",
-          "info": "[ソーシャルアカウントの管理](\/editor?context=theme&category=social%20media)"
+          "info": "[ソーシャルアカウントの管理](/editor?context=theme&category=social%20media)"
         },
         "enable_country_selector": {
-          "label": "国\/地域セレクター",
-          "info": "[国\/地域の管理](\/admin\/settings\/markets)"
+          "label": "国/地域セレクター",
+          "info": "[国/地域の管理](/admin/settings/markets)"
         },
         "enable_language_selector": {
           "label": "言語セレクター",
-          "info": "[言語の管理](\/admin\/settings\/languages)"
+          "info": "[言語の管理](/admin/settings/languages)"
         },
         "heading_utilities": {
           "content": "ユーティリティー"
@@ -524,7 +533,7 @@
         },
         "card_styles": {
           "label": "カードスタイル",
-          "info": "[テーマ設定] で個別のカードスタイルを管理する](\/editor?context=theme&category=product%20cards)",
+          "info": "[テーマ設定] で個別のカードスタイルを管理する](/editor?context=theme&category=product%20cards)",
           "options__1": {
             "label": "個別のカードスタイルを使用する"
           },
@@ -579,7 +588,7 @@
             },
             "description": {
               "label": "動画の代替テキスト",
-              "info": "スクリーンリーダーを使用しているお客様向けにビデオの説明を記入してください。[詳しくはこちら](https:\/\/help.shopify.com\/manual\/online-store\/themes\/theme-structure\/theme-features#video-block)",
+              "info": "スクリーンリーダーを使用しているお客様向けにビデオの説明を記入してください。[詳しくはこちら](https://help.shopify.com/manual/online-store/themes/theme-structure/theme-features#video-block)",
               "default": "動画の説明をする"
             }
           },
@@ -666,7 +675,7 @@
       "settings": {
         "custom_liquid": {
           "label": "Liquidコード",
-          "info": "アプリのスニペットやその他のコードを追加して、高度なカスタマイズを作成します。[詳しくはこちら](https:\/\/shopify.dev\/docs\/api\/liquid)"
+          "info": "アプリのスニペットやその他のコードを追加して、高度なカスタマイズを作成します。[詳しくはこちら](https://shopify.dev/docs/api/liquid)"
         }
       },
       "presets": {
@@ -753,7 +762,7 @@
         },
         "show_rating": {
           "label": "商品評価",
-          "info": "評価にはアプリが必要です。[詳しくはこちら](https:\/\/help.shopify.com\/manual\/online-store\/themes\/theme-structure\/theme-features#featured-collection-show-product-rating)"
+          "info": "評価にはアプリが必要です。[詳しくはこちら](https://help.shopify.com/manual/online-store/themes/theme-structure/theme-features#featured-collection-show-product-rating)"
         },
         "enable_quick_buy": {
           "label": "クイック追加"
@@ -846,7 +855,7 @@
             },
             "subtext": {
               "label": "サブテキスト",
-              "default": "<p>連絡先情報、ストア詳細、ブランドのコンテンツをお客様と共有します。<\/p>"
+              "default": "<p>連絡先情報、ストア詳細、ブランドのコンテンツをお客様と共有します。</p>"
             }
           },
           "name": "テキスト"
@@ -855,11 +864,11 @@
           "name": "ブランド情報",
           "settings": {
             "paragraph": {
-              "content": "[テーマ設定] でブランド情報を管理する](\/editor?context=theme&category=brand%20information)"
+              "content": "[テーマ設定] でブランド情報を管理する](/editor?context=theme&category=brand%20information)"
             },
             "show_social": {
               "label": "SNSのアイコン",
-              "info": "[ソーシャルアカウントの管理](\/editor?context=theme&category=social%20media)"
+              "info": "[ソーシャルアカウントの管理](/editor?context=theme&category=social%20media)"
             }
           }
         }
@@ -873,20 +882,20 @@
           "default": "ストアからのメールを受け取る"
         },
         "header__1": {
-          "info": "サインアップにより [お客様プロフィール] が追加されます](https:\/\/help.shopify.com\/manual\/customers\/manage-customers)",
+          "info": "サインアップにより [お客様プロフィール] が追加されます](https://help.shopify.com/manual/customers/manage-customers)",
           "content": "メール登録者"
         },
         "show_social": {
           "label": "SNSのアイコン",
-          "info": "[ソーシャルアカウントの管理](\/editor?context=theme&category=social%20media)"
+          "info": "[ソーシャルアカウントの管理](/editor?context=theme&category=social%20media)"
         },
         "enable_country_selector": {
-          "label": "国\/地域セレクター",
-          "info": "[国\/地域の管理](\/admin\/settings\/markets)"
+          "label": "国/地域セレクター",
+          "info": "[国/地域の管理](/admin/settings/markets)"
         },
         "enable_language_selector": {
           "label": "言語セレクター",
-          "info": "[言語の管理](\/admin\/settings\/languages)"
+          "info": "[言語の管理](/admin/settings/languages)"
         },
         "payment_enable": {
           "label": "決済方法アイコン"
@@ -896,14 +905,14 @@
         },
         "show_policy": {
           "label": "ポリシーリンク",
-          "info": "[ポリシーの管理](\/admin\/settings\/legal)"
+          "info": "[ポリシーの管理](/admin/settings/legal)"
         },
         "header__9": {
           "content": "ユーティリティー"
         },
         "enable_follow_on_shop": {
           "label": "Shopでフォローする",
-          "info": "Shop Payを有効にする必要があります。[詳しくはこちら](https:\/\/help.shopify.com\/manual\/online-store\/themes\/customizing-themes\/follow-on-shop)"
+          "info": "Shop Payを有効にする必要があります。[詳しくはこちら](https://help.shopify.com/manual/online-store/themes/customizing-themes/follow-on-shop)"
         }
       }
     },
@@ -956,7 +965,7 @@
           }
         },
         "logo_help": {
-          "content": "[テーマ設定]](\/editor?context=theme&category=logo) でロゴを編集する"
+          "content": "[テーマ設定]](/editor?context=theme&category=logo) でロゴを編集する"
         },
         "sticky_header_type": {
           "label": "常時表示のヘッダー",
@@ -974,12 +983,12 @@
           }
         },
         "enable_country_selector": {
-          "label": "国\/地域セレクター",
-          "info": "[国\/地域の管理](\/admin\/settings\/markets)"
+          "label": "国/地域セレクター",
+          "info": "[国/地域の管理](/admin/settings/markets)"
         },
         "enable_language_selector": {
           "label": "言語セレクター",
-          "info": "[言語の管理](\/admin\/settings\/languages)"
+          "info": "[言語の管理](/admin/settings/languages)"
         },
         "header__1": {
           "content": "色"
@@ -989,7 +998,7 @@
         },
         "enable_customer_avatar": {
           "label": "お客様アカウントAvatar",
-          "info": "お客様がShopにサインインしている場合にのみ表示されます。お客様アカウントの管理](\/admin\/settings\/customer_accounts)"
+          "info": "お客様がShopにサインインしている場合にのみ表示されます。お客様アカウントの管理](/admin/settings/customer_accounts)"
         },
         "header__utilities": {
           "content": "ユーティリティー"
@@ -1270,7 +1279,7 @@
           "settings": {
             "text": {
               "label": "テキスト",
-              "default": "<p>選択した商品、コレクション、ブログ記事に注目を集めるため、テキストと画像を組み合わせます。可用性、スタイル、またはレビュー提供についての詳細を追加します。<\/p>"
+              "default": "<p>選択した商品、コレクション、ブログ記事に注目を集めるため、テキストと画像を組み合わせます。可用性、スタイル、またはレビュー提供についての詳細を追加します。</p>"
             },
             "text_style": {
               "label": "スタイル",
@@ -1439,7 +1448,7 @@
       "name": "コレクションバナー",
       "settings": {
         "paragraph": {
-          "content": "コレクションの詳細は [管理画面で管理されます](https:\/\/help.shopify.com\/manual\/products\/collections\/collection-layout)"
+          "content": "コレクションの詳細は [管理画面で管理されます](https://help.shopify.com/manual/products/collections/collection-layout)"
         },
         "show_collection_description": {
           "label": "説明"
@@ -1478,11 +1487,11 @@
         },
         "enable_tags": {
           "label": "絞り込み",
-          "info": "[Search & Discoveryアプリを使用すると、絞り込みをカスタマイズできます。](https:\/\/help.shopify.com\/manual\/online-store\/search-and-discovery\/filters)"
+          "info": "[Search & Discoveryアプリを使用すると、絞り込みをカスタマイズできます。](https://help.shopify.com/manual/online-store/search-and-discovery/filters)"
         },
         "enable_filtering": {
           "label": "絞り込み",
-          "info": "[Search & Discoveryアプリを使用すると、絞り込みをカスタマイズできます。](https:\/\/help.shopify.com\/manual\/online-store\/search-and-discovery\/filters)"
+          "info": "[Search & Discoveryアプリを使用すると、絞り込みをカスタマイズできます。](https://help.shopify.com/manual/online-store/search-and-discovery/filters)"
         },
         "enable_sorting": {
           "label": "並べ替え"
@@ -1492,7 +1501,7 @@
         },
         "show_rating": {
           "label": "商品評価",
-          "info": "商品評価にはアプリが必要です。[詳しくはこちら](https:\/\/help.shopify.com\/manual\/online-store\/themes\/theme-structure\/page-types\/collection-pages#product-grid-show-product-rating)"
+          "info": "商品評価にはアプリが必要です。[詳しくはこちら](https://help.shopify.com/manual/online-store/themes/theme-structure/page-types/collection-pages#product-grid-show-product-rating)"
         },
         "columns_desktop": {
           "label": "列"
@@ -1595,7 +1604,7 @@
       "name": "パスワードヘッダー",
       "settings": {
         "logo_help": {
-          "content": "[テーマ設定]](\/editor?context=theme&category=logo) でロゴを編集する"
+          "content": "[テーマ設定]](/editor?context=theme&category=logo) でロゴを編集する"
         }
       }
     },
@@ -1637,7 +1646,7 @@
             },
             "swatch_shape": {
               "label": "見本",
-              "info": "商品オプションの [見本](https:\/\/help.shopify.com\/en\/manual\/online-store\/themes\/theme-structure\/theme-settings#options-with-swatches)の詳細を確認する",
+              "info": "商品オプションの [見本](https://help.shopify.com/en/manual/online-store/themes/theme-structure/theme-settings#options-with-swatches)の詳細を確認する",
               "options__1": {
                 "label": "円形"
               },
@@ -1654,11 +1663,11 @@
           "settings": {
             "show_dynamic_checkout": {
               "label": "動的チェックアウトボタン",
-              "info": "お客様には希望する支払いオプションが表示されます。[詳しくはこちら](https:\/\/help.shopify.com\/manual\/using-themes\/change-the-layout\/dynamic-checkout)"
+              "info": "お客様には希望する支払いオプションが表示されます。[詳しくはこちら](https://help.shopify.com/manual/using-themes/change-the-layout/dynamic-checkout)"
             },
             "show_gift_card_recipient": {
               "label": " ギフトカードの送信オプション",
-              "info": "お客様は個人的なメッセージを追加し、送信日をスケジュールすることができます。[詳しくはこちら](https:\/\/help.shopify.com\/manual\/online-store\/themes\/customizing-themes\/add-gift-card-recipient-fields)"
+              "info": "お客様は個人的なメッセージを追加し、送信日をスケジュールすることができます。[詳しくはこちら](https://help.shopify.com/manual/online-store/themes/customizing-themes/add-gift-card-recipient-fields)"
             }
           },
           "name": "購入ボタン"
@@ -1853,7 +1862,7 @@
           "name": "商品評価",
           "settings": {
             "paragraph": {
-              "content": "商品評価にはアプリが必要です。[詳しくはこちら](https:\/\/help.shopify.com\/manual\/online-store\/themes\/theme-structure\/page-types\/product-pages#product-rating-block)"
+              "content": "商品評価にはアプリが必要です。[詳しくはこちら](https://help.shopify.com/manual/online-store/themes/theme-structure/page-types/product-pages#product-rating-block)"
             }
           }
         },
@@ -1861,7 +1870,7 @@
           "name": "付属商品",
           "settings": {
             "paragraph": {
-              "content": "[検索＆発見アプリ] で補完的な商品を管理する](https:\/\/help.shopify.com\/manual\/online-store\/search-and-discovery\/product-recommendations)"
+              "content": "[検索＆発見アプリ] で補完的な商品を管理する](https://help.shopify.com/manual/online-store/search-and-discovery/product-recommendations)"
             },
             "heading": {
               "label": "見出し",
@@ -2122,7 +2131,7 @@
         },
         "show_rating": {
           "label": "商品評価",
-          "info": "商品評価にはアプリが必要です。[詳しくはこちら](https:\/\/help.shopify.com\/en\/manual\/online-store\/themes\/theme-structure\/page-types\/search-page)"
+          "info": "商品評価にはアプリが必要です。[詳しくはこちら](https://help.shopify.com/en/manual/online-store/themes/theme-structure/page-types/search-page)"
         },
         "columns_desktop": {
           "label": "列"
@@ -2148,7 +2157,7 @@
         "image_width": {
           "label": "幅",
           "options__1": {
-            "label": "列の幅の1\/3"
+            "label": "列の幅の1/3"
           },
           "options__2": {
             "label": "列の半分の幅"
@@ -2241,7 +2250,7 @@
             },
             "text": {
               "label": "説明",
-              "default": "<p>選択した商品、コレクション、ブログ記事に注目を集めるため、テキストと画像を組み合わせます。可用性、スタイル、またはレビュー提供についての詳細を追加します。<\/p>"
+              "default": "<p>選択した商品、コレクション、ブログ記事に注目を集めるため、テキストと画像を組み合わせます。可用性、スタイル、またはレビュー提供についての詳細を追加します。</p>"
             },
             "link_label": {
               "label": "リンクラベル",
@@ -2265,7 +2274,7 @@
           "label": "全幅"
         },
         "paragraph": {
-          "content": "サインアップにより [お客様プロフィール] が追加されます](https:\/\/help.shopify.com\/manual\/customers\/manage-customers)"
+          "content": "サインアップにより [お客様プロフィール] が追加されます](https://help.shopify.com/manual/customers/manage-customers)"
         }
       },
       "blocks": {
@@ -2282,7 +2291,7 @@
           "settings": {
             "paragraph": {
               "label": "テキスト",
-              "default": "<p>新しいコレクションや限定オファーに関する最新情報をお知らせします。<\/p>"
+              "default": "<p>新しいコレクションや限定オファーに関する最新情報をお知らせします。</p>"
             }
           },
           "name": "テキスト"
@@ -2351,7 +2360,7 @@
           "settings": {
             "text": {
               "label": "テキスト",
-              "default": "<p>ブランドに関する情報をお客様と共有します。商品を説明したり、告知をしたり、ストアへのお客様を歓迎したりします。<\/p>"
+              "default": "<p>ブランドに関する情報をお客様と共有します。商品を説明したり、告知をしたり、ストアへのお客様を歓迎したりします。</p>"
             }
           },
           "name": "テキスト"
@@ -2529,7 +2538,7 @@
             },
             "swatch_shape": {
               "label": "見本",
-              "info": "商品オプションの [見本](https:\/\/help.shopify.com\/en\/manual\/online-store\/themes\/theme-structure\/theme-settings#options-with-swatches)の詳細を確認する",
+              "info": "商品オプションの [見本](https://help.shopify.com/en/manual/online-store/themes/theme-structure/theme-settings#options-with-swatches)の詳細を確認する",
               "options__1": {
                 "label": "円形"
               },
@@ -2547,7 +2556,7 @@
           "settings": {
             "show_dynamic_checkout": {
               "label": "動的チェックアウトボタン",
-              "info": "お客様には希望する支払いオプションが表示されます。[詳しくはこちら](https:\/\/help.shopify.com\/manual\/using-themes\/change-the-layout\/dynamic-checkout)"
+              "info": "お客様には希望する支払いオプションが表示されます。[詳しくはこちら](https://help.shopify.com/manual/using-themes/change-the-layout/dynamic-checkout)"
             }
           }
         },
@@ -2558,10 +2567,10 @@
           "name": "共有",
           "settings": {
             "featured_image_info": {
-              "content": "SNSの投稿にリンクを含めると、そのページの記事のサムネイルがプレビュー画像として表示されます。[詳しくはこちら](https:\/\/help.shopify.com\/manual\/online-store\/images\/showing-social-media-thumbnail-images)"
+              "content": "SNSの投稿にリンクを含めると、そのページの記事のサムネイルがプレビュー画像として表示されます。[詳しくはこちら](https://help.shopify.com/manual/online-store/images/showing-social-media-thumbnail-images)"
             },
             "title_info": {
-              "content": "プレビュー画像には、ストアタイトルと説明文が表示されます。[詳しくはこちら](https:\/\/help.shopify.com\/manual\/promoting-marketing\/seo\/adding-keywords#set-a-title-and-description-for-your-online-store)"
+              "content": "プレビュー画像には、ストアタイトルと説明文が表示されます。[詳しくはこちら](https://help.shopify.com/manual/promoting-marketing/seo/adding-keywords#set-a-title-and-description-for-your-online-store)"
             },
             "text": {
               "label": "テキスト",
@@ -2573,7 +2582,7 @@
           "name": "商品評価",
           "settings": {
             "paragraph": {
-              "content": "商品評価にはアプリが必要です。[詳しくはこちら](https:\/\/help.shopify.com\/manual\/online-store\/themes\/theme-structure\/theme-features#featured-product-rating)"
+              "content": "商品評価にはアプリが必要です。[詳しくはこちら](https://help.shopify.com/manual/online-store/themes/theme-structure/theme-features#featured-product-rating)"
             }
           }
         },
@@ -2630,7 +2639,7 @@
       "name": "メール登録者バナー",
       "settings": {
         "paragraph": {
-          "content": "サインアップにより [お客様プロフィール] が追加されます](https:\/\/help.shopify.com\/manual\/customers\/manage-customers)"
+          "content": "サインアップにより [お客様プロフィール] が追加されます](https://help.shopify.com/manual/customers/manage-customers)"
         },
         "image": {
           "label": "背景画像"
@@ -2741,7 +2750,7 @@
           "settings": {
             "paragraph": {
               "label": "テキスト",
-              "default": "<p>ストアに関する最新情報をお知らせします。<\/p>"
+              "default": "<p>ストアに関する最新情報をお知らせします。</p>"
             },
             "text_style": {
               "options__1": {
@@ -3192,7 +3201,7 @@
           "label": "列"
         },
         "paragraph__1": {
-          "content": "関連商品は [Search & Discoveryアプリ] で管理できます](https:\/\/help.shopify.com\/manual\/online-store\/search-and-discovery\/product-recommendations)",
+          "content": "関連商品は [Search & Discoveryアプリ] で管理できます](https://help.shopify.com/manual/online-store/search-and-discovery/product-recommendations)",
           "default": "おすすめ"
         },
         "header__2": {
@@ -3218,7 +3227,7 @@
         },
         "show_rating": {
           "label": "商品評価",
-          "info": "商品評価にはアプリが必要です。[詳しくはこちら](https:\/\/help.shopify.com\/manual\/online-store\/themes\/customizing-themes\/add-product-recommendations)"
+          "info": "商品評価にはアプリが必要です。[詳しくはこちら](https://help.shopify.com/manual/online-store/themes/customizing-themes/add-product-recommendations)"
         },
         "columns_mobile": {
           "label": "モバイル列",
@@ -3363,7 +3372,7 @@
             },
             "text": {
               "label": "テキスト",
-              "default": "<p>選択した商品、コレクション、ブログ記事に注目を集めるため、テキストと画像を組み合わせます。可用性、スタイル、またはレビュー提供についての詳細を追加します。<\/p>"
+              "default": "<p>選択した商品、コレクション、ブログ記事に注目を集めるため、テキストと画像を組み合わせます。可用性、スタイル、またはレビュー提供についての詳細を追加します。</p>"
             },
             "button_label": {
               "label": "ボタンのラベル",

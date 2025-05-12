@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin language editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "settings_schema": {
     "colors": {
@@ -54,40 +63,40 @@
       "name": "Sosyal medya",
       "settings": {
         "social_twitter_link": {
-          "label": "X\/Twitter",
-          "info": "https:\/\/x.com\/shopify"
+          "label": "X/Twitter",
+          "info": "https://x.com/shopify"
         },
         "social_facebook_link": {
           "label": "Facebook",
-          "info": "https:\/\/facebook.com\/shopify"
+          "info": "https://facebook.com/shopify"
         },
         "social_pinterest_link": {
           "label": "Pinterest",
-          "info": "https:\/\/pinterest.com\/shopify"
+          "info": "https://pinterest.com/shopify"
         },
         "social_instagram_link": {
           "label": "Instagram",
-          "info": "http:\/\/instagram.com\/shopify"
+          "info": "http://instagram.com/shopify"
         },
         "social_tiktok_link": {
           "label": "TikTok",
-          "info": "https:\/\/tiktok.com\/@shopify"
+          "info": "https://tiktok.com/@shopify"
         },
         "social_tumblr_link": {
           "label": "Tumblr",
-          "info": "https:\/\/shopify.tumblr.com"
+          "info": "https://shopify.tumblr.com"
         },
         "social_snapchat_link": {
           "label": "Snapchat",
-          "info": "https:\/\/www.snapchat.com\/add\/shopify"
+          "info": "https://www.snapchat.com/add/shopify"
         },
         "social_youtube_link": {
           "label": "YouTube",
-          "info": "https:\/\/www.youtube.com\/shopify"
+          "info": "https://www.youtube.com/shopify"
         },
         "social_vimeo_link": {
           "label": "Vimeo",
-          "info": "https:\/\/vimeo.com\/shopify"
+          "info": "https://vimeo.com/shopify"
         },
         "header": {
           "content": "Sosyal medya hesapları"
@@ -216,7 +225,7 @@
     },
     "variant_pills": {
       "name": "Varyasyon seçenekleri",
-      "paragraph": "Varyasyon seçenekleri, [ürün varyasyonlarınızı](https:\/\/help.shopify.com\/manual\/online-store\/themes\/theme-structure\/page-types\/product-pages#variant-picker-block) göstermenin bir yoludur"
+      "paragraph": "Varyasyon seçenekleri, [ürün varyasyonlarınızı](https://help.shopify.com/manual/online-store/themes/theme-structure/page-types/product-pages#variant-picker-block) göstermenin bir yoludur"
     },
     "inputs": {
       "name": "Girdiler"
@@ -476,15 +485,15 @@
         },
         "show_social": {
           "label": "Sosyal medya simgeleri",
-          "info": "[Sosyal medya hesaplarını yönet](\/editor?context=theme&category=social%20media)"
+          "info": "[Sosyal medya hesaplarını yönet](/editor?context=theme&category=social%20media)"
         },
         "enable_country_selector": {
-          "label": "Ülke\/bölge seçici",
-          "info": "[Ülkeleri\/bölgeleri yönet](\/admin\/settings\/markets)"
+          "label": "Ülke/bölge seçici",
+          "info": "[Ülkeleri/bölgeleri yönet](/admin/settings/markets)"
         },
         "enable_language_selector": {
           "label": "Dil seçici",
-          "info": "[Dilleri yönet](\/admin\/settings\/languages)"
+          "info": "[Dilleri yönet](/admin/settings/languages)"
         },
         "heading_utilities": {
           "content": "Yardımcı araçlar"
@@ -524,7 +533,7 @@
         },
         "card_styles": {
           "label": "Kart stili",
-          "info": "Bireysel kart stillerini [tema ayarları](\/editor?context=theme&category=product%20cards) bölümünde yönetin",
+          "info": "Bireysel kart stillerini [tema ayarları](/editor?context=theme&category=product%20cards) bölümünde yönetin",
           "options__1": {
             "label": "Bireysel kart stilleri kullanın"
           },
@@ -580,7 +589,7 @@
             },
             "description": {
               "label": "Video alternatif metni",
-              "info": "Ekran okuyucu kullanan müşteriler için videoyu açıklayın. [Daha fazla bilgi edinin](https:\/\/help.shopify.com\/manual\/online-store\/themes\/theme-structure\/theme-features#video-block)",
+              "info": "Ekran okuyucu kullanan müşteriler için videoyu açıklayın. [Daha fazla bilgi edinin](https://help.shopify.com/manual/online-store/themes/theme-structure/theme-features#video-block)",
               "default": "Videoyu açıklayın"
             }
           }
@@ -666,7 +675,7 @@
       "settings": {
         "custom_liquid": {
           "label": "Liquid kodu",
-          "info": "Gelişmiş özelleştirmeler oluşturmak için uygulama parçacıkları veya başka bir kod ekleyin. [Daha fazla bilgi edinin](https:\/\/shopify.dev\/docs\/api\/liquid)"
+          "info": "Gelişmiş özelleştirmeler oluşturmak için uygulama parçacıkları veya başka bir kod ekleyin. [Daha fazla bilgi edinin](https://shopify.dev/docs/api/liquid)"
         }
       },
       "presets": {
@@ -753,7 +762,7 @@
         },
         "show_rating": {
           "label": "Ürün derecelendirmesi",
-          "info": "Derecelendirmeler için bir uygulama gereklidir. [Daha fazla bilgi edinin](https:\/\/help.shopify.com\/manual\/online-store\/themes\/theme-structure\/theme-features#featured-collection-show-product-rating)"
+          "info": "Derecelendirmeler için bir uygulama gereklidir. [Daha fazla bilgi edinin](https://help.shopify.com/manual/online-store/themes/theme-structure/theme-features#featured-collection-show-product-rating)"
         },
         "columns_desktop": {
           "label": "Sütunlar"
@@ -847,7 +856,7 @@
             },
             "subtext": {
               "label": "Alt metin",
-              "default": "<p>İletişim bilgilerini, mağaza ayrıntılarını ve marka içeriklerini müşterilerinizle paylaşın.<\/p>"
+              "default": "<p>İletişim bilgilerini, mağaza ayrıntılarını ve marka içeriklerini müşterilerinizle paylaşın.</p>"
             }
           }
         },
@@ -855,11 +864,11 @@
           "name": "Marka bilgileri",
           "settings": {
             "paragraph": {
-              "content": "Marka ayarlarını [tema ayarları](\/editor?context=theme&category=brand%20information) bölümünde yönetin"
+              "content": "Marka ayarlarını [tema ayarları](/editor?context=theme&category=brand%20information) bölümünde yönetin"
             },
             "show_social": {
               "label": "Sosyal medya simgeleri",
-              "info": "[Sosyal medya hesaplarını yönet](\/editor?context=theme&category=social%20media)"
+              "info": "[Sosyal medya hesaplarını yönet](/editor?context=theme&category=social%20media)"
             }
           }
         }
@@ -874,19 +883,19 @@
         },
         "header__1": {
           "content": "E-posta kaydı",
-          "info": "Kayıt ekleme [müşteri profilleri](https:\/\/help.shopify.com\/manual\/customers\/manage-customers)"
+          "info": "Kayıt ekleme [müşteri profilleri](https://help.shopify.com/manual/customers/manage-customers)"
         },
         "show_social": {
           "label": "Sosyal medya simgeleri",
-          "info": "[Sosyal medya hesaplarını yönet](\/editor?context=theme&category=social%20media)"
+          "info": "[Sosyal medya hesaplarını yönet](/editor?context=theme&category=social%20media)"
         },
         "enable_country_selector": {
-          "label": "Ülke\/bölge seçici",
-          "info": "[Ülkeleri\/bölgeleri yönet](\/admin\/settings\/markets)"
+          "label": "Ülke/bölge seçici",
+          "info": "[Ülkeleri/bölgeleri yönet](/admin/settings/markets)"
         },
         "enable_language_selector": {
           "label": "Dil seçici",
-          "info": "[Dilleri yönet](\/admin\/settings\/languages)"
+          "info": "[Dilleri yönet](/admin/settings/languages)"
         },
         "payment_enable": {
           "label": "Ödeme yöntemi simgeleri"
@@ -896,14 +905,14 @@
         },
         "show_policy": {
           "label": "Politika bağlantıları",
-          "info": "[Politikaları yönet](\/admin\/settings\/legal)"
+          "info": "[Politikaları yönet](/admin/settings/legal)"
         },
         "header__9": {
           "content": "Yardımcı araçlar"
         },
         "enable_follow_on_shop": {
           "label": "Shop'ta takip edin",
-          "info": "Shop Pay etkinleştirilmelidir. [Daha fazla bilgi edinin](https:\/\/help.shopify.com\/manual\/online-store\/themes\/customizing-themes\/follow-on-shop)"
+          "info": "Shop Pay etkinleştirilmelidir. [Daha fazla bilgi edinin](https://help.shopify.com/manual/online-store/themes/customizing-themes/follow-on-shop)"
         }
       }
     },
@@ -956,7 +965,7 @@
           }
         },
         "logo_help": {
-          "content": "Logonuzu [tema ayarları](\/editor?context=theme&category=logo) bölümünde düzenleyin"
+          "content": "Logonuzu [tema ayarları](/editor?context=theme&category=logo) bölümünde düzenleyin"
         },
         "sticky_header_type": {
           "label": "Sabit üstbilgi",
@@ -974,12 +983,12 @@
           }
         },
         "enable_country_selector": {
-          "label": "Ülke\/bölge seçici",
-          "info": "[Ülkeleri\/bölgeleri yönet](\/admin\/settings\/markets)"
+          "label": "Ülke/bölge seçici",
+          "info": "[Ülkeleri/bölgeleri yönet](/admin/settings/markets)"
         },
         "enable_language_selector": {
           "label": "Dil seçici",
-          "info": "[Dilleri yönet](\/admin\/settings\/languages)"
+          "info": "[Dilleri yönet](/admin/settings/languages)"
         },
         "header__1": {
           "content": "Renk"
@@ -989,7 +998,7 @@
         },
         "enable_customer_avatar": {
           "label": "Müşteri hesabı avatarı",
-          "info": "Yalnızca müşteriler Shop ile oturum açtığında görünür [Müşteri hesaplarını yönet](\/admin\/settings\/customer_accounts)"
+          "info": "Yalnızca müşteriler Shop ile oturum açtığında görünür [Müşteri hesaplarını yönet](/admin/settings/customer_accounts)"
         },
         "header__utilities": {
           "content": "Yardımcı araçlar"
@@ -1271,7 +1280,7 @@
           "settings": {
             "text": {
               "label": "Metin",
-              "default": "<p>Metni bir görselle eşleyerek seçtiğiniz ürüne, koleksiyona veya blog gönderisine dikkat çekin. Stok durumu, stil hakkındaki ayrıntıları ekleyin, hatta inceleme sağlayın.<\/p>"
+              "default": "<p>Metni bir görselle eşleyerek seçtiğiniz ürüne, koleksiyona veya blog gönderisine dikkat çekin. Stok durumu, stil hakkındaki ayrıntıları ekleyin, hatta inceleme sağlayın.</p>"
             },
             "text_style": {
               "label": "Stil",
@@ -1439,7 +1448,7 @@
       "name": "Koleksiyon banner'ı",
       "settings": {
         "paragraph": {
-          "content": "Koleksiyon bilgileri [yönetici panelinizde yönetilir](https:\/\/help.shopify.com\/manual\/products\/collections\/collection-layout)"
+          "content": "Koleksiyon bilgileri [yönetici panelinizde yönetilir](https://help.shopify.com/manual/products/collections/collection-layout)"
         },
         "show_collection_description": {
           "label": "Açıklama"
@@ -1457,7 +1466,7 @@
         },
         "enable_filtering": {
           "label": "Filtreler",
-          "info": "Filtreleri [Search & Discovery uygulaması](https:\/\/help.shopify.com\/manual\/online-store\/search-and-discovery\/filters) ile özelleştirin"
+          "info": "Filtreleri [Search & Discovery uygulaması](https://help.shopify.com/manual/online-store/search-and-discovery/filters) ile özelleştirin"
         },
         "enable_sorting": {
           "label": "Sıralama"
@@ -1488,11 +1497,11 @@
         },
         "enable_tags": {
           "label": "Filtreler",
-          "info": "Filtreleri [Search & Discovery uygulaması](https:\/\/help.shopify.com\/manual\/online-store\/search-and-discovery\/filters) ile özelleştirin"
+          "info": "Filtreleri [Search & Discovery uygulaması](https://help.shopify.com/manual/online-store/search-and-discovery/filters) ile özelleştirin"
         },
         "show_rating": {
           "label": "Ürün derecelendirmesi",
-          "info": "Ürün derecelendirmeleri için bir uygulama gereklidir. [Daha fazla bilgi edinin](https:\/\/help.shopify.com\/manual\/online-store\/themes\/theme-structure\/page-types\/collection-pages#product-grid-show-product-rating)"
+          "info": "Ürün derecelendirmeleri için bir uygulama gereklidir. [Daha fazla bilgi edinin](https://help.shopify.com/manual/online-store/themes/theme-structure/page-types/collection-pages#product-grid-show-product-rating)"
         },
         "columns_desktop": {
           "label": "Sütunlar"
@@ -1595,7 +1604,7 @@
       "name": "Parola üstbilgisi",
       "settings": {
         "logo_help": {
-          "content": "Logonuzu [tema ayarları](\/editor?context=theme&category=logo) bölümünde düzenleyin"
+          "content": "Logonuzu [tema ayarları](/editor?context=theme&category=logo) bölümünde düzenleyin"
         }
       }
     },
@@ -1645,7 +1654,7 @@
             },
             "swatch_shape": {
               "label": "Numune parça",
-              "info": "Ürün seçeneklerinde [numune parçalar](https:\/\/help.shopify.com\/en\/manual\/online-store\/themes\/theme-structure\/theme-settings#options-with-swatches) hakkında daha fazla bilgi edinin.",
+              "info": "Ürün seçeneklerinde [numune parçalar](https://help.shopify.com/en/manual/online-store/themes/theme-structure/theme-settings#options-with-swatches) hakkında daha fazla bilgi edinin.",
               "options__1": {
                 "label": "Yuvarlak"
               },
@@ -1663,11 +1672,11 @@
           "settings": {
             "show_dynamic_checkout": {
               "label": "Dinamik ödeme düğmeleri",
-              "info": "Müşteriler tercih ettikleri ödeme seçeneğini görür. [Daha fazla bilgi edinin](https:\/\/help.shopify.com\/manual\/using-themes\/change-the-layout\/dynamic-checkout)"
+              "info": "Müşteriler tercih ettikleri ödeme seçeneğini görür. [Daha fazla bilgi edinin](https://help.shopify.com/manual/using-themes/change-the-layout/dynamic-checkout)"
             },
             "show_gift_card_recipient": {
               "label": " Hediye kartı gönderme seçenekleri",
-              "info": "Müşteriler kişisel mesaj ekleyebilir ve gönderilme tarihini planlayabilir. [Daha fazla bilgi edinin](https:\/\/help.shopify.com\/manual\/online-store\/themes\/customizing-themes\/add-gift-card-recipient-fields)"
+              "info": "Müşteriler kişisel mesaj ekleyebilir ve gönderilme tarihini planlayabilir. [Daha fazla bilgi edinin](https://help.shopify.com/manual/online-store/themes/customizing-themes/add-gift-card-recipient-fields)"
             }
           }
         },
@@ -1852,7 +1861,7 @@
           "name": "Ürün puanı",
           "settings": {
             "paragraph": {
-              "content": "Ürün derecelendirmeleri için bir uygulama gereklidir. [Daha fazla bilgi edinin](https:\/\/help.shopify.com\/manual\/online-store\/themes\/theme-structure\/page-types\/product-pages#product-rating-block)"
+              "content": "Ürün derecelendirmeleri için bir uygulama gereklidir. [Daha fazla bilgi edinin](https://help.shopify.com/manual/online-store/themes/theme-structure/page-types/product-pages#product-rating-block)"
             }
           }
         },
@@ -1860,7 +1869,7 @@
           "name": "Tamamlayıcı ürünler",
           "settings": {
             "paragraph": {
-              "content": "Tamamlayıcı ürünleri [Search & Discovery uygulamasında](https:\/\/help.shopify.com\/manual\/online-store\/search-and-discovery\/product-recommendations) yönetin"
+              "content": "Tamamlayıcı ürünleri [Search & Discovery uygulamasında](https://help.shopify.com/manual/online-store/search-and-discovery/product-recommendations) yönetin"
             },
             "heading": {
               "label": "Başlık",
@@ -2122,7 +2131,7 @@
         },
         "show_rating": {
           "label": "Ürün derecelendirmesi",
-          "info": "Ürün derecelendirmeleri için bir uygulama gereklidir. [Daha fazla bilgi edinin](https:\/\/help.shopify.com\/en\/manual\/online-store\/themes\/theme-structure\/page-types\/search-page)"
+          "info": "Ürün derecelendirmeleri için bir uygulama gereklidir. [Daha fazla bilgi edinin](https://help.shopify.com/en/manual/online-store/themes/theme-structure/page-types/search-page)"
         },
         "columns_desktop": {
           "label": "Sütunlar"
@@ -2242,7 +2251,7 @@
             },
             "text": {
               "label": "Açıklama",
-              "default": "<p>Metni bir görselle eşleyerek seçtiğiniz ürüne, koleksiyona veya blog gönderisine dikkat çekin. Stok durumu, stil hakkındaki ayrıntıları ekleyin, hatta inceleme sağlayın.<\/p>"
+              "default": "<p>Metni bir görselle eşleyerek seçtiğiniz ürüne, koleksiyona veya blog gönderisine dikkat çekin. Stok durumu, stil hakkındaki ayrıntıları ekleyin, hatta inceleme sağlayın.</p>"
             },
             "link_label": {
               "label": "Bağlantı etiketi",
@@ -2265,7 +2274,7 @@
           "label": "Tam genişlik"
         },
         "paragraph": {
-          "content": "Kayıt ekleme [müşteri profilleri](https:\/\/help.shopify.com\/manual\/customers\/manage-customers)"
+          "content": "Kayıt ekleme [müşteri profilleri](https://help.shopify.com/manual/customers/manage-customers)"
         }
       },
       "blocks": {
@@ -2283,7 +2292,7 @@
           "settings": {
             "paragraph": {
               "label": "Metin",
-              "default": "<p>Yeni koleksiyonlar ve özel tekliflerden ilk siz haberdar olun.<\/p>"
+              "default": "<p>Yeni koleksiyonlar ve özel tekliflerden ilk siz haberdar olun.</p>"
             }
           }
         },
@@ -2352,7 +2361,7 @@
           "settings": {
             "text": {
               "label": "Metin",
-              "default": "<p>Müşterilerinizle markanız hakkında bilgi paylaşın. Ürün açıklaması girin, duyuru paylaşın veya mağazanıza gelen müşterileri karşılayın.<\/p>"
+              "default": "<p>Müşterilerinizle markanız hakkında bilgi paylaşın. Ürün açıklaması girin, duyuru paylaşın veya mağazanıza gelen müşterileri karşılayın.</p>"
             }
           }
         },
@@ -2529,7 +2538,7 @@
             },
             "swatch_shape": {
               "label": "Numune parça",
-              "info": "Ürün seçeneklerinde [numune parçalar](https:\/\/help.shopify.com\/en\/manual\/online-store\/themes\/theme-structure\/theme-settings#options-with-swatches) hakkında daha fazla bilgi edinin.",
+              "info": "Ürün seçeneklerinde [numune parçalar](https://help.shopify.com/en/manual/online-store/themes/theme-structure/theme-settings#options-with-swatches) hakkında daha fazla bilgi edinin.",
               "options__1": {
                 "label": "Yuvarlak"
               },
@@ -2547,7 +2556,7 @@
           "settings": {
             "show_dynamic_checkout": {
               "label": "Dinamik ödeme düğmeleri",
-              "info": "Müşteriler tercih ettikleri ödeme seçeneğini görür. [Daha fazla bilgi edinin](https:\/\/help.shopify.com\/manual\/using-themes\/change-the-layout\/dynamic-checkout)"
+              "info": "Müşteriler tercih ettikleri ödeme seçeneğini görür. [Daha fazla bilgi edinin](https://help.shopify.com/manual/using-themes/change-the-layout/dynamic-checkout)"
             }
           }
         },
@@ -2558,10 +2567,10 @@
           "name": "Paylaş",
           "settings": {
             "featured_image_info": {
-              "content": "Sosyal medya gönderilerine bağlantı eklerseniz sayfanın öne çıkan görseli, önizleme görseli olarak gösterilir. [Daha fazla bilgi edinin](https:\/\/help.shopify.com\/manual\/online-store\/images\/showing-social-media-thumbnail-images)"
+              "content": "Sosyal medya gönderilerine bağlantı eklerseniz sayfanın öne çıkan görseli, önizleme görseli olarak gösterilir. [Daha fazla bilgi edinin](https://help.shopify.com/manual/online-store/images/showing-social-media-thumbnail-images)"
             },
             "title_info": {
-              "content": "Mağaza başlığı ve açıklaması, önizleme görseline dahildir. [Daha fazla bilgi edinin](https:\/\/help.shopify.com\/manual\/promoting-marketing\/seo\/adding-keywords#set-a-title-and-description-for-your-online-store)"
+              "content": "Mağaza başlığı ve açıklaması, önizleme görseline dahildir. [Daha fazla bilgi edinin](https://help.shopify.com/manual/promoting-marketing/seo/adding-keywords#set-a-title-and-description-for-your-online-store)"
             },
             "text": {
               "label": "Metin rengi",
@@ -2573,7 +2582,7 @@
           "name": "Ürün puanı",
           "settings": {
             "paragraph": {
-              "content": "Ürün derecelendirmeleri için bir uygulama gereklidir. [Daha fazla bilgi edinin](https:\/\/help.shopify.com\/manual\/online-store\/themes\/theme-structure\/theme-features#featured-product-rating)"
+              "content": "Ürün derecelendirmeleri için bir uygulama gereklidir. [Daha fazla bilgi edinin](https://help.shopify.com/manual/online-store/themes/theme-structure/theme-features#featured-product-rating)"
             }
           }
         },
@@ -2630,7 +2639,7 @@
       "name": "E-posta kaydı banner'ı",
       "settings": {
         "paragraph": {
-          "content": "Kayıt ekleme [müşteri profilleri](https:\/\/help.shopify.com\/manual\/customers\/manage-customers)"
+          "content": "Kayıt ekleme [müşteri profilleri](https://help.shopify.com/manual/customers/manage-customers)"
         },
         "image": {
           "label": "Arka plan resmi"
@@ -2741,7 +2750,7 @@
           "settings": {
             "paragraph": {
               "label": "Metin",
-              "default": "<p>Yeni çıkardıklarımızı ilk siz öğrenin.<\/p>"
+              "default": "<p>Yeni çıkardıklarımızı ilk siz öğrenin.</p>"
             },
             "text_style": {
               "options__1": {
@@ -3192,7 +3201,7 @@
           "label": "Sütunlar"
         },
         "paragraph__1": {
-          "content": "İlgili ürünler [Search & Discovery uygulamasında](https:\/\/help.shopify.com\/manual\/online-store\/search-and-discovery\/product-recommendations) yönetilebilir",
+          "content": "İlgili ürünler [Search & Discovery uygulamasında](https://help.shopify.com/manual/online-store/search-and-discovery/product-recommendations) yönetilebilir",
           "default": "Şu ürünler de hoşunuza gidebilir:"
         },
         "header__2": {
@@ -3218,7 +3227,7 @@
         },
         "show_rating": {
           "label": "Ürün derecelendirmesi",
-          "info": "Ürün derecelendirmeleri için bir uygulama gereklidir. [Daha fazla bilgi edinin](https:\/\/help.shopify.com\/manual\/online-store\/themes\/customizing-themes\/add-product-recommendations)"
+          "info": "Ürün derecelendirmeleri için bir uygulama gereklidir. [Daha fazla bilgi edinin](https://help.shopify.com/manual/online-store/themes/customizing-themes/add-product-recommendations)"
         },
         "columns_mobile": {
           "label": "Mobil sütunlar",
@@ -3363,7 +3372,7 @@
             },
             "text": {
               "label": "Metin",
-              "default": "<p>Metni bir görselle eşleyerek seçtiğiniz ürüne, koleksiyona veya blog gönderisine dikkat çekin. Stok durumu, stil hakkındaki ayrıntıları ekleyin, hatta inceleme sağlayın.<\/p>"
+              "default": "<p>Metni bir görselle eşleyerek seçtiğiniz ürüne, koleksiyona veya blog gönderisine dikkat çekin. Stok durumu, stil hakkındaki ayrıntıları ekleyin, hatta inceleme sağlayın.</p>"
             },
             "button_label": {
               "label": "Düğme etiketi",

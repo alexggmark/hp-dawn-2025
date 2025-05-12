@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin language editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "settings_schema": {
     "colors": {
@@ -54,40 +63,40 @@
       "name": "소셜 미디어",
       "settings": {
         "social_twitter_link": {
-          "label": "X \/ Twitter",
-          "info": "https:\/\/x.com\/shopify"
+          "label": "X / Twitter",
+          "info": "https://x.com/shopify"
         },
         "social_facebook_link": {
           "label": "Facebook",
-          "info": "https:\/\/facebook.com\/shopify"
+          "info": "https://facebook.com/shopify"
         },
         "social_pinterest_link": {
           "label": "Pinterest",
-          "info": "https:\/\/pinterest.com\/shopify"
+          "info": "https://pinterest.com/shopify"
         },
         "social_instagram_link": {
           "label": "Instagram",
-          "info": "http:\/\/instagram.com\/shopify"
+          "info": "http://instagram.com/shopify"
         },
         "social_tiktok_link": {
           "label": "TikTok",
-          "info": "https:\/\/tiktok.com\/@shopify"
+          "info": "https://tiktok.com/@shopify"
         },
         "social_tumblr_link": {
           "label": "Tumblr",
-          "info": "http:\/\/shopify.tumblr.com"
+          "info": "http://shopify.tumblr.com"
         },
         "social_snapchat_link": {
           "label": "Snapchat",
-          "info": "https:\/\/www.snapchat.com\/add\/shopify"
+          "info": "https://www.snapchat.com/add/shopify"
         },
         "social_youtube_link": {
           "label": "YouTube",
-          "info": "https:\/\/www.youtube.com\/shopify"
+          "info": "https://www.youtube.com/shopify"
         },
         "social_vimeo_link": {
           "label": "Vimeo",
-          "info": "https:\/\/vimeo.com\/shopify"
+          "info": "https://vimeo.com/shopify"
         },
         "header": {
           "content": "소셜 계정"
@@ -216,7 +225,7 @@
     },
     "variant_pills": {
       "name": "이형 상품 타원형",
-      "paragraph": "이형 상품 필은 [제품 이형 상품](https:\/\/help.shopify.com\/manual\/online-store\/themes\/theme-structure\/page-types\/product-pages#variant-picker-block)을 표시하는 방법 중 하나입니다"
+      "paragraph": "이형 상품 필은 [제품 이형 상품](https://help.shopify.com/manual/online-store/themes/theme-structure/page-types/product-pages#variant-picker-block)을 표시하는 방법 중 하나입니다"
     },
     "inputs": {
       "name": "입력"
@@ -476,15 +485,15 @@
         },
         "show_social": {
           "label": "소셜 미디어 아이콘",
-          "info": "[소셜 계정 관리하기](\/editor?context=theme&category=social%20media)"
+          "info": "[소셜 계정 관리하기](/editor?context=theme&category=social%20media)"
         },
         "enable_country_selector": {
-          "label": "국가\/지역 선택기",
-          "info": "[국가\/지역 관리하기](\/admin\/settings\/markets)"
+          "label": "국가/지역 선택기",
+          "info": "[국가/지역 관리하기](/admin/settings/markets)"
         },
         "enable_language_selector": {
           "label": "언어 선택기",
-          "info": "[언어 관리하기](\/admin\/settings\/languages)"
+          "info": "[언어 관리하기](/admin/settings/languages)"
         },
         "heading_utilities": {
           "content": "유틸리티"
@@ -524,7 +533,7 @@
         },
         "card_styles": {
           "label": "카드 스타일",
-          "info": "[테마 설정](\/editor?context=theme&category=product%20cards)에서 개별 카드 스타일을 관리할 수 있습니다",
+          "info": "[테마 설정](/editor?context=theme&category=product%20cards)에서 개별 카드 스타일을 관리할 수 있습니다",
           "options__1": {
             "label": "개별 카드 스타일 사용"
           },
@@ -579,7 +588,7 @@
             },
             "description": {
               "label": "동영상 대체 텍스트",
-              "info": "스크린리더를 사용하는 고객에게 슬라이드 쇼를 설명합니다. [자세히 알아보기](https:\/\/help.shopify.com\/manual\/online-store\/themes\/theme-structure\/theme-features#video-block)",
+              "info": "스크린리더를 사용하는 고객에게 슬라이드 쇼를 설명합니다. [자세히 알아보기](https://help.shopify.com/manual/online-store/themes/theme-structure/theme-features#video-block)",
               "default": "비디오 설명"
             }
           },
@@ -666,7 +675,7 @@
       "settings": {
         "custom_liquid": {
           "label": "Liquid 코드",
-          "info": "앱 코드 조각이나 기타 코드를 추가하여 고급 사용자 지정을 생성할 수 있습니다. [자세히 알아보기](https:\/\/shopify.dev\/docs\/api\/liquid)"
+          "info": "앱 코드 조각이나 기타 코드를 추가하여 고급 사용자 지정을 생성할 수 있습니다. [자세히 알아보기](https://shopify.dev/docs/api/liquid)"
         }
       },
       "presets": {
@@ -753,7 +762,7 @@
         },
         "show_rating": {
           "label": "제품 평점",
-          "info": "평점을 표시하려면 앱이 필요합니다. [자세히 알아보기](https:\/\/help.shopify.com\/manual\/online-store\/themes\/theme-structure\/theme-features#featured-collection-show-product-rating)"
+          "info": "평점을 표시하려면 앱이 필요합니다. [자세히 알아보기](https://help.shopify.com/manual/online-store/themes/theme-structure/theme-features#featured-collection-show-product-rating)"
         },
         "enable_quick_buy": {
           "label": "빠른 추가"
@@ -846,7 +855,7 @@
             },
             "subtext": {
               "label": "하위 텍스트",
-              "default": "<p>연락처 정보, 스토어 세부 정보, 브랜드 콘텐츠를 고객과 공유하십시오.<\/p>"
+              "default": "<p>연락처 정보, 스토어 세부 정보, 브랜드 콘텐츠를 고객과 공유하십시오.</p>"
             }
           },
           "name": "텍스트"
@@ -855,11 +864,11 @@
           "name": "브랜드 정보",
           "settings": {
             "paragraph": {
-              "content": "[테마 설정](\/editor?context=theme&category=brand%20information)에서 브랜드 정보를 관리할 수 있습니다"
+              "content": "[테마 설정](/editor?context=theme&category=brand%20information)에서 브랜드 정보를 관리할 수 있습니다"
             },
             "show_social": {
               "label": "소셜 미디어 아이콘",
-              "info": "[소셜 계정 관리하기](\/editor?context=theme&category=social%20media)"
+              "info": "[소셜 계정 관리하기](/editor?context=theme&category=social%20media)"
             }
           }
         }
@@ -873,20 +882,20 @@
           "default": "이메일 구독"
         },
         "header__1": {
-          "info": "가입하면 [고객 프로필](https:\/\/help.shopify.com\/manual\/customers\/manage-customers)이 추가됩니다",
+          "info": "가입하면 [고객 프로필](https://help.shopify.com/manual/customers/manage-customers)이 추가됩니다",
           "content": "이메일 가입"
         },
         "show_social": {
           "label": "소셜 미디어 아이콘",
-          "info": "[소셜 계정 관리하기](\/editor?context=theme&category=social%20media)"
+          "info": "[소셜 계정 관리하기](/editor?context=theme&category=social%20media)"
         },
         "enable_country_selector": {
-          "label": "국가\/지역 선택기",
-          "info": "[국가\/지역 관리하기](\/admin\/settings\/markets)"
+          "label": "국가/지역 선택기",
+          "info": "[국가/지역 관리하기](/admin/settings/markets)"
         },
         "enable_language_selector": {
           "label": "언어 선택기",
-          "info": "[언어 관리하기](\/admin\/settings\/languages)"
+          "info": "[언어 관리하기](/admin/settings/languages)"
         },
         "payment_enable": {
           "label": "결제 방법 아이콘"
@@ -896,14 +905,14 @@
         },
         "show_policy": {
           "label": "정책 링크",
-          "info": "[정책 관리하기](\/admin\/settings\/legal)"
+          "info": "[정책 관리하기](/admin/settings/legal)"
         },
         "header__9": {
           "content": "유틸리티"
         },
         "enable_follow_on_shop": {
           "label": "Shop에서 팔로우",
-          "info": "Shop Pay를 활성화해야 합니다. [자세히 알아보기](https:\/\/help.shopify.com\/manual\/online-store\/themes\/customizing-themes\/follow-on-shop)"
+          "info": "Shop Pay를 활성화해야 합니다. [자세히 알아보기](https://help.shopify.com/manual/online-store/themes/customizing-themes/follow-on-shop)"
         }
       }
     },
@@ -956,7 +965,7 @@
           }
         },
         "logo_help": {
-          "content": "[테마 설정](\/editor?context=theme&category=logo)에서 로고를 편집할 수 있습니다"
+          "content": "[테마 설정](/editor?context=theme&category=logo)에서 로고를 편집할 수 있습니다"
         },
         "sticky_header_type": {
           "label": "고정 머리글",
@@ -974,12 +983,12 @@
           }
         },
         "enable_country_selector": {
-          "label": "국가\/지역 선택기",
-          "info": "[국가\/지역 관리하기](\/admin\/settings\/markets)"
+          "label": "국가/지역 선택기",
+          "info": "[국가/지역 관리하기](/admin/settings/markets)"
         },
         "enable_language_selector": {
           "label": "언어 선택기",
-          "info": "[언어 관리하기](\/admin\/settings\/languages)"
+          "info": "[언어 관리하기](/admin/settings/languages)"
         },
         "header__1": {
           "content": "색상"
@@ -989,7 +998,7 @@
         },
         "enable_customer_avatar": {
           "label": "고객 계정 아바타",
-          "info": "고객이 Shop에 로그인한 경우에만 표시됩니다. [고객 계정 관리하기](\/admin\/settings\/customer_accounts)"
+          "info": "고객이 Shop에 로그인한 경우에만 표시됩니다. [고객 계정 관리하기](/admin/settings/customer_accounts)"
         },
         "header__utilities": {
           "content": "유틸리티"
@@ -1270,7 +1279,7 @@
           "settings": {
             "text": {
               "label": "텍스트",
-              "default": "<p>이미지와 텍스트를 짝지어 선택한 제품, 컬렉션, 블로그 게시물을 강조합니다. 사용 가능성, 스타일에 대한 자세한 정보를 추가하거나 리뷰를 제공합니다.<\/p>"
+              "default": "<p>이미지와 텍스트를 짝지어 선택한 제품, 컬렉션, 블로그 게시물을 강조합니다. 사용 가능성, 스타일에 대한 자세한 정보를 추가하거나 리뷰를 제공합니다.</p>"
             },
             "text_style": {
               "label": "스타일",
@@ -1439,7 +1448,7 @@
       "name": "컬렉션 배너",
       "settings": {
         "paragraph": {
-          "content": "컬렉션 세부 정보는 [관리자에서 관리](https:\/\/help.shopify.com\/manual\/products\/collections\/collection-layout)합니다"
+          "content": "컬렉션 세부 정보는 [관리자에서 관리](https://help.shopify.com/manual/products/collections/collection-layout)합니다"
         },
         "show_collection_description": {
           "label": "설명"
@@ -1478,11 +1487,11 @@
         },
         "enable_tags": {
           "label": "필터",
-          "info": "[Search & Discovery 앱](https:\/\/help.shopify.com\/manual\/online-store\/search-and-discovery\/filters)으로 필터를 사용자 지정할 수 있습니다"
+          "info": "[Search & Discovery 앱](https://help.shopify.com/manual/online-store/search-and-discovery/filters)으로 필터를 사용자 지정할 수 있습니다"
         },
         "enable_filtering": {
           "label": "필터",
-          "info": "[Search & Discovery 앱](https:\/\/help.shopify.com\/manual\/online-store\/search-and-discovery\/filters)으로 필터를 사용자 지정할 수 있습니다"
+          "info": "[Search & Discovery 앱](https://help.shopify.com/manual/online-store/search-and-discovery/filters)으로 필터를 사용자 지정할 수 있습니다"
         },
         "enable_sorting": {
           "label": "정렬"
@@ -1492,7 +1501,7 @@
         },
         "show_rating": {
           "label": "제품 평점",
-          "info": "제품 평점을 표시하려면 앱이 필요합니다. [자세히 알아보기](https:\/\/help.shopify.com\/manual\/online-store\/themes\/theme-structure\/page-types\/collection-pages#product-grid-show-product-rating)"
+          "info": "제품 평점을 표시하려면 앱이 필요합니다. [자세히 알아보기](https://help.shopify.com/manual/online-store/themes/theme-structure/page-types/collection-pages#product-grid-show-product-rating)"
         },
         "columns_desktop": {
           "label": "열"
@@ -1595,7 +1604,7 @@
       "name": "비밀번호 머리글",
       "settings": {
         "logo_help": {
-          "content": "[테마 설정](\/editor?context=theme&category=logo)에서 로고를 편집할 수 있습니다"
+          "content": "[테마 설정](/editor?context=theme&category=logo)에서 로고를 편집할 수 있습니다"
         }
       }
     },
@@ -1637,7 +1646,7 @@
             },
             "swatch_shape": {
               "label": "견본",
-              "info": "제품 옵션의 [견본](https:\/\/help.shopify.com\/en\/manual\/online-store\/themes\/theme-structure\/theme-settings#options-with-swatches)에 대해 자세히 알아보기",
+              "info": "제품 옵션의 [견본](https://help.shopify.com/en/manual/online-store/themes/theme-structure/theme-settings#options-with-swatches)에 대해 자세히 알아보기",
               "options__1": {
                 "label": "원형"
               },
@@ -1654,11 +1663,11 @@
           "settings": {
             "show_dynamic_checkout": {
               "label": "동적 결제 버튼",
-              "info": "고객은 자신이 선호하는 결제 옵션을 볼 수 있습니다. [자세히 알아보기](https:\/\/help.shopify.com\/manual\/using-themes\/change-the-layout\/dynamic-checkout)"
+              "info": "고객은 자신이 선호하는 결제 옵션을 볼 수 있습니다. [자세히 알아보기](https://help.shopify.com/manual/using-themes/change-the-layout/dynamic-checkout)"
             },
             "show_gift_card_recipient": {
               "label": " 기프트 카드 전송 옵션",
-              "info": "고객은 개인 메시지를 추가하고 전송 날짜를 예약할 수 있습니다. [자세히 알아보기](https:\/\/help.shopify.com\/manual\/online-store\/themes\/customizing-themes\/add-gift-card-recipient-fields)"
+              "info": "고객은 개인 메시지를 추가하고 전송 날짜를 예약할 수 있습니다. [자세히 알아보기](https://help.shopify.com/manual/online-store/themes/customizing-themes/add-gift-card-recipient-fields)"
             }
           },
           "name": "구매 버튼"
@@ -1853,7 +1862,7 @@
           "name": "제품 평점",
           "settings": {
             "paragraph": {
-              "content": "제품 평점을 표시하려면 앱이 필요합니다. [자세히 알아보기](https:\/\/help.shopify.com\/manual\/online-store\/themes\/theme-structure\/page-types\/product-pages#product-rating-block)"
+              "content": "제품 평점을 표시하려면 앱이 필요합니다. [자세히 알아보기](https://help.shopify.com/manual/online-store/themes/theme-structure/page-types/product-pages#product-rating-block)"
             }
           }
         },
@@ -1861,7 +1870,7 @@
           "name": "보완 제품",
           "settings": {
             "paragraph": {
-              "content": "[Search & Discovery 앱](https:\/\/help.shopify.com\/manual\/online-store\/search-and-discovery\/product-recommendations)에서 보완 제품을 관리할 수 있습니다"
+              "content": "[Search & Discovery 앱](https://help.shopify.com/manual/online-store/search-and-discovery/product-recommendations)에서 보완 제품을 관리할 수 있습니다"
             },
             "heading": {
               "label": "제목",
@@ -2062,7 +2071,7 @@
           }
         },
         "image_zoom": {
-          "label": "확대\/축소",
+          "label": "확대/축소",
           "options__1": {
             "label": "라이트박스 열기"
           },
@@ -2070,7 +2079,7 @@
             "label": "클릭 및 커서 올리기"
           },
           "options__3": {
-            "label": "확대\/축소 안 함"
+            "label": "확대/축소 안 함"
           }
         },
         "constrain_to_viewport": {
@@ -2122,7 +2131,7 @@
         },
         "show_rating": {
           "label": "제품 평점",
-          "info": "제품 평점을 표시하려면 앱이 필요합니다. [자세히 알아보기](https:\/\/help.shopify.com\/en\/manual\/online-store\/themes\/theme-structure\/page-types\/search-page)"
+          "info": "제품 평점을 표시하려면 앱이 필요합니다. [자세히 알아보기](https://help.shopify.com/en/manual/online-store/themes/theme-structure/page-types/search-page)"
         },
         "columns_desktop": {
           "label": "열"
@@ -2148,10 +2157,10 @@
         "image_width": {
           "label": "너비",
           "options__1": {
-            "label": "열의 1\/3 폭"
+            "label": "열의 1/3 폭"
           },
           "options__2": {
-            "label": "열의 1\/2 폭"
+            "label": "열의 1/2 폭"
           },
           "options__3": {
             "label": "열의 전체 폭"
@@ -2241,7 +2250,7 @@
             },
             "text": {
               "label": "설명",
-              "default": "<p>이미지와 텍스트를 짝지어 선택한 제품, 컬렉션, 블로그 게시물을 강조합니다. 사용 가능성, 스타일에 대한 자세한 정보를 추가하거나 리뷰를 제공합니다.<\/p>"
+              "default": "<p>이미지와 텍스트를 짝지어 선택한 제품, 컬렉션, 블로그 게시물을 강조합니다. 사용 가능성, 스타일에 대한 자세한 정보를 추가하거나 리뷰를 제공합니다.</p>"
             },
             "link_label": {
               "label": "레이블 링크",
@@ -2265,7 +2274,7 @@
           "label": "전체 너비"
         },
         "paragraph": {
-          "content": "가입하면 [고객 프로필](https:\/\/help.shopify.com\/manual\/customers\/manage-customers)이 추가됩니다"
+          "content": "가입하면 [고객 프로필](https://help.shopify.com/manual/customers/manage-customers)이 추가됩니다"
         }
       },
       "blocks": {
@@ -2282,7 +2291,7 @@
           "settings": {
             "paragraph": {
               "label": "텍스트",
-              "default": "<p>새로운 컬렉션과 독점 혜택 소식을 가장 먼저 알려드립니다.<\/p>"
+              "default": "<p>새로운 컬렉션과 독점 혜택 소식을 가장 먼저 알려드립니다.</p>"
             }
           },
           "name": "텍스트"
@@ -2351,7 +2360,7 @@
           "settings": {
             "text": {
               "label": "텍스트",
-              "default": "<p>고객과 브랜드 정보를 공유하세요. 제품을 설명하고 공지 사항을 제공하고, 스토어를 방문하는 고객을 환영할 수 있습니다.<\/p>"
+              "default": "<p>고객과 브랜드 정보를 공유하세요. 제품을 설명하고 공지 사항을 제공하고, 스토어를 방문하는 고객을 환영할 수 있습니다.</p>"
             }
           },
           "name": "텍스트"
@@ -2529,7 +2538,7 @@
             },
             "swatch_shape": {
               "label": "견본",
-              "info": "제품 옵션의 [견본](https:\/\/help.shopify.com\/en\/manual\/online-store\/themes\/theme-structure\/theme-settings#options-with-swatches)에 대해 자세히 알아보기",
+              "info": "제품 옵션의 [견본](https://help.shopify.com/en/manual/online-store/themes/theme-structure/theme-settings#options-with-swatches)에 대해 자세히 알아보기",
               "options__1": {
                 "label": "원형"
               },
@@ -2547,7 +2556,7 @@
           "settings": {
             "show_dynamic_checkout": {
               "label": "동적 결제 버튼",
-              "info": "고객은 자신이 선호하는 결제 옵션을 볼 수 있습니다. [자세히 알아보기](https:\/\/help.shopify.com\/manual\/using-themes\/change-the-layout\/dynamic-checkout)"
+              "info": "고객은 자신이 선호하는 결제 옵션을 볼 수 있습니다. [자세히 알아보기](https://help.shopify.com/manual/using-themes/change-the-layout/dynamic-checkout)"
             }
           }
         },
@@ -2558,10 +2567,10 @@
           "name": "공유",
           "settings": {
             "featured_image_info": {
-              "content": "소셜 미디어 게시글에 링크를 포함하면 페이지의 미리 보기 이미지에 추천 이미지가 표시됩니다. [자세히 알아보기](https:\/\/help.shopify.com\/manual\/online-store\/images\/showing-social-media-thumbnail-images)"
+              "content": "소셜 미디어 게시글에 링크를 포함하면 페이지의 미리 보기 이미지에 추천 이미지가 표시됩니다. [자세히 알아보기](https://help.shopify.com/manual/online-store/images/showing-social-media-thumbnail-images)"
             },
             "title_info": {
-              "content": "미리 보기 이미지에 스토어 제목 및 설명이 포함됩니다. [자세히 알아보기](https:\/\/help.shopify.com\/manual\/promoting-marketing\/seo\/adding-keywords#set-a-title-and-description-for-your-online-store)"
+              "content": "미리 보기 이미지에 스토어 제목 및 설명이 포함됩니다. [자세히 알아보기](https://help.shopify.com/manual/promoting-marketing/seo/adding-keywords#set-a-title-and-description-for-your-online-store)"
             },
             "text": {
               "label": "텍스트",
@@ -2573,7 +2582,7 @@
           "name": "제품 평점",
           "settings": {
             "paragraph": {
-              "content": "제품 평점을 표시하려면 앱이 필요합니다. [자세히 알아보기](https:\/\/help.shopify.com\/manual\/online-store\/themes\/theme-structure\/theme-features#featured-product-rating)"
+              "content": "제품 평점을 표시하려면 앱이 필요합니다. [자세히 알아보기](https://help.shopify.com/manual/online-store/themes/theme-structure/theme-features#featured-product-rating)"
             }
           }
         },
@@ -2630,7 +2639,7 @@
       "name": "이메일 가입 배너",
       "settings": {
         "paragraph": {
-          "content": "가입하면 [고객 프로필](https:\/\/help.shopify.com\/manual\/customers\/manage-customers)이 추가됩니다"
+          "content": "가입하면 [고객 프로필](https://help.shopify.com/manual/customers/manage-customers)이 추가됩니다"
         },
         "image": {
           "label": "배경 이미지"
@@ -2741,7 +2750,7 @@
           "settings": {
             "paragraph": {
               "label": "텍스트",
-              "default": "<p>출시 할 때 가장 먼저 알려드립니다.<\/p>"
+              "default": "<p>출시 할 때 가장 먼저 알려드립니다.</p>"
             },
             "text_style": {
               "options__1": {
@@ -3192,7 +3201,7 @@
           "label": "열"
         },
         "paragraph__1": {
-          "content": "[Search & Discovery 앱](https:\/\/help.shopify.com\/manual\/online-store\/search-and-discovery\/product-recommendations)에서 관련 제품을 관리할 수 있습니다",
+          "content": "[Search & Discovery 앱](https://help.shopify.com/manual/online-store/search-and-discovery/product-recommendations)에서 관련 제품을 관리할 수 있습니다",
           "default": "회원님이 좋아할 만한 추천 제품"
         },
         "header__2": {
@@ -3218,7 +3227,7 @@
         },
         "show_rating": {
           "label": "제품 평점",
-          "info": "제품 평점을 표시하려면 앱이 필요합니다. [자세히 알아보기](https:\/\/help.shopify.com\/manual\/online-store\/themes\/customizing-themes\/add-product-recommendations)"
+          "info": "제품 평점을 표시하려면 앱이 필요합니다. [자세히 알아보기](https://help.shopify.com/manual/online-store/themes/customizing-themes/add-product-recommendations)"
         },
         "columns_mobile": {
           "label": "모바일 열",
@@ -3363,7 +3372,7 @@
             },
             "text": {
               "label": "텍스트",
-              "default": "<p>이미지와 텍스트를 짝지어 선택한 제품, 컬렉션, 블로그 게시물을 강조합니다. 사용 가능성, 스타일에 대한 자세한 정보를 추가하거나 리뷰를 제공합니다.<\/p>"
+              "default": "<p>이미지와 텍스트를 짝지어 선택한 제품, 컬렉션, 블로그 게시물을 강조합니다. 사용 가능성, 스타일에 대한 자세한 정보를 추가하거나 리뷰를 제공합니다.</p>"
             },
             "button_label": {
               "label": "버튼 레이블",

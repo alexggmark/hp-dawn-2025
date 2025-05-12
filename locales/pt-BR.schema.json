@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin language editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "settings_schema": {
     "colors": {
@@ -54,40 +63,40 @@
       "name": "Redes sociais",
       "settings": {
         "social_twitter_link": {
-          "label": "X\/Twitter",
-          "info": "https:\/\/x.com\/shopify"
+          "label": "X/Twitter",
+          "info": "https://x.com/shopify"
         },
         "social_facebook_link": {
           "label": "Facebook",
-          "info": "https:\/\/facebook.com\/shopify"
+          "info": "https://facebook.com/shopify"
         },
         "social_pinterest_link": {
           "label": "Pinterest",
-          "info": "https:\/\/pinterest.com\/shopify"
+          "info": "https://pinterest.com/shopify"
         },
         "social_instagram_link": {
           "label": "Instagram",
-          "info": "http:\/\/instagram.com\/shopify"
+          "info": "http://instagram.com/shopify"
         },
         "social_tiktok_link": {
           "label": "TikTok",
-          "info": "https:\/\/tiktok.com\/@shopify"
+          "info": "https://tiktok.com/@shopify"
         },
         "social_tumblr_link": {
           "label": "Tumblr",
-          "info": "http:\/\/shopify.tumblr.com"
+          "info": "http://shopify.tumblr.com"
         },
         "social_snapchat_link": {
           "label": "Snapchat",
-          "info": "https:\/\/www.snapchat.com\/add\/shopify"
+          "info": "https://www.snapchat.com/add/shopify"
         },
         "social_youtube_link": {
           "label": "YouTube",
-          "info": "https:\/\/www.youtube.com\/shopify"
+          "info": "https://www.youtube.com/shopify"
         },
         "social_vimeo_link": {
           "label": "Vimeo",
-          "info": "https:\/\/vimeo.com\/shopify"
+          "info": "https://vimeo.com/shopify"
         },
         "header": {
           "content": "Contas de redes sociais"
@@ -216,7 +225,7 @@
     },
     "variant_pills": {
       "name": "Pílulas de variantes",
-      "paragraph": "Pílulas de variante são uma forma de apresentar suas [variantes do produto](https:\/\/help.shopify.com\/manual\/online-store\/themes\/theme-structure\/page-types\/product-pages#variant-picker-block)"
+      "paragraph": "Pílulas de variante são uma forma de apresentar suas [variantes do produto](https://help.shopify.com/manual/online-store/themes/theme-structure/page-types/product-pages#variant-picker-block)"
     },
     "inputs": {
       "name": "Entradas"
@@ -476,15 +485,15 @@
         },
         "show_social": {
           "label": "Ícones de redes sociais",
-          "info": "[Gerenciar contas de rede social](\/editor?context=theme&category=social%20media)"
+          "info": "[Gerenciar contas de rede social](/editor?context=theme&category=social%20media)"
         },
         "enable_country_selector": {
-          "label": "Seletor de país\/região",
-          "info": "[Gerenciar países\/regiões](\/admin\/settings\/markets)"
+          "label": "Seletor de país/região",
+          "info": "[Gerenciar países/regiões](/admin/settings/markets)"
         },
         "enable_language_selector": {
           "label": "Seletor de idioma",
-          "info": "[Gerenciar idiomas](\/admin\/settings\/languages)"
+          "info": "[Gerenciar idiomas](/admin/settings/languages)"
         },
         "heading_utilities": {
           "content": "Serviços públicos"
@@ -524,7 +533,7 @@
         },
         "card_styles": {
           "label": "Estilo do cartão",
-          "info": "Gerenciar estilos de cartão individual em [configurações do tema](\/editor?context=theme&category=product%20cards)",
+          "info": "Gerenciar estilos de cartão individual em [configurações do tema](/editor?context=theme&category=product%20cards)",
           "options__1": {
             "label": "Usar estilos de cartão individuais"
           },
@@ -580,7 +589,7 @@
             },
             "description": {
               "label": "Texto alternativo do vídeo",
-              "info": "Descreva o vídeo para clientes que usam leitores de tela. [Saiba mais](https:\/\/help.shopify.com\/manual\/online-store\/themes\/theme-structure\/theme-features#video-block)",
+              "info": "Descreva o vídeo para clientes que usam leitores de tela. [Saiba mais](https://help.shopify.com/manual/online-store/themes/theme-structure/theme-features#video-block)",
               "default": "Descreva o vídeo"
             }
           }
@@ -666,7 +675,7 @@
       "settings": {
         "custom_liquid": {
           "label": "Código Liquid",
-          "info": "Adicione snippets de app ou outros códigos do Liquid para criar personalizações avançadas. [Saiba mais](https:\/\/shopify.dev\/docs\/api\/liquid)"
+          "info": "Adicione snippets de app ou outros códigos do Liquid para criar personalizações avançadas. [Saiba mais](https://shopify.dev/docs/api/liquid)"
         }
       },
       "presets": {
@@ -753,7 +762,7 @@
         },
         "show_rating": {
           "label": "Classificação do produto",
-          "info": "É necessário um app para classificações. [Saiba mais](https:\/\/help.shopify.com\/manual\/online-store\/themes\/theme-structure\/theme-features#featured-collection-show-product-rating)"
+          "info": "É necessário um app para classificações. [Saiba mais](https://help.shopify.com/manual/online-store/themes/theme-structure/theme-features#featured-collection-show-product-rating)"
         },
         "enable_quick_buy": {
           "label": "Adição rápida"
@@ -847,7 +856,7 @@
             },
             "subtext": {
               "label": "Subtexto",
-              "default": "<p>Compartilhe informações de contato, detalhes da loja e conteúdo de marca com clientes.<\/p>"
+              "default": "<p>Compartilhe informações de contato, detalhes da loja e conteúdo de marca com clientes.</p>"
             }
           }
         },
@@ -855,11 +864,11 @@
           "name": "Informações da marca",
           "settings": {
             "paragraph": {
-              "content": "Gerenciar informações da marca em [configurações do tema](\/editor?context=theme&category=brand%20information)"
+              "content": "Gerenciar informações da marca em [configurações do tema](/editor?context=theme&category=brand%20information)"
             },
             "show_social": {
               "label": "Ícones de redes sociais",
-              "info": "[Gerenciar contas de rede social](\/editor?context=theme&category=social%20media)"
+              "info": "[Gerenciar contas de rede social](/editor?context=theme&category=social%20media)"
             }
           }
         }
@@ -874,19 +883,19 @@
         },
         "header__1": {
           "content": "Assinante de e-mail",
-          "info": "As inscrições adicionam [perfis de cliente](https:\/\/help.shopify.com\/manual\/customers\/manage-customers)"
+          "info": "As inscrições adicionam [perfis de cliente](https://help.shopify.com/manual/customers/manage-customers)"
         },
         "show_social": {
           "label": "Ícones de redes sociais",
-          "info": "[Gerenciar contas de rede social](\/editor?context=theme&category=social%20media)"
+          "info": "[Gerenciar contas de rede social](/editor?context=theme&category=social%20media)"
         },
         "enable_country_selector": {
-          "label": "Seletor de país\/região",
-          "info": "[Gerenciar países\/regiões](\/admin\/settings\/markets)"
+          "label": "Seletor de país/região",
+          "info": "[Gerenciar países/regiões](/admin/settings/markets)"
         },
         "enable_language_selector": {
           "label": "Seletor de idioma",
-          "info": "[Gerenciar idiomas](\/admin\/settings\/languages)"
+          "info": "[Gerenciar idiomas](/admin/settings/languages)"
         },
         "payment_enable": {
           "label": "Ícones de forma de pagamento"
@@ -896,14 +905,14 @@
         },
         "show_policy": {
           "label": "Links para políticas",
-          "info": "[Gerenciar políticas](\/admin\/settings\/legal)"
+          "info": "[Gerenciar políticas](/admin/settings/legal)"
         },
         "header__9": {
           "content": "Serviços públicos"
         },
         "enable_follow_on_shop": {
           "label": "Seguir no Shop",
-          "info": "O Shop Pay deve estar habilitado. [Saiba mais](https:\/\/help.shopify.com\/manual\/online-store\/themes\/customizing-themes\/follow-on-shop)"
+          "info": "O Shop Pay deve estar habilitado. [Saiba mais](https://help.shopify.com/manual/online-store/themes/customizing-themes/follow-on-shop)"
         }
       }
     },
@@ -956,7 +965,7 @@
           }
         },
         "logo_help": {
-          "content": "Editar seu logo nas [configurações do tema](\/editor?context=theme&category=logo)"
+          "content": "Editar seu logo nas [configurações do tema](/editor?context=theme&category=logo)"
         },
         "sticky_header_type": {
           "label": "Cabeçalho fixo",
@@ -974,12 +983,12 @@
           }
         },
         "enable_country_selector": {
-          "label": "Seletor de país\/região",
-          "info": "[Gerenciar países\/regiões](\/admin\/settings\/markets)"
+          "label": "Seletor de país/região",
+          "info": "[Gerenciar países/regiões](/admin/settings/markets)"
         },
         "enable_language_selector": {
           "label": "Seletor de idioma",
-          "info": "[Gerenciar idiomas](\/admin\/settings\/languages)"
+          "info": "[Gerenciar idiomas](/admin/settings/languages)"
         },
         "header__1": {
           "content": "Cor"
@@ -989,7 +998,7 @@
         },
         "enable_customer_avatar": {
           "label": "Avatar de conta de cliente",
-          "info": "Visível apenas quando os clientes fizerem login com o Shop. [Gerenciar contas de cliente](\/admin\/settings\/customer_accounts)"
+          "info": "Visível apenas quando os clientes fizerem login com o Shop. [Gerenciar contas de cliente](/admin/settings/customer_accounts)"
         },
         "header__utilities": {
           "content": "Serviços públicos"
@@ -1271,7 +1280,7 @@
           "settings": {
             "text": {
               "label": "Texto",
-              "default": "<p>Combine um texto com uma imagem para destacar o produto, a coleção ou o post do blog escolhido. Adicione informações sobre disponibilidade, estilo ou até mesmo uma avaliação.<\/p>"
+              "default": "<p>Combine um texto com uma imagem para destacar o produto, a coleção ou o post do blog escolhido. Adicione informações sobre disponibilidade, estilo ou até mesmo uma avaliação.</p>"
             },
             "text_style": {
               "label": "Estilo",
@@ -1439,7 +1448,7 @@
       "name": "Banner da coleção",
       "settings": {
         "paragraph": {
-          "content": "As informações da coleção são [gerenciadas no admin](https:\/\/help.shopify.com\/manual\/products\/collections\/collection-layout)"
+          "content": "As informações da coleção são [gerenciadas no admin](https://help.shopify.com/manual/products/collections/collection-layout)"
         },
         "show_collection_description": {
           "label": "Descrição"
@@ -1457,7 +1466,7 @@
         },
         "enable_filtering": {
           "label": "Filtros",
-          "info": "Personalize os filtros [com o app Search & Discovery](https:\/\/help.shopify.com\/manual\/online-store\/search-and-discovery\/filters)"
+          "info": "Personalize os filtros [com o app Search & Discovery](https://help.shopify.com/manual/online-store/search-and-discovery/filters)"
         },
         "enable_sorting": {
           "label": "Organização"
@@ -1488,11 +1497,11 @@
         },
         "enable_tags": {
           "label": "Filtros",
-          "info": "Personalize os filtros [com o app Search & Discovery](https:\/\/help.shopify.com\/manual\/online-store\/search-and-discovery\/filters)"
+          "info": "Personalize os filtros [com o app Search & Discovery](https://help.shopify.com/manual/online-store/search-and-discovery/filters)"
         },
         "show_rating": {
           "label": "Classificação do produto",
-          "info": "É necessário um app para classificações de produtos. [Saiba mais](https:\/\/help.shopify.com\/manual\/online-store\/themes\/theme-structure\/page-types\/collection-pages#product-grid-show-product-rating)"
+          "info": "É necessário um app para classificações de produtos. [Saiba mais](https://help.shopify.com/manual/online-store/themes/theme-structure/page-types/collection-pages#product-grid-show-product-rating)"
         },
         "columns_desktop": {
           "label": "Colunas"
@@ -1595,7 +1604,7 @@
       "name": "Cabeçalho de senha",
       "settings": {
         "logo_help": {
-          "content": "Editar seu logo nas [configurações do tema](\/editor?context=theme&category=logo)"
+          "content": "Editar seu logo nas [configurações do tema](/editor?context=theme&category=logo)"
         }
       }
     },
@@ -1645,7 +1654,7 @@
             },
             "swatch_shape": {
               "label": "Amostra",
-              "info": "Saiba mais sobre as [amostras](https:\/\/help.shopify.com\/en\/manual\/online-store\/themes\/theme-structure\/theme-settings#options-with-swatches) nas opções de produtos",
+              "info": "Saiba mais sobre as [amostras](https://help.shopify.com/en/manual/online-store/themes/theme-structure/theme-settings#options-with-swatches) nas opções de produtos",
               "options__1": {
                 "label": "Círculo"
               },
@@ -1663,11 +1672,11 @@
           "settings": {
             "show_dynamic_checkout": {
               "label": "Botões de checkout dinâmico",
-              "info": "Os clientes verão a opção de pagamento preferida deles. [Saiba mais](https:\/\/help.shopify.com\/manual\/using-themes\/change-the-layout\/dynamic-checkout)"
+              "info": "Os clientes verão a opção de pagamento preferida deles. [Saiba mais](https://help.shopify.com/manual/using-themes/change-the-layout/dynamic-checkout)"
             },
             "show_gift_card_recipient": {
               "label": " Opções de envio de cartão-presente",
-              "info": "Os clientes podem adicionar uma mensagem pessoal e agendar a data de envio. [Saiba mais](https:\/\/help.shopify.com\/manual\/online-store\/themes\/customizing-themes\/add-gift-card-recipient-fields)"
+              "info": "Os clientes podem adicionar uma mensagem pessoal e agendar a data de envio. [Saiba mais](https://help.shopify.com/manual/online-store/themes/customizing-themes/add-gift-card-recipient-fields)"
             }
           }
         },
@@ -1852,7 +1861,7 @@
           "name": "Avaliação do produto",
           "settings": {
             "paragraph": {
-              "content": "É necessário um app para classificações de produtos. [Saiba mais](https:\/\/help.shopify.com\/manual\/online-store\/themes\/theme-structure\/page-types\/product-pages#product-rating-block)"
+              "content": "É necessário um app para classificações de produtos. [Saiba mais](https://help.shopify.com/manual/online-store/themes/theme-structure/page-types/product-pages#product-rating-block)"
             }
           }
         },
@@ -1860,7 +1869,7 @@
           "name": "Produtos complementares",
           "settings": {
             "paragraph": {
-              "content": "Gerenciar produtos complementares no [app Search & Discovery](https:\/\/help.shopify.com\/manual\/online-store\/search-and-discovery\/product-recommendations)"
+              "content": "Gerenciar produtos complementares no [app Search & Discovery](https://help.shopify.com/manual/online-store/search-and-discovery/product-recommendations)"
             },
             "heading": {
               "label": "Título",
@@ -2122,7 +2131,7 @@
         },
         "show_rating": {
           "label": "Classificação do produto",
-          "info": "É necessário um app para classificações de produtos. [Saiba mais](https:\/\/help.shopify.com\/en\/manual\/online-store\/themes\/theme-structure\/page-types\/search-page)"
+          "info": "É necessário um app para classificações de produtos. [Saiba mais](https://help.shopify.com/en/manual/online-store/themes/theme-structure/page-types/search-page)"
         },
         "columns_desktop": {
           "label": "Colunas"
@@ -2242,7 +2251,7 @@
             },
             "text": {
               "label": "Descrição",
-              "default": "<p>Combine um texto com uma imagem para destacar o produto, a coleção ou o post do blog escolhido. Adicione informações sobre disponibilidade, estilo ou até mesmo uma avaliação.<\/p>"
+              "default": "<p>Combine um texto com uma imagem para destacar o produto, a coleção ou o post do blog escolhido. Adicione informações sobre disponibilidade, estilo ou até mesmo uma avaliação.</p>"
             },
             "link_label": {
               "label": "Etiqueta de link",
@@ -2265,7 +2274,7 @@
           "label": "Largura total"
         },
         "paragraph": {
-          "content": "As inscrições adicionam [perfis de cliente](https:\/\/help.shopify.com\/manual\/customers\/manage-customers)"
+          "content": "As inscrições adicionam [perfis de cliente](https://help.shopify.com/manual/customers/manage-customers)"
         }
       },
       "blocks": {
@@ -2283,7 +2292,7 @@
           "settings": {
             "paragraph": {
               "label": "Texto",
-              "default": "<p>Seja a primeira pessoa a saber sobre novas coleções e ofertas exclusivas.<\/p>"
+              "default": "<p>Seja a primeira pessoa a saber sobre novas coleções e ofertas exclusivas.</p>"
             }
           }
         },
@@ -2352,7 +2361,7 @@
           "settings": {
             "text": {
               "label": "Texto",
-              "default": "<p>Compartilhe informações sobre a marca com clientes. Descreva um produto, faça comunicados ou dê as boas-vindas aos clientes na loja.<\/p>"
+              "default": "<p>Compartilhe informações sobre a marca com clientes. Descreva um produto, faça comunicados ou dê as boas-vindas aos clientes na loja.</p>"
             }
           }
         },
@@ -2529,7 +2538,7 @@
             },
             "swatch_shape": {
               "label": "Amostra",
-              "info": "Saiba mais sobre as [amostras](https:\/\/help.shopify.com\/en\/manual\/online-store\/themes\/theme-structure\/theme-settings#options-with-swatches) nas opções de produtos",
+              "info": "Saiba mais sobre as [amostras](https://help.shopify.com/en/manual/online-store/themes/theme-structure/theme-settings#options-with-swatches) nas opções de produtos",
               "options__1": {
                 "label": "Círculo"
               },
@@ -2547,7 +2556,7 @@
           "settings": {
             "show_dynamic_checkout": {
               "label": "Botões de checkout dinâmico",
-              "info": "Os clientes verão a opção de pagamento preferida deles. [Saiba mais](https:\/\/help.shopify.com\/manual\/using-themes\/change-the-layout\/dynamic-checkout)"
+              "info": "Os clientes verão a opção de pagamento preferida deles. [Saiba mais](https://help.shopify.com/manual/using-themes/change-the-layout/dynamic-checkout)"
             }
           }
         },
@@ -2558,10 +2567,10 @@
           "name": "Compartilhar",
           "settings": {
             "featured_image_info": {
-              "content": "Se você incluir um link em publicações nas redes sociais, a imagem em destaque da página será exibida como na pré-visualização. [Saiba mais](https:\/\/help.shopify.com\/manual\/online-store\/images\/showing-social-media-thumbnail-images)"
+              "content": "Se você incluir um link em publicações nas redes sociais, a imagem em destaque da página será exibida como na pré-visualização. [Saiba mais](https://help.shopify.com/manual/online-store/images/showing-social-media-thumbnail-images)"
             },
             "title_info": {
-              "content": "O título e a descrição da loja estão incluídos na prévia da imagem. [Saiba mais](https:\/\/help.shopify.com\/manual\/promoting-marketing\/seo\/adding-keywords#set-a-title-and-description-for-your-online-store)"
+              "content": "O título e a descrição da loja estão incluídos na prévia da imagem. [Saiba mais](https://help.shopify.com/manual/promoting-marketing/seo/adding-keywords#set-a-title-and-description-for-your-online-store)"
             },
             "text": {
               "label": "Texto",
@@ -2573,7 +2582,7 @@
           "name": "Avaliação do produto",
           "settings": {
             "paragraph": {
-              "content": "É necessário um app para classificações de produtos. [Saiba mais](https:\/\/help.shopify.com\/manual\/online-store\/themes\/theme-structure\/theme-features#featured-product-rating)"
+              "content": "É necessário um app para classificações de produtos. [Saiba mais](https://help.shopify.com/manual/online-store/themes/theme-structure/theme-features#featured-product-rating)"
             }
           }
         },
@@ -2630,7 +2639,7 @@
       "name": "Banner de assinante de e-mail",
       "settings": {
         "paragraph": {
-          "content": "As inscrições adicionam [perfis de cliente](https:\/\/help.shopify.com\/manual\/customers\/manage-customers)"
+          "content": "As inscrições adicionam [perfis de cliente](https://help.shopify.com/manual/customers/manage-customers)"
         },
         "image": {
           "label": "Imagem de fundo"
@@ -2741,7 +2750,7 @@
           "settings": {
             "paragraph": {
               "label": "Texto",
-              "default": "<p>Seja a primeira pessoa a saber quando lançarmos.<\/p>"
+              "default": "<p>Seja a primeira pessoa a saber quando lançarmos.</p>"
             },
             "text_style": {
               "options__1": {
@@ -3192,7 +3201,7 @@
           "label": "Colunas"
         },
         "paragraph__1": {
-          "content": "Os produtos relacionados podem ser gerenciados no [app Search & Discovery](https:\/\/help.shopify.com\/manual\/online-store\/search-and-discovery\/product-recommendations)",
+          "content": "Os produtos relacionados podem ser gerenciados no [app Search & Discovery](https://help.shopify.com/manual/online-store/search-and-discovery/product-recommendations)",
           "default": "Talvez você também goste de"
         },
         "header__2": {
@@ -3218,7 +3227,7 @@
         },
         "show_rating": {
           "label": "Classificação do produto",
-          "info": "É necessário um app para classificações de produtos. [Saiba mais](https:\/\/help.shopify.com\/manual\/online-store\/themes\/customizing-themes\/add-product-recommendations)"
+          "info": "É necessário um app para classificações de produtos. [Saiba mais](https://help.shopify.com/manual/online-store/themes/customizing-themes/add-product-recommendations)"
         },
         "columns_mobile": {
           "label": "Colunas em dispositivos móveis",
@@ -3363,7 +3372,7 @@
             },
             "text": {
               "label": "Texto",
-              "default": "<p>Combine um texto com uma imagem para destacar o produto, a coleção ou o post do blog escolhido. Adicione informações sobre disponibilidade, estilo ou até mesmo uma avaliação.<\/p>"
+              "default": "<p>Combine um texto com uma imagem para destacar o produto, a coleção ou o post do blog escolhido. Adicione informações sobre disponibilidade, estilo ou até mesmo uma avaliação.</p>"
             },
             "button_label": {
               "label": "Etiqueta de botão",

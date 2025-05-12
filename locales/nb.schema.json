@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin language editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "settings_schema": {
     "colors": {
@@ -54,40 +63,40 @@
       "name": "Sosiale medier",
       "settings": {
         "social_twitter_link": {
-          "label": "X \/ Twitter",
-          "info": "https:\/\/x.com\/shopify"
+          "label": "X / Twitter",
+          "info": "https://x.com/shopify"
         },
         "social_facebook_link": {
           "label": "Facebook",
-          "info": "https:\/\/facebook.com\/shopify"
+          "info": "https://facebook.com/shopify"
         },
         "social_pinterest_link": {
           "label": "Pinterest",
-          "info": "https:\/\/pinterest.com\/shopify"
+          "info": "https://pinterest.com/shopify"
         },
         "social_instagram_link": {
           "label": "Instagram",
-          "info": "http:\/\/instagram.com\/shopify"
+          "info": "http://instagram.com/shopify"
         },
         "social_tiktok_link": {
           "label": "TikTok",
-          "info": "https:\/\/tiktok.com\/@shopify"
+          "info": "https://tiktok.com/@shopify"
         },
         "social_tumblr_link": {
           "label": "Tumblr",
-          "info": "https:\/\/shopify.tumblr.com"
+          "info": "https://shopify.tumblr.com"
         },
         "social_snapchat_link": {
           "label": "Snapchat",
-          "info": "https:\/\/snapchat.com\/add\/shopify"
+          "info": "https://snapchat.com/add/shopify"
         },
         "social_youtube_link": {
           "label": "YouTube",
-          "info": "https:\/\/www.youtube.com\/shopify"
+          "info": "https://www.youtube.com/shopify"
         },
         "social_vimeo_link": {
           "label": "Vimeo",
-          "info": "https:\/\/vimeo.com\/shopify"
+          "info": "https://vimeo.com/shopify"
         },
         "header": {
           "content": "Sosiale kontoer"
@@ -216,7 +225,7 @@
     },
     "variant_pills": {
       "name": "Variantknapper",
-      "paragraph": "Variantknapper er én måte å vise [produktvarianter på](https:\/\/help.shopify.com\/manual\/online-store\/themes\/theme-structure\/page-types\/product-pages#variant-picker-block)"
+      "paragraph": "Variantknapper er én måte å vise [produktvarianter på](https://help.shopify.com/manual/online-store/themes/theme-structure/page-types/product-pages#variant-picker-block)"
     },
     "inputs": {
       "name": "Inputs"
@@ -476,15 +485,15 @@
         },
         "show_social": {
           "label": "Ikoner for sosiale medier",
-          "info": "[Administrer sosiale kontoer ](\/editor?context=theme&category=social%20media)"
+          "info": "[Administrer sosiale kontoer ](/editor?context=theme&category=social%20media)"
         },
         "enable_country_selector": {
-          "label": "Land-\/områdevelger",
-          "info": "[Administrer land\/regioner](\/admin\/settings\/markets)"
+          "label": "Land-/områdevelger",
+          "info": "[Administrer land/regioner](/admin/settings/markets)"
         },
         "enable_language_selector": {
           "label": "Språkvelger",
-          "info": "[Administrer språk](\/admin\/settings\/languages)"
+          "info": "[Administrer språk](/admin/settings/languages)"
         },
         "heading_utilities": {
           "content": "Verktøy"
@@ -524,7 +533,7 @@
         },
         "card_styles": {
           "label": "Kortstil",
-          "info": "Administrer individuelle kortstiler i [temainnstillingene](\/editor?context=theme&category=product%20cards)",
+          "info": "Administrer individuelle kortstiler i [temainnstillingene](/editor?context=theme&category=product%20cards)",
           "options__1": {
             "label": "Bruk individuelle kortstiler"
           },
@@ -580,7 +589,7 @@
             },
             "description": {
               "label": "Alt. tekst for video",
-              "info": "Beskriv videoen for kunder som bruker skjermlesere. [Finn ut mer](https:\/\/help.shopify.com\/manual\/online-store\/themes\/theme-structure\/theme-features#video-block)",
+              "info": "Beskriv videoen for kunder som bruker skjermlesere. [Finn ut mer](https://help.shopify.com/manual/online-store/themes/theme-structure/theme-features#video-block)",
               "default": "Beskriv videoen"
             }
           }
@@ -666,7 +675,7 @@
       "settings": {
         "custom_liquid": {
           "label": "Liquid-kode",
-          "info": "Legg til kodeutdrag fra app eller en annen kode for å opprette avanserte tilpasninger. [Finn ut mer](https:\/\/shopify.dev\/docs\/api\/liquid)"
+          "info": "Legg til kodeutdrag fra app eller en annen kode for å opprette avanserte tilpasninger. [Finn ut mer](https://shopify.dev/docs/api/liquid)"
         }
       },
       "presets": {
@@ -753,7 +762,7 @@
         },
         "show_rating": {
           "label": "Produktanmeldelse",
-          "info": "En app kreves for anmeldelser. [Finn ut mer](https:\/\/help.shopify.com\/manual\/online-store\/themes\/theme-structure\/theme-features#featured-collection-show-product-rating)"
+          "info": "En app kreves for anmeldelser. [Finn ut mer](https://help.shopify.com/manual/online-store/themes/theme-structure/theme-features#featured-collection-show-product-rating)"
         },
         "columns_desktop": {
           "label": "Kolonner"
@@ -847,7 +856,7 @@
             },
             "subtext": {
               "label": "Undertekst",
-              "default": "<p>Del kontaktopplysninger, butikkdetaljer og merkevareinnhold med kundene dine.<\/p>"
+              "default": "<p>Del kontaktopplysninger, butikkdetaljer og merkevareinnhold med kundene dine.</p>"
             }
           }
         },
@@ -855,11 +864,11 @@
           "name": "Merkevareinformasjon",
           "settings": {
             "paragraph": {
-              "content": "Administrer merkevareinfo i [temainnstillingene](\/editor?context=theme&category=brand%20information)"
+              "content": "Administrer merkevareinfo i [temainnstillingene](/editor?context=theme&category=brand%20information)"
             },
             "show_social": {
               "label": "Ikoner for sosiale medier",
-              "info": "[Administrer sosiale kontoer ](\/editor?context=theme&category=social%20media)"
+              "info": "[Administrer sosiale kontoer ](/editor?context=theme&category=social%20media)"
             }
           }
         }
@@ -874,19 +883,19 @@
         },
         "header__1": {
           "content": "E-postregistrering",
-          "info": "Legg til registreringer [av kundeprofiler](https:\/\/help.shopify.com\/manual\/customers\/manage-customers)"
+          "info": "Legg til registreringer [av kundeprofiler](https://help.shopify.com/manual/customers/manage-customers)"
         },
         "show_social": {
           "label": "Ikoner for sosiale medier",
-          "info": "[Administrer sosiale kontoer ](\/editor?context=theme&category=social%20media)"
+          "info": "[Administrer sosiale kontoer ](/editor?context=theme&category=social%20media)"
         },
         "enable_country_selector": {
-          "label": "Land-\/områdevelger",
-          "info": "[Administrer land\/regioner](\/admin\/settings\/markets)"
+          "label": "Land-/områdevelger",
+          "info": "[Administrer land/regioner](/admin/settings/markets)"
         },
         "enable_language_selector": {
           "label": "Språkvelger",
-          "info": "[Administrer språk](\/admin\/settings\/languages)"
+          "info": "[Administrer språk](/admin/settings/languages)"
         },
         "payment_enable": {
           "label": "Ikoner for betalingsmåter"
@@ -896,14 +905,14 @@
         },
         "show_policy": {
           "label": "Koblinger til retningslinjer",
-          "info": "[Administrer retningslinjer](\/admin\/settings\/legal)"
+          "info": "[Administrer retningslinjer](/admin/settings/legal)"
         },
         "header__9": {
           "content": "Verktøy"
         },
         "enable_follow_on_shop": {
           "label": "Følg på Shop",
-          "info": "Shop Pay må være aktivert. [Finn ut mer](https:\/\/help.shopify.com\/manual\/online-store\/themes\/customizing-themes\/follow-on-shop)"
+          "info": "Shop Pay må være aktivert. [Finn ut mer](https://help.shopify.com/manual/online-store/themes/customizing-themes/follow-on-shop)"
         }
       }
     },
@@ -956,7 +965,7 @@
           }
         },
         "logo_help": {
-          "content": "Rediger logoen i [temainnstillingene](\/editor?context=theme&category=logo)"
+          "content": "Rediger logoen i [temainnstillingene](/editor?context=theme&category=logo)"
         },
         "sticky_header_type": {
           "label": "Festet overskrift",
@@ -974,12 +983,12 @@
           }
         },
         "enable_country_selector": {
-          "label": "Land-\/områdevelger",
-          "info": "[Administrer land\/regioner](\/admin\/settings\/markets)"
+          "label": "Land-/områdevelger",
+          "info": "[Administrer land/regioner](/admin/settings/markets)"
         },
         "enable_language_selector": {
           "label": "Språkvelger",
-          "info": "[Administrer språk](\/admin\/settings\/languages)"
+          "info": "[Administrer språk](/admin/settings/languages)"
         },
         "header__1": {
           "content": "Farge"
@@ -989,7 +998,7 @@
         },
         "enable_customer_avatar": {
           "label": "Avatar for kundekonto",
-          "info": "Kun synlig når kunder er logget inn med Shop. [Administrer kundekontoer](\/admin\/settings\/customer_accounts)"
+          "info": "Kun synlig når kunder er logget inn med Shop. [Administrer kundekontoer](/admin/settings/customer_accounts)"
         },
         "header__utilities": {
           "content": "Verktøy"
@@ -1108,7 +1117,7 @@
           "settings": {
             "text": {
               "label": "Tekst",
-              "default": "Gi kundene mer informasjon om bannerbildet\/-bildene eller innholdet i malen."
+              "default": "Gi kundene mer informasjon om bannerbildet/-bildene eller innholdet i malen."
             },
             "text_style": {
               "options__1": {
@@ -1271,7 +1280,7 @@
           "settings": {
             "text": {
               "label": "Tekst",
-              "default": "<p>Koble tekst med et bilde for å fokusere på valgt produkt, samling eller blogginnlegg. Legg til informasjon om tilgjengelighet, stil eller vis frem en anmeldelse.<\/p>"
+              "default": "<p>Koble tekst med et bilde for å fokusere på valgt produkt, samling eller blogginnlegg. Legg til informasjon om tilgjengelighet, stil eller vis frem en anmeldelse.</p>"
             },
             "text_style": {
               "label": "Stil",
@@ -1439,7 +1448,7 @@
       "name": "Samlingsbanner",
       "settings": {
         "paragraph": {
-          "content": "Detaljer om samlinger [administreres i administratorpanelet](https:\/\/help.shopify.com\/manual\/products\/collections\/collection-layout)"
+          "content": "Detaljer om samlinger [administreres i administratorpanelet](https://help.shopify.com/manual/products/collections/collection-layout)"
         },
         "show_collection_description": {
           "label": "Beskrivelse"
@@ -1457,7 +1466,7 @@
         },
         "enable_filtering": {
           "label": "Filtre",
-          "info": "Tilpass filtre med [Search & Discovery-appen](https:\/\/help.shopify.com\/manual\/online-store\/search-and-discovery\/filters)"
+          "info": "Tilpass filtre med [Search & Discovery-appen](https://help.shopify.com/manual/online-store/search-and-discovery/filters)"
         },
         "enable_sorting": {
           "label": "Sortering"
@@ -1488,11 +1497,11 @@
         },
         "enable_tags": {
           "label": "Filtre",
-          "info": "Tilpass filtre med [Search & Discovery-appen](https:\/\/help.shopify.com\/manual\/online-store\/search-and-discovery\/filters)"
+          "info": "Tilpass filtre med [Search & Discovery-appen](https://help.shopify.com/manual/online-store/search-and-discovery/filters)"
         },
         "show_rating": {
           "label": "Produktanmeldelse",
-          "info": "En app kreves for produktanmeldelser. [Finn ut mer](https:\/\/help.shopify.com\/manual\/online-store\/themes\/theme-structure\/page-types\/collection-pages#product-grid-show-product-rating)"
+          "info": "En app kreves for produktanmeldelser. [Finn ut mer](https://help.shopify.com/manual/online-store/themes/theme-structure/page-types/collection-pages#product-grid-show-product-rating)"
         },
         "columns_desktop": {
           "label": "Kolonner"
@@ -1595,7 +1604,7 @@
       "name": "Overskrift for passord",
       "settings": {
         "logo_help": {
-          "content": "Rediger logoen i [temainnstillingene](\/editor?context=theme&category=logo)"
+          "content": "Rediger logoen i [temainnstillingene](/editor?context=theme&category=logo)"
         }
       }
     },
@@ -1645,7 +1654,7 @@
             },
             "swatch_shape": {
               "label": "Fargekart",
-              "info": "Finn ut mer om [fargekart](https:\/\/help.shopify.com\/en\/manual\/online-store\/themes\/theme-structure\/theme-settings#options-with-swatches) for produktalternativer",
+              "info": "Finn ut mer om [fargekart](https://help.shopify.com/en/manual/online-store/themes/theme-structure/theme-settings#options-with-swatches) for produktalternativer",
               "options__1": {
                 "label": "Sirkel"
               },
@@ -1663,11 +1672,11 @@
           "settings": {
             "show_dynamic_checkout": {
               "label": "Dynamisk knapp for å gå til kassen",
-              "info": "Kunder får se sitt foretrukne betalingsalternativ. [Finn ut mer](https:\/\/help.shopify.com\/manual\/using-themes\/change-the-layout\/dynamic-checkout)"
+              "info": "Kunder får se sitt foretrukne betalingsalternativ. [Finn ut mer](https://help.shopify.com/manual/using-themes/change-the-layout/dynamic-checkout)"
             },
             "show_gift_card_recipient": {
               "label": " Alternativer for sending av gavekort",
-              "info": "Kunder kan legge til en personlig melding og bestemme utsendingsdatoen. [Finn ut mer](https:\/\/help.shopify.com\/manual\/online-store\/themes\/customizing-themes\/add-gift-card-recipient-fields)"
+              "info": "Kunder kan legge til en personlig melding og bestemme utsendingsdatoen. [Finn ut mer](https://help.shopify.com/manual/online-store/themes/customizing-themes/add-gift-card-recipient-fields)"
             }
           }
         },
@@ -1852,7 +1861,7 @@
           "name": "Produktvurdering",
           "settings": {
             "paragraph": {
-              "content": "En app kreves for produktanmeldelser. [Finn ut mer](https:\/\/help.shopify.com\/manual\/online-store\/themes\/theme-structure\/page-types\/product-pages#product-rating-block)"
+              "content": "En app kreves for produktanmeldelser. [Finn ut mer](https://help.shopify.com/manual/online-store/themes/theme-structure/page-types/product-pages#product-rating-block)"
             }
           }
         },
@@ -1860,7 +1869,7 @@
           "name": "Komplimentære produkter",
           "settings": {
             "paragraph": {
-              "content": "Administrer følgeprodukter i [appen Search & Discovery](https:\/\/help.shopify.com\/manual\/online-store\/search-and-discovery\/product-recommendations)"
+              "content": "Administrer følgeprodukter i [appen Search & Discovery](https://help.shopify.com/manual/online-store/search-and-discovery/product-recommendations)"
             },
             "heading": {
               "label": "Overskrift",
@@ -2122,7 +2131,7 @@
         },
         "show_rating": {
           "label": "Produktanmeldelse",
-          "info": "En app kreves for produktanmeldelser. [Finn ut mer](https:\/\/help.shopify.com\/en\/manual\/online-store\/themes\/theme-structure\/page-types\/search-page)"
+          "info": "En app kreves for produktanmeldelser. [Finn ut mer](https://help.shopify.com/en/manual/online-store/themes/theme-structure/page-types/search-page)"
         },
         "columns_desktop": {
           "label": "Kolonner"
@@ -2242,7 +2251,7 @@
             },
             "text": {
               "label": "Beskrivelse",
-              "default": "<p>Koble tekst med et bilde for å fokusere på valgt produkt, samling eller blogginnlegg. Legg til informasjon om tilgjengelighet, stil eller vis frem en anmeldelse.<\/p>"
+              "default": "<p>Koble tekst med et bilde for å fokusere på valgt produkt, samling eller blogginnlegg. Legg til informasjon om tilgjengelighet, stil eller vis frem en anmeldelse.</p>"
             },
             "link_label": {
               "label": "Koblingsetikett",
@@ -2265,7 +2274,7 @@
           "label": "Full bredde"
         },
         "paragraph": {
-          "content": "Legg til registreringer [av kundeprofiler](https:\/\/help.shopify.com\/manual\/customers\/manage-customers)"
+          "content": "Legg til registreringer [av kundeprofiler](https://help.shopify.com/manual/customers/manage-customers)"
         }
       },
       "blocks": {
@@ -2283,7 +2292,7 @@
           "settings": {
             "paragraph": {
               "label": "Tekst",
-              "default": "<p>Vær blant de første som får høre om nye samlinger og eksklusive tilbud.<\/p>"
+              "default": "<p>Vær blant de første som får høre om nye samlinger og eksklusive tilbud.</p>"
             }
           }
         },
@@ -2352,7 +2361,7 @@
           "settings": {
             "text": {
               "label": "Tekst",
-              "default": "<p>Del informasjon om merkevaren din med kundene. Beskriv et produkt, gjør kunngjøringer eller ønsk kundene velkommen til butikken.<\/p>"
+              "default": "<p>Del informasjon om merkevaren din med kundene. Beskriv et produkt, gjør kunngjøringer eller ønsk kundene velkommen til butikken.</p>"
             }
           }
         },
@@ -2529,7 +2538,7 @@
             },
             "swatch_shape": {
               "label": "Fargekart",
-              "info": "Finn ut mer om [fargekart](https:\/\/help.shopify.com\/en\/manual\/online-store\/themes\/theme-structure\/theme-settings#options-with-swatches) for produktalternativer",
+              "info": "Finn ut mer om [fargekart](https://help.shopify.com/en/manual/online-store/themes/theme-structure/theme-settings#options-with-swatches) for produktalternativer",
               "options__1": {
                 "label": "Sirkel"
               },
@@ -2547,7 +2556,7 @@
           "settings": {
             "show_dynamic_checkout": {
               "label": "Dynamisk knapp for å gå til kassen",
-              "info": "Kunder får se sitt foretrukne betalingsalternativ. [Finn ut mer](https:\/\/help.shopify.com\/manual\/using-themes\/change-the-layout\/dynamic-checkout)"
+              "info": "Kunder får se sitt foretrukne betalingsalternativ. [Finn ut mer](https://help.shopify.com/manual/using-themes/change-the-layout/dynamic-checkout)"
             }
           }
         },
@@ -2558,10 +2567,10 @@
           "name": "Del",
           "settings": {
             "featured_image_info": {
-              "content": "Hvis du inkluderer en kobling i innlegg på sosiale medier, vil sidens fremhevede bilde vises som forhåndsvisningsbilde. [Finn ut mer](https:\/\/help.shopify.com\/manual\/online-store\/images\/showing-social-media-thumbnail-images)"
+              "content": "Hvis du inkluderer en kobling i innlegg på sosiale medier, vil sidens fremhevede bilde vises som forhåndsvisningsbilde. [Finn ut mer](https://help.shopify.com/manual/online-store/images/showing-social-media-thumbnail-images)"
             },
             "title_info": {
-              "content": "En butikktittel og -beskrivelse inkluderes med forhåndsvisningsbildet. [Finn ut mer](https:\/\/help.shopify.com\/manual\/promoting-marketing\/seo\/adding-keywords#set-a-title-and-description-for-your-online-store)"
+              "content": "En butikktittel og -beskrivelse inkluderes med forhåndsvisningsbildet. [Finn ut mer](https://help.shopify.com/manual/promoting-marketing/seo/adding-keywords#set-a-title-and-description-for-your-online-store)"
             },
             "text": {
               "label": "Tekst",
@@ -2573,7 +2582,7 @@
           "name": "Produktvurdering",
           "settings": {
             "paragraph": {
-              "content": "En app kreves for produktanmeldelser. [Finn ut mer](https:\/\/help.shopify.com\/manual\/online-store\/themes\/theme-structure\/theme-features#featured-product-rating)"
+              "content": "En app kreves for produktanmeldelser. [Finn ut mer](https://help.shopify.com/manual/online-store/themes/theme-structure/theme-features#featured-product-rating)"
             }
           }
         },
@@ -2630,7 +2639,7 @@
       "name": "Banner for e-postregistrering",
       "settings": {
         "paragraph": {
-          "content": "Legg til registreringer [av kundeprofiler](https:\/\/help.shopify.com\/manual\/customers\/manage-customers)"
+          "content": "Legg til registreringer [av kundeprofiler](https://help.shopify.com/manual/customers/manage-customers)"
         },
         "image": {
           "label": "Bakgrunnsbilde"
@@ -2741,7 +2750,7 @@
           "settings": {
             "paragraph": {
               "label": "Tekst",
-              "default": "<p>Vær blant de første som får vite når vi lanserer.<\/p>"
+              "default": "<p>Vær blant de første som får vite når vi lanserer.</p>"
             },
             "text_style": {
               "options__1": {
@@ -3192,7 +3201,7 @@
           "label": "Kolonner"
         },
         "paragraph__1": {
-          "content": "Relaterte produkter kan administreres i [Search & Discovery-appen](https:\/\/help.shopify.com\/manual\/online-store\/search-and-discovery\/product-recommendations)",
+          "content": "Relaterte produkter kan administreres i [Search & Discovery-appen](https://help.shopify.com/manual/online-store/search-and-discovery/product-recommendations)",
           "default": "Kanskje du også liker"
         },
         "header__2": {
@@ -3218,7 +3227,7 @@
         },
         "show_rating": {
           "label": "Produktanmeldelse",
-          "info": "En app kreves for produktanmeldelser. [Finn ut mer](https:\/\/help.shopify.com\/manual\/online-store\/themes\/customizing-themes\/add-product-recommendations)"
+          "info": "En app kreves for produktanmeldelser. [Finn ut mer](https://help.shopify.com/manual/online-store/themes/customizing-themes/add-product-recommendations)"
         },
         "columns_mobile": {
           "label": "Mobilkolonner",
@@ -3363,7 +3372,7 @@
             },
             "text": {
               "label": "Tekst",
-              "default": "<p>Koble tekst med et bilde for å fokusere på valgt produkt, samling eller blogginnlegg. Legg til informasjon om tilgjengelighet, stil eller vis frem en anmeldelse.<\/p>"
+              "default": "<p>Koble tekst med et bilde for å fokusere på valgt produkt, samling eller blogginnlegg. Legg til informasjon om tilgjengelighet, stil eller vis frem en anmeldelse.</p>"
             },
             "button_label": {
               "label": "Knappetikett",
