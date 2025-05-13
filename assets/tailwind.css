@@ -559,14 +559,41 @@ video {
   padding-bottom: 3rem;
 }
 
-._text-5xl {
-  font-size: 3rem;
+._font-body-condensed {
+  font-family: var(--font-body-condensed);
+}
+
+._font-heading-primary {
+  font-family: var(--font-heading-family);
+}
+
+._text-6xl {
+  font-size: 3.75rem;
   line-height: 1;
+}
+
+._text-8xl {
+  font-size: 6rem;
+  line-height: 1;
+}
+
+._text-xl {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
 }
 
 ._text-brand-primary-700 {
   --tw-text-opacity: 1;
   color: rgb(15 45 100 / var(--tw-text-opacity, 1));
+}
+
+._font-heading-primary {
+  font-family: var(--font-heading-family);
+  letter-spacing: -0.04rem;
+}
+
+._font-body-condensed {
+  font-family: var(--font-body-condensed);
 }
 
 @media (min-width: 768px) {

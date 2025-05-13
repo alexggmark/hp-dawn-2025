@@ -21,7 +21,8 @@ module.exports = {
         'brand-dark': '#141718'
       },
       fontFamily: {
-        'heading-primary': 'var(--font-heading-family)'
+        'heading-primary': 'var(--font-heading-family)',
+        'body-condensed': 'var(--font-body-condensed)'
       }
     }
   },
