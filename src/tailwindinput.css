@@ -2,9 +2,27 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  :root {
+    --color-brand-primary-700: theme('colors.brand-primary-700');
+    --color-brand-primary-500: theme('colors.brand-primary-500');
+    --color-brand-secondary-700: theme('colors.brand-secondary-700');
+    --color-brand-background: theme('colors.brand-background');
+    --color-brand-border: theme('colors.brand-border');
+    --color-brand-dark: theme('colors.brand-dark');
+  }
+}
+
 @layer utilities {
   ._font-heading-primary {
     font-family: theme('fontFamily.heading-primary');
+    letter-spacing: -0.04rem;
+  }
+  ._font-heading-primary em,
+  ._font-heading-primary i,
+  ._font-heading-primary-italic {
+    font-family: theme('fontFamily.heading-primary-italic');
+    font-style: normal; /* Normalising for Safari adding double italic because of em tag */
     letter-spacing: -0.04rem;
   }
   ._font-body-condensed {
