@@ -1260,6 +1260,22 @@ shopify-accelerated-checkout-cart {
   width: 100%;
 }
 
+/* Custom button styling */
+._button-primary.loading {
+  color: transparent!important;
+  position: relative;
+}
+
+._button-primary.loading > .loading__spinner .path {
+  stroke: #fff;
+}
+
+._button-secondary.loading > .loading__spinner .path {
+  stroke: #fff;
+}
+/* Custom button styling */
+
+
 .button.loading {
   color: transparent;
   position: relative;

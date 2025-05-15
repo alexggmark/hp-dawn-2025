@@ -36,7 +36,7 @@
       }
     },
     "header": {
-      "type": "header",
+      "type": "wm__header",
       "settings": {
         "logo_position": "middle-left",
         "mobile_logo_position": "center",

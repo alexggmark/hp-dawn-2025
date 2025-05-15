@@ -1,0 +1,155 @@
+{% comment %}
+  Renders a header search modal. Should be used with 'header.liquid'
+
+  Accepts:
+  - input_id: {String} Id for the search input element (required)
+
+  Usage:
+  {% render 'header-search', input_id: 'My-Id'%}
+{% endcomment %}
+
+{% comment %}
+ TODO: we're tearing this down
+ - We HAVE to use ModalDialog to append this to <body> so it can appear out of stacking context
+{% endcomment %}
+
+{% style %}
+  /* TODO: move this to top level eventually */
+  header-search-drawer {
+    position: fixed;
+    z-index: 5000;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100%;
+    display: flex;
+    justify-content: flex-end;
+    background-color: rgba(var(--color-foreground), 0.5);
+    visibility: hidden;
+  }
+
+  header-search-drawer[open] {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .header-search-drawer__content {
+    max-width: var(--page-width);
+    width: calc(100% - 2rem);
+    transform: translateX(100%);
+    transition: transform var(--duration-medium) ease;
+    overflow-y: auto;
+  }
+
+  header-search-drawer.menu-opening .header-search-drawer__content {
+    transform: translateX(0);
+  }
+
+  @media screen and (min-width: 750px) {
+    .header-search-drawer__content {
+      width: 80%;
+      max-height: 100%;
+    }
+  }
+
+  @media screen and (min-width: 990px) {
+    .header-search-drawer__content {
+      width: 50em;
+    }
+  }
+{% endstyle %}
+
+<header-search-opener data-modal="#HeaderSearchDrawer" class="_h-full">
+  {% comment %} Repurposing .field class to allow hover focus effect from Dawn {% endcomment %}
+  <button
+    id="{{ product_form_id }}-submit"
+    type="submit"
+    name="search"
+    aria-haspopup="dialog"
+    aria-labelledby="Header Search Drawer Button"
+    class="
+      field
+      after:_border-none
+      _flex
+      _items-center
+      _justify-start
+      _group/searchopener
+    ">
+    <span class="svg-wrapper _w-6 _text-brand-primary-700 _font-bold group-hover/searchopener:_scale-105">
+      {{- 'icon-newbuild-search.svg' | inline_asset_content -}}
+    </span>
+  </button>
+</header-search-opener>
+
+<header-search-drawer id="HeaderSearchDrawer" class="header-search-drawer">
+  <div
+    role="dialog"
+    aria-label="Predictive Search Drawer"
+    aria-modal="true"
+    class="
+      header-search-drawer__content
+      global-settings-popup
+      _bg-brand-light _overflow-hidden _px-4 _py-6
+    "
+    tabindex="-1"
+  >
+    <button
+      id="ModalClose-SearchDrawer"
+      type="button"
+      class="_w-8 _p-1 _z-10 _fixed _right-8 _top-9 _flex _items-center _justify-center _cursor-pointer _rounded-full hover:_scale-110"
+      aria-label="{{ 'accessibility.close' | t }}"
+    >
+      {% comment %} Added this wrapper in to fix Safari, remove if not working {% endcomment %}
+      <span class="svg-wrapper _w-8">
+        {{- 'icon-close.svg' | inline_asset_content -}}
+      </span>
+    </button>
+    <predictive-search class="search-drawer__form" data-loading-text="{{ 'accessibility.loading' | t }}">
+      <form action="{{ routes.search_url }}" method="get" role="search" class="search search-drawer__form">
+        <div class="field _w-[calc(100%-4rem)]">
+          <input
+            class="search__input field__input _bg-brand-primary-100"
+            id="{{ input_id }}"
+            type="search"
+            name="q"
+            value="{{ search.terms | escape }}"
+            placeholder="{{ 'general.search.search' | t }}"
+            role="combobox"
+            aria-expanded="false"
+            aria-owns="predictive-search-results"
+            aria-controls="predictive-search-results"
+            aria-haspopup="listbox"
+            aria-autocomplete="list"
+            autocorrect="off"
+            autocomplete="off"
+            autocapitalize="off"
+            spellcheck="false"
+          >
+          <label class="field__label" for="{{ input_id }}">{{ 'general.search.search' | t }}</label>
+          <input type="hidden" name="options[prefix]" value="last">
+          <button
+            type="reset"
+            class="reset__button field__button{% if search.terms == blank %} hidden{% endif %}"
+            aria-label="{{ 'general.search.reset' | t }}"
+          >
+            <span class="svg-wrapper _w-5">
+              {{- 'icon-reset.svg' | inline_asset_content -}}
+            </span>
+          </button>
+          <button class="search__button field__button" aria-label="{{ 'general.search.search' | t }}">
+            <span class="svg-wrapper _w-5">
+              {{- 'icon-search.svg' | inline_asset_content -}}
+            </span>
+          </button>
+        </div>
+    
+        {% comment %} Adding in mt- to prevent overlapping input {% endcomment %}
+        <div class="predictive-search predictive-search--header _mt-1" tabindex="-1" data-predictive-search>
+          {%- render 'loading-spinner', class: 'predictive-search__loading-state' -%}
+        </div>
+    
+        <span class="predictive-search-status visually-hidden" role="status" aria-hidden="true"></span>
+      </form>
+    </predictive-search>
+  </div>
+</header-search-drawer>

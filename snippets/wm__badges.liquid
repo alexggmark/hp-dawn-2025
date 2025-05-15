@@ -1,0 +1,106 @@
+{% comment %}
+  Completely custom code (Alex) just because badges are super annoying in Dawn
+
+  Accepts:
+  - product: {Object} Product liquid object
+  - placement: {String} 'main', 'card' - controls what badges show
+
+  Usage:
+  {% render 'wm__badges', product: product/card_product, placement: 'main'/'card' %}
+{% endcomment %}
+
+{%- if placement == 'main' -%}
+  {%- if product.available == false -%}
+    <span
+      class="
+        _border_1
+        _border-transparent
+        _inline-block _font-medium _uppercase
+        md:_text-base _text-sm
+        _px-3
+        _py-1
+        _text-center
+        _text-brand-light
+        _bg-brand-border-darker
+        _break-words
+      "
+    >
+      {{- 'products.product.sold_out' | t -}}
+    </span>
+  {%- elsif product.compare_at_price > product.price and product.available -%}
+    <span
+      class="
+      _border_1
+      _border-transparent
+      _inline-block _font-medium _uppercase
+      md:_text-base _text-sm
+      _px-3
+      _py-1
+      _text-center
+      _text-brand-light
+      _bg-brand-primary-500
+      _break-words
+      "
+    >
+      {{- 'products.product.on_sale' | t -}}
+    </span>
+    {%- if product.compare_at_price > product.price -%}
+      {%- assign discount = product.compare_at_price | minus: product.price -%}
+      {%- assign percent_off = discount | times: 100 | divided_by: product.compare_at_price | round -%}
+      <span
+        class="
+        _border_1
+        _border-transparent
+        _inline-block _font-medium _uppercase
+        md:_text-base _text-sm
+        _px-3
+        _py-1
+        _text-center
+        _text-brand-light
+        _bg-[#FCB52D]
+        _break-words
+        "
+      >
+        -{{ percent_off }}%
+      </span>
+    {%- endif -%}
+  {%- endif -%}
+{%- elsif placement == 'card' -%}
+  {%- if product.available == false -%}
+    <span
+      id="NoMediaStandardBadge-{{ section_id }}-{{ product.id }}"
+      class="
+        _border_1
+        _border-transparent
+        _inline-block _font-medium _uppercase
+        _text-xs
+        _px-3
+        _py-1
+        _text-center
+        _bg-brand-light
+        _text-brand-primary-700
+        _break-words
+      "
+    >
+      {{- 'products.product.sold_out' | t -}}
+    </span>
+  {%- elsif product.compare_at_price > product.price and product.available -%}
+    <span
+      id="NoMediaStandardBadge-{{ section_id }}-{{ product.id }}"
+      class="
+        _border_1
+        _border-transparent
+        _inline-block _font-medium _uppercase
+        _text-xs
+        _px-3
+        _py-1
+        _text-center
+        _bg-brand-light
+        _text-brand-primary-700
+        _break-words
+      "
+    >
+      {{- 'products.product.on_sale' | t -}}
+    </span>
+  {%- endif -%}
+{%- endif -%}

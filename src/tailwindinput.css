@@ -29,3 +29,24 @@
     font-family: theme('fontFamily.body-condensed');
   }
 }
+
+@layer components {
+  ._button-primary {
+    @apply
+    _flex _items-center _justify-center _gap-3
+    _tracking-wider
+    _border _border-transparent
+    _bg-brand-primary-700
+    hover:_bg-brand-primary-500
+    hover:_border-brand-primary-500
+    hover:_ring-1
+    hover:_ring-brand-primary-500
+    _text-white
+    hover:_text-white
+    _transition-colors _duration-150
+    _py-3
+    _px-6
+    _text-base
+    _uppercase;
+  }
+}

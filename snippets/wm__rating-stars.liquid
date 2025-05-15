@@ -1,0 +1,49 @@
+{% comment %}
+  Renders rating stars.
+  Accepts:
+  - main_product: {String} a class to be added to the <ul> element (optional).
+
+  Usage:
+  {% render 'wm__rating-stars',
+    main_product: product
+  %}
+{% endcomment %}
+
+{% liquid
+  assign rating_metafield = main_product.metafields.reviews.rating.value.rating | default: main_product.metafields.reviews.rating.value | default: nil
+  assign rating_metafield_scale_max = main_product.metafields.reviews.rating.scale_max | default: main_product.metafields.reviews.rating.value.scale_max | nil
+  assign rating_decimal = 0
+  assign decimal = rating_metafield | modulo: 1
+  if decimal >= 0.3 and decimal <= 0.7
+    assign rating_decimal = 0.5
+  elsif decimal > 0.7
+    assign rating_decimal = 1
+  endif
+%}
+
+{%- unless rating_metafield == nil -%}
+  <div
+    class="rating"
+    role="img"
+    aria-label="{{ 'accessibility.star_reviews_info' | t: rating_value: rating_metafield, rating_max: rating_metafield_scale_max }}"
+  >
+    <span
+      aria-hidden="true"
+      class="rating-star"
+      style="--rating: {{ rating_metafield | floor }}; --rating-max: {{ rating_metafield_scale_max }}; --rating-decimal: {{ rating_decimal }};"
+    ></span>
+  </div>
+  <p class="rating-text caption">
+    <span aria-hidden="true">
+      {{- main_product.metafields.reviews.rating.value }} /
+      {{ rating_metafield_scale_max -}}
+    </span>
+  </p>
+  <p class="_text-xs _text-brand-primary-700 _inline-block">
+    <span aria-hidden="true">{{ main_product.metafields.reviews.rating_count }} Reviews</span>
+    <span class="visually-hidden">
+      {{- main_product.metafields.reviews.rating_count }}
+      {{ 'accessibility.total_reviews' | t -}}
+    </span>
+  </p>
+{%- endunless -%}
