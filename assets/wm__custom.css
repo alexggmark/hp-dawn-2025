@@ -1,0 +1,25 @@
+/* --------------
+  SCROLLBAR STYLE
+-------------- */
+._scrollbar::-webkit-scrollbar {
+  height: 0.2rem;
+  width: 0.2rem;
+}
+._scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+._scrollbar::-webkit-scrollbar-thumb {
+  background: #B3D1D9;
+  border-radius: 10px;
+}
+._scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #0097A9;
+}
+
+._no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+._no-scrollbar::-webkit-scrollbar {
+  display: none;
+}

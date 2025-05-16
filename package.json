@@ -5,6 +5,7 @@
   "scripts": {
     "pull-production": "dotenv -- bash -c 'shopify theme pull --store $STORE --theme=$PRODUCTION_THEME'",
     "pull-development": "dotenv -- bash -c 'shopify theme pull --store $STORE --theme=$DEVELOPMENT_THEME_ID'",
+    "push-development": "dotenv -- bash -c 'shopify theme push --store $STORE --theme=$DEVELOPMENT_THEME_ID'",
     "pull-development-settings": "dotenv -- bash -c 'shopify theme pull --only=*.json --store $STORE --theme=$DEVELOPMENT_THEME_ID'",
     "start-tailwind": "npx tailwindcss -i ./src/tailwindinput.css -o ./assets/tailwind.css --watch",
     "purge-tailwind": "NODE_ENV=production npx tailwindcss -i ./src/tailwindinput.css -o ./assets/tailwind.css",

@@ -10,6 +10,8 @@
     --color-brand-background: theme('colors.brand-background');
     --color-brand-border: theme('colors.brand-border');
     --color-brand-dark: theme('colors.brand-dark');
+
+    --font-size-base: theme('fontSize.base');
   }
 }
 
