@@ -220,11 +220,11 @@
               <span class="_font-body-condensed _font-medium _text-brand-dark _text-sm">4.5 (100)</span>
             </div>
 
-            {%- if show_rating and card_product.metafields.reviews.rating.value != blank -%}
+            {% comment %} {%- if show_rating and card_product.metafields.reviews.rating.value != blank -%}
               <div class="_mb-1">
-                {% comment %} {% render 'wm__rating-stars', main_product: card_product %} {% endcomment %}
+                {% render 'wm__rating-stars', main_product: card_product %}
               </div>
-            {%- endif -%}
+            {%- endif -%} {% endcomment %}
 
           </div>
 
