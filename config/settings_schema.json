@@ -15,6 +15,12 @@
         "id": "invisible_overlay_header",
         "default": true,
         "label": "Activate invisible overlay on header"
+      },
+      {
+        "type": "checkbox",
+        "id": "invert_invisible_overlay_header_colors",
+        "default": false,
+        "label": "Invert colours (white) on overlay header"
       }
     ]
   },

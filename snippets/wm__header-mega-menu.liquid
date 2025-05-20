@@ -9,7 +9,7 @@
 {% endcomment %}
 
 <nav class="header__inline-menu">
-  <ul class="list-menu list-menu--inline" role="list">
+  <ul class="list-menu list-menu--inline _h-full" role="list">
     {%- for link in section.settings.menu.links -%}
       {% comment %} If image banners on, check metaobject "dropdown_menu_banner_entries" for matching "menu_index" for this link index {% endcomment %}
       {%- if image_banners -%}
@@ -35,10 +35,10 @@
 
           <details-hover-toggle>
             {% comment %} mega-menu {% endcomment %}
-            <details id="Details-HeaderMenu-{{ forloop.index }}" class="_group _static">
+            <details id="Details-HeaderMenu-{{ forloop.index }}" class="_group _static _h-full">
               <summary
                 id="HeaderMenu-{{ link.handle }}"
-                class="_p-6 hover:_underline _underline-offset-4 _no-underline _text-[12px] _font-semibold _tracking-widest _text-brand-primary-700 _uppercase list-menu__item link focus-inset"
+                class="_p-6 _h-full hover:_underline _underline-offset-4 _no-underline _text-[12px] _font-semibold _tracking-widest header-controlled--text _uppercase list-menu__item focus-inset"
               >
                 <span>
                   {{- link.title | escape -}}
@@ -91,7 +91,7 @@
                                 <a
                                   id="HeaderMenu-{{ link.handle }}-{{ childlink.handle }}-{{ grandchildlink.handle }}"
                                   href="{{ grandchildlink.url }}"
-                                  class="_text-brand-primary-700"
+                                  class="_text-brand-dark"
                                   {% if grandchildlink.current %}
                                     aria-current="page"
                                   {% endif %}
@@ -109,7 +109,7 @@
                           <a
                             id="HeaderMenu-{{ link.handle }}-{{ childlink.handle }}"
                             href="{{ childlink.url }}"
-                            class="_text-brand-primary-700"
+                            class="_text-brand-dark"
                             {% if childlink.current %}
                               aria-current="page"
                             {% endif %}
@@ -170,7 +170,7 @@
           <a
             id="HeaderMenu-{{ link.handle }}"
             href="{{ link.url }}"
-            class="_p-6 hover:_underline _underline-offset-4 _no-underline _text-[12px] _font-semibold _tracking-widest _text-brand-primary-700 _uppercase list-menu__item link focus-inset"
+            class="_p-6 _h-full hover:_underline _underline-offset-4 _no-underline _text-[12px] _font-semibold _tracking-widest header-controlled--text _uppercase list-menu__item focus-inset"
             {% if link.current %}
               aria-current="page"
             {% endif %}

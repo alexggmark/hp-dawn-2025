@@ -38,14 +38,11 @@
     @apply
     _flex _items-center _justify-center _gap-3
     _tracking-wider
-    _border _border-transparent
+    _border _border-brand-primary-700
     _bg-white
     hover:_bg-brand-background
     hover:_border-brand-primary-700
-    hover:_ring-1
-    hover:_ring-brand-primary-700
-    _text-white
-    hover:_text-white
+    _text-brand-primary-700
     _transition-colors _duration-150
     _py-3
     _px-6

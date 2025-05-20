@@ -18,7 +18,7 @@ module.exports = {
         'brand-background': '#F1F1F1',
         'brand-border': '#DADEE2',
         'brand-light': '#ffffff',
-        'brand-dark': '#262626'
+        'brand-dark': '#000000'
       },
       fontFamily: {
         'heading-primary': 'var(--font-heading-family)',

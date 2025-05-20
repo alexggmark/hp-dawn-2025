@@ -577,7 +577,7 @@ summary {
 
 summary .icon-caret {
   position: absolute;
-  height: 0.6rem;
+  height: 0.4rem;
   right: 1.5rem;
   top: calc(50% - 0.2rem);
 }
@@ -1284,6 +1284,16 @@ shopify-accelerated-checkout-cart {
 }
 /* Custom button styling */
 
+._button-primary.loading,
+._button-secondary.loading,
+._button-tertiary.loading {
+  color: transparent!important;
+  position: relative;
+}
+
+._button-primary.loading > .loading__spinner .path {
+  stroke: var(--color-brand-primary-700);
+}
 
 .button.loading {
   color: transparent;
@@ -2677,6 +2687,10 @@ details[open] > .header__submenu {
   display: none;
 }
 
+.header__inline-menu summary .icon-caret {
+  right: 1.6rem;
+}
+
 .header--top-center .header__inline-menu,
 .header--top-center .header__heading-link {
   margin-left: 0;
@@ -3415,11 +3429,11 @@ details-disclosure > details {
 .loading__spinner {
   position: absolute;
   z-index: 1;
-  width: 1.8rem;
+  width: 1.2rem;
 }
 
 .loading__spinner {
-  width: 1.8rem;
+  width: 1.2rem;
   display: inline-block;
 }
 

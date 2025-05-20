@@ -6,7 +6,7 @@
   @media screen and (min-width: 750px) {
     #Banner-{{ section.id }} {
       margin-top: {% if invisible_header %} calc(-1px - var(--header-height-desktop-fixed)){% else %} 0{% endif %};
-      padding-top: var(--header-height-desktop-fixed);
+      padding-top: {% if invisible_header %} var(--header-height-desktop-fixed){% else %} 0{% endif %};
     }
   }
 
@@ -37,10 +37,11 @@
     content: '';
     display: block;
     opacity: {{ section.settings.mobile_image_overlay_opacity | divided_by: 100.0 }};
+    margin-top: {% if invisible_header %} calc(-1px - var(--header-height-desktop-fixed)){% else %} 0{% endif %};
     position: absolute;
     width: 100%;
     height: 100%;
-    background-color: #4a3b36;
+    background-color: var(--color-brand-dark);
   }
   @media screen and (min-width: 750px) {
     #Banner-{{ section.id }}::after {
@@ -76,7 +77,7 @@
         {% when 'small' %}
           md:_h-[30rem]
         {% when 'medium' %}
-          md:_h-[36rem]
+          md:_h-[40rem]
         {% when 'large' %}
           md:_h-[44rem]
       {% endcase %}
@@ -84,7 +85,7 @@
         {% when 'small' %}
           _h-[26rem]
         {% when 'medium' %}
-          _h-[36rem]
+          _h-[40rem]
         {% when 'large' %}
           _h-[44rem]
       {% endcase %}
@@ -246,16 +247,32 @@
       {% if section.settings.show_mobile_text_box == true and section.settings.show_text_box == false %} md:_bg-transparent _bg-brand-light md:_px-8 _px-0{% endif %}
       {% if section.settings.show_text_box == true and section.settings.show_mobile_text_box == true %} _bg-brand-light _px-8{% endif %}
       _relative
-      md:_px-6 _px-3
+      md:_px-0 _px-3
       md:_py-6 _py-3
       _text-{{ section.settings.mobile_content_alignment }}
       md:_text-{{ section.settings.desktop_content_alignment }}
       lg:_max-w-[50%]
       md:_max-w-[70%]
     ">
+    {% comment %} FIXME: test starts here {% endcomment %}
+      <h1 class="_text-brand-light _text-4xl _font-heading-primary">Sun Rescue That Regenerates?</h1>
+      <h2 class="_text-brand-light _text-4xl _font-heading-primary _mb-3">
+        <em>
+          That’s Slick.
+        </em>
+      </h2>
+      <p class="_text-lg _max-w-[540px] _text-brand-light">
+        Meet Sun Slick, your ultimate summer companion for portable sun protection with a luminous twist.
+      </p>
+      <div class="_mt-6 _mb-4">
+        <a href="#" class="_border _border-brand-dark _inline-block _px-6 _py-3.5 _uppercase _tracking-widest _bg-brand-light hover:_bg-brand-background _text-brand-dark _font-semibold _text-base">
+          Shop now
+        </a>
+      </div>
+    {% comment %} FIXME: test ends here {% endcomment %}
       {%- for block in section.blocks -%}
-        {%- case block.type -%}
-          {%- when 'heading-type-1' -%}
+          {% comment %} {%- case block.type -%}
+           {%- when 'heading-type-1' -%}
             <{{ block.settings.heading_tag }}
               class="
                 _text-{{ block.settings.mobile_text_size }}
@@ -353,7 +370,7 @@
             <div class="_mb-{{ block.settings.margin_bottom }}">
               {{ block.settings.custom_liquid }}
             </div>
-        {%- endcase -%}
+        {%- endcase -%} {% endcomment %}
       {%- endfor -%}
     </div>
   </div>

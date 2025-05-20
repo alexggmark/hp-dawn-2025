@@ -51,3 +51,30 @@ class HeaderMenu extends DetailsDisclosure {
 }
 
 customElements.define('header-menu', HeaderMenu);
+
+class DetailsHoverToggle extends HTMLElement {
+  constructor() {
+    super();
+    this.details = this.querySelector('details');
+    this.summary = this.querySelector('summary');
+    this.headerWrapper = document.querySelector('.header-wrapper');
+
+    this.addEventListeners();
+  }
+
+  addEventListeners() {
+    if (!this.details || !this.summary) return;
+
+    this.summary.addEventListener('mouseenter', () => {
+      this.details.setAttribute('open', true);
+      this.headerWrapper?.classList.add('header-wrapper--menu-open');
+    });
+
+    this.details.addEventListener('mouseleave', () => {
+      this.details.removeAttribute('open');
+      this.headerWrapper?.classList.remove('header-wrapper--menu-open');
+    });
+  }
+}
+
+customElements.define('details-hover-toggle', DetailsHoverToggle);

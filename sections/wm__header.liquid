@@ -17,11 +17,27 @@
 {%- endif -%}
 
 {%- assign invisible_header = settings.invisible_overlay_header -%}
+{%- assign invert_header_colors = false -%}
+{%- if settings.invert_invisible_overlay_header_colors and request.page_type == 'index' -%}
+  {%- assign invert_header_colors = true -%}
+{%- endif -%}
+
+{%- assign tailwind_color = '' -%}
+{%- if invert_header_colors == true -%}
+  {%- assign tailwind_color = 'var(--color-brand-light)' -%}
+{%- else -%}
+  {%- assign tailwind_color = 'var(--color-brand-dark)' -%}
+{%- endif -%}
 
 <style>
   header-drawer {
     justify-self: start;
     margin-left: -1.2rem;
+  }
+
+  {% comment %} Add background when hovered in wm__details-disclosure.js {% endcomment %}
+  .header-wrapper.header-wrapper--menu-open {
+    background-color: var(--color-brand-light);
   }
 
   .scrolled-past-header .header-wrapper {
@@ -33,6 +49,46 @@
       width: 75%;
     }
   {%- endif -%}
+
+  {% comment %} Manually controls text color based on scroll/overlay logic (easier than Tailwind) {% endcomment %}
+  .header-wrapper .header-controlled--text {
+    color: {{ tailwind_color }};
+  }
+  .header-wrapper .header-controlled--text svg:not(.icon.icon-caret) g > *,
+  .header-wrapper .header-controlled--text svg:not(.icon.icon-caret) > * {
+    stroke: {{ tailwind_color }};
+  }
+  .header__heading-logo {
+    filter: {% if invert_header_colors %} brightness(0) invert(1){% else %} none{% endif %};
+  }
+
+  {%- unless invisible_header != true -%}
+    .header-wrapper.header-wrapper--hovered,
+    .header-wrapper.header-wrapper--menu-open {
+      background-color: var(--color-brand-light);
+    }
+  {%- endunless -%}
+
+  {%- unless invert_header_colors != true -%}
+    .scrolled-past-header .header-wrapper .header-controlled--text,
+    .header-wrapper.header-wrapper--hovered .header-controlled--text,
+    .header-wrapper.header-wrapper--menu-open .header-controlled--text {
+      color: var(--color-brand-dark);
+    }
+    .scrolled-past-header .header-wrapper .header-controlled--text svg:not(.icon.icon-caret) g > *,
+    .scrolled-past-header .header-wrapper .header-controlled--text svg:not(.icon.icon-caret) > *,
+    .header-wrapper.header-wrapper--hovered .header-controlled--text svg:not(.icon.icon-caret) g > *,
+    .header-wrapper.header-wrapper--hovered .header-controlled--text svg:not(.icon.icon-caret) > *,
+    .header-wrapper.header-wrapper--menu-open .header-controlled--text svg:not(.icon.icon-caret) g > *,
+    .header-wrapper.header-wrapper--menu-open .header-controlled--text svg:not(.icon.icon-caret) > * {
+      stroke: var(--color-brand-dark);
+    }
+    .scrolled-past-header .header-wrapper .header__heading-logo,
+    .header-wrapper.header-wrapper--hovered .header__heading-logo,
+    .header-wrapper.header-wrapper--menu-open .header__heading-logo {
+      filter: none;
+    }
+  {%- endunless -%}
 
   {%- if section.settings.menu_type_desktop != "drawer" -%}
     @media screen and (min-width: 990px) {
@@ -87,7 +143,7 @@
     .header-wrapper .header-content {
       min-height: var(--header-height-desktop-fixed);
       transition-property: min-height;
-      transition-duration: var(--duration-medium);
+      transition-duration: var(--duration-default);
       transition-timing-function: ease;
     }
 
@@ -145,8 +201,8 @@
   {% endif %}
   class="header-wrapper"
 >
-  <header class="page-width header-content _flex _flex-row _justify-between _items-center">
-    <div class="_flex-1 _flex _flex-row _items-center _justify-start _gap-4">
+  <header class="page-width header-content _flex _items-stretch h-full">
+    <div class="_flex-1 _flex _flex-row _items-stretch _justify-start _gap-4">
       {%- liquid
         if section.settings.menu != blank
           render 'header-drawer'
@@ -160,7 +216,7 @@
       %}
     </div>
 
-    <div class="lg:_flex-none">
+    <div class="lg:_flex-none _flex _items-center">
       {%- if request.page_type == 'index' -%}
         <h1 class="header__heading">
       {%- endif -%}
@@ -189,10 +245,10 @@
       {%- endif -%}
     </div>
 
-    <div class="_flex-1">
+    <div class="_flex-1 _flex _items-center _justify-end">
       <div class="_flex _justify-end _items-center _gap-2">
         <div>
-          <h2 id="HeaderCountryLabel">{{ 'localization.country_label' | t }}</h2>
+          <a class="_p-6 _h-full hover:_underline _underline-offset-4 _no-underline _text-[12px] _font-semibold _tracking-widest header-controlled--text _uppercase list-menu__item focus-inset">Find your perfect regime</a>
         </div>
 
         {% render 'wm__header-search', input_id: 'Search-In-Modal' %}
@@ -200,43 +256,20 @@
         {%- if shop.customer_accounts_enabled -%}
           <a
             href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}"
-            class="header__icon header__icon--account link focus-inset{% if section.settings.menu != blank %} small-hide{% endif %}"
+            class="_justify-between _gap-1.5 _items-center _group/account _flex"
             rel="nofollow"
           >
-            {%- if section.settings.enable_customer_avatar -%}
-              <account-icon>
-                {%- if customer and customer.has_avatar? -%}
-                  {{ customer | avatar }}
-                {%- else -%}
-                  <span class="svg-wrapper">{{ 'icon-account.svg' | inline_asset_content }}</span>
-                {%- endif -%}
-              </account-icon>
-            {%- else -%}
-              <span class="svg-wrapper">{{ 'icon-account.svg' | inline_asset_content }}</span>
-            {%- endif -%}
-            <span class="visually-hidden">
-              {%- liquid
-                if customer
-                  echo 'customer.account_fallback' | t
-                else
-                  echo 'customer.log_in' | t
-                endif
-              -%}
-            </span>
+            <span class="svg-wrapper header-controlled--text _w-[1.1rem] _h-[1.1rem] _mb-0.5 group-hover/account:_scale-110">{{ 'icon-newbuild-account.svg' | inline_asset_content }}</span>
           </a>
         {%- endif -%}
 
-        <a href="{{ routes.cart_url }}" class="header__icon header__icon--cart link focus-inset" id="cart-icon-bubble">
-          {% if cart == empty %}
-            <span class="svg-wrapper">{{ 'icon-cart-empty.svg' | inline_asset_content }}</span>
-          {% else %}
-            <span class="svg-wrapper">{{ 'icon-cart.svg' | inline_asset_content }}</span>
-          {% endif %}
-          <span class="visually-hidden">{{ 'templates.cart.cart' | t }}</span>
+        <a href="{{ routes.cart_url }}" class="_flex _relative _justify-between _gap-1.5 _items-center _group/cart" id="cart-icon-bubble">
+          {% comment %} Warning: contents of this are rendered dynamically using 'cart-icon-bubble' section - so make sure to match up {% endcomment %}
+          <span class="svg-wrapper header-controlled--text _w-5 _h-5 _mb-0.5 group-hover/cart:_scale-110">{{'icon-newbuild-cart.svg' | inline_asset_content }}</span>
           {%- if cart != empty -%}
-            <div class="cart-count-bubble">
+            <div class="_w-4 _h-4 _flex _justify-center _items-center _text-[10px] _rounded-full empty:_hidden _bg-brand-primary-700 _text-brand-light lg:_relative _absolute lg:_top-auto _-top-1 lg:_right-auto _-right-2">
               {%- if cart.item_count < 100 -%}
-                <span aria-hidden="true">{{ cart.item_count }}</span>
+                <span aria-hidden="true" id="cart-count-number-for-monster">{{ cart.item_count }}</span>
               {%- endif -%}
               <span class="visually-hidden">{{ 'sections.header.cart_count' | t: count: cart.item_count }}</span>
             </div>
@@ -262,6 +295,7 @@
 
     connectedCallback() {
       this.header = document.querySelector('.section-header');
+      this.headerWrapper = document.querySelector('.header-wrapper');
       this.headerIsAlwaysSticky =
         this.getAttribute('data-sticky-type') === 'always' ||
         this.getAttribute('data-sticky-type') === 'reduce-logo-size';
@@ -284,6 +318,9 @@
 
       this.addEventListener('preventHeaderReveal', this.hideHeaderOnScrollUp);
       window.addEventListener('scroll', this.onScrollHandler, false);
+
+      this.addEventListener('mouseenter', () => this.headerWrapper.classList.add('header-wrapper--hovered'));
+      this.addEventListener('mouseleave', () => this.headerWrapper.classList.remove('header-wrapper--hovered'));
 
       this.createObserver();
     }
