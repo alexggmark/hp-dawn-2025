@@ -9,10 +9,132 @@
  */
 {
   "sections": {
+    "wm_hero_banner_image_CPaEAD": {
+      "type": "wm__hero-banner-image",
+      "blocks": {
+        "heading_type_1_MpnizR": {
+          "type": "heading-type-1",
+          "settings": {
+            "heading": "Image banner",
+            "heading_tag": "h1",
+            "desktop_text_size": "3xl",
+            "mobile_text_size": "3xl",
+            "margin_bottom": "0",
+            "invert_colours": false,
+            "mobile_invert_colours": false
+          }
+        },
+        "heading_type_2_BcqjbM": {
+          "type": "heading-type-2",
+          "settings": {
+            "heading": "Image banner",
+            "heading_tag": "h1",
+            "desktop_text_size": "3xl",
+            "mobile_text_size": "3xl",
+            "margin_bottom": "0",
+            "invert_colours": false,
+            "mobile_invert_colours": false
+          }
+        },
+        "top_heading_type_1_FGeqbN": {
+          "type": "top-heading-type-1",
+          "settings": {
+            "heading": "Image banner",
+            "heading_tag": "h1",
+            "desktop_text_size": "3xl",
+            "mobile_text_size": "3xl",
+            "margin_bottom": "0",
+            "invert_colours": false,
+            "mobile_invert_colours": false
+          }
+        },
+        "text_UHBFJV": {
+          "type": "text",
+          "settings": {
+            "text": "Default text",
+            "margin_bottom": "0",
+            "invert_colours": false,
+            "mobile_invert_colours": false
+          }
+        },
+        "buttons_WVW8ht": {
+          "type": "buttons",
+          "settings": {
+            "button_label_1": "Button label",
+            "button_link_1": "",
+            "button_style_1": "primary",
+            "button_label_2": "Button label",
+            "button_link_2": "",
+            "button_style_2": "primary"
+          }
+        },
+        "custom_liquid_mWDXYL": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "",
+            "margin_bottom": "0"
+          }
+        },
+        "hotspot_wggL9m": {
+          "type": "hotspot",
+          "disabled": true,
+          "settings": {
+            "product_select": "",
+            "hotspot_position_horizontal": 0,
+            "hotspot_position_horizontal_reverse": false,
+            "hotspot_position_vertical": 0,
+            "hotspot_position_vertical_reverse": false,
+            "hotspot_position_mobile_horizontal": 0,
+            "hotspot_position_mobile_horizontal_reverse": false,
+            "hotspot_position_mobile_vertical": 0,
+            "hotspot_position_mobile_vertical_reverse": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_type_1_MpnizR",
+        "heading_type_2_BcqjbM",
+        "top_heading_type_1_FGeqbN",
+        "text_UHBFJV",
+        "buttons_WVW8ht",
+        "custom_liquid_mWDXYL",
+        "hotspot_wggL9m"
+      ],
+      "name": "WM Hero Banner Image",
+      "settings": {
+        "image": "shopify://shop_images/2024_NewWebsite_HP_Banner_SolarDew_Desktop.jpg",
+        "image_overlay_opacity": 0,
+        "container_width": "page",
+        "image_height": "medium",
+        "desktop_content_position": "middle-left",
+        "show_text_box": false,
+        "desktop_content_alignment": "left",
+        "mobile_image_overlay_opacity": 0,
+        "mobile_image_height": "medium",
+        "mobile_content_alignment": "right",
+        "mobile_content_position": "middle-center",
+        "show_mobile_text_box": true,
+        "margin_bottom": "0"
+      }
+    },
     "wm_test_section_qRF3ht": {
       "type": "wm__test-section",
       "name": "WM TEST SECTION",
       "settings": {}
+    },
+    "wm_product_card_scroll_zyx8Jr": {
+      "type": "wm__product-card-scroll",
+      "name": "WM Product Scroll",
+      "settings": {
+        "top_heading": "Quick links",
+        "main_heading": "Quick links",
+        "collection": "best-sellers-on-home-page",
+        "products_to_show": 8,
+        "show_rating": true,
+        "quick_add": "standard",
+        "cta_text": "See all",
+        "margin_bottom": "12"
+      }
     },
     "wm_tem_pfeatured_collection_gbEQ8b": {
       "type": "wm__TEMPfeatured-collection",
@@ -42,79 +164,12 @@
         "padding_top": 36,
         "padding_bottom": 36
       }
-    },
-    "image_banner": {
-      "type": "image-banner",
-      "blocks": {
-        "heading": {
-          "type": "heading",
-          "settings": {
-            "heading": "Browse our latest products",
-            "heading_size": "h0"
-          }
-        },
-        "button": {
-          "type": "buttons",
-          "settings": {
-            "button_label_1": "Shop all",
-            "button_link_1": "shopify://collections/all",
-            "button_style_secondary_1": true,
-            "button_label_2": "",
-            "button_link_2": "",
-            "button_style_secondary_2": false
-          }
-        }
-      },
-      "block_order": [
-        "heading",
-        "button"
-      ],
-      "settings": {
-        "image_overlay_opacity": 40,
-        "image_height": "large",
-        "image_behavior": "none",
-        "desktop_content_position": "bottom-center",
-        "desktop_content_alignment": "center",
-        "show_text_box": false,
-        "color_scheme": "scheme-3",
-        "stack_images_on_mobile": false,
-        "mobile_content_alignment": "center",
-        "show_text_below": false
-      }
-    },
-    "featured_collection": {
-      "type": "featured-collection",
-      "settings": {
-        "collection": "all",
-        "products_to_show": 8,
-        "title": "Featured products",
-        "heading_size": "h2",
-        "description": "",
-        "show_description": false,
-        "description_style": "body",
-        "columns_desktop": 4,
-        "enable_desktop_slider": false,
-        "full_width": false,
-        "show_view_all": true,
-        "view_all_style": "solid",
-        "color_scheme": "scheme-1",
-        "image_ratio": "adapt",
-        "image_shape": "default",
-        "show_secondary_image": true,
-        "show_vendor": false,
-        "show_rating": false,
-        "quick_add": "none",
-        "columns_mobile": "2",
-        "swipe_on_mobile": false,
-        "padding_top": 44,
-        "padding_bottom": 36
-      }
     }
   },
   "order": [
+    "wm_hero_banner_image_CPaEAD",
     "wm_test_section_qRF3ht",
-    "wm_tem_pfeatured_collection_gbEQ8b",
-    "image_banner",
-    "featured_collection"
+    "wm_product_card_scroll_zyx8Jr",
+    "wm_tem_pfeatured_collection_gbEQ8b"
   ]
 }

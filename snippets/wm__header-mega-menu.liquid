@@ -1,0 +1,186 @@
+{% comment %}
+  Renders a megamenu for the header.
+
+  Accepts:
+  - image_banners: {Boolean} see if image banners tunred on in wm__header
+
+  Usage:
+  {% render 'header-mega-menu' %}
+{% endcomment %}
+
+<nav class="header__inline-menu">
+  <ul class="list-menu list-menu--inline" role="list">
+    {%- for link in section.settings.menu.links -%}
+      {% comment %} If image banners on, check metaobject "dropdown_menu_banner_entries" for matching "menu_index" for this link index {% endcomment %}
+      {%- if image_banners -%}
+        {%- assign menu_forloop_index = forloop.index -%}
+        {%- assign metaobject_banner_entries = nil -%}
+        {%- for banner in metaobjects.dropdown_menu_banner_entries.values -%}
+          {%- if banner.menu_index == menu_forloop_index -%}
+            {%- assign metaobject_banner_entries = banner -%}
+            {%- break -%}
+          {%- endif -%}
+        {%- endfor -%}
+      {%- endif -%}
+
+      {%- assign has_grandchildren = false -%}
+        {%- for childlink in link.links -%}
+          {%- if childlink.links != blank -%}
+            {%- assign has_grandchildren = true -%}
+          {%- endif -%}
+        {%- endfor -%}
+
+      <li>
+        {%- if link.links != blank -%}
+
+          <details-hover-toggle>
+            {% comment %} mega-menu {% endcomment %}
+            <details id="Details-HeaderMenu-{{ forloop.index }}" class="_group _static">
+              <summary
+                id="HeaderMenu-{{ link.handle }}"
+                class="_p-6 hover:_underline _underline-offset-4 _no-underline _text-[12px] _font-semibold _tracking-widest _text-brand-primary-700 _uppercase list-menu__item link focus-inset"
+              >
+                <span>
+                  {{- link.title | escape -}}
+                </span>
+                {{- 'icon-caret.svg' | inline_asset_content -}}
+              </summary>
+
+              {% comment %} 
+                .mega-menu__content
+              {% endcomment %}
+              <div
+                id="MegaMenu-Content-{{ forloop.index }}"
+                class="
+                  group-open:before:_block group-open:before:_bg-black group-open:before:_fixed group-open:before:_left-0 group-open:before:_top-0 group-open:before:_w-full group-open:before:_h-full group-open:before:_-z-10 group-open:before:_pointer-events-none group-open:before:_bg-opacity-40
+                  _bg-brand-light
+                  _border-l-0
+                  _border-r-0
+                  _border-t
+                  _border-brand-border
+                  _rounded-none
+                  _absolute
+                  {% if has_grandchildren %} _left-0{% endif %}
+                  {% if has_grandchildren %} _right-0{% endif %}
+                  _overflow-y-hidden
+                  {% if has_grandchildren %} _pb-12 _pt-10{% endif %}
+                  {% unless has_grandchildren %} _min-w-[250px]{% endunless %}
+                  _top-full
+                "
+                tabindex="-1"
+              >
+                <ul class="
+                  _flex
+                  {% if has_grandchildren %} _flex-row{% else %} _flex-col{% endif %}
+                  _gap-x-4
+                  {% if has_grandchildren %} page-width{% else %} _p-6{% endif %}
+                  _text-base
+                "
+                role="list">
+                {% comment %} Loop through submenu links {% endcomment %}
+                {%- for childlink in link.links -%}
+                  {% comment %} Submenu has grandchild links (display as column header) {% endcomment %}
+                  {%- if childlink.links != blank -%} 
+                      <li class="_flex-1">
+                        <div class="">
+                          <h3 class="_font-medium _text-lg _font-heading-secondary _text-brand-secondary-700 _mb-3">{{ childlink.title | escape }}</h3>
+                          <ul class="_list-none" role="list">
+                            {% comment %} Grandchild links {% endcomment %}
+                            {%- for grandchildlink in childlink.links -%}
+                              <li class="_link _mb-3">
+                                <a
+                                  id="HeaderMenu-{{ link.handle }}-{{ childlink.handle }}-{{ grandchildlink.handle }}"
+                                  href="{{ grandchildlink.url }}"
+                                  class="_text-brand-primary-700"
+                                  {% if grandchildlink.current %}
+                                    aria-current="page"
+                                  {% endif %}
+                                >
+                                  {{ grandchildlink.title | escape }}
+                                </a>
+                              </li>
+                            {%- endfor -%}
+                          </ul>
+                        </div>
+                      </li>
+                      {%- else -%}
+                        {% comment %} Submenu link without grandchildren (display as regular links) {% endcomment %}
+                        <li class="_mb-3 _link">
+                          <a
+                            id="HeaderMenu-{{ link.handle }}-{{ childlink.handle }}"
+                            href="{{ childlink.url }}"
+                            class="_text-brand-primary-700"
+                            {% if childlink.current %}
+                              aria-current="page"
+                            {% endif %}
+                          >
+                            {{ childlink.title | escape }}
+                          </a>
+                        </li>
+                      {%- endif -%}
+                  {%- endfor -%}
+                  {%- if image_banners and metaobject_banner_entries and has_grandchildren -%}
+                    <li class="_flex-grow _max-w-80 _flex _items-start md:_justify-end _ml-8">
+                      {%- assign banner_entries = metaobject_banner_entries.banner -%}
+                      <div class="_flex _flex-row _gap-2.5">
+                        {%- for banner in banner_entries.value -%}
+                          <div class="_flex-1 _flex _flex-col _max-w-64 _relative _group/menubanner">
+                            <div class="_aspect-square _overflow-hidden _mb-2">
+                              <img src="{{ banner.image | image_url: width: 360 }}" width="100%" height="100%" loading="lazy" class="_w-full _h-full _object-cover group-hover/menubanner:_opacity-80">
+                            </div>
+                            <div class="_flex-1 _flex _flex-col _justify-between">
+                              {%- if banner.title -%}<h3 class="_mb-2 _text-xs">{{ banner.title }}</h3>{%- endif -%}
+                              {%- if banner.cta_text -%}
+                                <a
+                                  href="{{ banner.link.value.url }}"
+                                  class="
+                                    _button-secondary
+                                    _text-sm
+                                    _isolate
+                                    before:_content-[''] before:_absolute before:_inset-0
+                                  "
+                                >
+                                  {{- banner.cta_text | escape -}}
+                                </a>
+                              {%- elsif banner.link.value.url -%}
+                                {% comment %} Hide button but keep URL active (just trust me) {% endcomment %}
+                                <a
+                                  href="{{ banner.link.value.url }}"
+                                  class="
+                                    _isolate
+                                    before:_content-[''] before:_absolute before:_inset-0
+                                  "
+                                >
+                                  {% comment %} Invisible character to prevent :empty CSS {% endcomment %}
+                                  &#8203;
+                                </a>
+                              {%- endif -%}
+                            </div>
+                          </div>
+                        {%- endfor -%}
+                      </div>
+                    </li>
+                  {%- endif -%}
+                </ul>
+              </div>
+            </details>
+          </details-hover-toggle>
+        {%- else -%}
+          {% comment %} Main link with no dropdown {% endcomment %}
+          <a
+            id="HeaderMenu-{{ link.handle }}"
+            href="{{ link.url }}"
+            class="_p-6 hover:_underline _underline-offset-4 _no-underline _text-[12px] _font-semibold _tracking-widest _text-brand-primary-700 _uppercase list-menu__item link focus-inset"
+            {% if link.current %}
+              aria-current="page"
+            {% endif %}
+          >
+            <span>
+              {{- link.title | escape -}}
+            </span>
+          </a>
+        {%- endif -%}
+      </li>
+    {%- endfor -%}
+  </ul>
+</nav>

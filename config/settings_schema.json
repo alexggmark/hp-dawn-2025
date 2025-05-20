@@ -8,6 +8,17 @@
     "theme_support_url": "https://support.shopify.com/"
   },
   {
+    "name": "Global custom WM",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "invisible_overlay_header",
+        "default": true,
+        "label": "Activate invisible overlay on header"
+      }
+    ]
+  },
+  {
     "name": "t:settings_schema.logo.name",
     "settings": [
       {

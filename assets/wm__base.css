@@ -2031,37 +2031,18 @@ input[type='checkbox'] {
   height: 100%;
 }
 
-.utility-bar--bottom-border {
-  border-bottom: 0.1rem solid rgba(var(--color-foreground), 0.08);
+.utility-bar .slider-button {
+  color: #fff;
 }
 
-@media screen and (min-width: 990px) {
-  .utility-bar--bottom-border-social-only {
-    border-bottom: 0.1rem solid rgba(var(--color-foreground), 0.08);
-  }
+.utility-bar .slider-button:not([disabled]):hover {
+  color: rgba(255, 255, 255, 0.5);
 }
 
 .utility-bar__grid {
   display: grid;
   grid-template-columns: 1fr;
   grid-template-areas: 'announcements';
-}
-
-.utility-bar__grid .list-social {
-  justify-content: flex-start;
-  align-content: center;
-  margin-left: -1.2rem;
-  grid-area: social-icons;
-}
-
-@media screen and (max-width: 989px) {
-  .utility-bar .utility-bar__grid .list-social {
-    display: none;
-  }
-}
-
-.utility-bar .list-social__item .icon {
-  scale: 0.9;
 }
 
 @media screen and (min-width: 990px) {
@@ -2084,7 +2065,7 @@ input[type='checkbox'] {
 
 .announcement-bar,
 .announcement-bar__announcement {
-  color: rgb(var(--color-foreground));
+  color: rgb(var(--color-brand-border));
   width: 100%;
   height: 100%;
   display: flex;
@@ -2154,10 +2135,6 @@ input[type='checkbox'] {
   .announcement-bar-slider {
     width: 60%;
   }
-
-  .announcement-bar .slider-button {
-    height: 3.8rem;
-  }
 }
 
 .announcement-bar__link {
@@ -2186,7 +2163,6 @@ input[type='checkbox'] {
   padding: 1rem 0;
   margin: 0;
   letter-spacing: 0.1rem;
-  min-height: 3.8rem;
 }
 
 .announcement-bar-slider--fade-in-next .announcement-bar__message,
@@ -2280,7 +2256,6 @@ input[type='checkbox'] {
 .header-wrapper {
   display: block;
   position: relative;
-  background-color: rgb(var(--color-background));
 }
 
 .header-wrapper--border-bottom {
@@ -2369,6 +2344,7 @@ input[type='checkbox'] {
 .header__heading-link {
   grid-area: heading;
   justify-self: center;
+  text-align: center;
 }
 
 .header__heading-link {
@@ -2395,7 +2371,7 @@ input[type='checkbox'] {
 .header__heading-logo-wrapper {
   width: 100%;
   display: inline-block;
-  transition: width 0.3s cubic-bezier(0.52, 0, 0.61, 0.99);
+  transition: width 0.1s cubic-bezier(0.52, 0, 0.61, 0.99);
 }
 
 @media screen and (max-width: 989px) {

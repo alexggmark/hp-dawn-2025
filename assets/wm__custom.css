@@ -1,3 +1,8 @@
+:root {
+  /* Fixed header height used to create invisible menu/hero overlay without JS jump */
+  --header-height-desktop-fixed: 110px;
+}
+
 /* --------------
   SCROLLBAR STYLE
 -------------- */

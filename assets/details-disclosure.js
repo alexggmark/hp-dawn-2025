@@ -51,3 +51,27 @@ class HeaderMenu extends DetailsDisclosure {
 }
 
 customElements.define('header-menu', HeaderMenu);
+
+class DetailsHoverToggle extends HTMLElement {
+  constructor() {
+    super();
+    this.details = this.querySelector('details');
+    this.summary = this.querySelector('summary');
+
+    this.addEventListeners();
+  }
+
+  addEventListeners() {
+    if (!this.details || !this.summary) return;
+
+    this.summary.addEventListener('mouseenter', () => {
+      this.details.setAttribute('open', true);
+    });
+
+    this.details.addEventListener('mouseleave', () => {
+      this.details.removeAttribute('open');
+    });
+  }
+}
+
+customElements.define('details-hover-toggle', DetailsHoverToggle);

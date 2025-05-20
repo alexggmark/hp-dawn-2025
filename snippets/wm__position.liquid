@@ -1,0 +1,38 @@
+{%- assign align = '_items-center' -%}
+{%- assign justify = '_justify-center' -%}
+{%- assign suffix = '' -%}
+{%- if screen != blank -%}
+  {%- assign suffix = screen | append: ':' -%}
+{%- endif -%}
+
+{%- case position -%}
+  {%- when 'top-left' -%}
+    {%- assign align = '_items-start' -%}
+    {%- assign justify = '_justify-start' -%}
+  {%- when 'top-center' -%}
+    {%- assign align = '_items-start' -%}
+    {%- assign justify = '_justify-center' -%}
+  {%- when 'top-right' -%}
+    {%- assign align = '_items-start' -%}
+    {%- assign justify = '_justify-end' -%}
+  {%- when 'middle-left' -%}
+    {%- assign align = '_items-center' -%}
+    {%- assign justify = '_justify-start' -%}
+  {%- when 'middle-center' -%}
+    {%- assign align = '_items-center' -%}
+    {%- assign justify = '_justify-center' -%}
+  {%- when 'middle-right' -%}
+    {%- assign align = '_items-center' -%}
+    {%- assign justify = '_justify-end' -%}
+  {%- when 'bottom-left' -%}
+    {%- assign align = '_items-end' -%}
+    {%- assign justify = '_justify-start' -%}
+  {%- when 'bottom-center' -%}
+    {%- assign align = '_items-end' -%}
+    {%- assign justify = '_justify-center' -%}
+  {%- when 'bottom-right' -%}
+    {%- assign align = '_items-end' -%}
+    {%- assign justify = '_justify-end' -%}
+{%- endcase -%}
+
+{{ suffix }}{{ align }} {{ suffix }}{{ justify }}
