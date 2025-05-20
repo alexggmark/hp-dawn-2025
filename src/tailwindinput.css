@@ -34,19 +34,19 @@
 }
 
 @layer components {
+  ._font-heading-small {
+    @apply _font-semibold _tracking-wider _uppercase;
+  }
+
   ._button-primary {
     @apply
     _flex _items-center _justify-center _gap-3
-    _tracking-wider
-    _border _border-brand-primary-700
-    _bg-white
-    hover:_bg-brand-background
-    hover:_border-brand-primary-700
-    _text-brand-primary-700
+    _font-semibold _text-base _uppercase _tracking-widest
+    _text-brand-dark
+    _bg-white hover:_bg-brand-background
+    _border _border-brand-dark hover:_border-brand-dark
     _transition-colors _duration-150
-    _py-3
-    _px-6
-    _text-base
-    _uppercase;
+    _py-4
+    _px-8;
   }
 }

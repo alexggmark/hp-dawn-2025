@@ -302,7 +302,7 @@
       }
     {% endstyle %}
 
-    {{ 'wm__base.css' | asset_url | stylesheet_tag }}
+    {% comment %} {{ 'wm__base.css' | asset_url | stylesheet_tag }} {% endcomment %}
     {% render 'wm__theme-header' %}
     <link rel="stylesheet" href="{{ 'component-cart-items.css' | asset_url }}" media="print" onload="this.media='all'">
 

@@ -7,18 +7,15 @@
   SCROLLBAR STYLE
 -------------- */
 ._scrollbar::-webkit-scrollbar {
-  height: 0.2rem;
-  width: 0.2rem;
+  height: 0.1rem;
+  width: 0.1rem;
 }
 ._scrollbar::-webkit-scrollbar-track {
-  background: transparent;
+  background: var(--color-brand-border);
 }
 ._scrollbar::-webkit-scrollbar-thumb {
-  background: #B3D1D9;
-  border-radius: 10px;
-}
-._scrollbar::-webkit-scrollbar-thumb:hover {
-  background: #0097A9;
+  background: var(--color-brand-primary-700);
+  border-radius: 0px;
 }
 
 ._no-scrollbar {

@@ -2,6 +2,7 @@
 
 module.exports = {
   prefix: "_",
+  important: true, // Doing this to fix CSS cascade order (Tailwind classes win, but wm__base overrides its preflight styles)
   content: [
     "./layout/**/*.liquid",
     "./sections/**/*.liquid",
@@ -29,7 +30,7 @@ module.exports = {
         '7xl': ['80px', { lineHeight: 'auto' }],
         '6xl': ['72px', { lineHeight: 'auto' }],
         '5xl': ['62px', { lineHeight: 'auto' }],
-        '4xl': ['49px', { lineHeight: 'auto' }],
+        '4xl': ['49px', { lineHeight: '1.25' }],
         '3xl': ['38px', { lineHeight: 'auto' }],
         'xl': ['20px', { lineHeight: 'auto' }],
         'lg': ['16px', { lineHeight: 'auto' }],

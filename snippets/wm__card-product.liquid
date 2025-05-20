@@ -37,7 +37,7 @@
           _relative
           _box-border
           _w-full
-          _aspect-square
+          _aspect-[8/9]
           {% unless transparent_background %} _bg-brand-background{% endunless %}
           "
         >
@@ -168,7 +168,7 @@
 
             <h3
               class="
-                _text-brand-primary-700
+                _text-brand-dark
               "
               {% if card_product.featured_media or settings.card_style == 'card' %}
                 id="title-{{ section_id }}-{{ card_product.id }}"
@@ -180,7 +180,7 @@
                 class="
                   _no-underline
                   _block
-                  _font-semibold _text-brand-primary-700 _text-base
+                  _font-semibold _text-brand-dark _text-base
                   after:_top-0
                   after:_left-0
                   after:_bottom-0
@@ -217,7 +217,7 @@
             
             <div class="_flex _flex-row _items-center _gap-1">
               <span class="_text-sm _text-brand-primary-500">★★★★★</span>
-              <span class="_font-body-condensed _font-medium _text-brand-primary-700 _text-sm">4.5 (100)</span>
+              <span class="_font-body-condensed _font-medium _text-brand-dark _text-sm">4.5 (100)</span>
             </div>
 
             {%- if show_rating and card_product.metafields.reviews.rating.value != blank -%}

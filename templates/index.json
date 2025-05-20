@@ -102,8 +102,8 @@
       ],
       "name": "WM Hero Banner Image",
       "settings": {
-        "image": "shopify://shop_images/2024_NewWebsite_HP_Banner_SolarDew_Desktop.jpg",
-        "image_overlay_opacity": 0,
+        "image": "shopify://shop_images/christmas-banner-desktop_f40bfc9a-0c44-48b4-997b-e611d889af29.png",
+        "image_overlay_opacity": 60,
         "container_width": "page",
         "image_height": "medium",
         "desktop_content_position": "middle-left",
