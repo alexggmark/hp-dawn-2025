@@ -19,94 +19,38 @@ class EmblaSlider extends HTMLElement {
   }
 
   setupTabs(tabButtons) {
-    console.log(`setting up tab buttons`)
     tabButtons.forEach(button => {
       button.addEventListener('click', () => {
         const handle = button.getAttribute('data-js-collection-tab');
-        console.log(`CLICKING ${handle}`);
-        if (handle) this.loadCollection(handle);
+
+        tabButtons.forEach(btn => btn.classList.remove('tab-button--active'));
+        button.classList.add('tab-button--active');
+        
+        if (handle) this.loadCollectionFromTemplate(handle);
       });
     });
-
-    // Replace this with LIQUID for performance
-    // const firstHandle = tabButtons[0].getAttribute('data-js-collection-tab');
-    // if (firstHandle) this.loadCollection(firstHandle);
   }
 
-  async loadCollection(handle) {
-    console.log(`HANDLE: ${handle}`);
-    if (!handle) return;
+  loadCollectionFromTemplate(handle) {
+    const container = this.querySelector('[data-js-embla-container]');
+    const template = this.querySelector(`[data-js-product-card-template="${handle}"]`);
 
-    const emblaContainer = this.querySelector('[data-js-embla-container]');
-    const template = this.querySelector('[data-js-product-card-template]');
-    const limitEl = this.querySelector('[data-limit]');
-
-    if (!emblaContainer || !template) return;
-
-    // console.log(`Template + container exist`);
-
-    emblaContainer.innerHTML = `<div class="_p-8">Loading...</div>`;
-
-    try {
-      const res = await fetch(`/collections/${handle}/products.json`);
-      const data = await res.json();
-
-      
-      emblaContainer.innerHTML = '';
-      
-      const limit = limitEl ? parseInt(limitEl.getAttribute('data-limit')) : Infinity;
-      const products = data.products.slice(0, limit);
-
-      console.log(`Limit: ${limit}`)
-      console.log(products);
-
-      products.forEach(product => {
-        const node = template.content.cloneNode(true);
-
-        const img = node.querySelector('[data-js-tab-template="img"]');
-        const img2 = node.querySelector('[data-js-tab-template="img2"]');
-        const linkTitle = node.querySelector('[data-js-tab-template="linktitle"]');
-
-        // console.log(`product.title: ${product.title}`)
-        // console.log(`product.images[0].src: ${product.images[0].src}`)
-
-        if (img) {
-          console.log(img);
-          img.removeAttribute('srcset');
-          img.removeAttribute('sizes');
-          img.src = product.images[0].src;
-          img.alt = product.title;
-        }
-        if (img2) {
-          console.log(img2);
-          img2.removeAttribute('srcset');
-          img2.removeAttribute('sizes');
-          img2.src = product.images[1].src;
-          img2.alt = product.title;
-        }
-
-        if (linkTitle) {
-          console.log(linkTitle);
-          linkTitle.textContent = product.title;
-          linkTitle.href = `/products/${product.handle}`;
-        }
-
-        emblaContainer.appendChild(node);
-      });
-
-      // Re-initialize Embla
-      if (this.embla) this.embla.destroy();
-      if (this.cleanupProgress) this.cleanupProgress();
-      this.setupEmbla();
-
-    } catch (e) {
-      emblaContainer.innerHTML = `<div class="_p-8 _text-red-600">Failed to load collection</div>`;
-      console.error('Error loading collection:', e);
+    if (!template || !container) {
+      console.warn('Missing template or embla container');
+      return;
     }
+
+    const cloned = template.content.cloneNode(true);
+    container.innerHTML = '';
+    container.appendChild(cloned);
+
+    if (this.embla) this.embla.destroy();
+    if (this.cleanupProgress) this.cleanupProgress();
+
+    this.setupEmbla();
   }
 
   setupEmbla() {
-    console.log("SETTING UP EMBLA");
     const emblaNode = this.querySelector('[data-js-embla]');
     const emblaContainer = emblaNode?.querySelector('[data-js-embla-container]');
     const prevBtn = this.querySelector('[data-js-embla-prev]');

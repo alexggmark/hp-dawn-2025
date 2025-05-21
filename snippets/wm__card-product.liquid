@@ -71,7 +71,6 @@
                 {% endunless %}
                 width="{{ card_product.featured_media.width }}"
                 height="{{ card_product.featured_media.height }}"
-                data-js-tab-template="img"
               >
               {% comment %}theme-check-enable ImgLazyLoading{% endcomment %}
 
@@ -103,7 +102,6 @@
                   loading="lazy"
                   width="{{ card_product.media[1].width }}"
                   height="{{ card_product.media[1].height }}"
-                  data-js-tab-template="img2"
                 >
               {%- endif -%}
             </div>
@@ -127,7 +125,6 @@
                 id="StandardCardNoMediaLink-{{ section_id }}-{{ card_product.id }}"
                 class="full-unstyled-link"
                 aria-labelledby="StandardCardNoMediaLink-{{ section_id }}-{{ card_product.id }} NoMediaStandardBadge-{{ section_id }}-{{ card_product.id }}"
-                data-js-tab-template="linktitle"
               >
                 {{ card_product.title | escape }}
               </a>

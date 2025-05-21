@@ -165,12 +165,6 @@ body:has(.section-header .drawer-menu) .announcement-bar-section .page-width {
   }
 }
 
-@media screen and (min-width: 1400px) {
-  .page-width--overflow-right {
-    padding-left: calc(((100% - var(--page-width)) / 2) + 5rem);
-  }
-}
-
 .isolate {
   position: relative;
   z-index: 0;

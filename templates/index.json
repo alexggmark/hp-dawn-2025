@@ -222,7 +222,7 @@
         "featured_collection_Hnb8cz": {
           "type": "featured_collection",
           "settings": {
-            "collection": "christmas-gift-sets",
+            "collection": "all",
             "collection_title": "Collection 1"
           }
         },
@@ -240,12 +240,12 @@
       ],
       "name": "WM ProdScroll Tabbed",
       "settings": {
-        "top_heading": "Quick links",
-        "main_heading": "Quick links",
+        "top_heading": "New protect collection",
+        "main_heading": "Skin Concern Section",
         "collection": "",
         "products_to_show": 10,
-        "show_rating": false,
-        "quick_add": "none",
+        "show_rating": true,
+        "quick_add": "standard",
         "cta_text": "See all",
         "margin_bottom": "12"
       }
