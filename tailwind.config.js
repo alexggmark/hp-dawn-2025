@@ -36,6 +36,7 @@ module.exports = {
         'lg': ['16px', { lineHeight: 'auto' }],
         'base': ['14px', { lineHeight: 'auto' }],
         'sm': ['12px', { lineHeight: 'auto' }],
+        'xs': ['10px', { lineHeight: 'auto' }],
       },
       animation: {
         'fade-in': 'fadeIn 0.5s ease forwards',

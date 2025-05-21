@@ -1,0 +1,164 @@
+{%- if section.settings.quick_add == 'standard' -%}
+   <script src="{{ 'wm__quick-shop.js' | asset_url }}" defer="defer"></script>
+{%- endif -%}
+
+<div class="section-{{ section.id }} _mb-{{ section.settings.margin_bottom | divided_by: 2 }} md:_mb-{{ section.settings.margin_bottom }} _py-20 _bg-brand-background">
+  <div class="">
+    <div class="_relative _overflow-hidden page-width--overflow-right">
+      <div class="_grid md:_grid-cols-12 _grid-cols-1">
+        <div class="md:_col-span-3 _col-span-1 _flex _flex-col _items-start _justify-center">
+          {% unless section.settings.top_heading == blank %}
+            <h3 class="_font-heading-small _text-brand-dark _text-sm _mb-2">
+              {{ section.settings.top_heading }} ARTICLE
+            </h3>
+          {% endunless %}
+          {% unless section.settings.main_heading == blank %}
+            <h2 class="_font-heading-primary _text-brand-dark md:_text-4xl _text-2xl _mb-4">
+              {{ section.settings.main_heading }} ARTICLE
+            </h2>
+          {% endunless %}
+            <p class="_text-base _max-w-60">
+              ARTICLE ARTICLE ARTICLE
+            </p>
+          {%- unless section.settings.cta_text == blank -%}
+            <a
+              href="{{ section.settings.collection.url }}"
+              class="_button-primary _mt-6"
+            >
+              {{- section.settings.cta_text -}}
+            </a>
+          {%- endunless -%}
+        </div>
+        <div class="md:_col-span-9 _col-span-1">
+          <embla-slider>
+            <div class="_overflow-hidden _relative" data-js-embla>
+              <div class="_flex md:_gap-7 _gap-4 _select-none" data-js-embla-container>
+                {%- assign selected_blog = blogs[section.settings.blog] -%}
+                {%- for article in selected_blog.articles limit: section.settings.articles_to_show -%}
+                  <div
+                    class="
+                      _w-2/3
+                      md:_w-1/2
+                      md:_max-w-[340px]
+                      _flex-none
+                      _flex
+                      _justify-center
+                      _items-center
+                      _snap-start
+                      _h-auto
+                      {% if forloop.last %} md:_mr-12 _mr-4{% endif %}
+                    "
+                  >
+                    {%- render 'wm__article-card',
+                      article: article
+                    -%}
+                  </div>
+                {%- endfor -%}
+              </div>
+              <button data-js-embla-prev class="_absolute _hidden _left-0 _top-1/2 _-translate-y-12 _bg-brand-light _text-brand-dark hover:_scale-110 _items-center _justify-center _w-10 _h-10 _rounded-full disabled:_opacity-40">
+                <span class="svg-wrapper _rotate-180 _w-5">
+                  {{- 'arrow-chevron.svg' | inline_asset_content -}}
+                </span>
+              </button>
+              <button data-js-embla-next class="_absolute md:_right-7 _right-4 _top-1/2 _-translate-y-12  _bg-brand-light _text-brand-dark hover:_scale-110 _flex _items-center _justify-center _w-10 _h-10 _rounded-full _opacity-80 hover:_opacity-100 disabled:_opacity-20">
+                <span class="svg-wrapper _w-5">
+                  {{- 'arrow-chevron.svg' | inline_asset_content -}}
+                </span>
+              </button>
+            </div>
+          </embla-slider>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "WM Article Scroll",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "inline_richtext",
+      "id": "top_heading",
+      "default": "t:sections.footer.blocks.link_list.settings.heading.default",
+      "label": "Top Heading"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "main_heading",
+      "default": "t:sections.footer.blocks.link_list.settings.heading.default",
+      "label": "Main Heading"
+    },
+    {
+      "type": "blog",
+      "id": "blog",
+      "label": "Blog selector",
+      "info": "No idea why this has to be here, but you can't just pull all blogs without selecting outside of blog pages"
+    },
+    {
+      "type": "range",
+      "id": "articles_to_show",
+      "min": 2,
+      "max": 25,
+      "step": 1,
+      "default": 8,
+      "label": "Max articles to show"
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "CTA Text",
+      "default": "See all"
+    },
+    {
+      "type": "header",
+      "content": "Margin bottom controls"
+    },
+    {
+      "type": "select",
+      "id": "margin_bottom",
+      "options": [
+        {
+          "value": "0",
+          "label": "0rem"
+        },
+        {
+          "value": "2",
+          "label": "0.5rem"
+        },
+        {
+          "value": "4",
+          "label": "1rem"
+        },
+        {
+          "value": "6",
+          "label": "1.5rem"
+        },
+        {
+          "value": "8",
+          "label": "2rem"
+        },
+        {
+          "value": "12",
+          "label": "3rem"
+        },
+        {
+          "value": "16",
+          "label": "4rem"
+        }
+      ],
+      "default": "12",
+      "label": "Margin bottom"
+    }
+  ],
+  "presets": [
+    {
+      "name": "WM Article Scroll"
+    }
+  ]
+}
+{% endschema %}
