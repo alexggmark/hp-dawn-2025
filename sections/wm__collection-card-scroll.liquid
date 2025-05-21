@@ -1,0 +1,197 @@
+{%- if section.settings.quick_add == 'standard' -%}
+   <script src="{{ 'wm__quick-shop.js' | asset_url }}" defer="defer"></script>
+{%- endif -%}
+
+<div class="section-{{ section.id }} _mb-{{ section.settings.margin_bottom | divided_by: 2 }} md:_mb-{{ section.settings.margin_bottom }} _py-20">
+  <div class="">
+
+    <div class="_relative _overflow-hidden">
+      <div class="_flex _flex-col _items-center _text-center _justify-center">
+        {% unless section.settings.top_heading == blank %}
+            <h3 class="_font-heading-small _text-brand-dark _text-sm _mb-2">
+              {{ section.settings.top_heading }}
+            </h3>
+        {% endunless %}
+        {% unless section.settings.main_heading == blank %}
+            <h2 class="_font-heading-primary-italic _text-brand-dark md:_text-3xl _text-2xl _mb-4">
+              {{ section.settings.main_heading }}
+            </h2>
+        {% endunless %}
+        {%- unless section.settings.cta_text == blank -%}
+          <a
+            href="{{ section.settings.collection.url }}"
+            class="_button-primary _mt-6"
+          >
+            {{- section.settings.cta_text -}}
+          </a>
+        {%- endunless -%}
+      </div>
+      <div class="">
+        <embla-slider data-loop="true" data-skip-snaps="true" data-align="center">
+          <div class="_relative" data-js-embla>
+            <div class="_flex md:_gap-7 _gap-4 _select-none" data-js-embla-container>
+              {%- for block in section.blocks -%}
+                {%- case block.type -%}
+                  {%- when 'featured_collection' -%}
+                    {%- assign collection_color = block.settings.collection_color -%}
+                    <div
+                      class="
+                        _w-1/2
+                        md:_max-w-[266px]
+                        _flex-none
+                        _snap-start
+                        _h-auto
+                        {% if forloop.last %} md:_mr-7 _mr-4{% endif %}
+                      "
+                    >
+                      <div
+                        class="_h-96 {% if collection_color == blank %}_bg-brand-background{% endif %}"
+                         {% if collection_color %}style="background-color: {{ collection_color }}"{% endif %}>
+                         {% unless block.settings.collection_image == blank %}
+                          <img
+                            srcset="
+                              {%- if block.settings.collection_image.width >= 165 -%}{{ block.settings.collection_image | image_url: width: 165 }} 165w,{%- endif -%}
+                              {%- if block.settings.collection_image.width >= 360 -%}{{ block.settings.collection_image | image_url: width: 360 }} 360w,{%- endif -%}
+                              {%- if block.settings.collection_image.width >= 533 -%}{{ block.settings.collection_image | image_url: width: 533 }} 533w,{%- endif -%}
+                              {%- if block.settings.collection_image.width >= 720 -%}{{ block.settings.collection_image | image_url: width: 720 }} 720w,{%- endif -%}
+                              {%- if block.settings.collection_image.width >= 940 -%}{{ block.settings.collection_image | image_url: width: 940 }} 940w,{%- endif -%}
+                              {%- if block.settings.collection_image.width >= 1066 -%}{{ block.settings.collection_image | image_url: width: 1066 }} 1066w,{%- endif -%}
+                              {{ block.settings.collection_image | image_url }} {{ block.settings.collection_image.width }}w
+                            "
+                            src="{{ block.settings.collection_image | image_url: width: 533 }}"
+                            sizes="(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 130 | divided_by: 4 }}px, (min-width: 990px) calc((100vw - 130px) / 4), (min-width: 750px) calc((100vw - 120px) / 3), calc((100vw - 35px) / 2)"
+                            alt="{{ block.settings.collection_image.alt | escape }}"
+                            class="motion-reduce {% if block.settings.collection_image.media[1] != null %}group-hover:_opacity-0{% endif %} _object-cover _object-center _h-full _w-full"
+                            loading="lazy"
+                            width="{{ block.settings.collection_image.width }}"
+                            height="{{ block.settings.collection_image.height }}"
+                          >
+                        {% endunless %}
+                      </div>
+                      <div class="_flex _items-center _justify-between">
+                        <span class="_font-heading-primary-italic _text-brand-dark _text-xl">
+                          {{ block.settings.collection.title }}
+                        </span>
+                        <span class="svg-wrapper _w-5">
+                          {{- 'arrow-chevron.svg' | inline_asset_content -}}
+                        </span>
+                      </div>
+                    </div>
+
+                {%- endcase -%}
+              {%- endfor -%}
+            </div>
+            <button data-js-embla-prev class="_absolute md:_left-7 _left-4 _top-1/2 _-translate-y-12 _bg-brand-light _text-brand-dark hover:_scale-110 _flex _items-center _justify-center _w-10 _h-10 _rounded-full _opacity-80 hover:_opacity-100">
+              <span class="svg-wrapper _rotate-180 _w-5">
+                {{- 'arrow-chevron.svg' | inline_asset_content -}}
+              </span>
+            </button>
+            <button data-js-embla-next class="_absolute md:_right-7 _right-4 _top-1/2 _-translate-y-12  _bg-brand-light _text-brand-dark hover:_scale-110 _flex _items-center _justify-center _w-10 _h-10 _rounded-full _opacity-80 hover:_opacity-100">
+              <span class="svg-wrapper _w-5">
+                {{- 'arrow-chevron.svg' | inline_asset_content -}}
+              </span>
+            </button>
+          </div>
+        </embla-slider>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "WM Collection Card Scroll",
+  "class": "section",
+  "max_blocks": 15,
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "inline_richtext",
+      "id": "top_heading",
+      "default": "t:sections.footer.blocks.link_list.settings.heading.default",
+      "label": "Top Heading"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "main_heading",
+      "default": "t:sections.footer.blocks.link_list.settings.heading.default",
+      "label": "Main Heading"
+    },
+    {
+      "type": "header",
+      "content": "Margin bottom controls"
+    },
+    {
+      "type": "select",
+      "id": "margin_bottom",
+      "options": [
+        {
+          "value": "0",
+          "label": "0rem"
+        },
+        {
+          "value": "2",
+          "label": "0.5rem"
+        },
+        {
+          "value": "4",
+          "label": "1rem"
+        },
+        {
+          "value": "6",
+          "label": "1.5rem"
+        },
+        {
+          "value": "8",
+          "label": "2rem"
+        },
+        {
+          "value": "12",
+          "label": "3rem"
+        },
+        {
+          "value": "16",
+          "label": "4rem"
+        }
+      ],
+      "default": "12",
+      "label": "Margin bottom"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "featured_collection",
+      "name": "t:sections.collection-list.blocks.featured_collection.name",
+      "settings": [
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "t:sections.collection-list.blocks.featured_collection.settings.collection.label"
+        },
+        {
+          "type": "image_picker",
+          "id": "collection_image",
+          "label": "Pick a product image for collection"
+        },
+        {
+          "type": "color",
+          "id": "collection_color",
+          "label": "Optional: pick a background colour"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "WM Collection Card Scroll",
+      "blocks": [
+        {
+          "type": "featured_collection"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

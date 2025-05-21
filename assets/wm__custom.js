@@ -22,10 +22,14 @@ class EmblaSlider extends HTMLElement {
       return;
     }
 
+    const loop = this.getAttribute('data-loop') === 'true';
+    const align = this.getAttribute('data-align') || 'start';
+    const skipSnaps = this.getAttribute('data-skip-snaps') !== 'false';
+
     this.embla = EmblaCarousel(emblaNode, {
-      loop: false,
-      align: 'start',
-      skipSnaps: true,
+      loop,
+      align,
+      skipSnaps,
     });
 
     const toggleButtons = () => {
@@ -74,4 +78,4 @@ class EmblaSlider extends HTMLElement {
   }
 }
 
-customElements.define('embla-slider-product', EmblaSlider);
+customElements.define('embla-slider', EmblaSlider);

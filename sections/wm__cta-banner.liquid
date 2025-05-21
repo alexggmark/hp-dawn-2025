@@ -1,0 +1,674 @@
+{%- if section.settings.image_height == 'adapt' and section.settings.image != blank -%}
+  {%- style -%}
+    @media screen and (max-width: 749px) {
+      #Banner-{{ section.id }}::before {
+        padding-bottom: {{ 1 | divided_by: section.settings.image.aspect_ratio | times: 100 }}%;
+        content: '';
+        display: block;
+      }
+    }
+
+    @media screen and (min-width: 750px) {
+      #Banner-{{ section.id }}::before {
+        padding-bottom: {{ 1 | divided_by: section.settings.image.aspect_ratio | times: 100 }}%;
+        content: '';
+        display: block;
+      }
+    }
+  {%- endstyle -%}
+{%- endif -%}
+
+{%- style -%}
+  #Banner-{{ section.id }}::after {
+    content: '';
+    display: block;
+    opacity: {{ section.settings.image_overlay_opacity | divided_by: 100.0 }};
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+  }
+{%- endstyle -%}
+
+{%- liquid
+  assign full_width = '100vw'
+  assign widths = '375, 550, 750, 1100, 1500, 1780, 2000, 3000, 3840'
+
+  assign fetch_priority = 'auto'
+  if section.index == 1
+    assign fetch_priority = 'high'
+  endif
+-%}
+
+{% comment %} banner--{{ section.settings.image_height }} {% endcomment %}
+<div
+  id="Banner-{{ section.id }}"
+  class="
+    _flex
+    _relative
+    _isolate
+    _z-auto
+    _flex-col
+    md:_flex-row
+    {% if section.settings.image_height == 'adapt' %}
+      _h-auto
+    {% else %} 
+      {% case section.settings.image_height %}
+        {% when 'small' %}
+          md:_h-[26rem]
+        {% when 'medium' %}
+          md:_h-[36rem]
+        {% when 'large' %}
+          md:_h-[50rem]
+      {% endcase %}
+      {% case section.settings.mobile_image_height %}
+        {% when 'small' %}
+          _h-[26rem]
+        {% when 'medium' %}
+          _h-[36rem]
+        {% when 'large' %}
+          _h-[50rem]
+      {% endcase %}
+    {% endif %}
+    {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}
+    _mb-{{ section.settings.margin_bottom | divided_by: 2 }} md:_mb-{{ section.settings.margin_bottom }}
+  "
+>
+  {%- if section.settings.image != blank -%}
+
+    {% comment %} banner__media, media {% endcomment %}
+    <div class="_absolute _top-0 _left-0 _w-full _h-full _block _bg-brand-background _overflow-hidden{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
+      {%- if section.settings.video -%}
+         {{ section.settings.video | media_tag: image_size: '2048x', autoplay: true, loop: true, muted: true, controls: false, preload: 'none', class: "_object-cover _w-full _h-full" }}
+      {%- else -%}
+      
+        {%- liquid
+          assign image_height = section.settings.image.width | divided_by: section.settings.image.aspect_ratio
+          assign sizes = full_width
+        -%}
+        {%- if section.settings.mobile_image != blank -%}
+          {%- assign mobile_height = section.settings.mobile_image.width | divided_by: section.settings.mobile_image.aspect_ratio -%}
+          {{
+            section.settings.image
+            | image_url: width: 3840
+            | image_tag:
+              width: section.settings.image.width,
+              height: image_height,
+              sizes: sizes,
+              widths: widths,
+              class: "md:_block _hidden _object-cover _object-center _max-w-full _top-0 _left-0 _h-full _w-full",
+              fetchpriority: fetch_priority
+          }}
+          {{
+            section.settings.mobile_image
+            | image_url: width: 1100
+            | image_tag:
+              width: section.settings.mobile_image.width,
+              height: mobile_height,
+              sizes: "100vw",
+              widths: widths,
+              class: "_block md:_hidden _object-cover _object-center _max-w-full _top-0 _left-0 _h-full _w-full",
+              fetchpriority: fetch_priority
+          }}
+        {%- else -%}
+          {{
+            section.settings.image
+            | image_url: width: 3840
+            | image_tag:
+              width: section.settings.image.width,
+              height: image_height,
+              sizes: sizes,
+              widths: widths,
+              fetchpriority: fetch_priority,
+              class: "_object-cover _object-center _max-w-full _top-0 _left-0 _h-full _w-full"
+          }}
+        {%- endif -%}
+      {%- endif -%}
+    </div>
+  {%- endif -%}
+
+  <div class="
+    _flex
+    _relative
+    _w-full
+    _h-full
+    _z-20
+    _py-8
+    _items-center
+    _justify-center
+    md:_items-center
+    md:_justify-center
+    page-width
+    {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}
+  ">
+    <div class="
+      _text-wrap
+      _z-10
+      _relative
+      _px-6
+      _py-12
+      _text-center
+      md:_w-1/2
+      _flex _flex-col _items-center _justify-center
+    ">
+      {%- for block in section.blocks -%}
+        {%- case block.type -%}
+          {%- when 'heading-type-1' -%}
+            <{{ block.settings.heading_tag }}
+              class="
+                _text-2xl
+                md:_text-3xl
+                _font-heading-primary
+                _mb-{{ block.settings.margin_bottom }}
+                {% if block.settings.invert_colours %} _text-white{% else %} _text-brand-primary-700{% endif %}
+              "
+              {{ block.shopify_attributes }}
+            >
+              {{ block.settings.heading }}
+            </{{ block.settings.heading_tag }}>
+          {%- when 'text' -%}
+            <div class="
+              _text-base
+              _mb-{{ block.settings.margin_bottom }}
+              {% if block.settings.invert_colours %} _text-white{% else %} _text-brand-dark{% endif %} 
+            "
+            {{ block.shopify_attributes }}>
+              <p>{{ block.settings.text }}</p>
+            </div>
+          {%- when 'buttons' -%}
+            <div
+              class="
+                _flex
+                _flex-row
+                _flex-wrap _items-start md:_justify-start _justify-center
+                _gap-4
+              "
+              {{ block.shopify_attributes }}
+            >
+              {%- if block.settings.button_label_1 != blank -%}
+                <a
+                  {% if block.settings.button_link_1 == blank %}
+                    role="link" aria-disabled="true"
+                  {% else %}
+                    href="{{ block.settings.button_link_1 }}"
+                  {% endif %}
+                  class="
+                    _button-{{ block.settings.button_style_1 }}
+                  "
+                >
+                  {{- block.settings.button_label_1 | escape -}}
+                  {{- 'icon-arrow.svg' | inline_asset_content -}}
+                </a>
+              {%- endif -%}
+              {%- if block.settings.button_label_2 != blank -%}
+                <a
+                  {% if block.settings.button_link_2 == blank %}
+                    role="link" aria-disabled="true"
+                  {% else %}
+                    href="{{ block.settings.button_link_2 }}"
+                  {% endif %}
+                  class="
+                    _button-{{ block.settings.button_style_2 }}
+                  "
+                >
+                  {{- block.settings.button_label_2 | escape -}}
+                  {{- 'icon-arrow.svg' | inline_asset_content -}}
+                </a>
+              {%- endif -%}
+            </div>
+          {%- when 'custom_liquid' -%}
+            <div class="_mb-{{ block.settings.margin_bottom }}">
+              {{ block.settings.custom_liquid }}
+            </div>
+        {%- endcase -%}
+      {%- endfor -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "WM CTA Banner",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Main background image"
+    },
+    {
+      "type": "video",
+      "id": "video",
+      "label": "Choose background video (replaces image)"
+    },
+    {
+      "type": "range",
+      "id": "image_overlay_opacity",
+      "min": 0,
+      "max": 100,
+      "step": 10,
+      "unit": "%",
+      "label": "t:sections.image-banner.settings.image_overlay_opacity.label",
+      "default": 0
+    },
+    {
+      "type": "select",
+      "id": "image_height",
+      "options": [
+        {
+          "value": "adapt",
+          "label": "t:sections.image-banner.settings.image_height.options__1.label"
+        },
+        {
+          "value": "small",
+          "label": "t:sections.image-banner.settings.image_height.options__2.label"
+        },
+        {
+          "value": "medium",
+          "label": "t:sections.image-banner.settings.image_height.options__3.label"
+        },
+        {
+          "value": "large",
+          "label": "t:sections.image-banner.settings.image_height.options__4.label"
+        }
+      ],
+      "default": "medium",
+      "label": "t:sections.image-banner.settings.image_height.label",
+      "info": "t:sections.image-banner.settings.image_height.info"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.image-banner.settings.mobile.content"
+    },
+    {
+      "type": "image_picker",
+      "id": "mobile_image",
+      "label": "Mobile background image"
+    },
+    {
+      "type": "select",
+      "id": "mobile_image_height",
+      "options": [
+        {
+          "value": "adapt",
+          "label": "t:sections.image-banner.settings.image_height.options__1.label"
+        },
+        {
+          "value": "small",
+          "label": "t:sections.image-banner.settings.image_height.options__2.label"
+        },
+        {
+          "value": "medium",
+          "label": "t:sections.image-banner.settings.image_height.options__3.label"
+        },
+        {
+          "value": "large",
+          "label": "t:sections.image-banner.settings.image_height.options__4.label"
+        }
+      ],
+      "default": "medium",
+      "label": "Mobile image height",
+      "info": "t:sections.image-banner.settings.image_height.info"
+    },
+    {
+      "type": "select",
+      "id": "margin_bottom",
+      "options": [
+        {
+          "value": "0",
+          "label": "0rem"
+        },
+        {
+          "value": "2",
+          "label": "0.5rem"
+        },
+        {
+          "value": "4",
+          "label": "1rem"
+        },
+        {
+          "value": "6",
+          "label": "1.5rem"
+        },
+        {
+          "value": "8",
+          "label": "2rem"
+        },
+        {
+          "value": "12",
+          "label": "3rem"
+        },
+        {
+          "value": "16",
+          "label": "4rem"
+        }
+      ],
+      "default": "0",
+      "label": "Margin bottom"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "heading-type-1",
+      "name": "Heading Type 1",
+      "settings": [
+        {
+          "type": "inline_richtext",
+          "id": "heading",
+          "default": "t:sections.image-banner.blocks.heading.settings.heading.default",
+          "label": "t:sections.image-banner.blocks.heading.settings.heading.label"
+        },
+        {
+          "type": "select",
+          "id": "heading_tag",
+          "options": [
+            {
+              "value": "h1",
+              "label": "h1"
+            },
+            {
+              "value": "h2",
+              "label": "h2"
+            },
+            {
+              "value": "h3",
+              "label": "h3"
+            }
+          ],
+          "default": "h1",
+          "label": "Select heading tag"
+        },
+        {
+          "type": "select",
+          "id": "margin_bottom",
+          "options": [
+            {
+              "value": "0",
+              "label": "0rem"
+            },
+            {
+              "value": "2",
+              "label": "0.5rem"
+            },
+            {
+              "value": "4",
+              "label": "1rem"
+            },
+            {
+              "value": "6",
+              "label": "1.5rem"
+            },
+            {
+              "value": "8",
+              "label": "2rem"
+            },
+            {
+              "value": "12",
+              "label": "3rem"
+            },
+            {
+              "value": "16",
+              "label": "4rem"
+            },
+            {
+              "value": "20",
+              "label": "5rem"
+            },
+            {
+              "value": "24",
+              "label": "6rem"
+            },
+            {
+              "value": "28",
+              "label": "7rem"
+            },
+            {
+              "value": "32",
+              "label": "8rem"
+            }
+          ],
+          "default": "0",
+          "label": "Margin bottom"
+        },
+        {
+          "type": "checkbox",
+          "id": "invert_colours",
+          "default": false,
+          "label": "Invert colours",
+          "info": "This makes all text white"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "name": "t:sections.image-banner.blocks.text.name",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "inline_richtext",
+          "id": "text",
+          "default": "Default text",
+          "label": "t:sections.image-banner.blocks.text.settings.text.label"
+        },
+        {
+          "type": "select",
+          "id": "margin_bottom",
+          "options": [
+            {
+              "value": "0",
+              "label": "0rem"
+            },
+            {
+              "value": "2",
+              "label": "0.5rem"
+            },
+            {
+              "value": "4",
+              "label": "1rem"
+            },
+            {
+              "value": "6",
+              "label": "1.5rem"
+            },
+            {
+              "value": "8",
+              "label": "2rem"
+            },
+            {
+              "value": "12",
+              "label": "3rem"
+            },
+            {
+              "value": "16",
+              "label": "4rem"
+            },
+            {
+              "value": "20",
+              "label": "5rem"
+            },
+            {
+              "value": "24",
+              "label": "6rem"
+            },
+            {
+              "value": "28",
+              "label": "7rem"
+            },
+            {
+              "value": "32",
+              "label": "8rem"
+            }
+          ],
+          "default": "0",
+          "label": "Margin bottom"
+        },
+        {
+          "type": "checkbox",
+          "id": "invert_colours",
+          "default": false,
+          "label": "Invert colours",
+          "info": "This makes all text white"
+        }
+      ]
+    },
+    {
+      "type": "buttons",
+      "name": "t:sections.image-banner.blocks.buttons.name",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "button_label_1",
+          "default": "t:sections.image-banner.blocks.buttons.settings.button_label_1.default",
+          "label": "t:sections.image-banner.blocks.buttons.settings.button_label_1.label",
+          "info": "t:sections.image-banner.blocks.buttons.settings.button_label_1.info"
+        },
+        {
+          "type": "url",
+          "id": "button_link_1",
+          "label": "t:sections.image-banner.blocks.buttons.settings.button_link_1.label"
+        },
+        {
+          "type": "select",
+          "id": "button_style_1",
+          "options": [
+            {
+              "value": "primary",
+              "label": "Primary"
+            },
+            {
+              "value": "secondary",
+              "label": "Secondary"
+            },
+            {
+              "value": "tertiary",
+              "label": "Tertiary"
+            }
+          ],
+          "default": "primary",
+          "label": "Select what kind of button this is"
+        },
+        {
+          "type": "text",
+          "id": "button_label_2",
+          "default": "t:sections.image-banner.blocks.buttons.settings.button_label_2.default",
+          "label": "t:sections.image-banner.blocks.buttons.settings.button_label_2.label",
+          "info": "t:sections.image-banner.blocks.buttons.settings.button_label_2.info"
+        },
+        {
+          "type": "url",
+          "id": "button_link_2",
+          "label": "t:sections.image-banner.blocks.buttons.settings.button_link_2.label"
+        },
+        {
+          "type": "select",
+          "id": "button_style_2",
+          "options": [
+            {
+              "value": "primary",
+              "label": "Primary"
+            },
+            {
+              "value": "secondary",
+              "label": "Secondary"
+            },
+            {
+              "value": "tertiary",
+              "label": "Tertiary"
+            }
+          ],
+          "default": "primary",
+          "label": "Select what kind of button this is"
+        }
+      ]
+    },
+    {
+      "type": "custom_liquid",
+      "name": "Custom Liquid/HTML",
+      "settings": [
+        {
+          "type": "liquid",
+          "id": "custom_liquid",
+          "label": "Use for custom HTML",
+          "info": "Input whatever you need here"
+        },
+        {
+          "type": "select",
+          "id": "margin_bottom",
+          "options": [
+            {
+              "value": "0",
+              "label": "0rem"
+            },
+            {
+              "value": "2",
+              "label": "0.5rem"
+            },
+            {
+              "value": "4",
+              "label": "1rem"
+            },
+            {
+              "value": "6",
+              "label": "1.5rem"
+            },
+            {
+              "value": "8",
+              "label": "2rem"
+            },
+            {
+              "value": "12",
+              "label": "3rem"
+            },
+            {
+              "value": "16",
+              "label": "4rem"
+            },
+            {
+              "value": "20",
+              "label": "5rem"
+            },
+            {
+              "value": "24",
+              "label": "6rem"
+            },
+            {
+              "value": "28",
+              "label": "7rem"
+            },
+            {
+              "value": "32",
+              "label": "8rem"
+            }
+          ],
+          "default": "0",
+          "label": "Margin bottom"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "WM CTA Banner",
+      "blocks": [
+        {
+          "type": "heading-type-1"
+        },
+        {
+          "type": "text"
+        },
+        {
+          "type": "buttons"
+        },
+        {
+          "type": "custom_liquid"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
