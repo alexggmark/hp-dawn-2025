@@ -161,6 +161,172 @@
         "margin_bottom": "12"
       }
     },
+    "wm_cta_banner_3XbrBt": {
+      "type": "wm__cta-banner",
+      "blocks": {
+        "heading_type_1_bF7aAy": {
+          "type": "heading-type-1",
+          "settings": {
+            "heading": "Image banner",
+            "heading_tag": "h1",
+            "margin_bottom": "0",
+            "invert_colours": false
+          }
+        },
+        "text_6JGxJb": {
+          "type": "text",
+          "settings": {
+            "text": "Default text",
+            "margin_bottom": "0",
+            "invert_colours": false
+          }
+        },
+        "buttons_A9nwMw": {
+          "type": "buttons",
+          "settings": {
+            "button_label_1": "Button label",
+            "button_link_1": "",
+            "button_style_1": "primary",
+            "button_label_2": "Button label",
+            "button_link_2": "",
+            "button_style_2": "primary"
+          }
+        },
+        "custom_liquid_TFRQVg": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "",
+            "margin_bottom": "0"
+          }
+        }
+      },
+      "block_order": [
+        "heading_type_1_bF7aAy",
+        "text_6JGxJb",
+        "buttons_A9nwMw",
+        "custom_liquid_TFRQVg"
+      ],
+      "name": "WM CTA Banner",
+      "settings": {
+        "image": "shopify://shop_images/Retail_SunSlick_PDP_HowToUse.jpg",
+        "video": "shopify://files/videos/power luxe SMALL FOR WEB.mp4",
+        "image_overlay_opacity": 0,
+        "image_height": "medium",
+        "mobile_image_height": "medium",
+        "margin_bottom": "0"
+      }
+    },
+    "wm_product_scroll_tabbed_reload_nmbiyz": {
+      "type": "wm__product-scroll-tabbed-reload",
+      "blocks": {
+        "featured_collection_Hnb8cz": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "christmas-gift-sets",
+            "collection_title": "Collection 1"
+          }
+        },
+        "featured_collection_qztje3": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "acne-warrior",
+            "collection_title": "Acne??"
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_Hnb8cz",
+        "featured_collection_qztje3"
+      ],
+      "name": "WM ProdScroll Tabbed",
+      "settings": {
+        "top_heading": "Quick links",
+        "main_heading": "Quick links",
+        "collection": "",
+        "products_to_show": 10,
+        "show_rating": false,
+        "quick_add": "none",
+        "cta_text": "See all",
+        "margin_bottom": "12"
+      }
+    },
+    "wm_collection_card_scroll_Mkbaft": {
+      "type": "wm__collection-card-scroll",
+      "blocks": {
+        "featured_collection_VeQbYa": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "acne-warrior",
+            "collection_color": "#c8d3f3"
+          }
+        },
+        "featured_collection_zpRgeC": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "christmas-gift-sets",
+            "collection_color": "#fcfbf6"
+          }
+        },
+        "featured_collection_JbnGRG": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "gifts-under-100",
+            "collection_color": "#ead1cd"
+          }
+        },
+        "featured_collection_xGU99C": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "glowing-gifts",
+            "collection_color": "#9db7b4"
+          }
+        },
+        "featured_collection_4gUHkC": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "makeup-lover",
+            "collection_color": "#79a0e1"
+          }
+        },
+        "featured_collection_7qUtUi": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "gifts-under-100",
+            "collection_color": "#ead1cd"
+          }
+        },
+        "featured_collection_cJLNmx": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "christmas-gift-sets",
+            "collection_color": "#fcfbf6"
+          }
+        },
+        "featured_collection_MkATX9": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "glowing-gifts",
+            "collection_color": "#9db7b4"
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_VeQbYa",
+        "featured_collection_zpRgeC",
+        "featured_collection_JbnGRG",
+        "featured_collection_xGU99C",
+        "featured_collection_4gUHkC",
+        "featured_collection_7qUtUi",
+        "featured_collection_cJLNmx",
+        "featured_collection_MkATX9"
+      ],
+      "name": "WM Collection Card Scroll",
+      "settings": {
+        "top_heading": "Elevated by science",
+        "main_heading": "Our Collections",
+        "margin_bottom": "12"
+      }
+    },
     "wm_test_section_qRF3ht": {
       "type": "wm__test-section",
       "name": "WM TEST SECTION",
@@ -171,6 +337,9 @@
     "wm_hero_banner_image_CPaEAD",
     "wm_tem_pfeatured_collection_gbEQ8b",
     "wm_product_card_scroll_zyx8Jr",
+    "wm_cta_banner_3XbrBt",
+    "wm_product_scroll_tabbed_reload_nmbiyz",
+    "wm_collection_card_scroll_Mkbaft",
     "wm_test_section_qRF3ht"
   ]
 }

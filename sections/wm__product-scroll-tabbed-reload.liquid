@@ -1,0 +1,230 @@
+{%- if section.settings.quick_add == 'standard' -%}
+   <script src="{{ 'wm__quick-shop.js' | asset_url }}" defer="defer"></script>
+{%- endif -%}
+
+{%- assign placeholder_product = blank -%}
+{%- assign first_collection = blank -%}
+
+<div class="section-{{ section.id }} _mb-{{ section.settings.margin_bottom | divided_by: 2 }} md:_mb-{{ section.settings.margin_bottom }} _py-20">
+  <div class="page-width">
+    {% unless section.settings.top_heading == blank %}
+      <h3 class="_font-heading-small _text-brand-dark _text-sm _mb-2">
+        {{ section.settings.top_heading }}
+      </h3>
+    {% endunless %}
+    {% unless section.settings.main_heading == blank %}
+      <h2 class="_font-heading-primary _text-brand-dark md:_text-4xl _text-2xl _mb-4">
+        {{ section.settings.main_heading }}
+      </h2>
+    {% endunless %}
+  </div>
+  <div class="_relative _overflow-hidden page-width--overflow-right">
+    <embla-slider>
+      <div class="mb-4">
+        {%- for block in section.blocks -%}
+          {%- case block.type -%}
+            {%- when 'featured_collection' -%}
+              {% if forloop.first %}
+                {% assign placeholder_product = block.settings.collection.products.first %}
+                {% assign first_collection = block.settings.collection %}
+              {% endif %}
+              <button data-js-collection-tab="{{ block.settings.collection.handle }}">
+                {{ block.settings.collection_title }}
+              </button>
+          {%- endcase -%}
+        {%- endfor -%}
+      </div>
+      <template data-js-product-card-template>
+        <div
+          class="
+          _w-2/3
+          md:_w-1/2
+          md:_max-w-[340px]
+          _flex-none
+          _flex
+          _justify-center
+          _items-center
+          _snap-start
+          _h-auto
+        ">
+          {% render 'wm__card-product',
+            card_product: placeholder_product,
+            show_rating: section.settings.show_rating,
+            skip_styles: true,
+            section_id: section.id,
+            quick_add: section.settings.quick_add
+          %}
+        </div>
+      </template>
+
+      <div class="_relative" data-js-embla>
+        <div class="_flex md:_gap-7 _gap-4 _select-none" data-js-embla-container data-limit="{{ section.settings.products_to_show }}">
+          {% assign skip_card_product_styles = false %}
+          {%- for product in first_collection.products limit: section.settings.products_to_show -%}
+            <div
+              class="
+              _w-2/3
+              md:_w-1/2
+              md:_max-w-[340px]
+              _flex-none
+              _flex
+              _justify-center
+              _items-center
+              _snap-start
+              _h-auto
+              {% if forloop.last %} md:_mr-12 _mr-4{% endif %}
+            ">
+              {% render 'wm__card-product',
+                card_product: product,
+                show_rating: section.settings.show_rating,
+                skip_styles: skip_card_product_styles,
+                section_id: section.id,
+                quick_add: section.settings.quick_add
+              %}
+            </div>
+            {%- assign skip_card_product_styles = true -%}
+          {%- endfor -%}
+        </div>
+        <button data-js-embla-prev>←</button>
+        <button data-js-embla-next>→</button>
+        <div class="progress"><div data-js-embla-progress class="bar"></div></div>
+      </div>
+    </embla-slider>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "WM ProdScroll Tabbed",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "inline_richtext",
+      "id": "top_heading",
+      "default": "t:sections.footer.blocks.link_list.settings.heading.default",
+      "label": "Top Heading"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "main_heading",
+      "default": "t:sections.footer.blocks.link_list.settings.heading.default",
+      "label": "Main Heading"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "t:sections.featured-collection.settings.collection.label"
+    },
+    {
+      "type": "range",
+      "id": "products_to_show",
+      "min": 2,
+      "max": 25,
+      "step": 1,
+      "default": 8,
+      "label": "t:sections.featured-collection.settings.products_to_show.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_rating",
+      "default": false,
+      "label": "t:sections.featured-collection.settings.show_rating.label",
+      "info": "t:sections.featured-collection.settings.show_rating.info"
+    },
+    {
+      "type": "select",
+      "id": "quick_add",
+      "default": "none",
+      "label": "t:sections.main-collection-product-grid.settings.quick_add.label",
+      "info": "t:sections.main-collection-product-grid.settings.quick_add.info",
+      "options": [
+        {
+          "value": "none",
+          "label": "t:sections.main-collection-product-grid.settings.quick_add.options.option_1"
+        },
+        {
+          "value": "standard",
+          "label": "t:sections.main-collection-product-grid.settings.quick_add.options.option_2"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "CTA Text",
+      "default": "See all"
+    },
+    {
+      "type": "header",
+      "content": "Margin bottom controls"
+    },
+    {
+      "type": "select",
+      "id": "margin_bottom",
+      "options": [
+        {
+          "value": "0",
+          "label": "0rem"
+        },
+        {
+          "value": "2",
+          "label": "0.5rem"
+        },
+        {
+          "value": "4",
+          "label": "1rem"
+        },
+        {
+          "value": "6",
+          "label": "1.5rem"
+        },
+        {
+          "value": "8",
+          "label": "2rem"
+        },
+        {
+          "value": "12",
+          "label": "3rem"
+        },
+        {
+          "value": "16",
+          "label": "4rem"
+        }
+      ],
+      "default": "12",
+      "label": "Margin bottom"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "featured_collection",
+      "name": "t:sections.collection-list.blocks.featured_collection.name",
+      "settings": [
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "t:sections.collection-list.blocks.featured_collection.settings.collection.label"
+        },
+        {
+          "type": "text",
+          "id": "collection_title",
+          "label": "Name the collection tab"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "WM ProdScroll Tabbed",
+      "blocks": [
+        {
+          "type": "featured_collection"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
