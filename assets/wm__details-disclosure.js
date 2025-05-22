@@ -63,6 +63,7 @@ class DetailsHoverToggle extends HTMLElement {
   }
 
   addEventListeners() {
+    return; // FIXME: REMOVE THIS
     if (!this.details || !this.summary) return;
 
     this.summary.addEventListener('mouseenter', () => {

@@ -2,40 +2,49 @@
   Renders a megamenu for the header.
 
   Accepts:
-  - image_banners: {Boolean} see if image banners tunred on in wm__header
+  - image_banners: {Boolean} see if image banners turn on in wm__header
 
   Usage:
   {% render 'header-mega-menu' %}
 {% endcomment %}
 
+{%- assign mega_menu_parents = metaobjects.mega_menu_parent.values -%}
+
 <nav class="header__inline-menu">
   <ul class="list-menu list-menu--inline _h-full" role="list">
     {%- for link in section.settings.menu.links -%}
-      {% comment %} If image banners on, check metaobject "dropdown_menu_banner_entries" for matching "menu_index" for this link index {% endcomment %}
-      {%- if image_banners -%}
-        {%- assign menu_forloop_index = forloop.index -%}
-        {%- assign metaobject_banner_entries = nil -%}
-        {%- for banner in metaobjects.dropdown_menu_banner_entries.values -%}
-          {%- if banner.menu_index == menu_forloop_index -%}
-            {%- assign metaobject_banner_entries = banner -%}
-            {%- break -%}
-          {%- endif -%}
-        {%- endfor -%}
-      {%- endif -%}
 
-      {%- assign has_grandchildren = false -%}
-        {%- for childlink in link.links -%}
-          {%- if childlink.links != blank -%}
-            {%- assign has_grandchildren = true -%}
-          {%- endif -%}
-        {%- endfor -%}
+      {% comment %} Metaobject: grab right parent metaobject {% endcomment %}
+      {%- assign active_parent = nil -%}
+      {%- for parent in mega_menu_parents -%}
+        {%- if parent.label == link.title or parent.link == link.url -%}
+          {%- assign active_parent = parent -%}
+          {%- break -%}
+        {%- endif -%}
+      {%- endfor -%}
+
+      {%- unless active_parent == nil -%}
+        <script>
+          console.log("WORKING PARENT");
+          console.log({{ active_parent | json }});
+        </script>
+      {%- endunless -%}
+
+      {%- assign banner_entries = active_parent.banner_link.values | default: blank -%}
+      {%- assign child_items = active_parent.child_item.value | default: blank -%}
+      
+      <script>
+        console.log("WORKING CHILD");
+        console.log({{ child_items | json }});
+      </script>
+      {% comment %} / Metaobject: grab right parent metaobject {% endcomment %}
 
       <li>
         {%- if link.links != blank -%}
-
           <details-hover-toggle>
             {% comment %} mega-menu {% endcomment %}
-            <details id="Details-HeaderMenu-{{ forloop.index }}" class="_group _static _h-full">
+            {% comment %} FIXME: REMOVE OPEN TRUE {% endcomment %}
+            <details id="Details-HeaderMenu-{{ forloop.index }}" class="_group _static _h-full" {% if forloop.first %}open="true"{% endif %}>
               <summary
                 id="HeaderMenu-{{ link.handle }}"
                 class="_p-6 _h-full hover:_underline _underline-offset-4 _no-underline _text-[12px] _font-semibold _tracking-widest header-controlled--text _uppercase list-menu__item focus-inset"
@@ -46,122 +55,220 @@
                 {{- 'icon-caret.svg' | inline_asset_content -}}
               </summary>
 
-              {% comment %} 
-                .mega-menu__content
-              {% endcomment %}
               <div
                 id="MegaMenu-Content-{{ forloop.index }}"
                 class="
                   group-open:before:_block group-open:before:_bg-black group-open:before:_fixed group-open:before:_left-0 group-open:before:_top-0 group-open:before:_w-full group-open:before:_h-full group-open:before:_-z-10 group-open:before:_pointer-events-none group-open:before:_bg-opacity-40
                   _bg-brand-light
-                  _border-l-0
-                  _border-r-0
                   _border-t
                   _border-brand-border
                   _rounded-none
                   _absolute
-                  {% if has_grandchildren %} _left-0{% endif %}
-                  {% if has_grandchildren %} _right-0{% endif %}
+                  _left-0
+                  _right-0
                   _overflow-y-hidden
-                  {% if has_grandchildren %} _pb-12 _pt-10{% endif %}
-                  {% unless has_grandchildren %} _min-w-[250px]{% endunless %}
                   _top-full
                 "
                 tabindex="-1"
               >
-                <ul class="
-                  _flex
-                  {% if has_grandchildren %} _flex-row{% else %} _flex-col{% endif %}
-                  _gap-x-4
-                  {% if has_grandchildren %} page-width{% else %} _p-6{% endif %}
+                <div class="
+                  _grid _grid-cols-12 _gap-8
                   _text-base
                 "
-                role="list">
-                {% comment %} Loop through submenu links {% endcomment %}
-                {%- for childlink in link.links -%}
-                  {% comment %} Submenu has grandchild links (display as column header) {% endcomment %}
-                  {%- if childlink.links != blank -%} 
-                      <li class="_flex-1">
-                        <div class="">
-                          <h3 class="_font-medium _text-lg _font-heading-secondary _text-brand-secondary-700 _mb-3">{{ childlink.title | escape }}</h3>
-                          <ul class="_list-none" role="list">
-                            {% comment %} Grandchild links {% endcomment %}
-                            {%- for grandchildlink in childlink.links -%}
-                              <li class="_link _mb-3">
-                                <a
-                                  id="HeaderMenu-{{ link.handle }}-{{ childlink.handle }}-{{ grandchildlink.handle }}"
-                                  href="{{ grandchildlink.url }}"
-                                  class="_text-brand-dark"
-                                  {% if grandchildlink.current %}
-                                    aria-current="page"
-                                  {% endif %}
-                                >
-                                  {{ grandchildlink.title | escape }}
-                                </a>
-                              </li>
-                            {%- endfor -%}
-                          </ul>
+                aria-label="Mega menu: {{ link.title }}"
+                role="navigation">
+                  {% comment %} ⬅️ LEFT COLUMN: CHILD LINKS {% endcomment %}
+                  <nav aria-label="Category options" class="_col-span-3 _border _border-brand-border">
+                    <ul role="list" class="flex flex-col gap-3" id="menu-category-list">
+                      {%- for childlink in link.links -%}
+                        <li class="_flex-1">
+                          <div class="">
+                            <h3 class="_font-medium _text-lg _font-heading-secondary _text-brand-secondary-700 _mb-3">{{ childlink.title | escape }}</h3>
+                          </div>
+                        </li>
+                      {%- endfor -%}
+                    </ul>
+                  </nav>
+                  {% comment %} ⬆️ MIDDLE COLUMN: GRANDCHILD LINKS {% endcomment %}
+                  <section aria-label="Subcategory options" id="menu-grandchildren"  class="_col-span-5 _border _border-brand-border">
+
+                    {% comment %} TODO: "type_of_menu" here {% endcomment %}
+                    {%- for childlink in link.links -%}
+
+                      {%- assign active_child = nil -%}
+
+                      {%- for child in child_items -%}
+                        {%- assign child_label_stripped = child.label | downcase -%}
+                        {%- assign child_link_label_stripped = childlink.title | downcase -%}
+
+                        {%- if child_label_stripped == child_link_label_stripped -%}
+                          {%- assign active_child = child -%}
+                        {%- endif -%}
+                      {%- endfor -%}
+
+                      {%- unless active_child == nil -%}
+                        <script>
+                          console.log("Active child!!!:");
+                          console.log({{ active_child | json }});
+                        </script>
+                      {%- endunless -%}
+
+                      <div
+                        class="_border _border-green-500"
+                        data-js-panel="grandchild-panel-{{ childlink.handle }}"
+                      >
+                        <div class="_flex _flex-row _justify-between _w-full">
+                          <h3 class="_font-heading-primary _text-lg _text-brand-dark">
+                            {{ childlink.title }}
+                          </h3>
+                          <a href="{{ childlink.url }}" class="">See All</a>
+                        </div>
+                        {%- case active_child.type_of_menu -%}
+                          {%- when 'tile' -%}
+                            <ul
+                              role="list"
+                              aria-hidden="true"
+                              data-grandchild-panel="{{ childlink.handle }}"
+                            >
+                              {%- for grandchildlink in childlink.links -%}
+                                {%- assign active_grandchild = nil -%}
+                                
+                                {%- for grandchild in active_child.grandchild_item.value -%}
+                                  {%- assign grandchild_label_stripped = grandchild.label | downcase -%}
+                                  {%- assign grandchild_link_label_stripped = grandchildlink.title | downcase -%}
+                                  
+                                  {%- if grandchild_label_stripped == grandchild_link_label_stripped -%}
+                                    {%- assign active_grandchild = grandchild -%}
+                                  {%- endif -%}
+                                {%- endfor -%}
+                                
+                                <li class="mb-2">
+                                  {%- if active_grandchild -%}
+                                    <a
+                                      href="{{ grandchildlink.url }}"
+                                      class="hover:underline"
+                                      {% if grandchildlink.current %}
+                                        aria-current="page"
+                                      {% endif %}
+                                    >
+                                      {{ grandchildlink.title }}
+                                    </a>
+                                  {%- else -%}
+                                    <a
+                                      href="{{ grandchildlink.url }}"
+                                      class="hover:underline"
+                                      {% if grandchildlink.current %}
+                                        aria-current="page"
+                                      {% endif %}
+                                    >
+                                      NOPE: {{ grandchildlink.title }}
+                                    </a>
+                                  {%- endif -%}
+                                </li>
+                              {%- endfor -%}
+                            </ul>
+
+                          {%- when 'card' -%}
+                            <ul
+                              data-js-panel="grandchild-panel-{{ childlink.handle }}"
+                              role="list"
+                              aria-hidden="true"
+                              data-grandchild-panel="{{ childlink.handle }}"
+                            >
+                              {%- for grandchildlink in childlink.links -%}
+                                {%- assign active_grandchild = nil -%}
+
+                                {%- for grandchild in active_child.grandchild_item.value -%}
+                                  {%- assign grandchild_label_stripped = grandchild.label | downcase -%}
+                                  {%- assign grandchild_link_label_stripped = grandchildlink.title | downcase -%}
+
+                                  {%- if grandchild_label_stripped == grandchild_link_label_stripped -%}
+                                    {%- assign active_grandchild = grandchild -%}
+                                  {%- endif -%}
+                                {%- endfor -%}
+                                
+                                {%- if active_grandchild -%}
+                                  <li class="mb-2">
+                                    <a
+                                      href="{{ grandchildlink.url }}"
+                                      class="hover:underline"
+                                      {% if grandchildlink.current %}
+                                        aria-current="page"
+                                      {% endif %}
+                                    >
+                                      {{ grandchildlink.title }}
+                                    </a>
+                                  </li>
+                                {%- else -%}
+                                  <li class="mb-2">
+                                    <a
+                                      href="{{ grandchildlink.url }}"
+                                      class="hover:underline"
+                                      {% if grandchildlink.current %}
+                                        aria-current="page"
+                                      {% endif %}
+                                    >
+                                      NOPE: {{ grandchildlink.title }}
+                                    </a>
+                                  </li>
+                                {%- endif -%}
+                              {%- endfor -%}
+                            </ul>
+
+                          {%- else -%}
+                            <div>ELSE</div>
+
+                        {%- endcase -%}
+                      </div>
+                    {%- endfor -%}
+                  </section>
+                  
+                  {% comment %} ➡️ RIGHT COLUMN: BANNER IMAGES {% endcomment %}
+                  <aside aria-label="Featured content" class="_col-span-4 _border _border-brand-border">
+                    {%- if image_banners and metaobject_banner_entries -%}
+                      <li class="_flex-grow _max-w-80 _flex _items-start md:_justify-end _ml-8">
+                        {%- assign banner_entries = metaobject_banner_entries.banner -%}
+                        <div class="_flex _flex-row _gap-2.5">
+                          {%- for banner in banner_entries.value -%}
+                            <div class="_flex-1 _flex _flex-col _max-w-64 _relative _group/menubanner">
+                              <div class="_aspect-square _overflow-hidden _mb-2">
+                                <img src="{{ banner.image | image_url: width: 360 }}" width="100%" height="100%" loading="lazy" class="_w-full _h-full _object-cover group-hover/menubanner:_opacity-80">
+                              </div>
+                              <div class="_flex-1 _flex _flex-col _justify-between">
+                                {%- if banner.title -%}<h3 class="_mb-2 _text-xs">{{ banner.title }}</h3>{%- endif -%}
+                                {%- if banner.cta_text -%}
+                                  <a
+                                    href="{{ banner.link.value.url }}"
+                                    class="
+                                      _button-secondary
+                                      _text-sm
+                                      _isolate
+                                      before:_content-[''] before:_absolute before:_inset-0
+                                    "
+                                  >
+                                    {{- banner.cta_text | escape -}}
+                                  </a>
+                                {%- elsif banner.link.value.url -%}
+                                  {% comment %} Hide button but keep URL active (just trust me) {% endcomment %}
+                                  <a
+                                    href="{{ banner.link.value.url }}"
+                                    class="
+                                      _isolate
+                                      before:_content-[''] before:_absolute before:_inset-0
+                                    "
+                                  >
+                                    {% comment %} Invisible character to prevent :empty CSS {% endcomment %}
+                                    &#8203;
+                                  </a>
+                                {%- endif -%}
+                              </div>
+                            </div>
+                          {%- endfor -%}
                         </div>
                       </li>
-                      {%- else -%}
-                        {% comment %} Submenu link without grandchildren (display as regular links) {% endcomment %}
-                        <li class="_mb-3 _link">
-                          <a
-                            id="HeaderMenu-{{ link.handle }}-{{ childlink.handle }}"
-                            href="{{ childlink.url }}"
-                            class="_text-brand-dark"
-                            {% if childlink.current %}
-                              aria-current="page"
-                            {% endif %}
-                          >
-                            {{ childlink.title | escape }}
-                          </a>
-                        </li>
-                      {%- endif -%}
-                  {%- endfor -%}
-                  {%- if image_banners and metaobject_banner_entries and has_grandchildren -%}
-                    <li class="_flex-grow _max-w-80 _flex _items-start md:_justify-end _ml-8">
-                      {%- assign banner_entries = metaobject_banner_entries.banner -%}
-                      <div class="_flex _flex-row _gap-2.5">
-                        {%- for banner in banner_entries.value -%}
-                          <div class="_flex-1 _flex _flex-col _max-w-64 _relative _group/menubanner">
-                            <div class="_aspect-square _overflow-hidden _mb-2">
-                              <img src="{{ banner.image | image_url: width: 360 }}" width="100%" height="100%" loading="lazy" class="_w-full _h-full _object-cover group-hover/menubanner:_opacity-80">
-                            </div>
-                            <div class="_flex-1 _flex _flex-col _justify-between">
-                              {%- if banner.title -%}<h3 class="_mb-2 _text-xs">{{ banner.title }}</h3>{%- endif -%}
-                              {%- if banner.cta_text -%}
-                                <a
-                                  href="{{ banner.link.value.url }}"
-                                  class="
-                                    _button-secondary
-                                    _text-sm
-                                    _isolate
-                                    before:_content-[''] before:_absolute before:_inset-0
-                                  "
-                                >
-                                  {{- banner.cta_text | escape -}}
-                                </a>
-                              {%- elsif banner.link.value.url -%}
-                                {% comment %} Hide button but keep URL active (just trust me) {% endcomment %}
-                                <a
-                                  href="{{ banner.link.value.url }}"
-                                  class="
-                                    _isolate
-                                    before:_content-[''] before:_absolute before:_inset-0
-                                  "
-                                >
-                                  {% comment %} Invisible character to prevent :empty CSS {% endcomment %}
-                                  &#8203;
-                                </a>
-                              {%- endif -%}
-                            </div>
-                          </div>
-                        {%- endfor -%}
-                      </div>
-                    </li>
-                  {%- endif -%}
-                </ul>
+                    {%- endif -%}
+                  </aside>
+                </div>
               </div>
             </details>
           </details-hover-toggle>

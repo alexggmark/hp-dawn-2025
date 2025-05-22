@@ -161,56 +161,33 @@
         "margin_bottom": "12"
       }
     },
+    "wm_image_block_1_z7FEaK": {
+      "type": "wm__image-block-1",
+      "name": "WM ImageBlock 1",
+      "settings": {
+        "top_heading": "Quick links",
+        "main_heading": "Quick links",
+        "description": "Description text",
+        "cta_text": "See all",
+        "cta_url": "",
+        "video_1": "shopify://files/videos/power serum SMALL FOR WEB.mp4",
+        "image_2": "shopify://shop_images/031425_SummerSkinRescue_Kit_HowToUse.webp",
+        "margin_bottom": "12"
+      }
+    },
     "wm_cta_banner_3XbrBt": {
       "type": "wm__cta-banner",
-      "blocks": {
-        "heading_type_1_bF7aAy": {
-          "type": "heading-type-1",
-          "settings": {
-            "heading": "Image banner",
-            "heading_tag": "h1",
-            "margin_bottom": "0",
-            "invert_colours": true
-          }
-        },
-        "text_6JGxJb": {
-          "type": "text",
-          "settings": {
-            "text": "Default text",
-            "margin_bottom": "0",
-            "invert_colours": true
-          }
-        },
-        "buttons_A9nwMw": {
-          "type": "buttons",
-          "settings": {
-            "button_label_1": "Button label",
-            "button_link_1": "",
-            "button_style_1": "primary",
-            "button_label_2": "Button labsel",
-            "button_link_2": "",
-            "button_style_2": "primary"
-          }
-        },
-        "custom_liquid_TFRQVg": {
-          "type": "custom_liquid",
-          "settings": {
-            "custom_liquid": "",
-            "margin_bottom": "0"
-          }
-        }
-      },
-      "block_order": [
-        "heading_type_1_bF7aAy",
-        "text_6JGxJb",
-        "buttons_A9nwMw",
-        "custom_liquid_TFRQVg"
-      ],
       "name": "WM CTA Banner",
       "settings": {
+        "top_heading": "Elevated by Science",
+        "main_heading": "Your Skincare <em>Powered</em> By Peptides",
+        "description": "Our patented peptide technology and epigenetics work together to boost your skin's natural repair and target genes involved in ageing",
+        "cta_label": "Contact us",
+        "cta_url": "",
+        "invert_colours": true,
         "image": "shopify://shop_images/Retail_SunSlick_PDP_HowToUse.jpg",
         "video": "shopify://files/videos/power luxe SMALL FOR WEB.mp4",
-        "image_overlay_opacity": 0,
+        "image_overlay_opacity": 40,
         "image_height": "medium",
         "mobile_image_height": "medium",
         "margin_bottom": "0"
@@ -332,27 +309,22 @@
       "name": "WM Article Scroll",
       "settings": {
         "top_heading": "Quick links",
-        "main_heading": "Quick links",
+        "main_heading": "Guides and tips for <em>your</em> skincare",
         "blog": "skincare-routines",
         "articles_to_show": 8,
         "cta_text": "See all",
         "margin_bottom": "12"
       }
-    },
-    "wm_test_section_qRF3ht": {
-      "type": "wm__test-section",
-      "name": "WM TEST SECTION",
-      "settings": {}
     }
   },
   "order": [
     "wm_hero_banner_image_CPaEAD",
     "wm_tem_pfeatured_collection_gbEQ8b",
     "wm_product_card_scroll_zyx8Jr",
+    "wm_image_block_1_z7FEaK",
     "wm_cta_banner_3XbrBt",
     "wm_product_scroll_tabbed_reload_nmbiyz",
     "wm_collection_card_scroll_Mkbaft",
-    "wm_article_card_scroll_7yYjit",
-    "wm_test_section_qRF3ht"
+    "wm_article_card_scroll_7yYjit"
   ]
 }
