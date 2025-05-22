@@ -170,7 +170,7 @@
             "heading": "Image banner",
             "heading_tag": "h1",
             "margin_bottom": "0",
-            "invert_colours": false
+            "invert_colours": true
           }
         },
         "text_6JGxJb": {
@@ -178,7 +178,7 @@
           "settings": {
             "text": "Default text",
             "margin_bottom": "0",
-            "invert_colours": false
+            "invert_colours": true
           }
         },
         "buttons_A9nwMw": {
@@ -187,7 +187,7 @@
             "button_label_1": "Button label",
             "button_link_1": "",
             "button_style_1": "primary",
-            "button_label_2": "Button label",
+            "button_label_2": "Button labsel",
             "button_link_2": "",
             "button_style_2": "primary"
           }
@@ -327,6 +327,18 @@
         "margin_bottom": "12"
       }
     },
+    "wm_article_card_scroll_7yYjit": {
+      "type": "wm__article-card-scroll",
+      "name": "WM Article Scroll",
+      "settings": {
+        "top_heading": "Quick links",
+        "main_heading": "Quick links",
+        "blog": "skincare-routines",
+        "articles_to_show": 8,
+        "cta_text": "See all",
+        "margin_bottom": "12"
+      }
+    },
     "wm_test_section_qRF3ht": {
       "type": "wm__test-section",
       "name": "WM TEST SECTION",
@@ -340,6 +352,7 @@
     "wm_cta_banner_3XbrBt",
     "wm_product_scroll_tabbed_reload_nmbiyz",
     "wm_collection_card_scroll_Mkbaft",
+    "wm_article_card_scroll_7yYjit",
     "wm_test_section_qRF3ht"
   ]
 }

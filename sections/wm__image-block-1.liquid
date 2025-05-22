@@ -1,0 +1,188 @@
+{%- liquid
+  assign fetch_priority = 'auto'
+  if section.index == 1
+    assign fetch_priority = 'high'
+  endif
+-%}
+
+<div class="section-{{ section.id }} _mb-{{ section.settings.margin_bottom | divided_by: 2 }} md:_mb-{{ section.settings.margin_bottom }} _py-20">
+  <div class="_relative _overflow-hidden page-width">
+    <div class="_grid md:_grid-cols-12 _grid-cols-1">
+      <div class="md:_col-span-3 _col-span-1 _flex _flex-col _items-start _justify-center">
+        {% unless section.settings.top_heading == blank %}
+          <h3 class="_font-heading-small _text-brand-dark _text-sm">
+            {{ section.settings.top_heading }}
+          </h3>
+        {% endunless %}
+        {% unless section.settings.main_heading == blank %}
+          <h2 class="_font-heading-primary _text-brand-dark md:_text-4xl _text-2xl _mt-1">
+            {{ section.settings.main_heading }}
+          </h2>
+        {% endunless %}
+        {% unless section.settings.description == blank %}
+          <div class="_text-base _max-w-60 _mt-4">
+            {{ section.settings.description }}
+          </div>
+        {% endunless %}
+        {%- unless section.settings.cta_text == blank -%}
+          <a
+            href="{{ section.settings.cta_url }}"
+            class="_button-primary _mt-6"
+          >
+            {{- section.settings.cta_text -}}
+          </a>
+        {%- endunless -%}
+      </div>
+      <div class="md:_col-span-9 _col-span-1 _flex _flex-row">
+        <div class="_overflow-hidden _min-h-96">
+          {%- if section.settings.video_1 -%}
+            {{ section.settings.video_1 | media_tag: image_size: '2048x', autoplay: true, loop: true, muted: true, controls: false, preload: 'none', class: "_object-cover _w-full _h-full" }}
+
+          {%- elsif section.settings.image_1 -%}
+            {%- assign widths = '165, 360, 535, 750, 1070, 1500' -%}
+            {%- capture sizes -%}
+              (min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | divided_by: 2 }}px,
+              (min-width: 750px) calc((100vw - 130px) / 2), calc((100vw - 50px) / 2)
+            {%- endcapture -%}
+            {{
+              section.settings.image_1
+              | image_url: width: 1500
+              | image_tag:
+                class: '_w-full _h-full _object-cover',
+                fetchpriority: fetch_priority, sizes: sizes, widths: widths
+            }}
+          {%- endif -%}
+        </div>
+        <div class="_overflow-hidden">
+          {%- if section.settings.video_2 -%}
+            {{ section.settings.video_2 | media_tag: image_size: '2048x', autoplay: true, loop: true, muted: true, controls: false, preload: 'none', class: "_object-cover _w-full _h-full" }}
+
+          {%- elsif section.settings.image_2 -%}
+            {%- assign widths = '165, 360, 535, 750, 1070, 1500' -%}
+            {%- capture sizes -%}
+              (min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | divided_by: 2 }}px,
+              (min-width: 750px) calc((100vw - 130px) / 2), calc((100vw - 50px) / 2)
+            {%- endcapture -%}
+            {{
+              section.settings.image_2
+              | image_url: width: 1500
+              | image_tag:
+                class: '_w-full _h-full _object-cover',
+                fetchpriority: fetch_priority, sizes: sizes, widths: widths
+            }}
+          {%- endif -%}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "WM ImageBlock 1",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "inline_richtext",
+      "id": "top_heading",
+      "default": "t:sections.footer.blocks.link_list.settings.heading.default",
+      "label": "Top Heading"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "main_heading",
+      "default": "t:sections.footer.blocks.link_list.settings.heading.default",
+      "label": "Main Heading"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "description",
+      "default": "Description text",
+      "label": "Description text"
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "CTA Text",
+      "default": "See all"
+    },
+    {
+      "type": "url",
+      "id": "cta_url",
+      "label": "Pick URL for button"
+    },
+    {
+      "type": "header",
+      "content": "Images"
+    },
+    {
+      "type": "video",
+      "id": "video_1",
+      "label": "Main video 1"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_1",
+      "label": "Main image 1"
+    },
+    {
+      "type": "video",
+      "id": "video_2",
+      "label": "Main video 2"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_2",
+      "label": "Main image 2"
+    },
+    {
+      "type": "header",
+      "content": "Margin bottom controls"
+    },
+    {
+      "type": "select",
+      "id": "margin_bottom",
+      "options": [
+        {
+          "value": "0",
+          "label": "0rem"
+        },
+        {
+          "value": "2",
+          "label": "0.5rem"
+        },
+        {
+          "value": "4",
+          "label": "1rem"
+        },
+        {
+          "value": "6",
+          "label": "1.5rem"
+        },
+        {
+          "value": "8",
+          "label": "2rem"
+        },
+        {
+          "value": "12",
+          "label": "3rem"
+        },
+        {
+          "value": "16",
+          "label": "4rem"
+        }
+      ],
+      "default": "12",
+      "label": "Margin bottom"
+    }
+  ],
+  "presets": [
+    {
+      "name": "WM ImageBlock 1"
+    }
+  ]
+}
+{% endschema %}

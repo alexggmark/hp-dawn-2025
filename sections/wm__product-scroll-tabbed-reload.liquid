@@ -7,14 +7,13 @@
 {% style %}
   .tab-button {
     color: #8C8C8C;
-    text-underline-offset: 4px;
+    text-underline-offset: 0.5rem;
   }
   .tab-button:hover {
-    color: #8C8C8C;
     text-decoration: underline;
   }
   .tab-button.tab-button--active {
-    color: var(--color-brand-dark);
+    color: var(--color-brand-primary-500);
     text-decoration: underline;
   }
 {% endstyle %}
@@ -22,12 +21,12 @@
 <div class="section-{{ section.id }} _mb-{{ section.settings.margin_bottom | divided_by: 2 }} md:_mb-{{ section.settings.margin_bottom }} _py-20">
   <div class="page-width">
     {% unless section.settings.top_heading == blank %}
-      <h3 class="_font-heading-small _text-brand-dark _text-sm _mb-2">
+      <h3 class="_font-heading-small _text-brand-dark _text-sm _mb-1">
         {{ section.settings.top_heading }}
       </h3>
     {% endunless %}
     {% unless section.settings.main_heading == blank %}
-      <h2 class="_font-heading-primary _text-brand-dark md:_text-4xl _text-2xl _mb-4">
+      <h2 class="_font-heading-primary _text-brand-dark md:_text-4xl _text-2xl _mb-8">
         {{ section.settings.main_heading }}
       </h2>
     {% endunless %}
@@ -116,7 +115,7 @@
         </button>
         <div class="_w-full md:_pr-12 _pr-4">
           <div class="_h-[1.5px] _mt-8 _bg-gray-300 _rounded _overflow-hidden">
-            <div data-js-embla-progress class="_block _h-full _bg-brand-primary-700"></div>
+            <div data-js-embla-progress class="_block _h-full _bg-brand-primary-500"></div>
           </div>
         </div>
       </div>
