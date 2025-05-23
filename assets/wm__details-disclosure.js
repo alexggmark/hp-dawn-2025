@@ -58,6 +58,10 @@ class DetailsHoverToggle extends HTMLElement {
     this.details = this.querySelector('details');
     this.summary = this.querySelector('summary');
     this.headerWrapper = document.querySelector('.header-wrapper');
+    this.initialPanel = this.querySelector('[data-js-panel-initial]');
+    this.allPanels = this.querySelectorAll('[data-js-panel]');
+    this.childTriggers = this.querySelectorAll('[data-js-child]');
+    this.nonChildTriggers = this.querySelectorAll('[data-js-child-no-links]');
 
     this.addEventListeners();
   }
@@ -76,36 +80,32 @@ class DetailsHoverToggle extends HTMLElement {
       this.hideAllPanels();
     });
 
-    const childTriggers = this.querySelectorAll('[data-js-child]');
-    childTriggers.forEach(trigger => {
+    this.childTriggers.forEach(trigger => {
       trigger.addEventListener('mouseenter', () => {
-        const key = trigger.dataset.jsChild;
-        this.showPanel(key);
+        this.showPanel(trigger.dataset.jsChild);
+      });
+    });
+
+    this.nonChildTriggers.forEach(trigger => {
+      trigger.addEventListener('mouseenter', () => {
+        if (!this.initialPanel.classList.contains('js-panel--active')) {
+          this.hideAllPanels();
+        }
       });
     });
   }
 
   showPanel(key) {
-    const allPanels = this.querySelectorAll('[data-js-panel]');
-    const initialPanel = this.querySelector('[data-js-panel-initial]');
-    initialPanel.classList.remove('js-panel--active');
-    allPanels.forEach(panel => {
-      if (panel.dataset.jsPanel === key) {
-        panel.classList.add('js-panel--active');
-      } else {
-        panel.classList.remove('js-panel--active');
-      }
+    this.initialPanel.classList.remove('js-panel--active');
+
+    this.allPanels.forEach(panel => {
+      panel.classList.toggle('js-panel--active', panel.dataset.jsPanel === key);
     });
   }
 
   hideAllPanels() {
-    console.log("hideAllPanels");
-    const allPanels = this.querySelectorAll('[data-js-panel]');
-    allPanels.forEach(panel => {
-      panel.classList.remove('js-panel--active');
-    });
-    const initialPanel = this.querySelector('[data-js-panel-initial]');
-    if (!initialPanel.classList.contains('js-panel--active')) initialPanel.classList.add('js-panel--active');
+    this.allPanels.forEach(panel => panel.classList.remove('js-panel--active'));
+    this.initialPanel.classList.add('js-panel--active');
   }
 }
 

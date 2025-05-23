@@ -211,7 +211,7 @@
 
       {%- liquid
         if section.settings.menu != blank
-          render 'wm__header-mega-menu', slider_collection: section.settings.slider_collection, products_to_show: section.settings.products_to_show
+          render 'wm__header-mega-menu', slider_collection: section.settings.slider_collection, products_to_show: section.settings.products_to_show, slider_blog: section.settings.slider_blog, articles_to_show: section.settings.articles_to_show
         endif
       %}
     </div>
@@ -468,6 +468,21 @@
       "step": 1,
       "default": 8,
       "label": "Number of collection products to show"
+    },
+    {
+      "type": "blog",
+      "id": "slider_blog",
+      "label": "Blog selector",
+      "info": "No idea why this has to be here, but you can't just pull all blogs without selecting outside of blog pages"
+    },
+    {
+      "type": "range",
+      "id": "articles_to_show",
+      "min": 2,
+      "max": 25,
+      "step": 1,
+      "default": 8,
+      "label": "Max articles to show"
     },
     {
       "type": "link_list",

@@ -48,10 +48,14 @@
 
       {%- assign banner_entries = active_parent.banner_link.value | default: blank -%}
       {%- assign child_items = active_parent.child_item.value | default: blank -%}
+      {%- assign default_content = active_parent.default_panel.value | default: blank -%}
       
       <script>
         console.log("WORKING CHILD");
         console.log({{ child_items | json }});
+
+        console.log("DEFAULT COLLECTION:");
+        console.log("{{ link.title }} - {{ default_content }}");
 
         {%- for banner in banner_entries -%}
           console.log("banner_entries:");
@@ -121,7 +125,11 @@
                           <div class="">
                             <span
                               class="hover:_underline _underline-offset-4 _no-underline _text-sm _font-link _mb-3"
-                              {% unless active_child == nil %}data-js-child="grandchild-panel-{{ childlink.handle }}"{% endunless %}
+                              {% if active_child %}
+                                data-js-child="grandchild-panel-{{ childlink.handle }}"
+                              {% else %}
+                                data-js-child-no-links
+                              {% endif %}
                             >{{ childlink.title | escape }}</span>
                           </div>
                         </li>
@@ -131,55 +139,144 @@
                   {% comment %} ⬆️ MIDDLE COLUMN: GRANDCHILD LINKS {% endcomment %}
                   <section aria-label="Subcategory options" id="menu-grandchildren"  class="_col-span-5 _pt-10 _pb-6">
                     <div data-js-panel-initial class="js-panel js-panel--active">
-                      <div class="_flex _flex-row _justify-between _items-center _w-full _mb-4">
-                        <h3 class="_font-heading-primary _text-2xl _text-brand-dark">
-                          Best Sellers
-                        </h3>
-                        <a href="{{ childlink.url }}" class="hover:_underline _underline-offset-4 _no-underline _text-sm _font-link">See All</a>
-                      </div>
-                      <div class="">
-                        {% comment %} TODO: product slider {% endcomment %}
-                        <embla-slider data-lazy>
-                          <div class="_overflow-hidden _relative" data-js-embla>
-                            <div class="_flex md:_gap-7 _gap-4 _select-none" data-js-embla-container>
-                              {% assign skip_card_product_styles = false %}
-                              {%- for product in slider_collection.products limit: products_to_show -%}
-                                <div id="Slide-{{ section.id }}-{{ forloop.index }}"
-                                  class="
-                                  _w-2/3
-                                  md:_w-1/2
-                                  md:_max-w-[220px]
-                                  _flex-none
-                                  _flex
-                                  _justify-center
-                                  _items-center
-                                  _snap-start
-                                  _h-auto
-                                  {% if forloop.last %} md:_mr-12 _mr-4{% endif %}
-                                ">
-                                  {% render 'wm__card-product',
-                                    card_product: product,
-                                    skip_styles: skip_card_product_styles,
-                                    section_id: section.id,
-                                    simple_card: true
-                                  %}
-                                </div>
-                                {%- assign skip_card_product_styles = true -%}
-                              {%- endfor -%}
+                      {%- if default_content == 'collection' -%}
+                        <div class="_flex _flex-row _justify-between _items-center _w-full _mb-4">
+                          <h3 class="_font-heading-primary _text-2xl _text-brand-dark">
+                            Best Sellers
+                          </h3>
+                          <a href="{{ childlink.url }}" class="hover:_underline _underline-offset-4 _no-underline _text-sm _font-link">See All</a>
+                        </div>
+                        <div class="">
+                          <embla-slider data-lazy>
+                            <div class="_overflow-hidden _relative" data-js-embla>
+                              <div class="_flex md:_gap-7 _gap-4 _select-none" data-js-embla-container>
+                                {% assign skip_card_product_styles = false %}
+                                {%- for product in slider_collection.products limit: products_to_show -%}
+                                  <div id="Slide-{{ section.id }}-{{ forloop.index }}"
+                                    class="
+                                    _w-2/3
+                                    md:_w-1/2
+                                    md:_max-w-[220px]
+                                    _flex-none
+                                    _flex
+                                    _justify-center
+                                    _items-center
+                                    _snap-start
+                                    _h-auto
+                                    {% if forloop.last %} md:_mr-12 _mr-4{% endif %}
+                                  ">
+                                    {% render 'wm__card-product',
+                                      card_product: product,
+                                      skip_styles: skip_card_product_styles,
+                                      section_id: section.id,
+                                      simple_card: true
+                                    %}
+                                  </div>
+                                  {%- assign skip_card_product_styles = true -%}
+                                {%- endfor -%}
+                              </div>
+                              <button data-js-embla-prev class="_absolute _hidden _left-0 _top-1/2 _-translate-y-12 _bg-brand-light _text-brand-dark hover:_scale-110 _items-center _justify-center _w-10 _h-10 _rounded-full disabled:_opacity-40">
+                                <span class="svg-wrapper _rotate-180 _w-5">
+                                  {{- 'arrow-chevron.svg' | inline_asset_content -}}
+                                </span>
+                              </button>
+                              <button data-js-embla-next class="_absolute md:_right-7 _right-4 _top-1/2 _-translate-y-12  _bg-brand-light _text-brand-dark hover:_scale-110 _flex _items-center _justify-center _w-10 _h-10 _rounded-full _opacity-80 hover:_opacity-100 disabled:_opacity-20">
+                                <span class="svg-wrapper _w-5">
+                                  {{- 'arrow-chevron.svg' | inline_asset_content -}}
+                                </span>
+                              </button>
                             </div>
-                            <button data-js-embla-prev class="_absolute _hidden _left-0 _top-1/2 _-translate-y-12 _bg-brand-light _text-brand-dark hover:_scale-110 _items-center _justify-center _w-10 _h-10 _rounded-full disabled:_opacity-40">
-                              <span class="svg-wrapper _rotate-180 _w-5">
-                                {{- 'arrow-chevron.svg' | inline_asset_content -}}
-                              </span>
-                            </button>
-                            <button data-js-embla-next class="_absolute md:_right-7 _right-4 _top-1/2 _-translate-y-12  _bg-brand-light _text-brand-dark hover:_scale-110 _flex _items-center _justify-center _w-10 _h-10 _rounded-full _opacity-80 hover:_opacity-100 disabled:_opacity-20">
-                              <span class="svg-wrapper _w-5">
-                                {{- 'arrow-chevron.svg' | inline_asset_content -}}
-                              </span>
-                            </button>
-                          </div>
-                        </embla-slider>
-                      </div>
+                          </embla-slider>
+                        </div>
+                      {%- elsif default_content == 'blog' -%}
+                        <div class="_flex _flex-row _justify-between _items-center _w-full _mb-4">
+                          <h3 class="_font-heading-primary _text-2xl _text-brand-dark">
+                            Articles
+                          </h3>
+                          <a href="{{ childlink.url }}" class="hover:_underline _underline-offset-4 _no-underline _text-sm _font-link">See All</a>
+                        </div>
+                        <div class="">
+                          {% comment %} TODO: product slider {% endcomment %}
+                          {% comment %} <embla-slider data-lazy>
+                            <div class="_overflow-hidden _relative" data-js-embla>
+                              <div class="_flex md:_gap-7 _gap-4 _select-none" data-js-embla-container>
+                                {% assign skip_card_product_styles = false %}
+                                {%- for product in slider_collection.products limit: products_to_show -%}
+                                  <div id="Slide-{{ section.id }}-{{ forloop.index }}"
+                                    class="
+                                    _w-2/3
+                                    md:_w-1/2
+                                    md:_max-w-[220px]
+                                    _flex-none
+                                    _flex
+                                    _justify-center
+                                    _items-center
+                                    _snap-start
+                                    _h-auto
+                                    {% if forloop.last %} md:_mr-12 _mr-4{% endif %}
+                                  ">
+                                    {% render 'wm__card-product',
+                                      card_product: product,
+                                      skip_styles: skip_card_product_styles,
+                                      section_id: section.id,
+                                      simple_card: true
+                                    %}
+                                  </div>
+                                  {%- assign skip_card_product_styles = true -%}
+                                {%- endfor -%}
+                              </div>
+                              <button data-js-embla-prev class="_absolute _hidden _left-0 _top-1/2 _-translate-y-12 _bg-brand-light _text-brand-dark hover:_scale-110 _items-center _justify-center _w-10 _h-10 _rounded-full disabled:_opacity-40">
+                                <span class="svg-wrapper _rotate-180 _w-5">
+                                  {{- 'arrow-chevron.svg' | inline_asset_content -}}
+                                </span>
+                              </button>
+                              <button data-js-embla-next class="_absolute md:_right-7 _right-4 _top-1/2 _-translate-y-12  _bg-brand-light _text-brand-dark hover:_scale-110 _flex _items-center _justify-center _w-10 _h-10 _rounded-full _opacity-80 hover:_opacity-100 disabled:_opacity-20">
+                                <span class="svg-wrapper _w-5">
+                                  {{- 'arrow-chevron.svg' | inline_asset_content -}}
+                                </span>
+                              </button>
+                            </div>
+                          </embla-slider> {% endcomment %}
+                          <embla-slider data-lazy>
+                            <div class="_overflow-hidden _relative" data-js-embla>
+                              <div class="_flex md:_gap-7 _gap-4 _select-none" data-js-embla-container>
+                                {%- assign selected_blog = blogs[slider_blog] -%}
+                                {%- for article in selected_blog.articles limit: articles_to_show -%}
+                                  <div
+                                    class="
+                                      _w-2/3
+                                      md:_w-1/2
+                                      md:_max-w-[220px]
+                                      _flex-none
+                                      _flex
+                                      _justify-center
+                                      _items-center
+                                      _snap-start
+                                      _h-auto
+                                      {% if forloop.last %} md:_mr-12 _mr-4{% endif %}
+                                    "
+                                  >
+                                    {%- render 'wm__article-card',
+                                      article: article,
+                                      simple_card: true
+                                    -%}
+                                  </div>
+                                {%- endfor -%}
+                              </div>
+                              <button data-js-embla-prev class="_absolute _hidden _left-0 _top-1/2 _-translate-y-12 _bg-brand-light _text-brand-dark hover:_scale-110 _items-center _justify-center _w-10 _h-10 _rounded-full disabled:_opacity-40">
+                                <span class="svg-wrapper _rotate-180 _w-5">
+                                  {{- 'arrow-chevron.svg' | inline_asset_content -}}
+                                </span>
+                              </button>
+                              <button data-js-embla-next class="_absolute md:_right-7 _right-4 _top-1/2 _-translate-y-12  _bg-brand-light _text-brand-dark hover:_scale-110 _flex _items-center _justify-center _w-10 _h-10 _rounded-full _opacity-80 hover:_opacity-100 disabled:_opacity-20">
+                                <span class="svg-wrapper _w-5">
+                                  {{- 'arrow-chevron.svg' | inline_asset_content -}}
+                                </span>
+                              </button>
+                            </div>
+                          </embla-slider>
+                        </div>
+                      {%- endif -%}
                     </div>
 
                     {% comment %} TODO: dynamic menus {% endcomment %}
