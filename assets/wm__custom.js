@@ -4,11 +4,38 @@ class EmblaSlider extends HTMLElement {
     this.embla = null;
     this.cleanupProgress = null;
     this.debounceTimeout = null;
+    this.hasInitialised = false;
   }
 
   connectedCallback() {
+    const isLazy = this.hasAttribute('data-lazy');
+
+    if (!isLazy) {
+      this.initSlider();
+      return;
+    }
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          console.log("initSlider - lazy");
+          this.initSlider();
+          observer.unobserve(this);
+        }
+      });
+    }, {
+      rootMargin: '0px 0px 200px 0px',
+      threshold: 0.1,
+    });
+
+    observer.observe(this)
+  }
+
+  initSlider() {
+    if (this.hasInitialised) return;
+    this.hasInitialised = true;
+
     const tabButtons = this.querySelectorAll('[data-js-collection-tab]');
-    
     if (tabButtons.length > 0) this.setupTabs(tabButtons);
     this.setupEmbla();
   }

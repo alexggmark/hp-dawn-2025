@@ -139,7 +139,7 @@
                       </div>
                       <div class="">
                         {% comment %} TODO: product slider {% endcomment %}
-                        <embla-slider>
+                        <embla-slider data-lazy>
                           <div class="_overflow-hidden _relative" data-js-embla>
                             <div class="_flex md:_gap-7 _gap-4 _select-none" data-js-embla-container>
                               {% assign skip_card_product_styles = false %}
@@ -320,7 +320,7 @@
                             {%- when 'product-carousel' -%}
                               {%- if active_child.collection_carousel != blank -%}
                                 {%- assign collection_carousel_metaobject_content = active_child.collection_carousel.value -%}
-                                <embla-slider>
+                                <embla-slider data-lazy>
                                   <div class="_overflow-hidden _relative" data-js-embla>
                                     <div class="_flex md:_gap-7 _gap-4 _select-none" data-js-embla-container>
                                       {% assign skip_card_product_styles = false %}
