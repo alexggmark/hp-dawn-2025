@@ -163,13 +163,49 @@
     },
     "wm_image_block_1_z7FEaK": {
       "type": "wm__image-block-1",
+      "blocks": {
+        "hotspot_emiaYN": {
+          "type": "hotspot",
+          "settings": {
+            "hotspot_location": "first",
+            "product_select": "5x-power-peel-face-exfoliator",
+            "hotspot_position_horizontal": 5,
+            "hotspot_position_horizontal_reverse": false,
+            "hotspot_position_vertical": 15,
+            "hotspot_position_vertical_reverse": true,
+            "hotspot_position_mobile_horizontal": 3,
+            "hotspot_position_mobile_horizontal_reverse": true,
+            "hotspot_position_mobile_vertical": 7,
+            "hotspot_position_mobile_vertical_reverse": true
+          }
+        },
+        "hotspot_iFtzwq": {
+          "type": "hotspot",
+          "settings": {
+            "hotspot_location": "second",
+            "product_select": "aquaboost-oil-free-face-moisturizer",
+            "hotspot_position_horizontal": 3,
+            "hotspot_position_horizontal_reverse": false,
+            "hotspot_position_vertical": 3,
+            "hotspot_position_vertical_reverse": true,
+            "hotspot_position_mobile_horizontal": 0,
+            "hotspot_position_mobile_horizontal_reverse": false,
+            "hotspot_position_mobile_vertical": 0,
+            "hotspot_position_mobile_vertical_reverse": false
+          }
+        }
+      },
+      "block_order": [
+        "hotspot_emiaYN",
+        "hotspot_iFtzwq"
+      ],
       "name": "WM ImageBlock 1",
       "settings": {
         "top_heading": "Quick links",
-        "main_heading": "Quick links",
-        "description": "Description text",
-        "cta_text": "See all",
-        "cta_url": "",
+        "main_heading": "Sun Protection, Done <em>Better</em>",
+        "description": "Our Sunscreens provide broad-spectrum protection that boost natural defences against ageing and free radical damage, all while nourishing and soothing skin.",
+        "cta_text": "Explore Now",
+        "cta_url": "shopify://collections",
         "video_1": "shopify://files/videos/power serum SMALL FOR WEB.mp4",
         "image_2": "shopify://shop_images/031425_SummerSkinRescue_Kit_HowToUse.webp",
         "margin_bottom": "12"

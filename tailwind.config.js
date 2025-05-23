@@ -33,6 +33,7 @@ module.exports = {
         '5xl': ['62px', { lineHeight: 'auto' }],
         '4xl': ['49px', { lineHeight: '1.25' }],
         '3xl': ['38px', { lineHeight: 'auto' }],
+        '2xl': ['24px', { lineHeight: 'auto' }],
         'xl': ['20px', { lineHeight: 'auto' }],
         'lg': ['16px', { lineHeight: 'auto' }],
         'base': ['14px', { lineHeight: 'auto' }],

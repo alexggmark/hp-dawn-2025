@@ -70,24 +70,25 @@
     _z-auto
     _flex-col
     md:_flex-row
+    md:_aspect-[5/2]
     {% if section.settings.image_height == 'adapt' %}
-      _h-auto
+      _min-h-auto
     {% else %} 
       {% case section.settings.image_height %}
         {% when 'small' %}
-          md:_h-[30rem]
+          md:_min-h-[30rem]
         {% when 'medium' %}
-          md:_h-[40rem]
+          md:_min-h-[40rem]
         {% when 'large' %}
-          md:_h-[44rem]
+          md:_min-h-[44rem]
       {% endcase %}
       {% case section.settings.mobile_image_height %}
         {% when 'small' %}
-          _h-[26rem]
+          _min-h-[26rem]
         {% when 'medium' %}
-          _h-[40rem]
+          _min-h-[40rem]
         {% when 'large' %}
-          _h-[44rem]
+          _min-h-[44rem]
       {% endcase %}
     {% endif %}
     {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}
