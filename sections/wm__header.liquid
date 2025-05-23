@@ -211,7 +211,7 @@
 
       {%- liquid
         if section.settings.menu != blank
-          render 'wm__header-mega-menu'
+          render 'wm__header-mega-menu', slider_collection: section.settings.slider_collection, products_to_show: section.settings.products_to_show
         endif
       %}
     </div>
@@ -451,6 +451,24 @@
   "class": "section-header",
   "max_blocks": 3,
   "settings": [
+    {
+      "type": "header",
+      "content": "Default collection/articles"
+    },
+    {
+      "type": "collection",
+      "id": "slider_collection",
+      "label": "Pick default collection"
+    },
+    {
+      "type": "range",
+      "id": "products_to_show",
+      "min": 2,
+      "max": 25,
+      "step": 1,
+      "default": 8,
+      "label": "Number of collection products to show"
+    },
     {
       "type": "link_list",
       "id": "menu",

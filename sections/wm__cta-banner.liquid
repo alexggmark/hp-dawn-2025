@@ -78,6 +78,7 @@
 
     {% comment %} banner__media, media {% endcomment %}
     <div class="_absolute _top-0 _left-0 _w-full _h-full _block _bg-brand-background _overflow-hidden{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
+      {% comment %} FIXME: CAN WE USE MEDIA_TAG AND JUST CHANGE THE INPUT TYPE?????? 🤔🤔🤔 {% endcomment %}
       {%- if section.settings.video -%}
          {{ section.settings.video | media_tag: image_size: '2048x', autoplay: true, loop: true, muted: true, controls: false, preload: 'none', class: "_object-cover _w-full _h-full" }}
       {%- else -%}

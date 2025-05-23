@@ -17,6 +17,7 @@ module.exports = {
         'brand-primary-500': '#3D72F6',
         'brand-secondary-700': '#6C7275',
         'brand-background': '#F1F1F1',
+        'brand-background-light': '#F7F8F9',
         'brand-border': '#DADEE2',
         'brand-light': '#ffffff',
         'brand-dark': '#000000'

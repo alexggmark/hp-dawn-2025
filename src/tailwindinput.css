@@ -37,7 +37,9 @@
   ._font-heading-small {
     @apply _font-semibold _tracking-wider _uppercase;
   }
-
+  ._font-link {
+    @apply _font-semibold _tracking-widest _uppercase;
+  }
   ._button-primary {
     @apply
     _flex _items-center _justify-center _gap-3
