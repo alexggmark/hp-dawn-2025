@@ -1,0 +1,94 @@
+{% comment %}
+  Renders a hot spot
+
+  Accepts:
+  - skip_script: {Boolean} Prevent reloading quick shop script if unnecessary.
+  - block_id: {String} The ID of the block that contains this hotspot.
+  - product_select: {Object} The product for this hotspot.
+  - hotspot_position_horizontal_reverse: {Boolean}
+  - hotspot_position_vertical_reverse: {Boolean}
+  - hotspot_position_mobile_horizontal_reverse: {Boolean}
+  - hotspot_position_mobile_vertical_reverse: {Boolean}
+  - hotspot_position_horizontal: {Number}
+  - hotspot_position_vertical: {Number}
+  - hotspot_position_mobile_horizontal: {Number}
+  - hotspot_position_mobile_vertical: {Number}
+{% endcomment %}
+
+{%- unless skip_script -%}
+  <script src="{{ 'wm__quick-shop.js' | asset_url }}" defer="defer"></script>
+{%- endunless -%}
+
+{%- capture hotspot_button_content -%}
+  <div class="
+    _relative
+    _cursor-pointer
+    _w-8 _h-8 
+    _rounded-full 
+    _border _border-white/50
+    before:_absolute 
+    before:_inset-0 
+    before:_bg-black/20
+    before:_backdrop-blur-sm
+    before:_rounded-full 
+    after:_absolute 
+    after:_inset-1/2 
+    after:_w-3.5 after:_h-3.5
+    _transition-all _duration-100 after:_transition-all after:_duration-200
+    hover:_scale-125
+    hover:after:_w-6 hover:after:_h-6 
+    after:_bg-white 
+    after:_rounded-full 
+    after:_transform 
+    after:_-translate-x-1/2 
+    after:_-translate-y-1/2
+    [.loading_&]:_opacity-0
+  ">
+    &nbsp;
+  </div>
+{%- endcapture -%}
+
+{%- comment %} Desktop Calculations {% endcomment -%}
+{%- assign horizontal_sign = '+' -%}
+{%- if hotspot_position_horizontal_reverse -%}
+  {%- assign horizontal_sign = '-' -%}
+{%- endif -%}
+
+{%- assign vertical_sign = '+' -%}
+{%- if hotspot_position_vertical_reverse -%}
+  {%- assign vertical_sign = '-' -%}
+{%- endif -%}
+
+{%- comment %} Mobile Calculations {% endcomment -%}
+{%- assign mobile_horizontal_sign = '+' -%}
+{%- if hotspot_position_mobile_horizontal_reverse -%}
+  {%- assign mobile_horizontal_sign = '-' -%}
+{%- endif -%}
+
+{%- assign mobile_vertical_sign = '+' -%}
+{%- if hotspot_position_mobile_vertical_reverse -%}
+  {%- assign mobile_vertical_sign = '-' -%}
+{%- endif -%}
+
+{%- style -%}
+  #HotSpot-{{ block_id }} {
+    transform: translate(calc(50% {{ mobile_horizontal_sign }} {{ hotspot_position_mobile_horizontal }}rem), calc(50% {{ mobile_vertical_sign }} {{ hotspot_position_mobile_vertical }}rem));
+  }
+  @media screen and (min-width: 750px) {
+    #HotSpot-{{ block_id }} {
+      transform: translate(calc(50% {{ horizontal_sign }} {{ hotspot_position_horizontal }}vw), calc(50% {{ vertical_sign }} {{ hotspot_position_vertical }}rem));
+    }
+  }
+{%- endstyle -%}
+
+<div class="
+  _absolute
+  _bottom-1/2
+  _right-1/2
+  _z-30
+  "
+  id="HotSpot-{{ block_id }}"
+>
+  {% assign product_form_id = 'quick-add-' | append: section.id | append: product_select.id %}
+  {% render 'wm__quick-shop', custom_button_html: hotspot_button_content, card_product: product_select, product_form_id: product_form_id, section_id: section.id %}
+</div>

@@ -6,9 +6,10 @@
 -%}
 
 <div class="section-{{ section.id }} _mb-{{ section.settings.margin_bottom | divided_by: 2 }} md:_mb-{{ section.settings.margin_bottom }} _py-20">
-  <div class="_relative _overflow-hidden page-width">
-    <div class="_grid md:_grid-cols-12 _grid-cols-1">
-      <div class="md:_col-span-3 _col-span-1 _flex _flex-col _items-start _justify-center">
+  <div class="_relative page-width--full-desktop-padded-mobile _isolate _bg-brand-background">
+    {% comment %} <div class="_absolute _inset-x-0 _top-16 _h-full _w-full _bg-brand-background _z-0 _pointer-events-none _block"></div> {% endcomment %}
+    <div class="_grid md:_grid-cols-12 _grid-cols-1 _z-10 _isolate">
+      <div class="md:_col-span-4 _col-span-1 _flex _flex-col _items-start _justify-center md:_order-2 md:_pl-24 md:_py-12 _max-w-96">
         {% unless section.settings.top_heading == blank %}
           <h3 class="_font-heading-small _text-brand-dark _text-sm">
             {{ section.settings.top_heading }}
@@ -20,7 +21,7 @@
           </h2>
         {% endunless %}
         {% unless section.settings.description == blank %}
-          <div class="_text-base _max-w-60 _mt-4">
+          <div class="_text-base _mt-4">
             {{ section.settings.description }}
           </div>
         {% endunless %}
@@ -33,10 +34,39 @@
           </a>
         {%- endunless -%}
       </div>
-      <div class="md:_col-span-9 _col-span-1 _flex _flex-row">
-        <div class="_overflow-hidden _min-h-96">
+      <div class="md:_col-span-8 _col-span-1 _flex _flex-row">
+        <div class="_flex-[0_0_35%] _aspect-[7/12] _-mr-16 _z-10 _relative">
+          {%- assign hotspot_block_counter = 0 -%}
+          {%- assign skip_script = false -%}
+          {%- for block in section.blocks -%}
+            {%- case block.type -%}
+              {%- when 'hotspot' -%}
+                {%- unless block.settings.hotspot_location == "second" -%}
+                  {%- if hotspot_block_counter > 0 -%}
+                    {%- assign skip_script = true -%}
+                  {%- endif -%}
+                  {% render 'wm__hotspot',
+                    skip_script: skip_script,
+                    block_id: block.id,
+                    product_select: block.settings.product_select,
+                    hotspot_position_horizontal_reverse: block.settings.hotspot_position_horizontal_reverse,
+                    hotspot_position_vertical_reverse: block.settings.hotspot_position_vertical_reverse,
+                    hotspot_position_mobile_horizontal_reverse: block.settings.hotspot_position_mobile_horizontal_reverse,
+                    hotspot_position_mobile_vertical_reverse: block.settings.hotspot_position_mobile_vertical_reverse,
+                    hotspot_position_horizontal: block.settings.hotspot_position_horizontal,
+                    hotspot_position_vertical: block.settings.hotspot_position_vertical,
+                    hotspot_position_mobile_horizontal: block.settings.hotspot_position_mobile_horizontal,
+                    hotspot_position_mobile_vertical: block.settings.hotspot_position_mobile_vertical
+                  %}
+                {%- endunless -%}
+
+            {%- endcase -%}
+          {%- endfor -%}
+
           {%- if section.settings.video_1 -%}
-            {{ section.settings.video_1 | media_tag: image_size: '2048x', autoplay: true, loop: true, muted: true, controls: false, preload: 'none', class: "_object-cover _w-full _h-full" }}
+            {{ section.settings.video_1 | media_tag: image_size: '2048x',
+              autoplay: true, loop: true, muted: true, controls: false, preload: 'none',
+              class: "_object-cover _w-full _h-full _-mt-16" }}
 
           {%- elsif section.settings.image_1 -%}
             {%- assign widths = '165, 360, 535, 750, 1070, 1500' -%}
@@ -53,9 +83,38 @@
             }}
           {%- endif -%}
         </div>
-        <div class="_overflow-hidden">
+        <div class="_flex-1 _w-full _aspect-[7/6] _overflow-hidden">
+          {%- assign hotspot_block_counter = 0 -%}
+          {%- assign skip_script = false -%}
+          {%- for block in section.blocks -%}
+            {%- case block.type -%}
+              {%- when 'hotspot' -%}
+                {%- unless block.settings.hotspot_location == "first" -%}
+                  {%- if hotspot_block_counter > 0 -%}
+                    {%- assign skip_script = true -%}
+                  {%- endif -%}
+                  {% render 'wm__hotspot',
+                    skip_script: skip_script,
+                    block_id: block.id,
+                    product_select: block.settings.product_select,
+                    hotspot_position_horizontal_reverse: block.settings.hotspot_position_horizontal_reverse,
+                    hotspot_position_vertical_reverse: block.settings.hotspot_position_vertical_reverse,
+                    hotspot_position_mobile_horizontal_reverse: block.settings.hotspot_position_mobile_horizontal_reverse,
+                    hotspot_position_mobile_vertical_reverse: block.settings.hotspot_position_mobile_vertical_reverse,
+                    hotspot_position_horizontal: block.settings.hotspot_position_horizontal,
+                    hotspot_position_vertical: block.settings.hotspot_position_vertical,
+                    hotspot_position_mobile_horizontal: block.settings.hotspot_position_mobile_horizontal,
+                    hotspot_position_mobile_vertical: block.settings.hotspot_position_mobile_vertical
+                  %}
+                {%- endunless -%}
+                
+            {%- endcase -%}
+          {%- endfor -%}
+
           {%- if section.settings.video_2 -%}
-            {{ section.settings.video_2 | media_tag: image_size: '2048x', autoplay: true, loop: true, muted: true, controls: false, preload: 'none', class: "_object-cover _w-full _h-full" }}
+            {{ section.settings.video_2 | media_tag: image_size: '2048x',
+              autoplay: true, loop: true, muted: true, controls: false, preload: 'none',
+              class: "_object-cover _w-full _h-full" }}
 
           {%- elsif section.settings.image_2 -%}
             {%- assign widths = '165, 360, 535, 750, 1070, 1500' -%}
@@ -179,9 +238,103 @@
       "label": "Margin bottom"
     }
   ],
+  "blocks": [
+    {
+      "type": "hotspot",
+      "name": "Product Hotspot",
+      "settings": [
+        {
+          "type": "select",
+          "id": "hotspot_location",
+          "options": [
+            {
+              "value": "first",
+              "label": "First media"
+            },
+            {
+              "value": "second",
+              "label": "Second media"
+            }
+          ],
+          "default": "first",
+          "label": "Pick first or second media"
+        },
+        {
+          "type": "product",
+          "id": "product_select",
+          "label": "t:sections.featured-product.settings.product.label"
+        },
+        {
+          "type": "range",
+          "id": "hotspot_position_horizontal",
+          "min": 0,
+          "max": 40,
+          "step": 1,
+          "default": 0,
+          "label": "Desktop hotspot position X"
+        },
+        {
+          "type": "checkbox",
+          "id": "hotspot_position_horizontal_reverse",
+          "default": false,
+          "label": "Reverse desktop hotspot position X"
+        },
+        {
+          "type": "range",
+          "id": "hotspot_position_vertical",
+          "min": 0,
+          "max": 40,
+          "step": 1,
+          "default": 0,
+          "label": "Desktop hotspot position Y"
+        },
+        {
+          "type": "checkbox",
+          "id": "hotspot_position_vertical_reverse",
+          "default": false,
+          "label": "Reverse desktop hotspot position Y"
+        },
+        {
+          "type": "range",
+          "id": "hotspot_position_mobile_horizontal",
+          "min": 0,
+          "max": 40,
+          "step": 1,
+          "default": 0,
+          "label": "Mobile hotspot position X"
+        },
+        {
+          "type": "checkbox",
+          "id": "hotspot_position_mobile_horizontal_reverse",
+          "default": false,
+          "label": "Reverse mobile hotspot position X"
+        },
+        {
+          "type": "range",
+          "id": "hotspot_position_mobile_vertical",
+          "min": 0,
+          "max": 40,
+          "step": 1,
+          "default": 0,
+          "label": "Mobile hotspot position Y"
+        },
+        {
+          "type": "checkbox",
+          "id": "hotspot_position_mobile_vertical_reverse",
+          "default": false,
+          "label": "Reverse mobile hotspot position Y"
+        }
+      ]
+    }
+  ],
   "presets": [
     {
-      "name": "WM ImageBlock 1"
+      "name": "WM ImageBlock 1",
+      "blocks": [
+        {
+          "type": "hotspot"
+        }
+      ]
     }
   ]
 }
