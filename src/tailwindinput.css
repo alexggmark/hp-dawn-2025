@@ -51,4 +51,16 @@
     _py-4
     _px-8;
   }
+
+  /* ._link-underline {
+    @apply _relative _inline-block _text-base _font-medium;
+
+    &::after {
+      content: '';
+      @apply _absolute _left-0 _-bottom-1 _w-0 _h-[1px] _bg-current _transition-all _duration-200;
+    }
+  }
+  ._link-underline-hover::after {
+    @apply _w-full;
+  } */
 }

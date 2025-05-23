@@ -604,6 +604,7 @@ details > * {
   --duration-extended: 3s;
   --ease-out-slow: cubic-bezier(0, 0, 0.3, 1);
   --animation-slide-in: slideIn var(--duration-extra-long) var(--ease-out-slow) forwards;
+  --animation-slide-in-quick: slideInQuick var(--duration-default) forwards;
   --animation-fade-in: fadeIn var(--duration-extra-long) var(--ease-out-slow);
 }
 
@@ -3332,6 +3333,16 @@ details-disclosure > details {
   @keyframes slideIn {
     from {
       transform: translateY(2rem);
+      opacity: 0.01;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  @keyframes slideInQuick {
+    from {
+      transform: translateY(1rem);
       opacity: 0.01;
     }
     to {

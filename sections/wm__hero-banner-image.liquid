@@ -70,25 +70,24 @@
     _z-auto
     _flex-col
     md:_flex-row
-    md:_aspect-[5/2]
     {% if section.settings.image_height == 'adapt' %}
-      _min-h-auto
+      _h-auto
     {% else %} 
       {% case section.settings.image_height %}
         {% when 'small' %}
-          md:_min-h-[30rem]
+          md:_h-[30rem]
         {% when 'medium' %}
-          md:_min-h-[40rem]
+          md:_h-[40rem]
         {% when 'large' %}
-          md:_min-h-[44rem]
+          md:_h-[44rem]
       {% endcase %}
       {% case section.settings.mobile_image_height %}
         {% when 'small' %}
-          _min-h-[26rem]
+          _h-[26rem]
         {% when 'medium' %}
-          _min-h-[40rem]
+          _h-[40rem]
         {% when 'large' %}
-          _min-h-[44rem]
+          _h-[44rem]
       {% endcase %}
     {% endif %}
     {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}
@@ -256,6 +255,9 @@
       md:_max-w-[70%]
     ">
     {% comment %} FIXME: test starts here {% endcomment %}
+      <div class="_w-full _py-24 _border _border-white link-underline-trigger">
+        <a href="#" class="link-underline _text-white">Link working now?</a>
+      </div>
       <h1 class="_text-brand-light _text-4xl _font-heading-primary">Sun Rescue That Regenerates?</h1>
       <h2 class="_text-brand-light _text-4xl _font-heading-primary _mb-3">
         <em>

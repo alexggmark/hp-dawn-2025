@@ -7,14 +7,19 @@
 {% style %}
   .tab-button {
     color: #8C8C8C;
-    text-underline-offset: 0.5rem;
   }
+  /*
+  Replacing with generic trigger
   .tab-button:hover {
     text-decoration: underline;
-  }
+  } */
   .tab-button.tab-button--active {
     color: var(--color-brand-primary-500);
     text-decoration: underline;
+    text-underline-offset: 0.4rem;
+  }
+  .tab-button.tab-button--active::after {
+    display: none!important; /* Make sure 'link-underline' doesn't interfere */
   }
 {% endstyle %}
 
@@ -41,7 +46,7 @@
                 {% assign first_collection = block.settings.collection %}
               {% endif %}
               <button
-                class="tab-button _font-heading-small _text-sm {% if forloop.first %}tab-button--active{% endif %}"
+                class="tab-button link-underline-trigger link-underline _font-heading-small _text-sm {% if forloop.first %}tab-button--active{% endif %}"
                 data-js-collection-tab="{{ block.settings.collection.handle }}"
               >
                 {{ block.settings.collection_title }}

@@ -6,8 +6,8 @@
 -%}
 
 <div class="section-{{ section.id }} _mb-{{ section.settings.margin_bottom | divided_by: 2 }} md:_mb-{{ section.settings.margin_bottom }} _py-20{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
-  <div class="_relative page-width _isolate">
-    {% comment %} <div class="_absolute _inset-x-0 _top-16 _h-full _w-full _bg-brand-background _z-0 _pointer-events-none _block"></div> {% endcomment %}
+  <div class="_relative page-width--full-desktop-padded-mobile _isolate">
+    <div class="_absolute _inset-x-0 _top-16 _h-full _w-full _bg-brand-background-light _z-0 _pointer-events-none _block"></div>
     <div class="_grid md:_grid-cols-12 _grid-cols-1 _z-10 _isolate">
       <div class="md:_col-span-4 _col-span-1 _flex _flex-col _items-start _justify-center md:_order-2 md:_pl-24 md:_py-12 _max-w-96">
         {% unless section.settings.top_heading == blank %}

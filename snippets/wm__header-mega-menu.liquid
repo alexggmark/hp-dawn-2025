@@ -22,6 +22,9 @@
   .js-panel--active {
     display: block;
   }
+  .js-panel--active .animation-content {
+    animation: var(--animation-slide-in-quick);
+  }
 {% endstyle %}
 
 {%- assign mega_menu_parents = metaobjects.mega_menu_parent.values -%}
@@ -73,9 +76,9 @@
             >
               <summary
                 id="HeaderMenu-{{ link.handle }}"
-                class="_p-6 _h-full hover:_underline _underline-offset-4 _no-underline _text-sm _font-link header-controlled--text list-menu__item focus-inset"
+                class="_p-6 _h-full link-underline-trigger _text-sm _font-link header-controlled--text list-menu__item focus-inset"
               >
-                <span>
+                <span class="link-underline">
                   {{- link.title | escape -}}
                 </span>
                 {{- 'icon-caret.svg' | inline_asset_content -}}
@@ -104,11 +107,11 @@
                 aria-label="Mega menu: {{ link.title }}"
                 role="navigation">
                   {% comment %} ⬅️ LEFT COLUMN: CHILD LINKS {% endcomment %}
-                  <nav aria-label="Category options" class="_col-span-3 _bg-brand-background-light _pt-10 mega-menu--padding-left">
+                  <nav aria-label="Category options" class="_col-span-3 _bg-brand-background-light _pt-10  mega-menu--padding-left _pr-12">
                     <h3 class="_font-heading-primary _text-2xl _text-brand-dark _mb-4">
                       {{ link.title | escape }}
                     </h3>
-                    <ul role="list" class="flex flex-col gap-3" id="menu-category-list">
+                    <ul role="list" id="menu-category-list">
                       {%- for childlink in link.links -%}
                         {%- assign active_child = nil -%}
 
@@ -121,17 +124,23 @@
                           {%- endif -%}
                         {%- endfor -%}
                         
-                        <li class="_flex-1">
-                          <div class="">
-                            <span
-                              class="hover:_underline _underline-offset-4 _no-underline _text-sm _font-link _mb-3"
-                              {% if active_child %}
-                                data-js-child="grandchild-panel-{{ childlink.handle }}"
-                              {% else %}
-                                data-js-child-no-links
-                              {% endif %}
-                            >{{ childlink.title | escape }}</span>
-                          </div>
+                        <li class="_py-2 _flex-1 _flex _items-center _justify-between _cursor-pointer link-underline-trigger"
+                          {% if active_child %}
+                            data-js-child="grandchild-panel-{{ childlink.handle }}"
+                          {% else %}
+                            data-js-child-no-links
+                          {% endif %}
+                        >
+                          <span
+                            class="_text-sm _font-link link-underline"
+                          >
+                            {{ childlink.title | escape }}
+                          </span>
+                          {%- if active_child -%}
+                            <span class="svg-wrapper _w-2.5 _-rotate-90 group-hover/childlink:_ml-2">
+                              {{- 'icon-caret.svg' | inline_asset_content -}}
+                            </span>
+                          {%- endif -%}
                         </li>
                       {%- endfor -%}
                     </ul>
@@ -146,7 +155,7 @@
                           </h3>
                           <a href="{{ childlink.url }}" class="hover:_underline _underline-offset-4 _no-underline _text-sm _font-link">See All</a>
                         </div>
-                        <div class="">
+                        <div class="animation-content">
                           <embla-slider data-lazy>
                             <div class="_overflow-hidden _relative" data-js-embla>
                               <div class="_flex md:_gap-7 _gap-4 _select-none" data-js-embla-container>
@@ -315,7 +324,7 @@
                                 role="list"
                                 aria-hidden="true"
                                 data-grandchild-panel="{{ childlink.handle }}"
-                                class="_grid _grid-cols-2 _gap-2"
+                                class="_grid _grid-cols-2 _gap-2 animation-content"
                               >
                                 {%- for grandchildlink in childlink.links -%}
                                   {%- assign active_grandchild = nil -%}
@@ -371,7 +380,7 @@
                                 role="list"
                                 aria-hidden="true"
                                 data-grandchild-panel="{{ childlink.handle }}"
-                                class="_grid _grid-cols-4 _gap-2"
+                                class="_grid _grid-cols-4 _gap-2 animation-content"
                               >
                                 {%- for grandchildlink in childlink.links -%}
                                   {%- assign active_grandchild = nil -%}
@@ -405,7 +414,7 @@
                                               alt: active_grandchild.label
                                           }}
                                         {%- endif -%}
-                                        <span class="hover:_underline _underline-offset-4 _no-underline _text-sm _font-link">
+                                        <span class="_text-sm _font-link">
                                           {{ grandchildlink.title }}
                                         </span>
                                       </div>
@@ -418,7 +427,7 @@
                               {%- if active_child.collection_carousel != blank -%}
                                 {%- assign collection_carousel_metaobject_content = active_child.collection_carousel.value -%}
                                 <embla-slider data-lazy>
-                                  <div class="_overflow-hidden _relative" data-js-embla>
+                                  <div class="_overflow-hidden _relative animation-content" data-js-embla>
                                     <div class="_flex md:_gap-7 _gap-4 _select-none" data-js-embla-container>
                                       {% assign skip_card_product_styles = false %}
                                       {%- for product in collection_carousel_metaobject_content.products limit: products_to_show -%}
@@ -463,7 +472,7 @@
                                   role="list"
                                   aria-hidden="true"
                                   data-grandchild-panel="{{ childlink.handle }}"
-                                  class="_grid _grid-cols-2 _gap-2"
+                                  class="_grid _grid-cols-2 _gap-2 animation-content"
                                 >
                                   {%- for grandchildlink in childlink.links -%}
                                     <li class="group/tile">
@@ -505,7 +514,7 @@
                       </h3>
                       <div class="_flex _flex-row _gap-2.5 _w-full">
                         {%- for banner in banner_entries -%}
-                          <div class="_flex-1 _flex _flex-col _relative _group/menubanner">
+                          <div class="_flex-1 _flex _flex-col _relative _group/menubanner link-underline-trigger">
                             <div class="_aspect-square _overflow-hidden _mb-2">
                               {%- assign media = banner.media.value -%}
                               <div class="_aspect-square _overflow-hidden _mb-2">
@@ -516,8 +525,8 @@
                                 {%- endif -%}
                               </div>
                             </div>
-                            <div class="_flex-1 _flex _flex-col _justify-between">
-                              {%- if banner.title -%}<h3 class="group-hover/menubanner:_underline _underline-offset-4 _no-underline _text-sm _font-link">{{ banner.title }}</h3>{%- endif -%}
+                            <div class="_flex-1 _flex _flex-col _justify-between _items-start">
+                              {%- if banner.title -%}<h3 class="link-underline _text-sm _font-link _inline">{{ banner.title }}</h3>{%- endif -%}
                               {%- if banner.cta_text -%}
                                 <a
                                   href="{{ banner.link.value.url }}"
@@ -558,12 +567,12 @@
           <a
             id="HeaderMenu-{{ link.handle }}"
             href="{{ link.url }}"
-            class="_p-6 _h-full hover:_underline _underline-offset-4 _no-underline _text-sm _font-semibold _tracking-widest header-controlled--text _uppercase list-menu__item focus-inset"
+            class="_p-6 _h-full link-underline-trigger _text-sm _font-semibold _tracking-widest header-controlled--text _uppercase list-menu__item focus-inset"
             {% if link.current %}
               aria-current="page"
             {% endif %}
           >
-            <span>
+            <span class="link-underline">
               {{- link.title | escape -}}
             </span>
           </a>

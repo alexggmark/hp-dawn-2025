@@ -70,7 +70,7 @@
       </div>
       <div class="md:_col-span-6 _col-span-1 _flex _flex-row">
         <div class="_flex _flex-row _gap-4 _w-full">
-          <div class="_w-1/2 _flex _h-full _items-center">
+          <div class="_w-1/2 _flex _flex-col _h-full _justify-center">
             <div
               class="_aspect-[2/3] _w-full _z-10 _relative{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
               {% if settings.animations_reveal_on_scroll %}
@@ -94,7 +94,7 @@
               {%- endif -%}
             </div>
           </div>
-          <div class="_w-1/2 _flex _flex-col _gap-4">
+          <div class="_w-1/2 _h-full _flex _flex-col _gap-4 _justify-center">
             {%- for i in (2..3) -%}
               <div
                 class="_aspect-[4/5] _z-10 _relative{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
