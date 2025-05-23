@@ -15,6 +15,13 @@
   .mega-menu--padding-right {
     padding-right: 3rem;
   }
+
+  .js-panel {
+    display: none;
+  }
+  .js-panel--active {
+    display: block;
+  }
 {% endstyle %}
 
 {%- assign mega_menu_parents = metaobjects.mega_menu_parent.values -%}
@@ -57,8 +64,9 @@
         {%- if link.links != blank -%}
           <details-hover-toggle>
             {% comment %} mega-menu {% endcomment %}
-            {% comment %} FIXME: REMOVE OPEN TRUE {% endcomment %}
-            <details id="Details-HeaderMenu-{{ forloop.index }}" class="_group _static _h-full" {% if forloop.first %}open="true"{% endif %}>
+            <details id="Details-HeaderMenu-{{ forloop.index }}" class="_group _static _h-full"
+              {% comment %} {% if forloop.first %}open="true"{% endif %} {% endcomment %}
+            >
               <summary
                 id="HeaderMenu-{{ link.handle }}"
                 class="_p-6 _h-full hover:_underline _underline-offset-4 _no-underline _text-sm _font-link header-controlled--text list-menu__item focus-inset"
@@ -98,17 +106,31 @@
                     </h3>
                     <ul role="list" class="flex flex-col gap-3" id="menu-category-list">
                       {%- for childlink in link.links -%}
+                        {%- assign active_child = nil -%}
+
+                        {%- for child in child_items -%}
+                          {%- assign child_label_stripped = child.label | downcase -%}
+                          {%- assign child_link_label_stripped = childlink.title | downcase -%}
+
+                          {%- if child_label_stripped == child_link_label_stripped -%}
+                            {%- assign active_child = child -%}
+                          {%- endif -%}
+                        {%- endfor -%}
+                        
                         <li class="_flex-1">
                           <div class="">
-                            <h3 class="hover:_underline _underline-offset-4 _no-underline _text-sm _font-link _mb-3">{{ childlink.title | escape }}</h3>
+                            <span
+                              class="hover:_underline _underline-offset-4 _no-underline _text-sm _font-link _mb-3"
+                              {% unless active_child == nil %}data-js-child="grandchild-panel-{{ childlink.handle }}"{% endunless %}
+                            >{{ childlink.title | escape }}</span>
                           </div>
                         </li>
                       {%- endfor -%}
                     </ul>
                   </nav>
                   {% comment %} ⬆️ MIDDLE COLUMN: GRANDCHILD LINKS {% endcomment %}
-                  <section aria-label="Subcategory options" id="menu-grandchildren"  class="_col-span-5 _pt-10">
-                    <div data-js-panel="grandchild-panel-{{ childlink.handle }}">
+                  <section aria-label="Subcategory options" id="menu-grandchildren"  class="_col-span-5 _pt-10 _pb-6">
+                    <div data-js-panel-initial class="js-panel js-panel--active">
                       <div class="_flex _flex-row _justify-between _items-center _w-full _mb-4">
                         <h3 class="_font-heading-primary _text-2xl _text-brand-dark">
                           Best Sellers
@@ -181,164 +203,17 @@
                         </script>
                       {%- endunless -%}
 
-                      <div data-js-panel="grandchild-panel-{{ childlink.handle }}">
-                        <div class="_flex _flex-row _justify-between _items-center _w-full _mb-4">
-                          <h3 class="_font-heading-primary _text-2xl _text-brand-dark">
-                            {{ childlink.title }}
-                          </h3>
-                          <a href="{{ childlink.url }}" class="hover:_underline _underline-offset-4 _no-underline _text-sm _font-link">See All</a>
-                        </div>
-                        {%- case active_child.type_of_menu -%}
-                          {% comment %} TODO: TILE {% endcomment %}
-                          {%- when 'tile' -%}
-                            <ul
-                              role="list"
-                              aria-hidden="true"
-                              data-grandchild-panel="{{ childlink.handle }}"
-                              class="_grid _grid-cols-2 _gap-2"
-                            >
-                              {%- for grandchildlink in childlink.links -%}
-                                {%- assign active_grandchild = nil -%}
-                                
-                                {%- for grandchild in active_child.grandchild_item.value -%}
-                                  {%- assign grandchild_label_stripped = grandchild.label | downcase -%}
-                                  {%- assign grandchild_link_label_stripped = grandchildlink.title | downcase -%}
-                                  
-                                  {%- if grandchild_label_stripped == grandchild_link_label_stripped -%}
-                                    {%- assign active_grandchild = grandchild -%}
-                                  {%- endif -%}
-                                {%- endfor -%}
-                                
-                                <li class="group/tile">
-                                  <a
-                                    href="{{ grandchildlink.url }}"
-                                    class="_bg-brand-background-light _flex _flex-row _justify-between _items-center _h-full _py-2 _pr-3"
-                                    {% if grandchildlink.current %}
-                                      aria-current="page"
-                                    {% endif %}
-                                  >
-                                    <div class="_flex _flex-row _items-center _gap-2">
-                                      {%- if active_grandchild -%}
-                                        <script>
-                                          console.log("active_grandchild");
-                                          console.log({{ active_grandchild | json }});
-                                        </script>
-                                        {{
-                                          active_grandchild.image
-                                          | image_url: width: 100
-                                          | image_tag:
-                                            class: '_w-12 _h-12 _object-cover',
-                                            widths: '100',
-                                            width: 100,
-                                            alt: active_grandchild.label
-                                        }}
-                                      {%- endif -%}
-                                      <span class="group-hover/tile:_underline _underline-offset-4 _no-underline _text-sm _font-link">
-                                        {{ grandchildlink.title }}
-                                      </span>
-                                    </div>
-                                    <span class="svg-wrapper _w-5">
-                                      {{- 'arrow-chevron.svg' | inline_asset_content -}}
-                                    </span>
-                                  </a>
-                                </li>
-                              {%- endfor -%}
-                            </ul>
-
-                          {% comment %} TODO: CARD {% endcomment %}
-                          {%- when 'card' -%}
-                            <ul
-                              role="list"
-                              aria-hidden="true"
-                              data-grandchild-panel="{{ childlink.handle }}"
-                              class="_grid _grid-cols-4 _gap-2"
-                            >
-                              {%- for grandchildlink in childlink.links -%}
-                                {%- assign active_grandchild = nil -%}
-                                
-                                {%- for grandchild in active_child.grandchild_item.value -%}
-                                  {%- assign grandchild_label_stripped = grandchild.label | downcase -%}
-                                  {%- assign grandchild_link_label_stripped = grandchildlink.title | downcase -%}
-                                  
-                                  {%- if grandchild_label_stripped == grandchild_link_label_stripped -%}
-                                    {%- assign active_grandchild = grandchild -%}
-                                  {%- endif -%}
-                                {%- endfor -%}
-                                
-                                <li>
-                                  <a
-                                    href="{{ grandchildlink.url }}"
-                                    class="_flex _flex-col _gap-4 _h-full"
-                                    {% if grandchildlink.current %}
-                                      aria-current="page"
-                                    {% endif %}
-                                  >
-                                    <div class="_flex _flex-col">
-                                      {%- if active_grandchild -%}
-                                        {{
-                                          active_grandchild.image
-                                          | image_url: width: 248
-                                          | image_tag:
-                                            class: '_w-full _h-full _object-cover',
-                                            widths: '124, 248',
-                                            width: 124,
-                                            alt: active_grandchild.label
-                                        }}
-                                      {%- endif -%}
-                                      <span class="hover:_underline _underline-offset-4 _no-underline _text-sm _font-link">
-                                        {{ grandchildlink.title }}
-                                      </span>
-                                    </div>
-                                  </a>
-                                </li>
-                              {%- endfor -%}
-                            </ul>
-
-                          {%- when 'product-carousel' -%}
-                            {%- if active_child.collection_carousel != blank -%}
-                              {%- assign collection_carousel_metaobject_content = active_child.collection_carousel.value -%}
-                              <embla-slider>
-                                <div class="_overflow-hidden _relative" data-js-embla>
-                                  <div class="_flex md:_gap-7 _gap-4 _select-none" data-js-embla-container>
-                                    {% assign skip_card_product_styles = false %}
-                                    {%- for product in collection_carousel_metaobject_content.products limit: products_to_show -%}
-                                      <div id="Slide-{{ section.id }}-{{ forloop.index }}"
-                                        class="
-                                        _w-2/3
-                                        md:_w-1/2
-                                        md:_max-w-[220px]
-                                        _flex-none
-                                        _flex
-                                        _justify-center
-                                        _items-center
-                                        _snap-start
-                                        _h-auto
-                                        {% if forloop.last %} md:_mr-12 _mr-4{% endif %}
-                                      ">
-                                        {% render 'wm__card-product',
-                                          card_product: product,
-                                          skip_styles: skip_card_product_styles,
-                                          section_id: section.id,
-                                          simple_card: true
-                                        %}
-                                      </div>
-                                      {%- assign skip_card_product_styles = true -%}
-                                    {%- endfor -%}
-                                  </div>
-                                  <button data-js-embla-prev class="_absolute _hidden _left-0 _top-1/2 _-translate-y-12 _bg-brand-light _text-brand-dark hover:_scale-110 _items-center _justify-center _w-10 _h-10 _rounded-full disabled:_opacity-40">
-                                    <span class="svg-wrapper _rotate-180 _w-5">
-                                      {{- 'arrow-chevron.svg' | inline_asset_content -}}
-                                    </span>
-                                  </button>
-                                  <button data-js-embla-next class="_absolute md:_right-7 _right-4 _top-1/2 _-translate-y-12  _bg-brand-light _text-brand-dark hover:_scale-110 _flex _items-center _justify-center _w-10 _h-10 _rounded-full _opacity-80 hover:_opacity-100 disabled:_opacity-20">
-                                    <span class="svg-wrapper _w-5">
-                                      {{- 'arrow-chevron.svg' | inline_asset_content -}}
-                                    </span>
-                                  </button>
-                                </div>
-                              </embla-slider>
-                            {%- else -%}
-                              {% comment %} Copy of tile logic, make sure to update later {% endcomment %}
+                      {%- unless active_child == nil -%}
+                        <div data-js-panel="grandchild-panel-{{ childlink.handle }}" class="js-panel">
+                          <div class="_flex _flex-row _justify-between _items-center _w-full _mb-4">
+                            <h3 class="_font-heading-primary _text-2xl _text-brand-dark">
+                              {{ childlink.title }}
+                            </h3>
+                            <a href="{{ childlink.url }}" class="hover:_underline _underline-offset-4 _no-underline _text-sm _font-link">See All</a>
+                          </div>
+                          {%- case active_child.type_of_menu -%}
+                            {% comment %} TODO: TILE {% endcomment %}
+                            {%- when 'tile' -%}
                               <ul
                                 role="list"
                                 aria-hidden="true"
@@ -346,6 +221,17 @@
                                 class="_grid _grid-cols-2 _gap-2"
                               >
                                 {%- for grandchildlink in childlink.links -%}
+                                  {%- assign active_grandchild = nil -%}
+                                  
+                                  {%- for grandchild in active_child.grandchild_item.value -%}
+                                    {%- assign grandchild_label_stripped = grandchild.label | downcase -%}
+                                    {%- assign grandchild_link_label_stripped = grandchildlink.title | downcase -%}
+                                    
+                                    {%- if grandchild_label_stripped == grandchild_link_label_stripped -%}
+                                      {%- assign active_grandchild = grandchild -%}
+                                    {%- endif -%}
+                                  {%- endfor -%}
+                                  
                                   <li class="group/tile">
                                     <a
                                       href="{{ grandchildlink.url }}"
@@ -355,6 +241,21 @@
                                       {% endif %}
                                     >
                                       <div class="_flex _flex-row _items-center _gap-2">
+                                        {%- if active_grandchild -%}
+                                          <script>
+                                            console.log("active_grandchild");
+                                            console.log({{ active_grandchild | json }});
+                                          </script>
+                                          {{
+                                            active_grandchild.image
+                                            | image_url: width: 100
+                                            | image_tag:
+                                              class: '_w-12 _h-12 _object-cover',
+                                              widths: '100',
+                                              width: 100,
+                                              alt: active_grandchild.label
+                                          }}
+                                        {%- endif -%}
                                         <span class="group-hover/tile:_underline _underline-offset-4 _no-underline _text-sm _font-link">
                                           {{ grandchildlink.title }}
                                         </span>
@@ -366,13 +267,136 @@
                                   </li>
                                 {%- endfor -%}
                               </ul>
-                            {%- endif -%}
 
-                          {%- else -%}
-                            <div>ELSE</div>
+                            {% comment %} TODO: CARD {% endcomment %}
+                            {%- when 'card' -%}
+                              <ul
+                                role="list"
+                                aria-hidden="true"
+                                data-grandchild-panel="{{ childlink.handle }}"
+                                class="_grid _grid-cols-4 _gap-2"
+                              >
+                                {%- for grandchildlink in childlink.links -%}
+                                  {%- assign active_grandchild = nil -%}
+                                  
+                                  {%- for grandchild in active_child.grandchild_item.value -%}
+                                    {%- assign grandchild_label_stripped = grandchild.label | downcase -%}
+                                    {%- assign grandchild_link_label_stripped = grandchildlink.title | downcase -%}
+                                    
+                                    {%- if grandchild_label_stripped == grandchild_link_label_stripped -%}
+                                      {%- assign active_grandchild = grandchild -%}
+                                    {%- endif -%}
+                                  {%- endfor -%}
+                                  
+                                  <li>
+                                    <a
+                                      href="{{ grandchildlink.url }}"
+                                      class="_flex _flex-col _gap-4 _h-full"
+                                      {% if grandchildlink.current %}
+                                        aria-current="page"
+                                      {% endif %}
+                                    >
+                                      <div class="_flex _flex-col">
+                                        {%- if active_grandchild -%}
+                                          {{
+                                            active_grandchild.image
+                                            | image_url: width: 248
+                                            | image_tag:
+                                              class: '_w-full _h-full _object-cover',
+                                              widths: '124, 248',
+                                              width: 124,
+                                              alt: active_grandchild.label
+                                          }}
+                                        {%- endif -%}
+                                        <span class="hover:_underline _underline-offset-4 _no-underline _text-sm _font-link">
+                                          {{ grandchildlink.title }}
+                                        </span>
+                                      </div>
+                                    </a>
+                                  </li>
+                                {%- endfor -%}
+                              </ul>
 
-                        {%- endcase -%}
-                      </div>
+                            {%- when 'product-carousel' -%}
+                              {%- if active_child.collection_carousel != blank -%}
+                                {%- assign collection_carousel_metaobject_content = active_child.collection_carousel.value -%}
+                                <embla-slider>
+                                  <div class="_overflow-hidden _relative" data-js-embla>
+                                    <div class="_flex md:_gap-7 _gap-4 _select-none" data-js-embla-container>
+                                      {% assign skip_card_product_styles = false %}
+                                      {%- for product in collection_carousel_metaobject_content.products limit: products_to_show -%}
+                                        <div id="Slide-{{ section.id }}-{{ forloop.index }}"
+                                          class="
+                                          _w-2/3
+                                          md:_w-1/2
+                                          md:_max-w-[220px]
+                                          _flex-none
+                                          _flex
+                                          _justify-center
+                                          _items-center
+                                          _snap-start
+                                          _h-auto
+                                          {% if forloop.last %} md:_mr-12 _mr-4{% endif %}
+                                        ">
+                                          {% render 'wm__card-product',
+                                            card_product: product,
+                                            skip_styles: skip_card_product_styles,
+                                            section_id: section.id,
+                                            simple_card: true
+                                          %}
+                                        </div>
+                                        {%- assign skip_card_product_styles = true -%}
+                                      {%- endfor -%}
+                                    </div>
+                                    <button data-js-embla-prev class="_absolute _hidden _left-0 _top-1/2 _-translate-y-12 _bg-brand-light _text-brand-dark hover:_scale-110 _items-center _justify-center _w-10 _h-10 _rounded-full disabled:_opacity-40">
+                                      <span class="svg-wrapper _rotate-180 _w-5">
+                                        {{- 'arrow-chevron.svg' | inline_asset_content -}}
+                                      </span>
+                                    </button>
+                                    <button data-js-embla-next class="_absolute md:_right-7 _right-4 _top-1/2 _-translate-y-12  _bg-brand-light _text-brand-dark hover:_scale-110 _flex _items-center _justify-center _w-10 _h-10 _rounded-full _opacity-80 hover:_opacity-100 disabled:_opacity-20">
+                                      <span class="svg-wrapper _w-5">
+                                        {{- 'arrow-chevron.svg' | inline_asset_content -}}
+                                      </span>
+                                    </button>
+                                  </div>
+                                </embla-slider>
+                              {%- else -%}
+                                {% comment %} Copy of tile logic, make sure to update later {% endcomment %}
+                                <ul
+                                  role="list"
+                                  aria-hidden="true"
+                                  data-grandchild-panel="{{ childlink.handle }}"
+                                  class="_grid _grid-cols-2 _gap-2"
+                                >
+                                  {%- for grandchildlink in childlink.links -%}
+                                    <li class="group/tile">
+                                      <a
+                                        href="{{ grandchildlink.url }}"
+                                        class="_bg-brand-background-light _flex _flex-row _justify-between _items-center _h-full _py-2 _pr-3"
+                                        {% if grandchildlink.current %}
+                                          aria-current="page"
+                                        {% endif %}
+                                      >
+                                        <div class="_flex _flex-row _items-center _gap-2">
+                                          <span class="group-hover/tile:_underline _underline-offset-4 _no-underline _text-sm _font-link">
+                                            {{ grandchildlink.title }}
+                                          </span>
+                                        </div>
+                                        <span class="svg-wrapper _w-5">
+                                          {{- 'arrow-chevron.svg' | inline_asset_content -}}
+                                        </span>
+                                      </a>
+                                    </li>
+                                  {%- endfor -%}
+                                </ul>
+                              {%- endif -%}
+
+                            {%- else -%}
+                              <div>ELSE</div>
+
+                          {%- endcase -%}
+                        </div>
+                      {%- endunless -%}
                     {%- endfor -%}
                   </section>
                   

@@ -38,6 +38,8 @@
     "header": {
       "type": "wm__header",
       "settings": {
+        "slider_collection": "acne-warrior",
+        "products_to_show": 8,
         "menu": "hp-dawn-25-main-navigation",
         "menu_type_desktop": "dropdown",
         "sticky_header_type": "reduce-logo-size",

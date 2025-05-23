@@ -63,7 +63,6 @@ class DetailsHoverToggle extends HTMLElement {
   }
 
   addEventListeners() {
-    return; // FIXME: REMOVE THIS
     if (!this.details || !this.summary) return;
 
     this.summary.addEventListener('mouseenter', () => {
@@ -74,7 +73,39 @@ class DetailsHoverToggle extends HTMLElement {
     this.details.addEventListener('mouseleave', () => {
       this.details.removeAttribute('open');
       this.headerWrapper?.classList.remove('header-wrapper--menu-open');
+      this.hideAllPanels();
     });
+
+    const childTriggers = this.querySelectorAll('[data-js-child]');
+    childTriggers.forEach(trigger => {
+      trigger.addEventListener('mouseenter', () => {
+        const key = trigger.dataset.jsChild;
+        this.showPanel(key);
+      });
+    });
+  }
+
+  showPanel(key) {
+    const allPanels = this.querySelectorAll('[data-js-panel]');
+    const initialPanel = this.querySelector('[data-js-panel-initial]');
+    initialPanel.classList.remove('js-panel--active');
+    allPanels.forEach(panel => {
+      if (panel.dataset.jsPanel === key) {
+        panel.classList.add('js-panel--active');
+      } else {
+        panel.classList.remove('js-panel--active');
+      }
+    });
+  }
+
+  hideAllPanels() {
+    console.log("hideAllPanels");
+    const allPanels = this.querySelectorAll('[data-js-panel]');
+    allPanels.forEach(panel => {
+      panel.classList.remove('js-panel--active');
+    });
+    const initialPanel = this.querySelector('[data-js-panel-initial]');
+    if (!initialPanel.classList.contains('js-panel--active')) initialPanel.classList.add('js-panel--active');
   }
 }
 
