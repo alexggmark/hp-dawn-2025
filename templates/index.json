@@ -117,6 +117,50 @@
         "margin_bottom": "0"
       }
     },
+    "wm_experts_carousel_AcfqkM": {
+      "type": "wm__experts-carousel",
+      "blocks": {
+        "expert_9WB8b4": {
+          "type": "expert",
+          "settings": {
+            "expert_quote": "<p>Lorem ipsum dolor sit amet. Dolor amet sipsum amet sit doloris amit sipsum.</p>",
+            "expert_name": "Dr Three Something",
+            "expert_jobtitle": "Cosmetic Chemist 2",
+            "expert_image": "shopify://shop_images/sun-slick-in-use.jpg"
+          }
+        },
+        "expert_jCm9pH": {
+          "type": "expert",
+          "settings": {
+            "expert_quote": "<p>Lorem ipsum dolor sit amet. Dolor amet sipsum amet sit doloris amit sipsum.</p>",
+            "expert_name": "Dr Two Something",
+            "expert_jobtitle": "Cosmetic Chemist 2",
+            "expert_image": "shopify://shop_images/sun-slick-in-use.jpg"
+          }
+        },
+        "expert_9JpryT": {
+          "type": "expert",
+          "settings": {
+            "expert_quote": "<p>Lorem ipsum dolor sit amet. Dolor amet sipsum amet sit doloris amit sipsum.</p>",
+            "expert_name": "Dr Something Something",
+            "expert_jobtitle": "Cosmetic Chemist",
+            "expert_image": "shopify://shop_images/sun-slick-in-use.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "expert_9WB8b4",
+        "expert_jCm9pH",
+        "expert_9JpryT"
+      ],
+      "name": "WM Experts Carousel",
+      "settings": {
+        "main_heading": "Meet our Experts",
+        "cta_text": "Learn More",
+        "cta_url": "shopify://collections/acne-warrior",
+        "margin_bottom": "12"
+      }
+    },
     "wm_tem_pfeatured_collection_gbEQ8b": {
       "type": "wm__TEMPfeatured-collection",
       "disabled": true,
@@ -392,6 +436,7 @@
   },
   "order": [
     "wm_hero_banner_image_CPaEAD",
+    "wm_experts_carousel_AcfqkM",
     "wm_tem_pfeatured_collection_gbEQ8b",
     "wm_product_card_scroll_zyx8Jr",
     "wm_image_block_1_z7FEaK",
