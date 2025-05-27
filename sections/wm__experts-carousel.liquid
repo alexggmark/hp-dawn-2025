@@ -1,0 +1,264 @@
+<script src="{{ 'wm__experts-carousel.js' | asset_url }}" defer="defer"></script>
+
+{%- liquid
+  assign fetch_priority = 'auto'
+  if section.index == 1
+    assign fetch_priority = 'high'
+  endif
+-%}
+
+{% style %}
+  .expert-slide {
+    margin-top: 10rem;
+    transition: margin-top 300ms ease;
+  }
+  .expert-slide[data-active] {
+    margin-top: 0;
+  }
+  .expert-slide .expert-image {
+    height: 280px;
+    transition: height 300ms ease;
+    opacity: 0.5;
+  }
+  .expert-slide[data-active] .expert-image {
+    height: calc(280px + 10rem);
+    opacity: 1;
+  }
+  /* .expert-slide .expert-image {
+    height: 300px;
+    transition: height 300ms ease;
+    opacity: 0.5;
+  }
+  .expert-slide[data-active] .expert-image {
+    height: 420px;
+    opacity: 1;
+  } */
+  .expert-content {
+    display: block;
+  }
+  .expert-content.expert-content--hidden {
+    display: none;
+  }
+{% endstyle %}
+
+<div class="section-{{ section.id }} _mb-{{ section.settings.margin_bottom | divided_by: 2 }} md:_mb-{{ section.settings.margin_bottom }} _py-20{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
+  <div class="_relative page-width--full-desktop-padded-mobile _isolate">
+    <experts-carousel>
+      <div class="_grid md:_grid-cols-12 _grid-cols-1 _z-10 _isolate _border _border-emerald-500">
+        <div class="md:_col-span-4 _col-span-1 _flex _flex-col _items-start _justify-center md:_pl-24 md:_py-12 _max-w-96">
+          {% unless section.settings.top_heading == blank %}
+            <h3 class="_font-heading-small _text-brand-dark _text-sm">
+              {{ section.settings.top_heading }}
+            </h3>
+          {% endunless %}
+          {% unless section.settings.main_heading == blank %}
+            <h2 class="_font-heading-primary _text-brand-dark md:_text-4xl _text-2xl _mt-1">
+              {{ section.settings.main_heading }}
+            </h2>
+          {% endunless %}
+          {%- for block in section.blocks -%}
+            {%- case block.type -%}
+              {%- when 'expert' -%}
+                <div
+                  class="_border _border-purple-400 expert-content{% unless forloop.first %} expert-content--hidden{% endunless %}"
+                  data-js-expert-content
+                  data-index="{{ forloop.index0 }}"
+                >
+                  <p>{{ block.settings.expert_quote }}</p>
+                  <p>{{ block.settings.expert_name }}</p>
+                  <p>{{ block.settings.expert_jobtitle }}</p>
+                </div>
+            {%- endcase -%}
+          {%- endfor -%}
+          {%- unless section.settings.cta_text == blank -%}
+            <a
+              href="{{ section.settings.cta_url }}"
+              class="_button-primary _mt-6"
+            >
+              {{- section.settings.cta_text -}}
+            </a>
+          {%- endunless -%}
+        </div>
+        <div class="md:_col-span-8 _col-span-1 _border _border-purple-500 _-mt-20">
+          <embla-slider data-lazy>
+              <div class="_overflow-hidden _relative" data-js-embla>
+                <div class="_flex md:_gap-7 _gap-4 _select-none" data-js-embla-container>
+                  {%- for block in section.blocks -%}
+                    {%- case block.type -%}
+                      {%- when 'expert' -%}
+                        <div
+                          class="
+                            expert-slide
+                            _w-2/3
+                            md:_w-1/2
+                            md:_max-w-[280px]
+                            _flex-none
+                            _flex _flex-col
+                            _border _border-brand-primary-500
+                            _justify-start
+                            _items-start
+                            _snap-start
+                            _h-auto
+                            {% if forloop.last %} md:_mr-12 _mr-4{% endif %}
+                          "
+                          data-js-expert-slide
+                        >
+                          {% comment %} <div class="_aspect-square _bg-brand-background-light _w-full _h-full _relative"> {% endcomment %}
+                          <div class="_bg-brand-background-light _w-full _min-h-[280px] _relative expert-image">
+                            <div class="_absolute _inset-0 _overflow-hidden _z-0">
+                              {% comment %}theme-check-disable ImgLazyLoading{% endcomment %}
+                              <img
+                                srcset="
+                                  {%- if block.settings.expert_image.src.width >= 165 -%}{{ block.settings.expert_image.src | image_url: width: 165 }} 165w,{%- endif -%}
+                                  {%- if block.settings.expert_image.src.width >= 360 -%}{{ block.settings.expert_image.src | image_url: width: 360 }} 360w,{%- endif -%}
+                                  {%- if block.settings.expert_image.src.width >= 533 -%}{{ block.settings.expert_image.src | image_url: width: 533 }} 533w,{%- endif -%}
+                                  {%- if block.settings.expert_image.src.width >= 720 -%}{{ block.settings.expert_image.src | image_url: width: 720 }} 720w,{%- endif -%}
+                                  {%- if block.settings.expert_image.src.width >= 1000 -%}{{ block.settings.expert_image.src | image_url: width: 1000 }} 1000w,{%- endif -%}
+                                  {%- if block.settings.expert_image.src.width >= 1500 -%}{{ block.settings.expert_image.src | image_url: width: 1500 }} 1500w,{%- endif -%}
+                                  {{ block.settings.expert_image.src | image_url }} {{ block.settings.expert_image.src.width }}w
+                                "
+                                src="{{ block.settings.expert_image.src | image_url: width: 533 }}"
+                                sizes="(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | divided_by: 2 }}px, (min-width: 750px) calc((100vw - 130px) / 2), calc((100vw - 50px) / 2)"
+                                alt="{{ block.settings.expert_image.src.alt | escape }}"
+                                class="motion-reduce  _object-cover _object-center _h-full _w-full group-hover:_scale-105"
+                                loading="lazy"
+                                width="{{ block.settings.expert_image.width }}"
+                                height="{{ block.settings.expert_image.height }}"
+                              >
+                              {% comment %}theme-check-enable ImgLazyLoading{% endcomment %}
+                            </div>
+                          </div>
+                          <div class="_border _border-blue-600">
+                            <p>{{ block.settings.expert_name }}</p>
+                            <p>{{ block.settings.expert_jobtitle }}</p>
+                          </div>
+                        </div>
+                    {%- endcase -%}
+                  {%- endfor -%}
+                </div>
+                <button data-js-embla-prev class="_absolute _hidden _left-0 _top-1/2 _-translate-y-12 _bg-brand-light _text-brand-dark hover:_scale-110 _items-center _justify-center _w-10 _h-10 _rounded-full disabled:_opacity-40">
+                  <span class="svg-wrapper _rotate-180 _w-5">
+                    {{- 'arrow-chevron.svg' | inline_asset_content -}}
+                  </span>
+                </button>
+                <button data-js-embla-next class="_absolute md:_right-7 _right-4 _top-1/2 _-translate-y-12  _bg-brand-light _text-brand-dark hover:_scale-110 _flex _items-center _justify-center _w-10 _h-10 _rounded-full _opacity-80 hover:_opacity-100 disabled:_opacity-20">
+                  <span class="svg-wrapper _w-5">
+                    {{- 'arrow-chevron.svg' | inline_asset_content -}}
+                  </span>
+                </button>
+              </div>
+            </embla-slider>
+        </div>
+      </div>
+    </experts-carousel>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "WM Experts Carousel",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "inline_richtext",
+      "id": "main_heading",
+      "default": "Meet our Experts",
+      "label": "Main Heading"
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "CTA Text",
+      "default": "See all"
+    },
+    {
+      "type": "url",
+      "id": "cta_url",
+      "label": "Pick URL for button"
+    },
+    {
+      "type": "header",
+      "content": "Margin bottom controls"
+    },
+    {
+      "type": "select",
+      "id": "margin_bottom",
+      "options": [
+        {
+          "value": "0",
+          "label": "0rem"
+        },
+        {
+          "value": "2",
+          "label": "0.5rem"
+        },
+        {
+          "value": "4",
+          "label": "1rem"
+        },
+        {
+          "value": "6",
+          "label": "1.5rem"
+        },
+        {
+          "value": "8",
+          "label": "2rem"
+        },
+        {
+          "value": "12",
+          "label": "3rem"
+        },
+        {
+          "value": "16",
+          "label": "4rem"
+        }
+      ],
+      "default": "12",
+      "label": "Margin bottom"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "expert",
+      "name": "Expert Block",
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "expert_quote",
+          "label": "Expert quote (don't include quotation marks)"
+        },
+        {
+          "type": "text",
+          "id": "expert_name",
+          "default": "Dr Something Something",
+          "label": "Expert Name"
+        },
+        {
+          "type": "text",
+          "id": "expert_jobtitle",
+          "default": "Cosmetic Chemist",
+          "label": "Expert Job Title"
+        },
+        {
+          "type": "image_picker",
+          "id": "expert_image",
+          "label": "Expert headshot"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "WM Experts Carousel",
+      "blocks": [
+        {
+          "type": "expert"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

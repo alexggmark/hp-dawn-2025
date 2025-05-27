@@ -10,7 +10,7 @@
 {
   "sections": {
     "main": {
-      "type": "main-product",
+      "type": "wm__main-product",
       "blocks": {
         "vendor": {
           "type": "text",
