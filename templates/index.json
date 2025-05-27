@@ -124,6 +124,24 @@
           "type": "expert",
           "settings": {
             "expert_quote": "<p>Lorem ipsum dolor sit amet. Dolor amet sipsum amet sit doloris amit sipsum.</p>",
+            "expert_name": "Mr. ONE Something",
+            "expert_jobtitle": "Testing Chemist",
+            "expert_image": "shopify://shop_images/sun-slick-in-use.jpg"
+          }
+        },
+        "expert_PJMbBc": {
+          "type": "expert",
+          "settings": {
+            "expert_quote": "<p>Lorem ipsum dolor sit amet. Dolor amet sipsum amet sit doloris amit sipsum.</p>",
+            "expert_name": "Zr. ONE Something",
+            "expert_jobtitle": "Cosmetic Chemist 2",
+            "expert_image": "shopify://shop_images/sun-slick-in-use.jpg"
+          }
+        },
+        "expert_zXeQgT": {
+          "type": "expert",
+          "settings": {
+            "expert_quote": "<p>Lorem ipsum dolor sit amet. Dolor amet sipsum amet sit doloris amit sipsum.</p>",
             "expert_name": "Dr Three Something",
             "expert_jobtitle": "Cosmetic Chemist 2",
             "expert_image": "shopify://shop_images/sun-slick-in-use.jpg"
@@ -150,6 +168,8 @@
       },
       "block_order": [
         "expert_9WB8b4",
+        "expert_PJMbBc",
+        "expert_zXeQgT",
         "expert_jCm9pH",
         "expert_9JpryT"
       ],

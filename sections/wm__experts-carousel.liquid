@@ -9,7 +9,7 @@
 
 {% style %}
   .expert-slide {
-    margin-top: 4rem;
+    margin-top: 6rem;
     transition: margin-top 300ms ease;
     cursor: pointer;
   }
@@ -25,7 +25,7 @@
     opacity: 0.6;
   }
   .expert-slide[data-active] .expert-image {
-    height: calc(280px + 4rem);
+    height: calc(280px + 6rem);
   }
   .expert-slide[data-active] .expert-image img {
     opacity: 1;
@@ -46,7 +46,7 @@
   <div class="_relative page-width--overflow-right _isolate _bg-brand-background-light _py-16">
     <experts-slider-embla>
       <div class="_grid md:_grid-cols-12 _grid-cols-1 _z-10 _isolate">
-        <div class="md:_col-span-3 _col-span-1 _flex _flex-col _items-start _justify-center md:_py-12">
+        <div class="md:_col-span-3 _col-span-1 _flex _flex-col _items-start _justify-center md:_pt-8 md:_pb-12">
           {% unless section.settings.top_heading == blank %}
             <h3 class="_font-heading-small _text-brand-dark _text-sm">
               {{ section.settings.top_heading }}
@@ -78,7 +78,7 @@
             </a>
           {%- endunless -%}
         </div>
-        <div class="md:_col-span-9 _col-span-1 _-mt-6">
+        <div class="md:_col-span-9 _col-span-1 _-mt-28">
           <div class="_overflow-hidden _relative" data-js-embla>
             <div class="_flex md:_gap-7 _gap-4 _select-none" data-js-embla-container>
               {%- for block in section.blocks -%}
@@ -96,7 +96,7 @@
                         _items-start
                         _snap-start
                         _h-auto
-                        {% if forloop.last %} md:_mr-12 _mr-4{% endif %}
+                        {% if forloop.last %} md:_mr-7 _mr-4{% endif %}
                         _group/expertslide
                       "
                       data-js-expert-slide
