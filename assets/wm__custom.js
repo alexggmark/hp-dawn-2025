@@ -142,3 +142,63 @@ class EmblaSlider extends HTMLElement {
 }
 
 customElements.define('embla-slider', EmblaSlider);
+
+class AnimatedDetails extends HTMLElement {
+  constructor() {
+    super();
+  }
+
+  connectedCallback() {
+    this.details = this.querySelector('details');
+    this.summary = this.details?.querySelector('summary');
+    this.content = this.details?.querySelector('details>div');
+    // Alex - this only works with specific plus sign which has 2 paths, 1st being vertical line
+    this.plusIcon = this.details?.querySelector('[data-js-plus-icon]');
+
+    if (typeof window.Motion !== 'object' || typeof window.Motion.animate !== 'function') {
+      console.error('[AnimatedDetails] Motion One is not loaded or unavailable.');
+      return;
+    }
+
+    if (!this.details || !this.summary || !this.content) return;
+
+    this.details.removeAttribute('open');
+    this.content.style.overflow = 'hidden';
+    this.content.style.opacity = 0;
+    this.content.style.height = '0px';
+    this.content.style.display = 'none';
+
+    this.summary.addEventListener('click', (e) => {
+      e.preventDefault();
+
+      const isOpen = this.details.hasAttribute('open');
+
+      if (isOpen) {
+        if (this.plusIcon) this.plusIcon.querySelector('svg>path:first-child').style.opacity = 1;
+        Motion.animate(this.content, {
+          opacity: [1, 0],
+          height: [`${this.content.scrollHeight}px`, '0px']
+        }, {
+          duration: 0.2,
+          easing: 'ease-in'
+        }).finished.then(() => {
+          this.content.style.display = 'none';
+          this.details.removeAttribute('open');
+        });
+      } else {
+        if (this.plusIcon) this.plusIcon.querySelector('svg>path:first-child').style.opacity = 0;
+        this.details.setAttribute('open', '');
+        this.content.style.display = 'block';
+        Motion.animate(this.content, {
+          opacity: [0, 1],
+          height: ['0px', `${this.content.scrollHeight}px`]
+        }, {
+          duration: 0.2,
+          easing: 'ease-out'
+        });
+      }
+    });
+  }
+}
+
+customElements.define('animated-details', AnimatedDetails);

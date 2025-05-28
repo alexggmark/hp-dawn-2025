@@ -41,6 +41,10 @@
             "show_dynamic_checkout": false,
             "show_gift_card_recipient": false
           }
+        },
+        "product_details_CfyEpb": {
+          "type": "product_details",
+          "settings": {}
         }
       },
       "block_order": [
@@ -49,7 +53,8 @@
         "description",
         "price",
         "variant_picker",
-        "buy_buttons"
+        "buy_buttons",
+        "product_details_CfyEpb"
       ],
       "settings": {
         "enable_sticky_info": true,

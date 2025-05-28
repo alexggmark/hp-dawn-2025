@@ -317,7 +317,34 @@
               {%- when 'rating' -%}
                 {% render 'wm__rating-stars', main_product: product %}
               {%- when 'product_details' -%}
-                <div class="_w-full _h-96 _bg-emerald-500 _block"></div>
+                <div class="_w-full _block _mt-6">
+
+                  {%- for i in (1..4) -%}
+                    <animated-details>
+                      <details class="_border-t _border-brand-border {% if forloop.last %} _border-b{% endif %}">
+                        <summary class="_py-4 _flex _justify-between _items-center _w-full _group/faq">
+                          <span class="_font-heading-primary _text-brand-dark _text-2xl">Ingredients</span>
+                          <span class="svg-wrapper _w-6 _h-6 group-hover/faq:_scale-110 _text-brand-primary-500" data-js-plus-icon>
+                            {{- 'icon-newbuild-plus-thin.svg' | inline_asset_content -}}
+                          </span>
+                        </summary>
+                        <div class="_py-4">
+                          <p>animated-details</p>
+                          <p>animated-details</p>
+                          <p>animated-details</p>
+                          <p>animated-details</p>
+                          <p>animated-details</p>
+                          <p>animated-details</p>
+                          <p>animated-details</p>
+                          <p>animated-details</p>
+                          <p>animated-details</p>
+                          <p>animated-details</p>
+                        </div>
+                      </details>
+                    </animated-details>
+                  {%- endfor -%}
+
+                </div>
               {%- when 'complementary' -%}
                 <product-recommendations
                   class="complementary-products quick-add-hidden{% if block.settings.make_collapsible_row %} is-accordion{% endif %}{% if block.settings.enable_quick_add %} complementary-products-contains-quick-add{% endif %}"
