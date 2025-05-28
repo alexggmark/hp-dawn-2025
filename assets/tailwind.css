@@ -646,6 +646,10 @@ video {
   pointer-events: none !important;
 }
 
+._visible {
+  visibility: visible !important;
+}
+
 ._invisible {
   visibility: hidden !important;
 }
@@ -1090,6 +1094,10 @@ video {
 
 ._h-full {
   height: 100% !important;
+}
+
+._h-64 {
+  height: 16rem !important;
 }
 
 ._min-h-8 {
@@ -2220,6 +2228,14 @@ video {
 
 .disabled\:_opacity-40:disabled {
   opacity: 0.4 !important;
+}
+
+._group\/headerdrawer[open] .group-open\/headerdrawer\:_visible {
+  visibility: visible !important;
+}
+
+._group\/headerdrawer[open] .group-open\/headerdrawer\:_invisible {
+  visibility: hidden !important;
 }
 
 ._group\/open[open] .group-open\/open\:_rotate-0 {

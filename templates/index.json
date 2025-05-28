@@ -100,7 +100,6 @@
         "custom_liquid_mWDXYL",
         "hotspot_wggL9m"
       ],
-      "name": "WM Hero Banner Image",
       "settings": {
         "image": "shopify://shop_images/christmas-banner-desktop_f40bfc9a-0c44-48b4-997b-e611d889af29.png",
         "image_overlay_opacity": 60,
@@ -120,7 +119,6 @@
     "wm_tem_pfeatured_collection_gbEQ8b": {
       "type": "wm__TEMPfeatured-collection",
       "disabled": true,
-      "name": "TEMP FeaturedCollect",
       "settings": {
         "collection": "best-sellers",
         "products_to_show": 9,
@@ -149,7 +147,6 @@
     },
     "wm_product_card_scroll_zyx8Jr": {
       "type": "wm__product-card-scroll",
-      "name": "WM Product Scroll",
       "settings": {
         "top_heading": "Elevated by Science",
         "main_heading": "New Essentials",
@@ -199,7 +196,6 @@
         "hotspot_emiaYN",
         "hotspot_iFtzwq"
       ],
-      "name": "WM ImageBlock 1",
       "settings": {
         "top_heading": "Quick links",
         "main_heading": "Sun Protection, Done <em>Better</em>",
@@ -213,7 +209,6 @@
     },
     "wm_image_block_2_JMQnte": {
       "type": "wm__image-block-2",
-      "name": "WM ImageBlock 2",
       "settings": {
         "top_heading": "",
         "main_heading": "<em>Why</em> HydroPeptide?",
@@ -242,7 +237,6 @@
     },
     "wm_cta_banner_3XbrBt": {
       "type": "wm__cta-banner",
-      "name": "WM CTA Banner",
       "settings": {
         "top_heading": "Elevated by Science",
         "main_heading": "Your Skincare <em>Powered</em> By Peptides",
@@ -265,6 +259,7 @@
           "type": "featured_collection",
           "settings": {
             "collection": "acne-warrior",
+            "collection_image": "shopify://shop_images/miracle_mask.webp",
             "collection_color": "#c8d3f3"
           }
         },
@@ -272,6 +267,7 @@
           "type": "featured_collection",
           "settings": {
             "collection": "christmas-gift-sets",
+            "collection_image": "shopify://shop_images/solar-defense-non-tinted.webp",
             "collection_color": "#fcfbf6"
           }
         },
@@ -279,6 +275,7 @@
           "type": "featured_collection",
           "settings": {
             "collection": "gifts-under-100",
+            "collection_image": "shopify://shop_images/Solar_defense_tinted.webp",
             "collection_color": "#ead1cd"
           }
         },
@@ -286,6 +283,7 @@
           "type": "featured_collection",
           "settings": {
             "collection": "glowing-gifts",
+            "collection_image": "shopify://shop_images/Claryfying-toner.webp",
             "collection_color": "#9db7b4"
           }
         },
@@ -328,7 +326,6 @@
         "featured_collection_cJLNmx",
         "featured_collection_MkATX9"
       ],
-      "name": "WM Collection Card Scroll",
       "settings": {
         "top_heading": "Elevated by science",
         "main_heading": "Our Collections",
@@ -391,7 +388,6 @@
         "expert_jCm9pH",
         "expert_9JpryT"
       ],
-      "name": "WM Experts Carousel",
       "settings": {
         "main_heading": "Meet our Experts",
         "cta_text": "Learn More",
@@ -429,7 +425,6 @@
         "featured_collection_qztje3",
         "featured_collection_Ljd7Ct"
       ],
-      "name": "WM ProdScroll Tabbed",
       "settings": {
         "top_heading": "New protect collection",
         "main_heading": "Skin Concern Section",
@@ -443,7 +438,6 @@
     },
     "wm_article_card_scroll_7yYjit": {
       "type": "wm__article-card-scroll",
-      "name": "WM Article Scroll",
       "settings": {
         "top_heading": "Quick links",
         "main_heading": "Guides and tips for <em>your</em> skincare",
@@ -455,7 +449,6 @@
     },
     "wm_cta_banner_NHHzjX": {
       "type": "wm__cta-banner",
-      "name": "WM CTA Banner",
       "settings": {
         "top_heading": "Elevated by Science",
         "main_heading": "Your Skincare <em>Powered</em> By Peptides",
