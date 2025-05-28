@@ -129,8 +129,22 @@
                 </p>
               {%- when 'description' -%}
                 {%- if product.description != blank -%}
-                  <div class="rte quick-add-hidden _border-b _border-brand-border _pb-2 _mb-2" {{ block.shopify_attributes }}>
-                    {{ product.description }}
+                  <div class="_border-b _border-brand-border _pb-4">
+                    {%- assign word_count = product.description | strip_html | strip | split: ' ' | size -%}
+                    {%- assign max_height = 100 -%}
+
+                    {%- if word_count <= 40 -%}
+                      <div class="rte quick-add-hidden _pb-2" {{ block.shopify_attributes }}>
+                        {{ product.description }}
+                      </div>
+                    {%- else -%}
+                      <animated-read-more data-max-height="{{ max_height }}">
+                        <div data-js-read-more-content class="rte quick-add-hidden mask-fade-bottom _pb-2" {{ block.shopify_attributes }} style="max-height: {{ max_height }}px">
+                          {{ product.description }}
+                        </div>
+                        <button class="_underline hover:_no-underline _underline-offset-4 _text-brand-primary-500" data-js-read-more-button>Read more</button>
+                      </animated-read-more>
+                    {%- endif -%}
                   </div>
                 {%- endif -%}
               {%- when 'sku' -%}
@@ -328,7 +342,7 @@
                             {{- 'icon-newbuild-plus-thin.svg' | inline_asset_content -}}
                           </span>
                         </summary>
-                        <div class="_py-4">
+                        <div>
                           <p>animated-details</p>
                           <p>animated-details</p>
                           <p>animated-details</p>

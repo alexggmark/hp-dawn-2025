@@ -44,9 +44,9 @@
     @apply
     _flex _items-center _justify-center _gap-3
     _font-semibold _text-base _uppercase _tracking-widest
-    _text-brand-dark
-    _bg-white hover:_bg-brand-background
-    _border _border-brand-dark hover:_border-brand-dark
+    _text-brand-dark hover:_text-brand-light
+    _bg-white hover:_bg-brand-primary-500
+    _border _border-brand-dark hover:_border-brand-primary-500
     _transition-colors _duration-150
     _py-4
     _px-8;

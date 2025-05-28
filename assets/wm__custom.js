@@ -202,3 +202,68 @@ class AnimatedDetails extends HTMLElement {
 }
 
 customElements.define('animated-details', AnimatedDetails);
+
+class AnimatedReadMore extends HTMLElement {
+  constructor() {
+    super();
+  }
+
+  connectedCallback() {
+    if (typeof window.Motion !== 'object' || typeof window.Motion.animate !== 'function') {
+      console.error('[AnimatedReadMore] Motion One not available.');
+      return;
+    }
+
+    this.content = this.querySelector('[data-js-read-more-content]');
+    this.button = this.querySelector('[data-js-read-more-button]');
+    if (!this.content || !this.button) return;
+
+    this.expanded = false;
+    this.maxHeight = parseInt(this.dataset.maxHeight || 100, 10);
+
+    // Only apply initial collapsed state if not already present
+    const initialMaxHeight = parseInt(this.content.style.maxHeight, 10);
+    if (isNaN(initialMaxHeight) || initialMaxHeight > this.maxHeight) {
+      this.content.style.maxHeight = `${this.maxHeight}px`;
+    }
+
+    if (!this.content.classList.contains('mask-fade-bottom')) {
+      this.content.classList.add('mask-fade-bottom');
+    }
+
+    if (this.content.style.overflow !== 'hidden') {
+      this.content.style.overflow = 'hidden';
+    }
+
+    this.button.addEventListener('click', () => this.toggle());
+  }
+
+  toggle() {
+    const content = this.content;
+
+    this.expanded = !this.expanded;
+    const targetHeight = this.expanded ? content.scrollHeight : this.maxHeight;
+
+    if (this.expanded) {
+      content.classList.remove('mask-fade-bottom');
+    }
+
+    Motion.animate(content, {
+      maxHeight: [content.offsetHeight, targetHeight]
+    }, {
+      duration: 0.4,
+      easing: 'ease-in-out',
+    }).finished.then(() => {
+      if (this.expanded) {
+        content.style.maxHeight = 'none'; // allow natural flow
+      } else {
+        content.style.maxHeight = `${this.maxHeight}px`;
+        content.classList.add('mask-fade-bottom');
+      }
+    });
+
+    this.button.textContent = this.expanded ? 'Show less' : 'Read more';
+  }
+}
+
+customElements.define('animated-read-more', AnimatedReadMore);
