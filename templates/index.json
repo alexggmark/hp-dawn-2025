@@ -258,48 +258,6 @@
         "margin_bottom": "0"
       }
     },
-    "wm_product_scroll_tabbed_reload_nmbiyz": {
-      "type": "wm__product-scroll-tabbed-reload",
-      "blocks": {
-        "featured_collection_Hnb8cz": {
-          "type": "featured_collection",
-          "settings": {
-            "collection": "all",
-            "collection_title": "Dullness + Hyperpigmentation"
-          }
-        },
-        "featured_collection_qztje3": {
-          "type": "featured_collection",
-          "settings": {
-            "collection": "acne-warrior",
-            "collection_title": "Redness + Sensitivity"
-          }
-        },
-        "featured_collection_Ljd7Ct": {
-          "type": "featured_collection",
-          "settings": {
-            "collection": "cult-favorites",
-            "collection_title": "Oily + Acne Prone"
-          }
-        }
-      },
-      "block_order": [
-        "featured_collection_Hnb8cz",
-        "featured_collection_qztje3",
-        "featured_collection_Ljd7Ct"
-      ],
-      "name": "WM ProdScroll Tabbed",
-      "settings": {
-        "top_heading": "New protect collection",
-        "main_heading": "Skin Concern Section",
-        "collection": "",
-        "products_to_show": 10,
-        "show_rating": true,
-        "quick_add": "standard",
-        "cta_text": "See all",
-        "margin_bottom": "12"
-      }
-    },
     "wm_collection_card_scroll_Mkbaft": {
       "type": "wm__collection-card-scroll",
       "blocks": {
@@ -441,6 +399,48 @@
         "margin_bottom": "12"
       }
     },
+    "wm_product_scroll_tabbed_reload_nmbiyz": {
+      "type": "wm__product-scroll-tabbed-reload",
+      "blocks": {
+        "featured_collection_Hnb8cz": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "all",
+            "collection_title": "Dullness + Hyperpigmentation"
+          }
+        },
+        "featured_collection_qztje3": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "acne-warrior",
+            "collection_title": "Redness + Sensitivity"
+          }
+        },
+        "featured_collection_Ljd7Ct": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "cult-favorites",
+            "collection_title": "Oily + Acne Prone"
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_Hnb8cz",
+        "featured_collection_qztje3",
+        "featured_collection_Ljd7Ct"
+      ],
+      "name": "WM ProdScroll Tabbed",
+      "settings": {
+        "top_heading": "New protect collection",
+        "main_heading": "Skin Concern Section",
+        "collection": "",
+        "products_to_show": 10,
+        "show_rating": true,
+        "quick_add": "standard",
+        "cta_text": "See all",
+        "margin_bottom": "12"
+      }
+    },
     "wm_article_card_scroll_7yYjit": {
       "type": "wm__article-card-scroll",
       "name": "WM Article Scroll",
@@ -450,7 +450,25 @@
         "blog": "skincare-routines",
         "articles_to_show": 8,
         "cta_text": "See all",
-        "margin_bottom": "12"
+        "margin_bottom": "0"
+      }
+    },
+    "wm_cta_banner_NHHzjX": {
+      "type": "wm__cta-banner",
+      "name": "WM CTA Banner",
+      "settings": {
+        "top_heading": "Elevated by Science",
+        "main_heading": "Your Skincare <em>Powered</em> By Peptides",
+        "description": "Our patented peptide technology and epigenetics work together to boost your skin's natural repair and target genes involved in ageing",
+        "cta_label": "Contact us",
+        "cta_url": "",
+        "invert_colours": true,
+        "image": "shopify://shop_images/Retail_SunSlick_PDP_HowToUse.jpg",
+        "video": "shopify://files/videos/power luxe SMALL FOR WEB.mp4",
+        "image_overlay_opacity": 40,
+        "image_height": "medium",
+        "mobile_image_height": "medium",
+        "margin_bottom": "0"
       }
     }
   },
@@ -464,6 +482,7 @@
     "wm_collection_card_scroll_Mkbaft",
     "wm_experts_carousel_AcfqkM",
     "wm_product_scroll_tabbed_reload_nmbiyz",
-    "wm_article_card_scroll_7yYjit"
+    "wm_article_card_scroll_7yYjit",
+    "wm_cta_banner_NHHzjX"
   ]
 }

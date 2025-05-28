@@ -13,10 +13,34 @@
   "sections": {
     "footer": {
       "type": "wm__footer",
+      "blocks": {
+        "text_cQxyd6": {
+          "type": "text",
+          "settings": {
+            "heading": "About",
+            "body": "<p><a href=\"/pages/about-us\" title=\"About Us\">Our Story</a></p><p><a href=\"/pages/about-us\" title=\"About Us\">Contact Us</a></p><p><a href=\"/pages/about-us\" title=\"About Us\">Shop All</a></p><p><a href=\"/blogs/skincare-routines\" title=\"Skincare Routines\">Blog</a></p><p><a href=\"/pages/faq\" title=\"FAQ\">FAQ</a></p>"
+          }
+        },
+        "text_wKxbU6": {
+          "type": "text",
+          "settings": {
+            "heading": "More Info",
+            "body": "<p><a href=\"/pages/about-us\" title=\"About Us\">Our Story</a></p><p><a href=\"/pages/about-us\" title=\"About Us\">Contact Us</a></p><p><a href=\"/pages/about-us\" title=\"About Us\">Shop All</a></p><p><a href=\"/blogs/skincare-routines\" title=\"Skincare Routines\">Blog</a></p><p><a href=\"/pages/faq\" title=\"FAQ\">FAQ</a></p>"
+          }
+        }
+      },
+      "block_order": [
+        "text_cQxyd6",
+        "text_wKxbU6"
+      ],
       "settings": {
-        "color_scheme": "scheme-1",
+        "logo_image": "shopify://shop_images/HydroPeptide-logo-dark.svg",
+        "logo_image_width": 215,
+        "invert_logo_colors": true,
+        "show_social_icons": true,
+        "brand_text": "<p>With over 15 years of experience in professional skincare, we’ve been at the forefront of peptide technology, our touchstone for creating scientifically-advanced, easy-to-use products. Take the spa home with our clinically proven, award-winning formulas.</p>",
         "newsletter_enable": true,
-        "newsletter_heading": "Subscribe to our emails",
+        "newsletter_heading": "Subscribe",
         "enable_follow_on_shop": true,
         "show_social": true,
         "enable_country_selector": true,

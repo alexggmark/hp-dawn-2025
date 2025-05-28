@@ -9,7 +9,14 @@
   %}
 {% endcomment %}
 
-{% liquid
+<div class="_flex _flex-row _items-center _gap-1">
+  <span class="_text-sm _text-brand-primary-500">★★★★★</span>
+  <span class="_font-body-condensed _font-medium _text-brand-dark _text-sm">4.5 (100)</span>
+</div>
+
+{% comment %}
+ FIXME: TBC
+ {% liquid
   assign rating_metafield = main_product.metafields.reviews.rating.value.rating | default: main_product.metafields.reviews.rating.value | default: nil
   assign rating_metafield_scale_max = main_product.metafields.reviews.rating.scale_max | default: main_product.metafields.reviews.rating.value.scale_max | nil
   assign rating_decimal = 0
@@ -47,3 +54,4 @@
     </span>
   </p>
 {%- endunless -%}
+ {% endcomment %}

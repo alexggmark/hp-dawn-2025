@@ -30,6 +30,11 @@
   UNDERLINE ANIMATION
 ------------------ */
 /* Putting this here because it's janky to use :after in Tailwind */
+/* These are flexible controls, you can use these to:
+  - Trigger underline animation on a link by applying "link-underline-trigger link-underline" to same element
+  - Trigger underline on group hover, e.g. <div class="link-underline-trigger"><a class="link-underline"></div>
+  - Trigger every <a> inside a group by applying "link-group-underline" to parent with <a> elements
+*/
 .link-group-underline a,
 .link-underline {
   position: relative;
