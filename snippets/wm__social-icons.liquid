@@ -1,0 +1,116 @@
+{% comment %}
+  Renders social icons.
+  Accepts:
+  - class: {String} a class to be added to the <ul> element (optional).
+
+  Usage:
+  {% render 'social-icons',
+    class: 'my-class'
+  %}
+{% endcomment %}
+
+{% comment %} 
+  .list-social {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.list-social__item .icon {
+  height: 2.2rem;
+  width: 2.2rem;
+}
+{% endcomment %}
+
+<ul class="_list-none _flex _flex-wrap _justify-start" role="list">
+  {%- if settings.social_facebook_link != blank -%}
+    <li>
+      <a href="{{ settings.social_facebook_link }}" target="_blank" class="_flex _items-center _pr-4 {% if class %} {{ class}}{% endif %} hover:_scale-110">
+        <span class="svg-wrapper _w-6 _h-6">
+          {{- 'icon-facebook.svg' | inline_asset_content -}}
+        </span>
+        <span class="visually-hidden">{{ 'general.social.links.facebook' | t }}</span>
+      </a>
+    </li>
+  {%- endif -%}
+  {%- if settings.social_instagram_link != blank -%}
+    <li>
+      <a href="{{ settings.social_instagram_link }}" target="_blank" class="_flex _items-center _pr-4 {% if class %} {{ class}}{% endif %} hover:_scale-110">
+        <span class="svg-wrapper _w-6 _h-6">
+          {{- 'icon-instagram.svg' | inline_asset_content -}}
+        </span>
+        <span class="visually-hidden">{{ 'general.social.links.instagram' | t }}</span>
+      </a>
+    </li>
+  {%- endif -%}
+  {%- if settings.social_youtube_link != blank -%}
+    <li>
+      <a href="{{ settings.social_youtube_link }}" target="_blank" class="_flex _items-center _pr-4 {% if class %} {{ class}}{% endif %} hover:_scale-110">
+        <span class="svg-wrapper _w-6 _h-6">
+          {{- 'icon-youtube.svg' | inline_asset_content -}}
+        </span>
+        <span class="visually-hidden">{{ 'general.social.links.youtube' | t }}</span>
+      </a>
+    </li>
+  {%- endif -%}
+  {%- if settings.social_tiktok_link != blank -%}
+    <li>
+      <a href="{{ settings.social_tiktok_link }}" target="_blank" class="_flex _items-center _pr-4 {% if class %} {{ class}}{% endif %} hover:_scale-110">
+        <span class="svg-wrapper _w-6 _h-6">
+          {{- 'icon-tiktok.svg' | inline_asset_content -}}
+        </span>
+        <span class="visually-hidden">{{ 'general.social.links.tiktok' | t }}</span>
+      </a>
+    </li>
+  {%- endif -%}
+  {%- if settings.social_twitter_link != blank -%}
+    <li>
+      <a href="{{ settings.social_twitter_link }}" target="_blank" class="_flex _items-center _pr-4 {% if class %} {{ class}}{% endif %} hover:_scale-110">
+        <span class="svg-wrapper _w-6 _h-6">
+          {{- 'icon-twitter.svg' | inline_asset_content -}}
+        </span>
+        <span class="visually-hidden">{{ 'general.social.links.twitter' | t }}</span>
+      </a>
+    </li>
+  {%- endif -%}
+  {%- if settings.social_pinterest_link != blank -%}
+    <li>
+      <a href="{{ settings.social_pinterest_link }}" target="_blank" class="_flex _items-center _pr-4 {% if class %} {{ class}}{% endif %} hover:_scale-110">
+        <span class="svg-wrapper _w-6 _h-6">
+          {{- 'icon-pinterest.svg' | inline_asset_content -}}
+        </span>
+        <span class="visually-hidden">{{ 'general.social.links.pinterest' | t }}</span>
+      </a>
+    </li>
+  {%- endif -%}
+  {%- if settings.social_snapchat_link != blank -%}
+    <li>
+      <a href="{{ settings.social_snapchat_link }}" target="_blank" class="_flex _items-center _pr-4 {% if class %} {{ class}}{% endif %} hover:_scale-110">
+        <span class="svg-wrapper _w-6 _h-6">
+          {{- 'icon-snapchat.svg' | inline_asset_content -}}
+        </span>
+        <span class="visually-hidden">{{ 'general.social.links.snapchat' | t }}</span>
+      </a>
+    </li>
+  {%- endif -%}
+  {%- if settings.social_tumblr_link != blank -%}
+    <li>
+      <a href="{{ settings.social_tumblr_link }}" target="_blank" class="_flex _items-center _pr-4 {% if class %} {{ class}}{% endif %} hover:_scale-110">
+        <span class="svg-wrapper _w-6 _h-6">
+          {{- 'icon-tumblr.svg' | inline_asset_content -}}
+        </span>
+        <span class="visually-hidden">{{ 'general.social.links.tumblr' | t }}</span>
+      </a>
+    </li>
+  {%- endif -%}
+  {%- if settings.social_vimeo_link != blank -%}
+    <li>
+      <a href="{{ settings.social_vimeo_link }}" target="_blank" class="_flex _items-center _pr-4 {% if class %} {{ class}}{% endif %} hover:_scale-110">
+        <span class="svg-wrapper _w-6 _h-6">
+          {{- 'icon-vimeo.svg' | inline_asset_content -}}
+        </span>
+        <span class="visually-hidden">{{ 'general.social.links.vimeo' | t }}</span>
+      </a>
+    </li>
+  {%- endif -%}
+</ul>

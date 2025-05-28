@@ -30,10 +30,12 @@
   UNDERLINE ANIMATION
 ------------------ */
 /* Putting this here because it's janky to use :after in Tailwind */
+.link-group-underline a,
 .link-underline {
   position: relative;
   display: inline-block;
 }
+.link-group-underline a::after,
 .link-underline::after {
   content: '';
   position: absolute;
@@ -46,6 +48,7 @@
   will-change: width;
 }
 /* Use this to trigger, put -trigger class on parent elements */
+.link-group-underline a:hover::after,
 .link-underline-trigger:hover .link-underline::after,
 .link-underline-trigger:hover.link-underline::after {
   width: 100%;

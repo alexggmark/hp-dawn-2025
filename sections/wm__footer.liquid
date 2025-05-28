@@ -1,0 +1,416 @@
+{% comment %}theme-check-disable UndefinedObject{% endcomment %}
+{{ 'section-footer.css' | asset_url | stylesheet_tag }}
+{{ 'component-newsletter.css' | asset_url | stylesheet_tag }} {% comment %} FIXME: replace? {% endcomment %}
+{{ 'component-list-menu.css' | asset_url | stylesheet_tag }}
+{{ 'component-list-payment.css' | asset_url | stylesheet_tag }}
+{{ 'component-list-social.css' | asset_url | stylesheet_tag }}
+
+{% style %}
+  footer .link-group-underline a {
+    margin-bottom: 1.25rem;
+  }
+{% endstyle %}
+
+{%- assign block_contents = "" -%}
+
+{%- for block in section.blocks -%}
+  {%- case block.type -%}
+    {%- when 'text' -%}
+      {%- capture block_content -%}
+        {%- if block.settings.heading != blank -%}
+          <h2 class="_font-heading-primary _text-xl _text-brand-light _mb-6">{{ block.settings.heading }}</h2>
+        {%- endif -%}
+        {%- if block.settings.body != blank -%}
+          <div class="_text-brand-light _text-sm _font-link link-group-underline">
+            {{ block.settings.body }}
+          </div>
+        {%- endif -%}
+      {%- endcapture -%}
+
+      {%- assign block_contents = block_contents | append: block_content | append: '|' -%}
+  {%- endcase -%}
+{%- endfor -%}
+
+{%- assign block_contents_array = block_contents | split: '|' -%}
+
+<footer class="_bg-brand-primary-700 _text-brand-light _py-11">
+  {%- liquid
+    assign has_social_icons = true
+    if settings.social_facebook_link == blank and settings.social_instagram_link == blank and settings.social_youtube_link == blank and settings.social_tiktok_link == blank and settings.social_twitter_link == blank and settings.social_pinterest_link == blank and settings.social_snapchat_link == blank and settings.social_tumblr_link == blank and settings.social_vimeo_link == blank
+      assign has_social_icons = false
+    endif
+  -%}
+  <div class="page-width">
+    <div class="_grid _grid-cols-1 md:_grid-cols-10 _gap-4">
+      <div class="md:_col-span-3 md:_pr-10">
+        {%- unless section.settings.logo_image == blank -%}
+          <div
+            class="_overflow-hidden _mb-8"
+            style="max-width: min(100%, {{ section.settings.logo_image_width }}px);"
+          >
+            <img
+              srcset="{{ section.settings.logo_image | image_url: width: 500 }}, {{ section.settings.logo_image | image_url: width: 1000 }} 2x"
+              src="{{ section.settings.logo_image | image_url: width: 760 }}"
+              alt="{{ section.settings.logo_image.alt | escape }}"
+              class="_block _h-auto _max-w-full"
+              loading="lazy"
+              width="{{ section.settings.logo_image.width }}"
+              height="{{ section.settings.logo_image.height }}"
+              style="filter: {% if section.settings.invert_logo_colors %} brightness(0) invert(1){% else %} none{% endif %};"
+            >
+          </div>
+        {%- endunless -%}
+        <div class="_text-brand-light _text-sm _mb-6">
+          {{ section.settings.brand_text }}
+        </div>
+        {%- if section.settings.show_social_icons and has_social_icons -%}
+          {%- render 'wm__social-icons', class: '_text-brand-light' -%}
+        {%- endif -%}
+        <div class="_text-xs _mt-6"
+          >&copy; {{ 'now' | date: '%Y' }}, {{ shop.name | link_to: routes.root_url -}}
+        </div>
+      </div>
+      <div class="md:_col-span-2">
+        {%- unless block_contents_array[0] == blank -%}
+          {{ block_contents_array[0] }}
+        {%- endunless -%}
+      </div>
+      <div class="md:_col-span-2">
+        {%- unless block_contents_array[1] == blank -%}
+          {{ block_contents_array[1] }}
+        {%- endunless -%}
+      </div>
+      <div class="md:_col-span-3">
+        {% if section.settings.newsletter_enable %}
+          <div class="_flex _justify-start _flex-grow _flex-col">
+            {%- if section.settings.newsletter_heading != blank -%}
+              <h2 class="_font-heading-primary _text-lg _text-brand-light _mb-6">
+                {{ section.settings.newsletter_heading }}
+                 Country Select
+              </h2>
+            {%- endif -%}
+            {%- if section.settings.enable_country_selector and localization.available_countries.size > 1 -%}
+              <localization-form>
+                {%- form 'localization', id: 'FooterCountryForm', class: 'localization-form' -%}
+                  <div>
+                    {%- render 'country-localization', localPosition: 'FooterCountry' -%}
+                  </div>
+                {%- endform -%}
+              </localization-form>
+            {%- endif -%}
+            {% comment %}
+            {%- form 'customer', id: 'ContactFooter', class: 'footer__newsletter newsletter-form' -%}
+              <input type="hidden" name="contact[tags]" value="newsletter">
+              <div class="newsletter-form__field-wrapper">
+                {% comment %} Another hacky fix, we don't want to 1px box-shadow from ".field" class here {% endcomment %}
+                <div class="field after:_shadow-none">
+                  <input
+                    id="NewsletterForm--{{ section.id }}"
+                    type="email"
+                    name="contact[email]"
+                    class="field__input"
+                    value="{{ form.email }}"
+                    aria-required="true"
+                    autocorrect="off"
+                    autocapitalize="off"
+                    autocomplete="email"
+                    {% if form.errors %}
+                      autofocus
+                      aria-invalid="true"
+                      aria-describedby="ContactFooter-error"
+                    {% elsif form.posted_successfully? %}
+                      aria-describedby="ContactFooter-success"
+                    {% endif %}
+                    placeholder="{{ 'newsletter.label' | t }}"
+                    required
+                  >
+                  <label class="field__label" for="NewsletterForm--{{ section.id }}">
+                    {{ 'newsletter.label' | t }}
+                  </label>
+                  <button
+                    type="submit"
+                    class="newsletter-form__button field__button _p-1.5 _text-brand-light"
+                    name="commit"
+                    id="Subscribe"
+                    aria-label="{{ 'newsletter.button_label' | t }}"
+                  >
+                    {% comment %}
+                     This is super hacky, but frankly the whole "field __ input" CSS is so confusing it's fine.
+                     I'm doing a lot of overriding styles in HTML so I don't break input/form logic
+                     This kind of "button inside a field" doesn't really appear anywhere else so…… whatever……
+                    {% endcomment %}
+                    <div class="_bg-brand-primary-700 _w-full _h-full _flex _items-center _justify-center">
+                      <span class="svg-wrapper">
+                        {{- 'icon-arrow.svg' | inline_asset_content -}}
+                      </span>
+                    </div>
+                  </button>
+                </div>
+                {%- if form.errors -%}
+                  <small class="newsletter-form__message form__message" id="ContactFooter-error">
+                    <span class="svg-wrapper">
+                      {{- 'icon-error.svg' | inline_asset_content -}}
+                    </span>
+                    {{- form.errors.translated_fields.email | capitalize }}
+                    {{ form.errors.messages.email -}}
+                  </small>
+                {%- endif -%}
+              </div>
+              {%- if form.posted_successfully? -%}
+                <h3
+                  class="newsletter-form__message newsletter-form__message--success form__message"
+                  id="ContactFooter-success"
+                  tabindex="-1"
+                  autofocus
+                >
+                  <span class="svg-wrapper">
+                    {{- 'icon-success.svg' | inline_asset_content -}}
+                  </span>
+                  {{- 'newsletter.success' | t }}
+                </h3>
+              {%- endif -%}
+            {%- endform -%}
+            {% endcomment %}
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+  <div class="page-width">
+    <div class="_grid _grid-cols-1 md:_grid-cols-2 _gap-8">
+      <div class="">
+        {% comment %} TODO: original placement, ignore for now {% endcomment %}
+        {% comment %} {%- if section.settings.enable_country_selector and localization.available_countries.size > 1 -%}
+          <localization-form>
+            {%- form 'localization', id: 'FooterCountryForm', class: 'localization-form' -%}
+              <div>
+                <h2 class="caption-large text-body" id="FooterCountryLabel">{{ 'localization.country_label' | t }}</h2>
+                {%- render 'country-localization', localPosition: 'FooterCountry' -%}
+              </div>
+            {%- endform -%}
+          </localization-form>
+        {%- endif -%}
+
+        {%- if section.settings.enable_language_selector and localization.available_languages.size > 1 -%}
+          <localization-form>
+            {%- form 'localization', id: 'FooterLanguageForm', class: 'localization-form' -%}
+              <div>
+                <h2 class="caption-large text-body" id="FooterLanguageLabel">
+                  {{ 'localization.language_label' | t }}
+                </h2>
+                {%- render 'language-localization', localPosition: 'FooterLanguage' -%}
+              </div>
+            {%- endform -%}
+          </localization-form>
+        {%- endif -%} {% endcomment %}
+      </div>
+      <div class="">
+        {%- if section.settings.payment_enable -%}
+          <div class="footer__payment">
+            <span class="visually-hidden">{{ 'sections.footer.payment' | t }}</span>
+            <ul class="list list-payment" role="list">
+              {%- for type in shop.enabled_payment_types -%}
+                <li class="list-payment__item">
+                  {{ type | payment_type_svg_tag: class: 'icon icon--full-color' }}
+                </li>
+              {%- endfor -%}
+            </ul>
+          </div>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "WM Footer",
+  "blocks": [
+    {
+      "type": "@app"
+    },
+    {
+      "type": "text",
+      "limit": 2,
+      "name": "t:sections.footer.blocks.text.name",
+      "settings": [
+        {
+          "type": "inline_richtext",
+          "id": "heading",
+          "default": "t:sections.footer.blocks.text.settings.heading.default",
+          "label": "t:sections.footer.blocks.text.settings.heading.label"
+        },
+        {
+          "type": "richtext",
+          "id": "body",
+          "default": "t:sections.footer.blocks.text.settings.subtext.default",
+          "label": "t:sections.footer.blocks.text.settings.subtext.label"
+        }
+      ]
+    }
+  ],
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "logo_image",
+      "label": "Logo image"
+    },
+    {
+      "type": "range",
+      "id": "logo_image_width",
+      "min": 50,
+      "max": 550,
+      "step": 5,
+      "unit": "px",
+      "label": "Image width",
+      "default": 100
+    },
+    {
+      "type": "checkbox",
+      "id": "invert_logo_colors",
+      "label": "Invert image (if color on transparent background)",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_social_icons",
+      "default": true,
+      "label": "t:sections.footer.blocks.brand_information.settings.show_social.label",
+      "info": "t:sections.footer.blocks.brand_information.settings.show_social.info"
+    },
+    {
+      "type": "richtext",
+      "id": "brand_text",
+      "default": "<p>Colorescience combines skincare and sun care with clinically proven, 100% mineral SPF formulas designed to protect, nourish, and enhance your skin. Free from chemicals, fragrances, and harsh additives.</p>",
+      "label": "Brand description"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.footer.settings.header__1.content",
+      "info": "t:sections.footer.settings.header__1.info"
+    },
+    {
+      "type": "checkbox",
+      "id": "newsletter_enable",
+      "default": true,
+      "label": "t:sections.footer.settings.newsletter_enable.label"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "newsletter_heading",
+      "default": "t:sections.footer.settings.newsletter_heading.default",
+      "label": "t:sections.footer.settings.newsletter_heading.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.footer.settings.header__9.content",
+      "info": "t:sections.footer.settings.header__9.info"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_follow_on_shop",
+      "default": true,
+      "label": "t:sections.footer.settings.enable_follow_on_shop.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.footer.settings.header__2.content",
+      "info": "t:sections.footer.settings.header__2.info"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_social",
+      "default": true,
+      "label": "t:sections.footer.settings.show_social.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.footer.settings.header__3.content",
+      "info": "t:sections.footer.settings.header__4.info"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_country_selector",
+      "default": true,
+      "label": "t:sections.footer.settings.enable_country_selector.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.footer.settings.header__5.content",
+      "info": "t:sections.footer.settings.header__6.info"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_language_selector",
+      "default": true,
+      "label": "t:sections.footer.settings.enable_language_selector.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.footer.settings.header__7.content"
+    },
+    {
+      "type": "checkbox",
+      "id": "payment_enable",
+      "default": true,
+      "label": "t:sections.footer.settings.payment_enable.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.footer.settings.header__8.content",
+      "info": "t:sections.footer.settings.header__8.info"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_policy",
+      "default": true,
+      "label": "t:sections.footer.settings.show_policy.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.spacing"
+    },
+    {
+      "type": "range",
+      "id": "margin_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.footer.settings.margin_top.label",
+      "default": 0
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 36
+    }
+  ],
+  "default": {
+    "blocks": [
+      {
+        "type": "text"
+      }
+    ]
+  }
+}
+{% endschema %}

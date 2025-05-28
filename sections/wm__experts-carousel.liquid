@@ -104,8 +104,8 @@
                       {% comment %} <div class="_aspect-square _bg-brand-background-light _w-full _h-full _relative"> {% endcomment %}
                       <div class="_bg-brand-primary-700 _w-full _min-h-[280px] _relative">
                         <div class="_overflow-hidden _z-0 expert-image">
-                          <span class="svg-wrapper expert-plus-icon group-hover/expertslide:_scale-110 _text-white _absolute _top-1/2 _-translate-x-1/2 _left-1/2 _-translate-y-1/2 _z-[2]">
-                            {{- 'icon-plus.svg' | inline_asset_content -}}
+                          <span class="svg-wrapper _w-10 _h-10 expert-plus-icon group-hover/expertslide:_scale-110 _text-white _absolute _top-1/2 _-translate-x-1/2 _left-1/2 _-translate-y-1/2 _z-[2]">
+                            {{- 'icon-newbuild-plus-thin.svg' | inline_asset_content -}}
                           </span>
                           {% comment %}theme-check-disable ImgLazyLoading{% endcomment %}
                           <img
@@ -129,9 +129,9 @@
                           {% comment %}theme-check-enable ImgLazyLoading{% endcomment %}
                         </div>
                       </div>
-                      <div class="_bg-brand-light _p-4 _w-full">
-                        <p>{{ block.settings.expert_name }}</p>
-                        <p>{{ block.settings.expert_jobtitle }}</p>
+                      <div class="_bg-brand-light _p-2.5 _w-full _border _border-brand-border">
+                        <p class="_text-brand-dark _font-medium _text-base">{{ block.settings.expert_name }}</p>
+                        <p class="_text-brand-primary-500 _text-sm">{{ block.settings.expert_jobtitle }}</p>
                       </div>
                     </div>
                 {%- endcase -%}

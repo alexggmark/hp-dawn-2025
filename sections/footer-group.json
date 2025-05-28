@@ -12,7 +12,7 @@
   "type": "footer",
   "sections": {
     "footer": {
-      "type": "footer",
+      "type": "wm__footer",
       "settings": {
         "color_scheme": "scheme-1",
         "newsletter_enable": true,
