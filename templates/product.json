@@ -12,15 +12,16 @@
     "main": {
       "type": "wm__main-product",
       "blocks": {
-        "vendor": {
-          "type": "text",
-          "settings": {
-            "text": "{{ product.vendor }}",
-            "text_style": "uppercase"
-          }
-        },
         "title": {
           "type": "title",
+          "settings": {}
+        },
+        "rating_xbiqGz": {
+          "type": "rating",
+          "settings": {}
+        },
+        "description": {
+          "type": "description",
           "settings": {}
         },
         "price": {
@@ -34,52 +35,34 @@
             "swatch_shape": "circle"
           }
         },
-        "quantity_selector": {
-          "type": "quantity_selector",
-          "settings": {}
-        },
         "buy_buttons": {
           "type": "buy_buttons",
           "settings": {
-            "show_dynamic_checkout": true,
-            "show_gift_card_recipient": true
-          }
-        },
-        "description": {
-          "type": "description",
-          "settings": {}
-        },
-        "share": {
-          "type": "share",
-          "settings": {
-            "share_label": "Share"
+            "show_dynamic_checkout": false,
+            "show_gift_card_recipient": false
           }
         }
       },
       "block_order": [
-        "vendor",
         "title",
+        "rating_xbiqGz",
+        "description",
         "price",
         "variant_picker",
-        "quantity_selector",
-        "buy_buttons",
-        "description",
-        "share"
+        "buy_buttons"
       ],
       "settings": {
         "enable_sticky_info": true,
         "color_scheme": "scheme-1",
         "media_size": "medium",
         "constrain_to_viewport": true,
-        "media_fit": "contain",
-        "gallery_layout": "thumbnail_slider",
+        "media_fit": "cover",
+        "gallery_layout": "stacked",
         "mobile_thumbnails": "hide",
-        "media_position": "left",
         "image_zoom": "lightbox",
         "hide_variants": true,
-        "enable_video_looping": false,
-        "padding_top": 36,
-        "padding_bottom": 12
+        "enable_video_looping": true,
+        "margin_bottom": "12"
       }
     },
     "related-products": {

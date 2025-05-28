@@ -316,6 +316,8 @@
                 </div>
               {%- when 'rating' -%}
                 {% render 'wm__rating-stars', main_product: product %}
+              {%- when 'product_details' -%}
+                <div class="_w-full _h-96 _bg-emerald-500 _block"></div>
               {%- when 'complementary' -%}
                 <product-recommendations
                   class="complementary-products quick-add-hidden{% if block.settings.make_collapsible_row %} is-accordion{% endif %}{% if block.settings.enable_quick_add %} complementary-products-contains-quick-add{% endif %}"
@@ -927,6 +929,11 @@
           "content": "t:sections.main-product.blocks.rating.settings.paragraph.content"
         }
       ]
+    },
+    {
+      "type": "product_details",
+      "name": "Product Details",
+      "limit": 1
     },
     {
       "type": "complementary",

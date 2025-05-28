@@ -858,6 +858,10 @@ video {
   margin-left: 2rem !important;
 }
 
+._mr-2 {
+  margin-right: 0.5rem !important;
+}
+
 ._mr-4 {
   margin-right: 1rem !important;
 }
@@ -884,10 +888,6 @@ video {
 
 ._mt-8 {
   margin-top: 2rem !important;
-}
-
-._mr-2 {
-  margin-right: 0.5rem !important;
 }
 
 ._box-border {
@@ -1426,6 +1426,11 @@ video {
   background-color: transparent !important;
 }
 
+._bg-emerald-500 {
+  --tw-bg-opacity: 1 !important;
+  background-color: rgb(16 185 129 / var(--tw-bg-opacity, 1)) !important;
+}
+
 ._object-contain {
   -o-object-fit: contain !important;
      object-fit: contain !important;
@@ -1752,10 +1757,6 @@ video {
 
 ._outline-\[1px\] {
   outline-width: 1px !important;
-}
-
-._outline-brand-primary-700 {
-  outline-color: #0F2D64 !important;
 }
 
 ._outline-brand-border {
@@ -2117,11 +2118,6 @@ video {
   opacity: 1 !important;
 }
 
-._peer\/pill:checked ~ .peer-checked\/pill\:_bg-brand-primary-700 {
-  --tw-bg-opacity: 1 !important;
-  background-color: rgb(15 45 100 / var(--tw-bg-opacity, 1)) !important;
-}
-
 ._peer\/pill:checked ~ .peer-checked\/pill\:_bg-brand-dark {
   --tw-bg-opacity: 1 !important;
   background-color: rgb(0 0 0 / var(--tw-bg-opacity, 1)) !important;
@@ -2130,6 +2126,10 @@ video {
 ._peer\/pill:checked ~ .peer-checked\/pill\:_text-white {
   --tw-text-opacity: 1 !important;
   color: rgb(255 255 255 / var(--tw-text-opacity, 1)) !important;
+}
+
+._peer\/pill:checked ~ .peer-checked\/pill\:hover\:_outline-brand-dark:hover {
+  outline-color: #000000 !important;
 }
 
 @media (min-width: 640px) {

@@ -84,7 +84,7 @@
         name="{{ input_name | escape }}"
         value="{{ value | escape }}"
         form="{{ product_form_id }}"
-        {% comment %} class="_peer/pill" {% endcomment %}
+        class="_peer/pill"
         {% if value.selected %}
           checked
         {% endif %}
@@ -93,7 +93,7 @@
         {% endif %}
         {{ input_dataset }}
       >
-      <label for="{{ input_id }}" class="peer-checked/pill:_bg-brand-dark peer-checked/pill:_text-white _cursor-pointer _outline _outline-[1px] _px-4 _py-2 _text-lg _outline-brand-border hover:_outline-brand-primary-500 _text-brand-dark _bg-brand-background-light hover:_bg-brand-background hover:_text-brand-primary-500 _block">
+      <label for="{{ input_id }}" class="peer-checked/pill:_bg-brand-dark peer-checked/pill:_text-white _cursor-pointer _outline _outline-[1px] _px-4 _py-2 _text-lg _outline-brand-border hover:_outline-brand-primary-500 peer-checked/pill:hover:_outline-brand-dark _text-brand-dark _bg-brand-background-light hover:_bg-brand-background hover:_text-brand-primary-500 _block">
         {{ value -}}
         {{ label_unavailable }}
       </label>
