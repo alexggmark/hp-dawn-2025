@@ -1,0 +1,80 @@
+{% comment %}
+  Renders a set of links for paginated results. Must be used within paginate tags.
+
+  Usage:
+  {% paginate results by 2 %}
+    {% render 'pagination', paginate: paginate, anchor: '#yourID' %}
+  {% endpaginate %}
+
+  Accepts:
+  - paginate: {Object}
+  - anchor: {String} (optional) This can be added so that on page reload it takes you to wherever you've placed your anchor tag.
+{% endcomment %}
+
+{{ 'component-pagination.css' | asset_url | stylesheet_tag }}
+
+{%- if paginate.parts.size > 0 -%}
+  <div class="_mt-6">
+    <nav class="" role="navigation" aria-label="{{ 'general.pagination.label' | t }}">
+      <ul class="_flex _flex-wrap _justify-center _gap-4 _m-0 _p-0 _list-none" role="list">
+        {%- if paginate.previous -%}
+          <li class="">
+            <a
+              href="{{ paginate.previous.url }}{{ anchor }}"
+              class="_inline-flex _justify-center _items-center _relative _h-11 _w-11 _p-0 _no-underline _text-brand-primary-700 hover:after:_h-[0.1rem]"
+              aria-label="{{ 'general.pagination.previous' | t }}"
+            >
+              <span class="svg-wrapper _w-5 _transform _rotate-90 _-mr-[0.2rem] hover:_scale-105">
+                {{- 'icon-caret.svg' | inline_asset_content -}}
+              </span>
+            </a>
+          </li>
+        {%- endif -%}
+
+        {%- for part in paginate.parts -%}
+          <li class="">
+            {%- if part.is_link -%}
+              <a
+                href="{{ part.url }}{{ anchor }}"
+                class="_inline-flex _justify-center _items-center _relative _h-11 _w-11 _p-0 _no-underline _border _border-brand-border hover:_border-brand-primary-500 hover:_text-brand-primary-500"
+                aria-label="{{ 'general.pagination.page' | t: number: part.title }}"
+              >
+                {{- part.title -}}
+              </a>
+            {%- else -%}
+              {%- if part.title == paginate.current_page -%}
+                <a
+                  role="link"
+                  aria-disabled="true"
+                  class="_inline-flex _justify-center _items-center _relative _h-11 _w-11 _p-0 _no-underline _text-brand-primary-700 _border _border-brand-primary-700"
+                  aria-current="page"
+                  aria-label="{{ 'general.pagination.page' | t: number: part.title }}"
+                >
+                  {{- part.title -}}
+                </a>
+              {%- else -%}
+                <span class="_inline-flex _justify-center _items-center _relative _h-11 _w-11 _p-0">
+                  {{- part.title -}}
+                </span>
+              {%- endif -%}
+            {%- endif -%}
+          </li>
+        {%- endfor -%}
+
+        {%- if paginate.next -%}
+          <li class="">
+            <a
+              href="{{ paginate.next.url }}{{ anchor }}"
+              class="_inline-flex _justify-center _items-center _relative _h-11 _w-11 _p-0 _no-underline _text-brand-primary-700 hover:after:_h-[0.1rem]"
+              aria-label="{{ 'general.pagination.next' | t }}"
+            >
+              <span class="svg-wrapper _w-5 _transform _-rotate-90 _-ml-[0.2rem] hover:_scale-105">
+                {{- 'icon-caret.svg' | inline_asset_content -}}
+              </span>
+            </a>
+          </li>
+        {%- endif -%}
+      </ul>
+    </nav>
+  </div>
+{%- endif -%}
