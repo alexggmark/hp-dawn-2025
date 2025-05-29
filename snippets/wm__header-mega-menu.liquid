@@ -153,7 +153,7 @@
                           <h3 class="_font-heading-primary _text-2xl _text-brand-dark">
                             Best Sellers
                           </h3>
-                          <a href="{{ childlink.url }}" class="hover:_underline _underline-offset-4 _no-underline _text-sm _font-link">See All</a>
+                          <a href="{{ childlink.url }}" class="_underline _underline-offset-4 hover:_no-underline _text-sm _font-link">See All</a>
                         </div>
                         <div class="animation-content">
                           <embla-slider data-lazy>
@@ -202,7 +202,7 @@
                           <h3 class="_font-heading-primary _text-2xl _text-brand-dark">
                             Articles
                           </h3>
-                          <a href="{{ childlink.url }}" class="hover:_underline _underline-offset-4 _no-underline _text-sm _font-link">See All</a>
+                          <a href="{{ childlink.url }}" class="_underline _underline-offset-4 hover:_no-underline _text-sm _font-link">See All</a>
                         </div>
                         <div class="">
                           {% comment %} TODO: product slider {% endcomment %}
@@ -315,7 +315,7 @@
                             <h3 class="_font-heading-primary _text-2xl _text-brand-dark">
                               {{ childlink.title }}
                             </h3>
-                            <a href="{{ childlink.url }}" class="hover:_underline _underline-offset-4 _no-underline _text-sm _font-link">See All</a>
+                            <a href="{{ childlink.url }}" class="_underline _underline-offset-4 hover:_no-underline _text-sm _font-link">See All</a>
                           </div>
                           {%- case active_child.type_of_menu -%}
                             {% comment %} TODO: TILE {% endcomment %}
@@ -324,7 +324,7 @@
                                 role="list"
                                 aria-hidden="true"
                                 data-grandchild-panel="{{ childlink.handle }}"
-                                class="_grid _grid-cols-2 _gap-2 animation-content"
+                                class="_grid _grid-cols-2 _gap-4 animation-content"
                               >
                                 {%- for grandchildlink in childlink.links -%}
                                   {%- assign active_grandchild = nil -%}
@@ -338,35 +338,33 @@
                                     {%- endif -%}
                                   {%- endfor -%}
                                   
-                                  <li class="group/tile">
+                                  <li class="">
                                     <a
                                       href="{{ grandchildlink.url }}"
-                                      class="_bg-brand-background-light _flex _flex-row _justify-between _items-center _h-full _py-2 _pr-3"
+                                      class="_group/grandchildtile _bg-brand-background-light _flex _flex-row _justify-between _items-center _h-full _py-2 _pl-1.5 _pr-3"
                                       {% if grandchildlink.current %}
                                         aria-current="page"
                                       {% endif %}
                                     >
-                                      <div class="_flex _flex-row _items-center _gap-2">
+                                      <div class="_flex _flex-row _items-center _gap-2 group-hover/grandchildtile:_opacity-60">
                                         {%- if active_grandchild -%}
-                                          <script>
-                                            console.log("active_grandchild");
-                                            console.log({{ active_grandchild | json }});
-                                          </script>
                                           {{
                                             active_grandchild.image
                                             | image_url: width: 100
                                             | image_tag:
-                                              class: '_w-12 _h-12 _object-cover',
+                                              class: '_w-10 _h-10 _object-cover',
                                               widths: '100',
                                               width: 100,
                                               alt: active_grandchild.label
                                           }}
+                                        {%- else -%}
+                                          <div class="_w-10 _h-10 _bg-brand-background _block"></div>
                                         {%- endif -%}
-                                        <span class="group-hover/tile:_underline _underline-offset-4 _no-underline _text-sm _font-link">
+                                        <span class="_text-sm _font-link">
                                           {{ grandchildlink.title }}
                                         </span>
                                       </div>
-                                      <span class="svg-wrapper _w-5">
+                                      <span class="svg-wrapper _w-5 _text-brand-dark">
                                         {{- 'arrow-chevron.svg' | inline_asset_content -}}
                                       </span>
                                     </a>
@@ -380,7 +378,7 @@
                                 role="list"
                                 aria-hidden="true"
                                 data-grandchild-panel="{{ childlink.handle }}"
-                                class="_grid _grid-cols-4 _gap-2 animation-content"
+                                class="_grid _grid-cols-4 _gap-3 animation-content"
                               >
                                 {%- for grandchildlink in childlink.links -%}
                                   {%- assign active_grandchild = nil -%}
@@ -397,7 +395,7 @@
                                   <li>
                                     <a
                                       href="{{ grandchildlink.url }}"
-                                      class="_flex _flex-col _gap-4 _h-full"
+                                      class="_flex _flex-col _gap-4 _h-full _group/grandchildcard"
                                       {% if grandchildlink.current %}
                                         aria-current="page"
                                       {% endif %}
@@ -408,13 +406,13 @@
                                             active_grandchild.image
                                             | image_url: width: 248
                                             | image_tag:
-                                              class: '_w-full _h-full _object-cover',
+                                              class: '_w-full _h-full _object-cover group-hover/grandchildcard:_opacity-80',
                                               widths: '124, 248',
                                               width: 124,
                                               alt: active_grandchild.label
                                           }}
                                         {%- endif -%}
-                                        <span class="_text-sm _font-link">
+                                        <span class="_text-sm _font-link _pt-1">
                                           {{ grandchildlink.title }}
                                         </span>
                                       </div>
@@ -515,15 +513,13 @@
                       <div class="_flex _flex-row _gap-2.5 _w-full">
                         {%- for banner in banner_entries -%}
                           <div class="_flex-1 _flex _flex-col _relative _group/menubanner link-underline-trigger">
+                            {%- assign media = banner.media.value -%}
                             <div class="_aspect-square _overflow-hidden _mb-2">
-                              {%- assign media = banner.media.value -%}
-                              <div class="_aspect-square _overflow-hidden _mb-2">
-                                {%- if media.media_type == 'video' or media.media_type == 'external_video' -%}
-                                  {{ media | media_tag: class: '_w-full _h-full _object-cover group-hover/menubanner:_opacity-80', autoplay: true, loop: true, muted: true, controls: false }}
-                                {%- elsif media.media_type == 'image' -%}
-                                  {{ media | image_url: width: 360 | image_tag: class: '_w-full _h-full _object-cover group-hover/menubanner:_opacity-80', widths: '360,720', width: 360, loading: 'lazy', alt: banner.title }}
-                                {%- endif -%}
-                              </div>
+                              {%- if media.media_type == 'video' or media.media_type == 'external_video' -%}
+                                {{ media | media_tag: class: '_w-full _h-full _object-cover group-hover/menubanner:_opacity-80', autoplay: true, loop: true, muted: true, controls: false }}
+                              {%- elsif media.media_type == 'image' -%}
+                                {{ media | image_url: width: 360 | image_tag: class: '_w-full _h-full _object-cover group-hover/menubanner:_opacity-80', widths: '360,720', width: 360, loading: 'lazy', alt: banner.title }}
+                              {%- endif -%}
                             </div>
                             <div class="_flex-1 _flex _flex-col _justify-between _items-start">
                               {%- if banner.title -%}<h3 class="link-underline _text-sm _font-link _inline">{{ banner.title }}</h3>{%- endif -%}

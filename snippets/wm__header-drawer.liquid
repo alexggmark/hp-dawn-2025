@@ -44,7 +44,7 @@
             </div>
             <embla-slider data-lazy>
               <div class="_overflow-hidden _relative" data-js-embla>
-                <div class="_flex _gap-2 _select-none" data-js-embla-container>
+                <div class="_flex _gap-4 _select-none" data-js-embla-container>
                   {% assign skip_card_product_styles = false %}
                   {%- for product in slider_collection.products limit: products_to_show -%}
                     <div id="Slide-{{ section.id }}-{{ forloop.index }}"
@@ -245,7 +245,7 @@
                                                 role="list"
                                                 aria-hidden="true"
                                                 data-grandchild-panel="{{ childlink.handle }}"
-                                                class="_grid _grid-cols-2 _gap-2 animation-content"
+                                                class="_grid _grid-cols-2 _gap-4 animation-content"
                                               >
                                                 {%- for grandchildlink in childlink.links -%}
                                                   {%- assign active_grandchild = nil -%}
@@ -279,7 +279,7 @@
                                                               alt: active_grandchild.label
                                                           }}
                                                         {%- endif -%}
-                                                        <span class="_text-sm _font-link">
+                                                        <span class="_text-sm _font-link _pt-1">
                                                           {{ grandchildlink.title }}
                                                         </span>
                                                       </div>
@@ -290,22 +290,20 @@
                                             {%- when 'product-carousel' -%}
                                               {%- if active_child.collection_carousel != blank -%}
                                                 {%- assign collection_carousel_metaobject_content = active_child.collection_carousel.value -%}
-                                                <embla-slider data-lazy>
+                                                {% comment %} <embla-slider data-lazy> {% endcomment %}
                                                   <div class="_overflow-hidden _relative animation-content" data-js-embla>
-                                                    <div class="_flex md:_gap-7 _gap-4 _select-none" data-js-embla-container>
+                                                    <div class="_grid _grid-cols-2 _gap-4 _select-none" data-js-embla-container>
                                                       {% assign skip_card_product_styles = false %}
                                                       {%- for product in collection_carousel_metaobject_content.products limit: products_to_show -%}
                                                         <div id="Slide-{{ section.id }}-{{ forloop.index }}"
                                                           class="
                                                           _w-full
-                                                          _max-w-[120px]
                                                           _flex-none
                                                           _flex
                                                           _justify-center
                                                           _items-center
                                                           _snap-start
                                                           _h-auto
-                                                          {% if forloop.last %} md:_mr-12 _mr-4{% endif %}
                                                         ">
                                                           {% render 'wm__card-product',
                                                             card_product: product,
@@ -317,7 +315,7 @@
                                                         {%- assign skip_card_product_styles = true -%}
                                                       {%- endfor -%}
                                                     </div>
-                                                    <button data-js-embla-prev class="_absolute _hidden _left-0 _top-1/2 _-translate-y-12 _bg-brand-light _text-brand-dark hover:_scale-110 _items-center _justify-center _w-10 _h-10 _rounded-full disabled:_opacity-40">
+                                                    {% comment %} <button data-js-embla-prev class="_absolute _hidden _left-0 _top-1/2 _-translate-y-12 _bg-brand-light _text-brand-dark hover:_scale-110 _items-center _justify-center _w-10 _h-10 _rounded-full disabled:_opacity-40">
                                                       <span class="svg-wrapper _rotate-180 _w-5">
                                                         {{- 'arrow-chevron.svg' | inline_asset_content -}}
                                                       </span>
@@ -326,9 +324,9 @@
                                                       <span class="svg-wrapper _w-5">
                                                         {{- 'arrow-chevron.svg' | inline_asset_content -}}
                                                       </span>
-                                                    </button>
+                                                    </button> {% endcomment %}
                                                   </div>
-                                                </embla-slider>
+                                                {% comment %} </embla-slider> {% endcomment %}
                                               {%- else -%}
                                                 {% comment %} Copy of tile logic, make sure to update later {% endcomment %}
                                                 <ul

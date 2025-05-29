@@ -32,7 +32,7 @@ module.exports = {
         '6xl': ['72px', { lineHeight: 'auto' }],
         '5xl': ['62px', { lineHeight: 'auto' }],
         '4xl': ['49px', { lineHeight: '1.25' }],
-        '3xl': ['38px', { lineHeight: 'auto' }],
+        '3xl': ['42px', { lineHeight: 'auto' }],
         '2xl': ['24px', { lineHeight: 'auto' }],
         'xl': ['20px', { lineHeight: 'auto' }],
         'lg': ['16px', { lineHeight: 'auto' }],

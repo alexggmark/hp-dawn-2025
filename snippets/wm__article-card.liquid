@@ -18,7 +18,7 @@
 {% endcomment %}
 
 {%- if article and article != empty -%}
-  <div class="_group _h-full _w-full _relative">
+  <div class="_group _h-full _w-full _relative link-underline-trigger">
     <div
       class="
         _flex
@@ -62,7 +62,7 @@
                 src="{{ article.image.src | image_url: width: 533 }}"
                 sizes="(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | divided_by: 2 }}px, (min-width: 750px) calc((100vw - 130px) / 2), calc((100vw - 50px) / 2)"
                 alt="{{ article.image.src.alt | escape }}"
-                class="motion-reduce  _object-cover _object-center _h-full _w-full group-hover:_scale-105"
+                class="motion-reduce  _object-cover _object-center _h-full _w-full group-hover:_opacity-80"
                 {% unless lazy_load == false %}
                   loading="lazy"
                 {% endunless %}
@@ -122,21 +122,6 @@
               <span class="_bg-brand-light _px-2.5 _py-2 _font-heading-small _text-brand-dark _text-xs">{{ 'blogs.article.blog' | t }}</span>
             </div>
           </div>
-          <div class="_row-start-3 _flex _items-end _overflow-hidden">
-            {% if quick_add == 'standard' %}
-              <div class="
-                _z-10
-                _relative
-                _hidden
-                md:_block
-                no-js-hidden
-                _w-full
-                _opacity-0 group-hover:_opacity-100 _duration-0
-              ">
-                {% render 'wm__quick-shop', card_product: card_product, product_form_id: product_form_id, section.id: section.id, full_width: true %}
-              </div>
-            {% endif %}
-          </div>
         </div>
       </div>
       <div
@@ -177,7 +162,7 @@
                 "
                 aria-labelledby="Article-{{ article.id }} Badge-{{ section.id }}-{{ article.id }}"
               >
-                {{ article.title | truncate: 50 | escape }}
+                <span class="link-underline">{{ article.title | truncate: 50 | escape }}</span>
               </a>
             </h3>
           </div>
