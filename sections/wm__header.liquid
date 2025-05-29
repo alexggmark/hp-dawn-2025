@@ -1,6 +1,6 @@
 <link rel="stylesheet" href="{{ 'component-list-menu.css' | asset_url }}" media="print" onload="this.media='all'">
 <link rel="stylesheet" href="{{ 'component-search.css' | asset_url }}" media="print" onload="this.media='all'">
-<link rel="stylesheet" href="{{ 'component-menu-drawer.css' | asset_url }}" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="{{ 'wm__component-menu-drawer.css' | asset_url }}" media="print" onload="this.media='all'">
 <link
   rel="stylesheet"
   href="{{ 'component-cart-notification.css' | asset_url }}"
@@ -35,60 +35,66 @@
     margin-left: -1.2rem;
   }
 
-  {% comment %} Add background when hovered in wm__details-disclosure.js {% endcomment %}
-  .header-wrapper.header-wrapper--menu-open {
+  .header-wrapper {
     background-color: var(--color-brand-light);
   }
 
-  .scrolled-past-header .header-wrapper {
-    background-color: var(--color-brand-light);
-  }
-
-  {%- if section.settings.sticky_header_type == 'reduce-logo-size' -%}
-    .scrolled-past-header .header__heading-logo-wrapper {
-      width: 75%;
-    }
-  {%- endif -%}
-
-  {% comment %} Manually controls text color based on scroll/overlay logic (easier than Tailwind) {% endcomment %}
-  .header-wrapper .header-controlled--text {
-    color: {{ tailwind_color }};
-  }
-  .header-wrapper .header-controlled--text svg:not(.icon.icon-caret) g > *,
-  .header-wrapper .header-controlled--text svg:not(.icon.icon-caret) > * {
-    stroke: {{ tailwind_color }};
-  }
-  .header__heading-logo {
-    filter: {% if invert_header_colors %} brightness(0) invert(1){% else %} none{% endif %};
-  }
-
-  {%- unless invisible_header != true -%}
-    .header-wrapper.header-wrapper--hovered,
+  @media screen and (min-width: 990px) {
+    {% comment %} Add background when hovered in wm__details-disclosure.js {% endcomment %}
     .header-wrapper.header-wrapper--menu-open {
       background-color: var(--color-brand-light);
     }
-  {%- endunless -%}
 
-  {%- unless invert_header_colors != true -%}
-    .scrolled-past-header .header-wrapper .header-controlled--text,
-    .header-wrapper.header-wrapper--hovered .header-controlled--text,
-    .header-wrapper.header-wrapper--menu-open .header-controlled--text {
-      color: var(--color-brand-dark);
+    .scrolled-past-header .header-wrapper {
+      background-color: var(--color-brand-light);
     }
-    .scrolled-past-header .header-wrapper .header-controlled--text svg:not(.icon.icon-caret) g > *,
-    .scrolled-past-header .header-wrapper .header-controlled--text svg:not(.icon.icon-caret) > *,
-    .header-wrapper.header-wrapper--hovered .header-controlled--text svg:not(.icon.icon-caret) g > *,
-    .header-wrapper.header-wrapper--hovered .header-controlled--text svg:not(.icon.icon-caret) > *,
-    .header-wrapper.header-wrapper--menu-open .header-controlled--text svg:not(.icon.icon-caret) g > *,
-    .header-wrapper.header-wrapper--menu-open .header-controlled--text svg:not(.icon.icon-caret) > * {
-      stroke: var(--color-brand-dark);
+
+    {%- if section.settings.sticky_header_type == 'reduce-logo-size' -%}
+      .scrolled-past-header .header__heading-logo-wrapper {
+        width: 75%;
+      }
+    {%- endif -%}
+  
+    {% comment %} Manually controls text color based on scroll/overlay logic (easier than Tailwind) {% endcomment %}
+    .header-wrapper .header-controlled--text {
+      color: {{ tailwind_color }};
     }
-    .scrolled-past-header .header-wrapper .header__heading-logo,
-    .header-wrapper.header-wrapper--hovered .header__heading-logo,
-    .header-wrapper.header-wrapper--menu-open .header__heading-logo {
-      filter: none;
+    .header-wrapper .header-controlled--text svg:not(.icon.icon-caret) g > *,
+    .header-wrapper .header-controlled--text svg:not(.icon.icon-caret) > * {
+      stroke: {{ tailwind_color }};
     }
-  {%- endunless -%}
+    .header__heading-logo {
+      filter: {% if invert_header_colors %} brightness(0) invert(1){% else %} none{% endif %};
+    }
+
+    {%- unless invisible_header != true -%}
+      .header-wrapper.header-wrapper--hovered,
+      .header-wrapper.header-wrapper--menu-open {
+        background-color: var(--color-brand-light);
+      }
+    {%- endunless -%}
+
+    {%- unless invert_header_colors != true -%}
+      .scrolled-past-header .header-wrapper .header-controlled--text,
+      .header-wrapper.header-wrapper--hovered .header-controlled--text,
+      .header-wrapper.header-wrapper--menu-open .header-controlled--text {
+        color: var(--color-brand-dark);
+      }
+      .scrolled-past-header .header-wrapper .header-controlled--text svg:not(.icon.icon-caret) g > *,
+      .scrolled-past-header .header-wrapper .header-controlled--text svg:not(.icon.icon-caret) > *,
+      .header-wrapper.header-wrapper--hovered .header-controlled--text svg:not(.icon.icon-caret) g > *,
+      .header-wrapper.header-wrapper--hovered .header-controlled--text svg:not(.icon.icon-caret) > *,
+      .header-wrapper.header-wrapper--menu-open .header-controlled--text svg:not(.icon.icon-caret) g > *,
+      .header-wrapper.header-wrapper--menu-open .header-controlled--text svg:not(.icon.icon-caret) > * {
+        stroke: var(--color-brand-dark);
+      }
+      .scrolled-past-header .header-wrapper .header__heading-logo,
+      .header-wrapper.header-wrapper--hovered .header__heading-logo,
+      .header-wrapper.header-wrapper--menu-open .header__heading-logo {
+        filter: none;
+      }
+    {%- endunless -%}
+  }
 
   {%- if section.settings.menu_type_desktop != "drawer" -%}
     @media screen and (min-width: 990px) {
@@ -201,11 +207,11 @@
   {% endif %}
   class="header-wrapper"
 >
-  <header class="page-width header-content _flex _items-stretch h-full">
+  <header class="page-width header-content _flex md:_items-stretch _items-center h-full">
     <div class="_flex-1 _flex _flex-row _items-stretch _justify-start _gap-4">
       {%- liquid
         if section.settings.menu != blank
-          render 'wm__header-drawer'
+          render 'wm__header-drawer', slider_collection: section.settings.slider_collection, products_to_show: section.settings.products_to_show
         endif
       -%}
 
@@ -247,7 +253,7 @@
 
     <div class="_flex-1 _flex _items-center _justify-end">
       <div class="_flex _justify-end _items-center _gap-2">
-        <div class="_p-6 _h-full">
+        <div class="_p-6 _h-full md:_block _hidden">
           <a class="_text-[12px] _font-semibold _tracking-widest header-controlled--text _uppercase list-menu__item focus-inset link-underline-trigger link-underline">Find your perfect regime</a>
         </div>
 

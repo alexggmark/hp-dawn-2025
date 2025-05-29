@@ -433,9 +433,10 @@ class MenuDrawer extends HTMLElement {
   }
 
   bindEvents() {
-    this.querySelectorAll('summary').forEach((summary) =>
+    // Alex - adding [data-js-sliding] to stop every slide logic
+    this.querySelectorAll('summary[data-js-sliding]').forEach((summary) => {
       summary.addEventListener('click', this.onSummaryClick.bind(this))
-    );
+    });
     this.querySelectorAll(
       'button:not(.localization-selector):not(.country-selector__close-button):not(.country-filter__reset-button)'
     ).forEach((button) => button.addEventListener('click', this.onCloseButtonClick.bind(this)));
@@ -465,6 +466,7 @@ class MenuDrawer extends HTMLElement {
     }
 
     if (detailsElement === this.mainDetailsToggle) {
+      console.log("onSummaryClick - mainDetails")
       if (isOpen) event.preventDefault();
       isOpen ? this.closeMenuDrawer(event, summaryElement) : this.openMenuDrawer(summaryElement);
 
@@ -472,6 +474,8 @@ class MenuDrawer extends HTMLElement {
         document.documentElement.style.setProperty('--viewport-height', `${window.innerHeight}px`);
       }
     } else {
+      // Submenu openers FIXME:
+      console.log("onSummaryClick - ELSE")
       setTimeout(() => {
         detailsElement.classList.add('menu-opening');
         summaryElement.setAttribute('aria-expanded', true);
@@ -484,6 +488,7 @@ class MenuDrawer extends HTMLElement {
   }
 
   openMenuDrawer(summaryElement) {
+    console.log("openMenuDrawer");
     setTimeout(() => {
       this.mainDetailsToggle.classList.add('menu-opening');
     });
@@ -563,6 +568,7 @@ class HeaderDrawer extends MenuDrawer {
   }
 
   openMenuDrawer(summaryElement) {
+    console.log("openMenuDrawer - HeaderDrawer");
     this.header = this.header || document.querySelector('.section-header');
     this.borderOffset =
       this.borderOffset || this.closest('.header-wrapper').classList.contains('header-wrapper--border-bottom') ? 1 : 0;
