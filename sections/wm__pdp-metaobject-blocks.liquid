@@ -35,6 +35,7 @@
               </div>
             </div>
           </div>
+
         {%- when "product_lp_content_block_1" -%}
           <div class="{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}{% if entry.background %} _bg-brand-background-light{% endif %} _py-20">
             <div class="_relative page-width">
@@ -85,6 +86,7 @@
               </div>
             </div>
           </div>
+
         {%- when "product_lp_content_block_2" -%}
           <div class="{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}{% if entry.background %} _bg-brand-background-light{% endif %} _py-20">
             <div class="_relative page-width">
@@ -128,6 +130,81 @@
               </div>
             </div>
           </div>
+
+        {%- when "product_lp_ingredients_block" -%}
+          <script src="{{ 'wm__accordion-image-split.js' | asset_url }}" defer="defer"></script>
+
+          {%- assign ingredients = entry.ingredient.value -%}
+
+          {% style %}
+            [data-js-panel] {
+              display: none;
+            }
+            [data-js-panel].js-panel--active {
+              display: block;
+              animation: var(--animation-slide-in-quick);
+            }
+            .bullet-point-line::before {
+              content: "";
+              display: block;
+              width: 1px;
+              height: 100%;
+              background-color: var(--color-brand-dark);
+              position: absolute;
+              top: 1rem;
+              bottom: 1rem;
+              left: 0.34rem;
+            }
+          {% endstyle %}
+          
+          {%- unless ingredients == blank -%}
+            <div class="{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %} _py-20">
+              <div class="_relative page-width">
+                <accordion-image-split>
+                  <div class="_grid md:_grid-cols-12 _grid-cols-1 _gap-8">
+                    <div class="md:_col-span-6 _col-span-1 _flex _flex-col _items-start _justify-start">
+                      {%- unless entry.title == blank -%}
+                        <h2 class="_font-heading-primary _text-brand-dark md:_text-3xl _text-2xl _mb-4">
+                          {{ entry.title }}
+                        </h2>
+                      {%- endunless -%}
+                      <div class="_max-w-[510px]">
+                        {%- for ingredient in ingredients -%}
+                          <details class="{% unless forloop.last %}bullet-point-line{% endunless %} _relative _pb-4" {% if forloop.first %}open="true"{% endif %}>
+                            <summary data-js-trigger="{{ forloop.index }}" class="_flex _justify-start _items-center _gap-3">
+                              <span class="_block _rounded-full _w-3 _h-3 _bg-brand-primary-100 _border _border-brand-dark"></span>
+                              <span class="_font-heading-primary _text-xl">{{ ingredient.title }}</span>
+                            </summary>
+                            <div class="_prose _text-base _pl-7">
+                              {{ ingredient.text | metafield_tag }}
+                            </div>
+                          </details>
+                        {%- endfor -%}
+                      </div>
+                    </div>
+                    <div class="md:_col-span-6 _col-span-1 _flex _flex-col{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+                      {% if settings.animations_reveal_on_scroll %}
+                        data-cascade
+                        style="--animation-order: 1;"
+                      {% endif %}
+                    >
+                      {%- for ingredient in ingredients -%}
+                      <div class="_flex-1 _w-full _overflow-hidden{% if forloop.first %} js-panel--active{% endif %}" data-js-panel="{{ forloop.index }}">
+                        {%- assign media = ingredient.media.value -%}
+                        {%- if media.media_type == 'video' -%}
+                          {{ media | video_tag: controls: true, preload: 'metadata', autoplay: true, muted: true, loop: true, width: '100%', height: '100%' }}
+                        {%- else -%}
+                          {{ media | image_url: width: 1000 | image_tag: loading: 'lazy', width: '100%', height: '100%' }}
+                        {%- endif -%}
+                      </div>
+                      {%- endfor -%}
+                    </div>
+                  </div>
+                </accordion-image-split>
+              </div>
+            </div>
+          {%- endunless -%}
+
       {%- endcase -%}
       <script>
         console.log("ENTRY WORKING:");

@@ -554,6 +554,17 @@ video {
   display: none;
 }
 
+:root {
+  --color-brand-primary-700: #0F2D64;
+  --color-brand-primary-500: #3D72F6;
+  --color-brand-secondary-100: #ECF0FB;
+  --color-brand-background: #F1F1F1;
+  --color-brand-border: #DADEE2;
+  --color-brand-dark: #000000;
+  --color-brand-light: #ffffff;
+  --font-size-base: 14px;
+}
+
 ._font-heading-small {
   font-weight: 600;
   text-transform: uppercase;
@@ -1352,6 +1363,10 @@ video {
   width: 100% !important;
 }
 
+._w-3 {
+  width: 0.75rem !important;
+}
+
 ._min-w-2 {
   min-width: 0.5rem !important;
 }
@@ -1378,6 +1393,18 @@ video {
 
 ._max-w-full {
   max-width: 100% !important;
+}
+
+._max-w-\[420px\] {
+  max-width: 420px !important;
+}
+
+._max-w-\[480px\] {
+  max-width: 480px !important;
+}
+
+._max-w-\[510px\] {
+  max-width: 510px !important;
 }
 
 ._flex-1 {
@@ -1983,6 +2010,18 @@ video {
 
 ._pt-4 {
   padding-top: 1rem !important;
+}
+
+._pl-8 {
+  padding-left: 2rem !important;
+}
+
+._pl-7 {
+  padding-left: 1.75rem !important;
+}
+
+._pl-12 {
+  padding-left: 3rem !important;
 }
 
 ._text-left {

@@ -6,7 +6,7 @@
   :root {
     --color-brand-primary-700: theme('colors.brand-primary-700');
     --color-brand-primary-500: theme('colors.brand-primary-500');
-    --color-brand-secondary-700: theme('colors.brand-secondary-700');
+    --color-brand-secondary-100: theme('colors.brand-primary-100');
     --color-brand-background: theme('colors.brand-background');
     --color-brand-border: theme('colors.brand-border');
     --color-brand-dark: theme('colors.brand-dark');

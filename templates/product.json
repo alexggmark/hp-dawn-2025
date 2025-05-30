@@ -71,7 +71,8 @@
       }
     },
     "pdp-metaobject-blocks": {
-      "type": "wm__pdp-metaobject-blocks"
+      "type": "wm__pdp-metaobject-blocks",
+      "settings": {}
     },
     "related-products": {
       "type": "related-products",
