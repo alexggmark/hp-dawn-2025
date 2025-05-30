@@ -11,6 +11,10 @@ module.exports = {
     "./templates/customers/**/*.liquid",
   ],
   theme: {
+    screens: {
+      md: '750px',
+      lg: '990px'
+    },
     extend: {
       colors: {
         'brand-primary-700': '#0F2D64',

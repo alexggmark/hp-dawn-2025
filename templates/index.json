@@ -108,11 +108,11 @@
         "desktop_content_position": "middle-left",
         "show_text_box": false,
         "desktop_content_alignment": "left",
-        "mobile_image_overlay_opacity": 0,
+        "mobile_image_overlay_opacity": 60,
         "mobile_image_height": "medium",
         "mobile_content_alignment": "right",
         "mobile_content_position": "middle-center",
-        "show_mobile_text_box": true,
+        "show_mobile_text_box": false,
         "margin_bottom": "0"
       }
     },
@@ -155,6 +155,38 @@
         "show_rating": true,
         "quick_add": "standard",
         "cta_text": "See all",
+        "margin_bottom": "0"
+      }
+    },
+    "wm_image_block_3_LmLwpJ": {
+      "type": "wm__image-block-3",
+      "blocks": {
+        "hotspot_LamFk4": {
+          "type": "hotspot",
+          "settings": {
+            "product_select": "",
+            "hotspot_position_horizontal": 0,
+            "hotspot_position_horizontal_reverse": false,
+            "hotspot_position_vertical": 0,
+            "hotspot_position_vertical_reverse": false,
+            "hotspot_position_mobile_horizontal": 0,
+            "hotspot_position_mobile_horizontal_reverse": false,
+            "hotspot_position_mobile_vertical": 0,
+            "hotspot_position_mobile_vertical_reverse": false
+          }
+        }
+      },
+      "block_order": [
+        "hotspot_LamFk4"
+      ],
+      "name": "WM ImageBlock 3",
+      "settings": {
+        "top_heading": "New Protect collection",
+        "main_heading": "Sun Protection, <em>Done</em> Better",
+        "description": "Our Sunscreens provide broad-spectrum protection that boost natural defences against ageing and free radical damage, all while nourishing and soothing skin.",
+        "cta_text": "Explore Now",
+        "cta_url": "shopify://collections",
+        "image": "shopify://shop_images/082624_Micro-DoseGlowBooster_PDP_HowToUse.jpg",
         "margin_bottom": "12"
       }
     },
@@ -196,6 +228,7 @@
         "hotspot_emiaYN",
         "hotspot_iFtzwq"
       ],
+      "disabled": true,
       "settings": {
         "top_heading": "Quick links",
         "main_heading": "Sun Protection, Done <em>Better</em>",
@@ -255,76 +288,62 @@
     "wm_collection_card_scroll_Mkbaft": {
       "type": "wm__collection-card-scroll",
       "blocks": {
-        "featured_collection_VeQbYa": {
-          "type": "featured_collection",
-          "settings": {
-            "collection": "acne-warrior",
-            "collection_image": "shopify://shop_images/miracle_mask.webp",
-            "collection_color": "#c8d3f3"
-          }
-        },
-        "featured_collection_zpRgeC": {
-          "type": "featured_collection",
-          "settings": {
-            "collection": "christmas-gift-sets",
-            "collection_image": "shopify://shop_images/solar-defense-non-tinted.webp",
-            "collection_color": "#fcfbf6"
-          }
-        },
-        "featured_collection_JbnGRG": {
+        "featured_collection_7qUtUi": {
           "type": "featured_collection",
           "settings": {
             "collection": "gifts-under-100",
-            "collection_image": "shopify://shop_images/Solar_defense_tinted.webp",
-            "collection_color": "#ead1cd"
-          }
-        },
-        "featured_collection_xGU99C": {
-          "type": "featured_collection",
-          "settings": {
-            "collection": "glowing-gifts",
-            "collection_image": "shopify://shop_images/Claryfying-toner.webp",
-            "collection_color": "#9db7b4"
+            "collection_image": "shopify://shop_images/collection-scroll-6.png",
+            "collection_color": "#79a0e1"
           }
         },
         "featured_collection_4gUHkC": {
           "type": "featured_collection",
           "settings": {
             "collection": "makeup-lover",
-            "collection_color": "#79a0e1"
+            "collection_image": "shopify://shop_images/collection-scroll-5.png",
+            "collection_color": "#9db7b4"
           }
         },
-        "featured_collection_7qUtUi": {
+        "featured_collection_VeQbYa": {
           "type": "featured_collection",
           "settings": {
-            "collection": "gifts-under-100",
-            "collection_color": "#ead1cd"
+            "collection": "acne-warrior",
+            "collection_image": "shopify://shop_images/collection-scroll-1.png",
+            "collection_color": "#0f2c64"
           }
         },
-        "featured_collection_cJLNmx": {
+        "featured_collection_zpRgeC": {
           "type": "featured_collection",
           "settings": {
             "collection": "christmas-gift-sets",
+            "collection_image": "shopify://shop_images/collection-scroll-2.png",
+            "collection_color": "#c8d3f3"
+          }
+        },
+        "featured_collection_JbnGRG": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "gifts-under-100",
+            "collection_image": "shopify://shop_images/collection-scroll-3.png",
             "collection_color": "#fcfbf6"
           }
         },
-        "featured_collection_MkATX9": {
+        "featured_collection_xGU99C": {
           "type": "featured_collection",
           "settings": {
             "collection": "glowing-gifts",
-            "collection_color": "#9db7b4"
+            "collection_image": "shopify://shop_images/collection-scroll-4.png",
+            "collection_color": "#ead1cd"
           }
         }
       },
       "block_order": [
+        "featured_collection_7qUtUi",
+        "featured_collection_4gUHkC",
         "featured_collection_VeQbYa",
         "featured_collection_zpRgeC",
         "featured_collection_JbnGRG",
-        "featured_collection_xGU99C",
-        "featured_collection_4gUHkC",
-        "featured_collection_7qUtUi",
-        "featured_collection_cJLNmx",
-        "featured_collection_MkATX9"
+        "featured_collection_xGU99C"
       ],
       "settings": {
         "top_heading": "Elevated by science",
@@ -341,7 +360,7 @@
             "expert_quote": "<p>Lorem ipsum dolor sit amet. Dolor amet sipsum amet sit doloris amit sipsum.</p>",
             "expert_name": "Mr. ONE Something",
             "expert_jobtitle": "Testing Chemist",
-            "expert_image": "shopify://shop_images/sun-slick-in-use.jpg"
+            "expert_image": "shopify://shop_images/dr-ian-vitek-headshot.png"
           }
         },
         "expert_PJMbBc": {
@@ -350,7 +369,7 @@
             "expert_quote": "<p>Lorem ipsum dolor sit amet. Dolor amet sipsum amet sit doloris amit sipsum.</p>",
             "expert_name": "Zr. ONE Something",
             "expert_jobtitle": "Cosmetic Chemist 2",
-            "expert_image": "shopify://shop_images/sun-slick-in-use.jpg"
+            "expert_image": "shopify://shop_images/dr-laura-jamieson.png"
           }
         },
         "expert_zXeQgT": {
@@ -359,7 +378,7 @@
             "expert_quote": "<p>Lorem ipsum dolor sit amet. Dolor amet sipsum amet sit doloris amit sipsum.</p>",
             "expert_name": "Dr Three Something",
             "expert_jobtitle": "Cosmetic Chemist 2",
-            "expert_image": "shopify://shop_images/sun-slick-in-use.jpg"
+            "expert_image": "shopify://shop_images/julie-scott.png"
           }
         },
         "expert_jCm9pH": {
@@ -368,7 +387,7 @@
             "expert_quote": "<p>Lorem ipsum dolor sit amet. Dolor amet sipsum amet sit doloris amit sipsum.</p>",
             "expert_name": "Dr Two Something",
             "expert_jobtitle": "Cosmetic Chemist 2",
-            "expert_image": "shopify://shop_images/sun-slick-in-use.jpg"
+            "expert_image": "shopify://shop_images/anna-baker.png"
           }
         },
         "expert_9JpryT": {
@@ -469,6 +488,7 @@
     "wm_hero_banner_image_CPaEAD",
     "wm_tem_pfeatured_collection_gbEQ8b",
     "wm_product_card_scroll_zyx8Jr",
+    "wm_image_block_3_LmLwpJ",
     "wm_image_block_1_z7FEaK",
     "wm_image_block_2_JMQnte",
     "wm_cta_banner_3XbrBt",

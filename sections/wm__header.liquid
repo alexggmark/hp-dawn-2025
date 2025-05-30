@@ -39,7 +39,7 @@
     background-color: var(--color-brand-light);
   }
 
-  @media screen and (min-width: 750px) {
+  @media screen and (min-width: 990px) {
     {% comment %} Add background when hovered in wm__details-disclosure.js {% endcomment %}
     .header-wrapper.header-wrapper--menu-open {
       background-color: var(--color-brand-light);
@@ -136,7 +136,7 @@
     line-height: calc(1 + 0.8 / var(--font-body-scale));
   }
 
-  @media screen and (min-width: 750px) {
+  @media screen and (min-width: 990px) {
     .list-menu__item--link {
       padding-bottom: 0.5rem;
       padding-top: 0.5rem;
@@ -207,7 +207,7 @@
   {% endif %}
   class="header-wrapper"
 >
-  <header class="page-width header-content _flex md:_items-stretch _items-center h-full">
+  <header class="page-width header-content _flex lg:_items-stretch _items-center h-full">
     <div class="_flex-1 _flex _flex-row _items-stretch _justify-start _gap-4">
       {%- liquid
         if section.settings.menu != blank
@@ -253,7 +253,7 @@
 
     <div class="_flex-1 _flex _items-center _justify-end">
       <div class="_flex _justify-end _items-center _gap-2">
-        <div class="_p-6 _h-full md:_block _hidden">
+        <div class="_p-6 _h-full lg:_block _hidden">
           <a class="_text-[12px] _font-semibold _tracking-widest header-controlled--text _uppercase list-menu__item focus-inset link-underline-trigger link-underline">Find your perfect regime</a>
         </div>
 
