@@ -1,0 +1,198 @@
+{% comment %} 
+  This is the main section that controls metaobjects for PDP
+{% endcomment %}
+
+{% assign product_lp_entries = product.metafields.custom.product_lp_entries.value %}
+
+{%- unless product_lp_entries == blank -%}
+  <div class="section-{{ section.id }}">
+    {%- for entry in product_lp_entries -%}
+      {%- case entry.type -%}
+        {%- when "product_lp_icon_strip" -%}
+          <div class="{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %} _bg-brand-primary-100">
+            <div class="_relative page-width _py-14">
+              <div class="_flex _flex-col _items-center">
+                {%- unless entry.title == blank -%}
+                  <h2 class="_font-heading-primary _text-brand-primary-700 md:_text-2.5xl _text-2xl _mb-10">
+                    {{ entry.title }}
+                  </h2>
+                {%- endunless -%}
+                <div class="_flex _flex-row _justify-between _gap-8">
+                  {%- assign entry_icons = entry.icon_pair.value -%}
+                  {%- unless entry_icons == blank -%}
+                    {%- for icon in entry_icons -%}
+                      <div class="_flex _justify-start _items-center _gap-2 _mb-2 _max-w-[170px] _text-brand-primary-700">
+                        <span class="svg-wrapper _w-14 _h-14 _flex-shrink-0">
+                          {{ 'metaobjecticon-large-' | append: icon.icon | append: '.svg' | inline_asset_content }}
+                        </span>
+                        <span class="_font-heading-small _text-sm">
+                          {{ icon.title }}
+                        </span>
+                      </div>
+                    {%- endfor -%}
+                  {%- endunless -%}
+                </div>
+              </div>
+            </div>
+          </div>
+        {%- when "product_lp_content_block_1" -%}
+          <div class="{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}{% if entry.background %} _bg-brand-background-light{% endif %} _py-20">
+            <div class="_relative page-width">
+              <div class="_grid md:_grid-cols-12 _grid-cols-1">
+                <div class="md:_col-span-5 _col-span-1 _flex _flex-col _items-start _justify-center{% if entry.reverse_order %} md:_order-2{% endif %}">
+                  {%- unless entry.title == blank -%}
+                    <h2 class="_font-heading-primary _text-brand-dark md:_text-3xl _text-2xl _mt-1">
+                      {{ entry.title }}
+                    </h2>
+                  {%- endunless -%}
+                  {%- unless entry.text == blank -%}
+                    <div class="_prose _text-base _mt-4">
+                      {{ entry.text | metafield_tag }}
+                    </div>
+                  {%- endunless -%}
+                  {%- assign entry_icons = entry.icon.value -%}
+                  {%- unless entry_icons == blank -%}
+                    <ul class="_text-base">
+                      {%- for icon in entry_icons -%}
+                        <li class="_flex _justify-start _items-start _gap-2 _mb-2">
+                          <span class="svg-wrapper _w-10 _h-10 _flex-shrink-0">
+                            {{ 'metaobjecticon-' | append: icon.icon | append: '.svg' | inline_asset_content }}
+                          </span>
+                          <span class="_pt-2">
+                            {{ icon.text }}
+                          </span>
+                        </li>
+                      {%- endfor -%}
+                    </ul>
+                  {%- endunless -%}
+                </div>
+                <div class="md:_col-span-7 _col-span-1 _flex _flex-row">
+                  <div
+                    class="_flex-1 _w-full _overflow-hidden{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+                    {% if settings.animations_reveal_on_scroll %}
+                      data-cascade
+                      style="--animation-order: 1;"
+                    {% endif %}
+                  >
+                    {%- assign media = entry.media.value -%}
+                    {%- if media.media_type == 'video' -%}
+                      {{ media | video_tag: controls: true, preload: 'metadata', autoplay: true, muted: true, loop: true, width: '100%', height: '100%' }}
+                    {%- else -%}
+                      {{ media | image_url: width: 1000 | image_tag: loading: 'lazy', width: '100%', height: '100%' }}
+                    {%- endif -%}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        {%- when "product_lp_content_block_2" -%}
+          <div class="{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}{% if entry.background %} _bg-brand-background-light{% endif %} _py-20">
+            <div class="_relative page-width">
+              <div class="_grid md:_grid-cols-12 _grid-cols-1">
+                <div class="md:_col-span-5 _col-span-1 _flex _flex-col _items-start _justify-center{% if entry.reverse_order %} md:_order-2{% endif %}">
+                  {%- unless entry.title == blank -%}
+                    <h2 class="_font-heading-primary _text-brand-dark md:_text-3xl _text-2xl _mt-1">
+                      {{ entry.title }}
+                    </h2>
+                  {%- endunless -%}
+                  <div class="_flex _flex-row _items-center _gap-3">
+                    {%- unless entry.stat_number == blank -%}
+                      <span class="_text-brand-primary-500 _font-heading-primary _text-3xl">{{ entry.stat_number }}</span>
+                    {%- endunless -%}
+                    {%- unless entry.stat_description == blank -%}
+                      <span class="_text-base">{{ entry.stat_description }}</span>
+                    {%- endunless -%}
+                  </div>
+                  {%- unless entry.text == blank -%}
+                    <div class="_prose _text-base _mt-4">
+                      {{ entry.text | metafield_tag }}
+                    </div>
+                  {%- endunless -%}
+                </div>
+                <div class="md:_col-span-7 _col-span-1 _flex _flex-row">
+                  <div
+                    class="_flex-1 _w-full _overflow-hidden{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+                    {% if settings.animations_reveal_on_scroll %}
+                      data-cascade
+                      style="--animation-order: 1;"
+                    {% endif %}
+                  >
+                    {%- assign media = entry.media.value -%}
+                    {%- if media.media_type == 'video' -%}
+                      {{ media | video_tag: controls: true, preload: 'metadata', autoplay: true, muted: true, loop: true, width: '100%', height: '100%' }}
+                    {%- else -%}
+                      {{ media | image_url: width: 1000 | image_tag: loading: 'lazy', width: '100%', height: '100%' }}
+                    {%- endif -%}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+      {%- endcase -%}
+      <script>
+        console.log("ENTRY WORKING:");
+        console.log({{ product_lp_entries | json }})
+      </script>
+    {%- endfor -%}
+  </div>
+{%- endunless -%}
+
+{% schema %}
+{
+  "name": "WM PDP MetaobjectBlocks",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "inline_richtext",
+      "id": "top_heading",
+      "default": "t:sections.footer.blocks.link_list.settings.heading.default",
+      "label": "Top Heading"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "main_heading",
+      "default": "t:sections.footer.blocks.link_list.settings.heading.default",
+      "label": "Main Heading"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "description",
+      "default": "Description text",
+      "label": "Description text"
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "CTA Text",
+      "default": "See all"
+    },
+    {
+      "type": "url",
+      "id": "cta_url",
+      "label": "Pick URL for button"
+    },
+    {
+      "type": "header",
+      "content": "Images"
+    },
+    {
+      "type": "video",
+      "id": "video",
+      "label": "Main video"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Main image"
+    }
+  ],
+  "presets": [
+    {
+      "name": "WM PDP MetaobjectBlocks"
+    }
+  ]
+}
+{% endschema %}

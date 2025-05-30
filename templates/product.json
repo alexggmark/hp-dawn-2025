@@ -70,6 +70,9 @@
         "margin_bottom": "12"
       }
     },
+    "pdp-metaobject-blocks": {
+      "type": "wm__pdp-metaobject-blocks"
+    },
     "related-products": {
       "type": "related-products",
       "settings": {
@@ -115,6 +118,7 @@
   },
   "order": [
     "main",
+    "pdp-metaobject-blocks",
     "related-products",
     "174766694018ff52b0"
   ]

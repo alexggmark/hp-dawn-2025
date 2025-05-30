@@ -330,29 +330,79 @@
                 </div>
               {%- when 'rating' -%}
                 {% render 'wm__rating-stars', main_product: product %}
+              {%- when 'usps' -%}
+                <div class="_w-full _my-4">
+                  {{
+                    block.settings.usp_image
+                    | image_url: width: 1000
+                    | image_tag:
+                      loading: 'lazy',
+                      height: block.settings.usp_image.height,
+                      width: block.settings.usp_image.width
+                  }}
+                </div>
               {%- when 'product_details' -%}
                 <div class="_w-full _block _mt-6">
 
-                  {%- for i in (1..4) -%}
+                  {% assign detail_entries = product.metafields.custom.product_detail_entries.value %}
+
+                  {%- for entry in detail_entries -%}
                     <animated-details>
                       <details class="_border-t _border-brand-border {% if forloop.last %} _border-b{% endif %}">
                         <summary class="_py-4 _flex _justify-between _items-center _w-full _group/faq">
-                          <span class="_font-heading-primary _text-brand-dark _text-2xl">Ingredients</span>
+                          <span class="_font-heading-primary _text-brand-dark _text-2xl">{{ entry.title }}</span>
                           <span class="svg-wrapper _w-6 _h-6 group-hover/faq:_scale-110 _text-brand-primary-500" data-js-plus-icon>
                             {{- 'icon-newbuild-plus-thin.svg' | inline_asset_content -}}
                           </span>
                         </summary>
-                        <div>
-                          <p>animated-details</p>
-                          <p>animated-details</p>
-                          <p>animated-details</p>
-                          <p>animated-details</p>
-                          <p>animated-details</p>
-                          <p>animated-details</p>
-                          <p>animated-details</p>
-                          <p>animated-details</p>
-                          <p>animated-details</p>
-                          <p>animated-details</p>
+                        <div class="
+                          _pt-2 _pb-2
+                        ">
+                          <div class="_grid _grid-cols-12">
+                            {%- unless entry.media == blank -%}
+                              <div class="{% if entry.media_only or entry.content == blank %} _col-span-full{% else %} md:_col-span-6 _col-span-full md:_pr-3 _mb-5{% endif %}">
+                                {%- assign media = entry.media.value -%}
+                                {%- if media.media_type == 'video' -%}
+                                  {{ media | video_tag: controls: true, preload: 'metadata', autoplay: true, muted: true, loop: true, width: '100%', height: '100%' }}
+                                {%- else -%}
+                                  {{ media | image_url: width: 500 | image_tag: loading: 'lazy', width: '100%', height: '100%' }}
+                                {%- endif -%}
+                              </div>
+                            {%- endunless -%}
+                            <div class="
+                              {% if entry.media_only or entry.media == blank %} _col-span-full{% else %} md:_col-span-6 _col-span-full{% endif %}
+                            ">
+                              {%- unless entry.content == blank -%}
+                                <div class="_prose md:_text-base _text-sm _mb-6">
+                                  {{ entry.content | metafield_tag }}
+                                </div>
+                              {%- endunless -%}
+
+                              {%- unless entry.faq_select == blank -%}
+                                {%- for faq in entry.faq_select.value -%}
+                                  <details
+                                    class="
+                                      _group/faq _border-t _border-brand-border
+                                      {% if forloop.first %} _-mt-2{% endif %}
+                                      {% if forloop.last %} _-mb-2{% endif %}
+                                    "
+                                  >
+                                    <summary class="_flex _flex-row _justify-between _py-6 _pl-0.5 hover:_bg-brand-background">
+                                      <h3 class="_font-medium _pr-1 md:_text-base _text-sm">
+                                        {{ faq.question }}
+                                      </h3>
+                                      <span class="svg-wrapper _w-2 _min-w-2 _mr-2 group-open/faq:_rotate-90 _duration-100">
+                                        {{- 'icon-chevron-arrow.svg' | inline_asset_content -}}
+                                      </span>
+                                    </summary>
+                                    <div class="_pt-2 _pb-6 _prose _text-sm _pl-0.5">
+                                      {{ faq.answer | metafield_tag }}
+                                    </div>
+                                  </details>
+                                {%- endfor -%}
+                              {%- endunless -%}
+                            </div>
+                          </div>
                         </div>
                       </details>
                     </animated-details>
@@ -968,6 +1018,18 @@
         {
           "type": "paragraph",
           "content": "t:sections.main-product.blocks.rating.settings.paragraph.content"
+        }
+      ]
+    },
+    {
+      "type": "usps",
+      "name": "USP block",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "usp_image",
+          "label": "Upload USP image",
+          "info": "We may replace this with metaobject later, for now it's just an image"
         }
       ]
     },

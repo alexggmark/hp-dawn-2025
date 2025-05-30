@@ -62,4 +62,68 @@
     _py-4
     _px-8;
   }
+
+  /* -----------
+    PROSE STYLES
+  ----------- */
+  ._prose p:not(:last-child){
+    @apply _mb-4;
+  }
+  ._prose ul li,
+  ._prose ol li {
+    @apply _mb-3;
+  }
+  ._prose a {
+    @apply _text-brand-primary-700 _underline _underline-offset-4;
+  }
+  ._prose a:hover {
+    @apply _no-underline;
+  }
+  ._prose h1, ._prose h1 > strong {
+    @apply _mb-3 md:_text-3xl _text-2xl _text-brand-primary-700 _font-heading-primary _mt-10;
+  }
+  ._prose h2, ._prose h2 > strong {
+    @apply _mb-3 _text-xl _text-brand-primary-700 _font-medium _mt-10;
+  }
+  ._prose h3 {
+    @apply _mb-1 _text-[15px] _font-semibold _uppercase _text-brand-dark;
+  }
+  ._prose strong {
+    @apply _font-medium;
+  }
+  ._prose ul {
+    @apply _list-none _pl-0;
+  }
+  ._prose ul li {
+    @apply _pl-8 _relative;
+  }
+  /* ._prose ul li::before {
+    content: "";
+    @apply _absolute _left-0 _w-6 _h-6 _border _border-brand-primary-500 _bg-brand-background _rounded-full;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%230097A9"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>');
+    background-size: 80%;
+    background-position: center;
+    background-repeat: no-repeat;
+  } */
+  ._prose ul li::before {
+    content: "";
+    @apply _absolute _left-0 _w-6 _h-6;
+    background-image: url("data:image/svg+xml;utf8,%3Csvg%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Cpath%20d%3D%22M12%2021C14.0822%2021%2016.1%2020.278%2017.7095%2018.9571C19.3191%2017.6362%2020.4209%2015.798%2020.8271%2013.7558C21.2333%2011.7136%2020.9188%209.59376%2019.9373%207.75743C18.9558%205.9211%2017.3679%204.48191%2015.4442%203.68508C13.5205%202.88826%2011.38%202.78311%209.38744%203.38754C7.3949%203.99197%205.67358%205.26858%204.51677%206.99987C3.35997%208.73115%202.83925%2010.81%203.04334%2012.8822C3.24743%2014.9543%204.1637%2016.8916%205.63604%2018.364%22%20stroke%3D%22%230F2D64%22%20stroke-linecap%3D%22round%22/%3E%3Cpath%20d%3D%22M16%2010L12.402%2014.3175C11.7465%2015.1042%2011.4187%2015.4976%2010.9781%2015.5176C10.5375%2015.5375%2010.1755%2015.1755%209.45139%2014.4514L8%2013%22%20stroke%3D%22%230F2D64%22%20stroke-linecap%3D%22round%22/%3E%3C/svg%3E");
+    background-size: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  ._prose ul li ul {
+    @apply _mt-4;
+  }
+  ._prose ol {
+    @apply _list-none;
+  }
+  ._prose ol li {
+    @apply _pl-8 _relative;
+  }
+  ._prose ol li::before {
+    content: counter(list-item) ".";
+    @apply _absolute _left-0 _text-brand-primary-500 _flex _items-center _justify-center _text-[28px] _font-medium;
+  }
 }
