@@ -17,9 +17,9 @@
     {%- endif -%}
     {%- if predictive_search.resources.queries.size > 0 or predictive_search.resources.collections.size > 0 -%}
       <div class="_mx-4">
-        <h2 id="predictive-search-queries" class="_border-b _border-brand-border _py-3 _font-heading-primary _text-brand-dark _text-lg">
+        <h3 id="predictive-search-queries" class="_border-b _border-brand-border _font-heading-small _py-3 _text-brand-dark _text-lg">
           {{- 'templates.search.suggestions' | t -}}
-        </h2>
+        </h3>
         <ul
           id="predictive-search-results-queries-list"
           class="_flex _flex-row _flex-wrap _gap-4 _py-3"
@@ -73,12 +73,12 @@
       <div class="_flex _flex-col _flex-grow _flex-shrink _basis-auto _gap-4">
         {%- if predictive_search.resources.products.size > 0 -%}
           <div class="_mx-4">
-            <h2
+            <h3
               id="predictive-search-products"
-              class="_border-b _border-brand-border _py-3 _font-heading-primary _text-brand-dark _text-lg"
+              class="_border-b _border-brand-border _font-heading-small _py-3 _text-brand-dark _text-lg"
             >
               {{- 'templates.search.products' | t -}}
-            </h2>
+            </h3>
             <ul
               id="predictive-search-results-products-list"
               class="_list-none"
@@ -113,7 +113,7 @@
                           {{ product.vendor }}
                         </div>
                       {%- endif -%}
-                      <p class="_font-medium md:_text-base _text-sm _text-brand-primary-700">{{ product.title | escape }}</p>
+                      <p class="_text-sm _font-link _text-brand-dark">{{ product.title | escape }}</p>
                       {%- if settings.predictive_search_show_price -%}
                         {% render 'wm__price', product: product, use_variant: true, show_badges: false %}
                       {%- endif -%}
@@ -127,9 +127,9 @@
         {% comment %} Collections block {% endcomment %}
           {%- if predictive_search.resources.collections.size > 0 -%}
             <div class="_mx-4">
-              <h2 id="predictive-search-queries" class="_border-b _border-brand-border _py-3 _font-heading-primary _text-brand-dark _text-lg">
+              <h3 id="predictive-search-queries" class="_border-b _border-brand-border _font-heading-small _py-3 _text-brand-dark _text-lg">
                 Collections
-              </h2>
+              </h3>
               <ul
                 id="predictive-search-results-queries-list"
                 class="_flex _flex-row _flex-wrap _gap-4 _py-3"

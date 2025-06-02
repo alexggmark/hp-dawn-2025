@@ -1255,6 +1255,26 @@ video {
   height: 100% !important;
 }
 
+._max-h-\[300px\] {
+  max-height: 300px !important;
+}
+
+._max-h-\[600px\] {
+  max-height: 600px !important;
+}
+
+._max-h-\[460px\] {
+  max-height: 460px !important;
+}
+
+._max-h-\[520px\] {
+  max-height: 520px !important;
+}
+
+._max-h-\[400px\] {
+  max-height: 400px !important;
+}
+
 ._min-h-8 {
   min-height: 2rem !important;
 }
@@ -2252,11 +2272,6 @@ video {
 .before\:_rounded-full::before {
   content: var(--tw-content) !important;
   border-radius: 9999px !important;
-}
-
-.before\:_bg-black\/20::before {
-  content: var(--tw-content) !important;
-  background-color: rgb(0 0 0 / 0.2) !important;
 }
 
 .before\:_bg-brand-primary-700\/40::before {

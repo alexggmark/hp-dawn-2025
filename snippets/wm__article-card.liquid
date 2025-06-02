@@ -18,7 +18,7 @@
 {% endcomment %}
 
 {%- if article and article != empty -%}
-  <div class="_group _h-full _w-full _relative link-underline-trigger">
+  <div class="_group _h-full _w-full _relative">
     <div
       class="
         _flex
@@ -162,7 +162,7 @@
                 "
                 aria-labelledby="Article-{{ article.id }} Badge-{{ section.id }}-{{ article.id }}"
               >
-                <span class="link-underline">{{ article.title | truncate: 50 | escape }}</span>
+                <span class="">{{ article.title | truncate: 50 | escape }}</span>
               </a>
             </h3>
           </div>

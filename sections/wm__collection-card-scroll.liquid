@@ -53,14 +53,14 @@
                             src="{{ block.settings.collection_image | image_url: width: 533 }}"
                             sizes="(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 130 | divided_by: 4 }}px, (min-width: 990px) calc((100vw - 130px) / 4), (min-width: 750px) calc((100vw - 120px) / 3), calc((100vw - 35px) / 2)"
                             alt="{{ block.settings.collection_image.alt | escape }}"
-                            class="motion-reduce {% if block.settings.collection_image.media[1] != null %}group-hover:_opacity-0{% endif %} _object-cover _object-center _h-full _w-full"
+                            class="motion-reduce _object-cover _object-center _h-full _w-full"
                             loading="lazy"
                             width="{{ block.settings.collection_image.width }}"
                             height="{{ block.settings.collection_image.height }}"
                           >
                         {% endunless %}
                       </div>
-                      <div class="_flex _items-center _justify-between">
+                      <div class="_flex _items-center _justify-start _gap-4">
                         <span class="_font-heading-primary-italic _text-brand-dark _text-xl">
                           {{ block.settings.collection.title }}
                         </span>

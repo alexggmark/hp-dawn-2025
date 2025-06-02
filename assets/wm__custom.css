@@ -26,6 +26,13 @@
   display: none;
 }
 
+/* ----------
+  MARK STYLES
+---------- */
+mark {
+  background-color: #cfdfec;
+}
+
 /* ------------------
   UNDERLINE ANIMATION
 ------------------ */

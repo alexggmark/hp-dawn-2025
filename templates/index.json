@@ -79,10 +79,10 @@
           "type": "hotspot",
           "disabled": true,
           "settings": {
-            "product_select": "",
-            "hotspot_position_horizontal": 0,
+            "product_select": "5x-power-peel-face-exfoliator",
+            "hotspot_position_horizontal": 10,
             "hotspot_position_horizontal_reverse": false,
-            "hotspot_position_vertical": 0,
+            "hotspot_position_vertical": 4,
             "hotspot_position_vertical_reverse": false,
             "hotspot_position_mobile_horizontal": 0,
             "hotspot_position_mobile_horizontal_reverse": false,

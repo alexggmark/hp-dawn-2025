@@ -111,7 +111,7 @@ class PredictiveSearch extends SearchForm {
     if (!currentSearchTerm.length) {
       // TODO: Alex - this is a hack to have search open, but NOT preload content when closed
       // To remove this safely, just delete 'getSearchResults' but keep return!
-      this.getSearchResults('spf');
+      this.getSearchResults('retinol');
       return;
     };
 
