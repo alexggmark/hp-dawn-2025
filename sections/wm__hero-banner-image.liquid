@@ -146,84 +146,24 @@
   {%- for block in section.blocks -%}
     {%- case block.type -%}
       {%- when 'hotspot' -%}
-        {%- unless hotspot_block_counter > 0 -%}
-          <script src="{{ 'wm__quick-shop.js' | asset_url }}" defer="defer"></script>
+        {%- unless block.settings.hotspot_location == "second" -%}
+          {%- if hotspot_block_counter > 0 -%}
+            {%- assign skip_script = true -%}
+          {%- endif -%}
+          {% render 'wm__hotspot',
+            skip_script: skip_script,
+            block_id: block.id,
+            product_select: block.settings.product_select,
+            hotspot_position_horizontal_reverse: block.settings.hotspot_position_horizontal_reverse,
+            hotspot_position_vertical_reverse: block.settings.hotspot_position_vertical_reverse,
+            hotspot_position_mobile_horizontal_reverse: block.settings.hotspot_position_mobile_horizontal_reverse,
+            hotspot_position_mobile_vertical_reverse: block.settings.hotspot_position_mobile_vertical_reverse,
+            hotspot_position_horizontal: block.settings.hotspot_position_horizontal,
+            hotspot_position_vertical: block.settings.hotspot_position_vertical,
+            hotspot_position_mobile_horizontal: block.settings.hotspot_position_mobile_horizontal,
+            hotspot_position_mobile_vertical: block.settings.hotspot_position_mobile_vertical
+          %}
         {%- endunless -%}
-        {%- assign hotspot_block_counter = hotspot_block_counter | plus: 1 -%}
-
-        {%- capture hotspot_button_content -%}
-          <div class="
-            _relative
-            _cursor-pointer
-            _w-8 _h-8 
-            _rounded-full 
-            _border _border-white/50
-            before:_absolute 
-            before:_inset-0 
-            before:_bg-black/20
-            before:_backdrop-blur-sm
-            before:_rounded-full 
-            after:_absolute 
-            after:_inset-1/2 
-            after:_w-3.5 after:_h-3.5
-            _transition-all _duration-100 after:_transition-all after:_duration-200
-            hover:_scale-125
-            hover:after:_w-6 hover:after:_h-6 
-            after:_bg-white 
-            after:_rounded-full 
-            after:_transform 
-            after:_-translate-x-1/2 
-            after:_-translate-y-1/2
-            [.loading_&]:_opacity-0
-          ">
-            &nbsp;
-          </div>
-        {%- endcapture -%}
-
-        {%- comment %} Desktop Calculations {% endcomment -%}
-        {%- assign horizontal_sign = '+' -%}
-        {%- if block.settings.hotspot_position_horizontal_reverse -%}
-          {%- assign horizontal_sign = '-' -%}
-        {%- endif -%}
-
-        {%- assign vertical_sign = '+' -%}
-        {%- if block.settings.hotspot_position_vertical_reverse -%}
-          {%- assign vertical_sign = '-' -%}
-        {%- endif -%}
-
-        {%- comment %} Mobile Calculations {% endcomment -%}
-        {%- assign mobile_horizontal_sign = '+' -%}
-        {%- if block.settings.hotspot_position_mobile_horizontal_reverse -%}
-          {%- assign mobile_horizontal_sign = '-' -%}
-        {%- endif -%}
-
-        {%- assign mobile_vertical_sign = '+' -%}
-        {%- if block.settings.hotspot_position_mobile_vertical_reverse -%}
-          {%- assign mobile_vertical_sign = '-' -%}
-        {%- endif -%}
-
-        {%- style -%}
-          #HotSpot-{{ block.id }} {
-            transform: translate(calc(50% {{ mobile_horizontal_sign }} {{ block.settings.hotspot_position_mobile_horizontal }}rem), calc(50% {{ mobile_vertical_sign }} {{ block.settings.hotspot_position_mobile_vertical }}rem));
-          }
-          @media screen and (min-width: 750px) {
-            #HotSpot-{{ block.id }} {
-              transform: translate(calc(50% {{ horizontal_sign }} {{ block.settings.hotspot_position_horizontal }}vw), calc(50% {{ vertical_sign }} {{ block.settings.hotspot_position_vertical }}rem));
-            }
-          }
-        {%- endstyle -%}
-
-        <div class="
-          _absolute
-          _bottom-1/2
-          _right-1/2
-          _z-30
-          "
-          id="HotSpot-{{ block.id }}"
-        >
-          {% assign product_form_id = 'quick-add-' | append: section.id | append: block.settings.product_select.id %}
-          {% render 'wm__quick-shop', custom_button_html: hotspot_button_content, card_product: block.settings.product_select, product_form_id: product_form_id, section_id: section.id %}
-        </div>
     {%- endcase -%}
   {%- endfor -%}
 

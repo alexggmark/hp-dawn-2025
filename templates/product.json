@@ -72,10 +72,16 @@
     },
     "pdp-metaobject-blocks": {
       "type": "wm__pdp-metaobject-blocks",
-      "settings": {}
+      "settings": {
+        "top_heading": "Quick links",
+        "main_heading": "Quick links",
+        "description": "Description text",
+        "cta_text": "See all",
+        "cta_url": ""
+      }
     },
     "related-products": {
-      "type": "related-products",
+      "type": "wm__related-products",
       "settings": {
         "heading": "You may also like",
         "heading_size": "h2",
@@ -90,6 +96,23 @@
         "show_rating": false,
         "padding_top": 36,
         "padding_bottom": 28
+      }
+    },
+    "wm_cta_banner": {
+      "type": "wm__cta-banner",
+      "settings": {
+        "top_heading": "Elevated by Science",
+        "main_heading": "Pick Your <em>Perfect</em> Peptides",
+        "description": "Our patented peptide technology and epigenetics work together to boost your skin's natural repair and target genes involved in ageing",
+        "cta_label": "Contact us",
+        "cta_url": "",
+        "invert_colours": true,
+        "image": "shopify://shop_images/Retail_SunSlick_PDP_HowToUse.jpg",
+        "video": "shopify://files/videos/power luxe SMALL FOR WEB.mp4",
+        "image_overlay_opacity": 40,
+        "image_height": "medium",
+        "mobile_image_height": "medium",
+        "margin_bottom": "0"
       }
     },
     "174766694018ff52b0": {
@@ -121,6 +144,7 @@
     "main",
     "pdp-metaobject-blocks",
     "related-products",
+    "wm_cta_banner",
     "174766694018ff52b0"
   ]
 }
