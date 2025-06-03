@@ -1,0 +1,59 @@
+{% comment %} 
+  This is the standalone snippet for collection meta details
+  - Has an FAQ dropdown + related categories + meta description
+{% endcomment %}
+
+{%- assign collection_meta = collection.metafields.custom.collection_meta_link.value -%}
+{%- assign collection_faq_entries = collection_meta.faq.value -%}
+{%- assign collection_related_collections = collection_meta.related_collection.value -%}
+
+{%- if collection_meta -%}
+<div class="_pb-16">
+  <div class="">
+
+    {%- if collection_related_collections -%}
+      <h3 class="_mb-2 _font-heading-primary _text-brand-dark _text-2xl">Related Categories:</h3>
+      <div class="_link _mb-6 _flex _flex-row _flex-wrap _gap-y-2 _gap-x-4">
+        {%- for entry in collection_related_collections -%}
+          {%- assign collection_url = entry.collection.value.url %}
+          {%- assign collection_title = entry.seo_name -%}
+
+          <a href="{{ collection_url }}" class="_text-brand-primary-700 md:_text-base _text-sm link-underline-trigger link-underline" alt="Link to related category {{ collection_title }}">
+            {{ collection_title }}
+          </a>
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+
+    {%- if collection_meta.secondary_description -%}
+      <div class="_mb-6 _prose md:_text-base _text-sm">
+        {{ collection_meta.secondary_description | metafield_tag }}
+      </div>
+    {%- endif -%}
+
+    {%- if collection_faq_entries -%}
+      <div class="">
+        {%- for entry in collection_faq_entries -%}
+          <animated-details>
+            <details class="_border-t _border-brand-border {% if forloop.last %} _border-b{% endif %}">
+              <summary class="_py-5 _flex _justify-between _items-center _w-full _group/faq">
+                <span class=" _text-brand-dark _font-heading-primary _text-xl">{{ entry.question }}</span>
+                <span class="svg-wrapper _w-6 _h-6 group-hover/faq:_scale-110 _text-brand-primary-500" data-js-plus-icon>
+                  {{- 'icon-newbuild-plus-thin.svg' | inline_asset_content -}}
+                </span>
+              </summary>
+              <div class="
+                md:_text-base _text-sm
+                _prose
+              ">
+                {{ entry.answer | metafield_tag }}
+              </div>
+            </details>
+          </animated-details>
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+  </div>
+</div>
+{%- endif -%}
+  

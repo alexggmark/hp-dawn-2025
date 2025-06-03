@@ -10,11 +10,11 @@
 {
   "sections": {
     "banner": {
-      "type": "main-collection-banner",
+      "type": "wm__main-collection-banner",
       "settings": {
-        "show_collection_description": true,
-        "show_collection_image": false,
-        "color_scheme": "scheme-1"
+        "default_image": "shopify:\/\/shop_images\/homepage_header_desktop_copy_2_1760x_2000x_4fb16f78-ee8e-456b-bbba-4f77b7ff4152.webp",
+        "default_image_invert_text": false,
+        "margin_bottom": "6"
       }
     },
     "product-grid": {

@@ -1,0 +1,170 @@
+{% comment %}theme-check-disable ImgLazyLoading{% endcomment %}
+{{ 'section-image-banner.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign full_width = '100vw'
+  assign widths = '375, 550, 750, 1100, 1500, 1780, 2000, 3000, 3840'
+
+  assign fetch_priority = 'auto'
+  if section.index == 1
+    assign fetch_priority = 'high'
+  endif
+-%}
+
+{%- assign collection_light_text = collection.metafields.banner.light_text -%}
+{% comment %} {%- assign collection_mobile_image = collection.metafields.banner.mobile_image -%} TODO: {% endcomment %}
+{%- assign collection_overlay_opacity = collection.metafields.banner.banner_overlay_opacity -%}
+
+{%- unless collection_overlay_opacity == blank -%}
+  {%- style -%}
+    #Banner-{{ section.id }}::after {
+      content: '';
+      display: block;
+      opacity: {{ collection_overlay_opacity | divided_by: 100.0 }};
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-color: var(--color-brand-dark);
+    }
+  {%- endstyle -%}
+{%- endunless -%}
+
+<div
+  id="Banner-{{ section.id }}"
+  class="
+    _flex
+    _relative
+    _isolate
+    _z-auto
+    _flex-col
+    _mb-{{ section.settings.margin_bottom | divided_by: 2 }} md:_mb-{{ section.settings.margin_bottom }}
+    md:_mb-12
+    md:_flex-row
+    _bg-brand-background
+    {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}"
+>
+  {%- if collection.image -%}
+    <div class="banner__media media{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
+      {%- liquid
+        assign image_height = collection.image.width | divided_by: collection.image.aspect_ratio
+        assign sizes = full_width
+      -%}
+      {{
+        collection.image
+        | image_url: width: 3840
+        | image_tag:
+          width: collection.image.width,
+          height: image_height,
+          sizes: sizes,
+          widths: widths,
+          fetchpriority: fetch_priority
+      }}
+    </div>
+  {%- elsif section.settings.default_image != blank -%}
+    <div class="banner__media media{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
+      {%- liquid
+        assign image_height = section.settings.default_image.width | divided_by: section.settings.default_image.aspect_ratio
+        assign sizes = full_width
+      -%}
+      {{
+        section.settings.default_image
+        | image_url: width: 3840
+        | image_tag:
+          width: section.settings.default_image.width,
+          height: image_height,
+          sizes: sizes,
+          widths: widths,
+          fetchpriority: fetch_priority
+      }}
+    </div>
+  {%- endif -%}
+  <div class="
+    _flex
+    _relative
+    _min-h-[226px] md:_min-h-[260px]
+    _w-full
+    _z-20
+    _items-center _justify-center
+    page-width
+    {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}
+  ">
+    <div class="
+      _z-10 _relative _w-full
+      _flex md:_flex-row _flex-col _justify-between _items-start
+    ">
+       <div class="md:_max-w-[50%] md:_mb-0 _mb-3">
+         <h1 class="_text-2.5xl md:_text-3xl _font-heading-primary{% if collection_light_text == true and collection.image != blank %} _text-brand-light{% else %} _text-brand-dark{% endif %}">
+           <span class="visually-hidden">{{ 'sections.collection_template.title' | t }}: </span>
+           {{- collection.title | escape -}}
+         </h1>
+       </div>
+
+       <div class="md:_max-w-[40%]">
+        {%- if collection.description != '' or collection.description != blank -%}
+          <div class="md:_text-lg _text-base{% if collection_light_text == true and collection.image != blank %} _text-brand-light{% endif %}">
+            {{ collection.description }}
+          </div>
+        {%- elsif collection.metafields.global.description_tag -%}
+          <div class="md:_text-lg _text-base{% if collection_light_text == true and collection.image != blank %} _text-brand-light{% endif %}">
+            {{ collection.metafields.global.description_tag.value }}
+          </div>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "WM Collection Banner",
+  "class": "section",
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "t:sections.main-collection-banner.settings.paragraph.content"
+    },
+    {
+      "type": "image_picker",
+      "id": "default_image",
+      "label": "Pick a default image for collections",
+      "info": "This will be default if no collection image is available or active"
+    },
+    {
+      "type": "select",
+      "id": "margin_bottom",
+      "options": [
+        {
+          "value": "0",
+          "label": "0rem"
+        },
+        {
+          "value": "2",
+          "label": "0.5rem"
+        },
+        {
+          "value": "4",
+          "label": "1rem"
+        },
+        {
+          "value": "6",
+          "label": "1.5rem"
+        },
+        {
+          "value": "8",
+          "label": "2rem"
+        },
+        {
+          "value": "12",
+          "label": "3rem"
+        },
+        {
+          "value": "16",
+          "label": "4rem"
+        }
+      ],
+      "default": "12",
+      "label": "Margin bottom"
+    }
+  ]
+}
+{% endschema %}

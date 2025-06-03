@@ -1,6 +1,6 @@
 {{ 'template-collection.css' | asset_url | stylesheet_tag }}
 {{ 'component-card.css' | asset_url | stylesheet_tag }}
-{{ 'component-price.css' | asset_url | stylesheet_tag }}
+{{ 'wm__component-price.css' | asset_url | stylesheet_tag }}
 
 {%- unless section.settings.quick_add == 'none' -%}
   {% comment %} {{ 'quick-add.css' | asset_url | stylesheet_tag }} {% endcomment %}
@@ -14,12 +14,12 @@
 <div class="">
   {%- paginate collection.products by section.settings.products_per_page -%}
     {% comment %} Sort is the first tabbable element when filter type is vertical {% endcomment %}
-    <facet-filters-form class="page-width md:_block _hidden _mb-8">
-      <form class="_flex _flex-row _justify-end _items-center" id="FacetSortForm">
+    <facet-filters-form class="page-width md:_block _hidden _mb-4">
+      <form class="_flex _flex-row _justify-between _items-center _pl-72" id="FacetSortForm">
 
         {% comment %} Product count with loading spinner {% endcomment %}
-        <div class="_ml-14 _relative _opacity-70" role="status">
-          <h2 class="">
+        <div class="_relative" role="status">
+          <h2 class="_font-heading-small _tracking-normal _text-brand-grey _text-lg">
             <span id="ProductCountDesktop">
               {%- if collection.results_count -%}
                 {{
@@ -42,7 +42,7 @@
         {% comment %} Sorting select {% endcomment %}
         <div class="_flex _items-start _pl-10 js-sorting caption">
           <div class="_flex _items-center _flex-grow _justify-end">
-            <h2 class="_block _mr-4 _text-base _text-brand-dark">
+            <h2 class="_block _font-heading-small _tracking-normal _text-brand-grey _text-lg">
               <label for="SortBy">{{ 'products.facets.sort_by_label' | t }}</label>
             </h2>
             <div class="_w-auto">
@@ -50,7 +50,7 @@
               <select
                 name="sort_by"
                 id="SortBy"
-                class="_text-brand-primary-700 _underline _underline-offset-4 _text-base _p-2 _cursor-pointer"
+                class="_text-brand-primary-500 _underline _underline-offset-4 _text-base _font-link _p-2 _cursor-pointer"
                 aria-describedby="a11y-refresh-page-message"
               >
                 {%- for option in collection.sort_options -%}
@@ -126,7 +126,7 @@
               id="product-grid"
               data-id="{{ section.id }}"
               class="
-                _grid lg:_grid-cols-3 _grid-cols-2 _gap-3
+                _grid lg:_grid-cols-3 _grid-cols-2 _gap-4 lg:_gap-7
               "
             >
               {% assign skip_card_product_styles = false %}
@@ -164,7 +164,7 @@
           </div>
         {%- endif -%}
 
-        {% comment %} {%- render 'wm__collection-meta-details' -%} {% endcomment %}
+        {%- render 'wm__collection-meta' -%}
       </div>
     </div>
   {%- endpaginate -%}

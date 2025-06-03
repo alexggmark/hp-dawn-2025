@@ -36,6 +36,7 @@
 @layer components {
   ._font-heading-small {
     @apply _font-semibold _tracking-wider _uppercase;
+    font-family: var(--font-body-family);
   }
   ._font-link {
     @apply _font-semibold _tracking-widest _uppercase;
