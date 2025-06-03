@@ -3,81 +3,89 @@
 {%- endif -%}
 
 <div class="section-{{ section.id }} _mb-{{ section.settings.margin_bottom | divided_by: 2 }} md:_mb-{{ section.settings.margin_bottom }} _py-20">
-  <div class="">
+  <div class="_relative _overflow-hidden page-width--overflow-right">
+    <div class="_grid md:_grid-cols-12 _grid-cols-1">
+      <div class="md:_col-span-3 _col-span-1 _flex md:_flex-col _flex-row md:_items-start _items-end md:_justify-center _justify-between md:_pr-4 _pr-4 md:_pb-0 _pb-4">
 
-    <div class="_relative _overflow-hidden page-width--overflow-right">
-      <div class="_grid md:_grid-cols-12 _grid-cols-1">
-        <div class="md:_col-span-3 _col-span-1 _flex _flex-col _items-start _justify-center">
-          {% unless section.settings.top_heading == blank %}
-            <h3 class="_font-heading-small _text-brand-dark _text-sm _mb-1">
-              {{ section.settings.top_heading }}
-            </h3>
-          {% endunless %}
-          {% unless section.settings.main_heading == blank %}
-            <h2 class="_font-heading-primary _text-brand-dark md:_text-3xl _text-2xl _mb-4">
-              {{ section.settings.main_heading }}
-            </h2>
-          {% endunless %}
-            <p class="_text-base _max-w-60">
-              New arrivals, designed to support your skin and backed by science
-            </p>
+          <div class="">
+            {% unless section.settings.top_heading == blank %}
+              <h3 class="_font-heading-small _text-brand-dark _text-sm _mb-1">
+                {{ section.settings.top_heading }}
+              </h3>
+            {% endunless %}
+            {% unless section.settings.main_heading == blank %}
+              <h2 class="_font-heading-primary _text-brand-dark _text-3xl md:_mb-4">
+                {{ section.settings.main_heading }}
+              </h2>
+            {% endunless %}
+          </div>
+          
+          <p class="_text-base _max-w-60 md:_block _hidden">
+            New arrivals, designed to support your skin and backed by science
+          </p>
+          
           {%- unless section.settings.cta_text == blank -%}
             <a
               href="{{ section.settings.collection.url }}"
-              class="_button-primary _mt-6"
+              class="_button-primary _mt-6 md:_block _hidden"
+            >
+              {{- section.settings.cta_text -}}
+            </a>
+            <a
+              href="{{ section.settings.collection.url }}"
+              class="_font-link _text-sm _underline md:_hidden _mb-1.5"
             >
               {{- section.settings.cta_text -}}
             </a>
           {%- endunless -%}
-        </div>
-        <div class="md:_col-span-9 _col-span-1">
-          <embla-slider>
-            <div class="_overflow-hidden _relative" data-js-embla>
-              <div class="_flex md:_gap-7 _gap-4 _select-none" data-js-embla-container>
-                {% assign skip_card_product_styles = false %}
-                {%- for product in section.settings.collection.products limit: section.settings.products_to_show -%}
-                  <div id="Slide-{{ section.id }}-{{ forloop.index }}"
-                    class="
-                    _w-2/3
-                    md:_w-1/2
-                    md:_max-w-[340px]
-                    _flex-none
-                    _flex
-                    _justify-center
-                    _items-center
-                    _snap-start
-                    _h-auto
-                    {% if forloop.last %} md:_mr-12 _mr-4{% endif %}
-                  ">
-                    {% render 'wm__card-product',
-                      card_product: product,
-                      show_rating: section.settings.show_rating,
-                      skip_styles: skip_card_product_styles,
-                      section_id: section.id,
-                      quick_add: section.settings.quick_add
-                    %}
-                  </div>
-                  {%- assign skip_card_product_styles = true -%}
-                {%- endfor -%}
-              </div>
-              <button data-js-embla-prev class="_absolute _hidden _left-0 _top-1/2 _-translate-y-12 _bg-brand-light _text-brand-dark hover:_scale-110 _items-center _justify-center _w-10 _h-10 _rounded-full disabled:_opacity-40">
-                <span class="svg-wrapper _rotate-180 _w-5">
-                  {{- 'arrow-chevron.svg' | inline_asset_content -}}
-                </span>
-              </button>
-              <button data-js-embla-next class="_absolute md:_right-7 _right-4 _top-1/2 _-translate-y-12  _bg-brand-light _text-brand-dark hover:_scale-110 _flex _items-center _justify-center _w-10 _h-10 _rounded-full _opacity-80 hover:_opacity-100 disabled:_opacity-20">
-                <span class="svg-wrapper _w-5">
-                  {{- 'arrow-chevron.svg' | inline_asset_content -}}
-                </span>
-              </button>
+
+      </div>
+      <div class="md:_col-span-9 _col-span-1">
+        <embla-slider>
+          <div class="_overflow-hidden _relative" data-js-embla>
+            <div class="_flex md:_gap-7 _gap-4 _select-none" data-js-embla-container>
+              {% assign skip_card_product_styles = false %}
+              {%- for product in section.settings.collection.products limit: section.settings.products_to_show -%}
+                <div id="Slide-{{ section.id }}-{{ forloop.index }}"
+                  class="
+                  _w-2/3 _max-w-[240px]
+                  md:_w-1/2 md:_max-w-[340px]
+                  _flex-none
+                  _flex
+                  _justify-center
+                  _items-center
+                  _snap-start
+                  _h-auto
+                  {% if forloop.last %} md:_mr-12 _mr-4{% endif %}
+                ">
+                  {% render 'wm__card-product',
+                    card_product: product,
+                    show_rating: section.settings.show_rating,
+                    skip_styles: skip_card_product_styles,
+                    section_id: section.id,
+                    quick_add: section.settings.quick_add
+                  %}
+                </div>
+                {%- assign skip_card_product_styles = true -%}
+              {%- endfor -%}
             </div>
-            <div class="_w-full md:_pr-12 _pr-4">
-              <div class="_h-[1.5px] _mt-8 _bg-gray-300 _rounded _overflow-hidden">
-                <div data-js-embla-progress class="_block _h-full _bg-brand-primary-500"></div>
-              </div>
+            <button data-js-embla-prev class="_absolute _hidden _left-0 _top-1/2 _-translate-y-12 _bg-brand-light _text-brand-dark hover:_scale-110 _items-center _justify-center _w-10 _h-10 _rounded-full disabled:_opacity-40">
+              <span class="svg-wrapper _rotate-180 _w-5">
+                {{- 'arrow-chevron.svg' | inline_asset_content -}}
+              </span>
+            </button>
+            <button data-js-embla-next class="_absolute md:_right-7 _right-4 _top-1/2 _-translate-y-12  _bg-brand-light _text-brand-dark hover:_scale-110 _flex _items-center _justify-center _w-10 _h-10 _rounded-full _opacity-80 hover:_opacity-100 disabled:_opacity-20">
+              <span class="svg-wrapper _w-5">
+                {{- 'arrow-chevron.svg' | inline_asset_content -}}
+              </span>
+            </button>
+          </div>
+          <div class="_w-full md:_pr-12 _pr-4">
+            <div class="_h-[1.5px] _mt-8 _bg-gray-300 _rounded _overflow-hidden">
+              <div data-js-embla-progress class="_block _h-full _bg-brand-primary-500"></div>
             </div>
-          </embla-slider>
-        </div>
+          </div>
+        </embla-slider>
       </div>
     </div>
   </div>

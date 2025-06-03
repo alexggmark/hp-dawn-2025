@@ -8,14 +8,14 @@
 <div class="section-{{ section.id }} _mb-{{ section.settings.margin_bottom | divided_by: 2 }} md:_mb-{{ section.settings.margin_bottom }} _py-10{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
   <div class="_relative page-width _isolate">
     <div class="_grid md:_grid-cols-12 _grid-cols-1 _z-10 _isolate">
-      <div class="md:_col-span-5 _col-span-1 _flex _flex-col _items-start _justify-center md:_order-2 md:_pl-20 md:_py-12 _max-w-96">
+      <div class="md:_col-span-5 _col-span-1 _flex _flex-col _items-start _justify-center _order-2 md:_pl-20 md:_py-12 _py-8 _max-w-96">
         {% unless section.settings.top_heading == blank %}
           <h3 class="_font-heading-small _text-brand-dark _text-sm">
             {{ section.settings.top_heading }}
           </h3>
         {% endunless %}
         {% unless section.settings.main_heading == blank %}
-          <h2 class="_font-heading-primary _text-brand-dark md:_text-4xl _text-2xl _mt-1">
+          <h2 class="_font-heading-primary _text-brand-dark md:_text-4xl _text-3xl _mt-1">
             {{ section.settings.main_heading }}
           </h2>
         {% endunless %}

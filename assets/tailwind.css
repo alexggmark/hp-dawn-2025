@@ -937,6 +937,10 @@ video {
   z-index: auto !important;
 }
 
+._order-2 {
+  order: 2 !important;
+}
+
 ._col-span-1 {
   grid-column: span 1 / span 1 !important;
 }
@@ -1065,6 +1069,10 @@ video {
 
 ._ml-14 {
   margin-left: 3.5rem !important;
+}
+
+._ml-4 {
+  margin-left: 1rem !important;
 }
 
 ._ml-8 {
@@ -1255,24 +1263,8 @@ video {
   height: 100% !important;
 }
 
-._max-h-\[300px\] {
-  max-height: 300px !important;
-}
-
-._max-h-\[600px\] {
-  max-height: 600px !important;
-}
-
-._max-h-\[460px\] {
-  max-height: 460px !important;
-}
-
 ._max-h-\[520px\] {
   max-height: 520px !important;
-}
-
-._max-h-\[400px\] {
-  max-height: 400px !important;
 }
 
 ._min-h-8 {
@@ -1405,6 +1397,10 @@ video {
 
 ._max-w-\[170px\] {
   max-width: 170px !important;
+}
+
+._max-w-\[240px\] {
+  max-width: 240px !important;
 }
 
 ._max-w-\[510px\] {
@@ -1715,6 +1711,11 @@ video {
 ._border-brand-primary-700 {
   --tw-border-opacity: 1 !important;
   border-color: rgb(15 45 100 / var(--tw-border-opacity, 1)) !important;
+}
+
+._border-emerald-400 {
+  --tw-border-opacity: 1 !important;
+  border-color: rgb(52 211 153 / var(--tw-border-opacity, 1)) !important;
 }
 
 ._border-red-500 {
@@ -2034,6 +2035,10 @@ video {
 
 ._text-center {
   text-align: center !important;
+}
+
+._align-middle {
+  vertical-align: middle !important;
 }
 
 ._font-body-condensed {
@@ -2712,6 +2717,10 @@ video {
     margin-bottom: 0.25rem !important;
   }
 
+  .md\:_mb-4 {
+    margin-bottom: 1rem !important;
+  }
+
   .md\:_mr-12 {
     margin-right: 3rem !important;
   }
@@ -2726,6 +2735,10 @@ video {
 
   .md\:_block {
     display: block !important;
+  }
+
+  .md\:_flex {
+    display: flex !important;
   }
 
   .md\:_hidden {
@@ -2800,6 +2813,14 @@ video {
     flex-direction: row !important;
   }
 
+  .md\:_flex-col {
+    flex-direction: column !important;
+  }
+
+  .md\:_items-start {
+    align-items: flex-start !important;
+  }
+
   .md\:_items-center {
     align-items: center !important;
   }
@@ -2869,6 +2890,10 @@ video {
     padding-bottom: 1.5rem !important;
   }
 
+  .md\:_pb-0 {
+    padding-bottom: 0px !important;
+  }
+
   .md\:_pb-12 {
     padding-bottom: 3rem !important;
   }
@@ -2891,6 +2916,10 @@ video {
 
   .md\:_pr-3 {
     padding-right: 0.75rem !important;
+  }
+
+  .md\:_pr-4 {
+    padding-right: 1rem !important;
   }
 
   .md\:_pt-8 {
