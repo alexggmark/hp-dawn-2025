@@ -19,7 +19,7 @@
 
         {% comment %} Product count with loading spinner {% endcomment %}
         <div class="_relative" role="status">
-          <h2 class="_font-heading-small _tracking-normal _text-brand-grey _text-lg">
+          <h2 class="_font-heading-small _tracking-normal _text-brand-grey _text-base">
             <span id="ProductCountDesktop">
               {%- if collection.results_count -%}
                 {{
@@ -42,7 +42,7 @@
         {% comment %} Sorting select {% endcomment %}
         <div class="_flex _items-start _pl-10 js-sorting caption">
           <div class="_flex _items-center _flex-grow _justify-end">
-            <h2 class="_block _font-heading-small _tracking-normal _text-brand-grey _text-lg">
+            <h2 class="_block _font-heading-small _tracking-normal _text-brand-grey _text-base">
               <label for="SortBy">{{ 'products.facets.sort_by_label' | t }}</label>
             </h2>
             <div class="_w-auto">

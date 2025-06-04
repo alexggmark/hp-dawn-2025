@@ -101,7 +101,11 @@
         assign image_height = section.settings.image.width | divided_by: section.settings.image.aspect_ratio
         assign sizes = full_width
       -%}
-      {%- if section.settings.mobile_image != blank -%}
+      {%- if section.settings.video -%}
+        {{ section.settings.video | media_tag: image_size: '2048x',
+          autoplay: true, loop: true, muted: true, controls: false, preload: 'none',
+          class: "_object-cover _w-full _h-full" }}
+      {%- elsif section.settings.mobile_image != blank -%}
         {%- assign mobile_height = section.settings.mobile_image.width | divided_by: section.settings.mobile_image.aspect_ratio -%}
         {{
           section.settings.image
@@ -194,78 +198,56 @@
       lg:_max-w-[50%]
       md:_max-w-[70%]
     ">
-      <h1 class="_text-brand-light _text-4xl _font-heading-primary">The Future of Skincare</h1>
-      <span class="_inline-flex _items-center _gap-2 _mb-3">
-        <h1 class="_text-brand-light _text-4xl _font-heading-primary _inline">
-          Starts With
-          <em> Peptides</em>
-        </h1>
-        <div class="_items-center _gap-4 _ml-4 md:_flex _hidden">
-          <span class="_block _h-[1px] _w-12 _bg-brand-light"></span>
-          <span class="_uppercase _text-brand-light _font-heading-small _text-sm">Elevated by Science</span>
-        </div>
-      </span>
-      {% comment %} <div class="_inline-flex _align-middle _items-center _gap-2 _border _border-emerald-400">
-        <div class="_block _h-[1px] _w-10 _bg-brand-light"></div>
-        <span class="_uppercase _text-brand-light">Elevated by Science</span>
-      </div> {% endcomment %}
-      <p class="_text-lg _max-w-[540px] _text-brand-light">
-        Meet Sun Slick, your ultimate summer companion for portable sun protection with a luminous twist.
-      </p>
-      <div class="_mt-6 _mb-4">
-        <a href="#" class="_button-primary _inline-block">
-          Shop now
-        </a>
-      </div>
-    {% comment %} FIXME: test ends here {% endcomment %}
       {%- for block in section.blocks -%}
-          {% comment %} {%- case block.type -%}
-           {%- when 'heading-type-1' -%}
+        {%- case block.type -%}
+          {%- when 'heading-type-1' -%}
+            {%- assign decoration_tag_on = block.settings.decoration_tag_on -%}
+            
+            {%- if decoration_tag_on -%}
+              <span class="_flex _items-center _gap-2 _mb-3">
+            {%- endif -%}
+
             <{{ block.settings.heading_tag }}
               class="
+                {% if decoration_tag_on %} _inline{% endif %}
                 _text-{{ block.settings.mobile_text_size }}
                 md:_text-{{ block.settings.desktop_text_size }}
-                _font-heading-secondary
+                _text-brand-light _font-heading-primary
                 _mb-{{ block.settings.margin_bottom | divided_by: 2 }} md:_mb-{{ block.settings.margin_bottom }}
-                {% if block.settings.invert_colours %} md:_text-white{% else %} md:_text-brand-primary-700{% endif %}
-                {% if block.settings.mobile_invert_colours %} _text-white{% else %} _text-brand-primary-700{% endif %}
+                {% if block.settings.invert_colours %} md:_text-white{% else %} md:_text-brand-dark{% endif %}
+                {% if block.settings.mobile_invert_colours %} _text-white{% else %} _text-brand-dark{% endif %}
               "
               {{ block.shopify_attributes }}
             >
               {{ block.settings.heading }}
             </{{ block.settings.heading_tag }}>
-          {%- when 'heading-type-2' -%}
-            <{{ block.settings.heading_tag }}
-              class="
-                _text-{{ block.settings.mobile_text_size }}
-                md:_text-{{ block.settings.desktop_text_size }}
-                _font-heading-primary
-                _mb-{{ block.settings.margin_bottom | divided_by: 2 }} md:_mb-{{ block.settings.margin_bottom }}
-                {% if block.settings.invert_colours %} md:_text-white{% else %} md:_text-brand-primary-700{% endif %}
-                {% if block.settings.mobile_invert_colours %} _text-white{% else %} _text-brand-primary-700{% endif %}
-              "
-              {{ block.shopify_attributes }}
-            >
-              {{ block.settings.heading }}
-            </{{ block.settings.heading_tag }}>
+
+            {%- if decoration_tag_on -%}
+                <div class="_items-center _gap-4 _ml-4 md:_flex _hidden">
+                  <span class="_block _h-[1px] _w-12{% if block.settings.decoration_tag_invert %} _bg-brand-light{% else %} _bg-brand-dark{% endif %}"></span>
+                  <span class="_uppercase _font-heading-small _text-sm{% if block.settings.decoration_tag_invert %} _text-brand-light{% else %} _text-brand-dark{% endif %}">{{ block.settings.decoration_tag_text }}</span>
+                </div>
+              </span>
+            {%- endif -%}
+
           {%- when 'top-heading-type-1' -%}
             <{{ block.settings.heading_tag }}
               class="
-                _leading-tight
                 _text-{{ block.settings.mobile_text_size }}
                 md:_text-{{ block.settings.desktop_text_size }}
-                _font-heading-secondary
+                _font-heading-small
                 _mb-{{ block.settings.margin_bottom | divided_by: 2 }} md:_mb-{{ block.settings.margin_bottom }}
-                {% if block.settings.invert_colours %} md:_text-white{% else %} md:_text-brand-secondary-700{% endif %}
-                {% if block.settings.mobile_invert_colours %} _text-white{% else %} _text-brand-secondary-700{% endif %}
+                {% if block.settings.invert_colours %} md:_text-white{% else %} md:_text-brand-dark{% endif %}
+                {% if block.settings.mobile_invert_colours %} _text-white{% else %} _text-brand-dark{% endif %}
               "
               {{ block.shopify_attributes }}
             >
               {{ block.settings.heading }}
             </{{ block.settings.heading_tag }}>
+
           {%- when 'text' -%}
             <div class="
-              md:_text-lg _text-base
+              md:_text-lg _text-base _max-w-[540px]
               _mb-{{ block.settings.margin_bottom }}
               {% if block.settings.invert_colours %} md:_text-white{% else %} md:_text-brand-dark{% endif %}
               {% if block.settings.mobile_invert_colours %} _text-white{% else %} _text-brand-dark{% endif %}
@@ -273,6 +255,7 @@
             {{ block.shopify_attributes }}>
               <p>{{ block.settings.text }}</p>
             </div>
+
           {%- when 'buttons' -%}
             <div
               class="
@@ -314,12 +297,20 @@
                 </a>
               {%- endif -%}
             </div>
+
           {%- when 'custom_liquid' -%}
             <div class="_mb-{{ block.settings.margin_bottom }}">
               {{ block.settings.custom_liquid }}
             </div>
-        {%- endcase -%} {% endcomment %}
+
+        {%- endcase -%}
       {%- endfor -%}
+
+
+
+
+
+
     </div>
   </div>
 </div>
@@ -337,6 +328,12 @@
       "type": "image_picker",
       "id": "image",
       "label": "Main background image"
+    },
+    {
+      "type": "video",
+      "id": "video",
+      "label": "(Optional) Main background video",
+      "info": "This will override both desktop/mobile images"
     },
     {
       "type": "range",
@@ -803,191 +800,28 @@
           "default": false,
           "label": "Invert mobile colours",
           "info": "This makes all text white"
-        }
-      ]
-    },
-    {
-      "type": "heading-type-2",
-      "name": "Heading Type 2",
-      "settings": [
-        {
-          "type": "inline_richtext",
-          "id": "heading",
-          "default": "t:sections.image-banner.blocks.heading.settings.heading.default",
-          "label": "t:sections.image-banner.blocks.heading.settings.heading.label"
         },
         {
-          "type": "select",
-          "id": "heading_tag",
-          "options": [
-            {
-              "value": "h1",
-              "label": "h1"
-            },
-            {
-              "value": "h2",
-              "label": "h2"
-            },
-            {
-              "value": "h3",
-              "label": "h3"
-            }
-          ],
-          "default": "h1",
-          "label": "Select heading tag"
-        },
-        {
-          "type": "select",
-          "id": "desktop_text_size",
-          "options": [
-            {
-              "value": "lg",
-              "label": "lg"
-            },
-            {
-              "value": "xl",
-              "label": "xl"
-            },
-            {
-              "value": "2xl",
-              "label": "2xl"
-            },
-            {
-              "value": "2.5xl",
-              "label": "2.5xl"
-            },
-            {
-              "value": "3xl",
-              "label": "3xl"
-            },
-            {
-              "value": "4xl",
-              "label": "4xl"
-            },
-            {
-              "value": "5xl",
-              "label": "5xl"
-            },
-            {
-              "value": "6xl",
-              "label": "6xl"
-            },
-            {
-              "value": "7xl",
-              "label": "7xl"
-            }
-          ],
-          "default": "3xl",
-          "label": "Select heading size"
-        },
-        {
-          "type": "select",
-          "id": "mobile_text_size",
-          "options": [
-            {
-              "value": "lg",
-              "label": "lg"
-            },
-            {
-              "value": "xl",
-              "label": "xl"
-            },
-            {
-              "value": "2xl",
-              "label": "2xl"
-            },
-            {
-              "value": "2.5xl",
-              "label": "2.5xl"
-            },
-            {
-              "value": "3xl",
-              "label": "3xl"
-            },
-            {
-              "value": "4xl",
-              "label": "4xl"
-            },
-            {
-              "value": "5xl",
-              "label": "5xl"
-            },
-            {
-              "value": "6xl",
-              "label": "6xl"
-            },
-            {
-              "value": "7xl",
-              "label": "7xl"
-            }
-          ],
-          "default": "3xl",
-          "label": "Select mobile heading size"
-        },
-        {
-          "type": "select",
-          "id": "margin_bottom",
-          "options": [
-            {
-              "value": "0",
-              "label": "0rem"
-            },
-            {
-              "value": "2",
-              "label": "0.5rem"
-            },
-            {
-              "value": "4",
-              "label": "1rem"
-            },
-            {
-              "value": "6",
-              "label": "1.5rem"
-            },
-            {
-              "value": "8",
-              "label": "2rem"
-            },
-            {
-              "value": "12",
-              "label": "3rem"
-            },
-            {
-              "value": "16",
-              "label": "4rem"
-            },
-            {
-              "value": "20",
-              "label": "5rem"
-            },
-            {
-              "value": "24",
-              "label": "6rem"
-            },
-            {
-              "value": "28",
-              "label": "7rem"
-            },
-            {
-              "value": "32",
-              "label": "8rem"
-            }
-          ],
-          "default": "0",
-          "label": "Margin bottom"
+          "type": "header",
+          "content": "Controls for decoration tag"
         },
         {
           "type": "checkbox",
-          "id": "invert_colours",
-          "default": false,
-          "label": "Invert colours",
-          "info": "This makes all text white"
+          "id": "decoration_tag_on",
+          "label": "Turn on decoration tag",
+          "default": false
+        },
+        {
+          "type": "text",
+          "id": "decoration_tag_text",
+          "label": "Decoration tag text",
+          "default": "Brand New"
         },
         {
           "type": "checkbox",
-          "id": "mobile_invert_colours",
+          "id": "decoration_tag_invert",
           "default": false,
-          "label": "Invert mobile colours",
+          "label": "Invert decoration tagcolours",
           "info": "This makes all text white"
         }
       ]
@@ -1027,6 +861,14 @@
           "id": "desktop_text_size",
           "options": [
             {
+              "value": "sm",
+              "label": "sm"
+            },
+            {
+              "value": "base",
+              "label": "base"
+            },
+            {
               "value": "lg",
               "label": "lg"
             },
@@ -1049,21 +891,9 @@
             {
               "value": "4xl",
               "label": "4xl"
-            },
-            {
-              "value": "5xl",
-              "label": "5xl"
-            },
-            {
-              "value": "6xl",
-              "label": "6xl"
-            },
-            {
-              "value": "7xl",
-              "label": "7xl"
             }
           ],
-          "default": "3xl",
+          "default": "base",
           "label": "Select heading size"
         },
         {
@@ -1071,6 +901,14 @@
           "id": "mobile_text_size",
           "options": [
             {
+              "value": "sm",
+              "label": "sm"
+            },
+            {
+              "value": "base",
+              "label": "base"
+            },
+            {
               "value": "lg",
               "label": "lg"
             },
@@ -1093,21 +931,9 @@
             {
               "value": "4xl",
               "label": "4xl"
-            },
-            {
-              "value": "5xl",
-              "label": "5xl"
-            },
-            {
-              "value": "6xl",
-              "label": "6xl"
-            },
-            {
-              "value": "7xl",
-              "label": "7xl"
             }
           ],
-          "default": "3xl",
+          "default": "base",
           "label": "Select mobile heading size"
         },
         {
@@ -1470,9 +1296,6 @@
       "blocks": [
         {
           "type": "heading-type-1"
-        },
-        {
-          "type": "heading-type-2"
         },
         {
           "type": "top-heading-type-1"

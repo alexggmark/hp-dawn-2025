@@ -59,6 +59,9 @@ module.exports = {
     }
   },
   safeList: [
+    '_button-primary',
+    '_button-secondary',
+    '_button-tertiary',
     '_text-xl',
     '_text-2xl',
     '_text-2.5xl',

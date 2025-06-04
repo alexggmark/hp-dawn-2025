@@ -63,6 +63,17 @@
     _py-4
     _px-8;
   }
+  ._button-tertiary {
+    @apply
+    _flex _items-center _justify-center _gap-3
+    _font-semibold _text-base _uppercase _tracking-widest
+    _text-brand-light
+    _bg-transparent hover:_bg-brand-primary-500
+    _border _border-brand-light
+    _transition-colors _duration-150
+    _py-4
+    _px-8;
+  }
 
   /* -----------
     PROSE STYLES
