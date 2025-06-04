@@ -31,14 +31,14 @@
       </h3>
     {% endunless %}
     {% unless section.settings.main_heading == blank %}
-      <h2 class="_font-heading-primary _text-brand-dark md:_text-3xl _text-2xl _mb-8">
+      <h2 class="_font-heading-primary _text-brand-dark md:_text-3xl _text-2.5xl _mb-8">
         {{ section.settings.main_heading }}
       </h2>
     {% endunless %}
   </div>
   <div class="_relative _overflow-hidden page-width--overflow-right">
     <embla-slider>
-      <div class="_mb-8 _flex _gap-4">
+      <div class="md:_mb-8 _mb-4 _flex _gap-4 _flex-nowrap _overflow-x-auto _overflow-y-visible _pb-2 _whitespace-nowrap _no-scrollbar">
         {%- for block in section.blocks -%}
           {%- case block.type -%}
             {%- when 'featured_collection' -%}

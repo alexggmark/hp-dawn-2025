@@ -45,7 +45,7 @@
   }
 {% endstyle %}
 
-<div class="section-{{ section.id }} _mb-{{ section.settings.margin_bottom | divided_by: 2 }} md:_mb-{{ section.settings.margin_bottom }} _py-20{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
+<div class="section-{{ section.id }} _mb-{{ section.settings.margin_bottom | divided_by: 2 }} md:_mb-{{ section.settings.margin_bottom }} {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
   <div class="_relative page-width--overflow-right _isolate _bg-brand-background-light _py-16">
     <experts-slider-embla>
       <div class="_grid md:_grid-cols-12 _grid-cols-1 _z-10 _isolate">
@@ -56,10 +56,13 @@
             </h3>
           {% endunless %}
           {% unless section.settings.main_heading == blank %}
-            <h2 class="_font-heading-primary _text-brand-dark md:_text-3xl _text-2xl _mt-1">
+            <h2 class="_font-heading-primary _text-brand-dark md:_text-3xl _text-2.5xl _mt-1">
               {{ section.settings.main_heading }}
             </h2>
           {% endunless %}
+          <span class="svg-wrapper _w-12 _h-12 _my-4 _opacity-20">
+            {{- 'icon-newbuild-quotes.svg' | inline_asset_content -}}
+          </span>
           {%- for block in section.blocks -%}
             {%- case block.type -%}
               {%- when 'expert' -%}
@@ -67,21 +70,21 @@
                   class="expert-content{% unless forloop.first %} expert-content--hidden{% endunless %}"
                   data-js-expert-content
                 >
-                  <p>{{ block.settings.expert_quote }}</p>
-                  <p>{{ block.settings.expert_name }}</p>
+                  <div class="_italic _text-lg">{{ block.settings.expert_quote }}</div>
+                  <p class="_font-heading-primary _mt-4 _text-xl">- {{ block.settings.expert_name }}</p>
                 </div>
             {%- endcase -%}
           {%- endfor -%}
           {%- unless section.settings.cta_text == blank -%}
             <a
               href="{{ section.settings.cta_url }}"
-              class="_button-primary _mt-6"
+              class="_button-primary _mt-6 _hidden md:_block"
             >
               {{- section.settings.cta_text -}}
             </a>
           {%- endunless -%}
         </div>
-        <div class="md:_col-span-9 _col-span-1 _-mt-28">
+        <div class="md:_col-span-9 _col-span-1 md:_-mt-28">
           <div class="_overflow-hidden _relative" data-js-embla>
             <div class="_flex md:_gap-7 _gap-4 _select-none" data-js-embla-container>
               {%- for block in section.blocks -%}
@@ -133,8 +136,8 @@
                         </div>
                       </div>
                       <div class="_bg-brand-light _p-2.5 _w-full _border _border-brand-border">
-                        <p class="_text-brand-dark _font-medium _text-base">{{ block.settings.expert_name }}</p>
-                        <p class="_text-brand-primary-500 _text-sm">{{ block.settings.expert_jobtitle }}</p>
+                        <p class="_text-brand-dark _font-semibold _text-base">{{ block.settings.expert_name }}</p>
+                        <p class="_text-brand-primary-500 _text-sm _font-semibold">{{ block.settings.expert_jobtitle }}</p>
                       </div>
                     </div>
                 {%- endcase -%}
@@ -150,11 +153,6 @@
                 {{- 'arrow-chevron.svg' | inline_asset_content -}}
               </span>
             </button>
-            {% comment %} <div class="_w-full md:_pr-12 _pr-4">
-              <div class="_h-[1.5px] _mt-8 _bg-gray-300 _rounded _overflow-hidden">
-                <div data-js-embla-progress class="_block _h-full _bg-brand-primary-500"></div>
-              </div>
-            </div> {% endcomment %}
           </div>
         </div>
       </div>

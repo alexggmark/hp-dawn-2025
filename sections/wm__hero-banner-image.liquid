@@ -229,7 +229,7 @@
                   <div class="_w-16">
                     <div class="_block heading-decoration-tag--line{% if block.settings.decoration_tag_invert %} _bg-brand-light{% else %} _bg-brand-dark{% endif %}"></div>
                   </div>
-                  <span class="heading-decoration-tag--text _uppercase _font-heading-small _text-sm{% if block.settings.decoration_tag_invert %} _text-brand-light{% else %} _text-brand-dark{% endif %}">{{ block.settings.decoration_tag_text }}</span>
+                  <span class="heading-decoration-tag--text _uppercase _font-heading-small _text-sm _text-nowrap{% if block.settings.decoration_tag_invert %} _text-brand-light{% else %} _text-brand-dark{% endif %}">{{ block.settings.decoration_tag_text }}</span>
                 </div>
               </span>
             {%- endif -%}
@@ -315,13 +315,13 @@
           .heading-decoration-tag--line {
             height: 1px;
             width: 0;
-            animation: lineGrow 0.2s ease-out forwards;
-            animation-delay: 1s;
+            animation: lineGrow var(--duration-extra-long) var(--ease-out-slow) forwards;
+            animation-delay: 0.8s;
           }
           .heading-decoration-tag--text {
             opacity: 0;
-            animation: var(--animation-slide-in);
-            animation-delay: 1.2s;
+            animation: var(--animation-slide-in-quick);
+            animation-delay: 1.4s;
           }
         {% endstyle %}
       {%- endunless -%}

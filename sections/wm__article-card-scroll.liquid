@@ -6,24 +6,35 @@
   <div class="">
     <div class="_relative _overflow-hidden page-width--overflow-right">
       <div class="_grid md:_grid-cols-12 _grid-cols-1">
-        <div class="md:_col-span-3 _col-span-1 _flex _flex-col _items-start _justify-center">
-          {% unless section.settings.top_heading == blank %}
-            <h3 class="_font-heading-small _text-brand-dark _text-sm _mb-2">
-              {{ section.settings.top_heading }}
-            </h3>
-          {% endunless %}
-          {% unless section.settings.main_heading == blank %}
-            <h2 class="_font-heading-primary _text-brand-dark md:_text-3xl _text-2xl _mb-4">
-              {{ section.settings.main_heading }}
-            </h2>
-          {% endunless %}
-            <p class="_text-base _max-w-60">
-              New arrivals, designed to support your skin and backed by science
-            </p>
+        <div class="md:_col-span-3 _col-span-1 _flex md:_flex-col _flex-row md:_items-start _items-end md:_justify-center _justify-between md:_pr-4 _pr-4 md:_pb-0 _pb-4">
+
+          <div class="">
+            {% unless section.settings.top_heading == blank %}
+              <h3 class="_font-heading-small _text-brand-dark _text-sm _mb-1">
+                {{ section.settings.top_heading }}
+              </h3>
+            {% endunless %}
+            {% unless section.settings.main_heading == blank %}
+              <h2 class="_font-heading-primary _text-brand-dark md:_text-3xl _text-2.5xl md:_mb-4">
+                {{ section.settings.main_heading }}
+              </h2>
+            {% endunless %}
+          </div>
+
+          <p class="_text-base _max-w-60 md:_block _hidden">
+            New arrivals, designed to support your skin and backed by science
+          </p>
+
           {%- unless section.settings.cta_text == blank -%}
             <a
               href="{{ section.settings.collection.url }}"
-              class="_button-primary _mt-6"
+              class="_button-primary _mt-6 md:_block _hidden"
+            >
+              {{- section.settings.cta_text -}}
+            </a>
+            <a
+              href="{{ section.settings.collection.url }}"
+              class="_font-link _text-sm _underline _underline-offset-4 md:_hidden _mb-1.5 _flex-shrink-0"
             >
               {{- section.settings.cta_text -}}
             </a>

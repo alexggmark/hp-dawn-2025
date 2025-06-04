@@ -50,26 +50,7 @@
     _z-auto
     _flex-col
     md:_flex-row
-    {% if section.settings.image_height == 'adapt' %}
-      _h-auto
-    {% else %} 
-      {% case section.settings.image_height %}
-        {% when 'small' %}
-          md:_h-[26rem]
-        {% when 'medium' %}
-          md:_h-[36rem]
-        {% when 'large' %}
-          md:_h-[50rem]
-      {% endcase %}
-      {% case section.settings.mobile_image_height %}
-        {% when 'small' %}
-          _h-[26rem]
-        {% when 'medium' %}
-          _h-[36rem]
-        {% when 'large' %}
-          _h-[50rem]
-      {% endcase %}
-    {% endif %}
+    _h-auto
     {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}
     _mb-{{ section.settings.margin_bottom | divided_by: 2 }} md:_mb-{{ section.settings.margin_bottom }}
   "
@@ -134,7 +115,6 @@
     _w-full
     _h-full
     _z-20
-    _py-8
     _items-center
     _justify-center
     md:_items-center
@@ -146,8 +126,7 @@
       _text-wrap
       _z-10
       _relative
-      _px-6
-      _py-12
+      _py-24
       _text-center
       md:_w-[570px]
       _flex _flex-col _items-center _justify-center
@@ -162,7 +141,7 @@
       {%- endunless -%}
       {%- unless section.settings.main_heading == blank -%}
         <h2 class="
-          _font-heading-primary _text-brand-primary-700 _text-5xl
+          _font-heading-primary _text-brand-primary-700 md:_text-5xl _text-3xl
           {% if section.settings.invert_colours %} _text-white{% else %} _text-brand-primary-700{% endif %}
         ">
           {{ section.settings.main_heading }}
@@ -262,31 +241,6 @@
       "default": 0
     },
     {
-      "type": "select",
-      "id": "image_height",
-      "options": [
-        {
-          "value": "adapt",
-          "label": "t:sections.image-banner.settings.image_height.options__1.label"
-        },
-        {
-          "value": "small",
-          "label": "t:sections.image-banner.settings.image_height.options__2.label"
-        },
-        {
-          "value": "medium",
-          "label": "t:sections.image-banner.settings.image_height.options__3.label"
-        },
-        {
-          "value": "large",
-          "label": "t:sections.image-banner.settings.image_height.options__4.label"
-        }
-      ],
-      "default": "medium",
-      "label": "t:sections.image-banner.settings.image_height.label",
-      "info": "t:sections.image-banner.settings.image_height.info"
-    },
-    {
       "type": "header",
       "content": "t:sections.image-banner.settings.mobile.content"
     },
@@ -294,31 +248,6 @@
       "type": "image_picker",
       "id": "mobile_image",
       "label": "Mobile background image"
-    },
-    {
-      "type": "select",
-      "id": "mobile_image_height",
-      "options": [
-        {
-          "value": "adapt",
-          "label": "t:sections.image-banner.settings.image_height.options__1.label"
-        },
-        {
-          "value": "small",
-          "label": "t:sections.image-banner.settings.image_height.options__2.label"
-        },
-        {
-          "value": "medium",
-          "label": "t:sections.image-banner.settings.image_height.options__3.label"
-        },
-        {
-          "value": "large",
-          "label": "t:sections.image-banner.settings.image_height.options__4.label"
-        }
-      ],
-      "default": "medium",
-      "label": "Mobile image height",
-      "info": "t:sections.image-banner.settings.image_height.info"
     },
     {
       "type": "select",
