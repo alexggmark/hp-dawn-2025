@@ -12,96 +12,79 @@
     "wm_hero_banner_image_CPaEAD": {
       "type": "wm__hero-banner-image",
       "blocks": {
-        "heading_type_1_MpnizR": {
-          "type": "heading-type-1",
-          "settings": {
-            "heading": "Image banner",
-            "heading_tag": "h1",
-            "desktop_text_size": "3xl",
-            "mobile_text_size": "3xl",
-            "margin_bottom": "0",
-            "invert_colours": false,
-            "mobile_invert_colours": false
-          }
-        },
-        "heading_type_2_BcqjbM": {
-          "type": "heading-type-2",
-          "settings": {
-            "heading": "Image banner",
-            "heading_tag": "h1",
-            "desktop_text_size": "3xl",
-            "mobile_text_size": "3xl",
-            "margin_bottom": "0",
-            "invert_colours": false,
-            "mobile_invert_colours": false
-          }
-        },
         "top_heading_type_1_FGeqbN": {
           "type": "top-heading-type-1",
           "settings": {
-            "heading": "Image banner",
+            "heading": "Totally optional text",
             "heading_tag": "h1",
-            "desktop_text_size": "3xl",
+            "desktop_text_size": "base",
+            "mobile_text_size": "base",
+            "margin_bottom": "0",
+            "invert_colours": true,
+            "mobile_invert_colours": true
+          }
+        },
+        "heading_type_1_DJDyPA": {
+          "type": "heading-type-1",
+          "settings": {
+            "heading": "The Future of Skincare",
+            "heading_tag": "h1",
+            "desktop_text_size": "4xl",
             "mobile_text_size": "3xl",
             "margin_bottom": "0",
-            "invert_colours": false,
-            "mobile_invert_colours": false
+            "invert_colours": true,
+            "mobile_invert_colours": true,
+            "decoration_tag_on": false,
+            "decoration_tag_text": "Brand New",
+            "decoration_tag_invert": false
+          }
+        },
+        "heading_type_1_MpnizR": {
+          "type": "heading-type-1",
+          "settings": {
+            "heading": "Starts With <em>Peptides</em>",
+            "heading_tag": "h1",
+            "desktop_text_size": "4xl",
+            "mobile_text_size": "3xl",
+            "margin_bottom": "0",
+            "invert_colours": true,
+            "mobile_invert_colours": true,
+            "decoration_tag_on": true,
+            "decoration_tag_text": "Brand New",
+            "decoration_tag_invert": true
           }
         },
         "text_UHBFJV": {
           "type": "text",
           "settings": {
-            "text": "Default text",
-            "margin_bottom": "0",
-            "invert_colours": false,
-            "mobile_invert_colours": false
+            "text": "Meet Sun Slick, your ultimate summer companion for portable sun protection with a luminous twist.",
+            "margin_bottom": "6",
+            "invert_colours": true,
+            "mobile_invert_colours": true
           }
         },
         "buttons_WVW8ht": {
           "type": "buttons",
           "settings": {
-            "button_label_1": "Button label",
-            "button_link_1": "",
+            "button_label_1": "Shop Now",
+            "button_link_1": "shopify://collections",
             "button_style_1": "primary",
-            "button_label_2": "Button label",
-            "button_link_2": "",
-            "button_style_2": "primary"
-          }
-        },
-        "custom_liquid_mWDXYL": {
-          "type": "custom_liquid",
-          "settings": {
-            "custom_liquid": "",
-            "margin_bottom": "0"
-          }
-        },
-        "hotspot_wggL9m": {
-          "type": "hotspot",
-          "disabled": true,
-          "settings": {
-            "product_select": "5x-power-peel-face-exfoliator",
-            "hotspot_position_horizontal": 10,
-            "hotspot_position_horizontal_reverse": false,
-            "hotspot_position_vertical": 4,
-            "hotspot_position_vertical_reverse": false,
-            "hotspot_position_mobile_horizontal": 0,
-            "hotspot_position_mobile_horizontal_reverse": false,
-            "hotspot_position_mobile_vertical": 0,
-            "hotspot_position_mobile_vertical_reverse": false
+            "button_label_2": "Discover more",
+            "button_link_2": "shopify://collections",
+            "button_style_2": "tertiary"
           }
         }
       },
       "block_order": [
-        "heading_type_1_MpnizR",
-        "heading_type_2_BcqjbM",
         "top_heading_type_1_FGeqbN",
+        "heading_type_1_DJDyPA",
+        "heading_type_1_MpnizR",
         "text_UHBFJV",
-        "buttons_WVW8ht",
-        "custom_liquid_mWDXYL",
-        "hotspot_wggL9m"
+        "buttons_WVW8ht"
       ],
       "settings": {
         "image": "shopify://shop_images/christmas-banner-desktop_f40bfc9a-0c44-48b4-997b-e611d889af29.png",
+        "video": "shopify://files/videos/power luxe SMALL FOR WEB.mp4",
         "image_overlay_opacity": 60,
         "container_width": "page",
         "image_height": "medium",
@@ -110,7 +93,7 @@
         "desktop_content_alignment": "left",
         "mobile_image_overlay_opacity": 60,
         "mobile_image_height": "medium",
-        "mobile_content_alignment": "right",
+        "mobile_content_alignment": "center",
         "mobile_content_position": "middle-center",
         "show_mobile_text_box": false,
         "margin_bottom": "0"

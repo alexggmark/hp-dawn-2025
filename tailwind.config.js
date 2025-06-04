@@ -58,7 +58,7 @@ module.exports = {
       }
     }
   },
-  safeList: [
+  safelist: [
     '_button-primary',
     '_button-secondary',
     '_button-tertiary',

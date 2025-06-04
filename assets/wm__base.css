@@ -3330,6 +3330,14 @@ details-disclosure > details {
     transform: translateY(0);
   }
 
+  @keyframes lineGrow {
+    from {
+      width: 0;
+    }
+    to {
+      width: 100%;
+    }
+  }
   @keyframes slideIn {
     from {
       transform: translateY(2rem);

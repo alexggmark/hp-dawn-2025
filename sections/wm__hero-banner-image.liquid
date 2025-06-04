@@ -198,13 +198,15 @@
       lg:_max-w-[50%]
       md:_max-w-[70%]
     ">
+      {%- assign decoration_tag_on = false -%}
+
       {%- for block in section.blocks -%}
         {%- case block.type -%}
           {%- when 'heading-type-1' -%}
             {%- assign decoration_tag_on = block.settings.decoration_tag_on -%}
             
             {%- if decoration_tag_on -%}
-              <span class="_flex _items-center _gap-2 _mb-3">
+              <span class="md:_flex _block _items-center _gap-2 _mb-3">
             {%- endif -%}
 
             <{{ block.settings.heading_tag }}
@@ -223,9 +225,11 @@
             </{{ block.settings.heading_tag }}>
 
             {%- if decoration_tag_on -%}
-                <div class="_items-center _gap-4 _ml-4 md:_flex _hidden">
-                  <span class="_block _h-[1px] _w-12{% if block.settings.decoration_tag_invert %} _bg-brand-light{% else %} _bg-brand-dark{% endif %}"></span>
-                  <span class="_uppercase _font-heading-small _text-sm{% if block.settings.decoration_tag_invert %} _text-brand-light{% else %} _text-brand-dark{% endif %}">{{ block.settings.decoration_tag_text }}</span>
+                <div class="_items-center _gap-3 _ml-3 md:_flex _hidden">
+                  <div class="_w-16">
+                    <div class="_block heading-decoration-tag--line{% if block.settings.decoration_tag_invert %} _bg-brand-light{% else %} _bg-brand-dark{% endif %}"></div>
+                  </div>
+                  <span class="heading-decoration-tag--text _uppercase _font-heading-small _text-sm{% if block.settings.decoration_tag_invert %} _text-brand-light{% else %} _text-brand-dark{% endif %}">{{ block.settings.decoration_tag_text }}</span>
                 </div>
               </span>
             {%- endif -%}
@@ -306,11 +310,21 @@
         {%- endcase -%}
       {%- endfor -%}
 
-
-
-
-
-
+      {%- unless decoration_tag_on == false -%}
+        {% style %}
+          .heading-decoration-tag--line {
+            height: 1px;
+            width: 0;
+            animation: lineGrow 0.2s ease-out forwards;
+            animation-delay: 1s;
+          }
+          .heading-decoration-tag--text {
+            opacity: 0;
+            animation: var(--animation-slide-in);
+            animation-delay: 1.2s;
+          }
+        {% endstyle %}
+      {%- endunless -%}
     </div>
   </div>
 </div>
