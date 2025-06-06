@@ -12,6 +12,10 @@
     "main": {
       "type": "wm__main-product",
       "blocks": {
+        "badge_EVc6gV": {
+          "type": "badge",
+          "settings": {}
+        },
         "title": {
           "type": "title",
           "settings": {}
@@ -54,6 +58,7 @@
         }
       },
       "block_order": [
+        "badge_EVc6gV",
         "title",
         "rating_xbiqGz",
         "description",

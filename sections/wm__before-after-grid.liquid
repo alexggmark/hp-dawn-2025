@@ -1,0 +1,141 @@
+{%- liquid
+  assign full_width = '100vw'
+  assign widths = '375, 550, 750, 1100, 1500, 1780, 2000, 3000, 3840'
+
+  assign fetch_priority = 'auto'
+  if section.index == 1
+    assign fetch_priority = 'high'
+  endif
+-%}
+
+<div
+  class="
+    _border _border-red-500
+    {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}
+    _mb-{{ section.settings.margin_bottom | divided_by: 2 }} md:_mb-{{ section.settings.margin_bottom }}
+  "
+>
+  <h1>TEST</h1>
+  <h1>TEST</h1>
+  <h1>TEST</h1>
+  <h1>TEST</h1>
+</div>
+
+{% schema %}
+{
+  "name": "WM BeforeAfter Grid",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "inline_richtext",
+      "id": "top_heading",
+      "default": "t:sections.footer.blocks.link_list.settings.heading.default",
+      "label": "Top Heading"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "main_heading",
+      "default": "t:sections.footer.blocks.link_list.settings.heading.default",
+      "label": "Main Heading"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "description",
+      "default": "Description",
+      "label": "Description text"
+    },
+    {
+      "type": "text",
+      "id": "cta_label",
+      "default": "Contact us",
+      "label": "Pick a label for button (leave empty to remove)"
+    },
+    {
+      "type": "url",
+      "id": "cta_url",
+      "label": "Pick a URL for button"
+    },
+    {
+      "type": "checkbox",
+      "id": "invert_colours",
+      "default": true,
+      "label": "Invert colours",
+      "info": "This makes all text white"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Main background image"
+    },
+    {
+      "type": "video",
+      "id": "video",
+      "label": "Choose background video (replaces image)"
+    },
+    {
+      "type": "range",
+      "id": "image_overlay_opacity",
+      "min": 0,
+      "max": 100,
+      "step": 10,
+      "unit": "%",
+      "label": "t:sections.image-banner.settings.image_overlay_opacity.label",
+      "default": 0
+    },
+    {
+      "type": "header",
+      "content": "t:sections.image-banner.settings.mobile.content"
+    },
+    {
+      "type": "image_picker",
+      "id": "mobile_image",
+      "label": "Mobile background image"
+    },
+    {
+      "type": "select",
+      "id": "margin_bottom",
+      "options": [
+        {
+          "value": "0",
+          "label": "0rem"
+        },
+        {
+          "value": "2",
+          "label": "0.5rem"
+        },
+        {
+          "value": "4",
+          "label": "1rem"
+        },
+        {
+          "value": "6",
+          "label": "1.5rem"
+        },
+        {
+          "value": "8",
+          "label": "2rem"
+        },
+        {
+          "value": "12",
+          "label": "3rem"
+        },
+        {
+          "value": "16",
+          "label": "4rem"
+        }
+      ],
+      "default": "0",
+      "label": "Margin bottom"
+    }
+  ],
+  "presets": [
+    {
+      "name": "WM BeforeAfter Grid"
+    }
+  ]
+}
+{% endschema %}

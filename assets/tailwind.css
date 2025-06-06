@@ -3362,6 +3362,10 @@ video {
     padding-bottom: 3rem !important;
   }
 
+  .md\:_pb-8 {
+    padding-bottom: 2rem !important;
+  }
+
   .md\:_pl-12 {
     padding-left: 3rem !important;
   }
@@ -3392,10 +3396,6 @@ video {
 
   .md\:_pt-8 {
     padding-top: 2rem !important;
-  }
-
-  .md\:_pb-8 {
-    padding-bottom: 2rem !important;
   }
 
   .md\:_text-left {
