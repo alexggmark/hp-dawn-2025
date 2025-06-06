@@ -27,9 +27,11 @@
           {%- unless section.settings.cta_text == blank -%}
             <a
               href="{{ section.settings.collection.url }}"
-              class="_button-primary _mt-6 md:_block _hidden"
+              class="_button-primary _mt-6 md:_flex _hidden"
             >
-              {{- section.settings.cta_text -}}
+              <span>
+                {{- section.settings.cta_text -}}
+              </span>
             </a>
             <a
               href="{{ section.settings.collection.url }}"

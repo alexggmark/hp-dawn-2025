@@ -288,9 +288,7 @@
                     _button-{{ block.settings.button_style_1 }}
                   "
                 >
-                  <span>
-                    {{- block.settings.button_label_1 | escape -}}
-                  </span>
+                  <span>{{- block.settings.button_label_1 | escape -}}</span>
                 </a>
               {%- endif -%}
               {%- if block.settings.button_label_2 != blank -%}
@@ -304,7 +302,7 @@
                     _button-{{ block.settings.button_style_2 }}
                   "
                 >
-                  {{- block.settings.button_label_2 | escape -}}
+                  <span>{{- block.settings.button_label_2 | escape -}}</span>
                 </a>
               {%- endif -%}
             </div>

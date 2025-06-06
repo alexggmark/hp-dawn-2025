@@ -166,17 +166,38 @@
           _row-start-1 md:_py-4 _py-2
         ">
 
-          <div class="_flex _flex-row _justify-between _items-center _mb-1.5">
 
-            {% comment %} ------------------- {% endcomment %}
-            {% comment %} -- Product title -- {% endcomment %}
-            {% comment %} ------------------- {% endcomment %}
+        {% style %}
+          .card-product-grid {
+            display: grid;
+            gap: 0.2rem;
+            grid-template-areas: 
+              "A"
+              "C"
+              "D"
+              "B";
+          }
 
+          @media (min-width: 750px) {
+            .card-product-grid {
+              gap: 0.5rem;
+              grid-template-areas:
+                "A B"
+                "C D";
+              grid-template-columns: auto 1fr;
+            }
+          }
+        {% endstyle %}
+
+
+          <div class="
+            card-product-grid
+          ">
+            {% comment %} ----------------------- {% endcomment %}
+            {% comment %} -- (A) Product title -- {% endcomment %}
+            {% comment %} ----------------------- {% endcomment %}
             <h3
-              class="
-                _text-brand-dark
-                 _overflow-hidden _whitespace-nowrap _pr-2
-              "
+              class="_text-brand-dark _overflow-hidden _whitespace-nowrap _pr-2 [grid-area:A]"
               {% if card_product.featured_media or settings.card_style == 'card' %}
                 id="title-{{ section_id }}-{{ card_product.id }}"
               {% endif %}
@@ -203,42 +224,30 @@
               </a>
             </h3>
 
-            {% comment %} ----------- {% endcomment %}
-            {% comment %} -- Price -- {% endcomment %}
-            {% comment %} ----------- {% endcomment %}
+            {% comment %} --------------- {% endcomment %}
+            {% comment %} -- (B) Price -- {% endcomment %}
+            {% comment %} --------------- {% endcomment %}
+            <div class="[grid-area:B] md:_justify-self-end">
+              {% render 'wm__price', product: card_product, price_class: '', show_compare_at_price: true %}
+            </div>
 
-            {% render 'wm__price', product: card_product, price_class: '', show_compare_at_price: true %}
+            {%- unless simple_card -%}
+              {% comment %} --------------------- {% endcomment %}
+              {% comment %} -- (C) Description -- {% endcomment %}
+              {% comment %} --------------------- {% endcomment %}
+              <span class="_text-sm _text-brand-dark [grid-area:C]">
+                SPF 50 Mineral Sun Stick
+              </span>
 
-          </div>
-
-          {%- unless simple_card -%}
-            <div class="_flex _flex-row _justify-between _items-center">
-
-              {% comment %} ----------------- {% endcomment %}
-              {% comment %} -- Description -- {% endcomment %}
-              {% comment %} ----------------- {% endcomment %}
-
-              <span class="_text-sm _text-brand-dark">SPF 50 Mineral Sun Stick</span>
-
-              {% comment %} ------------------ {% endcomment %}
-              {% comment %} -- Review stars -- {% endcomment %}
-              {% comment %} ------------------ {% endcomment %}
-              
-              {% comment %} {%- if show_rating -%} {% endcomment %}
-              <div class="_flex _flex-row _items-center _gap-1">
+              {% comment %} ---------------------- {% endcomment %}
+              {% comment %} -- (D) Review stars -- {% endcomment %}
+              {% comment %} ---------------------- {% endcomment %}
+              <div class="_flex _items-center _gap-1 [grid-area:D] md:_justify-self-end">
                 <span class="_text-sm _text-brand-primary-500">★★★★★</span>
                 <span class="_font-body-condensed _font-medium _text-brand-dark _text-sm">4.5 (100)</span>
               </div>
-              {% comment %} {%- endif -%} {% endcomment %}
-
-              {% comment %} {%- if show_rating and card_product.metafields.reviews.rating.value != blank -%}
-                <div class="_mb-1">
-                  {% render 'wm__rating-stars', main_product: card_product %}
-                </div>
-              {%- endif -%} {% endcomment %}
-
-            </div>
-          {%- endunless -%}
+            {%- endunless -%}
+          </div>
 
         </div>
         {% assign product_form_id = 'quick-add-' | append: section_id | append: card_product.id %}

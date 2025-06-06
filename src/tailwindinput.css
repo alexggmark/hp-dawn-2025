@@ -41,30 +41,23 @@
   ._font-link {
     @apply _font-semibold _tracking-widest _uppercase;
   }
+
+  /* ------------
+    BUTTON STYLES
+  ------------ */
   ._button-primary {
     @apply
     _flex _relative _items-center _justify-center _gap-3
     _font-semibold _text-base _uppercase _tracking-widest
     _text-brand-dark hover:_text-brand-light
-    _bg-white hover:_bg-brand-primary-500
+    _bg-white
     _border _border-brand-dark hover:_border-brand-primary-500
     _transition-colors _duration-150
     _py-4 _px-8;
   }
-  ._button-primary > * {
-    z-index: 2;
-  }
-  ._button-primary::before {
-    content: "";
-    transition: width 0.2s ease;
-    @apply _absolute _h-full _left-0 _w-0 _bg-red-300;
-  }
-  ._button-primary:hover::before {
-    @apply _w-full;
-  }
   ._button-secondary {
     @apply
-    _flex _items-center _justify-center _gap-3
+    _flex _relative _items-center _justify-center _gap-3
     _font-semibold _text-base _uppercase _tracking-widest
     _text-brand-light
     _bg-brand-primary-700 hover:_bg-brand-primary-500
@@ -75,7 +68,7 @@
   }
   ._button-tertiary {
     @apply
-    _flex _items-center _justify-center _gap-3
+    _flex _relative _items-center _justify-center _gap-3
     _font-semibold _text-base _uppercase _tracking-widest
     _text-brand-light
     _bg-transparent hover:_bg-brand-primary-500
@@ -83,6 +76,24 @@
     _transition-colors _duration-150
     _py-4
     _px-8;
+  }
+  /* - Button Animations - */
+    ._button-primary > *,
+  ._button-secondary > *,
+  ._button-tertiary > * {
+    z-index: 2;
+  }
+  ._button-primary::before,
+  ._button-secondary::before,
+  ._button-tertiary::before {
+    content: "";
+    transition: width 0.2s ease;
+    @apply _absolute _h-full _left-0 _w-0 _bg-brand-primary-500;
+  }
+  ._button-primary:hover::before,
+  ._button-secondary:hover::before,
+  ._button-tertiary:hover::before {
+    @apply _w-full;
   }
 
   /* -----------

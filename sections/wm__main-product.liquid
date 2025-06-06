@@ -205,7 +205,7 @@
                 {% render 'wm__product-variant-picker', product: product, block: block, product_form_id: product_form_id %}
               {%- when 'buy_buttons' -%}
                 <div class="[.quick-shop-drawer_&]:_sticky [.quick-shop-drawer_&]:_bottom-0 [.quick-shop-drawer_&]:_bg-brand-light [.quick-shop-drawer_&]:_py-2">
-                  <div class="_flex sm:_flex-row _flex-col [.quick-shop-drawer_&]:_flex-col _gap-4">
+                  <div class="_flex sm:_flex-row _flex-col _items-stretch [.quick-shop-drawer_&]:_flex-col _gap-4">
                     <div
                       id="Quantity-Form-{{ section.id }}"
                       class="sm:_max-w-36 [.quick-shop-drawer_&]:_max-w-full _w-full"
@@ -218,7 +218,7 @@
                         | item_count_for_variant: product.selected_or_first_available_variant.id
                       -%}
                       {% # theme-check-enable %}
-                      <div class="_flex _items-center">
+                      <div class="_flex _items-center _h-full">
                         <quantity-input 
                           class="
                             _bg-transparent
@@ -226,7 +226,7 @@
                             _relative
                             _flex
                             _items-center
-                            _w-full
+                            _w-full _h-full
                           "
                           data-url="{{ product.url }}"
                           data-section="{{ section.id }}"

@@ -9,58 +9,6 @@
     %}
 {% endcomment %}
 
-{% style %}
-  /* TODO: move this to top level eventually */
-  quick-shop-drawer {
-    position: fixed;
-    z-index: 5000;
-    left: 0;
-    top: 0;
-    width: 100vw;
-    height: 100%;
-    display: flex;
-    justify-content: flex-end;
-    background-color: rgba(var(--color-foreground), 0.5);
-    visibility: hidden;
-  }
-
-  quick-shop-drawer[open] {
-    opacity: 1;
-    visibility: visible;
-  }
-
-  .quick-shop-drawer__content {
-    width: 100%;
-    background-color: rgb(var(--color-background));
-    overflow: hidden;
-    max-width: var(--page-width);
-    width: calc(100% - 2rem);
-    transform: translateX(100%);
-    transition: transform var(--duration-medium) ease;
-    padding: 0 1em;
-    overflow-y: auto;
-  }
-
-  quick-shop-drawer.menu-opening .quick-shop-drawer__content {
-    transform: translateX(0);
-  }
-
-  @media screen and (min-width: 750px) {
-    .quick-shop-drawer__content {
-      width: 80%;
-      padding: 0 2em;
-      max-height: 100%;
-      overflow-y: auto;
-    }
-  }
-
-  @media screen and (min-width: 990px) {
-    .quick-shop-drawer__content {
-      width: 30em;
-    }
-  }
-{% endstyle %}
-
 <quick-shop-opener data-modal="#QuickShop-{{ card_product.id }}">
   {%- if custom_button_html -%}
     <button
@@ -84,7 +32,9 @@
       aria-labelledby="{{ product_form_id }}-submit title-{{ section_id }}-{{ card_product.id }}"
       data-product-url="{{ card_product.url }}"
     >
-      Quick shop
+      <span>
+        Quick shop
+      </span>
       {%- render 'loading-spinner' -%}
     </button>
   {%- endif -%}

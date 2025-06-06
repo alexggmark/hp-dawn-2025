@@ -578,6 +578,10 @@ video {
   letter-spacing: 0.1em;
 }
 
+/* ------------
+    BUTTON STYLES
+  ------------ */
+
 ._button-primary {
   position: relative;
   display: flex;
@@ -608,32 +612,12 @@ video {
 ._button-primary:hover {
   --tw-border-opacity: 1;
   border-color: rgb(61 114 246 / var(--tw-border-opacity, 1));
-  --tw-bg-opacity: 1;
-  background-color: rgb(61 114 246 / var(--tw-bg-opacity, 1));
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity, 1));
 }
 
-._button-primary > * {
-  z-index: 2;
-}
-
-._button-primary::before {
-  content: "";
-  transition: width 0.2s ease;
-  position: absolute;
-  left: 0px;
-  height: 100%;
-  width: 5rem;
-  --tw-bg-opacity: 1;
-  background-color: rgb(252 165 165 / var(--tw-bg-opacity, 1));
-}
-
-._button-primary:hover::before {
-  width: 100%;
-}
-
 ._button-secondary {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -664,6 +648,7 @@ video {
 }
 
 ._button-tertiary {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -693,6 +678,33 @@ video {
   border-color: rgb(61 114 246 / var(--tw-border-opacity, 1));
   --tw-bg-opacity: 1;
   background-color: rgb(61 114 246 / var(--tw-bg-opacity, 1));
+}
+
+/* - Button Animations - */
+
+._button-primary > *,
+  ._button-secondary > *,
+  ._button-tertiary > * {
+  z-index: 2;
+}
+
+._button-primary::before,
+  ._button-secondary::before,
+  ._button-tertiary::before {
+  content: "";
+  transition: width 0.2s ease;
+  position: absolute;
+  left: 0px;
+  height: 100%;
+  width: 0px;
+  --tw-bg-opacity: 1;
+  background-color: rgb(61 114 246 / var(--tw-bg-opacity, 1));
+}
+
+._button-primary:hover::before,
+  ._button-secondary:hover::before,
+  ._button-tertiary:hover::before {
+  width: 100%;
 }
 
 /* -----------
@@ -2506,6 +2518,22 @@ video {
   font-family: var(--font-body-condensed) !important;
 }
 
+.\[grid-area\:A\] {
+  grid-area: A !important;
+}
+
+.\[grid-area\:B\] {
+  grid-area: B !important;
+}
+
+.\[grid-area\:C\] {
+  grid-area: C !important;
+}
+
+.\[grid-area\:D\] {
+  grid-area: D !important;
+}
+
 .before\:_absolute::before {
   content: var(--tw-content) !important;
   position: absolute !important;
@@ -3209,6 +3237,10 @@ video {
 
   .md\:_gap-7 {
     gap: 1.75rem !important;
+  }
+
+  .md\:_justify-self-end {
+    justify-self: end !important;
   }
 
   .md\:_bg-brand-light {

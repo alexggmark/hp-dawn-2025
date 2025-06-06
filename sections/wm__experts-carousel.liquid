@@ -78,9 +78,9 @@
           {%- unless section.settings.cta_text == blank -%}
             <a
               href="{{ section.settings.cta_url }}"
-              class="_button-primary _mt-6 _hidden md:_block"
+              class="_button-primary _mt-6 _hidden md:_flex"
             >
-              {{- section.settings.cta_text -}}
+              <span>{{- section.settings.cta_text -}}</span>
             </a>
           {%- endunless -%}
         </div>
