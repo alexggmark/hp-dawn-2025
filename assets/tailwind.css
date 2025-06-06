@@ -2159,8 +2159,8 @@ video {
   padding-left: 0.5rem !important;
 }
 
-._pl-7 {
-  padding-left: 1.75rem !important;
+._pl-6 {
+  padding-left: 1.5rem !important;
 }
 
 ._pl-72 {
@@ -2209,10 +2209,6 @@ video {
 
 ._pt-4 {
   padding-top: 1rem !important;
-}
-
-._pl-6 {
-  padding-left: 1.5rem !important;
 }
 
 ._text-left {
@@ -2441,12 +2437,6 @@ video {
 
 ._transition-colors {
   transition-property: color, background-color, border-color, text-decoration-color, fill, stroke !important;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1) !important;
-  transition-duration: 150ms !important;
-}
-
-._transition-transform {
-  transition-property: transform !important;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1) !important;
   transition-duration: 150ms !important;
 }
@@ -2745,16 +2735,6 @@ video {
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y)) !important;
 }
 
-._group\/open[open] .group-open\/open\:_rotate-0 {
-  --tw-rotate: 0deg !important;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y)) !important;
-}
-
-._group[open] .group-open\:_border-brand-dark {
-  --tw-border-opacity: 1 !important;
-  border-color: rgb(0 0 0 / var(--tw-border-opacity, 1)) !important;
-}
-
 ._group[open] .group-open\:_bg-brand-primary-100 {
   --tw-bg-opacity: 1 !important;
   background-color: rgb(236 240 251 / var(--tw-bg-opacity, 1)) !important;
@@ -2873,11 +2853,6 @@ video {
   border-color: rgb(61 114 246 / var(--tw-border-opacity, 1)) !important;
 }
 
-._group:hover .group-hover\:_border-brand-dark {
-  --tw-border-opacity: 1 !important;
-  border-color: rgb(0 0 0 / var(--tw-border-opacity, 1)) !important;
-}
-
 ._group:hover .group-hover\:_bg-brand-background {
   --tw-bg-opacity: 1 !important;
   background-color: rgb(241 241 241 / var(--tw-bg-opacity, 1)) !important;
@@ -2891,10 +2866,6 @@ video {
 ._group:hover .group-hover\:_text-white {
   --tw-text-opacity: 1 !important;
   color: rgb(255 255 255 / var(--tw-text-opacity, 1)) !important;
-}
-
-._group\/mobfilter:hover .group-hover\/mobfilter\:_underline {
-  text-decoration-line: underline !important;
 }
 
 ._group\/tile:hover .group-hover\/tile\:_underline {
@@ -3421,6 +3392,10 @@ video {
 
   .md\:_pt-8 {
     padding-top: 2rem !important;
+  }
+
+  .md\:_pb-8 {
+    padding-bottom: 2rem !important;
   }
 
   .md\:_text-left {

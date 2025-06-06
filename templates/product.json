@@ -42,6 +42,12 @@
             "show_gift_card_recipient": false
           }
         },
+        "usps_H6VVPr": {
+          "type": "usps",
+          "settings": {
+            "usp_image": "shopify://shop_images/HPWeb-PDP-Desktop-BrandIcons.gif"
+          }
+        },
         "product_details_CfyEpb": {
           "type": "product_details",
           "settings": {}
@@ -54,6 +60,7 @@
         "price",
         "variant_picker",
         "buy_buttons",
+        "usps_H6VVPr",
         "product_details_CfyEpb"
       ],
       "settings": {
@@ -110,8 +117,6 @@
         "image": "shopify://shop_images/Retail_SunSlick_PDP_HowToUse.jpg",
         "video": "shopify://files/videos/power luxe SMALL FOR WEB.mp4",
         "image_overlay_opacity": 40,
-        "image_height": "medium",
-        "mobile_image_height": "medium",
         "margin_bottom": "0"
       }
     },

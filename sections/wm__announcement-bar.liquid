@@ -11,11 +11,11 @@
         {%- if section.blocks.first.settings.link != blank -%}
           <a
             href="{{ section.blocks.first.settings.link }}"
-            class="_group _flex _w-full _no-underline _h-full _justify-center _items-center focus-inset"
+            class="_group _flex _w-full _h-full _justify-center _items-center focus-inset link-underline-trigger"
           >
         {%- endif -%}
-        <p class="_flex _gap-2 _text-base _font-semibold _text-center md:_py-3.5 _py-2.5 _min-h-8 _items-center _justify-center _px-0 _m-0 group-hover:_underline _underline-offset-4" style="line-height: 1.1">
-          <span>{{ section.blocks.first.settings.text | escape }}</span>
+        <p class="_flex _gap-2 _text-base _font-semibold _text-center md:_py-3.5 _py-2.5 _min-h-8 _items-center _justify-center _px-0 _m-0" style="line-height: 1.1">
+          <span class="link-underline">{{ section.blocks.first.settings.text | escape }}</span>
         </p>
         {%- if section.blocks.first.settings.link != blank -%}
           </a>

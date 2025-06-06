@@ -56,6 +56,12 @@
             {%- case block.type -%}
               {%- when '@app' -%}
                 {% render block %}
+              {%- when 'badge' -%}
+                {% if product.tags contains "Best Seller" %}
+                  <div class="_bg-brand-primary-100 _inline-block _px-3 _py-1 _mb-3">
+                    <span class="_font-body-condensed _uppercase _text-brand-primary-500 _text-base">Best Seller</span>
+                  </div>
+                {% endif %}
               {%- when 'title' -%}
                 {% comment %} Product Title {% endcomment %}
                 <div {{ block.shopify_attributes }}>
@@ -632,6 +638,11 @@
   "blocks": [
     {
       "type": "@app"
+    },
+    {
+      "type": "badge",
+      "name": "Badge",
+      "limit": 1
     },
     {
       "type": "title",
