@@ -103,7 +103,7 @@
       -%}
       {%- if section.settings.video -%}
         {{ section.settings.video | media_tag: image_size: '2048x',
-          autoplay: true, loop: true, muted: true, controls: false, preload: 'none',
+          autoplay: true, loop: true, muted: true, controls: false, preload: 'metadata',
           class: "_object-cover _w-full _h-full" }}
       {%- elsif section.settings.mobile_image != blank -%}
         {%- assign mobile_height = section.settings.mobile_image.width | divided_by: section.settings.mobile_image.aspect_ratio -%}

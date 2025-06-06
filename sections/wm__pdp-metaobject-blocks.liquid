@@ -10,22 +10,22 @@
       {%- case entry.type -%}
         {%- when "product_lp_icon_strip" -%}
           <div class="{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %} _bg-brand-primary-100">
-            <div class="_relative page-width _py-14">
+            <div class="_relative page-width md:_py-14 _py-10">
               <div class="_flex _flex-col _items-center">
                 {%- unless entry.title == blank -%}
-                  <h2 class="_font-heading-primary _text-brand-primary-700 md:_text-2.5xl _text-2xl _mb-10">
+                  <h2 class="_font-heading-primary _text-brand-primary-700 _text-center md:_text-2.5xl _text-2xl md:_mb-10 _mb-6">
                     {{ entry.title }}
                   </h2>
                 {%- endunless -%}
-                <div class="_flex _flex-row _justify-between _gap-8">
+                <div class="_flex _flex-row _flex-wrap md:_justify-between _justify-start md:_gap-8">
                   {%- assign entry_icons = entry.icon_pair.value -%}
                   {%- unless entry_icons == blank -%}
                     {%- for icon in entry_icons -%}
-                      <div class="_flex _justify-start _items-center _gap-2 _mb-2 _max-w-[170px] _text-brand-primary-700">
-                        <span class="svg-wrapper _w-14 _h-14 _flex-shrink-0">
+                      <div class="_flex _justify-start _items-center _gap-2 _mb-2 md:_max-w-[170px] _w-1/2 _text-brand-primary-700">
+                        <span class="svg-wrapper md:_w-12 md:_h-12 _w-8 _h-8 _flex-shrink-0">
                           {{ 'metaobjecticon-large-' | append: icon.icon | append: '.svg' | inline_asset_content }}
                         </span>
-                        <span class="_font-heading-small _text-sm">
+                        <span class="_font-heading-small md:_text-sm _text-xs">
                           {{ icon.title }}
                         </span>
                       </div>
@@ -37,12 +37,12 @@
           </div>
 
         {%- when "product_lp_content_block_1" -%}
-          <div class="{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}{% if entry.background %} _bg-brand-background-light{% endif %} _py-20">
+          <div class="{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}{% if entry.background %} _bg-brand-background-light{% endif %} md:_py-20 _py-12">
             <div class="_relative page-width">
               <div class="_grid _gap-8 md:_grid-cols-12 _grid-cols-1">
-                <div class="md:_col-span-5 _col-span-1 _flex _flex-col _items-start _justify-center{% if entry.reverse_order %} md:_order-2{% endif %}">
+                <div class="md:_col-span-5 _col-span-1 _flex _flex-col _items-start _justify-center{% if entry.reverse_order %} md:_pl-12 md:_order-2{% else %} md:_pr-12{% endif %}">
                   {%- unless entry.title == blank -%}
-                    <h2 class="_font-heading-primary _text-brand-dark md:_text-3xl _text-2xl _mt-1">
+                    <h2 class="_font-heading-primary _text-brand-dark md:_text-3xl _text-2.5xl">
                       {{ entry.title }}
                     </h2>
                   {%- endunless -%}
@@ -53,7 +53,7 @@
                   {%- endunless -%}
                   {%- assign entry_icons = entry.icon.value -%}
                   {%- unless entry_icons == blank -%}
-                    <ul class="_text-base">
+                    <ul class="_text-base _mt-4">
                       {%- for icon in entry_icons -%}
                         <li class="_flex _justify-start _items-start _gap-2 _mb-2">
                           <span class="svg-wrapper _w-10 _h-10 _flex-shrink-0">
@@ -88,12 +88,12 @@
           </div>
 
         {%- when "product_lp_content_block_2" -%}
-          <div class="{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}{% if entry.background %} _bg-brand-background-light{% endif %} _py-20">
+          <div class="{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}{% if entry.background %} _bg-brand-background-light{% endif %} md:_py-20 _py-12">
             <div class="_relative page-width">
               <div class="_grid _gap-8 md:_grid-cols-12 _grid-cols-1">
-                <div class="md:_col-span-5 _col-span-1 _flex _flex-col _items-start _justify-center{% if entry.reverse_order %} md:_order-2{% endif %}">
+                <div class="md:_col-span-5 _col-span-1 _flex _flex-col _items-start _justify-center{% if entry.reverse_order %} md:_pl-12 md:_order-2{% else %} md:_pr-12{% endif %}">
                   {%- unless entry.title == blank -%}
-                    <h2 class="_font-heading-primary _text-brand-dark md:_text-3xl _text-2xl _mt-1">
+                    <h2 class="_font-heading-primary _text-brand-dark md:_text-3xl _text-2.5xl _mt-1">
                       {{ entry.title }}
                     </h2>
                   {%- endunless -%}
@@ -158,24 +158,24 @@
           {% endstyle %}
           
           {%- unless ingredients == blank -%}
-            <div class="{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %} _py-20">
+            <div class="{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %} md:_py-20 _py-12">
               <div class="_relative page-width">
                 <accordion-image-split>
                   <div class="_grid md:_grid-cols-12 _grid-cols-1 _gap-8">
                     <div class="md:_col-span-6 _col-span-1 _flex _flex-col _items-start _justify-start">
                       {%- unless entry.title == blank -%}
-                        <h2 class="_font-heading-primary _text-brand-dark md:_text-3xl _text-2xl _mb-4">
+                        <h2 class="_font-heading-primary _text-brand-dark md:_text-3xl _text-2.5xl _mb-6">
                           {{ entry.title }}
                         </h2>
                       {%- endunless -%}
                       <div class="_max-w-[510px]">
                         {%- for ingredient in ingredients -%}
-                          <details class="{% unless forloop.last %}bullet-point-line{% endunless %} _relative _pb-8" {% if forloop.first %}open="true"{% endif %}>
+                          <details class="_group {% unless forloop.last %}bullet-point-line{% endunless %} _relative _pb-8" {% if forloop.first %}open="true"{% endif %}>
                             <summary data-js-trigger="{{ forloop.index }}" class="_flex _justify-start _items-center _gap-3">
-                              <span class="_block _rounded-full _w-3 _h-3 _bg-brand-primary-100 _border _border-brand-border"></span>
-                              <span class="_font-heading-primary _text-xl">{{ ingredient.title }}</span>
+                              <span class="_block _rounded-full _w-3 _h-3 _bg-brand-light _border _border-brand-border group-hover:_bg-brand-primary-100 group-open:_bg-brand-primary-100"></span>
+                              <span class="_font-heading-primary _text-xl _mb-2">{{ ingredient.title }}</span>
                             </summary>
-                            <div class="_prose _text-base _pl-7">
+                            <div class="_prose _text-base _pl-6">
                               {{ ingredient.text | metafield_tag }}
                             </div>
                           </details>

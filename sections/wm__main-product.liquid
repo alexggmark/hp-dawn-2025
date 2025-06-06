@@ -1,6 +1,6 @@
 <product-info
   id="MainProduct-{{ section.id }}"
-  class="md:_py-4 [.quick-shop-drawer_&]:md:_py-0"
+  class="md:_pb-12 _pb-8 [.quick-shop-drawer_&]:md:_py-0"
   data-section="{{ section.id }}"
   data-product-id="{{ product.id }}"
   data-update-url="true"
@@ -204,8 +204,8 @@
               {%- when 'variant_picker' -%}
                 {% render 'wm__product-variant-picker', product: product, block: block, product_form_id: product_form_id %}
               {%- when 'buy_buttons' -%}
-                <div class="[.quick-shop-drawer_&]:_sticky [.quick-shop-drawer_&]:_bottom-0 [.quick-shop-drawer_&]:_bg-brand-light [.quick-shop-drawer_&]:_py-2">
-                  <div class="_flex sm:_flex-row _flex-col _items-stretch [.quick-shop-drawer_&]:_flex-col _gap-4">
+                <div class="[.quick-shop-drawer_&]:_sticky [.quick-shop-drawer_&]:_bottom-0 [.quick-shop-drawer_&]:_bg-brand-light [.quick-shop-drawer_&]:_py-4">
+                  <div class="_flex sm:_flex-row _flex-col _items-stretch [.quick-shop-drawer_&]:_flex-col md:_gap-4 _gap-2 [.quick-shop-drawer_&]:md:_gap-2">
                     <div
                       id="Quantity-Form-{{ section.id }}"
                       class="sm:_max-w-36 [.quick-shop-drawer_&]:_max-w-full _w-full"
@@ -342,7 +342,7 @@
                   {% render 'wm__rating-stars', main_product: product %}
                 </div>
               {%- when 'usps' -%}
-                <div class="_w-full _my-3">
+                <div class="_w-full _my-5" data-js-product-usps>
                   {{
                     block.settings.usp_image
                     | image_url: width: 1000
@@ -366,12 +366,10 @@
                             {{- 'icon-newbuild-plus-thin.svg' | inline_asset_content -}}
                           </span>
                         </summary>
-                        <div class="
-                          _pt-2 _pb-2
-                        ">
-                          <div class="_grid _grid-cols-12">
+                        <div>
+                          <div class="_grid _grid-cols-12 _pt-2 _pb-4">
                             {%- unless entry.media == blank -%}
-                              <div class="{% if entry.media_only or entry.content == blank %} _col-span-full{% else %} md:_col-span-6 _col-span-full md:_pr-3 _mb-5{% endif %}">
+                              <div class="{% if entry.media_only or entry.content == blank %} _col-span-full{% else %} md:_col-span-6 _col-span-full md:_pr-3{% endif %}">
                                 {%- assign media = entry.media.value -%}
                                 {%- if media.media_type == 'video' -%}
                                   {{ media | video_tag: controls: true, preload: 'metadata', autoplay: true, muted: true, loop: true, width: '100%', height: '100%' }}
@@ -380,11 +378,9 @@
                                 {%- endif -%}
                               </div>
                             {%- endunless -%}
-                            <div class="
-                              {% if entry.media_only or entry.media == blank %} _col-span-full{% else %} md:_col-span-6 _col-span-full{% endif %}
-                            ">
+                            <div class="{% if entry.media_only or entry.media == blank %} _col-span-full{% else %} md:_col-span-6 _col-span-full{% endif %}">
                               {%- unless entry.content == blank -%}
-                                <div class="_prose md:_text-base _text-sm _mb-6">
+                                <div class="_prose md:_text-base _text-sm">
                                   {{ entry.content | metafield_tag }}
                                 </div>
                               {%- endunless -%}

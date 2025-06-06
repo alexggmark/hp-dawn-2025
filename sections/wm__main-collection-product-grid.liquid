@@ -71,7 +71,7 @@
     </facet-filters-form>
     
     <div class="facets-vertical page-width">
-      {{ 'component-facets.css' | asset_url | stylesheet_tag }}
+      {{ 'wm__component-facets.css' | asset_url | stylesheet_tag }}
       <script src="{{ 'wm__facets.js' | asset_url }}" defer="defer"></script>
       {%- if section.settings.enable_filtering or section.settings.enable_sorting -%}
         <aside
