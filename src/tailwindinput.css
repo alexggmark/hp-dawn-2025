@@ -43,14 +43,24 @@
   }
   ._button-primary {
     @apply
-    _flex _items-center _justify-center _gap-3
+    _flex _relative _items-center _justify-center _gap-3
     _font-semibold _text-base _uppercase _tracking-widest
     _text-brand-dark hover:_text-brand-light
     _bg-white hover:_bg-brand-primary-500
     _border _border-brand-dark hover:_border-brand-primary-500
     _transition-colors _duration-150
-    _py-4
-    _px-8;
+    _py-4 _px-8;
+  }
+  ._button-primary > * {
+    z-index: 2;
+  }
+  ._button-primary::before {
+    content: "";
+    transition: width 0.2s ease;
+    @apply _absolute _h-full _left-0 _w-0 _bg-red-300;
+  }
+  ._button-primary:hover::before {
+    @apply _w-full;
   }
   ._button-secondary {
     @apply
@@ -101,7 +111,7 @@
     @apply _mb-1 _text-[15px] _font-semibold _uppercase _text-brand-dark;
   }
   ._prose strong {
-    @apply _font-medium;
+    @apply _font-semibold;
   }
   ._prose ul {
     @apply _list-none _pl-0;

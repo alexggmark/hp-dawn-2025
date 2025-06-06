@@ -1,0 +1,48 @@
+{%- liquid
+  if use_variant
+    assign target = product.selected_or_first_available_variant
+  elsif placeholder
+    assign target = null
+  else
+    assign target = product
+  endif
+
+  assign compare_at_price = target.compare_at_price
+  assign price = target.price | default: 1999
+  assign price_min = product.price_min
+  assign price_max = product.price_max
+
+  if settings.currency_code_enabled
+    assign money_price = price | money_with_currency
+    assign money_compare_at_price = compare_at_price | money_with_currency
+    assign money_price_min = price_min | money_with_currency
+    assign money_price_max = price_max | money_with_currency
+  else
+    assign money_price = price | money
+    assign money_compare_at_price = compare_at_price | money
+    assign money_price_min = price_min | money
+    assign money_price_max = price_max | money
+  endif
+
+  assign show_compare_at_price = false
+  if compare_at_price > price and product.quantity_price_breaks_configured? != true
+    assign show_compare_at_price = true
+  endif
+-%}
+
+{%- unless target == null and placeholder == null -%}
+  {%- if product.quantity_price_breaks_configured? -%}
+    {%- if product.price_varies -%}
+      {{ 'products.product.volume_pricing.price_range' | t: minimum: money_price_min, maximum: money_price_max }}
+    {%- else -%}
+      {{ money_price | replace: '.00', '' }}
+    {%- endif -%}
+  {%- else -%}
+    {%- if show_compare_at_price -%}
+      <span>{{ money_price | replace: '.00', '' }}</span>
+      <span><s class="_text-sm">{{ money_compare_at_price | replace: '.00', '' }}</s></span>
+    {%- else -%}
+      {{ money_price | replace: '.00', '' }}
+    {%- endif -%}
+  {%- endif -%}
+{%- endunless -%}

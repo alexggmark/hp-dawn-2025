@@ -77,7 +77,7 @@
       additional_props: input_dataset
     %}
   {%- elsif picker_type == 'button' -%}
-    <div class="_inline-block _mr-2">
+    <div class="_inline-block">
       <input
         type="radio"
         id="{{ input_id }}"
@@ -93,7 +93,20 @@
         {% endif %}
         {{ input_dataset }}
       >
-      <label for="{{ input_id }}" class="peer-checked/pill:_bg-brand-dark peer-checked/pill:_text-white _cursor-pointer _outline _outline-[1px] _px-4 _py-2 _text-lg _outline-brand-border hover:_outline-brand-primary-500 peer-checked/pill:hover:_outline-brand-dark _text-brand-dark _bg-brand-background-light hover:_bg-brand-background hover:_text-brand-primary-500 _block">
+      <label for="{{ input_id }}" class="
+        _block _cursor-pointer
+        _outline _outline-[1px]
+        _px-3 _py-1.5
+        _text-lg
+        _text-brand-dark hover:_text-brand-primary-500
+        _outline-brand-border
+        peer-checked/pill:_outline-brand-dark
+        _bg-brand-background-light
+        peer-checked/pill:_bg-brand-background
+        peer-checked/pill:_text-brand-dark
+        hover:_outline-brand-primary-500 peer-checked/pill:hover:_outline-brand-dark
+      ">
+      {% comment %} <label for="{{ input_id }}" class="peer-checked/pill:_bg-brand-grey peer-checked/pill:_text-white _cursor-pointer _outline _outline-[1px] _px-3 _py-1.5 _text-lg _outline-brand-border hover:_outline-brand-primary-500 peer-checked/pill:hover:_outline-brand-dark _text-brand-dark _bg-brand-background-light hover:_bg-brand-background hover:_text-brand-primary-500 _block"> {% endcomment %}
         {{ value -}}
         {{ label_unavailable }}
       </label>

@@ -199,6 +199,11 @@
       md:_max-w-[70%]
     ">
       {%- assign decoration_tag_on = false -%}
+      
+      {% comment %} <a href="#_" class="_relative _inline-flex _items-center _justify-start _px-6 _py-3 _overflow-hidden _font-medium _transition-all _bg-white _rounded _hover:bg-white _group">
+        <span class="_w-48 _h-48 _rounded _rotate-[90deg] _bg-purple-600 _absolute _bottom-0 _left-0 _-translate-x-full _ease-out _duration-500 _transition-all _translate-y-full _mb-9 _ml-9 group-hover:_ml-0 group-hover:_mb-32 group-hover:_translate-x-0"></span>
+        <span class="_relative _w-full _text-left _text-black _transition-colors _duration-300 _ease-in-out group-hover:_text-white">Button Text</span>
+      </a> {% endcomment %}
 
       {%- for block in section.blocks -%}
         {%- case block.type -%}
@@ -225,7 +230,7 @@
             </{{ block.settings.heading_tag }}>
 
             {%- if decoration_tag_on -%}
-                <div class="_items-center _gap-3 _ml-3 md:_flex _hidden">
+                <div class="_items-center _gap-3 _ml-3 md:_flex _hidden _mt-2">
                   <div class="_w-16">
                     <div class="_block heading-decoration-tag--line{% if block.settings.decoration_tag_invert %} _bg-brand-light{% else %} _bg-brand-dark{% endif %}"></div>
                   </div>
@@ -283,7 +288,9 @@
                     _button-{{ block.settings.button_style_1 }}
                   "
                 >
-                  {{- block.settings.button_label_1 | escape -}}
+                  <span>
+                    {{- block.settings.button_label_1 | escape -}}
+                  </span>
                 </a>
               {%- endif -%}
               {%- if block.settings.button_label_2 != blank -%}

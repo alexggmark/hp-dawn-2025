@@ -84,23 +84,23 @@
         {%- else -%}
           <span class="visually-hidden visually-hidden--inline">{{ 'products.product.price.regular_price' | t }}</span>
           <span class="price-item price-item--regular">
-            {{ money_price }}
+            {{ money_price | replace: '.00', '' }}
           </span>
         {%- endif -%}
       </div>
       <div class="price__sale">
         <span class="visually-hidden visually-hidden--inline">{{ 'products.product.price.sale_price' | t }}</span>
-        <span class="price-item price-item--sale price-item--last _font-medium _text-[#d96f09]">
-          {{ money_price }}
+        <span class="price-item price-item--sale price-item--last _font-medium _text-brand-brand">
+          {{ money_price | replace: '.00', '' }}
         </span>
         {%- unless product.price_varies == false and product.compare_at_price_varies %}
           <span class="visually-hidden visually-hidden--inline">{{ 'products.product.price.regular_price' | t }}</span>
           <span>
-            <s class="price-item price-item--regular _font-medium _text-sm _text-[#b3b3b3]">
+            <s class="price-item price-item--regular _font-medium _text-base _text-[#b3b3b3]">
               {% if settings.currency_code_enabled %}
-                {{ compare_at_price | money_with_currency }}
+                {{ compare_at_price | money_with_currency | replace: '.00', '' }}
               {% else %}
-                {{ compare_at_price | money }}
+                {{ compare_at_price | money | replace: '.00', '' }}
               {% endif %}
             </s>
           </span>

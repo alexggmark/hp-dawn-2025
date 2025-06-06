@@ -12,18 +12,6 @@
     "wm_hero_banner_image_CPaEAD": {
       "type": "wm__hero-banner-image",
       "blocks": {
-        "top_heading_type_1_FGeqbN": {
-          "type": "top-heading-type-1",
-          "settings": {
-            "heading": "Totally optional text",
-            "heading_tag": "h1",
-            "desktop_text_size": "base",
-            "mobile_text_size": "base",
-            "margin_bottom": "0",
-            "invert_colours": true,
-            "mobile_invert_colours": true
-          }
-        },
         "heading_type_1_DJDyPA": {
           "type": "heading-type-1",
           "settings": {
@@ -76,7 +64,6 @@
         }
       },
       "block_order": [
-        "top_heading_type_1_FGeqbN",
         "heading_type_1_DJDyPA",
         "heading_type_1_MpnizR",
         "text_UHBFJV",
@@ -87,12 +74,12 @@
         "video": "shopify://files/videos/power luxe SMALL FOR WEB.mp4",
         "image_overlay_opacity": 60,
         "container_width": "page",
-        "image_height": "medium",
+        "image_height": "large",
         "desktop_content_position": "middle-left",
         "show_text_box": false,
         "desktop_content_alignment": "left",
         "mobile_image_overlay_opacity": 60,
-        "mobile_image_height": "medium",
+        "mobile_image_height": "small",
         "mobile_content_alignment": "center",
         "mobile_content_position": "middle-center",
         "show_mobile_text_box": false,
@@ -170,7 +157,7 @@
         "cta_text": "Explore Now",
         "cta_url": "shopify://collections",
         "image": "shopify://shop_images/082624_Micro-DoseGlowBooster_PDP_HowToUse.jpg",
-        "margin_bottom": "12"
+        "margin_bottom": "2"
       }
     },
     "wm_image_block_1_z7FEaK": {
@@ -263,8 +250,6 @@
         "image": "shopify://shop_images/Retail_SunSlick_PDP_HowToUse.jpg",
         "video": "shopify://files/videos/power luxe SMALL FOR WEB.mp4",
         "image_overlay_opacity": 40,
-        "image_height": "medium",
-        "mobile_image_height": "medium",
         "margin_bottom": "0"
       }
     },
@@ -340,7 +325,7 @@
         "expert_9WB8b4": {
           "type": "expert",
           "settings": {
-            "expert_quote": "<p>Lorem ipsum dolor sit amet. Dolor amet sipsum amet sit doloris amit sipsum.</p>",
+            "expert_quote": "<p>Our formulas are exclusively developed to improve skin health, function, and physiological well-being, our advanced peptide & delivery system technologies work synergistically.</p>",
             "expert_name": "Mr. ONE Something",
             "expert_jobtitle": "Testing Chemist",
             "expert_image": "shopify://shop_images/dr-ian-vitek-headshot.png"
@@ -394,7 +379,7 @@
         "main_heading": "Meet our Experts",
         "cta_text": "Learn More",
         "cta_url": "shopify://collections/acne-warrior",
-        "margin_bottom": "12"
+        "margin_bottom": "0"
       }
     },
     "wm_product_scroll_tabbed_reload_nmbiyz": {
@@ -461,8 +446,6 @@
         "image": "shopify://shop_images/Retail_SunSlick_PDP_HowToUse.jpg",
         "video": "shopify://files/videos/power luxe SMALL FOR WEB.mp4",
         "image_overlay_opacity": 40,
-        "image_height": "medium",
-        "mobile_image_height": "medium",
         "margin_bottom": "0"
       }
     }
