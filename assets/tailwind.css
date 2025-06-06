@@ -2633,6 +2633,17 @@ video {
   border-radius: 9999px !important;
 }
 
+.after\:_border::after {
+  content: var(--tw-content) !important;
+  border-width: 1px !important;
+}
+
+.after\:_border-red-500::after {
+  content: var(--tw-content) !important;
+  --tw-border-opacity: 1 !important;
+  border-color: rgb(239 68 68 / var(--tw-border-opacity, 1)) !important;
+}
+
 .after\:_bg-white::after {
   content: var(--tw-content) !important;
   --tw-bg-opacity: 1 !important;
@@ -2656,6 +2667,11 @@ video {
 .after\:_duration-200::after {
   content: var(--tw-content) !important;
   transition-duration: 200ms !important;
+}
+
+.open\:_border-brand-dark[open] {
+  --tw-border-opacity: 1 !important;
+  border-color: rgb(0 0 0 / var(--tw-border-opacity, 1)) !important;
 }
 
 .empty\:_hidden:empty {
@@ -2706,6 +2722,10 @@ video {
 
 .hover\:_opacity-100:hover {
   opacity: 1 !important;
+}
+
+.hover\:_opacity-80:hover {
+  opacity: 0.8 !important;
 }
 
 .hover\:_outline-brand-primary-500:hover {
@@ -2762,6 +2782,11 @@ video {
 ._group\/open[open] .group-open\/open\:_rotate-0 {
   --tw-rotate: 0deg !important;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y)) !important;
+}
+
+._group[open] .group-open\:_border-brand-dark {
+  --tw-border-opacity: 1 !important;
+  border-color: rgb(0 0 0 / var(--tw-border-opacity, 1)) !important;
 }
 
 ._group[open] .group-open\:before\:_pointer-events-none::before {
@@ -2827,6 +2852,14 @@ video {
   margin-left: 0px !important;
 }
 
+._group\/collectioncard:hover .group-hover\/collectioncard\:_ml-4 {
+  margin-left: 1rem !important;
+}
+
+._group\/collectioncard:hover .group-hover\/collectioncard\:_ml-2 {
+  margin-left: 0.5rem !important;
+}
+
 ._group:hover .group-hover\:_translate-x-0 {
   --tw-translate-x: 0px !important;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y)) !important;
@@ -2866,6 +2899,16 @@ video {
   --tw-scale-x: 1.05 !important;
   --tw-scale-y: 1.05 !important;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y)) !important;
+}
+
+._group\/collectiontile:hover .group-hover\/collectiontile\:_scale-110 {
+  --tw-scale-x: 1.1 !important;
+  --tw-scale-y: 1.1 !important;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y)) !important;
+}
+
+._group\/collectiontile:hover .group-hover\/collectiontile\:_gap-8 {
+  gap: 2rem !important;
 }
 
 ._group:hover .group-hover\:_border-brand-primary-500 {
@@ -2917,6 +2960,18 @@ video {
 
 ._group:hover .group-hover\:_opacity-100 {
   opacity: 1 !important;
+}
+
+._group\/collectiontile:hover .group-hover\/collectiontile\:_opacity-0 {
+  opacity: 0 !important;
+}
+
+._group:hover .group-hover\:_opacity-80 {
+  opacity: 0.8 !important;
+}
+
+._group\/collectioncard:hover .group-hover\/collectioncard\:_opacity-80 {
+  opacity: 0.8 !important;
 }
 
 ._peer:checked ~ .peer-checked\:_visible {
@@ -3535,4 +3590,16 @@ video {
 .quick-shop-drawer .\[\.quick-shop-drawer_\&\]\:_py-2 {
   padding-top: 0.5rem !important;
   padding-bottom: 0.5rem !important;
+}
+
+@media (min-width: 750px) {
+  .quick-shop-drawer .\[\.quick-shop-drawer_\&\]\:md\:_py-4 {
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+  }
+
+  .quick-shop-drawer .\[\.quick-shop-drawer_\&\]\:md\:_py-0 {
+    padding-top: 0px !important;
+    padding-bottom: 0px !important;
+  }
 }

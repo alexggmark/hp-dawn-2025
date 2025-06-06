@@ -30,6 +30,7 @@
                       class="
                         _w-1/2
                         md:_max-w-[266px]
+                        _relative _group/collectioncard
                         _flex-none
                         _snap-start
                         _h-auto
@@ -37,7 +38,7 @@
                       "
                     >
                       <div
-                        class="_h-96 {% if collection_color == blank %}_bg-brand-background{% endif %}"
+                        class="_h-96 {% if collection_color == blank %}_bg-brand-background{% endif %} _overflow-hidden"
                          {% if collection_color %}style="background-color: {{ collection_color }}"{% endif %}>
                          {% unless block.settings.collection_image == blank %}
                           <img
@@ -53,7 +54,7 @@
                             src="{{ block.settings.collection_image | image_url: width: 533 }}"
                             sizes="(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 130 | divided_by: 4 }}px, (min-width: 990px) calc((100vw - 130px) / 4), (min-width: 750px) calc((100vw - 120px) / 3), calc((100vw - 35px) / 2)"
                             alt="{{ block.settings.collection_image.alt | escape }}"
-                            class="motion-reduce _object-cover _object-center _h-full _w-full"
+                            class="motion-reduce _object-cover _object-center _h-full _w-full group-hover/collectioncard:_opacity-80"
                             loading="lazy"
                             width="{{ block.settings.collection_image.width }}"
                             height="{{ block.settings.collection_image.height }}"
@@ -61,10 +62,24 @@
                         {% endunless %}
                       </div>
                       <div class="_flex _items-center _justify-start _gap-4">
-                        <span class="_font-heading-primary-italic _text-brand-dark _text-xl">
+                        <a
+                          href="{{ block.settings.collection.url }}"
+                          class="
+                          _no-underline
+                          _block
+                          _font-heading-primary-italic _text-brand-dark _text-xl
+                          _text-ellipsis _whitespace-nowrap
+                          after:_top-0
+                          after:_left-0
+                          after:_bottom-0
+                          after:_right-0
+                          after:_absolute
+                          after:_z-0
+                          _content-['']
+                        ">
                           {{ block.settings.collection.title }}
-                        </span>
-                        <span class="svg-wrapper _w-5">
+                        </a>
+                        <span class="svg-wrapper _w-5 group-hover/collectioncard:_ml-2 _transition-all">
                           {{- 'arrow-chevron.svg' | inline_asset_content -}}
                         </span>
                       </div>

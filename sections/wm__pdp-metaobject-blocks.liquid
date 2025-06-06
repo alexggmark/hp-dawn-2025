@@ -39,7 +39,7 @@
         {%- when "product_lp_content_block_1" -%}
           <div class="{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}{% if entry.background %} _bg-brand-background-light{% endif %} _py-20">
             <div class="_relative page-width">
-              <div class="_grid md:_grid-cols-12 _grid-cols-1">
+              <div class="_grid _gap-8 md:_grid-cols-12 _grid-cols-1">
                 <div class="md:_col-span-5 _col-span-1 _flex _flex-col _items-start _justify-center{% if entry.reverse_order %} md:_order-2{% endif %}">
                   {%- unless entry.title == blank -%}
                     <h2 class="_font-heading-primary _text-brand-dark md:_text-3xl _text-2xl _mt-1">
@@ -90,7 +90,7 @@
         {%- when "product_lp_content_block_2" -%}
           <div class="{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}{% if entry.background %} _bg-brand-background-light{% endif %} _py-20">
             <div class="_relative page-width">
-              <div class="_grid md:_grid-cols-12 _grid-cols-1">
+              <div class="_grid _gap-8 md:_grid-cols-12 _grid-cols-1">
                 <div class="md:_col-span-5 _col-span-1 _flex _flex-col _items-start _justify-center{% if entry.reverse_order %} md:_order-2{% endif %}">
                   {%- unless entry.title == blank -%}
                     <h2 class="_font-heading-primary _text-brand-dark md:_text-3xl _text-2xl _mt-1">
@@ -149,7 +149,7 @@
               display: block;
               width: 1px;
               height: 100%;
-              background-color: var(--color-brand-dark);
+              background-color: var(--color-brand-border);
               position: absolute;
               top: 1rem;
               bottom: 1rem;
@@ -172,7 +172,7 @@
                         {%- for ingredient in ingredients -%}
                           <details class="{% unless forloop.last %}bullet-point-line{% endunless %} _relative _pb-8" {% if forloop.first %}open="true"{% endif %}>
                             <summary data-js-trigger="{{ forloop.index }}" class="_flex _justify-start _items-center _gap-3">
-                              <span class="_block _rounded-full _w-3 _h-3 _bg-brand-primary-100 _border _border-brand-dark"></span>
+                              <span class="_block _rounded-full _w-3 _h-3 _bg-brand-primary-100 _border _border-brand-border"></span>
                               <span class="_font-heading-primary _text-xl">{{ ingredient.title }}</span>
                             </summary>
                             <div class="_prose _text-base _pl-7">
