@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main": {
@@ -6,9 +15,24 @@
         "padding_top": 28,
         "padding_bottom": 28
       }
+    },
+    "wm_before_after_grid_p4PPcm": {
+      "type": "wm__before-after-grid",
+      "name": "WM BeforeAfter Grid",
+      "settings": {
+        "top_heading": "Quick links",
+        "main_heading": "Quick links",
+        "description": "Description",
+        "cta_label": "Contact us",
+        "cta_url": "",
+        "invert_colours": true,
+        "image_overlay_opacity": 0,
+        "margin_bottom": "0"
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "wm_before_after_grid_p4PPcm"
   ]
 }

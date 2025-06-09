@@ -10,16 +10,160 @@
 
 <div
   class="
-    _border _border-red-500
     {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}
     _mb-{{ section.settings.margin_bottom | divided_by: 2 }} md:_mb-{{ section.settings.margin_bottom }}
   "
 >
-  <h1>TEST</h1>
-  <h1>TEST</h1>
-  <h1>TEST</h1>
-  <h1>TEST</h1>
+  <div class="page-width">
+    <div class="_flex _justify-center">
+      <div class="md:_w-[570px] _text-center">
+        <h1 class="_font-heading-primary md:_text-3xl _text-2.5xl">Validated Results</h1>
+        <p class="_text-base">Our extensive clinical and consumer testing processes guarantee formulas that deliver high-performance, visible results in product offerings our customers love to use.</p>
+      </div>
+    </div>
+    <div class="_flex _flex-row md:_gap-7 _gap-4">
+      {%- for block in section.blocks -%}
+        {%- case block.type -%}
+          {%- when 'before_after_image' -%}
+            <div class="before-after-slider-wrapper _w-1/2 _aspect-square _relative _bg-brand-primary-100">
+              <before-after-slider>
+                <img
+                  src="{{ block.settings.before_image | image_url: width: 800 }}"
+                  alt="Before"
+                  loading="lazy"
+                  class="slider-image"
+                  width="{{ block.settings.before_image.width }}"
+                  height="{{ block.settings.before_image.height }}"
+                >
+                <div data-js-overlay class="slider-overlay">
+                  <img
+                    src="{{ block.settings.after_image | image_url: width: 800 }}"
+                    alt="After"
+                    loading="lazy"
+                    class="slider-image"
+                    width="{{ block.settings.after_image.width }}"
+                    height="{{ block.settings.after_image.height }}"
+                  >
+                </div>
+                <div data-js-overlay-handle class="slider-handle _block"></div>
+              </before-after-slider>
+            </div>
+        {%- endcase -%}
+      {%- endfor -%}
+    </div>
+  </div>
 </div>
+
+{% style %}
+  before-after-slider {
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+
+  .slider-image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .slider-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 50%;
+    overflow: hidden;
+    transition: width 0.1s;
+  }
+
+  .slider-handle {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    height: 100%;
+    width: 4px;
+    background-color: #3490dc;
+    cursor: ew-resize;
+    z-index: 10;
+    transition: left 0.1s;
+  }
+{% endstyle %}
+
+<script>
+  class BeforeAfterSlider extends HTMLElement {
+    constructor() {
+      super();
+      this.isDragging = false;
+      this.onMouseDown = this.onMouseDown.bind(this);
+      this.onMouseMove = this.onMouseMove.bind(this);
+      this.onMouseUp = this.onMouseUp.bind(this);
+      this.onTouchStart = this.onTouchStart.bind(this);
+      this.onTouchMove = this.onTouchMove.bind(this);
+      this.onTouchEnd = this.onTouchEnd.bind(this);
+    }
+
+    connectedCallback() {
+      this.overlay = this.querySelector('[data-js-overlay]');
+      this.handle = this.querySelector('[data-js-overlay-handle]');
+      this.container = this;
+
+      this.addEventListeners();
+    }
+
+    addEventListeners() {
+      this.handle.addEventListener('mousedown', this.onMouseDown);
+      window.addEventListener('mousemove', this.onMouseMove);
+      window.addEventListener('mouseup', this.onMouseUp);
+
+      this.handle.addEventListener('touchstart', this.onTouchStart, { passive: true });
+      window.addEventListener('touchmove', this.onTouchMove, { passive: false });
+      window.addEventListener('touchend', this.onTouchEnd);
+    }
+
+    onMouseDown(e) {
+      e.preventDefault();
+      this.isDragging = true;
+    }
+
+    onMouseMove(e) {
+      if (!this.isDragging) return;
+      this.updateSlider(e.clientX);
+    }
+
+    onMouseUp() {
+      this.isDragging = false;
+    }
+
+    onTouchStart(e) {
+      this.isDragging = true;
+    }
+
+    onTouchMove(e) {
+      if (!this.isDragging) return;
+      e.preventDefault(); // prevent page scroll
+      const touch = e.touches[0];
+      this.updateSlider(touch.clientX);
+    }
+
+    onTouchEnd() {
+      this.isDragging = false;
+    }
+
+    updateSlider(clientX) {
+      const rect = this.container.getBoundingClientRect();
+      let offsetX = clientX - rect.left;
+      offsetX = Math.max(0, Math.min(offsetX, rect.width));
+      const percentage = (offsetX / rect.width) * 100;
+      this.overlay.style.width = `${percentage}%`;
+      this.handle.style.left = `${percentage}%`;
+    }
+  }
+
+  customElements.define('before-after-slider', BeforeAfterSlider);
+</script>
 
 {% schema %}
 {
@@ -30,12 +174,6 @@
     "groups": ["header", "footer"]
   },
   "settings": [
-    {
-      "type": "inline_richtext",
-      "id": "top_heading",
-      "default": "t:sections.footer.blocks.link_list.settings.heading.default",
-      "label": "Top Heading"
-    },
     {
       "type": "inline_richtext",
       "id": "main_heading",
@@ -49,51 +187,8 @@
       "label": "Description text"
     },
     {
-      "type": "text",
-      "id": "cta_label",
-      "default": "Contact us",
-      "label": "Pick a label for button (leave empty to remove)"
-    },
-    {
-      "type": "url",
-      "id": "cta_url",
-      "label": "Pick a URL for button"
-    },
-    {
-      "type": "checkbox",
-      "id": "invert_colours",
-      "default": true,
-      "label": "Invert colours",
-      "info": "This makes all text white"
-    },
-    {
-      "type": "image_picker",
-      "id": "image",
-      "label": "Main background image"
-    },
-    {
-      "type": "video",
-      "id": "video",
-      "label": "Choose background video (replaces image)"
-    },
-    {
-      "type": "range",
-      "id": "image_overlay_opacity",
-      "min": 0,
-      "max": 100,
-      "step": 10,
-      "unit": "%",
-      "label": "t:sections.image-banner.settings.image_overlay_opacity.label",
-      "default": 0
-    },
-    {
       "type": "header",
       "content": "t:sections.image-banner.settings.mobile.content"
-    },
-    {
-      "type": "image_picker",
-      "id": "mobile_image",
-      "label": "Mobile background image"
     },
     {
       "type": "select",
@@ -132,9 +227,32 @@
       "label": "Margin bottom"
     }
   ],
+  "blocks": [
+    {
+      "type": "before_after_image",
+      "name": "Before After Image",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "before_image",
+          "label": "Pick a product image for before"
+        },
+        {
+          "type": "image_picker",
+          "id": "after_image",
+          "label": "Pick a product image for after"
+        },
+      ]
+    }
+  ],
   "presets": [
     {
-      "name": "WM BeforeAfter Grid"
+      "name": "WM BeforeAfter Grid",
+      "blocks": [
+        {
+          "type": "before_after_image"
+        }
+      ]
     }
   ]
 }
