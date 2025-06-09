@@ -23,12 +23,34 @@
           "type": "before_after_image",
           "settings": {
             "before_image": "shopify://shop_images/dr-laura-jamieson.png",
-            "after_image": "shopify://shop_images/menu-card-icon-8.png"
+            "before_text": "Before",
+            "after_image": "shopify://shop_images/menu-card-icon-8.png",
+            "after_text": "After"
+          }
+        },
+        "before_after_image_6LbdUw": {
+          "type": "before_after_image",
+          "settings": {
+            "before_image": "shopify://shop_images/dr-laura-jamieson.png",
+            "before_text": "Before",
+            "after_image": "shopify://shop_images/menu-card-icon-8.png",
+            "after_text": "After"
+          }
+        },
+        "before_after_image_pbwN9N": {
+          "type": "before_after_image",
+          "settings": {
+            "before_image": "shopify://shop_images/dr-laura-jamieson.png",
+            "before_text": "Before",
+            "after_image": "shopify://shop_images/menu-card-icon-8.png",
+            "after_text": "After"
           }
         }
       },
       "block_order": [
-        "before_after_image_mCCdJ8"
+        "before_after_image_mCCdJ8",
+        "before_after_image_6LbdUw",
+        "before_after_image_pbwN9N"
       ],
       "name": "WM BeforeAfter Grid",
       "settings": {

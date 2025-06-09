@@ -18,6 +18,9 @@
       {%- for block in section.blocks -%}
         {%- case block.type -%}
           {%- when 'before_after_image' -%}
+            {% comment %}
+              Good example of "beer-slider" in action, copy this setup
+            {% endcomment %}
             <div
               class="_aspect-square _w-1/2 _bg-brand-background beer-slider"
               data-beer-label="{{ block.settings.after_text }}"
