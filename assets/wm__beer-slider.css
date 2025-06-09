@@ -1,3 +1,8 @@
+/* 
+  Alex - customised component handling before/after sliders
+  Because it's a class and not full web component markup, handling more with CSS than usual
+*/
+
 .beer-slider {
   display: inline-block;
   overflow: hidden;
@@ -24,13 +29,12 @@
 }
 .beer-reveal {
   left: 0;
-  opacity: 0;
   overflow: hidden;
   position: absolute;
   right: 50%;
   top: 0;
-  transition: opacity 0.35s;
   z-index: 1;
+  border-right: 1px solid var(--color-brand-light);
 }
 .beer-reveal > :first-child {
   height: 100%;
@@ -68,10 +72,10 @@
   display: none;
 }
 .beer-handle {
-  background: hsla(0, 0%, 100%, 0.5);
+  background: transparent;
   border-radius: 50%;
-  box-shadow: 0 0 6px transparent;
-  color: #000;
+  border: 1px solid var(--color-brand-light);
+  color: var(--color-brand-light);
   height: 48px;
   left: 50%;
   opacity: 0;
@@ -79,14 +83,13 @@
   position: absolute;
   top: 50%;
   transform: translate3d(-50%, -50%, 0);
-  transition: background 0.3s, box-shadow 0.3s, opacity 0.5s 0.25s;
   width: 48px;
   z-index: 2;
 }
 .beer-handle:after,
 .beer-handle:before {
-  border-left: 2px solid;
-  border-top: 2px solid;
+  border-left: 1px solid;
+  border-top: 1px solid;
   content: "";
   height: 10px;
   position: absolute;
@@ -102,17 +105,14 @@
   right: 0;
   transform: rotate(135deg);
 }
-.beer-range:focus ~ .beer-handle {
-  background: hsla(0, 0%, 100%, 0.85);
-  box-shadow: 0 0 3px rgba(0, 0, 0, 0.4);
-}
 .beer-reveal[data-beer-label]:after,
 .beer-slider[data-beer-label]:after {
-  background: hsla(0, 0%, 100%, 0.75);
-  border-radius: 0.125rem;
   content: attr(data-beer-label);
+  font-size: var(--font-size-base);
+  font-family: var(--font-body-condensed);
+  color: var(--color-brand-light);
+  text-transform: uppercase;
   line-height: 1;
-  padding: 0.5rem;
   position: absolute;
   top: 1.5rem;
 }
