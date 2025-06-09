@@ -18,15 +18,22 @@
     },
     "wm_before_after_grid_p4PPcm": {
       "type": "wm__before-after-grid",
+      "blocks": {
+        "before_after_image_mCCdJ8": {
+          "type": "before_after_image",
+          "settings": {
+            "before_image": "shopify://shop_images/dr-laura-jamieson.png",
+            "after_image": "shopify://shop_images/menu-card-icon-8.png"
+          }
+        }
+      },
+      "block_order": [
+        "before_after_image_mCCdJ8"
+      ],
       "name": "WM BeforeAfter Grid",
       "settings": {
-        "top_heading": "Quick links",
         "main_heading": "Quick links",
         "description": "Description",
-        "cta_label": "Contact us",
-        "cta_url": "",
-        "invert_colours": true,
-        "image_overlay_opacity": 0,
         "margin_bottom": "0"
       }
     }
