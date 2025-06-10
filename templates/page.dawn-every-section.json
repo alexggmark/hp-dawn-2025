@@ -9,6 +9,127 @@
  */
 {
   "sections": {
+    "wm_page_hero_banner_PgLitH": {
+      "type": "wm__page-hero-banner",
+      "name": "WM Page Banner",
+      "settings": {
+        "main_heading": "Our Story",
+        "description": "<p>We are the experts in the science of skin ageing, HydroPeptide offers professional skincare developed by geneticists and powered by patented peptide technology.</p>",
+        "image": "shopify://shop_images/christmas-banner-desktop_05e2261e-19ed-46a4-9b34-63dd3ebc9f2c.png",
+        "image_overlay_opacity": 50,
+        "mobile_image_overlay_opacity": 40,
+        "margin_bottom": "0",
+        "invert_colours": true,
+        "mobile_invert_colours": true
+      }
+    },
+    "wm_video_AaAnrj": {
+      "type": "wm__video",
+      "name": "WM Video",
+      "settings": {
+        "show_background": false,
+        "top_heading": "",
+        "main_heading": "The <em>HydroPeptide</em> Difference",
+        "main_description": "Learn about our dedication to creating clinically tested, effective, and luxurious products for every skin type.",
+        "margin_bottom": "4",
+        "enable_video_looping": false,
+        "video": "shopify://files/videos/power luxe SMALL FOR WEB.mp4",
+        "video_url": "",
+        "description": "Test alt text"
+      }
+    },
+    "wm_image_block_1_YNcBbL": {
+      "type": "wm__image-block-1",
+      "blocks": {
+        "hotspot_qHBpwE": {
+          "type": "hotspot",
+          "settings": {
+            "hotspot_location": "first",
+            "product_select": "advanced-hydration-kit",
+            "hotspot_position_horizontal": 5,
+            "hotspot_position_horizontal_reverse": true,
+            "hotspot_position_vertical": 3,
+            "hotspot_position_vertical_reverse": true,
+            "hotspot_position_mobile_horizontal": 0,
+            "hotspot_position_mobile_horizontal_reverse": false,
+            "hotspot_position_mobile_vertical": 0,
+            "hotspot_position_mobile_vertical_reverse": false
+          }
+        },
+        "hotspot_qHYdjd": {
+          "type": "hotspot",
+          "settings": {
+            "hotspot_location": "second",
+            "product_select": "balancing-face-mask",
+            "hotspot_position_horizontal": 6,
+            "hotspot_position_horizontal_reverse": false,
+            "hotspot_position_vertical": 5,
+            "hotspot_position_vertical_reverse": false,
+            "hotspot_position_mobile_horizontal": 0,
+            "hotspot_position_mobile_horizontal_reverse": false,
+            "hotspot_position_mobile_vertical": 0,
+            "hotspot_position_mobile_vertical_reverse": false
+          }
+        }
+      },
+      "block_order": [
+        "hotspot_qHBpwE",
+        "hotspot_qHYdjd"
+      ],
+      "name": "WM ImageBlock 1",
+      "settings": {
+        "reverse_order": false,
+        "show_background": true,
+        "top_heading": "Quick links",
+        "main_heading": "Formulated with Purpose",
+        "description": "HydroPeptide has made substantial strides toward improving product recyclability, and we’re on track to have fully recyclable materials for all products.",
+        "cta_text": "See all",
+        "cta_url": "",
+        "image_1": "shopify://shop_images/2024Holiday_EyeEnhance_PDP_Benefits.jpg",
+        "image_2": "shopify://shop_images/collection-scroll-6.png",
+        "margin_bottom": "0"
+      }
+    },
+    "wm_image_block_1_FXRzfy": {
+      "type": "wm__image-block-1",
+      "name": "WM ImageBlock 1",
+      "settings": {
+        "reverse_order": true,
+        "show_background": false,
+        "top_heading": "Quick links",
+        "main_heading": "Formulated with Purpose",
+        "description": "HydroPeptide has made substantial strides toward improving product recyclability, and we’re on track to have fully recyclable materials for all products.",
+        "cta_text": "See all",
+        "cta_url": "",
+        "image_1": "shopify://shop_images/2024Holiday_EyeEnhance_PDP_Benefits.jpg",
+        "image_2": "shopify://shop_images/collection-scroll-6.png",
+        "margin_bottom": "0"
+      }
+    },
+    "wm_icon_strip_metaobject_4A6zi7": {
+      "type": "wm__icon-strip-metaobject",
+      "name": "WM IconStrip Metaobject",
+      "settings": {
+        "show_background": true,
+        "meta_object_source": "professional-skincare-em-powered-em-by-peptides",
+        "top_heading": "",
+        "main_heading": "Professional Skincare <em>Powered</em> By Peptides",
+        "description": "",
+        "margin_bottom": "0"
+      }
+    },
+    "wm_image_block_text_2_NTHYVY": {
+      "type": "wm__image-block-text-2",
+      "name": "WM ImageBlockText 2",
+      "settings": {
+        "reverse_order": false,
+        "show_background": false,
+        "content": "<h2>What Is Epigenetics?</h2><p>Our genes determine how we look and we age. With epigenetic science, we can influence how genes express themselves by turning on the genes that signal cells to act healthy and turning off the genes that don't.</p><h2>What Is Epigenetics?</h2><p>Our genes determine how we look and we age. With epigenetic science, we can influence how genes express themselves by turning on the genes that signal cells to act healthy and turning off the genes that don't.</p><h2>What Is Epigenetics?</h2><p>Our genes determine how we look and we age. With epigenetic science, we can influence how genes express themselves by turning on the genes that signal cells to act healthy and turning off the genes that don't.</p><h2>What Is Epigenetics?</h2><p>Our genes determine how we look and we age. With epigenetic science, we can influence how genes express themselves by turning on the genes that signal cells to act healthy and turning off the genes that don't.</p>",
+        "image": "shopify://shop_images/pf-3b9519f7--HPWebAboutUsGIF_1.png",
+        "media_contain": "contain",
+        "margin_bottom": "12"
+      }
+    },
     "wm_accordion_image_split_bTkGnq": {
       "type": "wm__accordion-image-split",
       "blocks": {
@@ -47,98 +168,6 @@
         "show_background": true,
         "main_heading": "Powered by Advanced Technology",
         "margin_bottom": "12"
-      }
-    },
-    "wm_image_block_text_2_NTHYVY": {
-      "type": "wm__image-block-text-2",
-      "name": "WM ImageBlockText 2",
-      "settings": {
-        "reverse_order": false,
-        "show_background": false,
-        "content": "<h2>What Is Epigenetics?</h2><p>Our genes determine how we look and we age. With epigenetic science, we can influence how genes express themselves by turning on the genes that signal cells to act healthy and turning off the genes that don't.</p><h2>What Is Epigenetics?</h2><p>Our genes determine how we look and we age. With epigenetic science, we can influence how genes express themselves by turning on the genes that signal cells to act healthy and turning off the genes that don't.</p><h2>What Is Epigenetics?</h2><p>Our genes determine how we look and we age. With epigenetic science, we can influence how genes express themselves by turning on the genes that signal cells to act healthy and turning off the genes that don't.</p><h2>What Is Epigenetics?</h2><p>Our genes determine how we look and we age. With epigenetic science, we can influence how genes express themselves by turning on the genes that signal cells to act healthy and turning off the genes that don't.</p>",
-        "image": "shopify://shop_images/pf-3b9519f7--HPWebAboutUsGIF_1.png",
-        "media_contain": "contain",
-        "margin_bottom": "12"
-      }
-    },
-    "wm_icon_strip_metaobject_4A6zi7": {
-      "type": "wm__icon-strip-metaobject",
-      "name": "WM IconStrip Metaobject",
-      "settings": {
-        "show_background": true,
-        "meta_object_source": "professional-skincare-em-powered-em-by-peptides",
-        "top_heading": "",
-        "main_heading": "Professional Skincare <em>Powered</em> By Peptides",
-        "description": "",
-        "margin_bottom": "0"
-      }
-    },
-    "wm_image_block_1_YNcBbL": {
-      "type": "wm__image-block-1",
-      "blocks": {
-        "hotspot_qHBpwE": {
-          "type": "hotspot",
-          "settings": {
-            "hotspot_location": "first",
-            "product_select": "",
-            "hotspot_position_horizontal": 5,
-            "hotspot_position_horizontal_reverse": true,
-            "hotspot_position_vertical": 3,
-            "hotspot_position_vertical_reverse": true,
-            "hotspot_position_mobile_horizontal": 0,
-            "hotspot_position_mobile_horizontal_reverse": false,
-            "hotspot_position_mobile_vertical": 0,
-            "hotspot_position_mobile_vertical_reverse": false
-          }
-        },
-        "hotspot_qHYdjd": {
-          "type": "hotspot",
-          "settings": {
-            "hotspot_location": "second",
-            "product_select": "",
-            "hotspot_position_horizontal": 6,
-            "hotspot_position_horizontal_reverse": false,
-            "hotspot_position_vertical": 5,
-            "hotspot_position_vertical_reverse": false,
-            "hotspot_position_mobile_horizontal": 0,
-            "hotspot_position_mobile_horizontal_reverse": false,
-            "hotspot_position_mobile_vertical": 0,
-            "hotspot_position_mobile_vertical_reverse": false
-          }
-        }
-      },
-      "block_order": [
-        "hotspot_qHBpwE",
-        "hotspot_qHYdjd"
-      ],
-      "name": "WM ImageBlock 1",
-      "settings": {
-        "reverse_order": false,
-        "show_background": false,
-        "top_heading": "Quick links",
-        "main_heading": "Formulated with Purpose",
-        "description": "HydroPeptide has made substantial strides toward improving product recyclability, and we’re on track to have fully recyclable materials for all products.",
-        "cta_text": "See all",
-        "cta_url": "",
-        "image_1": "shopify://shop_images/2024Holiday_EyeEnhance_PDP_Benefits.jpg",
-        "image_2": "shopify://shop_images/collection-scroll-6.png",
-        "margin_bottom": "0"
-      }
-    },
-    "wm_image_block_1_FXRzfy": {
-      "type": "wm__image-block-1",
-      "name": "WM ImageBlock 1",
-      "settings": {
-        "reverse_order": true,
-        "show_background": true,
-        "top_heading": "Quick links",
-        "main_heading": "Formulated with Purpose",
-        "description": "HydroPeptide has made substantial strides toward improving product recyclability, and we’re on track to have fully recyclable materials for all products.",
-        "cta_text": "See all",
-        "cta_url": "",
-        "image_1": "shopify://shop_images/2024Holiday_EyeEnhance_PDP_Benefits.jpg",
-        "image_2": "shopify://shop_images/collection-scroll-6.png",
-        "margin_bottom": "0"
       }
     },
     "wm_image_block_text_1_qrHfbr": {
@@ -335,11 +364,13 @@
     }
   },
   "order": [
-    "wm_accordion_image_split_bTkGnq",
-    "wm_image_block_text_2_NTHYVY",
-    "wm_icon_strip_metaobject_4A6zi7",
+    "wm_page_hero_banner_PgLitH",
+    "wm_video_AaAnrj",
     "wm_image_block_1_YNcBbL",
     "wm_image_block_1_FXRzfy",
+    "wm_icon_strip_metaobject_4A6zi7",
+    "wm_image_block_text_2_NTHYVY",
+    "wm_accordion_image_split_bTkGnq",
     "wm_image_block_text_1_qrHfbr",
     "wm_image_block_text_1_KQEfGM",
     "wm_before_after_grid_p4PPcm",

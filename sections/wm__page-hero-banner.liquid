@@ -41,7 +41,7 @@
     _bg-brand-background
     {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}"
 >
-  
+  {% comment %} FIXME: remove this if? Or figure out how to handle video/image split {% endcomment %}
   {%- if section.settings.image != blank -%}
     <div class="_absolute _top-0 _left-0 _w-full _h-full _block _bg-brand-background _overflow-hidden{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
       {%- liquid
@@ -96,6 +96,7 @@
     _flex
     _relative
     _min-h-[226px] md:_min-h-[260px]
+    md:_py-20 _py-12
     _w-full
     _z-20
     _items-center _justify-center
@@ -104,9 +105,9 @@
   ">
     <div class="
       _z-10 _relative _w-full
-      _flex md:_flex-row _flex-col _justify-between md:_items-center _items-start
+      _flex _flex-col _justify-center _items-start
     ">
-      <div class="md:_max-w-[50%] md:_mb-0 _mb-3">
+      <div class="md:_max-w-[520px] _mb-3">
         <h1 class="
           _text-2.5xl md:_text-3xl _font-heading-primary
           {% if section.settings.invert_colours %} md:_text-white{% else %} md:_text-brand-dark{% endif %}
@@ -117,7 +118,7 @@
         </h1>
       </div>
 
-      <div class="md:_max-w-[40%]">
+      <div class="md:_max-w-[520px]">
         {%- if section.settings.description != '' or section.settings.description != blank -%}
           <div class="
             md:_text-lg _text-base

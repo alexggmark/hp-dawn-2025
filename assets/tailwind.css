@@ -3237,6 +3237,18 @@ video {
     max-width: 70% !important;
   }
 
+  .md\:_max-w-\[550px\] {
+    max-width: 550px !important;
+  }
+
+  .md\:_max-w-\[520px\] {
+    max-width: 520px !important;
+  }
+
+  .md\:_max-w-\[500px\] {
+    max-width: 500px !important;
+  }
+
   .md\:_grid-cols-10 {
     grid-template-columns: repeat(10, minmax(0, 1fr)) !important;
   }
