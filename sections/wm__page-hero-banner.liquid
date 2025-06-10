@@ -1,0 +1,253 @@
+{% comment %}theme-check-disable ImgLazyLoading{% endcomment %}
+{{ 'section-image-banner.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign full_width = '100vw'
+  assign widths = '375, 550, 750, 1100, 1500, 1780, 2000, 3000, 3840'
+
+  assign fetch_priority = 'auto'
+  if section.index == 1
+    assign fetch_priority = 'high'
+  endif
+-%}
+
+{%- style -%}
+  #Banner-{{ section.id }}::after {
+    content: '';
+    display: block;
+    opacity: {{ section.settings.mobile_image_overlay_opacity | divided_by: 100.0 }};
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-brand-dark);
+  }
+  @media screen and (min-width: 750px) {
+    #Banner-{{ section.id }}::after {
+      opacity: {{ section.settings.image_overlay_opacity | divided_by: 100.0 }};
+    }
+  }
+{%- endstyle -%}
+
+<div
+  id="Banner-{{ section.id }}"
+  class="
+    _flex
+    _relative
+    _isolate
+    _z-auto
+    _flex-col
+    _mb-{{ section.settings.margin_bottom | divided_by: 2 }} md:_mb-{{ section.settings.margin_bottom }}
+    md:_flex-row
+    _bg-brand-background
+    {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}"
+>
+  
+  {%- if section.settings.image != blank -%}
+    <div class="_absolute _top-0 _left-0 _w-full _h-full _block _bg-brand-background _overflow-hidden{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
+      {%- liquid
+        assign image_height = section.settings.image.width | divided_by: section.settings.image.aspect_ratio
+        assign sizes = full_width
+      -%}
+      {%- if section.settings.video -%}
+        {{ section.settings.video | media_tag: image_size: '2048x',
+          autoplay: true, loop: true, muted: true, controls: false, preload: 'metadata',
+          class: "_object-cover _w-full _h-full" }}
+      {%- elsif section.settings.mobile_image != blank -%}
+        {%- assign mobile_height = section.settings.mobile_image.width | divided_by: section.settings.mobile_image.aspect_ratio -%}
+        {{
+          section.settings.image
+          | image_url: width: 3840
+          | image_tag:
+            width: section.settings.image.width,
+            height: image_height,
+            sizes: sizes,
+            widths: widths,
+            class: "md:_block _hidden _object-cover _object-center _max-w-full _top-0 _left-0 _h-full _w-full",
+            fetchpriority: fetch_priority
+        }}
+        {{
+          section.settings.mobile_image
+          | image_url: width: 1100
+          | image_tag:
+            width: section.settings.mobile_image.width,
+            height: mobile_height,
+            sizes: "100vw",
+            widths: widths,
+            class: "_block md:_hidden _object-cover _object-center _max-w-full _top-0 _left-0 _h-full _w-full",
+            fetchpriority: fetch_priority
+        }}
+      {%- else -%}
+        {{
+          section.settings.image
+          | image_url: width: 3840
+          | image_tag:
+            width: section.settings.image.width,
+            height: image_height,
+            sizes: sizes,
+            widths: widths,
+            fetchpriority: fetch_priority,
+            class: "_object-cover _object-center _max-w-full _top-0 _left-0 _h-full _w-full"
+        }}
+      {%- endif -%}
+    </div>
+  {%- endif -%}
+
+  <div class="
+    _flex
+    _relative
+    _min-h-[226px] md:_min-h-[260px]
+    _w-full
+    _z-20
+    _items-center _justify-center
+    page-width
+    {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}
+  ">
+    <div class="
+      _z-10 _relative _w-full
+      _flex md:_flex-row _flex-col _justify-between md:_items-center _items-start
+    ">
+      <div class="md:_max-w-[50%] md:_mb-0 _mb-3">
+        <h1 class="
+          _text-2.5xl md:_text-3xl _font-heading-primary
+          {% if section.settings.invert_colours %} md:_text-white{% else %} md:_text-brand-dark{% endif %}
+          {% if section.settings.mobile_invert_colours %} _text-white{% else %} _text-brand-dark{% endif %}
+        ">
+          <span class="visually-hidden">{{ 'sections.collection_template.title' | t }}: </span>
+            {{- section.settings.main_heading | escape -}}
+        </h1>
+      </div>
+
+      <div class="md:_max-w-[40%]">
+        {%- if section.settings.description != '' or section.settings.description != blank -%}
+          <div class="
+            md:_text-lg _text-base
+            {% if section.settings.invert_colours %} md:_text-white{% else %} md:_text-brand-dark{% endif %}
+            {% if section.settings.mobile_invert_colours %} _text-white{% else %} _text-brand-dark{% endif %}
+          ">
+            {{ section.settings.description }}
+          </div>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "WM Page Banner",
+  "class": "section",
+  "settings": [
+    {
+      "type": "inline_richtext",
+      "id": "main_heading",
+      "default": "t:sections.footer.blocks.link_list.settings.heading.default",
+      "label": "Main Heading"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "default": "<p>Description Text</p>",
+      "label": "Description Text"
+    },
+    {
+      "type": "header",
+      "content": "Desktop Hero Controls"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Main background image"
+    },
+    {
+      "type": "video",
+      "id": "video",
+      "label": "(Optional) Main background video",
+      "info": "This will override both desktop/mobile images"
+    },
+    {
+      "type": "range",
+      "id": "image_overlay_opacity",
+      "min": 0,
+      "max": 100,
+      "step": 10,
+      "unit": "%",
+      "label": "t:sections.image-banner.settings.image_overlay_opacity.label",
+      "default": 0
+    },
+    {
+      "type": "header",
+      "content": "Mobile Hero Controls"
+    },
+    {
+      "type": "image_picker",
+      "id": "mobile_image",
+      "label": "Mobile background image"
+    },
+    {
+      "type": "range",
+      "id": "mobile_image_overlay_opacity",
+      "min": 0,
+      "max": 100,
+      "step": 10,
+      "unit": "%",
+      "label": "Mobile overlay opacity",
+      "default": 0
+    },
+    {
+      "type": "select",
+      "id": "margin_bottom",
+      "options": [
+        {
+          "value": "0",
+          "label": "0rem"
+        },
+        {
+          "value": "2",
+          "label": "0.5rem"
+        },
+        {
+          "value": "4",
+          "label": "1rem"
+        },
+        {
+          "value": "6",
+          "label": "1.5rem"
+        },
+        {
+          "value": "8",
+          "label": "2rem"
+        },
+        {
+          "value": "12",
+          "label": "3rem"
+        },
+        {
+          "value": "16",
+          "label": "4rem"
+        }
+      ],
+      "default": "0",
+      "label": "Margin bottom"
+    },
+    {
+      "type": "checkbox",
+      "id": "invert_colours",
+      "default": false,
+      "label": "Invert colours",
+      "info": "This makes all text white"
+    },
+    {
+      "type": "checkbox",
+      "id": "mobile_invert_colours",
+      "default": false,
+      "label": "Invert mobile colours",
+      "info": "This makes all text white"
+    }
+  ],
+  "presets": [
+    {
+      "name": "WM Page Banner"
+    }
+  ]
+}
+{% endschema %}
