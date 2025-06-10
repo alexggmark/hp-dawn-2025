@@ -107,16 +107,22 @@
     @apply _mb-3;
   }
   ._prose a {
-    @apply _text-brand-primary-700 _underline _underline-offset-4;
+    @apply _text-brand-dark _underline _underline-offset-4;
   }
   ._prose a:hover {
     @apply _no-underline;
   }
   ._prose h1, ._prose h1 > strong {
-    @apply _mb-3 md:_text-3xl _text-2xl _text-brand-primary-700 _font-heading-primary _mt-10;
+    @apply _mb-3 md:_text-3xl _text-2xl _text-brand-dark _font-heading-primary;
+  }
+  ._prose h1:not(:first-child) {
+    @apply _mt-8;
   }
   ._prose h2, ._prose h2 > strong {
-    @apply _mb-3 _text-xl _text-brand-primary-700 _font-medium _mt-10;
+    @apply _mb-3 md:_text-3xl _text-2xl _text-brand-dark _font-heading-primary;
+  }
+  ._prose h2:not(:first-child) {
+    @apply _mt-8;
   }
   ._prose h3 {
     @apply _mb-1 _text-[15px] _font-semibold _uppercase _text-brand-dark;

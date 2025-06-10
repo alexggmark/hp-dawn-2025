@@ -5,18 +5,17 @@
   endif
 -%}
 
-<div class="section-{{ section.id }} _mb-{{ section.settings.margin_bottom | divided_by: 2 }} md:_mb-{{ section.settings.margin_bottom }} _py-20{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
-  <div class="_relative page-width--full-desktop-padded-mobile _isolate">
-    <div class="_absolute _inset-x-0 _top-16 _h-full _w-full _bg-brand-background-light _z-0 _pointer-events-none _block"></div>
+<div class="section-{{ section.id }} {% if section.settings.show_background %} _bg-brand-background-light{% endif %} _mb-{{ section.settings.margin_bottom | divided_by: 2 }} md:_mb-{{ section.settings.margin_bottom }} md:_py-20 _py-12{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
+  <div class="_relative page-width _isolate">
     <div class="_grid md:_grid-cols-12 _grid-cols-1 _z-10 _isolate">
-      <div class="md:_col-span-4 _col-span-1 _flex _flex-col _items-start _justify-center md:_order-2 md:_pl-24 md:_py-12 _max-w-96">
+      <div class="md:_col-span-4 _col-span-1 _flex _flex-col _items-start _justify-center {% if section.settings.reverse_order %} md:_order-2 md:_pl-14{% else %} md:_pr-14{% endif %} md:_py-0 _py-8 md:_max-w-[340px]">
         {% unless section.settings.top_heading == blank %}
           <h3 class="_font-heading-small _text-brand-dark _text-sm">
             {{ section.settings.top_heading }}
           </h3>
         {% endunless %}
         {% unless section.settings.main_heading == blank %}
-          <h2 class="_font-heading-primary _text-brand-dark md:_text-3xl _text-2xl _mt-1">
+          <h2 class="_font-heading-primary _text-brand-dark md:_text-3xl _text-2.5xl _mt-1">
             {{ section.settings.main_heading }}
           </h2>
         {% endunless %}
@@ -30,13 +29,13 @@
             href="{{ section.settings.cta_url }}"
             class="_button-primary _mt-6"
           >
-            {{- section.settings.cta_text -}}
+            <span>{{- section.settings.cta_text -}}</span>
           </a>
         {%- endunless -%}
       </div>
       <div class="md:_col-span-8 _col-span-1 _flex _flex-row">
         <div
-          class="_flex-[0_0_35%] _aspect-[7/12] _-mr-16 _-mt-16 _mb-16 _z-10 _relative{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+          class="_flex-[0_0_35%] _aspect-[7/12] md:_-mr-16 {% if section.settings.reverse_order %} md:_-mt-8 md:_mb-8{% else %} md:_-mb-8 md:_mt-8{% endif %} _z-10 _relative{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
           {% if settings.animations_reveal_on_scroll %}
             data-cascade
             style="--animation-order: 0;"
@@ -90,7 +89,7 @@
           {%- endif -%}
         </div>
         <div
-          class="_flex-1 _w-full _aspect-[7/6] _overflow-hidden{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+          class="_flex-1 _w-full _aspect-[7/6] {% if section.settings.reverse_order %} md:_-mb-8 md:_mt-8{% else %} md:_-mt-8 md:_mb-8{% endif %} _overflow-hidden{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
           {% if settings.animations_reveal_on_scroll %}
             data-cascade
             style="--animation-order: 1;"
@@ -156,6 +155,18 @@
     "groups": ["header", "footer"]
   },
   "settings": [
+    {
+      "type": "checkbox",
+      "id": "reverse_order",
+      "default": false,
+      "label": "Reverse order of image and text content"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_background",
+      "default": false,
+      "label": "Turn on background"
+    },
     {
       "type": "inline_richtext",
       "id": "top_heading",

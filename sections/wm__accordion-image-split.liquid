@@ -1,0 +1,155 @@
+<script src="{{ 'wm__accordion-image-split.js' | asset_url }}" defer="defer"></script>
+
+<div class="section-{{ section.id }} {% if section.settings.show_background %} _bg-brand-background-light{% endif %} _mb-{{ section.settings.margin_bottom | divided_by: 2 }} md:_mb-{{ section.settings.margin_bottom }} md:_py-20 _py-12{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
+  <div class="page-width _relative">
+    <accordion-image-split>
+      <div class="_grid md:_grid-cols-12 _grid-cols-1 _gap-8">
+        <div class="md:_col-span-6 _col-span-1 _flex _flex-col _items-start _justify-start">
+          {%- unless section.settings.main_heading == blank -%}
+            <h2 class="_font-heading-primary _text-brand-dark md:_text-3xl _text-2.5xl md:_mb-10 _mb-6">
+              {{ section.settings.main_heading }}
+            </h2>
+          {%- endunless -%}
+          <div class="_max-w-[510px]">
+            {%- for block in section.blocks -%}
+              {%- case block.type -%}
+                {%- when "dropdown" -%}
+                  <details class="_group {% unless forloop.last %}bullet-point-line{% endunless %} _relative md:_pb-8 _pb-4" {% if forloop.first %}open="true"{% endif %}>
+                    <summary data-js-trigger="{{ forloop.index }}" class="_flex _justify-start _items-center _gap-3">
+                      <span class="_block _rounded-full _w-3 _h-3 _bg-brand-light _border _border-brand-border group-hover:_bg-brand-primary-100 group-open:_bg-brand-primary-100"></span>
+                      <span class="_font-heading-primary _text-xl md:_mb-2 _mb-1">{{ block.settings.title }}</span>
+                    </summary>
+                    <div class="_prose md:_text-base _text-sm _pl-6">
+                      {{ block.settings.text }}
+                    </div>
+                  </details>
+              {%- endcase -%}
+            {%- endfor -%}
+          </div>
+        </div>
+        <div class="md:_col-span-6 _col-span-1 _flex _flex-col{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+          {% if settings.animations_reveal_on_scroll %}
+            data-cascade
+            style="--animation-order: 1;"
+          {% endif %}
+        >
+          {%- for block in section.blocks -%}
+            {%- case block.type -%}
+              {%- when "dropdown" -%}
+                <div
+                  class="
+                    _flex-1 _w-full _max-h-[520px]{% if forloop.first %} js-panel--active{% endif %}
+                    {% if section.settings.show_background %} _bg-brand-light{% else %} _bg-brand-background-light{% endif %}
+                  "
+                  data-js-accordion-panel="{{ forloop.index }}"
+                >
+                  {%- unless block.settings.image == blank -%}
+                    {{ block.settings.image | image_url: width: 1000 | image_tag: loading: 'lazy', width: '100%', height: '100%', class: '_object-cover _w-full _h-full' }}
+                  {%- endunless -%}
+                </div>
+            {%- endcase -%}
+          {%- endfor -%}
+        </div>
+      </div>
+    </accordion-image-split>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "WM AccordionImgSplit",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_background",
+      "default": false,
+      "label": "Turn on background"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "main_heading",
+      "default": "t:sections.footer.blocks.link_list.settings.heading.default",
+      "label": "Main Heading"
+    },
+    {
+      "type": "header",
+      "content": "Margin bottom controls"
+    },
+    {
+      "type": "select",
+      "id": "margin_bottom",
+      "options": [
+        {
+          "value": "0",
+          "label": "0rem"
+        },
+        {
+          "value": "2",
+          "label": "0.5rem"
+        },
+        {
+          "value": "4",
+          "label": "1rem"
+        },
+        {
+          "value": "6",
+          "label": "1.5rem"
+        },
+        {
+          "value": "8",
+          "label": "2rem"
+        },
+        {
+          "value": "12",
+          "label": "3rem"
+        },
+        {
+          "value": "16",
+          "label": "4rem"
+        }
+      ],
+      "default": "12",
+      "label": "Margin bottom"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "dropdown",
+      "name": "Dropdown content",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "default": "Cell Renew 16",
+          "label": "Title"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "default": "<p>Text</p>",
+          "label": "Text"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Select image"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "WM AccordionImgSplit",
+      "blocks": [
+        {
+          "type": "dropdown"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

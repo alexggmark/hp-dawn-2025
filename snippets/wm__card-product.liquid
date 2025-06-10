@@ -10,6 +10,7 @@
   - transparent_background: {Boolean} Turn off background.
   - section_id: {String} The ID of the section that contains this card.
   - simple_card: {Boolean} Hide excess UI stuff for a simpler card
+  - light_background: {Boolean} Turn on white background
 {% endcomment %}
 
 {%- unless skip_styles -%}
@@ -39,7 +40,8 @@
           _box-border
           _w-full
           _aspect-[8/9]
-          {% unless transparent_background %} _bg-brand-background{% endunless %}
+          {% unless transparent_background or light_background %} _bg-brand-background{% endunless %}
+          {% if light_background %} _bg-brand-light{% endif %}
           "
         >
         {%- if card_product.featured_media -%}

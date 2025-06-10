@@ -9,11 +9,11 @@
     {%- for entry in product_lp_entries -%}
       {%- case entry.type -%}
         {%- when "product_lp_icon_strip" -%}
-          <div class="{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %} _bg-brand-primary-100">
+          <div class="{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %} _bg-brand-background-light">
             <div class="_relative page-width md:_py-14 _py-10">
               <div class="_flex _flex-col _items-center">
                 {%- unless entry.title == blank -%}
-                  <h2 class="_font-heading-primary _text-brand-primary-700 _text-center md:_text-2.5xl _text-2xl md:_mb-10 _mb-6">
+                  <h2 class="_font-heading-primary _text-brand-dark _text-center md:_text-2.5xl _text-2xl md:_mb-10 _mb-6">
                     {{ entry.title }}
                   </h2>
                 {%- endunless -%}
@@ -21,11 +21,11 @@
                   {%- assign entry_icons = entry.icon_pair.value -%}
                   {%- unless entry_icons == blank -%}
                     {%- for icon in entry_icons -%}
-                      <div class="_flex _justify-start _items-center _gap-2 _mb-2 md:_max-w-[170px] _w-1/2 _text-brand-primary-700">
-                        <span class="svg-wrapper md:_w-12 md:_h-12 _w-8 _h-8 _flex-shrink-0">
+                      <div class="_flex _justify-start _items-center _gap-2 _mb-2 md:_max-w-[170px] _w-1/2">
+                        <span class="svg-wrapper md:_w-12 md:_h-12 _w-8 _h-8 _flex-shrink-0 _text-brand-primary-500">
                           {{ 'metaobjecticon-large-' | append: icon.icon | append: '.svg' | inline_asset_content }}
                         </span>
-                        <span class="_font-heading-small md:_text-sm _text-xs">
+                        <span class="_font-heading-small md:_text-sm _text-xs _text-brand-dark">
                           {{ icon.title }}
                         </span>
                       </div>
@@ -135,27 +135,6 @@
           <script src="{{ 'wm__accordion-image-split.js' | asset_url }}" defer="defer"></script>
 
           {%- assign ingredients = entry.ingredient.value -%}
-
-          {% style %}
-            [data-js-panel] {
-              display: none;
-            }
-            [data-js-panel].js-panel--active {
-              display: block;
-              animation: var(--animation-slide-in-quick);
-            }
-            .bullet-point-line::before {
-              content: "";
-              display: block;
-              width: 1px;
-              height: 100%;
-              background-color: var(--color-brand-border);
-              position: absolute;
-              top: 1rem;
-              bottom: 1rem;
-              left: 0.34rem;
-            }
-          {% endstyle %}
           
           {%- unless ingredients == blank -%}
             <div class="{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %} md:_py-20 _py-12">
@@ -189,7 +168,7 @@
                       {% endif %}
                     >
                       {%- for ingredient in ingredients -%}
-                      <div class="_flex-1 _w-full _max-h-[520px]{% if forloop.first %} js-panel--active{% endif %}" data-js-panel="{{ forloop.index }}">
+                      <div class="_flex-1 _w-full _max-h-[520px]{% if forloop.first %} js-panel--active{% endif %}" data-js-accordion-panel="{{ forloop.index }}">
                         {%- assign media = ingredient.media.value -%}
                         {%- assign media_classes = "_object-contain _w-full _h-full" -%}
                         {%- if media.media_type == 'video' -%}
@@ -207,10 +186,6 @@
           {%- endunless -%}
 
       {%- endcase -%}
-      <script>
-        console.log("ENTRY WORKING:");
-        console.log({{ product_lp_entries | json }})
-      </script>
     {%- endfor -%}
   </div>
 {%- endunless -%}

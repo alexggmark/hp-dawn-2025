@@ -3,6 +3,7 @@
 
 <div
   class="
+    md:_py-20 _py-12
     {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}
     _mb-{{ section.settings.margin_bottom | divided_by: 2 }} md:_mb-{{ section.settings.margin_bottom }}
   "
@@ -10,8 +11,12 @@
   <div class="page-width">
     <div class="_flex _justify-center">
       <div class="md:_w-[570px] _text-center">
-        <h1 class="_font-heading-primary md:_text-3xl _text-2.5xl">Validated Results</h1>
-        <p class="_text-base">Our extensive clinical and consumer testing processes guarantee formulas that deliver high-performance, visible results in product offerings our customers love to use.</p>
+        <h1 class="_font-heading-primary md:_text-3xl _text-2.5xl _mb-2">
+          {{ section.settings.main_heading }}
+        </h1>
+        <p class="_text-base _mb-8">
+          {{ section.settings.description }}
+        </p>
       </div>
     </div>
     <div class="_flex _flex-row md:_gap-7 _gap-4">
@@ -58,13 +63,13 @@
     {
       "type": "inline_richtext",
       "id": "main_heading",
-      "default": "t:sections.footer.blocks.link_list.settings.heading.default",
+      "default": "Validated Results",
       "label": "Main Heading"
     },
     {
       "type": "inline_richtext",
       "id": "description",
-      "default": "Description",
+      "default": "Our extensive clinical and consumer testing processes guarantee formulas that deliver high-performance, visible results in product offerings our customers love to use.",
       "label": "Description text"
     },
     {

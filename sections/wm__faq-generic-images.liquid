@@ -1,0 +1,169 @@
+<div class="section-{{ section.id }} _mb-{{ section.settings.margin_bottom | divided_by: 2 }} md:_mb-{{ section.settings.margin_bottom }} {% if section.settings.show_background %} _bg-brand-background-light{% endif %} _py-12{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
+  <div class="page-width page-width--narrow">
+    <div class="_flex _flex-col _items-center _text-center _mb-8">
+      <div>
+        {% unless section.settings.top_heading == blank %}
+          <h3 class="_font-heading-small _text-brand-dark _text-sm _mb-2">
+            {{ section.settings.top_heading }}
+          </h3>
+        {% endunless %}
+        {% unless section.settings.main_heading == blank %}
+          <h2 class="_font-heading-primary _text-brand-dark md:_text-3xl _text-2.5xl _mb-5">
+            {{ section.settings.main_heading }}
+          </h2>
+        {% endunless %}
+        {% unless section.settings.description == blank %}
+          <div class="_text-base _prose">
+            {{ section.settings.description }}
+          </div>
+        {% endunless %}
+      </div>
+    </div>
+    <div class="_w-full">
+      {%- for block in section.blocks -%}
+        {%- case block.type -%}
+          {%- when 'faq' -%}
+            <animated-details>
+              <details class="_border-t _border-brand-border {% if forloop.last %} _border-b{% endif %}">
+                <summary class="_py-4 _flex _justify-between _items-center _w-full _group/faq">
+                  <span class="_font-heading-primary _text-brand-dark _text-2xl">{{ block.settings.faq_title }}</span>
+                  <span class="svg-wrapper _w-6 _h-6 group-hover/faq:_scale-110 _text-brand-primary-500" data-js-plus-icon>
+                    {{- 'icon-newbuild-plus-thin.svg' | inline_asset_content -}}
+                  </span>
+                </summary>
+                <div>
+                  <div class="_grid _grid-cols-12 _pt-2 _pb-8">
+                    <div class="{% if block.settings.faq_image == blank %} md:_col-span-full{% else %} md:_col-span-7{% endif %} _col-span-full">
+                      {%- unless block.settings.faq_content == blank -%}
+                        <div class="_prose md:_text-base _text-sm md:_pr-8">
+                          {{ block.settings.faq_content }}
+                        </div>
+                      {%- endunless -%}
+                    </div>
+                    {%- unless block.settings.faq_image == blank -%}
+                      <div class="md:_col-span-5 _col-span-full">
+                        {{ block.settings.faq_image | image_url: width: 500 | image_tag: loading: 'lazy', width: '100%', height: '100%', class: '_aspect-square _object-cover' }}
+                      </div>
+                    {%- endunless -%}
+                  </div>
+                </div>
+              </details>
+            </animated-details>
+        {%- endcase -%}
+      {%- endfor -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "WM FAQ Generic Images",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_background",
+      "default": false,
+      "label": "Turn on background"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "top_heading",
+      "default": "t:sections.footer.blocks.link_list.settings.heading.default",
+      "label": "Top Heading"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "main_heading",
+      "default": "t:sections.footer.blocks.link_list.settings.heading.default",
+      "label": "Main Heading"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "default": "<p>Description text</p>",
+      "info": "This is richtext",
+      "label": "Description text"
+    },
+    {
+      "type": "header",
+      "content": "Margin bottom controls"
+    },
+    {
+      "type": "select",
+      "id": "margin_bottom",
+      "options": [
+        {
+          "value": "0",
+          "label": "0rem"
+        },
+        {
+          "value": "2",
+          "label": "0.5rem"
+        },
+        {
+          "value": "4",
+          "label": "1rem"
+        },
+        {
+          "value": "6",
+          "label": "1.5rem"
+        },
+        {
+          "value": "8",
+          "label": "2rem"
+        },
+        {
+          "value": "12",
+          "label": "3rem"
+        },
+        {
+          "value": "16",
+          "label": "4rem"
+        }
+      ],
+      "default": "0",
+      "label": "Margin bottom"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "faq",
+      "name": "FAQ",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "faq_image",
+          "label": "Pick image for FAQ",
+          "info": "We can do this here because we're not using metaobjects"
+        },
+        {
+          "type": "text",
+          "id": "faq_title",
+          "default": "Airless Serum Pumps",
+          "label": "FAQ Title"
+        },
+        {
+          "type": "richtext",
+          "id": "faq_content",
+          "default": "<p>Rich Text</p>",
+          "label": "FAQ Content"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "WM FAQ Generic Images",
+      "blocks": [
+        {
+          "type": "faq"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -2,7 +2,7 @@ class AccordionImageSplit extends HTMLElement {
   constructor() {
     super();
     this.triggers = this.querySelectorAll('[data-js-trigger]');
-    this.panels = this.querySelectorAll('[data-js-panel]');
+    this.panels = this.querySelectorAll('[data-js-accordion-panel]');
     this.details = this.querySelectorAll('details');
     this.hasMotion = (typeof window.Motion === 'object' && typeof window.Motion.animate === 'function');
 
@@ -79,7 +79,7 @@ class AccordionImageSplit extends HTMLElement {
 
   showPanel(key) {
     this.panels.forEach(panel => {
-      panel.classList.toggle('js-panel--active', panel.dataset.jsPanel === key);
+      panel.classList.toggle('js-panel--active', panel.dataset.jsAccordionPanel === key);
     });
   }
 }

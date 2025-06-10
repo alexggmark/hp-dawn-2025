@@ -135,3 +135,25 @@ quick-shop-drawer.menu-opening .quick-shop-drawer__content {
 [data-js-active-facets-desktop]:not(:has(> facet-remove)) > div facet-remove {
   display: none;
 }
+
+/* ------------------------
+  ACCORDION IMAGE SPLIT CSS
+------------------------ */
+[data-js-accordion-panel] {
+  display: none;
+}
+[data-js-accordion-panel].js-panel--active {
+  display: block;
+  animation: var(--animation-slide-in-quick);
+}
+.bullet-point-line::before {
+  content: "";
+  display: block;
+  width: 1px;
+  height: 100%;
+  background-color: var(--color-brand-border);
+  position: absolute;
+  top: 1rem;
+  bottom: 1rem;
+  left: 0.34rem;
+}
