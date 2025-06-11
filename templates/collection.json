@@ -12,8 +12,7 @@
     "banner": {
       "type": "wm__main-collection-banner",
       "settings": {
-        "default_image": "shopify:\/\/shop_images\/homepage_header_desktop_copy_2_1760x_2000x_4fb16f78-ee8e-456b-bbba-4f77b7ff4152.webp",
-        "default_image_invert_text": false,
+        "default_image": "shopify://shop_images/coollections-banner-_1.webp",
         "margin_bottom": "6"
       }
     },

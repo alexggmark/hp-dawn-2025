@@ -11,7 +11,16 @@
   endif
 -%}
 
+{%- assign invisible_header = settings.invisible_overlay_header -%}
+
 {%- style -%}
+  @media screen and (min-width: 750px) {
+    #Banner-{{ section.id }} {
+      margin-top: {% if invisible_header %} calc(-1px - var(--header-height-desktop-fixed)){% else %} 0{% endif %};
+      padding-top: {% if invisible_header %} var(--header-height-desktop-fixed){% else %} 0{% endif %};
+    }
+  }
+
   #Banner-{{ section.id }}::after {
     content: '';
     display: block;
@@ -24,6 +33,7 @@
   @media screen and (min-width: 750px) {
     #Banner-{{ section.id }}::after {
       opacity: {{ section.settings.image_overlay_opacity | divided_by: 100.0 }};
+      margin-top: {% if invisible_header %} calc(-1px - var(--header-height-desktop-fixed)){% else %} 0{% endif %};
     }
   }
 {%- endstyle -%}

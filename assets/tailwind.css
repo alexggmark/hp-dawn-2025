@@ -3221,32 +3221,20 @@ video {
     max-width: 340px !important;
   }
 
-  .md\:_max-w-\[40\%\] {
-    max-width: 40% !important;
-  }
-
   .md\:_max-w-\[420px\] {
     max-width: 420px !important;
-  }
-
-  .md\:_max-w-\[50\%\] {
-    max-width: 50% !important;
-  }
-
-  .md\:_max-w-\[70\%\] {
-    max-width: 70% !important;
-  }
-
-  .md\:_max-w-\[550px\] {
-    max-width: 550px !important;
   }
 
   .md\:_max-w-\[520px\] {
     max-width: 520px !important;
   }
 
-  .md\:_max-w-\[500px\] {
-    max-width: 500px !important;
+  .md\:_max-w-\[550px\] {
+    max-width: 550px !important;
+  }
+
+  .md\:_max-w-\[70\%\] {
+    max-width: 70% !important;
   }
 
   .md\:_grid-cols-10 {

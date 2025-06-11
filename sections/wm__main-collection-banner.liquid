@@ -15,19 +15,30 @@
 {% comment %} {%- assign collection_mobile_image = collection.metafields.banner.mobile_image -%} TODO: {% endcomment %}
 {%- assign collection_overlay_opacity = collection.metafields.banner.banner_overlay_opacity -%}
 
-{%- unless collection_overlay_opacity == blank -%}
-  {%- style -%}
-    #Banner-{{ section.id }}::after {
-      content: '';
-      display: block;
-      opacity: {{ collection_overlay_opacity | divided_by: 100.0 }};
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      background-color: var(--color-brand-dark);
+{%- assign invisible_header = settings.invisible_overlay_header -%}
+
+{%- style -%}
+  @media screen and (min-width: 750px) {
+    #Banner-{{ section.id }} {
+      margin-top: {% if invisible_header %} calc(-1px - var(--header-height-desktop-fixed)){% else %} 0{% endif %};
+      padding-top: {% if invisible_header %} var(--header-height-desktop-fixed){% else %} 0{% endif %};
     }
-  {%- endstyle -%}
-{%- endunless -%}
+  }
+  #Banner-{{ section.id }}::after {
+    content: '';
+    display: block;
+    opacity: {{ collection_overlay_opacity | divided_by: 100.0 }};
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-brand-dark);
+  }
+  @media screen and (min-width: 750px) {
+    #Banner-{{ section.id }}::after {
+      margin-top: {% if invisible_header %} calc(-1px - var(--header-height-desktop-fixed)){% else %} 0{% endif %};
+    }
+  }
+{%- endstyle -%}
 
 <div
   id="Banner-{{ section.id }}"

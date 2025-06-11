@@ -16,14 +16,39 @@
   <link rel="stylesheet" href="{{ 'component-mega-menu.css' | asset_url }}" media="print" onload="this.media='all'">
 {%- endif -%}
 
-{%- assign invisible_header = false -%}
-{%- if settings.invisible_overlay_header and request.page_type == 'index' -%}
+{% comment %} {%- if settings.invisible_overlay_header and request.page_type == 'index' -%} {% endcomment %}
+{%- if settings.invisible_overlay_header -%}
   {%- assign invisible_header = true -%}
 {%- endif -%}
-{%- assign invert_header_colors = false -%}
-{%- if settings.invert_invisible_overlay_header_colors and request.page_type == 'index' -%}
+{% comment %} {%- if settings.invert_invisible_overlay_header_colors and request.page_type == 'index' -%} {% endcomment %}
+{%- if settings.invert_invisible_overlay_header_colors -%}
   {%- assign invert_header_colors = true -%}
 {%- endif -%}
+
+
+{%- assign invisible_header = false -%}
+{%- assign invert_header_colors = false -%}
+
+{%- case request.page_type -%}
+  {%- when 'index' -%}
+
+  {%- when 'page' -%}
+    {%- if settings.invisible_overlay_header and page.metafields.banner.invisible_overlay_header -%}
+      {%- assign invisible_header = true -%}
+    {%- endif -%}
+    {%- if settings.invert_invisible_overlay_header_colors and page.metafields.banner.invert_invisible_overlay_header_colors -%}
+      {%- assign invert_header_colors = true -%}
+    {%- endif -%}
+  {%- when 'collection' -%}
+    {%- if settings.invisible_overlay_header and collection.metafields.banner.invisible_overlay_header -%}
+      {%- assign invisible_header = true -%}
+    {%- endif -%}
+    {%- if settings.invert_invisible_overlay_header_colors and collection.metafields.banner.invert_invisible_overlay_header_colors -%}
+      {%- assign invert_header_colors = true -%}
+    {%- endif -%}
+{%- endcase -%}
+
+
 
 {%- assign tailwind_color = '' -%}
 {%- if invert_header_colors == true -%}
@@ -57,14 +82,14 @@
     }
 
     .header-wrapper .header-content {
-      min-height: var(--header-height-desktop-fixed);
+      height: var(--header-height-desktop-fixed);
       transition-property: min-height;
       transition-duration: var(--duration-default);
       transition-timing-function: ease;
     }
 
     .scrolled-past-header .header-wrapper .header-content {
-      min-height: 80px;
+      height: 80px;
     }
 
     .header-wrapper.header-wrapper--menu-open {
