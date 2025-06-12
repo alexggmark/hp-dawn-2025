@@ -1,14 +1,46 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
-    "main": {
-      "type": "main-page",
+    "wm_page_hero_banner_WFqTxM": {
+      "type": "wm__page-hero-banner",
+      "name": "WM Page Banner",
       "settings": {
-        "padding_top": 28,
-        "padding_bottom": 28
+        "main_heading": "Our Story",
+        "description": "<p>We are the experts in the science of skin ageing, HydroPeptide offers professional skincare developed by geneticists and powered by patented peptide technology.</p>",
+        "image": "shopify://shop_images/power-serum-banner-background.webp",
+        "image_overlay_opacity": 50,
+        "mobile_image_overlay_opacity": 0,
+        "margin_bottom": "0",
+        "invert_colours": true,
+        "mobile_invert_colours": true
+      }
+    },
+    "wm_image_block_text_1_4mbqyc": {
+      "type": "wm__image-block-text-1",
+      "name": "WM ImageBlockText 1",
+      "settings": {
+        "reverse_order": true,
+        "show_background": false,
+        "top_heading": "",
+        "main_heading": "The <em>Experts</em> in Skin Ageing",
+        "description": "<p><strong>We believe that the key to unlocking your skin’s full potential lies in the development of the right support for immediate results and long-term reparative benefits.</strong></p><p>With advanced peptide technology and cutting-edge epigenetic research, HydroPeptide products work collaboratively with your skin (and with professional treatments) to provide it with the necessary delivery mechanisms to build a healthy foundation. Our formulas create healthy, invigorated skin that’s equipped to strengthen and rebuild itself from the inside out — ultimately transforming your skin and resetting your expectations for the way you see results.</p>",
+        "cta_text": "",
+        "cta_url": "",
+        "image": "shopify://shop_images/power-serum-hero-contained.webp",
+        "margin_bottom": "12"
       }
     }
   },
   "order": [
-    "main"
+    "wm_page_hero_banner_WFqTxM",
+    "wm_image_block_text_1_4mbqyc"
   ]
 }

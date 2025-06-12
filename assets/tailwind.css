@@ -3251,6 +3251,10 @@ video {
     max-width: 340px !important;
   }
 
+  .md\:_max-w-\[390px\] {
+    max-width: 390px !important;
+  }
+
   .md\:_max-w-\[420px\] {
     max-width: 420px !important;
   }
@@ -3265,10 +3269,6 @@ video {
 
   .md\:_max-w-\[70\%\] {
     max-width: 70% !important;
-  }
-
-  .md\:_max-w-\[390px\] {
-    max-width: 390px !important;
   }
 
   .md\:_grid-cols-10 {

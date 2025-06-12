@@ -15,8 +15,8 @@
         "main_heading": "Our Scientifically Clean Commitment",
         "description": "<p>Every formula is developed with geneticists, tested to clinical standards, and free from harmful ingredients because clean should always be backed by science.</p>",
         "image": "shopify://shop_images/coollections-banner-_1.webp",
-        "image_overlay_opacity": 0,
-        "mobile_image_overlay_opacity": 0,
+        "image_overlay_opacity": 40,
+        "mobile_image_overlay_opacity": 40,
         "margin_bottom": "0",
         "invert_colours": true,
         "mobile_invert_colours": true
@@ -33,7 +33,7 @@
         "cta_text": "",
         "cta_url": "",
         "image_1": "shopify://shop_images/PDP_LumiFirm_Ingredients.png",
-        "image_2": "shopify://shop_images/HP-PDP-SoothingBalm-Hero-Model.jpg",
+        "image_2": "shopify://shop_images/clinically-clean-calm-serum.webp",
         "margin_bottom": "0"
       }
     },
@@ -89,7 +89,7 @@
         "description": "<ul><li>No genotoxins, parabens, phthalates, sulphates, or harmful fragrances</li><li>100% Cruelty-free across our full range</li><li>All products undergo RIPT allergy testing</li><li>90% of formulas are gluten-free</li><li>70% of formulas are vegan</li></ul>",
         "cta_text": "Our Science",
         "cta_url": "",
-        "image_1": "shopify://shop_images/PDP-FaceMasks_Results.jpg",
+        "image_1": "shopify://shop_images/2024Holiday_EyeEnhance_PDP_Benefits.jpg",
         "image_2": "shopify://shop_images/formulated-with-purpose.webp",
         "margin_bottom": "0"
       }
@@ -104,7 +104,7 @@
         "description": "<p>HydroPeptide has made substantial strides toward improving product recyclability, and we’re on track to have fully recyclable materials for all products.</p><p>Our strategic move towards sustainability includes:</p><ul><li>FSC-certified paper materials</li><li>Decreasing our reliance on virgin plastics</li><li>Use of Recyclable Glass and PCR materials</li><li>Packaging uses at least 25% post consumer recycled materials (PCR)</li><li>No unnecessary plastic or glass</li><li>Clear disposal instructions for each product</li></ul>",
         "cta_text": "",
         "cta_url": "",
-        "image": "shopify://shop_images/SolarDefenseBody_PDP.webp",
+        "image": "shopify://shop_images/070324_SpotCorrection.webp",
         "margin_bottom": "0"
       }
     },

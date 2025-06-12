@@ -18,7 +18,7 @@
     {%- when 'text' -%}
       {%- capture block_content -%}
         {%- if block.settings.heading != blank -%}
-          <h2 class="_font-heading-primary _text-xl _text-brand-light _mb-6">{{ block.settings.heading }}</h2>
+          <h2 class="_font-body-fancy _text-xl _text-brand-light _mb-6">{{ block.settings.heading }}</h2>
         {%- endif -%}
         {%- if block.settings.body != blank -%}
           <div class="_text-brand-light _text-sm _font-link link-group-underline">
@@ -86,7 +86,6 @@
             {%- if section.settings.newsletter_heading != blank -%}
               <h2 class="_font-heading-primary _text-lg _text-brand-light _mb-6">
                 {{ section.settings.newsletter_heading }}
-                 Country Select
               </h2>
             {%- endif -%}
             {%- if section.settings.enable_country_selector and localization.available_countries.size > 1 -%}

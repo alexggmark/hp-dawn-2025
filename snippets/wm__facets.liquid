@@ -186,9 +186,9 @@
                         js-filter
                       "
                       data-index="{{ forloop.index }}"
-                      {% if filter_type == 'vertical' %}
+                      {% comment %} {% if filter_type == 'vertical' %}
                         open
-                      {% endif %}
+                      {% endif %} {% endcomment %}
                     >
                       <summary
                         aria-label="{{ filter.label | escape }} ({{ 'products.facets.filters_selected.one' | t: count: filter.active_values.size }})"
