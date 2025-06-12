@@ -75,12 +75,15 @@
   .header-wrapper {
     background-color: var(--color-brand-light);
   }
+  .header__heading-logo-wrapper {
+      width: 75%;
+    }
 
   @media screen and (min-width: 990px) {
     .header-wrapper {
       /* Alex - this is a fix to prevent redrawing header with "transparent", caused flickering otherwise */
       background-color: {% if invisible_header %} rgba(255, 255, 255, 0.008){% else %} rgb(255,255,255){% endif %};
-      border-bottom: 1px solid {% if invisible_header %} {{ controlled_border_color }}{% else %} transparent{% endif %};
+      border-bottom: 1px solid {% if invisible_header and request.page_type != 'index' %} {{ controlled_border_color }}{% else %} transparent{% endif %};
     }
 
     .scrolled-past-header .header-wrapper {
@@ -106,6 +109,10 @@
 
     .header-wrapper.header-wrapper--menu-open {
       background-color: var(--color-brand-light);
+    }
+
+    .header__heading-logo-wrapper {
+      width: 100%;
     }
 
     {%- if section.settings.sticky_header_type == 'reduce-logo-size' -%}
@@ -276,8 +283,8 @@
     </div>
 
     <div class="_flex-1 _flex _items-center _justify-end">
-      <div class="_flex _justify-end _items-center _gap-2">
-        <div class="_p-6 _h-full lg:_block _hidden">
+      <div class="_flex _justify-end _items-center md:_gap-5 _gap-3">
+        <div class="_p-4 _h-full lg:_block _hidden">
           <a class="_text-[12px] _font-semibold _tracking-widest header-controlled--text _uppercase list-menu__item focus-inset link-underline-trigger link-underline">Find your perfect regime</a>
         </div>
 

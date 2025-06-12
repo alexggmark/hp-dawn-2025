@@ -128,7 +128,7 @@
       _relative
       _py-24
       _text-center
-      md:_w-[570px]
+      
       _flex _flex-col _items-center _justify-center
     ">
       {%- unless section.settings.top_heading == blank -%}
@@ -141,7 +141,7 @@
       {%- endunless -%}
       {%- unless section.settings.main_heading == blank -%}
         <h2 class="
-          _font-heading-primary _text-brand-primary-700 md:_text-5xl _text-3xl
+          _font-heading-primary _text-brand-primary-700 md:_text-5xl _text-3xl md:_w-[490px]
           {% if section.settings.invert_colours %} _text-white{% else %} _text-brand-primary-700{% endif %}
         ">
           {{ section.settings.main_heading }}
@@ -149,7 +149,7 @@
       {% endunless %}
       {%- unless section.settings.description == blank -%}
         <div class="
-          _text-lg _mt-4
+          _text-lg _mt-4 md:_w-[400px]
           {% if section.settings.invert_colours %} _text-white{% else %} _text-brand-primary-700{% endif %}
         ">
           {{ section.settings.description }}

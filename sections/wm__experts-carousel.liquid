@@ -46,32 +46,34 @@
 {% endstyle %}
 
 <div class="section-{{ section.id }} _mb-{{ section.settings.margin_bottom | divided_by: 2 }} md:_mb-{{ section.settings.margin_bottom }} {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
-  <div class="_relative page-width--overflow-right _isolate _bg-brand-background-light _py-16">
+  <div class="_relative page-width--overflow-right _isolate _bg-brand-background-light md:_py-16 _py-12">
     <experts-slider-embla>
       <div class="_grid md:_grid-cols-12 _grid-cols-1 _z-10 _isolate">
-        <div class="md:_col-span-3 _col-span-1 _flex _flex-col _items-start _justify-center md:_pt-8 md:_pb-12">
+        <div class="md:_col-span-4 _col-span-1 _flex _flex-col _items-start _justify-center md:_pt-8 _pr-4 md:_pb-0 _pb-4 md:_pr-20">
           {% unless section.settings.top_heading == blank %}
-            <h3 class="_font-heading-small _text-brand-dark _text-sm">
+            <h3 class="_font-heading-small _text-brand-dark _text-sm _mb-1">
               {{ section.settings.top_heading }}
             </h3>
           {% endunless %}
           {% unless section.settings.main_heading == blank %}
-            <h2 class="_font-heading-primary _text-brand-dark md:_text-3xl _text-2.5xl _mt-1">
+            <h2 class="_font-heading-primary _text-brand-dark md:_text-2.5xl _text-2.5xl">
               {{ section.settings.main_heading }}
             </h2>
           {% endunless %}
-          <span class="svg-wrapper _w-12 _h-12 _my-4 _opacity-20">
-            {{- 'icon-newbuild-quotes.svg' | inline_asset_content -}}
-          </span>
           {%- for block in section.blocks -%}
             {%- case block.type -%}
               {%- when 'expert' -%}
                 <div
-                  class="expert-content{% unless forloop.first %} expert-content--hidden{% endunless %}"
+                  class="expert-content{% unless block.settings.is_quote %} _pt-8{% endunless %}{% unless forloop.first %} expert-content--hidden{% endunless %}"
                   data-js-expert-content
                 >
+                  {%- if block.settings.is_quote -%}
+                    <span class="svg-wrapper _w-10 _h-10 _my-4 _opacity-20">
+                      {{- 'icon-newbuild-quotes.svg' | inline_asset_content -}}
+                    </span>
+                  {%- endif -%}
                   <div class="_italic _text-lg">{{ block.settings.expert_quote }}</div>
-                  <p class="_font-heading-primary _mt-4 _text-xl">- {{ block.settings.expert_name }}</p>
+                  <p class="_font-body-fancy _mt-4 _text-xl">{% if block.settings.is_quote %}- {% endif %}{{ block.settings.expert_name }}</p>
                 </div>
             {%- endcase -%}
           {%- endfor -%}
@@ -84,7 +86,8 @@
             </a>
           {%- endunless -%}
         </div>
-        <div class="md:_col-span-9 _col-span-1 md:_-mt-28">
+        {% comment %} md:_-mt-28 {% endcomment %}
+        <div class="md:_col-span-8 _col-span-1">
           <div class="_overflow-hidden _relative" data-js-embla>
             <div class="_flex md:_gap-7 _gap-4 _select-none" data-js-embla-container>
               {%- for block in section.blocks -%}
@@ -95,7 +98,7 @@
                         expert-slide
                         _w-2/3
                         md:_w-1/2
-                        md:_max-w-[280px]
+                        md:_max-w-[300px]
                         _flex-none
                         _flex _flex-col
                         _justify-start
@@ -235,6 +238,11 @@
           "type": "richtext",
           "id": "expert_quote",
           "label": "Expert quote (don't include quotation marks)"
+        },
+        {
+          "type": "checkbox",
+          "id": "is_quote",
+          "label": "This is a quote so turn on checkmark"
         },
         {
           "type": "text",

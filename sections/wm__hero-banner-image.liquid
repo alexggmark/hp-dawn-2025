@@ -216,7 +216,7 @@
 
             <{{ block.settings.heading_tag }}
               class="
-                {% if decoration_tag_on %} _inline{% endif %}
+                {% if decoration_tag_on %} _inline _flex-shrink-0{% endif %}
                 _text-{{ block.settings.mobile_text_size }}
                 md:_text-{{ block.settings.desktop_text_size }}
                 _text-brand-light _font-heading-primary
@@ -255,8 +255,9 @@
             </{{ block.settings.heading_tag }}>
 
           {%- when 'text' -%}
+            {% comment %} TODO: replace max-w- with something better {% endcomment %}
             <div class="
-              md:_text-lg _text-base _max-w-[540px]
+              md:_text-lg _text-base _max-w-[380px]
               _mb-{{ block.settings.margin_bottom }}
               {% if block.settings.invert_colours %} md:_text-white{% else %} md:_text-brand-dark{% endif %}
               {% if block.settings.mobile_invert_colours %} _text-white{% else %} _text-brand-dark{% endif %}

@@ -23,6 +23,34 @@
         "mobile_invert_colours": true
       }
     },
+    "wm_faq_section_RgnQEK": {
+      "type": "wm__faq-section",
+      "blocks": {
+        "faq_YRfaEK": {
+          "type": "faq",
+          "settings": {
+            "question": "",
+            "answer": ""
+          }
+        }
+      },
+      "block_order": [
+        "faq_YRfaEK"
+      ],
+      "name": "WM FAQ section",
+      "settings": {
+        "data_source": "meta_objects",
+        "meta_object_source": "test-faq-entries-1",
+        "top_heading": "FAQS",
+        "main_heading": "Frequently Asked Questions",
+        "right_side_show": false,
+        "side_box_heading": "Still Looking For an Answer",
+        "side_box_content": "Send our team an email and we’ll get back to you ASAP (definitely within 24 hours).",
+        "side_box_cta_label": "Contact us",
+        "side_box_cta_url": "",
+        "margin_bottom": "0"
+      }
+    },
     "wm_video_AaAnrj": {
       "type": "wm__video",
       "name": "WM Video",
@@ -365,6 +393,7 @@
   },
   "order": [
     "wm_page_hero_banner_PgLitH",
+    "wm_faq_section_RgnQEK",
     "wm_video_AaAnrj",
     "wm_image_block_1_YNcBbL",
     "wm_image_block_1_FXRzfy",

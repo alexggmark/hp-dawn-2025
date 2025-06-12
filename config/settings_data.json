@@ -11,6 +11,10 @@
   "current": {
     "invisible_overlay_header": true,
     "invert_invisible_overlay_header_colors": true,
+    "default_collection_image": "shopify://shop_images/coollections-banner-_1.webp",
+    "default_collection_banner_lighttext": true,
+    "default_collection_invisible_header": true,
+    "default_collection_overlay_opacity": 30,
     "logo": "shopify://shop_images/HydroPeptide-logo-dark.svg",
     "logo_width": 160,
     "type_header_font": "assistant_n4",
@@ -129,6 +133,8 @@
     "show_cart_note": false,
     "cart_drawer_collection": "",
     "cart_color_scheme": "scheme-1",
+    "default_banner_lighttext": true,
+    "default_invisible_header": true,
     "sections": {
       "main-password-header": {
         "type": "main-password-header",
