@@ -1,7 +1,7 @@
 {
   "sections": {
     "main": {
-      "type": "main-search",
+      "type": "wm__main-search",
       "settings": {
         "columns_desktop": 4,
         "image_ratio": "adapt",

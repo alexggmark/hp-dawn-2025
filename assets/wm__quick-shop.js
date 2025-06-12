@@ -88,19 +88,38 @@ if (!customElements.get('quick-shop-drawer')) {
       // Alex - preventing "Add To Cart" click and manually sending data to Monster Cart
       // This is because otherwise it redirects to /cart/ page even if deactivated
       // This is BECAUSE Monster Cart doesn't dynamically re-apply logic to dynamically loaded CTAs (quick shop)
-      monsterCartFunction(e) {
+      async monsterCartFunction(e) {
         if (typeof window.monster_addToCart !== 'function') return;
         
         e.preventDefault();
+
+        const quickShopCTA = e.currentTarget;
         const id = this.querySelector('.product-variant-id').getAttribute('value');
         const quantity = this.quantityCounter;
 
-        window.monster_addToCart({ 
-          id,
-          quantity
-        }, true, () => {
-          super.hide();
-        });
+        quickShopCTA.setAttribute('aria-disabled', true);
+        quickShopCTA.classList.add('loading');
+        quickShopCTA.querySelector('.loading__spinner').classList.remove('hidden');
+
+        try {
+          await new Promise((resolve, reject) => {
+            try {
+              window.monster_addToCart({ id, quantity }, true, () => {
+                super.hide();
+                resolve(); // resolves when callback is triggered
+              });
+            } catch (err) {
+              reject(err); // catches sync errors inside monster_addToCart
+            }
+          });
+        } catch (e) {
+          console.error(e);
+        } finally {
+          quickShopCTA.removeAttribute('aria-disabled');
+          quickShopCTA.classList.remove('loading');
+          quickShopCTA.querySelector('.loading__spinner').classList.add('hidden');
+        }
+
       }
 
       preprocessHTML(productElement) {

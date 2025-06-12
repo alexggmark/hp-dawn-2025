@@ -34,19 +34,19 @@
             "heading_tag": "h1",
             "desktop_text_size": "5xl",
             "mobile_text_size": "2.5xl",
-            "margin_bottom": "0",
+            "margin_bottom": "2",
             "invert_colours": true,
             "mobile_invert_colours": true,
             "decoration_tag_on": true,
-            "decoration_tag_text": "Brand New",
+            "decoration_tag_text": "Elevated by science",
             "decoration_tag_invert": true
           }
         },
         "text_UHBFJV": {
           "type": "text",
           "settings": {
-            "text": "Meet Sun Slick, your ultimate summer companion for portable sun protection with a luminous twist.",
-            "margin_bottom": "6",
+            "text": "Powered by peptides and guided by science, our patented formulas support skin at it’s source",
+            "margin_bottom": "8",
             "invert_colours": true,
             "mobile_invert_colours": true
           }
@@ -57,7 +57,7 @@
             "button_label_1": "Shop Now",
             "button_link_1": "shopify://collections",
             "button_style_1": "primary",
-            "button_label_2": "Discover more",
+            "button_label_2": "",
             "button_link_2": "shopify://collections",
             "button_style_2": "tertiary"
           }
@@ -91,7 +91,7 @@
       "type": "wm__product-card-scroll",
       "settings": {
         "show_background": false,
-        "top_heading": "Elevated by Science",
+        "top_heading": "New arrivals",
         "main_heading": "New Essentials",
         "collection": "best-sellers-on-home-page",
         "products_to_show": 8,
@@ -300,46 +300,41 @@
         "expert_9WB8b4": {
           "type": "expert",
           "settings": {
-            "expert_quote": "<p>Our formulas are exclusively developed to improve skin health, function, and physiological well-being, our advanced peptide & delivery system technologies work synergistically.</p>",
-            "expert_name": "Mr. ONE Something",
-            "expert_jobtitle": "Testing Chemist",
+            "expert_quote": "<p>Our formulas improve your skin's cellular function to deliver <strong>clinical-grade results</strong> that go beyond the surface. Our advanced peptide & delivery system technologies work synergistically.</p>",
+            "is_quote": true,
+            "expert_name": "Dr. Ian Vitek",
+            "expert_jobtitle": "Cosmetic Chemist",
             "expert_image": "shopify://shop_images/dr-ian-vitek-headshot.png"
           }
         },
         "expert_PJMbBc": {
           "type": "expert",
           "settings": {
-            "expert_quote": "<p>Lorem ipsum dolor sit amet. Dolor amet sipsum amet sit doloris amit sipsum.</p>",
-            "expert_name": "Zr. ONE Something",
-            "expert_jobtitle": "Cosmetic Chemist 2",
+            "expert_quote": "<p>Dr Lauren is one of Scotland’s <strong>longest-established</strong> cosmetic doctors. A member of the Primary Care Dermatology Society and certified clinical aesthetic trainer, Dr Lauren provides advanced cosmetic treatments at her clinic in Glasgow and supports new practitioners in both Glasgow and London.</p>",
+            "is_quote": false,
+            "expert_name": "Dr Lauren Jamieson",
+            "expert_jobtitle": "Cosmetic Doctor",
             "expert_image": "shopify://shop_images/dr-laura-jamieson.png"
           }
         },
         "expert_zXeQgT": {
           "type": "expert",
           "settings": {
-            "expert_quote": "<p>Lorem ipsum dolor sit amet. Dolor amet sipsum amet sit doloris amit sipsum.</p>",
-            "expert_name": "Dr Three Something",
-            "expert_jobtitle": "Cosmetic Chemist 2",
+            "expert_quote": "<p>Julie Scott is an independent nurse prescriber with over <strong>25 years’ experience</strong> in the field of plastics and skin rejuvenation. In 2003, Julie left her position as a clinical nurse specialist for a renowned group of London plastic surgeons to set up her own practice in Essex, Facial Aesthetics.</p>",
+            "is_quote": false,
+            "expert_name": "Julie Scott",
+            "expert_jobtitle": "Nurse prescriber",
             "expert_image": "shopify://shop_images/julie-scott.png"
           }
         },
         "expert_jCm9pH": {
           "type": "expert",
           "settings": {
-            "expert_quote": "<p>Lorem ipsum dolor sit amet. Dolor amet sipsum amet sit doloris amit sipsum.</p>",
-            "expert_name": "Dr Two Something",
-            "expert_jobtitle": "Cosmetic Chemist 2",
+            "expert_quote": "<p>Anna Baker BN RGN INP PGCert is an award-winning Aesthetic Nurse, Trainer & Qualified Educator with over 12 years’ experience in Aesthetic Medicine. Anna was awarded <strong>‘Aesthetic Nurse Practitioner of The Year’</strong> at the Aesthetic Awards 2017, and ‘Highly Commended’ in 2015 and 2016.</p>",
+            "is_quote": false,
+            "expert_name": "Anna Baker",
+            "expert_jobtitle": "Aesthetic Nurse & Trainer",
             "expert_image": "shopify://shop_images/anna-baker.png"
-          }
-        },
-        "expert_9JpryT": {
-          "type": "expert",
-          "settings": {
-            "expert_quote": "<p>Lorem ipsum dolor sit amet. Dolor amet sipsum amet sit doloris amit sipsum.</p>",
-            "expert_name": "Dr Something Something",
-            "expert_jobtitle": "Cosmetic Chemist",
-            "expert_image": "shopify://shop_images/sun-slick-in-use.jpg"
           }
         }
       },
@@ -347,8 +342,7 @@
         "expert_9WB8b4",
         "expert_PJMbBc",
         "expert_zXeQgT",
-        "expert_jCm9pH",
-        "expert_9JpryT"
+        "expert_jCm9pH"
       ],
       "settings": {
         "main_heading": "Meet our Experts",
@@ -413,9 +407,9 @@
       "type": "wm__cta-banner",
       "settings": {
         "top_heading": "Elevated by Science",
-        "main_heading": "Your Skincare <em>Powered</em> By Peptides",
-        "description": "Our patented peptide technology and epigenetics work together to boost your skin's natural repair and target genes involved in ageing",
-        "cta_label": "Contact us",
+        "main_heading": "Pick Your <em>Perfect</em> SPF",
+        "description": "Finding the right sunscreen is made simple with our quick and easy assessment",
+        "cta_label": "Take quiz",
         "cta_url": "",
         "invert_colours": true,
         "image": "shopify://shop_images/Retail_SunSlick_PDP_HowToUse.jpg",
