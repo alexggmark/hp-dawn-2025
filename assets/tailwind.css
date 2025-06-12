@@ -2157,6 +2157,10 @@ video {
   padding-bottom: 0.5rem !important;
 }
 
+._pb-20 {
+  padding-bottom: 5rem !important;
+}
+
 ._pb-3 {
   padding-bottom: 0.75rem !important;
 }
@@ -2243,10 +2247,6 @@ video {
 
 ._pt-8 {
   padding-top: 2rem !important;
-}
-
-._pb-20 {
-  padding-bottom: 5rem !important;
 }
 
 ._text-left {
