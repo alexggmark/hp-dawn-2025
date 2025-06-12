@@ -20,9 +20,11 @@
             {% endunless %}
           </div>
           
-          <p class="_text-base _max-w-60 md:_block _hidden">
-            New arrivals, designed to support your skin and backed by science
-          </p>
+          {%- unless section.settings.description == blank -%}
+            <div class="_text-base _max-w-60 md:_block _hidden _prose">
+              {{ section.settings.description }}
+            </div>
+          {%- endunless -%}
           
           {%- unless section.settings.cta_text == blank -%}
             <a
@@ -119,6 +121,12 @@
       "id": "main_heading",
       "default": "t:sections.footer.blocks.link_list.settings.heading.default",
       "label": "Main Heading"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "default": "<p>Description text</p>",
+      "label": "Description text"
     },
     {
       "type": "collection",

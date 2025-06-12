@@ -1905,6 +1905,11 @@ video {
   border-color: rgb(255 255 255 / 0.5) !important;
 }
 
+._border-red-500 {
+  --tw-border-opacity: 1 !important;
+  border-color: rgb(239 68 68 / var(--tw-border-opacity, 1)) !important;
+}
+
 ._bg-\[\#FCB52D\] {
   --tw-bg-opacity: 1 !important;
   background-color: rgb(252 181 45 / var(--tw-bg-opacity, 1)) !important;

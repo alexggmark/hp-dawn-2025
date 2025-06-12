@@ -20,7 +20,7 @@
           </h2>
         {% endunless %}
         {% unless section.settings.description == blank %}
-          <div class="_text-base _mt-4">
+          <div class="_text-base _mt-4 _prose">
             {{ section.settings.description }}
           </div>
         {% endunless %}
@@ -180,9 +180,9 @@
       "label": "Main Heading"
     },
     {
-      "type": "inline_richtext",
+      "type": "richtext",
       "id": "description",
-      "default": "Description text",
+      "default": "<p>Description text</p>",
       "label": "Description text"
     },
     {

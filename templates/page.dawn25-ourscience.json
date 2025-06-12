@@ -1,14 +1,160 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
-    "main": {
-      "type": "main-page",
+    "wm_page_hero_banner_c3qpYE": {
+      "type": "wm__page-hero-banner",
+      "name": "WM Page Banner",
       "settings": {
-        "padding_top": 28,
-        "padding_bottom": 28
+        "main_heading": "Our Science",
+        "description": "<p>Regenerative skincare starts here. Cutting-edge peptide science meets luxury therapeutics for truly transformative results.</p>",
+        "image": "shopify://shop_images/coollections-banner-_1.webp",
+        "image_overlay_opacity": 0,
+        "mobile_image_overlay_opacity": 0,
+        "margin_bottom": "0",
+        "invert_colours": true,
+        "mobile_invert_colours": true
+      }
+    },
+    "wm_image_block_text_1_qjYifF": {
+      "type": "wm__image-block-text-1",
+      "name": "WM ImageBlockText 1",
+      "settings": {
+        "reverse_order": true,
+        "show_background": false,
+        "top_heading": "",
+        "main_heading": "Developed with Science",
+        "description": "<p>At HydroPeptide, we work alongside leading scientific minds, both in the lab and in real-world clinical settings. Our global network of respected doctors and researchers plays a key role in shaping the innovation behind every product we create.</p><p>We use over 65 clinically proven peptide complexes, each formulated at optimal levels for maximum efficacy. Combined with advanced delivery systems, our peptides are designed to penetrate deeply and work precisely where your skin needs them — delivering visible, targeted results.</p>",
+        "cta_text": "",
+        "cta_url": "",
+        "image": "shopify://shop_images/113023_BodyCollection_HP_Banner_Mobile.png",
+        "margin_bottom": "0"
+      }
+    },
+    "wm_image_block_text_2_DNdYHf": {
+      "type": "wm__image-block-text-2",
+      "name": "WM ImageBlockText 2",
+      "settings": {
+        "reverse_order": false,
+        "show_background": false,
+        "content": "<h2>What Is Epigenetics?</h2><p>Our genes determine how we look and we age. With epigenetic science, we can influence how genes express themselves by turning on the genes that signal cells to act healthy and turning off the genes that don't.</p><h2>Epigenetics In Action</h2><p>Our Chief Geneticist, Dr. Neal Kitchen, and his identical twin brother Dale have the same DNA but don't look the same. The reason? Epigenetics. Environmental factors starting in the womb signalled their genes to express themselves differently. You can spot the differences in their height and in the texture of their skin.</p><h2>Epigenetics & Your Skin</h2><p>Epigenetics applies to the genes that control your skin cells. HydroPeptide's team of geneticists formulate our products with powerful gene-signalling ingredients, like peptides, that tell your skin cells to act in a healthy, gorgeous way. </p><h2>We Have A Passion For Peptides</h2><p>As you can tell from our name, we use a lot of peptides in our products. We love peptides because they're one of the most effective epigenetic tools in skin care and we utilise them extensively in our transformative formulas. </p>",
+        "image": "shopify://shop_images/pf-3b9519f7--HPWebAboutUsGIF_1.png",
+        "media_contain": "contain",
+        "margin_bottom": "12"
+      }
+    },
+    "wm_accordion_image_split_4fpiWF": {
+      "type": "wm__accordion-image-split",
+      "blocks": {
+        "dropdown_EkQVjj": {
+          "type": "dropdown",
+          "settings": {
+            "title": "Cell Renew 16",
+            "text": "<p>This patented, proprietary peptide is designed to:</p><ul><li>Increase moisture retention</li><li>Improve firmness and elasticity by boosting collagen </li><li>Enhance delivery with active encapsulation</li><li>Boost skin's defenses against oxidative stress</li></ul>",
+            "image": "shopify://shop_images/cellrenew16_1.webp"
+          }
+        },
+        "dropdown_gt4x3y": {
+          "type": "dropdown",
+          "settings": {
+            "title": "Nimni Collagen Support Complex",
+            "text": "<p>Our patented NIMNI™ Technology, developed in collaboration with renowned biochemist and pioneering collagen researcher Dr. Marcel Nimni, is clinically proven to optimize the collagen production process on multiple levels for younger-looking skin.</p><p>This proprietary blend of amino acids and antioxidants has been shown to:</p><ul><li>Increase collagen synthesis activity by 200% at 90 hours</li><li>Visibly reduce the 7 key signs of aging</li><li>Stimulate and support healthy collagen production</li><li>Shield collagen from degradation for strong, resilient skin</li></ul>",
+            "image": "shopify://shop_images/nimni-desktop.webp"
+          }
+        },
+        "dropdown_GFggUp": {
+          "type": "dropdown",
+          "settings": {
+            "title": "Tri-Retinol Complex",
+            "text": "<p>A breakthrough in Retinol technology:</p><ul><li>A BETTER REACTION WITHIN SKIN | Unlike traditional retinol products, our Tri-Retinol Complex releases more skin-recognizable enzymes during the conversion process to retinoic acid, bypassing inflammatory response. No burning, no redness, no flaking.</li><li>3 FORMS OF RETINOIDS | A combination of 3 highly-intelligent retinoids (Retinol, Glyceryl Diretinoate & Retinyl Linoleate) are effectively released into their active form once they move through the layers of the skin. Each added at optimal levels for extended results.</li><li>SUPERIOR CONTROL-RELEASE SYSTEM | Extensive research was conducted to select retinoids that demonstrated synergetic  conversion rates. This allows for \"slow-release\" characteristics while maintaining optimal renewal activity without inflammation. Steady activity = maximum results without downtime. </li></ul>",
+            "image": "shopify://shop_images/triretinol-desktop.webp"
+          }
+        }
+      },
+      "block_order": [
+        "dropdown_EkQVjj",
+        "dropdown_gt4x3y",
+        "dropdown_GFggUp"
+      ],
+      "name": "WM AccordionImgSplit",
+      "settings": {
+        "show_background": true,
+        "main_heading": "Powered by Advanced Technology",
+        "margin_bottom": "0"
+      }
+    },
+    "wm_before_after_grid_kLR4N4": {
+      "type": "wm__before-after-grid",
+      "blocks": {
+        "before_after_image_rtHpR4": {
+          "type": "before_after_image",
+          "settings": {
+            "before_image": "shopify://shop_images/a-after.webp",
+            "before_text": "",
+            "after_image": "shopify://shop_images/a-before.webp",
+            "after_text": ""
+          }
+        },
+        "before_after_image_hLrF9n": {
+          "type": "before_after_image",
+          "settings": {
+            "before_image": "shopify://shop_images/b-after.webp",
+            "before_text": "",
+            "after_image": "shopify://shop_images/b-before.webp",
+            "after_text": ""
+          }
+        },
+        "before_after_image_rzWUVL": {
+          "type": "before_after_image",
+          "settings": {
+            "before_image": "shopify://shop_images/c-after.webp",
+            "before_text": "",
+            "after_image": "shopify://shop_images/c-before.webp",
+            "after_text": ""
+          }
+        }
+      },
+      "block_order": [
+        "before_after_image_rtHpR4",
+        "before_after_image_hLrF9n",
+        "before_after_image_rzWUVL"
+      ],
+      "name": "WM BeforeAfter Grid",
+      "settings": {
+        "main_heading": "Validated Results",
+        "description": "Our extensive clinical and consumer testing processes guarantee formulas that deliver high-performance, visible results in product offerings our customers love to use.",
+        "margin_bottom": "0"
+      }
+    },
+    "wm_product_card_scroll_tRwByj": {
+      "type": "wm__product-card-scroll",
+      "name": "WM Product Scroll",
+      "settings": {
+        "show_background": true,
+        "top_heading": "",
+        "main_heading": "<em>Your</em> Favourites",
+        "collection": "best-sellers",
+        "products_to_show": 11,
+        "show_rating": false,
+        "quick_add": "none",
+        "cta_text": "See all bestsellers",
+        "margin_bottom": "0"
       }
     }
   },
   "order": [
-    "main"
+    "wm_page_hero_banner_c3qpYE",
+    "wm_image_block_text_1_qjYifF",
+    "wm_image_block_text_2_DNdYHf",
+    "wm_accordion_image_split_4fpiWF",
+    "wm_before_after_grid_kLR4N4",
+    "wm_product_card_scroll_tRwByj"
   ]
 }
