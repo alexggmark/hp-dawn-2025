@@ -12,6 +12,7 @@
     --color-brand-dark: theme('colors.brand-dark');
     --color-brand-light: theme('colors.brand-light');
 
+    --color-overlay-color: #081c42;
     --font-size-base: theme('fontSize.base');
   }
 }
@@ -30,6 +31,9 @@
   }
   ._font-body-condensed {
     font-family: theme('fontFamily.body-condensed');
+  }
+  ._font-body-fancy { /* Heading font without letter-spacing, mainly used in FAQ questions */
+    font-family: theme('fontFamily.heading-primary');
   }
 }
 

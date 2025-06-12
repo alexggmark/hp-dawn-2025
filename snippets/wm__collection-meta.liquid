@@ -37,7 +37,7 @@
           <animated-details>
             <details class="_border-t _border-brand-border {% if forloop.last %} _border-b{% endif %}">
               <summary class="_py-5 _flex _justify-between _items-center _w-full _group/faq">
-                <span class=" _text-brand-dark _font-heading-primary _text-xl">{{ entry.question }}</span>
+                <span class=" _text-brand-dark _font-body-fancy _text-xl">{{ entry.question }}</span>
                 <span class="svg-wrapper _w-6 _h-6 group-hover/faq:_scale-110 _text-brand-primary-500" data-js-plus-icon>
                   {{- 'icon-newbuild-plus-thin.svg' | inline_asset_content -}}
                 </span>
@@ -45,6 +45,7 @@
               <div class="
                 md:_text-base _text-sm
                 _prose
+                _pb-6
               ">
                 {{ entry.answer | metafield_tag }}
               </div>

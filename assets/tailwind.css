@@ -562,6 +562,7 @@ video {
   --color-brand-border: #DADEE2;
   --color-brand-dark: #000000;
   --color-brand-light: #ffffff;
+  --color-overlay-color: #081c42;
   --font-size-base: 14px;
 }
 
@@ -1116,6 +1117,10 @@ video {
 
 ._mb-1\.5 {
   margin-bottom: 0.375rem !important;
+}
+
+._mb-10 {
+  margin-bottom: 2.5rem !important;
 }
 
 ._mb-12 {
@@ -1896,6 +1901,16 @@ video {
   border-color: rgb(255 255 255 / 0.5) !important;
 }
 
+._border-red-500 {
+  --tw-border-opacity: 1 !important;
+  border-color: rgb(239 68 68 / var(--tw-border-opacity, 1)) !important;
+}
+
+._border-e-red-500 {
+  --tw-border-opacity: 1 !important;
+  border-inline-end-color: rgb(239 68 68 / var(--tw-border-opacity, 1)) !important;
+}
+
 ._bg-\[\#FCB52D\] {
   --tw-bg-opacity: 1 !important;
   background-color: rgb(252 181 45 / var(--tw-bg-opacity, 1)) !important;
@@ -2277,7 +2292,7 @@ video {
 }
 
 ._text-5xl {
-  font-size: 62px !important;
+  font-size: 58px !important;
   line-height: auto !important;
 }
 
@@ -2509,6 +2524,11 @@ video {
 
 ._font-body-condensed {
   font-family: var(--font-body-condensed) !important;
+}
+
+._font-body-fancy {
+  /* Heading font without letter-spacing, mainly used in FAQ questions */
+  font-family: var(--font-heading-family) !important;
 }
 
 .\[grid-area\:A\] {
@@ -3323,6 +3343,11 @@ video {
     padding-right: 0px !important;
   }
 
+  .md\:_px-16 {
+    padding-left: 4rem !important;
+    padding-right: 4rem !important;
+  }
+
   .md\:_px-7 {
     padding-left: 1.75rem !important;
     padding-right: 1.75rem !important;
@@ -3496,7 +3521,7 @@ video {
   }
 
   .md\:_text-5xl {
-    font-size: 62px !important;
+    font-size: 58px !important;
     line-height: auto !important;
   }
 

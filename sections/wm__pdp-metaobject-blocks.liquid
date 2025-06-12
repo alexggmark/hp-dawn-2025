@@ -2,6 +2,7 @@
   This is the main section that controls metaobjects for PDP
 {% endcomment %}
 
+{%- assign skip_styles = false -%}
 {% assign product_lp_entries = product.metafields.custom.product_lp_entries.value %}
 
 {%- unless product_lp_entries == blank -%}
@@ -120,10 +121,42 @@
                     {% endif %}
                   >
                     {%- assign media = entry.media.value -%}
-                    {%- if media.media_type == 'video' -%}
-                      {{ media | video_tag: controls: true, preload: 'metadata', autoplay: true, muted: true, loop: true, width: '100%', height: '100%' }}
+                    {%- assign media_compare = entry.media_compare.value -%}
+
+                    {%- if media_compare != blank and media_compare.media_type != 'video' and media.media_type != 'video' -%}
+                      {% comment %} Only load this once as needed {% endcomment %}
+                      {%- unless skip_styles -%}
+                        <script src="{{ 'wm__beer-slider.js' | asset_url }}" defer="defer"></script>
+                        {{ 'wm__beer-slider.css' | asset_url | stylesheet_tag }}
+                      {%- endunless -%}
+                      {%- assign skip_styles = true -%}
+
+                      <div
+                        class="_aspect-[7/6] _w-full _bg-brand-background beer-slider"
+                        data-beer-label="After"
+                      >
+                        <img
+                          src="{{ media | image_url: width: 1000 }}"
+                          width="{{ media.width }}"
+                          height="{{ media.height }}"
+                          alt="{{ media.alt }}"
+                        >
+                        <div class="beer-reveal" data-beer-label="Before">
+                          <img
+                            src="{{ media_compare | image_url: width: 1000 }}"
+                            width="{{ media_compare.width }}"
+                            height="{{ media_compare.height }}"
+                            alt="{{ media_compare.alt }}"
+                          >
+                        </div>
+                      </div>
+
                     {%- else -%}
-                      {{ media | image_url: width: 1000 | image_tag: loading: 'lazy', width: '100%', height: '100%' }}
+                      {%- if media.media_type == 'video' -%}
+                        {{ media | video_tag: controls: true, preload: 'metadata', autoplay: true, muted: true, loop: true, width: '100%', height: '100%' }}
+                      {%- else -%}
+                        {{ media | image_url: width: 1000 | image_tag: loading: 'lazy', width: '100%', height: '100%' }}
+                      {%- endif -%}
                     {%- endif -%}
                   </div>
                 </div>

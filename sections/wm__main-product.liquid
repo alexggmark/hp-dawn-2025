@@ -373,9 +373,10 @@
                           </span>
                         </summary>
                         <div>
-                          <div class="_grid _grid-cols-12 _pt-2 _pb-4">
+                          {% comment %} Alex - don't remove transparent border - it's a hack to force proper height calculation with lazy loaded media {% endcomment %}
+                          <div class="_grid _grid-cols-12 _pt-2 _pb-4 _border _border-transparent">
                             {%- unless entry.media == blank -%}
-                              <div class="{% if entry.media_only or entry.content == blank %} _col-span-full{% else %} md:_col-span-6 _col-span-full md:_pr-3{% endif %}">
+                              <div class="{% if entry.media_only or entry.content == blank %} _col-span-full{% else %} md:_col-span-6 _col-span-full md:_pr-3 md:_mb-0 _mb-4{% endif %}">
                                 {%- assign media = entry.media.value -%}
                                 {%- if media.media_type == 'video' -%}
                                   {{ media | video_tag: controls: true, preload: 'metadata', autoplay: true, muted: true, loop: true, width: '100%', height: '100%' }}
@@ -386,7 +387,7 @@
                             {%- endunless -%}
                             <div class="{% if entry.media_only or entry.media == blank %} _col-span-full{% else %} md:_col-span-6 _col-span-full{% endif %}">
                               {%- unless entry.content == blank -%}
-                                <div class="_prose md:_text-base _text-sm">
+                                <div class="_prose _text-base">
                                   {{ entry.content | metafield_tag }}
                                 </div>
                               {%- endunless -%}

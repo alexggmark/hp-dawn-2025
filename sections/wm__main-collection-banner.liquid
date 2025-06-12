@@ -11,11 +11,29 @@
   endif
 -%}
 
-{%- assign collection_light_text = collection.metafields.banner.light_text -%}
-{% comment %} {%- assign collection_mobile_image = collection.metafields.banner.mobile_image -%} TODO: {% endcomment %}
-{%- assign collection_overlay_opacity = collection.metafields.banner.banner_overlay_opacity -%}
+{% comment %} Collection text colour controls {% endcomment %}
+{%- assign collection_light_text = false -%}
+{%- if collection.metafields.banner.light_text -%}
+  {%- assign collection_light_text = true -%}
+{%- elsif collection.image == blank and settings.default_collection_banner_lighttext == true -%}
+  {%- assign collection_light_text = true -%}
+{%- endif -%}
 
-{%- assign invisible_header = settings.invisible_overlay_header -%}
+{% comment %} Collection overlay opacity controls {% endcomment %}
+{%- assign collection_overlay_opacity = 0 -%}
+{%- if collection.metafields.banner.banner_overlay_opacity -%}
+  {%- assign collection_overlay_opacity = collection.metafields.banner.banner_overlay_opacity -%}
+{%- elsif collection.image == blank and settings.default_collection_overlay_opacity > 0 -%}
+  {%- assign collection_overlay_opacity = settings.default_collection_overlay_opacity -%}
+{%- endif -%}
+
+{% comment %} Collection invisible header controls {% endcomment %}
+{%- assign invisible_header = false -%}
+{%- if settings.invisible_overlay_header == true and collection.metafields.banner.invisible_overlay_header -%}
+  {%- assign invisible_header = true -%}
+{%- elsif collection.image == blank and settings.default_collection_invisible_header == true -%}
+  {%- assign invisible_header = true -%}
+{%- endif -%}
 
 {%- style -%}
   @media screen and (min-width: 750px) {
@@ -31,7 +49,7 @@
     position: absolute;
     width: 100%;
     height: 100%;
-    background-color: var(--color-brand-dark);
+    background-color: var(--color-overlay-color);
   }
   @media screen and (min-width: 750px) {
     #Banner-{{ section.id }}::after {
@@ -71,17 +89,17 @@
           fetchpriority: fetch_priority
       }}
     </div>
-  {%- elsif section.settings.default_image != blank -%}
+  {%- elsif settings.default_collection_image != blank -%}
     <div class="banner__media media{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
       {%- liquid
-        assign image_height = section.settings.default_image.width | divided_by: section.settings.default_image.aspect_ratio
+        assign image_height = settings.default_collection_image.width | divided_by: settings.default_collection_image.aspect_ratio
         assign sizes = full_width
       -%}
       {{
-        section.settings.default_image
+        settings.default_collection_image
         | image_url: width: 3840
         | image_tag:
-          width: section.settings.default_image.width,
+          width: settings.default_collection_image.width,
           height: image_height,
           sizes: sizes,
           widths: widths,
@@ -105,7 +123,7 @@
       _flex _flex-col _justify-center _items-start
     ">
        <div class="md:_max-w-[550px] _mb-3">
-         <h1 class="_text-2.5xl md:_text-3xl _font-heading-primary{% if collection_light_text == true and collection.image != blank %} _text-brand-light{% else %} _text-brand-dark{% endif %}">
+         <h1 class="_text-2.5xl md:_text-4xl _font-heading-primary{% if collection_light_text == true %} _text-brand-light{% else %} _text-brand-dark{% endif %}">
            <span class="visually-hidden">{{ 'sections.collection_template.title' | t }}: </span>
            {{- collection.title | escape -}}
          </h1>
@@ -113,11 +131,11 @@
 
        <div class="md:_max-w-[520px]">
         {%- if collection.description != '' or collection.description != blank -%}
-          <div class="md:_text-lg _text-base{% if collection_light_text == true and collection.image != blank %} _text-brand-light{% endif %}">
+          <div class="md:_text-lg _text-base{% if collection_light_text == true %} _text-brand-light{% endif %}">
             {{ collection.description }}
           </div>
         {%- elsif collection.metafields.global.description_tag -%}
-          <div class="md:_text-lg _text-base{% if collection_light_text == true and collection.image != blank %} _text-brand-light{% endif %}">
+          <div class="md:_text-lg _text-base{% if collection_light_text == true %} _text-brand-light{% endif %}">
             {{ collection.metafields.global.description_tag.value }}
           </div>
         {%- endif -%}
@@ -131,16 +149,6 @@
   "name": "WM Collection Banner",
   "class": "section",
   "settings": [
-    {
-      "type": "paragraph",
-      "content": "t:sections.main-collection-banner.settings.paragraph.content"
-    },
-    {
-      "type": "image_picker",
-      "id": "default_image",
-      "label": "Pick a default image for collections",
-      "info": "This will be default if no collection image is available or active"
-    },
     {
       "type": "select",
       "id": "margin_bottom",

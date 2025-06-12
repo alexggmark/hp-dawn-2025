@@ -25,36 +25,46 @@
   {%- assign invert_header_colors = true -%}
 {%- endif -%}
 
-
 {%- assign invisible_header = false -%}
 {%- assign invert_header_colors = false -%}
 
 {%- case request.page_type -%}
   {%- when 'index' -%}
+    {%- if settings.invisible_overlay_header -%}
+      {%- assign invisible_header = true -%}
+    {%- endif -%}
+    {%- if settings.invert_invisible_overlay_header_colors -%}
+      {%- assign invert_header_colors = true -%}
+    {%- endif -%}
 
   {%- when 'page' -%}
     {%- if settings.invisible_overlay_header and page.metafields.banner.invisible_overlay_header -%}
       {%- assign invisible_header = true -%}
     {%- endif -%}
-    {%- if settings.invert_invisible_overlay_header_colors and page.metafields.banner.invert_invisible_overlay_header_colors -%}
+    {%- if settings.invisible_overlay_header and page.metafields.banner.invert_invisible_overlay_header_colors -%}
       {%- assign invert_header_colors = true -%}
     {%- endif -%}
+
   {%- when 'collection' -%}
     {%- if settings.invisible_overlay_header and collection.metafields.banner.invisible_overlay_header -%}
       {%- assign invisible_header = true -%}
+    {%- elsif collection.image == blank and settings.default_collection_invisible_header == true -%}
+      {%- assign invisible_header = true -%}
     {%- endif -%}
-    {%- if settings.invert_invisible_overlay_header_colors and collection.metafields.banner.invert_invisible_overlay_header_colors -%}
+    {%- if settings.invisible_overlay_header and collection.metafields.banner.invert_invisible_overlay_header_colors -%}
+      {%- assign invert_header_colors = true -%}
+    {%- elsif collection.image == blank and settings.default_collection_banner_lighttext == true -%}
       {%- assign invert_header_colors = true -%}
     {%- endif -%}
 {%- endcase -%}
 
-
-
-{%- assign tailwind_color = '' -%}
+{%- assign controlled_text_color_variable = '' -%}
 {%- if invert_header_colors == true -%}
-  {%- assign tailwind_color = 'var(--color-brand-light)' -%}
+  {%- assign controlled_text_color_variable = 'var(--color-brand-light)' -%}
+  {%- assign controlled_border_color = 'var(--color-brand-light)' -%}
 {%- else -%}
-  {%- assign tailwind_color = 'var(--color-brand-dark)' -%}
+  {%- assign controlled_text_color_variable = 'var(--color-brand-dark)' -%}
+  {%- assign controlled_border_color = 'var(--color-brand-dark)' -%}
 {%- endif -%}
 
 {%- style -%}
@@ -70,10 +80,12 @@
     .header-wrapper {
       /* Alex - this is a fix to prevent redrawing header with "transparent", caused flickering otherwise */
       background-color: {% if invisible_header %} rgba(255, 255, 255, 0.008){% else %} rgb(255,255,255){% endif %};
+      border-bottom: 1px solid {% if invisible_header %} {{ controlled_border_color }}{% else %} transparent{% endif %};
     }
 
     .scrolled-past-header .header-wrapper {
       background-color: var(--color-brand-light);
+      border-bottom: 1px solid transparent;
     }
 
     .header-wrapper.header-wrapper--menu-open,
@@ -83,7 +95,7 @@
 
     .header-wrapper .header-content {
       height: var(--header-height-desktop-fixed);
-      transition-property: min-height;
+      transition-property: height;
       transition-duration: var(--duration-default);
       transition-timing-function: ease;
     }
@@ -111,11 +123,11 @@
   
     {% comment %} Manually controls text color based on scroll/overlay logic (easier than Tailwind) {% endcomment %}
     .header-wrapper .header-controlled--text {
-      color: {{ tailwind_color }};
+      color: {{ controlled_text_color_variable }};
     }
     .header-wrapper .header-controlled--text svg:not(.icon.icon-caret) g > *,
     .header-wrapper .header-controlled--text svg:not(.icon.icon-caret) > * {
-      stroke: {{ tailwind_color }};
+      stroke: {{ controlled_text_color_variable }};
     }
     .header__heading-logo {
       filter: {% if invert_header_colors %} brightness(0) invert(1){% else %} none{% endif %};

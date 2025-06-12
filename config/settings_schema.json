@@ -11,6 +11,10 @@
     "name": "Global custom WM",
     "settings": [
       {
+        "type": "header",
+        "content": "Control invisible header"
+      },
+      {
         "type": "checkbox",
         "id": "invisible_overlay_header",
         "default": true,
@@ -21,7 +25,36 @@
         "id": "invert_invisible_overlay_header_colors",
         "default": false,
         "label": "Invert colours (white) on overlay header"
-      }
+      },
+      {
+        "type": "header",
+        "content": "Control default collection settings"
+      },
+      {
+        "type": "image_picker",
+        "id": "default_collection_image",
+        "label": "Pick a default image for collections",
+        "info": "This will be default if no collection image is available or active"
+      },
+      {
+        "type": "checkbox",
+        "id": "default_collection_banner_lighttext",
+        "label": "Turn on light text for default collection header"
+      },
+      {
+        "type": "checkbox",
+        "id": "default_collection_invisible_header",
+        "label": "Turn on invisible header for default collection header"
+      },
+      {
+        "type": "range",
+        "id": "default_collection_overlay_opacity",
+        "min": 0,
+        "max": 100,
+        "step": 10,
+        "label": "Default collection overlay opacity",
+        "default": 0
+      },
     ]
   },
   {
