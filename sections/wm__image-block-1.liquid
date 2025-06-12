@@ -8,7 +8,7 @@
 <div class="section-{{ section.id }} {% if section.settings.show_background %} _bg-brand-background-light{% endif %} _mb-{{ section.settings.margin_bottom | divided_by: 2 }} md:_mb-{{ section.settings.margin_bottom }} md:_py-20 _py-12{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
   <div class="_relative page-width _isolate">
     <div class="_grid md:_grid-cols-12 _grid-cols-1 _z-10 _isolate">
-      <div class="md:_col-span-4 _col-span-1 _flex _flex-col _items-start _justify-center {% if section.settings.reverse_order %} md:_order-2 md:_pl-14{% else %} md:_pr-14{% endif %} md:_py-0 _py-8 md:_max-w-[340px]">
+      <div class="md:_col-span-4 _col-span-1 _flex _flex-col _items-start _justify-center {% if section.settings.reverse_order %} md:_order-2 md:_pl-14{% else %} md:_pr-14{% endif %} md:_py-0 _py-8 md:_max-w-[390px]">
         {% unless section.settings.top_heading == blank %}
           <h3 class="_font-heading-small _text-brand-dark _text-sm">
             {{ section.settings.top_heading }}

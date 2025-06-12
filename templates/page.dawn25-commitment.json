@@ -1,14 +1,222 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
-    "main": {
-      "type": "main-page",
+    "wm_page_hero_banner_nHkJtV": {
+      "type": "wm__page-hero-banner",
       "settings": {
-        "padding_top": 28,
-        "padding_bottom": 28
+        "main_heading": "Our Scientifically Clean Commitment",
+        "description": "<p>Every formula is developed with geneticists, tested to clinical standards, and free from harmful ingredients because clean should always be backed by science.</p>",
+        "image": "shopify://shop_images/coollections-banner-_1.webp",
+        "image_overlay_opacity": 0,
+        "mobile_image_overlay_opacity": 0,
+        "margin_bottom": "0",
+        "invert_colours": true,
+        "mobile_invert_colours": true
+      }
+    },
+    "wm_image_block_1_H9wHJm": {
+      "type": "wm__image-block-1",
+      "settings": {
+        "reverse_order": false,
+        "show_background": false,
+        "top_heading": "",
+        "main_heading": "Clinically Clean Solutions",
+        "description": "<p>We apply scientific and clinical rigour to every product we create, setting a thoughtful clean standard within the professional skincare industry. Our formulas are developed to protect your skin, your health, and the planet — free from harmful ingredients and unnecessary waste.</p>",
+        "cta_text": "",
+        "cta_url": "",
+        "image_1": "shopify://shop_images/PDP_LumiFirm_Ingredients.png",
+        "image_2": "shopify://shop_images/HP-PDP-SoothingBalm-Hero-Model.jpg",
+        "margin_bottom": "0"
+      }
+    },
+    "wm_icon_grid_8HCWdE": {
+      "type": "wm__icon-grid",
+      "blocks": {
+        "icon_aRq8hr": {
+          "type": "icon",
+          "settings": {
+            "icon_image": "shopify://shop_images/comparative-toxicogenomics.png"
+          }
+        },
+        "icon_gE4BgJ": {
+          "type": "icon",
+          "settings": {
+            "icon_image": "shopify://shop_images/teris-formation-systems.png"
+          }
+        },
+        "icon_JDccwj": {
+          "type": "icon",
+          "settings": {
+            "icon_image": "shopify://shop_images/ewg-skin-deep-scoring.png"
+          }
+        },
+        "icon_4GpjNz": {
+          "type": "icon",
+          "settings": {
+            "icon_image": "shopify://shop_images/eu-banned-ingredients.png"
+          }
+        }
+      },
+      "block_order": [
+        "icon_aRq8hr",
+        "icon_gE4BgJ",
+        "icon_JDccwj",
+        "icon_4GpjNz"
+      ],
+      "settings": {
+        "show_background": true,
+        "top_heading": "",
+        "main_heading": "Scientifically Screened Ingredients",
+        "description": "<p>Our commitment to clean starts with evidence. Each ingredient is reviewed through trusted scientific databases to ensure it meets our rigorous safety and performance standards.</p>",
+        "margin_bottom": "0"
+      }
+    },
+    "wm_image_block_1_3A833W": {
+      "type": "wm__image-block-1",
+      "settings": {
+        "reverse_order": true,
+        "show_background": false,
+        "top_heading": "",
+        "main_heading": "Formulated with Purpose",
+        "description": "<ul><li>No genotoxins, parabens, phthalates, sulphates, or harmful fragrances</li><li>100% Cruelty-free across our full range</li><li>All products undergo RIPT allergy testing</li><li>90% of formulas are gluten-free</li><li>70% of formulas are vegan</li></ul>",
+        "cta_text": "Our Science",
+        "cta_url": "",
+        "image_1": "shopify://shop_images/PDP-FaceMasks_Results.jpg",
+        "image_2": "shopify://shop_images/formulated-with-purpose.webp",
+        "margin_bottom": "0"
+      }
+    },
+    "wm_image_block_text_1_6UDTD7": {
+      "type": "wm__image-block-text-1",
+      "settings": {
+        "reverse_order": true,
+        "show_background": true,
+        "top_heading": "",
+        "main_heading": "Our Packaging Reflects Our Scientific Principles",
+        "description": "<p>HydroPeptide has made substantial strides toward improving product recyclability, and we’re on track to have fully recyclable materials for all products.</p><p>Our strategic move towards sustainability includes:</p><ul><li>FSC-certified paper materials</li><li>Decreasing our reliance on virgin plastics</li><li>Use of Recyclable Glass and PCR materials</li><li>Packaging uses at least 25% post consumer recycled materials (PCR)</li><li>No unnecessary plastic or glass</li><li>Clear disposal instructions for each product</li></ul>",
+        "cta_text": "",
+        "cta_url": "",
+        "image": "shopify://shop_images/SolarDefenseBody_PDP.webp",
+        "margin_bottom": "0"
+      }
+    },
+    "wm_faq_generic_images_dH7bwi": {
+      "type": "wm__faq-generic-images",
+      "blocks": {
+        "faq_re473R": {
+          "type": "faq",
+          "settings": {
+            "faq_image": "shopify://shop_images/PDP_PowerSerum_HowToUse.jpg",
+            "faq_title": "Airless Serum Pumps",
+            "faq_content": "<p><strong>Cap + Pump:</strong> 50% post-consumer recycled plastic</p><p><strong>Base:</strong> Recyclable glass</p><p><strong>Carton:</strong> FSC-certified paper</p><p><strong>How to Recycle:</strong></p><p>Wash any remaining product from bottle and place bottle, glass, cap, and carton into recycling bin. Place pump in trash.</p><p><strong>Products:</strong></p><p>LumaPro-C, Power Serum, Retinol Eye Renewal, Retinol Routine Booster, Soothing Serum, HydroStem</p>"
+          }
+        },
+        "faq_NPq69n": {
+          "type": "faq",
+          "settings": {
+            "faq_image": "shopify://shop_images/cleansing-gel_35ac717e-db97-40df-839f-4a780cb06e8e.webp",
+            "faq_title": "Plastic Bottles",
+            "faq_content": "<p><strong>Pump + Bottle:</strong> 50% post-consumer recycled plastic<br/><br/><strong>How to Recycle:</strong><br/><br/>Remove pump from bottle and wash any remaining product from bottle. Place bottle into recycling bin. Place pump in trash.</p><p><strong>Products:</strong><br/><br/>Cashmere Cleanse, Cleansing Gel, Glow Revive, Liquid Resurfacing Solution, LumiFirm, Pre-Treatment Toner</p>"
+          }
+        },
+        "faq_mWzwyW": {
+          "type": "faq",
+          "settings": {
+            "faq_image": "shopify://shop_images/PDP-ExfoliatingCleanser_Results.jpg",
+            "faq_title": "Tubes",
+            "faq_content": "<p><strong>Cap + Tube:</strong> 60% post-consumer recycled plastic<br/><br/><strong>Carton:</strong> FSC-certified paper<br/><br/><strong>How to Recycle:</strong></p><p>Separate tube and cap. Cut open tube and wash out any remaining product. Place tube, cap and carton into recycling binbin.</p><p><strong>Products:</strong></p><p>Balancing Mask, Exfoliating Cleanser, Eye Authority, Foaming Cream Cleanser, Makeup Melt, Miracle Mask, Purifying Cleanser, Radiance Mask, Rejuvenating Mask, Spot Correction, Vital Eyes<br/>Travel Cleansing Gel, Travel Exfoliating Cleanser, Travel Eye Authority, Travel Foaming Cream Cleanser, Travel Makeup Melt</p>"
+          }
+        },
+        "faq_aCiPmN": {
+          "type": "faq",
+          "settings": {
+            "faq_image": "shopify://shop_images/daily-drench_31db4aeb-ca69-4c6f-929a-6a915bea2198.webp",
+            "faq_title": "Treatment Tubes",
+            "faq_content": "<p><strong>Cap + Pump + Tube:</strong> 60% post-consumer recycled plastic<br/><br/><strong>Carton:</strong> FSC-certified paper<br/><br/><strong>How to Recycle:</strong></p><p>Separate cap, pump and tube. Cut open tube and wash out any remaining product. Place cap, tube, and carton into recycling bin and pump in trash.</p><p><strong>Products:</strong></p><p>AquaBoost, Daily Drench, Face Lift, Nimni Day Cream, Peel 1, Peel 2, Solar Defense Non-Tinted, Solar Defense Tinted, Travel Daily Drench, Travel Exfoliating Cleanser, Travel Eye Authority, Travel Face Lift, Travel Peel 1, Travel Peel 2, Travel Solar Defense Non-Tinted, Travel Solar Defense Tinted</p>"
+          }
+        },
+        "faq_3NYmEa": {
+          "type": "faq",
+          "settings": {
+            "faq_image": "shopify://shop_images/clarifying-toner.webp",
+            "faq_title": "Plastic Jars",
+            "faq_content": "<p><strong>Cap + Jar:</strong><em> </em>50% post-consumer recycled plastic</p><p><strong>Carton:</strong><em> </em>FSC-certified paper</p><p><strong>How to Recycle:</strong></p><p>Wash any remaining product from jar and place jar, cap and carton into recycling bin.</p><p><strong>Products:</strong></p><p>Clarifying Toner, Hydro-Lock Sleep Mask, Soothing Balm, Travel Hydro-Lock Sleep Mask</p>"
+          }
+        },
+        "faq_dEaEDA": {
+          "type": "faq",
+          "settings": {
+            "faq_image": "shopify://shop_images/glass-jars.webp",
+            "faq_title": "Glass Jars",
+            "faq_content": "<p><strong>Base:</strong> Recyclable glass</p><p><strong>Carton:</strong> FSC-certified paper</p><p><strong>How to Recycle:</strong></p><p>Separate cap from base and wash out any remaining product. Place base and carton into recycling bin. Place cap in trash.</p><p><strong>Products:</strong></p><p>LipLock Hydrator, Power Lift</p>"
+          }
+        },
+        "faq_xVadri": {
+          "type": "faq",
+          "settings": {
+            "faq_image": "shopify://shop_images/microdose-glow-booster.webp",
+            "faq_title": "Glass Droppers",
+            "faq_content": "<p><strong>Base:</strong> Recyclable glass</p><p><strong>Carton:</strong> FSC-certified paper</p><p><strong>How to Recycle:</strong></p><p>Separate dropper from bottle and place bottle and carton into recycling bin. Place dropper in trash.</p><p><strong>Products:</strong></p><p>Micro-Dose Glow Booster, Firma-Bright, Moisture Reset, Triple Acid Peptide Peel</p>"
+          }
+        },
+        "faq_gXcjjB": {
+          "type": "faq",
+          "settings": {
+            "faq_image": "shopify://shop_images/beautiful-array-geometric.webp",
+            "faq_title": "Aluminium",
+            "faq_content": "<p><strong>Base:</strong> Aluminum</p><p><strong>Carton:</strong> FSC-certified paper</p><p><strong>How to Recycle:</strong></p><p>Place bottle and carton into recycling bin.</p><p><strong>Products:</strong></p><p>Solar Defense Body</p>"
+          }
+        }
+      },
+      "block_order": [
+        "faq_re473R",
+        "faq_NPq69n",
+        "faq_mWzwyW",
+        "faq_aCiPmN",
+        "faq_3NYmEa",
+        "faq_dEaEDA",
+        "faq_xVadri",
+        "faq_gXcjjB"
+      ],
+      "settings": {
+        "show_background": false,
+        "top_heading": "",
+        "main_heading": "Our Packaging Standards",
+        "description": "",
+        "margin_bottom": "0"
+      }
+    },
+    "wm_product_card_scroll_prNcNg": {
+      "type": "wm__product-card-scroll",
+      "settings": {
+        "show_background": true,
+        "top_heading": "",
+        "main_heading": "<em>Your</em> Favourites",
+        "description": "<p>The peptide-powered essentials that consistently deliver and loved by you</p>",
+        "collection": "best-sellers",
+        "products_to_show": 11,
+        "show_rating": false,
+        "quick_add": "standard",
+        "cta_text": "See all bestsellers",
+        "margin_bottom": "0"
       }
     }
   },
   "order": [
-    "main"
+    "wm_page_hero_banner_nHkJtV",
+    "wm_image_block_1_H9wHJm",
+    "wm_icon_grid_8HCWdE",
+    "wm_image_block_1_3A833W",
+    "wm_image_block_text_1_6UDTD7",
+    "wm_faq_generic_images_dH7bwi",
+    "wm_product_card_scroll_prNcNg"
   ]
 }
