@@ -794,12 +794,16 @@ video {
 }
 
 ._prose h3 {
-  margin-bottom: 0.25rem;
+  margin-bottom: 0.5rem;
   font-size: 15px;
   font-weight: 600;
   text-transform: uppercase;
   --tw-text-opacity: 1;
   color: rgb(0 0 0 / var(--tw-text-opacity, 1));
+}
+
+._prose h3:not(:first-child) {
+  margin-top: 1rem;
 }
 
 ._prose strong {
@@ -1087,20 +1091,12 @@ video {
   margin-bottom: 1.25rem !important;
 }
 
-._-mb-2 {
-  margin-bottom: -0.5rem !important;
-}
-
 ._-ml-\[0\.2rem\] {
   margin-left: -0.2rem !important;
 }
 
 ._-mr-\[0\.2rem\] {
   margin-right: -0.2rem !important;
-}
-
-._-mt-2 {
-  margin-top: -0.5rem !important;
 }
 
 ._mb-0 {
@@ -1439,10 +1435,6 @@ video {
   width: 4rem !important;
 }
 
-._w-2 {
-  width: 0.5rem !important;
-}
-
 ._w-2\.5 {
   width: 0.625rem !important;
 }
@@ -1521,10 +1513,6 @@ video {
 
 ._w-full {
   width: 100% !important;
-}
-
-._min-w-2 {
-  min-width: 0.5rem !important;
 }
 
 ._max-w-44 {
@@ -2201,10 +2189,6 @@ video {
   padding-left: 18rem !important;
 }
 
-._pr-1 {
-  padding-right: 0.25rem !important;
-}
-
 ._pr-12 {
   padding-right: 3rem !important;
 }
@@ -2243,6 +2227,10 @@ video {
 
 ._pt-4 {
   padding-top: 1rem !important;
+}
+
+._pt-6 {
+  padding-top: 1.5rem !important;
 }
 
 ._pt-8 {
@@ -2771,11 +2759,6 @@ video {
 
 ._group\/headerdrawer[open] .group-open\/headerdrawer\:_invisible {
   visibility: hidden !important;
-}
-
-._group\/faq[open] .group-open\/faq\:_rotate-90 {
-  --tw-rotate: 90deg !important;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y)) !important;
 }
 
 ._group[open] .group-open\:_bg-brand-primary-100 {

@@ -17,9 +17,9 @@
           "settings": {
             "heading": "The Future of Skincare",
             "heading_tag": "h1",
-            "desktop_text_size": "5xl",
+            "desktop_text_size": "4xl",
             "mobile_text_size": "2.5xl",
-            "margin_bottom": "2",
+            "margin_bottom": "0",
             "invert_colours": true,
             "mobile_invert_colours": true,
             "decoration_tag_on": false,
@@ -32,7 +32,7 @@
           "settings": {
             "heading": "Starts With <em>Peptides</em>",
             "heading_tag": "h1",
-            "desktop_text_size": "5xl",
+            "desktop_text_size": "4xl",
             "mobile_text_size": "2.5xl",
             "margin_bottom": "2",
             "invert_colours": true,
@@ -71,18 +71,18 @@
       ],
       "settings": {
         "image": "shopify://shop_images/7-22_HP-SummerKits-banner-Desktop.jpg",
-        "video": "shopify://files/videos/power serum SMALL FOR WEB.mp4",
-        "image_overlay_opacity": 70,
+        "video": "shopify://files/videos/hp-homepage-hb-compressed (1).mp4",
+        "image_overlay_opacity": 40,
         "container_width": "page",
         "image_height": "large",
         "desktop_content_position": "middle-left",
         "show_text_box": false,
         "desktop_content_alignment": "left",
         "mobile_image": "shopify://shop_images/7-22_HP-SummerKits-banner-Mobile_44a11b1c-1ff5-45a3-a967-ded05ade7480.jpg",
-        "mobile_image_overlay_opacity": 60,
-        "mobile_image_height": "medium",
+        "mobile_image_overlay_opacity": 40,
+        "mobile_image_height": "small",
         "mobile_content_alignment": "center",
-        "mobile_content_position": "top-center",
+        "mobile_content_position": "middle-center",
         "show_mobile_text_box": false,
         "margin_bottom": "0"
       }
@@ -93,6 +93,7 @@
         "show_background": false,
         "top_heading": "New arrivals",
         "main_heading": "New Essentials",
+        "description": "<p>New arrivals, designed to support your skin and backed by science</p>",
         "collection": "best-sellers-on-home-page",
         "products_to_show": 8,
         "show_rating": true,
@@ -107,10 +108,10 @@
         "hotspot_LamFk4": {
           "type": "hotspot",
           "settings": {
-            "product_select": "",
+            "product_select": "micro-dose-glow-booster",
             "hotspot_position_horizontal": 0,
             "hotspot_position_horizontal_reverse": false,
-            "hotspot_position_vertical": 0,
+            "hotspot_position_vertical": 2,
             "hotspot_position_vertical_reverse": false,
             "hotspot_position_mobile_horizontal": 0,
             "hotspot_position_mobile_horizontal_reverse": false,
@@ -122,7 +123,6 @@
       "block_order": [
         "hotspot_LamFk4"
       ],
-      "name": "WM ImageBlock 3",
       "settings": {
         "top_heading": "New Protect collection",
         "main_heading": "Sun Protection, <em>Done</em> Better",
@@ -177,7 +177,7 @@
         "show_background": false,
         "top_heading": "Quick links",
         "main_heading": "Sun Protection, Done <em>Better</em>",
-        "description": "Our Sunscreens provide broad-spectrum protection that boost natural defences against ageing and free radical damage, all while nourishing and soothing skin.",
+        "description": "<p>Our Sunscreens provide broad-spectrum protection that boost natural defences against ageing and free radical damage, all while nourishing and soothing skin.</p>",
         "cta_text": "Explore Now",
         "cta_url": "shopify://collections",
         "image_1": "shopify://shop_images/sun-slick-in-use.jpg",

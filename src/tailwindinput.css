@@ -129,7 +129,10 @@
     @apply _mt-8;
   }
   ._prose h3 {
-    @apply _mb-1 _text-[15px] _font-semibold _uppercase _text-brand-dark;
+    @apply _mb-2 _text-[15px] _font-semibold _uppercase _text-brand-dark;
+  }
+  ._prose h3:not(:first-child) {
+    @apply _mt-4;
   }
   ._prose strong {
     @apply _font-semibold;

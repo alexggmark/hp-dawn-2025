@@ -374,47 +374,53 @@
                         </summary>
                         <div>
                           {% comment %} Alex - don't remove transparent border - it's a hack to force proper height calculation with lazy loaded media {% endcomment %}
-                          <div class="_grid _grid-cols-12 _pt-2 _pb-4 _border _border-transparent">
-                            {%- unless entry.media == blank -%}
-                              <div class="{% if entry.media_only or entry.content == blank %} _col-span-full{% else %} md:_col-span-6 _col-span-full md:_pr-3 md:_mb-0 _mb-4{% endif %}">
-                                {%- assign media = entry.media.value -%}
-                                {%- if media.media_type == 'video' -%}
-                                  {{ media | video_tag: controls: true, preload: 'metadata', autoplay: true, muted: true, loop: true, width: '100%', height: '100%' }}
-                                {%- else -%}
-                                  {{ media | image_url: width: 500 | image_tag: loading: 'lazy', width: '100%', height: '100%' }}
-                                {%- endif -%}
-                              </div>
-                            {%- endunless -%}
-                            <div class="{% if entry.media_only or entry.media == blank %} _col-span-full{% else %} md:_col-span-6 _col-span-full{% endif %}">
-                              {%- unless entry.content == blank -%}
-                                <div class="_prose _text-base">
-                                  {{ entry.content | metafield_tag }}
+                          <div class="_pt-2 _pb-4 _border _border-transparent">
+                            <div class="_grid _grid-cols-12">
+                              {%- unless entry.media == blank -%}
+                                <div class="{% if entry.media_only or entry.content == blank %} _col-span-full{% else %} md:_col-span-6 _col-span-full md:_pr-3 md:_mb-0 _mb-4{% endif %}">
+                                  {%- assign media = entry.media.value -%}
+                                  {%- if media.media_type == 'video' -%}
+                                    {{ media | video_tag: controls: true, preload: 'metadata', autoplay: true, muted: true, loop: true, width: '100%', height: '100%' }}
+                                  {%- else -%}
+                                    {{ media | image_url: width: 500 | image_tag: loading: 'lazy', width: '100%', height: '100%' }}
+                                  {%- endif -%}
                                 </div>
                               {%- endunless -%}
+                              <div class="{% if entry.media_only or entry.media == blank %} _col-span-full{% else %} md:_col-span-6 _col-span-full{% endif %}">
+                                {%- unless entry.content == blank -%}
+                                  <div class="_prose _text-base">
+                                    {{ entry.content | metafield_tag }}
+                                  </div>
+                                {%- endunless -%}
 
-                              {%- unless entry.faq_select == blank -%}
-                                {%- for faq in entry.faq_select.value -%}
-                                  <details
-                                    class="
-                                      _group/faq _border-t _border-brand-border
-                                      {% if forloop.first %} _-mt-2{% endif %}
-                                      {% if forloop.last %} _-mb-2{% endif %}
-                                    "
-                                  >
-                                    <summary class="_flex _flex-row _justify-between _py-6 _pl-0.5 hover:_bg-brand-background">
-                                      <h3 class="_font-medium _pr-1 md:_text-base _text-sm">
-                                        {{ faq.question }}
-                                      </h3>
-                                      <span class="svg-wrapper _w-2 _min-w-2 _mr-2 group-open/faq:_rotate-90 _duration-100">
-                                        {{- 'icon-chevron-arrow.svg' | inline_asset_content -}}
-                                      </span>
-                                    </summary>
-                                    <div class="_pt-2 _pb-6 _prose _text-sm _pl-0.5">
-                                      {{ faq.answer | metafield_tag }}
-                                    </div>
-                                  </details>
-                                {%- endfor -%}
-                              {%- endunless -%}
+                                {% comment %} {%- unless entry.faq_select == blank -%}
+                                  <div class="_pt-6">
+                                    {%- for faq in entry.faq_select.value -%}
+                                      <animated-details>
+                                        <details
+                                          class="
+                                            _group/faq _border-t _border-brand-border
+                                          "
+                                        >
+                                          <summary class="_flex _flex-row _justify-start _py-5 _gap-3">
+                                            <span class="svg-wrapper _w-4 _h-4 group-hover/faq:_scale-110 _text-brand-primary-500" data-js-plus-icon>
+                                              {{- 'icon-newbuild-plus-thick.svg' | inline_asset_content -}}
+                                            </span>
+                                            <h3 class="_font-heading-small _text-brand-grey _text-base">
+                                              {{ faq.question }}
+                                            </h3>
+                                          </summary>
+                                          <div class="_prose _text-sm _pl-0.5">
+                                            <div class="_pb-6 _text-base">
+                                              {{ faq.answer | metafield_tag }}
+                                            </div>
+                                          </div>
+                                        </details>
+                                      </animated-details>
+                                    {%- endfor -%}
+                                  </div>
+                                {%- endunless -%} {% endcomment %}
+                              </div>
                             </div>
                           </div>
                         </div>

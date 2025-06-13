@@ -55,6 +55,16 @@
         "label": "Default collection overlay opacity",
         "default": 0
       },
+      {
+        "type": "header",
+        "content": "Ingredients accordion controls"
+      },
+      {
+        "type": "image_picker",
+        "id": "default_ingredients_image",
+        "label": "Pick a default image for ingredients block",
+        "info": "This will be default if no ingredient image is available or active"
+      },
     ]
   },
   {

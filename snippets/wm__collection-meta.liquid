@@ -42,12 +42,14 @@
                   {{- 'icon-newbuild-plus-thin.svg' | inline_asset_content -}}
                 </span>
               </summary>
-              <div class="
-                md:_text-base _text-sm
-                _prose
-                _pb-6
-              ">
-                {{ entry.answer | metafield_tag }}
+              <div>
+                <div class="
+                  md:_text-base _text-sm
+                  _prose
+                  _pb-6
+                ">
+                  {{ entry.answer | metafield_tag }}
+                </div>
               </div>
             </details>
           </animated-details>

@@ -77,10 +77,42 @@
                     {% endif %}
                   >
                     {%- assign media = entry.media.value -%}
-                    {%- if media.media_type == 'video' -%}
-                      {{ media | video_tag: controls: true, preload: 'metadata', autoplay: true, muted: true, loop: true, width: '100%', height: '100%' }}
+                    {%- assign media_compare = entry.media_compare.value -%}
+
+                    {%- if media_compare != blank and media_compare.media_type != 'video' and media.media_type != 'video' -%}
+                      {% comment %} Only load this once as needed {% endcomment %}
+                      {%- unless skip_styles -%}
+                        <script src="{{ 'wm__beer-slider.js' | asset_url }}" defer="defer"></script>
+                        {{ 'wm__beer-slider.css' | asset_url | stylesheet_tag }}
+                      {%- endunless -%}
+                      {%- assign skip_styles = true -%}
+
+                      <div
+                        class="_aspect-[7/6] _w-full _bg-brand-background beer-slider"
+                        data-beer-label="After"
+                      >
+                        <img
+                          src="{{ media | image_url: width: 1000 }}"
+                          width="{{ media.width }}"
+                          height="{{ media.height }}"
+                          alt="{{ media.alt }}"
+                        >
+                        <div class="beer-reveal" data-beer-label="Before">
+                          <img
+                            src="{{ media_compare | image_url: width: 1000 }}"
+                            width="{{ media_compare.width }}"
+                            height="{{ media_compare.height }}"
+                            alt="{{ media_compare.alt }}"
+                          >
+                        </div>
+                      </div>
+
                     {%- else -%}
-                      {{ media | image_url: width: 1000 | image_tag: loading: 'lazy', width: '100%', height: '100%' }}
+                      {%- if media.media_type == 'video' -%}
+                        {{ media | video_tag: controls: true, preload: 'metadata', autoplay: true, muted: true, loop: true, width: '100%', height: '100%' }}
+                      {%- else -%}
+                        {{ media | image_url: width: 1000 | image_tag: loading: 'lazy', width: '100%', height: '100%' }}
+                      {%- endif -%}
                     {%- endif -%}
                   </div>
                 </div>
@@ -94,7 +126,7 @@
               <div class="_grid _gap-8 md:_grid-cols-12 _grid-cols-1">
                 <div class="md:_col-span-5 _col-span-1 _flex _flex-col _items-start _justify-center{% if entry.reverse_order %} md:_pl-12 md:_order-2{% else %} md:_pr-12{% endif %}">
                   {%- unless entry.title == blank -%}
-                    <h2 class="_font-heading-primary _text-brand-dark md:_text-3xl _text-2.5xl _mt-1">
+                    <h2 class="_font-heading-primary _text-brand-dark md:_text-3xl _text-2.5xl _mb-2">
                       {{ entry.title }}
                     </h2>
                   {%- endunless -%}
@@ -107,7 +139,7 @@
                     {%- endunless -%}
                   </div>
                   {%- unless entry.text == blank -%}
-                    <div class="_prose _text-base _mt-4">
+                    <div class="_prose _text-base _mt-2">
                       {{ entry.text | metafield_tag }}
                     </div>
                   {%- endunless -%}
@@ -204,10 +236,14 @@
                       <div class="_flex-1 _w-full _max-h-[520px]{% if forloop.first %} js-panel--active{% endif %}" data-js-accordion-panel="{{ forloop.index }}">
                         {%- assign media = ingredient.media.value -%}
                         {%- assign media_classes = "_object-contain _w-full _h-full" -%}
-                        {%- if media.media_type == 'video' -%}
-                          {{ media | video_tag: controls: true, preload: 'metadata', autoplay: true, muted: true, loop: true, width: '100%', height: '100%' }}
+                        {%- if media != blank -%}
+                          {%- if media.media_type == 'video' -%}
+                            {{ media | video_tag: controls: true, preload: 'metadata', autoplay: true, muted: true, loop: true, width: '100%', height: '100%' }}
+                          {%- else -%}
+                            {{ media | image_url: width: 1000 | image_tag: loading: 'lazy', width: '100%', height: '100%', class: media_classes }}
+                          {%- endif -%}
                         {%- else -%}
-                          {{ media | image_url: width: 1000 | image_tag: loading: 'lazy', width: '100%', height: '100%', class: media_classes }}
+                          {{ settings.default_ingredients_image | image_url: width: 1000 | image_tag: loading: 'lazy', width: '100%', height: '100%', class: media_classes }}
                         {%- endif -%}
                       </div>
                       {%- endfor -%}
@@ -231,49 +267,6 @@
     "groups": ["header", "footer"]
   },
   "settings": [
-    {
-      "type": "inline_richtext",
-      "id": "top_heading",
-      "default": "t:sections.footer.blocks.link_list.settings.heading.default",
-      "label": "Top Heading"
-    },
-    {
-      "type": "inline_richtext",
-      "id": "main_heading",
-      "default": "t:sections.footer.blocks.link_list.settings.heading.default",
-      "label": "Main Heading"
-    },
-    {
-      "type": "inline_richtext",
-      "id": "description",
-      "default": "Description text",
-      "label": "Description text"
-    },
-    {
-      "type": "text",
-      "id": "cta_text",
-      "label": "CTA Text",
-      "default": "See all"
-    },
-    {
-      "type": "url",
-      "id": "cta_url",
-      "label": "Pick URL for button"
-    },
-    {
-      "type": "header",
-      "content": "Images"
-    },
-    {
-      "type": "video",
-      "id": "video",
-      "label": "Main video"
-    },
-    {
-      "type": "image_picker",
-      "id": "image",
-      "label": "Main image"
-    }
   ],
   "presets": [
     {
