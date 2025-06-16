@@ -119,25 +119,23 @@
         "margin_bottom": "0"
       }
     },
-    "174766694018ff52b0": {
+    "175007490287b4d42b": {
       "type": "apps",
       "blocks": {
-        "yotpo_product_reviews_reviews_aHR8ja": {
-          "type": "shopify://apps/yotpo-product-reviews/blocks/reviews/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
+        "loox_reviews_loox_dynamic_section_GrXmDV": {
+          "type": "shopify://apps/loox-reviews/blocks/loox-dynamic-section/5c3b337f-fd14-4df5-b1d6-80ec13e6e28e",
           "settings": {
-            "product": "{{product}}"
-          }
-        },
-        "yotpo_product_reviews_star_rating_69T7CX": {
-          "type": "shopify://apps/yotpo-product-reviews/blocks/star-rating/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
-          "settings": {
-            "product": "{{product}}"
+            "only_photos": false,
+            "aggregated": false,
+            "limit": 20,
+            "hide_thumbnails": false,
+            "maxwidth": 1080,
+            "is_sample": true
           }
         }
       },
       "block_order": [
-        "yotpo_product_reviews_reviews_aHR8ja",
-        "yotpo_product_reviews_star_rating_69T7CX"
+        "loox_reviews_loox_dynamic_section_GrXmDV"
       ],
       "settings": {
         "include_margins": true
@@ -145,11 +143,11 @@
     }
   },
   "order": [
-    "174766694018ff52b0",
     "main",
     "pdp-metaobject-blocks",
     "related-products",
     "wm_pdp_metaobject_blocks_footer_BX93gM",
-    "wm_cta_banner"
+    "wm_cta_banner",
+    "175007490287b4d42b"
   ]
 }

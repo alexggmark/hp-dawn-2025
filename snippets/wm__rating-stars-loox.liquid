@@ -2,6 +2,7 @@
   Renders rating stars.
   Accepts:
   - product: {String} a class to be added to the <ul> element (optional).
+  - force_show_empty: {Boolean} show even if they're empty.
 
   Usage:
   {% render 'wm__rating-stars',
@@ -64,7 +65,7 @@
     </span>
   </div>
 
-{%- else -%}
+{%- elsif force_show_empty == true -%}
   <div class="_flex _flex-row _items-center _gap-1">
     <div class="_flex" aria-label="No reviews yet">
       {%- for i in (1..5) -%}
