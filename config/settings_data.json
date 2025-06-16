@@ -15,6 +15,7 @@
     "default_collection_banner_lighttext": true,
     "default_collection_invisible_header": true,
     "default_collection_overlay_opacity": 30,
+    "default_ingredients_image": "shopify://shop_images/glass-jars.webp",
     "logo": "shopify://shop_images/HydroPeptide-logo-dark.svg",
     "logo_width": 160,
     "type_header_font": "assistant_n4",

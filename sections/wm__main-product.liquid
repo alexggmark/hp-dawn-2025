@@ -26,7 +26,7 @@
   {%- endif -%}
 
   <script src="{{ 'wm__product-info.js' | asset_url }}" defer="defer"></script>
-  <script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
+  <script src="{{ 'wm__product-form.js' | asset_url }}" defer="defer"></script>
   {%- if product.quantity_price_breaks_configured? -%}
     <script src="{{ 'show-more.js' | asset_url }}" defer="defer"></script>
     <script src="{{ 'price-per-item.js' | asset_url }}" defer="defer"></script>
@@ -82,15 +82,13 @@
                 {%- endunless -%}
                 
               {%- when 'price' -%}
-                {% comment %}
-                <div id="price-{{ section.id }}" role="status" {{ block.shopify_attributes }}>
+                <div id="price-{{ section.id }}" role="status" {{ block.shopify_attributes }} class="_border _border-red-500 _bg-red-100 _p-4 _rounded-md">
                   {%- render 'wm__price',
                     product: product,
                     use_variant: true,
                     price_class: ''
                   -%}
                 </div>
-                {% endcomment %}
               {%- when 'inventory' -%}
                 <p
                   class="product__inventory{% if block.settings.text_style == 'uppercase' %} caption-with-letter-spacing{% elsif block.settings.text_style == 'subtitle' %} subtitle{% endif %}{% if product.selected_or_first_available_variant.inventory_management != 'shopify' %} visibility-hidden{% endif %}"
@@ -657,11 +655,6 @@
       "limit": 1
     },
     {
-      "type": "price",
-      "name": "t:sections.main-product.blocks.price.name",
-      "limit": 1
-    },
-    {
       "type": "sku",
       "name": "t:sections.main-product.blocks.sku.name",
       "limit": 1,
@@ -798,6 +791,11 @@
     {
       "type": "description",
       "name": "t:sections.main-product.blocks.description.name",
+      "limit": 1
+    },
+    {
+      "type": "price",
+      "name": "t:sections.main-product.blocks.price.name",
       "limit": 1
     },
     {
