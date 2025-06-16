@@ -82,13 +82,13 @@
                 {%- endunless -%}
                 
               {%- when 'price' -%}
-                <div id="price-{{ section.id }}" role="status" {{ block.shopify_attributes }} class="_border _border-red-500 _bg-red-100 _p-4 _rounded-md">
+                {% comment %} <div id="price-{{ section.id }}" role="status" {{ block.shopify_attributes }} class="_border _border-red-500 _bg-red-100 _p-4 _rounded-md">
                   {%- render 'wm__price',
                     product: product,
                     use_variant: true,
                     price_class: ''
                   -%}
-                </div>
+                </div> {% endcomment %}
               {%- when 'inventory' -%}
                 <p
                   class="product__inventory{% if block.settings.text_style == 'uppercase' %} caption-with-letter-spacing{% elsif block.settings.text_style == 'subtitle' %} subtitle{% endif %}{% if product.selected_or_first_available_variant.inventory_management != 'shopify' %} visibility-hidden{% endif %}"
@@ -343,7 +343,9 @@
                 </div>
               {%- when 'rating' -%}
                 <div class="_my-4">
-                  {% render 'wm__rating-stars', main_product: product %}
+                  <a href="#looxReviews">
+                    {%- render 'wm__rating-stars-loox', product: product -%}
+                  </a>
                 </div>
               {%- when 'usps' -%}
                 <div class="_w-full _my-5" data-js-product-usps>

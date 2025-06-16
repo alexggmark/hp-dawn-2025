@@ -20,16 +20,16 @@
           "type": "title",
           "settings": {}
         },
+        "price": {
+          "type": "price",
+          "settings": {}
+        },
         "rating_xbiqGz": {
           "type": "rating",
           "settings": {}
         },
         "description": {
           "type": "description",
-          "settings": {}
-        },
-        "price": {
-          "type": "price",
           "settings": {}
         },
         "variant_picker": {
@@ -60,9 +60,9 @@
       "block_order": [
         "badge_EVc6gV",
         "title",
+        "price",
         "rating_xbiqGz",
         "description",
-        "price",
         "variant_picker",
         "buy_buttons",
         "usps_H6VVPr",
@@ -90,11 +90,6 @@
       "type": "wm__related-products",
       "settings": {
         "heading": "Pairs Well With",
-        "heading_size": "h2",
-        "products_to_show": 4,
-        "columns_desktop": 4,
-        "columns_mobile": "2",
-        "color_scheme": "scheme-1",
         "image_ratio": "square",
         "image_shape": "default",
         "show_secondary_image": true,
@@ -150,11 +145,11 @@
     }
   },
   "order": [
+    "174766694018ff52b0",
     "main",
     "pdp-metaobject-blocks",
     "related-products",
     "wm_pdp_metaobject_blocks_footer_BX93gM",
-    "wm_cta_banner",
-    "174766694018ff52b0"
+    "wm_cta_banner"
   ]
 }

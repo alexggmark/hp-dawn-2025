@@ -238,15 +238,16 @@
               {% comment %} -- (C) Description -- {% endcomment %}
               {% comment %} --------------------- {% endcomment %}
               <span class="_text-sm _text-brand-dark [grid-area:C]">
-                SPF 50 Mineral Sun Stick
+                {%- unless card_product.metafields.custom.product_tagline == blank -%}
+                  {{ card_product.metafields.custom.product_tagline }}
+                {%- endunless -%}
               </span>
 
               {% comment %} ---------------------- {% endcomment %}
               {% comment %} -- (D) Review stars -- {% endcomment %}
               {% comment %} ---------------------- {% endcomment %}
-              <div class="_flex _items-center _gap-1 [grid-area:D] md:_justify-self-end">
-                <span class="_text-sm _text-brand-primary-500">★★★★★</span>
-                <span class="_font-body-condensed _font-medium _text-brand-dark _text-sm">4.5 (100)</span>
+              <div class="_flex _items-center [grid-area:D] md:_justify-self-end">
+                {% render 'wm__rating-stars-loox', product: card_product %}
               </div>
             {%- endunless -%}
           </div>

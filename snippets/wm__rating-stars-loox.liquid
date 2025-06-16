@@ -1,0 +1,77 @@
+{% comment %}
+  Renders rating stars.
+  Accepts:
+  - product: {String} a class to be added to the <ul> element (optional).
+
+  Usage:
+  {% render 'wm__rating-stars',
+    product: card_product
+  %}
+{% endcomment %}
+
+{%- assign rating = product.metafields.loox.avg_rating | times: 1 -%}
+{%- assign reviews = product.metafields.loox.num_reviews | times: 1 -%}
+
+{% comment %} {%- assign rating = 4.1 -%} {% endcomment %}
+{% comment %} {%- assign reviews = 12 -%} {% endcomment %}
+
+{%- if rating and reviews > 0 -%}
+  <div class="_flex _flex-row _items-center _gap-1">
+    <div class="_flex" aria-label="{{ rating }} out of 5 stars">
+      {%- assign full_stars = rating | floor -%}
+      {%- assign decimal_part = rating | modulo: 1.0 -%}
+      {%- assign has_half_star = 0 -%}
+
+      {%- if decimal_part >= 0.25 and decimal_part < 0.75 -%}
+        {%- assign has_half_star = 1 -%}
+      {%- elsif decimal_part >= 0.75 -%}
+        {%- assign full_stars = full_stars | plus: 1 -%}
+      {%- endif -%}
+
+      {%- assign empty_stars = 5 | minus: full_stars | minus: has_half_star -%}
+
+      {%- if full_stars > 0 -%}
+        {%- for i in (1..full_stars) -%}
+          <svg class="_w-3.5 _h-3.5 _fill-brand-primary-500" viewBox="0 0 24 24" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 17.3L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+          </svg>
+        {%- endfor -%}
+      {%- endif -%}
+
+      {%- if has_half_star >= 0.5 -%}
+        <svg class="_w-3.5 _h-3.5 _fill-brand-primary-500 _text-brand-primary-500" viewBox="0 0 24 24" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="halfGrad">
+              <stop offset="50%" stop-color="currentColor"/>
+              <stop offset="50%" stop-color="#E5E7EB"/>
+            </linearGradient>
+          </defs>
+          <path d="M12 17.3L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" fill="url(#halfGrad)"/>
+        </svg>
+      {%- endif -%}
+
+      {%- if empty_stars > 0 -%}
+        {%- for i in (1..empty_stars) -%}
+          <svg class="_w-3.5 _h-3.5 _fill-gray-200" viewBox="0 0 24 24" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 17.3L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+          </svg>
+        {%- endfor -%}
+      {%- endif -%}
+    </div>
+
+    <span class="_font-body-condensed _font-medium _text-brand-dark _text-sm">
+      {{ rating | round: 1 }} ({{ reviews }})
+    </span>
+  </div>
+
+{%- else -%}
+  <div class="_flex _flex-row _items-center _gap-1">
+    <div class="_flex" aria-label="No reviews yet">
+      {%- for i in (1..5) -%}
+        <svg class="_w-3.5 _h-3.5 _fill-gray-200" viewBox="0 0 24 24" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 17.3L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+        </svg>
+      {%- endfor -%}
+    </div>
+  </div>
+{%- endif -%}
