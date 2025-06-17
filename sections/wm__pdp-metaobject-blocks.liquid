@@ -202,7 +202,7 @@
           {%- assign ingredients = entry.ingredient.value -%}
           
           {%- unless ingredients == blank -%}
-            <div class="{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %} md:_py-20 _py-12">
+            <div class="{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %} md:_py-20 _py-12" id="product_lp_ingredients_block">
               <div class="_relative page-width">
                 <accordion-image-split>
                   <div class="_grid md:_grid-cols-12 _grid-cols-1 _gap-8">

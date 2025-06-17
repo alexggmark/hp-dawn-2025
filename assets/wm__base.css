@@ -428,16 +428,16 @@ blockquote {
 table:not([class]) {
   table-layout: fixed;
   border-collapse: collapse;
-  font-size: 1rem;
+  font-size: 0.9rem;
   border-style: hidden;
-  box-shadow: 0 0 0 0.1rem rgba(var(--color-foreground), 0.2);
+  box-shadow: 0 0 0 1px var(--color-brand-border);
   /* draws the table border  */
 }
 
 table:not([class]) td,
 table:not([class]) th {
-  padding: 1em;
-  border: 0.1rem solid rgba(var(--color-foreground), 0.2);
+  padding: 0.8rem;
+  border: 1px solid var(--color-brand-border);
 }
 
 @media screen and (max-width: 749px) {

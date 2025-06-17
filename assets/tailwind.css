@@ -1263,6 +1263,10 @@ video {
   margin-top: auto !important;
 }
 
+._mt-3 {
+  margin-top: 0.75rem !important;
+}
+
 ._box-border {
   box-sizing: border-box !important;
 }
@@ -1521,6 +1525,10 @@ video {
 
 ._w-full {
   width: 100% !important;
+}
+
+._w-2 {
+  width: 0.5rem !important;
 }
 
 ._max-w-44 {
