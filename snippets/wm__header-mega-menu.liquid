@@ -42,30 +42,9 @@
         {%- endif -%}
       {%- endfor -%}
 
-      {%- unless active_parent == nil -%}
-        <script>
-          console.log("WORKING PARENT");
-          console.log({{ active_parent | json }});
-        </script>
-      {%- endunless -%}
-
       {%- assign banner_entries = active_parent.banner_link.value | default: blank -%}
       {%- assign child_items = active_parent.child_item.value | default: blank -%}
       {%- assign default_content = active_parent.default_panel.value | default: blank -%}
-      
-      <script>
-        console.log("WORKING CHILD");
-        console.log({{ child_items | json }});
-
-        console.log("DEFAULT COLLECTION:");
-        console.log("{{ link.title }} - {{ default_content }}");
-
-        {%- for banner in banner_entries -%}
-          console.log("banner_entries:");
-          console.log({{ banner | json }});
-        {%- endfor -%}
-      </script>
-      {% comment %} / Metaobject: grab right parent metaobject {% endcomment %}
 
       <li>
         {%- if link.links != blank -%}
@@ -131,15 +110,17 @@
                             data-js-child-no-links
                           {% endif %}
                         >
-                          <span
-                            class="_text-sm _font-link link-underline"
-                          >
-                            {{ childlink.title | escape }}
-                          </span>
                           {%- if active_child -%}
+                            <span class="_text-sm _font-link link-underline">
+                              {{ childlink.title | escape }}
+                            </span>
                             <span class="svg-wrapper _w-2.5 _-rotate-90 group-hover/childlink:_ml-2">
                               {{- 'icon-caret.svg' | inline_asset_content -}}
                             </span>
+                          {%- else -%}
+                            <a href="{{ childlink.url }}" class="_text-sm _font-link link-underline">
+                              {{ childlink.title | escape }}
+                            </a>
                           {%- endif -%}
                         </li>
                       {%- endfor -%}

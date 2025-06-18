@@ -1,0 +1,116 @@
+<div 
+  class="
+    _mb-{{ section.settings.margin_bottom | divided_by: 2 }} md:_mb-{{ section.settings.margin_bottom }}
+    _py-{{ section.settings.padding | divided_by: 2 }} md:_py-{{ section.settings.padding }}
+    {% if section.settings.show_background %} _bg-brand-background-light{% endif %}
+    {% if section.settings.include_margins %}page-width{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}
+  "
+>
+  {%- for block in section.blocks -%}
+    {% render block %}
+  {%- endfor -%}
+</div>
+
+{% schema %}
+{
+  "name": "WM Apps",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "include_margins",
+      "default": true,
+      "label": "t:sections.apps.settings.include_margins.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_background",
+      "default": false,
+      "label": "Turn on background"
+    },
+    {
+      "type": "select",
+      "id": "padding",
+      "options": [
+        {
+          "value": "0",
+          "label": "0rem"
+        },
+        {
+          "value": "2",
+          "label": "0.5rem"
+        },
+        {
+          "value": "4",
+          "label": "1rem"
+        },
+        {
+          "value": "6",
+          "label": "1.5rem"
+        },
+        {
+          "value": "8",
+          "label": "2rem"
+        },
+        {
+          "value": "12",
+          "label": "3rem"
+        },
+        {
+          "value": "16",
+          "label": "4rem"
+        }
+      ],
+      "default": "0",
+      "label": "Padding"
+    },
+    {
+      "type": "select",
+      "id": "margin_bottom",
+      "options": [
+        {
+          "value": "0",
+          "label": "0rem"
+        },
+        {
+          "value": "2",
+          "label": "0.5rem"
+        },
+        {
+          "value": "4",
+          "label": "1rem"
+        },
+        {
+          "value": "6",
+          "label": "1.5rem"
+        },
+        {
+          "value": "8",
+          "label": "2rem"
+        },
+        {
+          "value": "12",
+          "label": "3rem"
+        },
+        {
+          "value": "16",
+          "label": "4rem"
+        }
+      ],
+      "default": "0",
+      "label": "Margin bottom"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "@app"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.apps.presets.name"
+    }
+  ]
+}
+{% endschema %}
