@@ -9,12 +9,34 @@
  */
 {
   "sections": {
-    "main": {
-      "type": "wm__main-page",
-      "settings": {}
+    "175025740754976e0b": {
+      "type": "wm__apps",
+      "blocks": {
+        "sc_store_locator_map_map_CNKxBM": {
+          "type": "shopify://apps/sc-store-locator-map/blocks/map/4ca379c6-722c-49d3-b6ec-a7fe7c1061a5",
+          "settings": {
+            "distance_unit": "KM",
+            "display_title": true,
+            "display_header_html": false,
+            "display_search": true,
+            "display_footer_html": false,
+            "search_text": "#121212",
+            "search_background": "linear-gradient(180deg, rgba(244, 246, 253, 1), rgba(244, 246, 253, 1) 100%)",
+            "display_addresses_sidebar": true,
+            "map_theme": "default",
+            "google_maps_language": "en"
+          }
+        }
+      },
+      "block_order": [
+        "sc_store_locator_map_map_CNKxBM"
+      ],
+      "settings": {
+        "include_margins": true
+      }
     }
   },
   "order": [
-    "main"
+    "175025740754976e0b"
   ]
 }

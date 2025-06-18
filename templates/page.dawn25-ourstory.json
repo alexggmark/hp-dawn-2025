@@ -16,7 +16,7 @@
         "description": "<p>We are the experts in the science of skin ageing, HydroPeptide offers professional skincare developed by geneticists and powered by patented peptide technology.</p>",
         "image": "shopify://shop_images/power-serum-banner-background.webp",
         "image_overlay_opacity": 50,
-        "mobile_image_overlay_opacity": 0,
+        "mobile_image_overlay_opacity": 50,
         "margin_bottom": "8",
         "invert_colours": true,
         "mobile_invert_colours": true

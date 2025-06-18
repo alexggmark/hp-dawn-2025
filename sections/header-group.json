@@ -17,21 +17,13 @@
         "announcement-bar-0": {
           "type": "announcement",
           "settings": {
-            "text": "Global announcement 40% off",
-            "link": "shopify://collections"
-          }
-        },
-        "announcement_DME7Tc": {
-          "type": "announcement",
-          "settings": {
-            "text": "Testing testing announcement 20% off",
-            "link": "shopify://collections"
+            "text": "Free Shipping on Orders Over £80",
+            "link": "shopify://collections/best-sellers"
           }
         }
       },
       "block_order": [
-        "announcement-bar-0",
-        "announcement_DME7Tc"
+        "announcement-bar-0"
       ],
       "settings": {}
     },
@@ -50,9 +42,7 @@
         "enable_country_selector": true,
         "enable_language_selector": true,
         "enable_customer_avatar": true,
-        "margin_bottom": 0,
-        "padding_top": 20,
-        "padding_bottom": 20
+        "margin_bottom": 0
       }
     }
   },

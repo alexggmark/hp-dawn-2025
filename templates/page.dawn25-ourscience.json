@@ -140,6 +140,7 @@
         "show_background": true,
         "top_heading": "",
         "main_heading": "<em>Your</em> Favourites",
+        "description": "<p>The peptide-powered essentials that consistently deliver and loved by you</p>",
         "collection": "best-sellers",
         "products_to_show": 11,
         "show_rating": false,

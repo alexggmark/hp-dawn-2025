@@ -1176,24 +1176,16 @@ video {
   top: 2rem !important;
 }
 
-._top-9 {
-  top: 2.25rem !important;
-}
-
 ._top-\[0\.7rem\] {
   top: 0.7rem !important;
 }
 
-._top-full {
-  top: 100% !important;
-}
-
-._top-10 {
-  top: 2.5rem !important;
-}
-
 ._top-\[2\.4rem\] {
   top: 2.4rem !important;
+}
+
+._top-full {
+  top: 100% !important;
 }
 
 ._isolate {

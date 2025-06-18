@@ -11,7 +11,10 @@
   "sections": {
     "main": {
       "type": "wm__main-page",
-      "settings": {}
+      "settings": {
+        "prose": true,
+        "padding": "16"
+      }
     }
   },
   "order": [
