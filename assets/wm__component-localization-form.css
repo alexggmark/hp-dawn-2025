@@ -169,7 +169,7 @@
   display: flex;
   justify-content: end;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.8rem;
   padding: 1.5rem 1.5rem 0.6rem;
   position: sticky;
   top: -0.02rem;
@@ -183,7 +183,7 @@
 
 .country-filter__reset-button,
 .country-filter__search-icon {
-  right: calc(var(--inputs-border-width));
+  right: 0.8rem;
   top: var(--inputs-border-width);
 }
 
@@ -273,8 +273,8 @@
     align-items: center;
     padding: 0rem;
     background-color: transparent;
-    height: 4.4rem;
-    width: 4.4rem;
+    height: 1.4rem;
+    width: 1.4rem;
   }
 
   .country-selector__close-button .icon {
@@ -283,7 +283,7 @@
   }
 
   .country-filter {
-    padding: 1.5rem 2rem 0.6rem 1.5rem;
+    padding: 1.5rem 1rem 0.6rem 1rem;
   }
 }
 

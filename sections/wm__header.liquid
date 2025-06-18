@@ -284,9 +284,14 @@
 
     <div class="_flex-1 _flex _items-center _justify-end">
       <div class="_flex _justify-end _items-center md:_gap-5 _gap-3">
-        <div class="_p-4 _h-full lg:_block _hidden">
-          <a class="_text-[12px] _font-semibold _tracking-widest header-controlled--text _uppercase list-menu__item focus-inset link-underline-trigger link-underline">Find your perfect regime</a>
-        </div>
+
+        {%- unless section.settings.right_link_text == blank -%}
+          <div class="_p-4 _h-full lg:_block _hidden">
+            <a href="{{ section.settings.right_link_url }}" class="_text-[12px] _font-semibold _tracking-widest header-controlled--text _uppercase list-menu__item focus-inset link-underline-trigger link-underline">
+              {{ section.settings.right_link_text }}
+            </a>
+          </div>
+        {%- endunless -%}
 
         {% render 'wm__header-search', input_id: 'Search-In-Modal' %}
 
@@ -506,6 +511,17 @@
       "step": 1,
       "default": 8,
       "label": "Max articles to show"
+    },
+    {
+      "type": "text",
+      "id": "right_link_text",
+      "default": "Shop Best Sellers",
+      "label": "Right link text"
+    },
+    {
+      "type": "url",
+      "id": "right_link_url",
+      "label": "Right link URL"
     },
     {
       "type": "link_list",

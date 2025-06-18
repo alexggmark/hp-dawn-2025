@@ -32,7 +32,10 @@
         "sc_store_locator_map_map_CNKxBM"
       ],
       "settings": {
-        "include_margins": true
+        "include_margins": true,
+        "show_background": false,
+        "padding": "16",
+        "margin_bottom": "0"
       }
     }
   },
