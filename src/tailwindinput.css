@@ -45,6 +45,9 @@
   ._font-link {
     @apply _font-semibold _tracking-widest _uppercase;
   }
+  ._font-link-sm {
+    @apply _font-semibold _tracking-widest;
+  }
 
   /* ------------
     BUTTON STYLES
@@ -143,14 +146,6 @@
   ._prose ul li {
     @apply _pl-8 _relative;
   }
-  /* ._prose ul li::before {
-    content: "";
-    @apply _absolute _left-0 _w-6 _h-6 _border _border-brand-primary-500 _bg-brand-background _rounded-full;
-    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%230097A9"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>');
-    background-size: 80%;
-    background-position: center;
-    background-repeat: no-repeat;
-  } */
   ._prose ul li::before {
     content: "";
     @apply _absolute _left-0 _w-6 _h-6;
@@ -171,5 +166,11 @@
   ._prose ol li::before {
     content: counter(list-item) ".";
     @apply _absolute _left-0 _text-brand-primary-500 _flex _items-center _justify-center _text-[28px] _font-medium;
+  }
+  /* ---------------------
+    PROSE POLICY PAGE HACK
+  --------------------- */
+  .shopify-policy__body .rte {
+    @apply _prose;
   }
 }

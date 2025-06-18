@@ -431,7 +431,8 @@ table:not([class]) {
   font-size: 0.9rem;
   border-style: hidden;
   box-shadow: 0 0 0 1px var(--color-brand-border);
-  /* draws the table border  */
+  margin: 2rem 0;
+  text-align: left;
 }
 
 table:not([class]) td,
@@ -1613,7 +1614,7 @@ details[open] > .share-button__fallback {
   box-sizing: border-box;
   transition: box-shadow var(--duration-short) ease;
   border-radius: var(--inputs-radius);
-  height: 4.5rem;
+  height: 3.5rem;
   min-height: calc(var(--inputs-border-width) * 2);
   min-width: calc(7rem + (var(--inputs-border-width) * 2));
   position: relative;
@@ -1759,7 +1760,7 @@ details[open] > .share-button__fallback {
 .field__label,
 .customer .field label {
   font-size: 1rem;
-  left: calc(var(--inputs-border-width) + 2rem);
+  left: 1rem;
   top: calc(1rem + var(--inputs-border-width));
   margin-bottom: 0;
   pointer-events: none;
@@ -1776,9 +1777,9 @@ details[open] > .share-button__fallback {
 .customer .field input:focus ~ label,
 .customer .field input:not(:placeholder-shown) ~ label,
 .customer .field input:-webkit-autofill ~ label {
-  font-size: 1rem;
-  top: calc(var(--inputs-border-width) + 0.5rem);
-  left: calc(var(--inputs-border-width) + 2rem);
+  font-size: 0.75rem;
+  top: calc(var(--inputs-border-width) + 0.4rem);
+  left: 1rem;
   letter-spacing: 0.04rem;
 }
 
@@ -1788,7 +1789,7 @@ details[open] > .share-button__fallback {
 .customer .field input:focus,
 .customer .field input:not(:placeholder-shown),
 .customer .field input:-webkit-autofill {
-  padding: 2.2rem 1.5rem 0.8rem 2rem;
+  padding: 1.4rem 1.5rem 0.8rem 1rem;
   margin: var(--inputs-border-width);
 }
 
@@ -1809,14 +1810,14 @@ details[open] > .share-button__fallback {
   color: currentColor;
   cursor: pointer;
   display: flex;
-  height: 4.4rem;
+  height: 3.4rem;
   justify-content: center;
   overflow: hidden;
   padding: 0;
   position: absolute;
   right: 0;
   top: 0;
-  width: 4.4rem;
+  width: 2.4rem;
 }
 
 .field__button > .svg-wrapper {

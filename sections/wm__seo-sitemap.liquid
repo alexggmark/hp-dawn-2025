@@ -1,0 +1,73 @@
+{% style %}
+  .seo-sitemap ul {
+    display: block;
+    list-style-type: disc;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    padding-inline-start: 40px;
+    unicode-bidi: isolate;
+  }
+  .seo-sitemap h2 {
+    font-size: 1.2rem;
+    font-weight: 500;
+  }
+{% endstyle %}
+
+<div class="seo-sitemap page-width _pt-10 _pb-12">
+  <div class="md:_text-base _text-sm{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+    <div class="_grid _grid-cols-1 md:_grid-cols-2 _gap-4">
+      <div class="_col-span-1">
+        <h2>Products</h2>
+        {% assign all_products_collection = collections.all %}
+        {% if all_products_collection != blank %}
+          <ul>
+            {% for product in all_products_collection.products %}
+              <li><a href="{{ product.url }}">{{ product.title }}</a></li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+
+        {% assign blog_handles = "sun-protection,anti-aging,skin-hydration,skincare-routines" | split: "," %}
+
+        {% for handle in blog_handles %}
+          {% assign blog = blogs[handle] %}
+
+          <h2>{{ blog.title }} Blog</h2>
+          <ul>
+            {% for article in blog.articles %}
+              <li><a href="{{ article.url }}">{{ article.title }}</a></li>
+            {% endfor %}
+          </ul>
+        {% endfor %}
+
+        <h2>Pages</h2>
+        <ul>
+          {% for p in pages %}
+          <li><a href="{{ p.url }}">{{ p.title }}</a></li>
+          {% endfor %}
+        </ul>
+      </div>
+      <div class="_col-span-1">
+        <h2>Collections</h2>
+        <ul>
+          {% for c in collections %}
+          <li><a href="{{ c.url }}">{{ c.title }}</a></li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "WM SEO Sitemap",
+  "tag": "section",
+  "class": "section",
+  "presets": [
+    {
+      "name": "WM SEO Sitemap"
+    }
+  ]
+}
+{% endschema %}

@@ -165,7 +165,9 @@ module.exports = {
     'md:_py-20',
     'md:_py-24',
     'md:_py-28',
-    'md:_py-32'
+    'md:_py-32',
+    'md:_col-span-3',
+    'md:_col-span-2'
   ],
   plugins: [],
 };

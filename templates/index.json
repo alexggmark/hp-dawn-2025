@@ -210,7 +210,7 @@
         "image_1": "shopify://shop_images/012224_Retail_SolarDew_PDP_UK_CA_HowToUse.jpg",
         "image_2": "shopify://shop_images/031425_SummerSkinRescue_Kit_HowToUse.webp",
         "image_3": "shopify://shop_images/082624_Micro-DoseGlowBooster_PDP_AdvancedTech.jpg",
-        "margin_bottom": "12"
+        "margin_bottom": "6"
       }
     },
     "wm_cta_banner_3XbrBt": {
@@ -291,7 +291,7 @@
       "settings": {
         "top_heading": "Elevated by science",
         "main_heading": "Our Collections",
-        "margin_bottom": "12"
+        "margin_bottom": "0"
       }
     },
     "wm_experts_carousel_AcfqkM": {
@@ -389,7 +389,7 @@
         "show_rating": true,
         "quick_add": "standard",
         "cta_text": "See all",
-        "margin_bottom": "12"
+        "margin_bottom": "0"
       }
     },
     "wm_article_card_scroll_7yYjit": {

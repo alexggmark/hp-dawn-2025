@@ -9,12 +9,13 @@
  */
 {
   "sections": {
-    "main": {
-      "type": "wm__main-page",
-      "settings": {}
+    "wm_seo_sitemap_wqcbrm": {
+      "type": "wm__seo-sitemap",
+      "settings": {
+      }
     }
   },
   "order": [
-    "main"
+    "wm_seo_sitemap_wqcbrm",
   ]
 }

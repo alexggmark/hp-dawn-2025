@@ -1,6 +1,16 @@
 <script src="{{ 'wm__beer-slider.js' | asset_url }}" defer="defer"></script>
 {{ 'wm__beer-slider.css' | asset_url | stylesheet_tag }}
 
+{% assign total_blocks = section.blocks.size %}
+
+{% if total_blocks == 2 %}
+  {% assign block_width_class = 'md:_col-span-3 _col-span-full' %}
+{% elsif total_blocks == 3 %}
+  {% assign block_width_class = 'md:_col-span-2 _col-span-full' %}
+{% else %}
+  {% assign block_width_class = '_col-span-full' %}
+{% endif %}
+
 <div
   class="
     md:_py-20 _py-12
@@ -19,7 +29,7 @@
         </p>
       </div>
     </div>
-    <div class="_flex _flex-row md:_gap-7 _gap-4">
+    <div class="_grid _grid-cols-6 md:_gap-7 _gap-4">
       {%- for block in section.blocks -%}
         {%- case block.type -%}
           {%- when 'before_after_image' -%}
@@ -27,7 +37,7 @@
               Good example of "beer-slider" in action, copy this setup
             {% endcomment %}
             <div
-              class="_aspect-square _w-1/2 _bg-brand-background beer-slider"
+              class="_aspect-square {{ block_width_class }} _bg-brand-background beer-slider"
               data-beer-label="{{ block.settings.after_text }}"
             >
               <img

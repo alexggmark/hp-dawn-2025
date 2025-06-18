@@ -87,18 +87,18 @@
     class="
       header-search-drawer__content
       global-settings-popup
-      _bg-brand-light _overflow-hidden _px-4 _py-6
+      _bg-brand-light _overflow-x-hidden _px-4 _py-6
     "
     tabindex="-1"
   >
     <button
       id="ModalClose-SearchDrawer"
       type="button"
-      class="_w-8 _p-1 _z-10 _fixed _right-8 _top-9 _flex _items-center _justify-center _cursor-pointer _rounded-full hover:_scale-110"
+      class="_w-8 _p-1 _z-10 _fixed _right-8 _top-[2.4rem] _flex _items-center _justify-center _cursor-pointer _rounded-full hover:_scale-110"
       aria-label="{{ 'accessibility.close' | t }}"
     >
       {% comment %} Added this wrapper in to fix Safari, remove if not working {% endcomment %}
-      <span class="svg-wrapper _w-8">
+      <span class="svg-wrapper _w-5">
         {{- 'icon-close.svg' | inline_asset_content -}}
       </span>
     </button>

@@ -579,6 +579,11 @@ video {
   letter-spacing: 0.1em;
 }
 
+._font-link-sm {
+  font-weight: 600;
+  letter-spacing: 0.1em;
+}
+
 /* ------------
     BUTTON STYLES
   ------------ */
@@ -820,15 +825,6 @@ video {
   padding-left: 2rem;
 }
 
-/* ._prose ul li::before {
-    content: "";
-    @apply _absolute _left-0 _w-6 _h-6 _border _border-brand-primary-500 _bg-brand-background _rounded-full;
-    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%230097A9"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>');
-    background-size: 80%;
-    background-position: center;
-    background-repeat: no-repeat;
-  } */
-
 ._prose ul li::before {
   content: "";
   position: absolute;
@@ -855,6 +851,202 @@ video {
 }
 
 ._prose ol li::before {
+  content: counter(list-item) ".";
+  position: absolute;
+  left: 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  font-weight: 500;
+  --tw-text-opacity: 1;
+  color: rgb(61 114 246 / var(--tw-text-opacity, 1));
+}
+
+/* ---------------------
+    PROSE POLICY PAGE HACK
+  --------------------- */
+
+.shopify-policy__body .rte p:not(:last-child) {
+  margin-bottom: 1rem;
+}
+
+.shopify-policy__body .rte ul li,.shopify-policy__body .rte ol li {
+  margin-bottom: 0.75rem;
+}
+
+.shopify-policy__body .rte a {
+  --tw-text-opacity: 1;
+  color: rgb(0 0 0 / var(--tw-text-opacity, 1));
+  text-decoration-line: underline;
+  text-underline-offset: 4px;
+}
+
+.shopify-policy__body .rte a:hover {
+  text-decoration-line: none;
+}
+
+.shopify-policy__body .rte h1,.shopify-policy__body .rte h1 > strong {
+  margin-bottom: 0.75rem;
+  font-size: 24px;
+  line-height: auto;
+  --tw-text-opacity: 1;
+  color: rgb(0 0 0 / var(--tw-text-opacity, 1));
+  font-family: var(--font-heading-family);
+  letter-spacing: -0.04rem;
+}
+
+.shopify-policy__body .rte h1 em,.shopify-policy__body .rte h1 i,.shopify-policy__body .rte h1 > strong em,.shopify-policy__body .rte h1 > strong i {
+  /* Normalising for Safari adding double italic because of em tag */
+  font-family: var(--font-heading-family-italic);
+  font-style: normal;
+  /* Normalising for Safari adding double italic because of em tag */
+  letter-spacing: -0.04rem;
+}
+
+@media (min-width: 750px) {
+  .shopify-policy__body .rte h1,.shopify-policy__body .rte h1 > strong {
+    font-size: 42px;
+    line-height: auto;
+  }
+}
+
+.shopify-policy__body .rte h1,.shopify-policy__body .rte h1 > strong {
+  margin-bottom: 0.75rem;
+  font-size: 24px;
+  line-height: auto;
+  --tw-text-opacity: 1;
+  color: rgb(0 0 0 / var(--tw-text-opacity, 1));
+  font-family: var(--font-heading-family);
+  letter-spacing: -0.04rem;
+}
+
+.shopify-policy__body .rte h1 em,.shopify-policy__body .rte h1 i,.shopify-policy__body .rte h1 > strong em,.shopify-policy__body .rte h1 > strong i {
+  /* Normalising for Safari adding double italic because of em tag */
+  font-family: var(--font-heading-family-italic);
+  font-style: normal;
+  /* Normalising for Safari adding double italic because of em tag */
+  letter-spacing: -0.04rem;
+}
+
+@media (min-width: 750px) {
+  .shopify-policy__body .rte h1,.shopify-policy__body .rte h1 > strong {
+    font-size: 42px;
+    line-height: auto;
+  }
+}
+
+.shopify-policy__body .rte h1:not(:first-child) {
+  margin-top: 2rem;
+}
+
+.shopify-policy__body .rte h2,.shopify-policy__body .rte h2 > strong {
+  margin-bottom: 0.75rem;
+  font-size: 24px;
+  line-height: auto;
+  --tw-text-opacity: 1;
+  color: rgb(0 0 0 / var(--tw-text-opacity, 1));
+  font-family: var(--font-heading-family);
+  letter-spacing: -0.04rem;
+}
+
+.shopify-policy__body .rte h2 em,.shopify-policy__body .rte h2 i,.shopify-policy__body .rte h2 > strong em,.shopify-policy__body .rte h2 > strong i {
+  /* Normalising for Safari adding double italic because of em tag */
+  font-family: var(--font-heading-family-italic);
+  font-style: normal;
+  /* Normalising for Safari adding double italic because of em tag */
+  letter-spacing: -0.04rem;
+}
+
+@media (min-width: 750px) {
+  .shopify-policy__body .rte h2,.shopify-policy__body .rte h2 > strong {
+    font-size: 42px;
+    line-height: auto;
+  }
+}
+
+.shopify-policy__body .rte h2,.shopify-policy__body .rte h2 > strong {
+  margin-bottom: 0.75rem;
+  font-size: 24px;
+  line-height: auto;
+  --tw-text-opacity: 1;
+  color: rgb(0 0 0 / var(--tw-text-opacity, 1));
+  font-family: var(--font-heading-family);
+  letter-spacing: -0.04rem;
+}
+
+.shopify-policy__body .rte h2 em,.shopify-policy__body .rte h2 i,.shopify-policy__body .rte h2 > strong em,.shopify-policy__body .rte h2 > strong i {
+  /* Normalising for Safari adding double italic because of em tag */
+  font-family: var(--font-heading-family-italic);
+  font-style: normal;
+  /* Normalising for Safari adding double italic because of em tag */
+  letter-spacing: -0.04rem;
+}
+
+@media (min-width: 750px) {
+  .shopify-policy__body .rte h2,.shopify-policy__body .rte h2 > strong {
+    font-size: 42px;
+    line-height: auto;
+  }
+}
+
+.shopify-policy__body .rte h2:not(:first-child) {
+  margin-top: 2rem;
+}
+
+.shopify-policy__body .rte h3 {
+  margin-bottom: 0.5rem;
+  font-size: 15px;
+  font-weight: 600;
+  text-transform: uppercase;
+  --tw-text-opacity: 1;
+  color: rgb(0 0 0 / var(--tw-text-opacity, 1));
+}
+
+.shopify-policy__body .rte h3:not(:first-child) {
+  margin-top: 1rem;
+}
+
+.shopify-policy__body .rte strong {
+  font-weight: 600;
+}
+
+.shopify-policy__body .rte ul {
+  list-style-type: none;
+  padding-left: 0px;
+}
+
+.shopify-policy__body .rte ul li {
+  position: relative;
+  padding-left: 2rem;
+}
+
+.shopify-policy__body .rte ul li::before {
+  content: "";
+  position: absolute;
+  left: 0px;
+  height: 1.5rem;
+  width: 1.5rem;
+  background-image: url("data:image/svg+xml;utf8,%3Csvg%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Cpath%20d%3D%22M12%2021C14.0822%2021%2016.1%2020.278%2017.7095%2018.9571C19.3191%2017.6362%2020.4209%2015.798%2020.8271%2013.7558C21.2333%2011.7136%2020.9188%209.59376%2019.9373%207.75743C18.9558%205.9211%2017.3679%204.48191%2015.4442%203.68508C13.5205%202.88826%2011.38%202.78311%209.38744%203.38754C7.3949%203.99197%205.67358%205.26858%204.51677%206.99987C3.35997%208.73115%202.83925%2010.81%203.04334%2012.8822C3.24743%2014.9543%204.1637%2016.8916%205.63604%2018.364%22%20stroke%3D%22%230F2D64%22%20stroke-linecap%3D%22round%22/%3E%3Cpath%20d%3D%22M16%2010L12.402%2014.3175C11.7465%2015.1042%2011.4187%2015.4976%2010.9781%2015.5176C10.5375%2015.5375%2010.1755%2015.1755%209.45139%2014.4514L8%2013%22%20stroke%3D%22%230F2D64%22%20stroke-linecap%3D%22round%22/%3E%3C/svg%3E");
+  background-size: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.shopify-policy__body .rte ul li ul {
+  margin-top: 1rem;
+}
+
+.shopify-policy__body .rte ol {
+  list-style-type: none;
+}
+
+.shopify-policy__body .rte ol li {
+  position: relative;
+  padding-left: 2rem;
+}
+
+.shopify-policy__body .rte ol li::before {
   content: counter(list-item) ".";
   position: absolute;
   left: 0px;
@@ -994,6 +1186,14 @@ video {
 
 ._top-full {
   top: 100% !important;
+}
+
+._top-10 {
+  top: 2.5rem !important;
+}
+
+._top-\[2\.4rem\] {
+  top: 2.4rem !important;
 }
 
 ._isolate {
@@ -1689,6 +1889,10 @@ video {
   grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
 }
 
+._grid-cols-6 {
+  grid-template-columns: repeat(6, minmax(0, 1fr)) !important;
+}
+
 ._grid-cols-\[minmax\(0\,_1fr\)\] {
   grid-template-columns: minmax(0, 1fr) !important;
 }
@@ -1812,6 +2016,10 @@ video {
 
 ._overflow-y-auto {
   overflow-y: auto !important;
+}
+
+._overflow-x-hidden {
+  overflow-x: hidden !important;
 }
 
 ._overflow-y-hidden {

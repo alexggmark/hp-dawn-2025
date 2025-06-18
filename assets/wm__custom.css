@@ -160,3 +160,33 @@ quick-shop-drawer.menu-opening .quick-shop-drawer__content {
   bottom: 1rem;
   left: 0.34rem;
 }
+
+/* -------------------
+  POLICY PAGE CONTROLS
+------------------- */
+/* Alex - no clue why this is so annoying to control, no templates */
+.shopify-policy__container {
+  max-width: 44.6rem;
+  padding-top: 2rem;
+  padding-bottom: 3rem;
+}
+.shopify-policy__title {
+  text-align: left;
+  margin-bottom: 1rem;
+}
+/* Table controls */
+.shopify-policy__container table {
+  margin: 2rem 0;
+}
+.shopify-policy__container table tbody {
+  vertical-align: top;
+  text-align: left;
+}
+
+@media screen and (min-width: 750px) {
+  .shopify-policy__container .rte table td,
+  .shopify-policy__container .rte table th {
+    padding: 0.8rem 2rem 0.8rem 0.8rem;
+    border: 1px solid #ccc;
+  }
+}

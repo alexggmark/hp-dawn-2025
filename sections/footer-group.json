@@ -25,7 +25,7 @@
           "type": "text",
           "settings": {
             "heading": "More Info",
-            "body": "<p><a href=\"/pages/about-us\" title=\"About Us\">Our Story</a></p><p><a href=\"/pages/about-us\" title=\"About Us\">Contact Us</a></p><p><a href=\"/pages/about-us\" title=\"About Us\">Shop All</a></p><p><a href=\"/blogs/skincare-routines\" title=\"Skincare Routines\">Blog</a></p><p><a href=\"/pages/faq\" title=\"FAQ\">FAQ</a></p>"
+            "body": "<p><a href=\"/pages/terms-and-conditions\" title=\"Terms and Conditions\">Terms & Conditions</a></p><p><a href=\"/pages/cookie-policy\" title=\"Cookie Policy\">Cookies Policy</a></p><p><a href=\"/pages/privacy-policy\" title=\"Privacy Policy\">Privacy Policy</a></p><p><a href=\"/pages/shipping-returns\" title=\"Shipping & Returns\">Shipping & Returns</a></p><p>Sitemap</p>"
           }
         }
       },
