@@ -190,10 +190,3 @@ quick-shop-drawer.menu-opening .quick-shop-drawer__content {
     border: 1px solid #ccc;
   }
 }
-
-/* ----------------------
-  STORE LOCATOR OVERRIDES
----------------------- */
-#directions_text #direction_destination .name, .addresses li a .name {
-  color: var(--color-brand-primary-500);
-}

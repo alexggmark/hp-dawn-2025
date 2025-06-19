@@ -113,7 +113,7 @@
                           {{ product.vendor }}
                         </div>
                       {%- endif -%}
-                      <p class="_text-sm _font-link _text-brand-dark">{{ product.title | escape }}</p>
+                      <p class="_text-sm _font-link _text-brand-dark group-hover:_text-brand-primary-500">{{ product.title | escape }}</p>
                       {%- if settings.predictive_search_show_price -%}
                         {% render 'wm__price', product: product, use_variant: true, show_badges: false %}
                       {%- endif -%}
