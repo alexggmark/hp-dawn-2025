@@ -3123,14 +3123,14 @@ video {
   background-color: rgb(236 240 251 / var(--tw-bg-opacity, 1)) !important;
 }
 
-._group:hover .group-hover\:_text-white {
-  --tw-text-opacity: 1 !important;
-  color: rgb(255 255 255 / var(--tw-text-opacity, 1)) !important;
-}
-
 ._group:hover .group-hover\:_text-brand-primary-500 {
   --tw-text-opacity: 1 !important;
   color: rgb(61 114 246 / var(--tw-text-opacity, 1)) !important;
+}
+
+._group:hover .group-hover\:_text-white {
+  --tw-text-opacity: 1 !important;
+  color: rgb(255 255 255 / var(--tw-text-opacity, 1)) !important;
 }
 
 ._group\/tile:hover .group-hover\/tile\:_underline {

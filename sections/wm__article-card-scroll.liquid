@@ -2,6 +2,8 @@
    <script src="{{ 'wm__quick-shop.js' | asset_url }}" defer="defer"></script>
 {%- endif -%}
 
+{%- assign selected_blog = blogs[section.settings.blog] -%}
+
 <div class="section-{{ section.id }} _mb-{{ section.settings.margin_bottom | divided_by: 2 }} md:_mb-{{ section.settings.margin_bottom }} _py-20 _bg-brand-background">
   <div class="">
     <div class="_relative _overflow-hidden page-width--overflow-right">
@@ -27,13 +29,13 @@
 
           {%- unless section.settings.cta_text == blank -%}
             <a
-              href="{{ section.settings.collection.url }}"
+              href="{{ selected_blog.url }}"
               class="_button-primary _mt-6 md:_flex _hidden"
             >
               <span>{{- section.settings.cta_text -}}</span>
             </a>
             <a
-              href="{{ section.settings.collection.url }}"
+              href="{{ selected_blog.url }}"
               class="_font-link _text-sm _underline _underline-offset-4 md:_hidden _mb-1.5 _flex-shrink-0"
             >
               {{- section.settings.cta_text -}}
@@ -44,7 +46,6 @@
           <embla-slider>
             <div class="_overflow-hidden _relative" data-js-embla>
               <div class="_flex md:_gap-7 _gap-4 _select-none" data-js-embla-container>
-                {%- assign selected_blog = blogs[section.settings.blog] -%}
                 {%- for article in selected_blog.articles limit: section.settings.articles_to_show -%}
                   <div
                     class="

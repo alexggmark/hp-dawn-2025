@@ -111,7 +111,7 @@
                       {%- if media.media_type == 'video' -%}
                         {{ media | video_tag: controls: true, preload: 'metadata', autoplay: true, muted: true, loop: true, width: '100%', height: '100%' }}
                       {%- else -%}
-                        {{ media | image_url: width: 1000 | image_tag: loading: 'lazy', width: '100%', height: '100%' }}
+                        {{ media | image_url: width: 3000 | image_tag: loading: 'lazy', width: '100%', height: '100%' }}
                       {%- endif -%}
                     {%- endif -%}
                   </div>
