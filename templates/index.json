@@ -91,7 +91,7 @@
       "type": "wm__product-card-scroll",
       "settings": {
         "show_background": false,
-        "top_heading": "New arrivals",
+        "top_heading": "",
         "main_heading": "New Essentials",
         "description": "<p>New arrivals, designed to support your skin and backed by science</p>",
         "collection": "best-sellers-on-home-page",
@@ -102,34 +102,19 @@
         "margin_bottom": "0"
       }
     },
-    "wm_image_block_1_z7FEaK": {
-      "type": "wm__image-block-1",
+    "wm_image_block_4_ky3R3J": {
+      "type": "wm__image-block-4",
       "blocks": {
-        "hotspot_emiaYN": {
-          "type": "hotspot",
-          "settings": {
-            "hotspot_location": "first",
-            "product_select": "5x-power-peel-face-exfoliator",
-            "hotspot_position_horizontal": 5,
-            "hotspot_position_horizontal_reverse": true,
-            "hotspot_position_vertical": 0,
-            "hotspot_position_vertical_reverse": true,
-            "hotspot_position_mobile_horizontal": 3,
-            "hotspot_position_mobile_horizontal_reverse": true,
-            "hotspot_position_mobile_vertical": 7,
-            "hotspot_position_mobile_vertical_reverse": true
-          }
-        },
-        "hotspot_iFtzwq": {
+        "hotspot_qGdbkX": {
           "type": "hotspot",
           "settings": {
             "hotspot_location": "second",
-            "product_select": "aquaboost-oil-free-face-moisturizer",
+            "product_select": "sun-slick",
             "hotspot_position_horizontal": 7,
             "hotspot_position_horizontal_reverse": false,
-            "hotspot_position_vertical": 2,
-            "hotspot_position_vertical_reverse": false,
-            "hotspot_position_mobile_horizontal": 0,
+            "hotspot_position_vertical": 1,
+            "hotspot_position_vertical_reverse": true,
+            "hotspot_position_mobile_horizontal": 2,
             "hotspot_position_mobile_horizontal_reverse": false,
             "hotspot_position_mobile_vertical": 0,
             "hotspot_position_mobile_vertical_reverse": false
@@ -137,21 +122,20 @@
         }
       },
       "block_order": [
-        "hotspot_emiaYN",
-        "hotspot_iFtzwq"
+        "hotspot_qGdbkX"
       ],
-      "disabled": true,
+      "name": "WM ImageBlock 4",
       "settings": {
         "reverse_order": true,
         "show_background": false,
-        "top_heading": "Quick links",
-        "main_heading": "Sun Protection, Done <em>Better</em>",
+        "top_heading": "NEW Sun SLick",
+        "main_heading": "Sun Protection, <em>Done</em> Better",
         "description": "<p>Our Sunscreens provide broad-spectrum protection that boost natural defences against ageing and free radical damage, all while nourishing and soothing skin.</p>",
-        "cta_text": "Explore Now",
-        "cta_url": "shopify://collections",
-        "image_1": "shopify://shop_images/sun-slick-in-use.jpg",
-        "image_2": "shopify://shop_images/040224_SolarDew_NavImage_NewSite.jpg",
-        "margin_bottom": "12"
+        "cta_text": "Shop Now",
+        "cta_url": "shopify://products/sun-slick",
+        "image_1": "shopify://shop_images/sunslick-main-product-in-use-image.webp",
+        "image_2": "shopify://shop_images/sun-slick-main-lg.jpg",
+        "margin_bottom": "0"
       }
     },
     "wm_image_block_3_LmLwpJ": {
@@ -175,8 +159,9 @@
       "block_order": [
         "hotspot_LamFk4"
       ],
+      "disabled": true,
       "settings": {
-        "top_heading": "New Protect collection",
+        "top_heading": "",
         "main_heading": "Sun Protection, <em>Done</em> Better",
         "description": "Our Sunscreens provide broad-spectrum protection that boost natural defences against ageing and free radical damage, all while nourishing and soothing skin.",
         "cta_text": "Shop Now",
@@ -289,7 +274,7 @@
         "featured_collection_xGU99C"
       ],
       "settings": {
-        "top_heading": "Elevated by science",
+        "top_heading": "",
         "main_heading": "Our Collections",
         "margin_bottom": "0"
       }
@@ -382,8 +367,8 @@
         "featured_collection_Ljd7Ct"
       ],
       "settings": {
-        "top_heading": "New protect collection",
-        "main_heading": "Skin Concern Section",
+        "top_heading": "",
+        "main_heading": "Shop by Skin Concern",
         "collection": "",
         "products_to_show": 10,
         "show_rating": true,
@@ -395,7 +380,7 @@
     "wm_article_card_scroll_7yYjit": {
       "type": "wm__article-card-scroll",
       "settings": {
-        "top_heading": "Quick links",
+        "top_heading": "Guides & tips",
         "main_heading": "Guides and tips for <em>your</em> skincare",
         "blog": "skincare-routines",
         "articles_to_show": 8,
@@ -422,7 +407,7 @@
   "order": [
     "wm_hero_banner_image_CPaEAD",
     "wm_product_card_scroll_zyx8Jr",
-    "wm_image_block_1_z7FEaK",
+    "wm_image_block_4_ky3R3J",
     "wm_image_block_3_LmLwpJ",
     "wm_image_block_2_JMQnte",
     "wm_cta_banner_3XbrBt",

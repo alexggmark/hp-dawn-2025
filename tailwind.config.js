@@ -25,7 +25,7 @@ module.exports = {
         'brand-background-light': '#F7F8F9',
         'brand-border': '#DADEE2',
         'brand-light': '#ffffff',
-        'brand-dark': '#000000',
+        'brand-dark': '#2C2C2C',
         'brand-grey': '#767676'
       },
       fontFamily: {

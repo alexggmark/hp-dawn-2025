@@ -118,8 +118,10 @@
                               {{- 'icon-caret.svg' | inline_asset_content -}}
                             </span>
                           {%- else -%}
-                            <a href="{{ childlink.url }}" class="_text-sm _font-link link-underline">
-                              {{ childlink.title | escape }}
+                            <a href="{{ childlink.url }}" class="_text-sm _font-link _w-full">
+                              <span class="link-underline">
+                                {{ childlink.title | escape }}
+                              </span>
                             </a>
                           {%- endif -%}
                         </li>
@@ -153,7 +155,6 @@
                                     _items-center
                                     _snap-start
                                     _h-auto
-                                    {% if forloop.last %} md:_mr-12 _mr-4{% endif %}
                                   ">
                                     {% render 'wm__card-product',
                                       card_product: product,
@@ -243,7 +244,6 @@
                                       _items-center
                                       _snap-start
                                       _h-auto
-                                      {% if forloop.last %} md:_mr-12 _mr-4{% endif %}
                                     "
                                   >
                                     {%- render 'wm__article-card',
@@ -421,7 +421,6 @@
                                           _items-center
                                           _snap-start
                                           _h-auto
-                                          {% if forloop.last %} md:_mr-12 _mr-4{% endif %}
                                         ">
                                           {% render 'wm__card-product',
                                             card_product: product,

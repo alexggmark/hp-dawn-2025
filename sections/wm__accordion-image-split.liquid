@@ -17,7 +17,7 @@
                   <details class="_group {% unless forloop.last %}bullet-point-line{% endunless %} _relative md:_pb-8 _pb-4" {% if forloop.first %}open="true"{% endif %}>
                     <summary data-js-trigger="{{ forloop.index }}" class="_flex _justify-start _items-center _gap-3">
                       <span class="_block _rounded-full _w-3 _h-3 _bg-brand-light _border _border-brand-border group-hover:_bg-brand-primary-100 group-open:_bg-brand-primary-100"></span>
-                      <span class="_font-heading-primary _text-xl md:_mb-2 _mb-1">{{ block.settings.title }}</span>
+                      <span class="_font-heading-primary md:_text-2xl _text-xl md:_mb-2 _mb-1">{{ block.settings.title }}</span>
                     </summary>
                     <div class="_prose md:_text-base _text-sm _pl-6">
                       {{ block.settings.text }}

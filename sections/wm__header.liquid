@@ -305,7 +305,7 @@
           </a>
         {%- endif -%}
 
-        <a href="{{ routes.cart_url }}" class="_flex _relative _justify-between _gap-1.5 _items-center _group/cart" id="cart-icon-bubble">
+        <a href="{{ routes.cart_url }}" class="_flex _relative _justify-between _gap-1 _items-center _group/cart" id="cart-icon-bubble">
           {% comment %} Warning: contents of this are rendered dynamically using 'cart-icon-bubble' section - so make sure to match up {% endcomment %}
           <span class="svg-wrapper header-controlled--text _w-5 _h-5 _mb-0.5 group-hover/cart:_scale-110">{{'icon-newbuild-cart.svg' | inline_asset_content }}</span>
           {%- if cart != empty -%}

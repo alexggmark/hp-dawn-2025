@@ -77,7 +77,11 @@
                           after:_z-0
                           _content-['']
                         ">
-                          {{ block.settings.collection.title }}
+                          {%- if block.settings.title != blank -%}
+                            {{ block.settings.title }}
+                          {%- else -%}
+                            {{ block.settings.collection.title }}
+                          {%- endif -%}
                         </a>
                         <span class="svg-wrapper _w-5 group-hover/collectioncard:_ml-2 _transition-all">
                           {{- 'arrow-chevron.svg' | inline_asset_content -}}
@@ -176,6 +180,11 @@
           "type": "collection",
           "id": "collection",
           "label": "t:sections.collection-list.blocks.featured_collection.settings.collection.label"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Optional title (replaces collection name)"
         },
         {
           "type": "image_picker",

@@ -23,9 +23,11 @@
             {% endunless %}
           </div>
 
-          <p class="_text-base _max-w-60 md:_block _hidden">
-            New arrivals, designed to support your skin and backed by science
-          </p>
+          {%- unless section.settings.description == blank -%}
+            <p class="_text-base _max-w-60 md:_block _hidden">
+              {{ section.settings.description }}
+            </p>
+          {%- endunless -%}
 
           {%- unless section.settings.cta_text == blank -%}
             <a
@@ -104,6 +106,12 @@
       "id": "main_heading",
       "default": "t:sections.footer.blocks.link_list.settings.heading.default",
       "label": "Main Heading"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "description",
+      "default": "Discover expert skincare advice, science-backed insights and glow-boosting tips, all in one place.",
+      "label": "Description text"
     },
     {
       "type": "blog",

@@ -31,7 +31,7 @@
             {%- assign description = section.settings[description_key] -%}
 
             <div class="_w-full _flex _flex-row _items-center _gap-3 md:_py-8 _py-5{% unless forloop.last %} _border-b _border-brand-border{% endunless %}">
-              <div class="_w-20 _flex _items-center _justify-center">
+              <div class="_w-20 _flex _flex-shrink-0 _items-center _justify-center">
                 {%- if icon -%}
                   {{
                     icon

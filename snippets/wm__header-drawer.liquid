@@ -27,7 +27,7 @@
         <div class="
           _flex
           _flex-col
-          _gap-3
+          _gap-5
           _px-4
           _justify-between
           _overflow-y-auto
@@ -37,7 +37,7 @@
         ">
           <nav class="menu-drawer__navigation _py-2">
             <div class="_flex _flex-row _justify-between _items-center _w-full _mb-2">
-              <h3 class="_font-heading-primary _text-2xl _text-brand-dark">
+              <h3 class="_font-body-fancy _text-xl _text-brand-dark">
                 Best Sellers
               </h3>
               <a href="{{ childlink.url }}" class="_underline _underline-offset-4 _text-sm _font-link">See All</a>
@@ -103,7 +103,7 @@
                           id="HeaderDrawer-{{ link.handle }}"
                           class="menu-drawer__menu-item list-menu__item focus-inset"
                         >
-                          <span class="_font-heading-primary _text-xl _text-brand-dark">
+                          <span class="_font-body-fancy _text-2xl _text-brand-dark">
                             {{ link.title | escape }}
                           </span>
                           <span class="svg-wrapper _w-6 _h-6 _text-brand-primary-500" data-js-plus-icon>
@@ -177,7 +177,7 @@
                                             <span class="svg-wrapper">
                                               {{- 'icon-arrow.svg' | inline_asset_content -}}
                                             </span>
-                                            <span class="_font-heading-primary _text-xl _text-brand-dark _capitalize">
+                                            <span class="_font-body-fancy _text-xl _text-brand-dark _capitalize">
                                               {{ childlink.title | escape }}
                                             </span>
                                             {% comment %} <span class="svg-wrapper">
@@ -378,7 +378,7 @@
                         aria-current="page"
                       {% endif %}
                     >
-                      <span class="_font-heading-primary _text-xl _text-brand-dark">
+                      <span class="_font-body-fancy _text-2xl _text-brand-dark">
                         {{ link.title | escape }}
                       </span>
                     </a>
@@ -389,7 +389,7 @@
           </nav>
           <div class="_w-full">
             <div class="_flex-grow _flex _flex-col _items-start">
-              <h3 class="_font-heading-primary _text-2xl _text-brand-dark _mb-4">
+              <h3 class="_font-body-fancy _text-xl _text-brand-dark _mb-2">
                 Featured
               </h3>
               <div class="_flex _flex-row _gap-2.5 _w-full">
