@@ -47,7 +47,8 @@ class BeerSlider {
       return el
   }
   setImgWidth () {
-      this.revealElement.style.width = getComputedStyle(this.element)['width']
+    //   this.revealElement.style.width = getComputedStyle(this.element)['width']
+    this.revealElement.style.width = `${this.element.getBoundingClientRect().width}px`;
   }
   addListeners () {
       const eventTypes = ['input', 'change']

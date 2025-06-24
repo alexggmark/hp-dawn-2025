@@ -66,7 +66,7 @@
                 {% comment %} Product Title {% endcomment %}
                 <div {{ block.shopify_attributes }}>
                   <h1 class="
-                    _font-heading-primary _text-brand-dark md:_text-2.5xl
+                    _font-heading-primary _text-brand-dark md:_text-2.5xl _text-2.5xl
                   ">
                     {{ product.title | escape }}</h1>
                   <a href="{{ product.url }}" class="_hidden">
@@ -155,9 +155,10 @@
                         <div data-js-read-more-content class="_prose quick-add-hidden mask-fade-bottom" {{ block.shopify_attributes }} style="max-height: {{ max_height }}px">
                           {{ product.description }}
                         </div>
-                        <button class="_underline hover:_no-underline _underline-offset-4 _text-brand-primary-500" data-js-read-more-button>Read more</button>
+                        <button class="[.quick-shop-drawer_&]:_hidden _underline hover:_no-underline _underline-offset-4 _text-brand-primary-500" data-js-read-more-button>Read more</button>
                       </animated-read-more>
                     {%- endif -%}
+                    <a href="{{ product.url }}" class="[.quick-shop-drawer_&]:_block _hidden _underline hover:_no-underline _underline-offset-4 _text-brand-primary-500">Read more</a>
                   </div>
                 {%- endif -%}
               {%- when 'sku' -%}

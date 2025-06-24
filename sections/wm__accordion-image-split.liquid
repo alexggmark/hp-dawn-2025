@@ -38,7 +38,7 @@
               {%- when "dropdown" -%}
                 <div
                   class="
-                    _flex-1 _w-full _max-h-[520px]{% if forloop.first %} js-panel--active{% endif %}
+                    _flex-1 _w-full _max-h-[520px] _aspect-[5/4]{% if forloop.first %} js-panel--active{% endif %}
                     {% if section.settings.show_background %} _bg-brand-light{% else %} _bg-brand-background-light{% endif %}
                   "
                   data-js-accordion-panel="{{ forloop.index }}"

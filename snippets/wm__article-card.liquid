@@ -139,7 +139,7 @@
 
             <h3
               class="
-                _text-brand-dark
+                _text-brand-dark _overflow-hidden _whitespace-nowrap _pr-2
               "
               {% if card_product.featured_media or settings.card_style == 'card' %}
                 id="title-{{ section.id }}-{{ article.id }}"
@@ -151,7 +151,8 @@
                 class="
                   _no-underline
                   _block
-                  _font-semibold _text-brand-dark _text-lg
+                  _font-semibold _text-brand-dark _text-base
+                  _overflow-hidden _text-ellipsis _whitespace-nowrap
                   after:_top-0
                   after:_left-0
                   after:_bottom-0

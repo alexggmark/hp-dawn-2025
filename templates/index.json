@@ -102,37 +102,6 @@
         "margin_bottom": "0"
       }
     },
-    "wm_image_block_3_LmLwpJ": {
-      "type": "wm__image-block-3",
-      "blocks": {
-        "hotspot_LamFk4": {
-          "type": "hotspot",
-          "settings": {
-            "product_select": "micro-dose-glow-booster",
-            "hotspot_position_horizontal": 0,
-            "hotspot_position_horizontal_reverse": false,
-            "hotspot_position_vertical": 2,
-            "hotspot_position_vertical_reverse": false,
-            "hotspot_position_mobile_horizontal": 0,
-            "hotspot_position_mobile_horizontal_reverse": false,
-            "hotspot_position_mobile_vertical": 0,
-            "hotspot_position_mobile_vertical_reverse": false
-          }
-        }
-      },
-      "block_order": [
-        "hotspot_LamFk4"
-      ],
-      "settings": {
-        "top_heading": "New Protect collection",
-        "main_heading": "Sun Protection, <em>Done</em> Better",
-        "description": "Our Sunscreens provide broad-spectrum protection that boost natural defences against ageing and free radical damage, all while nourishing and soothing skin.",
-        "cta_text": "Explore Now",
-        "cta_url": "shopify://collections",
-        "image": "shopify://shop_images/082624_Micro-DoseGlowBooster_PDP_HowToUse.jpg",
-        "margin_bottom": "2"
-      }
-    },
     "wm_image_block_1_z7FEaK": {
       "type": "wm__image-block-1",
       "blocks": {
@@ -173,7 +142,7 @@
       ],
       "disabled": true,
       "settings": {
-        "reverse_order": false,
+        "reverse_order": true,
         "show_background": false,
         "top_heading": "Quick links",
         "main_heading": "Sun Protection, Done <em>Better</em>",
@@ -185,13 +154,44 @@
         "margin_bottom": "12"
       }
     },
+    "wm_image_block_3_LmLwpJ": {
+      "type": "wm__image-block-3",
+      "blocks": {
+        "hotspot_LamFk4": {
+          "type": "hotspot",
+          "settings": {
+            "product_select": "sun-slick",
+            "hotspot_position_horizontal": 8,
+            "hotspot_position_horizontal_reverse": false,
+            "hotspot_position_vertical": 2,
+            "hotspot_position_vertical_reverse": true,
+            "hotspot_position_mobile_horizontal": 3,
+            "hotspot_position_mobile_horizontal_reverse": false,
+            "hotspot_position_mobile_vertical": 0,
+            "hotspot_position_mobile_vertical_reverse": false
+          }
+        }
+      },
+      "block_order": [
+        "hotspot_LamFk4"
+      ],
+      "settings": {
+        "top_heading": "New Protect collection",
+        "main_heading": "Sun Protection, <em>Done</em> Better",
+        "description": "Our Sunscreens provide broad-spectrum protection that boost natural defences against ageing and free radical damage, all while nourishing and soothing skin.",
+        "cta_text": "Shop Now",
+        "cta_url": "shopify://products/sun-slick",
+        "image": "shopify://shop_images/sun-slick-main-lg.jpg",
+        "margin_bottom": "2"
+      }
+    },
     "wm_image_block_2_JMQnte": {
       "type": "wm__image-block-2",
       "settings": {
         "top_heading": "",
         "main_heading": "<em>Why</em> HydroPeptide?",
         "cta_text": "Our Commitment",
-        "cta_url": "shopify://pages/about-us",
+        "cta_url": "shopify://pages/commitment",
         "bullet_1_title": "Trusted by Professionals",
         "bullet_1_description": "Backed by leading aestheticians, dermatologists, and skincare experts",
         "bullet_1_icon": "shopify://shop_images/icon-circles.svg",
@@ -223,7 +223,7 @@
         "cta_url": "shopify://pages/our-science",
         "invert_colours": true,
         "image": "shopify://shop_images/Retail_SunSlick_PDP_HowToUse.jpg",
-        "video": "shopify://files/videos/power luxe SMALL FOR WEB.mp4",
+        "video": "shopify://files/videos/background-video-texture-scrape.mp4",
         "image_overlay_opacity": 40,
         "margin_bottom": "0"
       }
@@ -413,8 +413,8 @@
         "cta_url": "",
         "invert_colours": true,
         "image": "shopify://shop_images/Retail_SunSlick_PDP_HowToUse.jpg",
-        "video": "shopify://files/videos/power luxe SMALL FOR WEB.mp4",
-        "image_overlay_opacity": 40,
+        "video": "shopify://files/videos/background-video-texture-knife.mp4",
+        "image_overlay_opacity": 30,
         "margin_bottom": "0"
       }
     }
@@ -422,8 +422,8 @@
   "order": [
     "wm_hero_banner_image_CPaEAD",
     "wm_product_card_scroll_zyx8Jr",
-    "wm_image_block_3_LmLwpJ",
     "wm_image_block_1_z7FEaK",
+    "wm_image_block_3_LmLwpJ",
     "wm_image_block_2_JMQnte",
     "wm_cta_banner_3XbrBt",
     "wm_collection_card_scroll_Mkbaft",

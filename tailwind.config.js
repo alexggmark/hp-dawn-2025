@@ -37,9 +37,9 @@ module.exports = {
         '7xl': ['80px', { lineHeight: 'auto' }],
         '6xl': ['72px', { lineHeight: 'auto' }],
         '5xl': ['58px', { lineHeight: 'auto' }],
-        '4xl': ['49px', { lineHeight: '1.25' }],
-        '3xl': ['42px', { lineHeight: 'auto' }],
-        '2.5xl': ['36px', { lineHeight: '1' }],
+        '4xl': ['49px', { lineHeight: '1.1' }],
+        '3xl': ['42px', { lineHeight: '1.1' }],
+        '2.5xl': ['36px', { lineHeight: '1.1' }],
         '2xl': ['24px', { lineHeight: 'auto' }],
         'xl': ['20px', { lineHeight: 'auto' }],
         'lg': ['16px', { lineHeight: 'auto' }],
@@ -167,7 +167,11 @@ module.exports = {
     'md:_py-28',
     'md:_py-32',
     'md:_col-span-3',
-    'md:_col-span-2'
+    'md:_col-span-2',
+    '_-translate-x-1/2',
+    '_-translate-y-1/2',
+    '_top-1/2',
+    '_left-1/2'
   ],
   plugins: [],
 };

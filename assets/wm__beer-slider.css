@@ -60,9 +60,17 @@
   width: calc(100% + 2px);
   z-index: 2;
 }
-.beer-range::-webkit-slider-thumb {
+/* .beer-range::-webkit-slider-thumb {
   -webkit-appearance: none;
   height: 300vh;
+} */
+ .beer-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  width: 40px;
+  height: 300vh;
+  border: none;
 }
 .beer-range::-moz-range-thumb {
   -webkit-appearance: none;
