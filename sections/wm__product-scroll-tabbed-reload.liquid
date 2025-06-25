@@ -65,6 +65,7 @@
                     _items-center
                     _snap-start
                     _h-auto
+                    {% if forloop.last %} md:_mr-12 _mr-4{% endif %}
                   ">
                     {% render 'wm__card-product',
                       card_product: product,

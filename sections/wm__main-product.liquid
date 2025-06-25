@@ -142,7 +142,7 @@
                 </p>
               {%- when 'description' -%}
                 {%- if product.description != blank -%}
-                  <div class="_border-b _border-brand-border _pb-6 _mb-7">
+                  <div class="_border-b [.quick-shop-drawer_&]:_border-0 _border-brand-border _pb-6 _mb-7">
                     {%- assign word_count = product.description | strip_html | strip | split: ' ' | size -%}
                     {%- assign max_height = 80 -%}
 

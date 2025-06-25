@@ -45,7 +45,7 @@
         "text_UHBFJV": {
           "type": "text",
           "settings": {
-            "text": "Powered by peptides and guided by science, our patented formulas support skin at it’s source",
+            "text": "Powered by peptides and guided by science, our patented formulas improve your skin’s cellular function to deliver clinical-grade results.",
             "margin_bottom": "8",
             "invert_colours": true,
             "mobile_invert_colours": true
@@ -55,7 +55,7 @@
           "type": "buttons",
           "settings": {
             "button_label_1": "Shop Now",
-            "button_link_1": "shopify://collections",
+            "button_link_1": "shopify://collections/best-sellers",
             "button_style_1": "primary",
             "button_label_2": "",
             "button_link_2": "shopify://collections",
@@ -91,9 +91,9 @@
       "type": "wm__product-card-scroll",
       "settings": {
         "show_background": false,
-        "top_heading": "",
+        "top_heading": "Latest arrivals",
         "main_heading": "New Essentials",
-        "description": "<p>New arrivals, designed to support your skin and backed by science</p>",
+        "description": "<p>Meet our new peptide-infused arrivals, designed to support your skin at a cellular level.</p>",
         "collection": "best-sellers-on-home-page",
         "products_to_show": 8,
         "show_rating": true,
@@ -128,11 +128,11 @@
       "settings": {
         "reverse_order": true,
         "show_background": false,
-        "top_heading": "NEW Sun SLick",
+        "top_heading": "NEW! Sun SLick",
         "main_heading": "Sun Protection, <em>Done</em> Better",
-        "description": "<p>Our Sunscreens provide broad-spectrum protection that boost natural defences against ageing and free radical damage, all while nourishing and soothing skin.</p>",
+        "description": "<p>Our peptide sunscreens provide broad-spectrum protection that boost natural defences against ageing and free radical damage, all while nourishing and soothing skin.</p>",
         "cta_text": "Shop Now",
-        "cta_url": "shopify://products/sun-slick",
+        "cta_url": "shopify://collections/protection-spf",
         "image_1": "shopify://shop_images/sunslick-main-product-in-use-image.webp",
         "image_2": "shopify://shop_images/sun-slick-main-lg.jpg",
         "margin_bottom": "0"
@@ -184,13 +184,13 @@
         "bullet_2_description": "Formulated without harmful ingredients to meet the highest safety standards.",
         "bullet_2_icon": "shopify://shop_images/icon-lab.svg",
         "bullet_3_title": "Validated Results",
-        "bullet_3_description": "Backed by leading aestheticians, dermatologists, and skincare experts",
+        "bullet_3_description": "Our extensive clinical and consumer testing processes guarantee formulas that deliver high-performance, visible results in product offerings our customers love to use.",
         "bullet_3_icon": "shopify://shop_images/icon-bullseye.svg",
         "bullet_4_title": "Patented Technology",
-        "bullet_4_description": "Backed by leading aestheticians, dermatologists, and skincare experts",
+        "bullet_4_description": "Exclusively developed to improve skin health, function, and physiological well-being, our advanced peptide and delivery system technologies work synergistically.",
         "bullet_4_icon": "shopify://shop_images/icon-cubes.svg",
         "bullet_5_title": "Scientifically Developed",
-        "bullet_5_description": "Backed by leading aestheticians, dermatologists, and skincare experts",
+        "bullet_5_description": "In our labs and out in the field, we have assembled a team of highly respected doctors and scientists across the world to shape the future of our product development.",
         "bullet_5_icon": "shopify://shop_images/icon-science.svg",
         "image_1": "shopify://shop_images/012224_Retail_SolarDew_PDP_UK_CA_HowToUse.jpg",
         "image_2": "shopify://shop_images/031425_SummerSkinRescue_Kit_HowToUse.webp",
@@ -216,26 +216,11 @@
     "wm_collection_card_scroll_Mkbaft": {
       "type": "wm__collection-card-scroll",
       "blocks": {
-        "featured_collection_7qUtUi": {
-          "type": "featured_collection",
-          "settings": {
-            "collection": "gifts-under-100",
-            "collection_image": "shopify://shop_images/collection-scroll-6.png",
-            "collection_color": "#79a0e1"
-          }
-        },
-        "featured_collection_4gUHkC": {
-          "type": "featured_collection",
-          "settings": {
-            "collection": "makeup-lover",
-            "collection_image": "shopify://shop_images/collection-scroll-5.png",
-            "collection_color": "#9db7b4"
-          }
-        },
         "featured_collection_VeQbYa": {
           "type": "featured_collection",
           "settings": {
-            "collection": "acne-warrior",
+            "collection": "anti-wrinkle",
+            "title": "Anti-Wrinkle",
             "collection_image": "shopify://shop_images/collection-scroll-1.png",
             "collection_color": "#0f2c64"
           }
@@ -243,15 +228,35 @@
         "featured_collection_zpRgeC": {
           "type": "featured_collection",
           "settings": {
-            "collection": "christmas-gift-sets",
+            "collection": "brightening",
+            "title": "Brighten",
             "collection_image": "shopify://shop_images/collection-scroll-2.png",
             "collection_color": "#c8d3f3"
+          }
+        },
+        "featured_collection_7qUtUi": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "peptides-for-skin-tightening",
+            "title": "",
+            "collection_image": "shopify://shop_images/collection-scroll-6.png",
+            "collection_color": "#79a0e1"
+          }
+        },
+        "featured_collection_4gUHkC": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "dryness-dehydration",
+            "title": "",
+            "collection_image": "shopify://shop_images/collection-scroll-5.png",
+            "collection_color": "#9db7b4"
           }
         },
         "featured_collection_JbnGRG": {
           "type": "featured_collection",
           "settings": {
-            "collection": "gifts-under-100",
+            "collection": "peptides-for-face",
+            "title": "",
             "collection_image": "shopify://shop_images/collection-scroll-3.png",
             "collection_color": "#fcfbf6"
           }
@@ -259,17 +264,18 @@
         "featured_collection_xGU99C": {
           "type": "featured_collection",
           "settings": {
-            "collection": "glowing-gifts",
+            "collection": "restore",
+            "title": "Restore",
             "collection_image": "shopify://shop_images/collection-scroll-4.png",
             "collection_color": "#ead1cd"
           }
         }
       },
       "block_order": [
-        "featured_collection_7qUtUi",
-        "featured_collection_4gUHkC",
         "featured_collection_VeQbYa",
         "featured_collection_zpRgeC",
+        "featured_collection_7qUtUi",
+        "featured_collection_4gUHkC",
         "featured_collection_JbnGRG",
         "featured_collection_xGU99C"
       ],
@@ -285,9 +291,9 @@
         "expert_9WB8b4": {
           "type": "expert",
           "settings": {
-            "expert_quote": "<p>Our formulas improve your skin's cellular function to deliver <strong>clinical-grade results</strong> that go beyond the surface. Our advanced peptide & delivery system technologies work synergistically.</p>",
-            "is_quote": true,
-            "expert_name": "Dr. Ian Vitek",
+            "expert_quote": "<p>Ian Vitek holds dual degrees in Biology and Chemistry from Clarkson University. With a diverse background spanning medical devices, cosmetic manufacturing, and formulation research and development, Ian is dedicated to creating innovative, science-driven skincare solutions.</p>",
+            "is_quote": false,
+            "expert_name": "Ian Vitek",
             "expert_jobtitle": "Cosmetic Chemist",
             "expert_image": "shopify://shop_images/dr-ian-vitek-headshot.png"
           }
@@ -380,8 +386,9 @@
     "wm_article_card_scroll_7yYjit": {
       "type": "wm__article-card-scroll",
       "settings": {
-        "top_heading": "Guides & tips",
-        "main_heading": "Guides and tips for <em>your</em> skincare",
+        "top_heading": "The Peptide Edit",
+        "main_heading": "Guides and Tips to Elevate <em>Your</em> Skin",
+        "description": "Discover expert skincare advice, science-backed insights and glow-boosting tips, all in one place.",
         "blog": "skincare-routines",
         "articles_to_show": 8,
         "cta_text": "See all",
@@ -391,11 +398,11 @@
     "wm_cta_banner_NHHzjX": {
       "type": "wm__cta-banner",
       "settings": {
-        "top_heading": "Elevated by Science",
-        "main_heading": "Pick Your <em>Perfect</em> SPF",
-        "description": "Finding the right sunscreen is made simple with our quick and easy assessment",
-        "cta_label": "Take quiz",
-        "cta_url": "",
+        "top_heading": "Professional Skincare",
+        "main_heading": "The Power of <em>Peptides</em>",
+        "description": "HydroPeptide works with the brightest scientific minds, bringing together respected doctors and scientists to develop peptide complexes and penetration enhancers to ensure deep delivery into the skin for targeted, visible results.",
+        "cta_label": "Meet Our Experts",
+        "cta_url": "shopify://pages/our-science",
         "invert_colours": true,
         "image": "shopify://shop_images/Retail_SunSlick_PDP_HowToUse.jpg",
         "video": "shopify://files/videos/background-video-texture-knife.mp4",
