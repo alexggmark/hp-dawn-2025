@@ -110,11 +110,11 @@
           "settings": {
             "hotspot_location": "second",
             "product_select": "sun-slick",
-            "hotspot_position_horizontal": 7,
-            "hotspot_position_horizontal_reverse": false,
+            "hotspot_position_horizontal": 0,
+            "hotspot_position_horizontal_reverse": true,
             "hotspot_position_vertical": 1,
             "hotspot_position_vertical_reverse": true,
-            "hotspot_position_mobile_horizontal": 2,
+            "hotspot_position_mobile_horizontal": 3,
             "hotspot_position_mobile_horizontal_reverse": false,
             "hotspot_position_mobile_vertical": 0,
             "hotspot_position_mobile_vertical_reverse": false
@@ -134,7 +134,7 @@
         "cta_text": "Shop Now",
         "cta_url": "shopify://collections/protection-spf",
         "image_1": "shopify://shop_images/sunslick-main-product-in-use-image.webp",
-        "image_2": "shopify://shop_images/sun-slick-main-lg.jpg",
+        "image_2": "shopify://shop_images/sunslick-banner-image_731c2888-71f6-4751-8b57-fc37484c9dd6.png",
         "margin_bottom": "0"
       }
     },

@@ -187,47 +187,7 @@
                           <a href="{{ blogs[slider_blog].url }}" class="_underline _underline-offset-4 hover:_no-underline _text-sm _font-link">See All</a>
                         </div>
                         <div class="">
-                          {% comment %} TODO: product slider {% endcomment %}
-                          {% comment %} <embla-slider data-lazy>
-                            <div class="_overflow-hidden _relative" data-js-embla>
-                              <div class="_flex md:_gap-7 _gap-4 _select-none" data-js-embla-container>
-                                {% assign skip_card_product_styles = false %}
-                                {%- for product in slider_collection.products limit: products_to_show -%}
-                                  <div id="Slide-{{ section.id }}-{{ forloop.index }}"
-                                    class="
-                                    _w-2/3
-                                    md:_w-1/2
-                                    md:_max-w-[220px]
-                                    _flex-none
-                                    _flex
-                                    _justify-center
-                                    _items-center
-                                    _snap-start
-                                    _h-auto
-                                    {% if forloop.last %} md:_mr-12 _mr-4{% endif %}
-                                  ">
-                                    {% render 'wm__card-product',
-                                      card_product: product,
-                                      skip_styles: skip_card_product_styles,
-                                      section_id: section.id,
-                                      simple_card: true
-                                    %}
-                                  </div>
-                                  {%- assign skip_card_product_styles = true -%}
-                                {%- endfor -%}
-                              </div>
-                              <button data-js-embla-prev class="_absolute _hidden _left-0 _top-1/2 _-translate-y-12 _bg-brand-light _text-brand-dark hover:_scale-110 _items-center _justify-center _w-10 _h-10 _rounded-full disabled:_opacity-40">
-                                <span class="svg-wrapper _rotate-180 _w-5">
-                                  {{- 'arrow-chevron.svg' | inline_asset_content -}}
-                                </span>
-                              </button>
-                              <button data-js-embla-next class="_absolute md:_right-7 _right-4 _top-1/2 _-translate-y-12  _bg-brand-light _text-brand-dark hover:_scale-110 _flex _items-center _justify-center _w-10 _h-10 _rounded-full _opacity-80 hover:_opacity-100 disabled:_opacity-0">
-                                <span class="svg-wrapper _w-5">
-                                  {{- 'arrow-chevron.svg' | inline_asset_content -}}
-                                </span>
-                              </button>
-                            </div>
-                          </embla-slider> {% endcomment %}
+                          {% comment %} Article slider {% endcomment %}
                           <embla-slider data-lazy>
                             <div class="_overflow-hidden _relative" data-js-embla>
                               <div class="_flex md:_gap-7 _gap-4 _select-none" data-js-embla-container>
@@ -248,7 +208,8 @@
                                   >
                                     {%- render 'wm__article-card',
                                       article: article,
-                                      simple_card: true
+                                      simple_card: true,
+                                      blog: selected_blog
                                     -%}
                                   </div>
                                 {%- endfor -%}
@@ -269,7 +230,7 @@
                       {%- endif -%}
                     </div>
 
-                    {% comment %} TODO: dynamic menus {% endcomment %}
+                    {% comment %} Dynamic menus {% endcomment %}
                     {%- for childlink in link.links -%}
 
                       {%- assign active_child = nil -%}
@@ -296,14 +257,10 @@
                             <h3 class="_font-heading-primary _text-2xl _text-brand-dark">
                               {{ childlink.title }}
                             </h3>
-                            {%- if active_child.link.url == "https://hydropeptide.co.uk/#" -%}
-                              XX<a href="{{ routes.collections_url }}/best-sellers" class="_underline _underline-offset-4 hover:_no-underline _text-sm _font-link">See All</a>
-                            {%- else -%}
-                              <a href="{{ childlink.url }}" class="_underline _underline-offset-4 hover:_no-underline _text-sm _font-link">See All</a>
-                            {%- endif -%}
+                            <a href="{{ childlink.url }}" class="_underline _underline-offset-4 hover:_no-underline _text-sm _font-link">See All</a>
                           </div>
                           {%- case active_child.type_of_menu -%}
-                            {% comment %} TODO: TILE {% endcomment %}
+                            {% comment %} TILE {% endcomment %}
                             {%- when 'tile' -%}
                               <ul
                                 role="list"
@@ -357,7 +314,7 @@
                                 {%- endfor -%}
                               </ul>
 
-                            {% comment %} TODO: CARD {% endcomment %}
+                            {% comment %} CARD {% endcomment %}
                             {%- when 'card' -%}
                               <ul
                                 role="list"
