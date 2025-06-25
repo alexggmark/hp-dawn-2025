@@ -283,12 +283,12 @@
                         {%- endif -%}
                       {%- endfor -%}
 
-                      {%- unless active_child == nil -%}
+                      {% comment %} {%- unless active_child == nil -%}
                         <script>
                           console.log("Active child!!!:");
                           console.log({{ active_child | json }});
                         </script>
-                      {%- endunless -%}
+                      {%- endunless -%} {% endcomment %}
 
                       {%- unless active_child == nil -%}
                         <div data-js-panel="grandchild-panel-{{ childlink.handle }}" class="js-panel">
@@ -297,7 +297,7 @@
                               {{ childlink.title }}
                             </h3>
                             {%- if active_child.link.url == "https://hydropeptide.co.uk/#" -%}
-                              <a href="{{ routes.collections_url }}/best-sellers" class="_underline _underline-offset-4 hover:_no-underline _text-sm _font-link">See All</a>
+                              XX<a href="{{ routes.collections_url }}/best-sellers" class="_underline _underline-offset-4 hover:_no-underline _text-sm _font-link">See All</a>
                             {%- else -%}
                               <a href="{{ childlink.url }}" class="_underline _underline-offset-4 hover:_no-underline _text-sm _font-link">See All</a>
                             {%- endif -%}

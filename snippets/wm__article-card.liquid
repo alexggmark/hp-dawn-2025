@@ -12,6 +12,7 @@
   - show_badge: {String} The setting either show the blog badge or not.
   - lazy_load: {Boolean} Image should be lazy loaded. Default: true (optional)
   - simple_card: {Boolean} Hide excess UI stuff for a simpler card
+  - big_card: {Boolean} Make bigger for blog pages
 
   Usage:
   {% render 'article-card' blog: blog, article: article, show_image: section.settings.show_image %}
@@ -119,7 +120,10 @@
               }
             {% endcomment %}
             <div class="_self-start _justify-self-start _start-1 {{ settings.badge_position }}">
-              <span class="_bg-brand-light _px-2.5 _py-2 _font-heading-small _text-brand-dark _text-xs">{{ 'blogs.article.blog' | t }}</span>
+              <span class="_bg-brand-light _px-2.5 _py-2 _font-heading-small _text-brand-dark _text-xs">
+                {% comment %} {{ 'blogs.article.blog' | t }} {% endcomment %}
+                 {{- blog.title -}}
+              </span>
             </div>
           </div>
         </div>
@@ -151,7 +155,7 @@
                 class="
                   _no-underline
                   _block
-                  _font-semibold _text-brand-dark _text-base
+                  _font-semibold _text-brand-dark {% if big_card %} _text-lg{% else %} _text-base{% endif %}
                   _overflow-hidden _text-ellipsis _whitespace-nowrap
                   after:_top-0
                   after:_left-0

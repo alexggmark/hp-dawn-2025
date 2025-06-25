@@ -18,7 +18,7 @@
           "type": "text",
           "settings": {
             "heading": "About",
-            "body": "<p><a href=\"/pages/our-story-2\" title=\"Our Story\">Our Story</a></p><p><a href=\"/pages/about-us\" title=\"About Us\">Contact Us</a></p><p><a href=\"/collections/all\" title=\"All Products\">Shop All</a></p><p><a href=\"/blogs/skincare-routines\" title=\"Skincare Routines\">Blog</a></p><p><a href=\"/pages/faq\" title=\"FAQ\">FAQ</a></p>"
+            "body": "<p><a href=\"/collections/all\" title=\"All Products\">Shop All</a></p><p><a href=\"/pages/our-story-2\" title=\"Our Story\">Our Story</a></p><p><a href=\"/pages/commitment\" title=\"Commitment\">Our Commitment</a></p><p><a href=\"/blogs/skincare-routines\" title=\"Skincare Routines\">Blog</a></p><p><a href=\"/pages/faq\" title=\"FAQ\">FAQ</a></p>"
           }
         },
         "text_wKxbU6": {

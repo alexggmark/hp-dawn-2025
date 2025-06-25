@@ -238,7 +238,7 @@
           "type": "featured_collection",
           "settings": {
             "collection": "peptides-for-skin-tightening",
-            "title": "",
+            "title": "Firm",
             "collection_image": "shopify://shop_images/collection-scroll-6.png",
             "collection_color": "#79a0e1"
           }
@@ -246,8 +246,8 @@
         "featured_collection_4gUHkC": {
           "type": "featured_collection",
           "settings": {
-            "collection": "dryness-dehydration",
-            "title": "",
+            "collection": "calm",
+            "title": "Calm",
             "collection_image": "shopify://shop_images/collection-scroll-5.png",
             "collection_color": "#9db7b4"
           }
@@ -255,13 +255,22 @@
         "featured_collection_JbnGRG": {
           "type": "featured_collection",
           "settings": {
-            "collection": "peptides-for-face",
-            "title": "",
+            "collection": "protect",
+            "title": "Protect",
             "collection_image": "shopify://shop_images/collection-scroll-3.png",
             "collection_color": "#fcfbf6"
           }
         },
         "featured_collection_xGU99C": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "clarify",
+            "title": "Clarify",
+            "collection_image": "shopify://shop_images/collection-scroll-7_aacf25fb-70f4-42c4-9160-5749f704f5b8.png",
+            "collection_color": "#5da8ab"
+          }
+        },
+        "featured_collection_HL7ftW": {
           "type": "featured_collection",
           "settings": {
             "collection": "restore",
@@ -277,7 +286,8 @@
         "featured_collection_7qUtUi",
         "featured_collection_4gUHkC",
         "featured_collection_JbnGRG",
-        "featured_collection_xGU99C"
+        "featured_collection_xGU99C",
+        "featured_collection_HL7ftW"
       ],
       "settings": {
         "top_heading": "",
@@ -348,21 +358,21 @@
         "featured_collection_Hnb8cz": {
           "type": "featured_collection",
           "settings": {
-            "collection": "all",
+            "collection": "peptides-for-hyperpigmentation",
             "collection_title": "Dullness + Hyperpigmentation"
           }
         },
         "featured_collection_qztje3": {
           "type": "featured_collection",
           "settings": {
-            "collection": "acne-warrior",
+            "collection": "sensitive-redness",
             "collection_title": "Redness + Sensitivity"
           }
         },
         "featured_collection_Ljd7Ct": {
           "type": "featured_collection",
           "settings": {
-            "collection": "cult-favorites",
+            "collection": "acne",
             "collection_title": "Oily + Acne Prone"
           }
         }

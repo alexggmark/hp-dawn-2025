@@ -22,8 +22,8 @@
 
 {% paginate search.results by 24 %}
   <div class="template-search{% unless search.performed and search.results_count > 0 %} _pb-20{% endunless %}">
-    <div class="page-width _pt-8 _pb-4{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
-      <h1 class="_text-2xl md:_text-3xl _mb-6 _font-heading-primary _text-brand-primary-700 _text-center">
+    <div class="page-width _bg-brand-background-light _pt-12 _pb-8 _mb-4{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
+      <h1 class="_text-2xl md:_text-2.5xl _mb-6 _font-heading-primary _text-brand-dark _text-left">
         {%- if search.performed -%}
           {{- 'templates.search.title' | t -}}
         {%- else -%}
@@ -70,12 +70,12 @@
                 class="reset__button field__button{% if search.terms == blank %} hidden{% endif %}"
                 aria-label="{{ 'general.search.reset' | t }}"
               >
-                <span class="svg-wrapper">
+                <span class="svg-wrapper _w-5">
                   {{- 'icon-reset.svg' | inline_asset_content -}}
                 </span>
               </button>
               <button type="submit" class="search__button field__button" aria-label="{{ 'general.search.search' | t }}">
-                <span class="svg-wrapper">
+                <span class="svg-wrapper _w-5">
                   {{- 'icon-search.svg' | inline_asset_content -}}
                 </span>
               </button>
@@ -101,12 +101,12 @@
         and section.settings.filter_type == 'vertical'
         and search.filters != empty
       -%}
-        <facet-filters-form class="page-width md:_block _hidden _mb-8">
-          <form class="_flex _flex-row _justify-end _items-center" id="FacetSortForm">
+        <facet-filters-form class="page-width md:_block _hidden _mb-4">
+          <form class="_flex _flex-row _justify-between _items-center _pl-72" id="FacetSortForm">
 
             {% comment %} Product count with loading spinner {% endcomment %}
-            <div class="_ml-14 _relative _opacity-70" role="status">
-              <h2 class="">
+            <div class="_relative" role="status">
+              <h2 class="_font-heading-small _tracking-normal _text-brand-grey _text-base">
                 <span id="ProductCountDesktop">
                   {%- if search.results_count -%}
                     {{ 'templates.search.results_with_count' | t: terms: search.terms, count: search.results_count }}
@@ -126,7 +126,7 @@
             {% comment %} Sorting select {% endcomment %}
             <div class="_flex _items-start _pl-10 js-sorting caption">
               <div class="_flex _items-center _flex-grow _justify-end">
-                <h2 class="_block _mr-4 _text-base _text-brand-dark">
+                <h2 class="_block _font-heading-small _tracking-normal _text-brand-grey _text-base">
                   <label for="SortBy">{{ 'products.facets.sort_by_label' | t }}</label>
                 </h2>
                 <div class="_w-auto">
@@ -134,7 +134,7 @@
                   <select
                     name="sort_by"
                     id="SortBy"
-                    class="_text-brand-primary-700 _underline _text-base _p-2 _cursor-pointer"
+                    class="_text-brand-primary-500 _underline _underline-offset-4 _text-base _font-link _p-2 _cursor-pointer"
                     aria-describedby="a11y-refresh-page-message"
                   >
                     {%- for option in search.sort_options -%}
