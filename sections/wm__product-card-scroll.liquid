@@ -60,7 +60,8 @@
                   _items-center
                   _snap-start
                   _h-auto
-                  {% if forloop.last %} md:_mr-12 _mr-4{% endif %}
+                  {% if forloop.last %} _mr-4{% endif %}
+                  {% comment %} {% if forloop.last %} md:_mr-12 _mr-4{% endif %} {% endcomment %}
                 ">
                   {% render 'wm__card-product',
                     card_product: product,
@@ -74,18 +75,19 @@
                 {%- assign skip_card_product_styles = true -%}
               {%- endfor -%}
             </div>
-            <button data-js-embla-prev class="_absolute _hidden _left-0 _top-1/2 _-translate-y-12 _bg-brand-light _text-brand-dark hover:_scale-110 _items-center _justify-center _w-10 _h-10 _rounded-full disabled:_opacity-40">
-              <span class="svg-wrapper _rotate-180 _w-5">
+            <button data-js-embla-prev class="_absolute _rotate-180 _left-4 _top-1/2 _-translate-y-12 _bg-brand-light _text-brand-dark hover:_scale-110 md:_flex _hidden _items-center _justify-center _w-10 _h-10 _rounded-full _opacity-80 hover:_opacity-100 disabled:_opacity-0">
+              <span class="svg-wrapper _w-5">
                 {{- 'arrow-chevron.svg' | inline_asset_content -}}
               </span>
             </button>
-            <button data-js-embla-next class="_absolute md:_right-7 _right-4 _top-1/2 _-translate-y-12  _bg-brand-light _text-brand-dark hover:_scale-110 _flex _items-center _justify-center _w-10 _h-10 _rounded-full _opacity-80 hover:_opacity-100 disabled:_opacity-20">
+            <button data-js-embla-next class="_absolute md:_right-7 _right-4 _top-1/2 _-translate-y-12  _bg-brand-light _text-brand-dark hover:_scale-110 _flex _items-center _justify-center _w-10 _h-10 _rounded-full _opacity-80 hover:_opacity-100 disabled:_opacity-0">
               <span class="svg-wrapper _w-5">
                 {{- 'arrow-chevron.svg' | inline_asset_content -}}
               </span>
             </button>
           </div>
-          <div class="_w-full md:_pr-12 _pr-4">
+          {% comment %} md:_pr-12 _pr-4 {% endcomment %}
+          <div class="_w-full md:_pr-0 _pr-4">
             <div class="_h-[1px] _mt-8 _bg-gray-300 _rounded _overflow-hidden">
               <div data-js-embla-progress class="_block _h-full _bg-brand-primary-500"></div>
             </div>

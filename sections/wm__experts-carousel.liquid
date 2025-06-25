@@ -64,7 +64,7 @@
             {%- case block.type -%}
               {%- when 'expert' -%}
                 <div
-                  class="expert-content{% unless block.settings.is_quote %} _pt-8{% endunless %}{% unless forloop.first %} expert-content--hidden{% endunless %}"
+                  class="expert-content{% unless block.settings.is_quote %} _pt-4{% endunless %}{% unless forloop.first %} expert-content--hidden{% endunless %}"
                   data-js-expert-content
                 >
                   {%- if block.settings.is_quote -%}
@@ -72,7 +72,7 @@
                       {{- 'icon-newbuild-quotes.svg' | inline_asset_content -}}
                     </span>
                   {%- endif -%}
-                  <div class="_italic _text-lg">{{ block.settings.expert_quote }}</div>
+                  <div class="_italic md:_text-lg _text-base">{{ block.settings.expert_quote }}</div>
                   <p class="_font-body-fancy _mt-4 _text-xl">{% if block.settings.is_quote %}- {% endif %}{{ block.settings.expert_name }}</p>
                 </div>
             {%- endcase -%}

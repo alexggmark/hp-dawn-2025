@@ -30,7 +30,7 @@
     "header": {
       "type": "wm__header",
       "settings": {
-        "slider_collection": "acne-warrior",
+        "slider_collection": "best-sellers",
         "products_to_show": 8,
         "slider_blog": "skincare-routines",
         "articles_to_show": 8,

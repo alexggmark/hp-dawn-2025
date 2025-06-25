@@ -2995,6 +2995,10 @@ video {
   opacity: 0.4 !important;
 }
 
+.disabled\:_opacity-0:disabled {
+  opacity: 0 !important;
+}
+
 ._group\/headerdrawer[open] .group-open\/headerdrawer\:_visible {
   visibility: visible !important;
 }
@@ -3237,6 +3241,10 @@ video {
     right: 1.75rem !important;
   }
 
+  .md\:_left-4 {
+    left: 1rem !important;
+  }
+
   .md\:_order-1 {
     order: 1 !important;
   }
@@ -3403,6 +3411,10 @@ video {
 
   .md\:_mt-8 {
     margin-top: 2rem !important;
+  }
+
+  .md\:_mr-0 {
+    margin-right: 0px !important;
   }
 
   .md\:_block {
@@ -3742,6 +3754,10 @@ video {
 
   .md\:_pt-8 {
     padding-top: 2rem !important;
+  }
+
+  .md\:_pr-0 {
+    padding-right: 0px !important;
   }
 
   .md\:_text-left {

@@ -136,7 +136,7 @@
                           <h3 class="_font-heading-primary _text-2xl _text-brand-dark">
                             Best Sellers
                           </h3>
-                          <a href="{{ childlink.url }}" class="_underline _underline-offset-4 hover:_no-underline _text-sm _font-link">See All</a>
+                          <a href="{{ routes.collections_url }}/best-sellers" class="_underline _underline-offset-4 hover:_no-underline _text-sm _font-link">See All</a>
                         </div>
                         <div class="animation-content">
                           <embla-slider data-lazy>
@@ -171,7 +171,7 @@
                                   {{- 'arrow-chevron.svg' | inline_asset_content -}}
                                 </span>
                               </button>
-                              <button data-js-embla-next class="_absolute md:_right-7 _right-4 _top-1/2 _-translate-y-12  _bg-brand-light _text-brand-dark hover:_scale-110 _flex _items-center _justify-center _w-10 _h-10 _rounded-full _opacity-80 hover:_opacity-100 disabled:_opacity-20">
+                              <button data-js-embla-next class="_absolute _right-4 _top-1/2 _-translate-y-12  _bg-brand-light _text-brand-dark hover:_scale-110 _flex _items-center _justify-center _w-10 _h-10 _rounded-full _opacity-80 hover:_opacity-100 disabled:_opacity-0">
                                 <span class="svg-wrapper _w-5">
                                   {{- 'arrow-chevron.svg' | inline_asset_content -}}
                                 </span>
@@ -184,7 +184,7 @@
                           <h3 class="_font-heading-primary _text-2xl _text-brand-dark">
                             Articles
                           </h3>
-                          <a href="{{ childlink.url }}" class="_underline _underline-offset-4 hover:_no-underline _text-sm _font-link">See All</a>
+                          <a href="{{ blogs[slider_blog].url }}" class="_underline _underline-offset-4 hover:_no-underline _text-sm _font-link">See All</a>
                         </div>
                         <div class="">
                           {% comment %} TODO: product slider {% endcomment %}
@@ -221,7 +221,7 @@
                                   {{- 'arrow-chevron.svg' | inline_asset_content -}}
                                 </span>
                               </button>
-                              <button data-js-embla-next class="_absolute md:_right-7 _right-4 _top-1/2 _-translate-y-12  _bg-brand-light _text-brand-dark hover:_scale-110 _flex _items-center _justify-center _w-10 _h-10 _rounded-full _opacity-80 hover:_opacity-100 disabled:_opacity-20">
+                              <button data-js-embla-next class="_absolute md:_right-7 _right-4 _top-1/2 _-translate-y-12  _bg-brand-light _text-brand-dark hover:_scale-110 _flex _items-center _justify-center _w-10 _h-10 _rounded-full _opacity-80 hover:_opacity-100 disabled:_opacity-0">
                                 <span class="svg-wrapper _w-5">
                                   {{- 'arrow-chevron.svg' | inline_asset_content -}}
                                 </span>
@@ -258,7 +258,7 @@
                                   {{- 'arrow-chevron.svg' | inline_asset_content -}}
                                 </span>
                               </button>
-                              <button data-js-embla-next class="_absolute md:_right-7 _right-4 _top-1/2 _-translate-y-12  _bg-brand-light _text-brand-dark hover:_scale-110 _flex _items-center _justify-center _w-10 _h-10 _rounded-full _opacity-80 hover:_opacity-100 disabled:_opacity-20">
+                              <button data-js-embla-next class="_absolute _right-4 _top-1/2 _-translate-y-12  _bg-brand-light _text-brand-dark hover:_scale-110 _flex _items-center _justify-center _w-10 _h-10 _rounded-full _opacity-80 hover:_opacity-100 disabled:_opacity-0">
                                 <span class="svg-wrapper _w-5">
                                   {{- 'arrow-chevron.svg' | inline_asset_content -}}
                                 </span>
@@ -296,7 +296,11 @@
                             <h3 class="_font-heading-primary _text-2xl _text-brand-dark">
                               {{ childlink.title }}
                             </h3>
-                            <a href="{{ childlink.url }}" class="_underline _underline-offset-4 hover:_no-underline _text-sm _font-link">See All</a>
+                            {%- if active_child.link.url == "https://hydropeptide.co.uk/#" -%}
+                              <a href="{{ routes.collections_url }}/best-sellers" class="_underline _underline-offset-4 hover:_no-underline _text-sm _font-link">See All</a>
+                            {%- else -%}
+                              <a href="{{ childlink.url }}" class="_underline _underline-offset-4 hover:_no-underline _text-sm _font-link">See All</a>
+                            {%- endif -%}
                           </div>
                           {%- case active_child.type_of_menu -%}
                             {% comment %} TODO: TILE {% endcomment %}
@@ -437,7 +441,7 @@
                                         {{- 'arrow-chevron.svg' | inline_asset_content -}}
                                       </span>
                                     </button>
-                                    <button data-js-embla-next class="_absolute md:_right-7 _right-4 _top-1/2 _-translate-y-12  _bg-brand-light _text-brand-dark hover:_scale-110 _flex _items-center _justify-center _w-10 _h-10 _rounded-full _opacity-80 hover:_opacity-100 disabled:_opacity-20">
+                                    <button data-js-embla-next class="_absolute _right-4 _top-1/2 _-translate-y-12  _bg-brand-light _text-brand-dark hover:_scale-110 _flex _items-center _justify-center _w-10 _h-10 _rounded-full _opacity-80 hover:_opacity-100 disabled:_opacity-0">
                                       <span class="svg-wrapper _w-5">
                                         {{- 'arrow-chevron.svg' | inline_asset_content -}}
                                       </span>
