@@ -2940,6 +2940,11 @@ video {
   background-color: rgb(241 241 241 / var(--tw-bg-opacity, 1)) !important;
 }
 
+.hover\:_bg-brand-primary-100:hover {
+  --tw-bg-opacity: 1 !important;
+  background-color: rgb(236 240 251 / var(--tw-bg-opacity, 1)) !important;
+}
+
 .hover\:_text-brand-primary-500:hover {
   --tw-text-opacity: 1 !important;
   color: rgb(61 114 246 / var(--tw-text-opacity, 1)) !important;
@@ -2985,6 +2990,11 @@ video {
 .hover\:after\:_w-6:hover::after {
   content: var(--tw-content) !important;
   width: 1.5rem !important;
+}
+
+.focus\:_bg-brand-primary-100:focus {
+  --tw-bg-opacity: 1 !important;
+  background-color: rgb(236 240 251 / var(--tw-bg-opacity, 1)) !important;
 }
 
 .disabled\:_opacity-0:disabled {
