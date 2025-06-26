@@ -344,24 +344,6 @@
         document.documentElement.classList.add('shopify-design-mode');
       }
     </script>
-
-    {% comment %} Script: Google Ads {% endcomment %}
-    <script src="https://www.googletagmanager.com/gtag/js?id=AW-307722835"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'AW-307722835');
-    </script>
-
-    {% comment %} Script: Microsoft Clarity (session recording) {% endcomment %}
-    <script type="text/javascript">
-      (function(c,l,a,r,i,t,y){
-          c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-          t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-          y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-      })(window, document, "clarity", "script", "pm3xa52x5k");
-    </script>
   </head>
 
   <body class="_overscroll-none{% if settings.animations_hover_elements != 'none' %} animate--hover-{{ settings.animations_hover_elements }}{% endif %}">

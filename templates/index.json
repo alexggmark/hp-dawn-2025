@@ -93,6 +93,7 @@
         "show_background": false,
         "top_heading": "Latest arrivals",
         "main_heading": "New Essentials",
+        "description": "<p>Meet our new peptide-infused arrivals, designed to support your skin at a<br/>cellular level.</p>",
         "collection": "whats-new",
         "products_to_show": 8,
         "show_rating": true,
@@ -219,6 +220,7 @@
           "type": "featured_collection",
           "settings": {
             "collection": "anti-wrinkle",
+            "title": "",
             "collection_image": "shopify://shop_images/collection-scroll-1.png",
             "collection_color": "#0f2c64"
           }
@@ -227,6 +229,7 @@
           "type": "featured_collection",
           "settings": {
             "collection": "brightening",
+            "title": "",
             "collection_image": "shopify://shop_images/collection-scroll-2.png",
             "collection_color": "#c8d3f3"
           }
@@ -235,6 +238,7 @@
           "type": "featured_collection",
           "settings": {
             "collection": "peptides-for-skin-tightening",
+            "title": "",
             "collection_image": "shopify://shop_images/collection-scroll-6.png",
             "collection_color": "#79a0e1"
           }
@@ -243,6 +247,7 @@
           "type": "featured_collection",
           "settings": {
             "collection": "calm",
+            "title": "",
             "collection_image": "shopify://shop_images/collection-scroll-5.png",
             "collection_color": "#9db7b4"
           }
@@ -251,6 +256,7 @@
           "type": "featured_collection",
           "settings": {
             "collection": "protect",
+            "title": "",
             "collection_image": "shopify://shop_images/collection-scroll-3.png",
             "collection_color": "#fcfbf6"
           }
@@ -259,6 +265,7 @@
           "type": "featured_collection",
           "settings": {
             "collection": "clarify",
+            "title": "",
             "collection_image": "shopify://shop_images/collection-scroll-7_aacf25fb-70f4-42c4-9160-5749f704f5b8.png",
             "collection_color": "#5da8ab"
           }
@@ -267,6 +274,7 @@
           "type": "featured_collection",
           "settings": {
             "collection": "restore",
+            "title": "",
             "collection_image": "shopify://shop_images/collection-scroll-4.png",
             "collection_color": "#ead1cd"
           }
@@ -294,6 +302,7 @@
           "type": "expert",
           "settings": {
             "expert_quote": "<p>Ian Vitek holds dual degrees in Biology and Chemistry from Clarkson University. With a diverse background spanning medical devices, cosmetic manufacturing, and formulation research and development, Ian is dedicated to creating innovative, science-driven skincare solutions.</p>",
+            "is_quote": false,
             "expert_name": "Ian Vitek",
             "expert_jobtitle": "Cosmetic Chemist",
             "expert_image": "shopify://shop_images/dr-ian-vitek-headshot.png"
@@ -303,6 +312,7 @@
           "type": "expert",
           "settings": {
             "expert_quote": "<p>Dr Lauren is one of Scotland’s <strong>longest-established</strong> cosmetic doctors. A member of the Primary Care Dermatology Society and certified clinical aesthetic trainer, Dr Lauren provides advanced cosmetic treatments at her clinic in Glasgow and supports new practitioners in both Glasgow and London.</p>",
+            "is_quote": false,
             "expert_name": "Dr Lauren Jamieson",
             "expert_jobtitle": "Cosmetic Doctor",
             "expert_image": "shopify://shop_images/dr-laura-jamieson.png"
@@ -312,6 +322,7 @@
           "type": "expert",
           "settings": {
             "expert_quote": "<p>Julie Scott is an independent nurse prescriber with over <strong>25 years’ experience</strong> in the field of plastics and skin rejuvenation. In 2003, Julie left her position as a clinical nurse specialist for a renowned group of London plastic surgeons to set up her own practice in Essex, Facial Aesthetics.</p>",
+            "is_quote": false,
             "expert_name": "Julie Scott",
             "expert_jobtitle": "Nurse prescriber",
             "expert_image": "shopify://shop_images/julie-scott.png"
@@ -321,6 +332,7 @@
           "type": "expert",
           "settings": {
             "expert_quote": "<p>Anna Baker BN RGN INP PGCert is an award-winning Aesthetic Nurse, Trainer & Qualified Educator with over 12 years’ experience in Aesthetic Medicine. Anna was awarded <strong>‘Aesthetic Nurse Practitioner of The Year’</strong> at the Aesthetic Awards 2017, and ‘Highly Commended’ in 2015 and 2016.</p>",
+            "is_quote": false,
             "expert_name": "Anna Baker",
             "expert_jobtitle": "Aesthetic Nurse & Trainer",
             "expert_image": "shopify://shop_images/anna-baker.png"
@@ -386,6 +398,7 @@
       "settings": {
         "top_heading": "The Peptide Edit",
         "main_heading": "Guides and Tips to Elevate <em>Your</em> Skin",
+        "description": "Discover expert skincare advice, science-backed insights and glow-boosting tips, all in one place.",
         "blog": "skincare-routines",
         "articles_to_show": 8,
         "cta_text": "See all",
