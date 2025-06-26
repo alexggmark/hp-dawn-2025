@@ -35,7 +35,7 @@ module.exports = {
       },
       fontSize: {
         '7xl': ['80px', { lineHeight: 'auto' }],
-        '6xl': ['72px', { lineHeight: 'auto' }],
+        '6xl': ['66px', { lineHeight: 'auto' }],
         '5xl': ['58px', { lineHeight: 'auto' }],
         '4xl': ['49px', { lineHeight: '1.1' }],
         '3xl': ['42px', { lineHeight: '1.1' }],
