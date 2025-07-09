@@ -187,6 +187,11 @@
         "settings": {
           "product": ""
         }
+      },
+      "11797761893487868451": {
+        "type": "shopify://apps/convertflow/blocks/convertflow_script/f6367d00-7b7b-4ff9-aea4-2576ea814ccc",
+        "disabled": false,
+        "settings": {}
       }
     },
     "color_schemes": {

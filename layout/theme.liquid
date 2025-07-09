@@ -24,18 +24,12 @@
       <link rel="preconnect" href="https://fonts.shopifycdn.com" crossorigin>
     {%- endunless -%} {% endcomment %}
 
-    {%- unless settings.type_body_font.system? -%}
-      {% comment %}theme-check-disable AssetPreload{% endcomment %}
-      <link rel="preload" as="font" type="font/woff2" href="{{ 'avenir-next-regular.woff2' | asset_url }}" crossorigin="anonymous">
-      <link rel="preload" as="font" type="font/woff2" href="{{ 'AvenirNextLTPro-MediumCn.woff2' | asset_url }}" crossorigin="anonymous">
-      {% comment %}theme-check-enable AssetPreload{% endcomment %}
-    {%- endunless -%}
-    {%- unless settings.type_header_font.system? -%}
-      {% comment %}theme-check-disable AssetPreload{% endcomment %}
-      <link rel="preload" as="font" type="font/woff2" href="{{ 'editors-note-light.woff2' | asset_url }}" crossorigin="anonymous">
-      <link rel="preload" as="font" type="font/woff2" href="{{ 'editors-note-italic.woff2' | asset_url }}" crossorigin="anonymous">
-      {% comment %}theme-check-enable AssetPreload{% endcomment %}
-    {%- endunless -%}
+    {% comment %}theme-check-disable AssetPreload{% endcomment %}
+    <link rel="preload" as="font" type="font/woff2" href="{{ 'avenir-next-regular.woff2' | asset_url }}" crossorigin="anonymous">
+    <link rel="preload" as="font" type="font/woff2" href="{{ 'AvenirNextLTPro-MediumCn.woff2' | asset_url }}" crossorigin="anonymous">
+    <link rel="preload" as="font" type="font/woff2" href="{{ 'editors-note-light.woff2' | asset_url }}" crossorigin="anonymous">
+    <link rel="preload" as="font" type="font/woff2" href="{{ 'editors-note-italic.woff2' | asset_url }}" crossorigin="anonymous">
+    {% comment %}theme-check-enable AssetPreload{% endcomment %}
 
     <title>
       {{ page_title }}
