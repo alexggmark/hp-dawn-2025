@@ -1,0 +1,130 @@
+{% style %}
+  .gwp-button-selected {
+    border: 5px solid red;
+  }
+{% endstyle %}
+
+{% assign gwp_product_1 = 55101106159996 %}
+{% assign gwp_product_2 = 55101106159995 %}
+{% assign gwp_product_3 = 55101106159994 %}
+{% assign gwp_product_4 = 55101106159993 %}
+{% assign gwp_product_5 = 55101106159992 %}
+
+<div class="_w-full _border-2 _border-red-500">
+  <gwp-picker
+    data-gwp-product-1="{{ gwp_product_1 }}"
+    data-gwp-product-2="{{ gwp_product_2 }}"
+    data-gwp-product-3="{{ gwp_product_3 }}"
+    data-gwp-product-4="{{ gwp_product_4 }}"
+    data-gwp-product-5="{{ gwp_product_5 }}"
+  >
+    <div class="_flex _gap-4">
+      <button class="_w-20 _h-20 _bg-brand-primary-500" data-js-product="{{ gwp_product_1 }}">Gift 1</button>
+      <button class="_w-20 _h-20 _bg-brand-primary-500" data-js-product="{{ gwp_product_2 }}">Gift 2</button>
+      <button class="_w-20 _h-20 _bg-brand-primary-500" data-js-product="{{ gwp_product_3 }}">Gift 3</button>
+      <button class="_w-20 _h-20 _bg-brand-primary-500" data-js-product="{{ gwp_product_4 }}">Gift 4</button>
+      <button class="_w-20 _h-20 _bg-brand-primary-500" data-js-product="{{ gwp_product_5 }}">Gift 5</button>
+    </div>
+
+    <button class="submit-gwp _mt-4 _bg-black _text-white _py-2 _px-4" disabled>
+      Confirm Free Gifts
+    </button>
+  </gwp-picker>
+</div>
+
+<script>
+class GwpPicker extends HTMLElement {
+  constructor() {
+    super();
+    this.maxChoices = 2;
+    this.selected = new Set();
+    this.discountMatrix = {};
+  }
+
+  connectedCallback() {
+    const variants = [
+      this.dataset.gwpProduct1,
+      this.dataset.gwpProduct2,
+      this.dataset.gwpProduct3,
+      this.dataset.gwpProduct4,
+      this.dataset.gwpProduct5
+    ].filter(Boolean);
+
+    this.variantIds = variants.map(v => v.toString());
+    this.buildDiscountMatrix(this.variantIds);
+
+    this.variantButtons = [...this.querySelectorAll('[data-js-product]')];
+    this.submitButton = this.querySelector('.submit-gwp');
+
+    if (!this.submitButton) return;
+
+    this.variantButtons.forEach(button => {
+      button.addEventListener('click', () => this.toggleSelection(button));
+    });
+
+    this.submitButton.addEventListener('click', () => this.submitSelection());
+  }
+
+  buildDiscountMatrix(ids) {
+    for (let i = 0; i < ids.length; i++) {
+      for (let j = i + 1; j < ids.length; j++) {
+        const comboKey = [ids[i], ids[j]].sort().join("_");
+        this.discountMatrix[comboKey] = `ALEXTESTDISCOUNT-${comboKey}`; // e.g. GIFT-55101106159996_55101106159997
+      }
+    }
+  }
+
+  toggleSelection(button) {
+    const variantId = button.dataset.jsProduct;
+
+    if (this.selected.has(variantId)) {
+      this.selected.delete(variantId);
+      button.classList.remove('gwp-button-selected');
+    } else if (this.selected.size < this.maxChoices) {
+      this.selected.add(variantId);
+      button.classList.add('gwp-button-selected');
+    }
+
+    this.submitButton.disabled = this.selected.size !== this.maxChoices;
+  }
+
+  async submitSelection() {
+    const selectedArray = Array.from(this.selected).map(id => id.toString()).sort();
+    const comboKey = selectedArray.join("_");
+    const discountCode = this.discountMatrix[comboKey];
+
+    if (!discountCode) {
+      console.error("No discount code found for selected combo:", comboKey);
+      return;
+    }
+
+    localStorage.setItem("gwp_selected", JSON.stringify(selectedArray));
+    localStorage.setItem("gwp_discount_code", discountCode);
+
+    fetch(`/discount/${discountCode}`);
+
+    try {
+      await Promise.all(
+        selectedArray.map(id =>
+          new Promise((resolve, reject) => {
+            window.monster_addToCart(
+              { id: parseInt(id), quantity: 1, properties: { _gwp: "true" } },
+              false,
+              () => resolve()
+            );
+          })
+        )
+      );
+
+      this.submitButton.textContent = "🎁 Gifts Added!";
+      this.submitButton.disabled = true;
+      console.log("Injected GWPs and applied discount:", discountCode);
+
+    } catch (err) {
+      console.error("GWP injection failed:", err);
+    }
+  }
+}
+
+customElements.define('gwp-picker', GwpPicker);
+</script>

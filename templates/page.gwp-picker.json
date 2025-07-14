@@ -1,0 +1,10 @@
+{
+  "sections": {
+    "gwp-picker": {
+      "type": "wm__gwp-picker"
+    }
+  },
+  "order": [
+    "gwp-picker"
+  ]
+}
