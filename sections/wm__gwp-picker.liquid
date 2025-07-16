@@ -4,26 +4,44 @@
   }
 {% endstyle %}
 
-{% assign gwp_product_1 = 55101106159996 %}
-{% assign gwp_product_2 = 55101106159995 %}
-{% assign gwp_product_3 = 55101106159994 %}
-{% assign gwp_product_4 = 55101106159993 %}
-{% assign gwp_product_5 = 55101106159992 %}
+{% comment %} 
+https://monsterapps.crisp.help/en/article/developer-documentation-methodseventscss-selectors-jwxlnk/
+https://drive.google.com/file/d/1ED_RDDlq49fE7nRjIi9X_JYujdLBv9J5/view?usp=sharing
+- MonsterUpsell docs are so impossible to find on Google, just sharing here with a Drive backup as well
+{% endcomment %}
+
+{% comment %}
+Product ID - Variant ID - handle:
+1. Eye authority - 7005314351243 - 40929355071627 - travel-size-eye-authority
+2. Daily drench - 6977036910731 - 41562314506379 - travel-size-daily-drench
+3. Triple Acid - 7007276826763 - 40941347930251 - travel-size-triple-acid-peptide-peel
+4. Face Lift - 7005316874379 - 40929363099787 - travel-size-face-lift-moisturiser
+5. Retinol Routine - 7119648227467 - 41388779438219 - travel-size-retinol-routine-booster
+{% endcomment %}
+
+{% assign gwp_product_1 = "travel-size-eye-authority" %}
+{% assign gwp_product_2 = "travel-size-daily-drench" %}
+{% assign gwp_product_3 = "travel-size-triple-acid-peptide-peel" %}
+{% assign gwp_product_4 = "travel-size-face-lift-moisturiser" %}
+{% assign gwp_product_5 = "travel-size-retinol-routine-booster" %}
 
 <div class="_w-full _border-2 _border-red-500">
   <gwp-picker
-    data-gwp-product-1="{{ gwp_product_1 }}"
-    data-gwp-product-2="{{ gwp_product_2 }}"
-    data-gwp-product-3="{{ gwp_product_3 }}"
-    data-gwp-product-4="{{ gwp_product_4 }}"
-    data-gwp-product-5="{{ gwp_product_5 }}"
+    data-gwpproduct1="{{ all_products[gwp_product_1].variants.first.id }}"
+    data-gwpproduct2="{{ all_products[gwp_product_2].variants.first.id }}"
+    data-gwpproduct3="{{ all_products[gwp_product_3].variants.first.id }}"
+    data-gwpproduct4="{{ all_products[gwp_product_4].variants.first.id }}"
+    data-gwpproduct5="{{ all_products[gwp_product_5].variants.first.id }}"
   >
+    <div class="_flex _justify-center _items-center _bg-red-200 _rounded-sm _invisible" data-js-error>
+      There was an issue adding products to your cart
+    </div>
     <div class="_flex _gap-4">
-      <button class="_w-20 _h-20 _bg-brand-primary-500" data-js-product="{{ gwp_product_1 }}">Gift 1</button>
-      <button class="_w-20 _h-20 _bg-brand-primary-500" data-js-product="{{ gwp_product_2 }}">Gift 2</button>
-      <button class="_w-20 _h-20 _bg-brand-primary-500" data-js-product="{{ gwp_product_3 }}">Gift 3</button>
-      <button class="_w-20 _h-20 _bg-brand-primary-500" data-js-product="{{ gwp_product_4 }}">Gift 4</button>
-      <button class="_w-20 _h-20 _bg-brand-primary-500" data-js-product="{{ gwp_product_5 }}">Gift 5</button>
+      <button class="_w-28 _h-28 _bg-brand-primary-500" data-js-product="{{ all_products[gwp_product_1].variants.first.id }}">{{ all_products[gwp_product_1].title }}</button>
+      <button class="_w-28 _h-28 _bg-brand-primary-500" data-js-product="{{ all_products[gwp_product_2].variants.first.id }}">{{ all_products[gwp_product_2].title }}</button>
+      <button class="_w-28 _h-28 _bg-brand-primary-500" data-js-product="{{ all_products[gwp_product_3].variants.first.id }}">{{ all_products[gwp_product_3].title }}</button>
+      <button class="_w-28 _h-28 _bg-brand-primary-500" data-js-product="{{ all_products[gwp_product_4].variants.first.id }}">{{ all_products[gwp_product_4].title }}</button>
+      <button class="_w-28 _h-28 _bg-brand-primary-500" data-js-product="{{ all_products[gwp_product_5].variants.first.id }}">{{ all_products[gwp_product_5].title }}</button>
     </div>
 
     <button class="submit-gwp _mt-4 _bg-black _text-white _py-2 _px-4" disabled>
@@ -42,16 +60,16 @@ class GwpPicker extends HTMLElement {
   }
 
   connectedCallback() {
+    {% comment %} Weird naming here, custom elements don't normalise camel case (apparently?) - so data-gwp-product-1 became data-gwpProduct-1 :/ {% endcomment %}
     const variants = [
-      this.dataset.gwpProduct1,
-      this.dataset.gwpProduct2,
-      this.dataset.gwpProduct3,
-      this.dataset.gwpProduct4,
-      this.dataset.gwpProduct5
-    ].filter(Boolean);
+      this.dataset.gwpproduct1,
+      this.dataset.gwpproduct2,
+      this.dataset.gwpproduct3,
+      this.dataset.gwpproduct4,
+      this.dataset.gwpproduct5
+    ];
 
-    this.variantIds = variants.map(v => v.toString());
-    this.buildDiscountMatrix(this.variantIds);
+    this.buildDiscountMatrix(variants);
 
     this.variantButtons = [...this.querySelectorAll('[data-js-product]')];
     this.submitButton = this.querySelector('.submit-gwp');
@@ -70,8 +88,11 @@ class GwpPicker extends HTMLElement {
       for (let j = i + 1; j < ids.length; j++) {
         const comboKey = [ids[i], ids[j]].sort().join("_");
         this.discountMatrix[comboKey] = `ALEXTESTDISCOUNT-${comboKey}`; // e.g. GIFT-55101106159996_55101106159997
+        console.log(`Combo: ${comboKey}`)
       }
     }
+    console.log("Discount Matrix")
+    console.log(this.discountMatrix);
   }
 
   toggleSelection(button) {
@@ -84,6 +105,9 @@ class GwpPicker extends HTMLElement {
       this.selected.add(variantId);
       button.classList.add('gwp-button-selected');
     }
+
+    console.log("Selected:")
+    console.log(this.selected);
 
     this.submitButton.disabled = this.selected.size !== this.maxChoices;
   }
@@ -98,29 +122,34 @@ class GwpPicker extends HTMLElement {
       return;
     }
 
+    console.log(discountCode)
+
     localStorage.setItem("gwp_selected", JSON.stringify(selectedArray));
     localStorage.setItem("gwp_discount_code", discountCode);
 
     fetch(`/discount/${discountCode}`);
 
     try {
-      await Promise.all(
-        selectedArray.map(id =>
-          new Promise((resolve, reject) => {
-            window.monster_addToCart(
-              { id: parseInt(id), quantity: 1, properties: { _gwp: "true" } },
-              false,
-              () => resolve()
-            );
-          })
-        )
-      );
+      {% comment %} Running sequentially instead of Promise.all because Monster can only do 1 at a time {% endcomment %}
+      {% comment %} Can't use ".map" because await must be in async, not function {% endcomment %}
+      {% comment %} "index === 1" logic makes sure cart only opens after 2nd product added to cart {% endcomment %}
+      for (const [index, id] of selectedArray.entries()) {
+        await new Promise((resolve, reject) => {
+          console.log(index, id);
+          window.monster_addToCart(
+            { id: parseInt(id), quantity: 1, properties: { _gwp: "true" } },
+            index === 1 ? false : true,
+            () => resolve()
+          );
+        });
+      }
 
       this.submitButton.textContent = "🎁 Gifts Added!";
       this.submitButton.disabled = true;
       console.log("Injected GWPs and applied discount:", discountCode);
 
     } catch (err) {
+      this.dataset.jsError.classList.remove('_invisible');
       console.error("GWP injection failed:", err);
     }
   }

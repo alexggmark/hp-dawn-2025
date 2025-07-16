@@ -192,6 +192,11 @@
         "type": "shopify://apps/convertflow/blocks/convertflow_script/f6367d00-7b7b-4ff9-aea4-2576ea814ccc",
         "disabled": false,
         "settings": {}
+      },
+      "855628211100114053": {
+        "type": "shopify://apps/klaviyo-email-marketing-sms/blocks/klaviyo-onsite-embed/2632fe16-c075-4321-a88b-50b567f42507",
+        "disabled": false,
+        "settings": {}
       }
     },
     "color_schemes": {
