@@ -56,7 +56,7 @@ async function checkAndInjectGWPs() {
       console.log("Injecting GWPs based on cookie");
 
       await monsterAddToCartPromise(gwpVariants[0], false);
-      await monsterAddToCartPromise(gwpVariants[1], true); // open drawer after second add
+      await monsterAddToCartPromise(gwpVariants[1], true);
 
       await fetch(`/discount/${encodeURIComponent(discountCode)}`);
 

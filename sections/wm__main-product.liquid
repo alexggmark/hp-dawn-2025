@@ -1,3 +1,12 @@
+<script>
+  console.log("Metafields:")
+  console.log({% if product.metafields %}"EXISTS"{% else %}"NOPE"{% endif %})
+  console.log({{product.metafields | json }})
+  {% for mf in product.metafields %}
+    console.log("{{ mf.namespace }} - {{ mf.key }}: {{ mf.value }}");
+  {% endfor %}
+</script>
+
 <product-info
   id="MainProduct-{{ section.id }}"
   class="md:_pb-12 _pb-8 [.quick-shop-drawer_&]:md:_py-0"
@@ -343,10 +352,11 @@
                   </div>
                 </div>
               {%- when 'rating' -%}
-                <div class="_my-4">
-                  <a href="#looxReviews">
+                <div class="_mt-3 _mb-2">
+                  {% comment %} <a href="#looxReviews">
                     {%- render 'wm__rating-stars-loox', product: product -%}
-                  </a>
+                  </a> {% endcomment %}
+                  <div class="klaviyo-star-rating-widget" data-id="{{product.id}}" data-product-title="{{product.title}}" data-product-type="{{product.type}}"></div>
                 </div>
               {%- when 'usps' -%}
                 <div class="_w-full _my-5" data-js-product-usps>
