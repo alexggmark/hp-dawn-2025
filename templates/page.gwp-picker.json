@@ -11,10 +11,7 @@
   "sections": {
     "gwp-picker": {
       "type": "wm__gwp-picker",
-      "settings": {
-        "prose": true,
-        "padding": "16"
-      }
+      "settings": {}
     }
   },
   "order": [

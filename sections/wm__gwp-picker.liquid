@@ -51,12 +51,24 @@ Product ID - Variant ID - handle:
 </div>
 
 <script>
+const GWP_DISCOUNT_MAP = {
+  "40929355071627_41562314506379": "quiz_gwp_discount_1",
+  "40929355071627_40941347930251": "quiz_gwp_discount_2",
+  "40929355071627_40929363099787": "quiz_gwp_discount_3",
+  "40929355071627_41388779438219": "quiz_gwp_discount_4",
+  "40941347930251_41562314506379": "quiz_gwp_discount_5",
+  "40929363099787_41562314506379": "quiz_gwp_discount_6",
+  "41388779438219_41562314506379": "quiz_gwp_discount_7",
+  "40929363099787_40941347930251": "quiz_gwp_discount_8",
+  "40941347930251_41388779438219": "quiz_gwp_discount_9",
+  "40929363099787_41388779438219": "quiz_gwp_discount_10"
+}
+
 class GwpPicker extends HTMLElement {
   constructor() {
     super();
     this.maxChoices = 2;
     this.selected = new Set();
-    this.discountMatrix = {};
   }
 
   connectedCallback() {
@@ -68,8 +80,6 @@ class GwpPicker extends HTMLElement {
       this.dataset.gwpproduct4,
       this.dataset.gwpproduct5
     ];
-
-    this.buildDiscountMatrix(variants);
 
     this.variantButtons = [...this.querySelectorAll('[data-js-product]')];
     this.submitButton = this.querySelector('.submit-gwp');
@@ -83,16 +93,22 @@ class GwpPicker extends HTMLElement {
     this.submitButton.addEventListener('click', () => this.submitSelection());
   }
 
-  buildDiscountMatrix(ids) {
-    for (let i = 0; i < ids.length; i++) {
-      for (let j = i + 1; j < ids.length; j++) {
-        const comboKey = [ids[i], ids[j]].sort().join("_");
-        this.discountMatrix[comboKey] = `ALEXTESTDISCOUNT-${comboKey}`; // e.g. GIFT-55101106159996_55101106159997
-        console.log(`Combo: ${comboKey}`)
-      }
-    }
-    console.log("Discount Matrix")
-    console.log(this.discountMatrix);
+  monsterAddToCartPromise(variantId, openCart = false) {
+    return new Promise((resolve, reject) => {
+      window.monster_addToCart(
+        {
+          id: parseInt(variantId),
+          quantity: 1,
+          properties: { _gwp: "true" }
+        },
+        openCart,
+        () => {
+          console.log("Added:", variantId);
+          // small delay to allow cart state to settle
+          setTimeout(resolve, 100);
+        }
+      );
+    });
   }
 
   toggleSelection(button) {
@@ -113,45 +129,26 @@ class GwpPicker extends HTMLElement {
   }
 
   async submitSelection() {
-    const selectedArray = Array.from(this.selected).map(id => id.toString()).sort();
+    const selectedArray = Array.from(this.selected).sort().map(id => id.toString());
+    console.log(selectedArray);
     const comboKey = selectedArray.join("_");
-    const discountCode = this.discountMatrix[comboKey];
+    const discountCode = GWP_DISCOUNT_MAP[comboKey];
 
     if (!discountCode) {
       console.error("No discount code found for selected combo:", comboKey);
       return;
     }
 
-    console.log(discountCode)
-
+    console.log("Applying discount:", discountCode);
     localStorage.setItem("gwp_selected", JSON.stringify(selectedArray));
     localStorage.setItem("gwp_discount_code", discountCode);
+    
 
-    fetch(`/discount/${discountCode}`);
+    await this.monsterAddToCartPromise(selectedArray[0], false);
+    await this.monsterAddToCartPromise(selectedArray[1], false);
+    await fetch(`/discount/${encodeURIComponent(discountCode)}`);
 
-    try {
-      {% comment %} Running sequentially instead of Promise.all because Monster can only do 1 at a time {% endcomment %}
-      {% comment %} Can't use ".map" because await must be in async, not function {% endcomment %}
-      {% comment %} "index === 1" logic makes sure cart only opens after 2nd product added to cart {% endcomment %}
-      for (const [index, id] of selectedArray.entries()) {
-        await new Promise((resolve, reject) => {
-          console.log(index, id);
-          window.monster_addToCart(
-            { id: parseInt(id), quantity: 1, properties: { _gwp: "true" } },
-            index === 1 ? false : true,
-            () => resolve()
-          );
-        });
-      }
-
-      this.submitButton.textContent = "🎁 Gifts Added!";
-      this.submitButton.disabled = true;
-      console.log("Injected GWPs and applied discount:", discountCode);
-
-    } catch (err) {
-      this.dataset.jsError.classList.remove('_invisible');
-      console.error("GWP injection failed:", err);
-    }
+    window.openCart();
   }
 }
 
