@@ -9,3 +9,24 @@
 
 {% comment %} Global listener for cart crossing threshold, only activates if cookies set in wm__gwp-picker.liquid active {% endcomment %}
 {% comment %} <script src="{{ 'wm__gwp-picker-listener.js' | asset_url }}" defer="defer"></script> {% endcomment %}
+
+{% comment %} Testing ConvertFlow integration {% endcomment %}
+<script>
+console.log("Listening for ConvertFlow:")
+window.addEventListener("DOMContentLoaded", function () {
+  [
+    "cfView",
+    "cfConversion",
+    "cfAnswer",
+    "cfSubmit",
+    "cfAddToCart",
+    "cfCompletion",
+    "cfClose"
+  ].forEach(function (eventType) {
+    window.addEventListener(eventType, function (e) {
+      console.log("ConvertFlow event:", eventType, e.detail);
+    });
+  });
+});
+
+</script>

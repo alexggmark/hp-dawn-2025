@@ -420,12 +420,6 @@
       <script src="{{ 'cart-drawer.js' | asset_url }}" defer="defer"></script>
     {%- endif -%}
 
-    {% comment %} FIXME: {% endcomment %}
-    <script>
-      console.log("REQUEST - PAGE TYPE:");
-      console.log({{ request.page_type | json }});
-    </script>
-
     {% render 'wm__theme-footer' %}
   </body>
 </html>
