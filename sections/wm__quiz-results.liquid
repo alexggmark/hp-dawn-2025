@@ -9,6 +9,100 @@
   }
 {% endcomment %}
 
+{% comment %} 
+  Code used in ConvertFlow to get to this page - just taking note here for safe-keeping:
+
+  Custom code in main settings:
+
+  <script>
+    window.quizAnswers = {};
+    
+    window.addEventListener("cfSubmit", function (e) {
+      const data = e.detail;
+  
+      if (data.step_name == "Quiz") {
+        console.log("QUIZ SUBMIT:", "cfSubmit", e.detail);
+        window.quizAnswers = data.fields;
+      } else if (data.step_name == "Email Form") {
+        console.log("EMAIL SUBMIT:", "cfSubmit", e.detail);
+        
+        console.log("SUBMITTING: ", window.quizAnswers);
+        
+        // Attach answers and emails as "traits" (persists)
+        analytics.identify(data.fields.email, {
+          email: data.fields.email,
+          ...window.quizAnswers
+        });
+        
+        // Track answers and quiz info as events (just useful)
+        analytics.track("2025 Skin Quiz Completed", {
+          quiz_id: data.cta?.id,
+          quiz_name: data.cta?.name,
+          variant: data.variant,
+          answers: window.quizAnswers
+        });
+      }
+    });
+  </script>
+
+  Results page:
+
+  <script>
+    console.log("Running");
+
+    function extractValueByMergeField(fieldName) {
+      const el = document.querySelector(`[data-merge="${fieldName}"]`);
+      const raw = el?.textContent?.trim();
+      if (!raw || raw === fieldName || raw === `{{person.fields.${fieldName}}}`) return null;
+      return raw;
+    }
+
+    function tryRedirect() {
+      console.log("Trying redirect");
+      const skincareRoutine = extractValueByMergeField("skincare_routine");
+      const sensitiveSkin = extractValueByMergeField("sensitive_skin");
+      const skincareGoal = extractValueByMergeField("skin_goal");
+      const skinType = extractValueByMergeField("skin_type");
+
+      const params = {
+        skincare_routine: skincareRoutine,
+        sensitive_skin: sensitiveSkin,
+        skin_goal: skincareGoal,
+        skin_type: skinType
+      };
+
+      console.log("Extracted params:", params);
+
+      const searchParams = new URLSearchParams();
+      for (const [key, val] of Object.entries(params)) {
+        if (val) searchParams.append(key, val);
+      }
+
+      if ([...searchParams].length === Object.keys(params).length) {
+        const target = `/pages/hydropeptide-skin-quiz-2025-results-page?${searchParams.toString()}`;
+        console.log("Redirecting to:", target);
+        window.location.href = target;
+      }
+    }
+
+    // Poll until merge fields are populated
+    const interval = setInterval(() => {
+      console.log("Setting interval");
+      const ready =
+        extractValueByMergeField("skincare_routine") &&
+        extractValueByMergeField("sensitive_skin") &&
+        extractValueByMergeField("skin_goal") &&
+        extractValueByMergeField("skin_type");
+
+      if (ready) {
+        console.log("Ready Freddie");
+        clearInterval(interval);
+        tryRedirect();
+      }
+    }, 300);
+  </script>
+{% endcomment %}
+
 {% style %}
   .content-block.hidden,
   .loading__spinner--block.hidden {
@@ -64,12 +158,12 @@
                 section.settings.routine_image_hero
                 | image_url: width: 100
                 | image_tag:
-                class: '_w-12',
+                class: '_w-10',
                 width: 100,
                 height: 100
               }}
             {%- endif -%}
-            <h2 class="_font-heading-primary _text-3xl">Your big hero product</h2>
+            <h2 class="_font-heading-primary _text-2.5xl">Your big hero product</h2>
           </div>
           <div data-js-content class="_flex _flex-col _gap-12"></div>
         </div>
@@ -80,12 +174,12 @@
                 section.settings.routine_image_routine
                 | image_url: width: 100
                 | image_tag:
-                  class: '_w-12',
+                  class: '_w-10',
                   width: 100,
                   height: 100
               }}
             {%- endif -%}
-            <h2 class="_font-heading-primary _text-3xl">Your AM & PM routine</h2>
+            <h2 class="_font-heading-primary _text-2.5xl">Your AM & PM routine</h2>
           </div>
           <div data-js-content class="_flex _flex-col _gap-12"></div>
         </div>
@@ -96,12 +190,12 @@
                 section.settings.routine_image_pm
                 | image_url: width: 100
                 | image_tag:
-                  class: '_w-12',
+                  class: '_w-10',
                   width: 100,
                   height: 100
               }}
             {%- endif -%}
-            <h2 class="_font-heading-primary _text-3xl">Your PM-only routine</h2>
+            <h2 class="_font-heading-primary _text-2.5xl">Your PM-only routine</h2>
           </div>
           <div data-js-content class="_flex _flex-col _gap-12"></div>
         </div>
@@ -112,12 +206,12 @@
                 section.settings.routine_image_bonus
                 | image_url: width: 100
                 | image_tag:
-                  class: '_w-12',
+                  class: '_w-10',
                   width: 100,
                   height: 100
               }}
             {%- endif -%}
-            <h2 class="_font-heading-primary _text-3xl">Your bonus</h2>
+            <h2 class="_font-heading-primary _text-2.5xl">Your bonus</h2>
           </div>
           <div data-js-content class="_flex _flex-col _gap-12"></div>
         </div>
@@ -168,7 +262,6 @@
                 <a
                   class="_button-primary"
                   data-js-product-main-url
-                  target="_blank"
                 >
                   <span>
                     See product
