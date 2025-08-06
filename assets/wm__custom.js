@@ -29,7 +29,6 @@ async function globalMonsterCartFunction(event, variantId, product, quantity) {
     CTA.classList.remove('loading');
     CTA.querySelector('.loading__spinner').classList.add('hidden');
   }
-
 }
 
 class EmblaSlider extends HTMLElement {

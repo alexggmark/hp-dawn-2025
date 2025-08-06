@@ -9,99 +9,7 @@
   }
 {% endcomment %}
 
-{% comment %} 
-  Code used in ConvertFlow to get to this page - just taking note here for safe-keeping:
-
-  Custom code in main settings:
-
-  <script>
-    window.quizAnswers = {};
-    
-    window.addEventListener("cfSubmit", function (e) {
-      const data = e.detail;
-  
-      if (data.step_name == "Quiz") {
-        console.log("QUIZ SUBMIT:", "cfSubmit", e.detail);
-        window.quizAnswers = data.fields;
-      } else if (data.step_name == "Email Form") {
-        console.log("EMAIL SUBMIT:", "cfSubmit", e.detail);
-        
-        console.log("SUBMITTING: ", window.quizAnswers);
-        
-        // Attach answers and emails as "traits" (persists)
-        analytics.identify(data.fields.email, {
-          email: data.fields.email,
-          ...window.quizAnswers
-        });
-        
-        // Track answers and quiz info as events (just useful)
-        analytics.track("2025 Skin Quiz Completed", {
-          quiz_id: data.cta?.id,
-          quiz_name: data.cta?.name,
-          variant: data.variant,
-          answers: window.quizAnswers
-        });
-      }
-    });
-  </script>
-
-  Results page:
-
-  <script>
-    console.log("Running");
-
-    function extractValueByMergeField(fieldName) {
-      const el = document.querySelector(`[data-merge="${fieldName}"]`);
-      const raw = el?.textContent?.trim();
-      if (!raw || raw === fieldName || raw === `{{person.fields.${fieldName}}}`) return null;
-      return raw;
-    }
-
-    function tryRedirect() {
-      console.log("Trying redirect");
-      const skincareRoutine = extractValueByMergeField("skincare_routine");
-      const sensitiveSkin = extractValueByMergeField("sensitive_skin");
-      const skincareGoal = extractValueByMergeField("skin_goal");
-      const skinType = extractValueByMergeField("skin_type");
-
-      const params = {
-        skincare_routine: skincareRoutine,
-        sensitive_skin: sensitiveSkin,
-        skin_goal: skincareGoal,
-        skin_type: skinType
-      };
-
-      console.log("Extracted params:", params);
-
-      const searchParams = new URLSearchParams();
-      for (const [key, val] of Object.entries(params)) {
-        if (val) searchParams.append(key, val);
-      }
-
-      if ([...searchParams].length === Object.keys(params).length) {
-        const target = `/pages/hydropeptide-skin-quiz-2025-results-page?${searchParams.toString()}`;
-        console.log("Redirecting to:", target);
-        window.location.href = target;
-      }
-    }
-
-    // Poll until merge fields are populated
-    const interval = setInterval(() => {
-      console.log("Setting interval");
-      const ready =
-        extractValueByMergeField("skincare_routine") &&
-        extractValueByMergeField("sensitive_skin") &&
-        extractValueByMergeField("skin_goal") &&
-        extractValueByMergeField("skin_type");
-
-      if (ready) {
-        console.log("Ready Freddie");
-        clearInterval(interval);
-        tryRedirect();
-      }
-    }, 300);
-  </script>
-{% endcomment %}
+{% comment %} TODO: note - ConvertFlow code is at bottom of this page {% endcomment %}
 
 {% style %}
   .content-block.hidden,
@@ -223,7 +131,8 @@
             <div class="_col-span-2">
               <div class="_flex _justify-center _items-center _aspect-square _bg-brand-background-light">
                 <img data-js-product-image height="100%" width="100%">
-                {%- render 'loading-spinner' -%}
+                {% comment %} FIXME: this might be causing problems with selector {% endcomment %}
+                {% comment %} {%- render 'loading-spinner' -%} {% endcomment %}
               </div>
             </div>
             <div class="_col-span-3">
@@ -369,39 +278,19 @@
         console.log("PRODUCT:");
         console.log(product);
 
-        {% comment %} 
-          product.title
-          product.description
-          product.media[0].src
-          product.media[0].alt
-          product.featured_image
-          product.url
-          product.variants[0].id
-          product.variants[0].title
-        {% endcomment %}
-
         this.querySelector('[data-js-product-title]').textContent = product.title;
         this.querySelector('[data-js-product-image]').src = product.media[0].src;
         this.querySelector('[data-js-product-description]').innerHTML = product.description;
         this.renderCTA(this.querySelector('[data-js-product-main-cta]'), product);
         this.querySelector('[data-js-product-main-url]').href = product.url;
 
-        // this.innerHTML ……etc
-
-        {% comment %} this.querySelector('.add-to-cart').addEventListener('click', () => {
-          const variantId = this.querySelector('.variant-select').value;
-          fetch('/cart/add.js', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ id: variantId, quantity: 1 })
-          }).then(() => alert(`${product.title} added to cart!`));
-        }); {% endcomment %}
-
+        {% comment %} Variant logic would go here {% endcomment %}
       } catch (err) {
         console.error(`Error fetching product ${handle}:`, err);
         this.innerHTML = `<p class="_text-red-500">Error loading product</p>`;
-      } finally {
-        if (spinner) spinner.classList.toggle('hidden');
+      // Alex - this might not be needed if we're loading whole section, also causes issues with CTA spinner
+      // } finally {
+        //if (spinner) spinner.classList.toggle('hidden');
       }
     }
 
@@ -420,16 +309,13 @@
       const variant = product.variants[0];
       const price = this.formatMoney(variant.price);
 
-      // Update CTA text
       const ctaTextEl = buttonEl.querySelector('[data-js-product-cta-text]');
       ctaTextEl.textContent = product.available && variant.available
         ? `Add ${price} to Cart`
         : "Not available";
 
-      // Disable button if unavailable
       buttonEl.disabled = !product.available || !variant.available;
 
-      // Update hidden input with variant ID
       const form = this.querySelector('[data-type="add-to-cart-form"]');
       const variantInput = form?.querySelector('input[name="id"]');
       if (variantInput) {
@@ -437,7 +323,7 @@
         variantInput.disabled = false;
       }
 
-      // Hook up MonsterCart
+      // connecting to global MonsterCart function (falls back to just normal button if no Monster app)
       buttonEl.addEventListener('click', (e) => {
         globalMonsterCartFunction(e, false, product, 1);
       });
@@ -499,3 +385,97 @@
   ]
 }
 {% endschema %}
+
+{% comment %} 
+  Code used in ConvertFlow to get to this page - just taking note here for safe-keeping:
+
+  Custom code in main settings:
+
+  <script>
+    window.quizAnswers = {};
+    
+    window.addEventListener("cfSubmit", function (e) {
+      const data = e.detail;
+  
+      if (data.step_name == "Quiz") {
+        console.log("QUIZ SUBMIT:", "cfSubmit", e.detail);
+        window.quizAnswers = data.fields;
+      } else if (data.step_name == "Email Form") {
+        console.log("EMAIL SUBMIT:", "cfSubmit", e.detail);
+        
+        console.log("SUBMITTING: ", window.quizAnswers);
+        
+        // Attach answers and emails as "traits" (persists)
+        analytics.identify(data.fields.email, {
+          email: data.fields.email,
+          ...window.quizAnswers
+        });
+        
+        // Track answers and quiz info as events (just useful)
+        analytics.track("2025 Skin Quiz Completed", {
+          quiz_id: data.cta?.id,
+          quiz_name: data.cta?.name,
+          variant: data.variant,
+          answers: window.quizAnswers
+        });
+      }
+    });
+  </script>
+
+  Results page:
+
+  <script>
+    console.log("Running");
+
+    function extractValueByMergeField(fieldName) {
+      const el = document.querySelector(`[data-merge="${fieldName}"]`);
+      const raw = el?.textContent?.trim();
+      if (!raw || raw === fieldName || raw === `{{person.fields.${fieldName}}}`) return null;
+      return raw;
+    }
+
+    function tryRedirect() {
+      console.log("Trying redirect");
+      const skincareRoutine = extractValueByMergeField("skincare_routine");
+      const sensitiveSkin = extractValueByMergeField("sensitive_skin");
+      const skincareGoal = extractValueByMergeField("skin_goal");
+      const skinType = extractValueByMergeField("skin_type");
+
+      const params = {
+        skincare_routine: skincareRoutine,
+        sensitive_skin: sensitiveSkin,
+        skin_goal: skincareGoal,
+        skin_type: skinType
+      };
+
+      console.log("Extracted params:", params);
+
+      const searchParams = new URLSearchParams();
+      for (const [key, val] of Object.entries(params)) {
+        if (val) searchParams.append(key, val);
+      }
+
+      if ([...searchParams].length === Object.keys(params).length) {
+        const target = `/pages/hydropeptide-skin-quiz-2025-results-page?${searchParams.toString()}`;
+        console.log("Redirecting to:", target);
+        window.location.href = target;
+      }
+    }
+
+    // Poll until merge fields are populated
+    const interval = setInterval(() => {
+      console.log("Setting interval");
+      const ready =
+        extractValueByMergeField("skincare_routine") &&
+        extractValueByMergeField("sensitive_skin") &&
+        extractValueByMergeField("skin_goal") &&
+        extractValueByMergeField("skin_type");
+
+      if (ready) {
+        console.log("Ready Freddie");
+        clearInterval(interval);
+        tryRedirect();
+      }
+    }, 300);
+  </script>
+{% endcomment %}

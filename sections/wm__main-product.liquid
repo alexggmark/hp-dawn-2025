@@ -353,9 +353,6 @@
                 </div>
               {%- when 'rating' -%}
                 <div class="_mt-3 _mb-2">
-                  {% comment %} <a href="#looxReviews">
-                    {%- render 'wm__rating-stars-loox', product: product -%}
-                  </a> {% endcomment %}
                   <div class="klaviyo-star-rating-widget" data-id="{{product.id}}" data-product-title="{{product.title}}" data-product-type="{{product.type}}"></div>
                 </div>
               {%- when 'usps' -%}
