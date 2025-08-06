@@ -11,7 +11,9 @@
   "sections": {
     "quiz-results": {
       "type": "wm__quiz-results",
-      "settings": {}
+      "settings": {
+        "default_product": "age-reversal-regimen"
+      }
     }
   },
   "order": [

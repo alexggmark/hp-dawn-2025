@@ -1,3 +1,37 @@
+// Used to generate working "Add to Cart" when CTA rendered dynamically
+async function globalMonsterCartFunction(event, variantId, product, quantity) {
+  console.log("globalMonsterCartFunction");
+  if (typeof window.monster_addToCart !== 'function') return;
+  
+  event.preventDefault();
+
+  const CTA = event.currentTarget;
+  const id = variantId ? variantId : product.variants[0].id;
+
+  CTA.setAttribute('aria-disabled', true);
+  CTA.classList.add('loading');
+  CTA.querySelector('.loading__spinner').classList.remove('hidden');
+
+  try {
+    await new Promise((resolve, reject) => {
+      try {
+        window.monster_addToCart({ id, quantity }, true, () => {
+          resolve();
+        });
+      } catch (err) {
+        reject(err);
+      }
+    });
+  } catch (e) {
+    console.error(e);
+  } finally {
+    CTA.removeAttribute('aria-disabled');
+    CTA.classList.remove('loading');
+    CTA.querySelector('.loading__spinner').classList.add('hidden');
+  }
+
+}
+
 class EmblaSlider extends HTMLElement {
   constructor() {
     super();

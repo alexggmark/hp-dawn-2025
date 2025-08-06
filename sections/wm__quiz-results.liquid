@@ -9,60 +9,173 @@
   }
 {% endcomment %}
 
-{% comment %} Loading this here instead of inside each wm__card-product template {% endcomment %}
-{{ 'component-rating.css' | asset_url | stylesheet_tag }}
-{{ 'wm__component-price.css' | asset_url | stylesheet_tag }}
-{{ 'quick-order-list.css' | asset_url | stylesheet_tag }}
-{{ 'quantity-popover.css' | asset_url | stylesheet_tag }}
-
-{% # theme-check-disable %}
-<script src="//unpkg.com/alpinejs" defer></script>
-{% # theme-check-enable %}
-
 {% style %}
   .content-block.hidden,
   .loading__spinner--block.hidden {
     display: none;
+    opacity: 0;
+  }
+  .content-block,
+  .loading__spinner--block {
+    display: block;
+    opacity: 1;
   }
 {% endstyle %}
 
-<div class="_w-full _py-20">
-  <div class="page-width page-width--narrow">
+{% comment %} _bg-brand-background-light {% endcomment %}
+<div class="_w-full">
+  <div class="page-width _max-w-[920px] _bg-brand-light _py-16">
+    <div class="_pb-12 _text-center">
+      {% unless section.settings.top_heading == blank %}
+        <h3 class="_font-heading-small _text-brand-dark _text-sm">
+          {{ section.settings.top_heading }}
+        </h3>
+      {% endunless %}
+      {% unless section.settings.main_heading == blank %}
+        <h2 class="_font-heading-primary _text-brand-dark md:_text-4xl _text-2.5xl _mt-1">
+          {{ section.settings.main_heading }}
+        </h2>
+      {% endunless %}
+      {% unless section.settings.description == blank %}
+        <div class="_text-base _mt-4 _prose">
+          {{ section.settings.description }}
+        </div>
+      {% endunless %}
+      {%- unless section.settings.cta_text == blank -%}
+        <a
+          href="{{ section.settings.cta_url }}"
+          class="_button-primary _mt-6"
+        >
+          <span>{{- section.settings.cta_text -}}</span>
+        </a>
+      {%- endunless -%}
+    </div>
+
+
     <quiz-results-page>
-      <div class="loading__spinner--block hidden _flex _min-h-96 _items-center _justify-center">
+      <div class="loading__spinner--block hidden _flex _min-h-72 _items-center _justify-center">
         {%- render 'loading-spinner' -%}
       </div>
       <div class="content-block hidden" id="output">
-        <div data-js-block="product_hero" class="_hidden">
-          <h2 class="_font-heading-primary _text-center _text-4xl _mt-12 _mb-8">Your big hero product</h2>
+        <div data-js-block="product_hero" class="_hidden _border-t _border-brand-border _mb-20">
+          <div class="_flex _flex-row _items-center _flex-wrap _gap-2 _mt-8 _mb-12">
+            {%- if section.settings.routine_image_hero -%}
+              {{
+                section.settings.routine_image_hero
+                | image_url: width: 100
+                | image_tag:
+                class: '_w-12',
+                width: 100,
+                height: 100
+              }}
+            {%- endif -%}
+            <h2 class="_font-heading-primary _text-3xl">Your big hero product</h2>
+          </div>
           <div data-js-content class="_flex _flex-col _gap-12"></div>
         </div>
-        <div data-js-block="product_routine" class="_hidden">
-          <h2 class="_font-heading-primary _text-center _text-4xl _mt-12 _mb-8">Your AM & PM routine</h2>
+        <div data-js-block="product_routine" class="_hidden _border-t _border-brand-border _mb-20">
+          <div class="_flex _flex-row _items-center _flex-wrap _gap-2 _mt-8 _mb-12">
+            {%- if section.settings.routine_image_routine -%}
+              {{
+                section.settings.routine_image_routine
+                | image_url: width: 100
+                | image_tag:
+                  class: '_w-12',
+                  width: 100,
+                  height: 100
+              }}
+            {%- endif -%}
+            <h2 class="_font-heading-primary _text-3xl">Your AM & PM routine</h2>
+          </div>
           <div data-js-content class="_flex _flex-col _gap-12"></div>
         </div>
-        <div data-js-block="product_pm_only" class="_hidden">
-          <h2 class="_font-heading-primary _text-center _text-4xl _mt-12 _mb-8">Your PM-only routine</h2>
+        <div data-js-block="product_pm_only" class="_hidden _border-t _border-brand-border _mb-20">
+          <div class="_flex _flex-row _items-center _flex-wrap _gap-2 _mt-8 _mb-12">
+            {%- if section.settings.routine_image_pm -%}
+              {{
+                section.settings.routine_image_pm
+                | image_url: width: 100
+                | image_tag:
+                  class: '_w-12',
+                  width: 100,
+                  height: 100
+              }}
+            {%- endif -%}
+            <h2 class="_font-heading-primary _text-3xl">Your PM-only routine</h2>
+          </div>
           <div data-js-content class="_flex _flex-col _gap-12"></div>
         </div>
-        <div data-js-block="product_bonus" class="_hidden">
-          <h2 class="_font-heading-primary _text-center _text-4xl _mt-12 _mb-8">Your bonus</h2>
+        <div data-js-block="product_bonus" class="_hidden _border-t _border-brand-border _mb-20">
+          <div class="_flex _flex-row _items-center _flex-wrap _gap-2 _mt-8 _mb-12">
+            {%- if section.settings.routine_image_bonus -%}
+              {{
+                section.settings.routine_image_bonus
+                | image_url: width: 100
+                | image_tag:
+                  class: '_w-12',
+                  width: 100,
+                  height: 100
+              }}
+            {%- endif -%}
+            <h2 class="_font-heading-primary _text-3xl">Your bonus</h2>
+          </div>
           <div data-js-content class="_flex _flex-col _gap-12"></div>
         </div>
       </div>
 
       <template data-js-product-card-template>
         <simple-product-card data-js-product-handle>
-          <div class="_grid _grid-cols-3 _gap-4">
-            <div class="_col-span-1">
+          <div class="_grid _grid-cols-5 _gap-4">
+            <div class="_col-span-2">
               <div class="_flex _justify-center _items-center _aspect-square _bg-brand-background-light">
                 <img data-js-product-image height="100%" width="100%">
                 {%- render 'loading-spinner' -%}
               </div>
             </div>
-            <div class="_col-span-2">
+            <div class="_col-span-3">
               <h2 class="_font-heading-primary _text-2xl _mb-2" data-js-product-title></h2>
-              <p class="_prose _text-base" data-js-product-description></p>
+              <p class="_prose _text-base _mb-6" data-js-product-description></p>
+              
+              {%- assign product_form_id = 'product-form-' | append: section.id -%}
+              <div class="_flex _flex-row _items-start _flex-wrap _gap-2">
+                {%- form 'product',
+                  section.settings.default_product,
+                  id: product_form_id,
+                  class: 'form',
+                  novalidate: 'novalidate',
+                  data-type: 'add-to-cart-form'
+                -%}
+                  <input
+                    type="hidden"
+                    name="id"
+                    value="" {% comment %} DO SOMETHING HERE {% endcomment %}
+                    disabled
+                    class="product-variant-id"
+                  >
+                  <button
+                    id="ProductSubmitButton-{{ section.id }}"
+                    type="submit"
+                    name="add"
+                    class="_button-secondary"
+                    data-js-product-main-cta
+                  >
+                    <span>
+                      <span data-js-product-cta-text>Add to cart</span>
+                    </span>
+                    {%- render 'loading-spinner' -%}
+                  </button>
+                {%- endform -%}
+                <a
+                  class="_button-primary"
+                  data-js-product-main-url
+                  target="_blank"
+                >
+                  <span>
+                    See product
+                  </span>
+                  {%- render 'loading-spinner' -%}
+                </a>
+              </div>
             </div>
           </div>
         </simple-product-card>
@@ -104,7 +217,6 @@
         const isHero = filters.skincare_routine === 'hero_product';
 
         if (isHero) {
-          {% comment %} output.innerHTML = `<p>Product: ${match.product_hero}</p>`; {% endcomment %}
           this.renderProductsFromHandles(match.product_hero, this.querySelector('[data-js-block="product_hero"]'));
         } else {
           this.renderProductsFromHandles(match.product_routine, this.querySelector('[data-js-block="product_routine"]'));
@@ -118,10 +230,12 @@
         console.error("Error fetching quiz results:", err);
         output.innerHTML = `<p>Something went wrong. Try again later.</p>`;
       } finally {
-        if (spinner) spinner.classList.toggle('hidden');
-        if (spinnerBlock) spinnerBlock.classList.toggle('hidden');
-        const contentBlock = this.querySelector('.content-block');
-        if (contentBlock) contentBlock.classList.remove('hidden');
+        setTimeout(() => {
+          if (spinner) spinner.classList.toggle('hidden');
+          if (spinnerBlock) spinnerBlock.classList.toggle('hidden');
+          const contentBlock = this.querySelector('.content-block');
+          if (contentBlock) contentBlock.classList.remove('hidden');
+        }, 300);
       }
     }
 
@@ -143,6 +257,11 @@
   customElements.define('quiz-results-page', QuizResultsPage);
 
   class SimpleProductCard extends HTMLElement {
+    constructor() {
+      super();
+      this.variant = '';
+    }
+
     async connectedCallback() {
       const handle = this.dataset.jsProductHandle;
       if (!handle) return;
@@ -153,8 +272,6 @@
       try {
         const res = await fetch(`/products/${handle}.js`);
         const product = await res.json();
-
-        let hasVariants = false;
 
         console.log("PRODUCT:");
         console.log(product);
@@ -170,13 +287,11 @@
           product.variants[0].title
         {% endcomment %}
 
-        if (product.variants.length > 0) {
-          hasVariants = true;
-        }
-
         this.querySelector('[data-js-product-title]').textContent = product.title;
         this.querySelector('[data-js-product-image]').src = product.media[0].src;
         this.querySelector('[data-js-product-description]').innerHTML = product.description;
+        this.renderCTA(this.querySelector('[data-js-product-main-cta]'), product);
+        this.querySelector('[data-js-product-main-url]').href = product.url;
 
         // this.innerHTML ……etc
 
@@ -196,6 +311,44 @@
         if (spinner) spinner.classList.toggle('hidden');
       }
     }
+
+    formatMoney(pence, currency = 'GBP', locale = 'en-GB') {
+      const formatted = new Intl.NumberFormat(locale, {
+        style: 'currency',
+        currency: currency,
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+      }).format(pence / 100);
+
+      return formatted.replace(/\.00$/, '');
+    }
+
+    renderCTA(buttonEl, product) {
+      const variant = product.variants[0];
+      const price = this.formatMoney(variant.price);
+
+      // Update CTA text
+      const ctaTextEl = buttonEl.querySelector('[data-js-product-cta-text]');
+      ctaTextEl.textContent = product.available && variant.available
+        ? `Add ${price} to Cart`
+        : "Not available";
+
+      // Disable button if unavailable
+      buttonEl.disabled = !product.available || !variant.available;
+
+      // Update hidden input with variant ID
+      const form = this.querySelector('[data-type="add-to-cart-form"]');
+      const variantInput = form?.querySelector('input[name="id"]');
+      if (variantInput) {
+        variantInput.value = variant.id;
+        variantInput.disabled = false;
+      }
+
+      // Hook up MonsterCart
+      buttonEl.addEventListener('click', (e) => {
+        globalMonsterCartFunction(e, false, product, 1);
+      });
+    }
   }
 
   customElements.define('simple-product-card', SimpleProductCard);
@@ -211,7 +364,45 @@
       "type": "product",
       "id": "default_product",
       "label": "Default product (for templating purposes only)"
-    }
+    },
+    {
+      "type": "inline_richtext",
+      "id": "top_heading",
+      "default": "t:sections.footer.blocks.link_list.settings.heading.default",
+      "label": "Top Heading"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "main_heading",
+      "default": "t:sections.footer.blocks.link_list.settings.heading.default",
+      "label": "Main Heading"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "default": "<p>Description text</p>",
+      "label": "Description text"
+    },
+    {
+      "type": "image_picker",
+      "id": "routine_image_hero",
+      "label": "Routine icon - Hero Product"
+    },
+    {
+      "type": "image_picker",
+      "id": "routine_image_routine",
+      "label": "Routine icon - Main Routine"
+    },
+    {
+      "type": "image_picker",
+      "id": "routine_image_pm",
+      "label": "Routine icon - PM Only"
+    },
+    {
+      "type": "image_picker",
+      "id": "routine_image_bonus",
+      "label": "Routine icon - Bonus"
+    },
   ]
 }
 {% endschema %}
