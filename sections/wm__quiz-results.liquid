@@ -1,0 +1,73 @@
+{% comment %} 
+  TEST: section for ConvertFlow quiz results designed to pick up UTMs and use to generate quiz results
+
+  {
+    skincare_routine: [hero_product, simple_routine, luxury_routine],
+    sensitive_skin: [sensitive_skin_yes, sensitive_skin_no],
+    skin_goal: [youthful_skin, oil_control, hydration, improve_dull_skin, reduce_redness, even_skin_tone, reduce_acne],
+    skin_type: [oily, dry, normal, combination]
+  }
+{% endcomment %}
+
+{% # theme-check-disable %}
+<script src="//unpkg.com/alpinejs" defer></script>
+{% # theme-check-enable %}
+
+<div class="_w-full _bg-brand-background">
+  <div class="page-width">
+    {%- render 'loading-spinner' -%}
+    <div class="_border _border-red-500" id="output">d</div>
+  </div>
+</div>
+
+<script>
+  const params = new URLSearchParams(window.location.search);
+  const filters = Object.fromEntries(params.entries());
+
+  async function getResults() {
+    try {
+      const res = await fetch('{{ 'wm__quiz-results-product-matrix.json' | asset_url }}');
+      const data = await res.json();
+
+      // Step 1: Only consider entries with this skincare routine
+      const routineSubset = data.filter(
+        item => item.skincare_routine === filters.skincare_routine
+      );
+
+      // Step 2: Find exact match in the subset
+      const match = routineSubset.find(item =>
+        Object.keys(filters).every(key => item[key] === filters[key])
+      );
+
+      const isHero = filters.skincare_routine == 'hero_product';
+      const el = document.querySelector('#output');
+
+      if (!match) {
+        console.warn("No match found in routine subset:", filters.skincare_routine);
+        return;
+      }
+
+      if (isHero) {
+        el.innerHTML = match.product_hero;
+      } else {
+        el.innerHTML = match.product_routine;
+      }
+
+    } catch (error) {
+      console.error("Error fetching or matching quiz results:", error);
+    }
+  }
+
+  getResults();
+
+</script>
+
+{% schema %}
+{
+  "name": "WM Quiz Results",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+  ]
+}
+{% endschema %}
