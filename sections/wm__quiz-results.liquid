@@ -9,57 +9,196 @@
   }
 {% endcomment %}
 
+{% comment %} Loading this here instead of inside each wm__card-product template {% endcomment %}
+{{ 'component-rating.css' | asset_url | stylesheet_tag }}
+{{ 'wm__component-price.css' | asset_url | stylesheet_tag }}
+{{ 'quick-order-list.css' | asset_url | stylesheet_tag }}
+{{ 'quantity-popover.css' | asset_url | stylesheet_tag }}
+
 {% # theme-check-disable %}
 <script src="//unpkg.com/alpinejs" defer></script>
 {% # theme-check-enable %}
 
-<div class="_w-full _bg-brand-background">
-  <div class="page-width">
-    {%- render 'loading-spinner' -%}
-    <div class="_border _border-red-500" id="output">d</div>
+{% style %}
+  .content-block.hidden,
+  .loading__spinner--block.hidden {
+    display: none;
+  }
+{% endstyle %}
+
+<div class="_w-full _py-20">
+  <div class="page-width page-width--narrow">
+    <quiz-results-page>
+      <div class="loading__spinner--block hidden _flex _min-h-96 _items-center _justify-center">
+        {%- render 'loading-spinner' -%}
+      </div>
+      <div class="content-block hidden" id="output">
+        <div data-js-block="product_hero" class="_hidden">
+          <h2 class="_font-heading-primary _text-center _text-4xl _mt-12 _mb-8">Your big hero product</h2>
+          <div data-js-content class="_flex _flex-col _gap-12"></div>
+        </div>
+        <div data-js-block="product_routine" class="_hidden">
+          <h2 class="_font-heading-primary _text-center _text-4xl _mt-12 _mb-8">Your AM & PM routine</h2>
+          <div data-js-content class="_flex _flex-col _gap-12"></div>
+        </div>
+        <div data-js-block="product_pm_only" class="_hidden">
+          <h2 class="_font-heading-primary _text-center _text-4xl _mt-12 _mb-8">Your PM-only routine</h2>
+          <div data-js-content class="_flex _flex-col _gap-12"></div>
+        </div>
+        <div data-js-block="product_bonus" class="_hidden">
+          <h2 class="_font-heading-primary _text-center _text-4xl _mt-12 _mb-8">Your bonus</h2>
+          <div data-js-content class="_flex _flex-col _gap-12"></div>
+        </div>
+      </div>
+
+      <template data-js-product-card-template>
+        <simple-product-card data-js-product-handle>
+          <div class="_grid _grid-cols-3 _gap-4">
+            <div class="_col-span-1">
+              <div class="_flex _justify-center _items-center _aspect-square _bg-brand-background-light">
+                <img data-js-product-image height="100%" width="100%">
+                {%- render 'loading-spinner' -%}
+              </div>
+            </div>
+            <div class="_col-span-2">
+              <h2 class="_font-heading-primary _text-2xl _mb-2" data-js-product-title></h2>
+              <p class="_prose _text-base" data-js-product-description></p>
+            </div>
+          </div>
+        </simple-product-card>
+      </template>
+    </quiz-results-page>
   </div>
 </div>
 
 <script>
-  const params = new URLSearchParams(window.location.search);
-  const filters = Object.fromEntries(params.entries());
+  class QuizResultsPage extends HTMLElement {
+    async connectedCallback() {
+      const spinner = this.querySelector('.loading__spinner');
+      const spinnerBlock = this.querySelector('.loading__spinner--block');
+      if (spinner) spinner.classList.toggle('hidden');
+      if (spinnerBlock) spinnerBlock.classList.toggle('hidden');
 
-  async function getResults() {
-    try {
-      const res = await fetch('{{ 'wm__quiz-results-product-matrix.json' | asset_url }}');
-      const data = await res.json();
+      const output = this.querySelector('#output');
+      const params = new URLSearchParams(window.location.search);
+      const filters = Object.fromEntries(params.entries());
 
-      // Step 1: Only consider entries with this skincare routine
-      const routineSubset = data.filter(
-        item => item.skincare_routine === filters.skincare_routine
-      );
+      try {
+        const res = await fetch('{{ 'wm__quiz-results-product-matrix.json' | asset_url }}');
+        const data = await res.json();
 
-      // Step 2: Find exact match in the subset
-      const match = routineSubset.find(item =>
-        Object.keys(filters).every(key => item[key] === filters[key])
-      );
+        const routineSubset = data.filter(
+          item => item.skincare_routine === filters.skincare_routine
+        );
 
-      const isHero = filters.skincare_routine == 'hero_product';
-      const el = document.querySelector('#output');
+        const match = routineSubset.find(item =>
+          Object.keys(filters).every(key => item[key] === filters[key])
+        );
 
-      if (!match) {
-        console.warn("No match found in routine subset:", filters.skincare_routine);
-        return;
+        if (!match) {
+          console.warn("No match found for:", filters);
+          output.innerHTML = `<p>No matching product found.</p>`;
+          return;
+        }
+
+        const isHero = filters.skincare_routine === 'hero_product';
+
+        if (isHero) {
+          {% comment %} output.innerHTML = `<p>Product: ${match.product_hero}</p>`; {% endcomment %}
+          this.renderProductsFromHandles(match.product_hero, this.querySelector('[data-js-block="product_hero"]'));
+        } else {
+          this.renderProductsFromHandles(match.product_routine, this.querySelector('[data-js-block="product_routine"]'));
+          this.renderProductsFromHandles(match.product_pm_only, this.querySelector('[data-js-block="product_pm_only"]'));
+          this.renderProductsFromHandles(match.product_bonus, this.querySelector('[data-js-block="product_bonus"]'));
+        }
+
+        console.log(`Matched:`);
+        console.log(match);
+      } catch (err) {
+        console.error("Error fetching quiz results:", err);
+        output.innerHTML = `<p>Something went wrong. Try again later.</p>`;
+      } finally {
+        if (spinner) spinner.classList.toggle('hidden');
+        if (spinnerBlock) spinnerBlock.classList.toggle('hidden');
+        const contentBlock = this.querySelector('.content-block');
+        if (contentBlock) contentBlock.classList.remove('hidden');
       }
+    }
 
-      if (isHero) {
-        el.innerHTML = match.product_hero;
-      } else {
-        el.innerHTML = match.product_routine;
-      }
+    renderProductsFromHandles(handlesString, outputElement) {
+      const handles = handlesString.split(',').map(h => h.trim()).filter(Boolean);
+      if (!handles.length) return;
+      const template = this.querySelector('[data-js-product-card-template]');
 
-    } catch (error) {
-      console.error("Error fetching or matching quiz results:", error);
+      handles.forEach(handle => {
+        const clone = template.content.cloneNode(true);
+        const card = clone.querySelector('simple-product-card');
+        card.setAttribute('data-js-product-handle', handle);
+        outputElement.querySelector('[data-js-content]').appendChild(clone);
+      });
+      outputElement.classList.toggle('_hidden');
     }
   }
 
-  getResults();
+  customElements.define('quiz-results-page', QuizResultsPage);
 
+  class SimpleProductCard extends HTMLElement {
+    async connectedCallback() {
+      const handle = this.dataset.jsProductHandle;
+      if (!handle) return;
+
+      const spinner = this.querySelector('.loading__spinner');
+      if (spinner) spinner.classList.toggle('hidden');
+
+      try {
+        const res = await fetch(`/products/${handle}.js`);
+        const product = await res.json();
+
+        let hasVariants = false;
+
+        console.log("PRODUCT:");
+        console.log(product);
+
+        {% comment %} 
+          product.title
+          product.description
+          product.media[0].src
+          product.media[0].alt
+          product.featured_image
+          product.url
+          product.variants[0].id
+          product.variants[0].title
+        {% endcomment %}
+
+        if (product.variants.length > 0) {
+          hasVariants = true;
+        }
+
+        this.querySelector('[data-js-product-title]').textContent = product.title;
+        this.querySelector('[data-js-product-image]').src = product.media[0].src;
+        this.querySelector('[data-js-product-description]').innerHTML = product.description;
+
+        // this.innerHTML ……etc
+
+        {% comment %} this.querySelector('.add-to-cart').addEventListener('click', () => {
+          const variantId = this.querySelector('.variant-select').value;
+          fetch('/cart/add.js', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ id: variantId, quantity: 1 })
+          }).then(() => alert(`${product.title} added to cart!`));
+        }); {% endcomment %}
+
+      } catch (err) {
+        console.error(`Error fetching product ${handle}:`, err);
+        this.innerHTML = `<p class="_text-red-500">Error loading product</p>`;
+      } finally {
+        if (spinner) spinner.classList.toggle('hidden');
+      }
+    }
+  }
+
+  customElements.define('simple-product-card', SimpleProductCard);
 </script>
 
 {% schema %}
@@ -68,6 +207,11 @@
   "tag": "section",
   "class": "section",
   "settings": [
+    {
+      "type": "product",
+      "id": "default_product",
+      "label": "Default product (for templating purposes only)"
+    }
   ]
 }
 {% endschema %}
