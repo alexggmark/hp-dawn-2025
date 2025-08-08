@@ -1547,10 +1547,6 @@ video {
   height: 0.75rem !important;
 }
 
-._h-3\.5 {
-  height: 0.875rem !important;
-}
-
 ._h-4 {
   height: 1rem !important;
 }
@@ -1665,10 +1661,6 @@ video {
 
 ._w-3 {
   width: 0.75rem !important;
-}
-
-._w-3\.5 {
-  width: 0.875rem !important;
 }
 
 ._w-4 {
@@ -2222,14 +2214,6 @@ video {
 
 ._bg-opacity-50 {
   --tw-bg-opacity: 0.5 !important;
-}
-
-._fill-brand-primary-500 {
-  fill: #3D72F6 !important;
-}
-
-._fill-gray-200 {
-  fill: #e5e7eb !important;
 }
 
 ._object-contain {

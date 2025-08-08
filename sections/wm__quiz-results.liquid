@@ -175,7 +175,6 @@
                   <span>
                     See product
                   </span>
-                  {%- render 'loading-spinner' -%}
                 </a>
               </div>
             </div>
@@ -196,6 +195,7 @@
 
       const output = this.querySelector('#output');
       const params = new URLSearchParams(window.location.search);
+      {% comment %} TODO: you need to prevent it reading other UTMs!! {% endcomment %}
       const filters = Object.fromEntries(params.entries());
 
       try {
@@ -268,9 +268,6 @@
       const handle = this.dataset.jsProductHandle;
       if (!handle) return;
 
-      const spinner = this.querySelector('.loading__spinner');
-      if (spinner) spinner.classList.toggle('hidden');
-
       try {
         const res = await fetch(`/products/${handle}.js`);
         const product = await res.json();
@@ -283,14 +280,9 @@
         this.querySelector('[data-js-product-description]').innerHTML = product.description;
         this.renderCTA(this.querySelector('[data-js-product-main-cta]'), product);
         this.querySelector('[data-js-product-main-url]').href = product.url;
-
-        {% comment %} Variant logic would go here {% endcomment %}
       } catch (err) {
         console.error(`Error fetching product ${handle}:`, err);
         this.innerHTML = `<p class="_text-red-500">Error loading product</p>`;
-      // Alex - this might not be needed if we're loading whole section, also causes issues with CTA spinner
-      // } finally {
-        //if (spinner) spinner.classList.toggle('hidden');
       }
     }
 
