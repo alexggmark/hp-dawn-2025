@@ -7,11 +7,13 @@
 <script src="https://cdn.jsdelivr.net/npm/motion@latest/dist/motion.js"></script>
 {% # theme-check-enable %}
 
+<script src="{{ 'wm__segment-analytics-control.js' | asset_url }}" defer="defer"></script>
+
 {% comment %} Global listener for cart crossing threshold, only activates if cookies set in wm__gwp-picker.liquid active {% endcomment %}
 {% comment %} <script src="{{ 'wm__gwp-picker-listener.js' | asset_url }}" defer="defer"></script> {% endcomment %}
 
 {% comment %} Testing ConvertFlow integration {% endcomment %}
-<script>
+{% comment %} <script>
 console.log("Listening for ConvertFlow:")
 window.addEventListener("DOMContentLoaded", function () {
   [
@@ -28,5 +30,4 @@ window.addEventListener("DOMContentLoaded", function () {
     });
   });
 });
-
-</script>
+</script> {% endcomment %}

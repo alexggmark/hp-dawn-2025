@@ -6,6 +6,7 @@ async function globalMonsterCartFunction(event, variantId, product, quantity) {
   event.preventDefault();
 
   const CTA = event.currentTarget;
+  console.log(CTA);
   const id = variantId ? variantId : product.variants[0].id;
 
   CTA.setAttribute('aria-disabled', true);
@@ -30,6 +31,38 @@ async function globalMonsterCartFunction(event, variantId, product, quantity) {
     CTA.querySelector('.loading__spinner').classList.add('hidden');
   }
 }
+
+// TODO: delete this if unused
+// class LogoStripTicker extends HTMLElement {
+//   connectedCallback() {
+//     const ticker = this.querySelector('#ticker');
+//     const content = ticker.querySelector('[data-js-ticker-content]');
+//     const width = content.offsetWidth;
+
+//     if (!window.Motion?.animate) {
+//       console.warn('[LogoStrip] Motion One not available.');
+//       return;
+//     }
+
+//     // Clone content twice for safety
+//     const clone1 = content.cloneNode(true);
+//     const clone2 = content.cloneNode(true);
+//     ticker.appendChild(clone1);
+//     ticker.appendChild(clone2);
+
+//     // Animate container endlessly
+//     Motion.animate(
+//       ticker,
+//       { x: [`0`, `-${width}px`] },
+//       {
+//         duration: 5,
+//         repeat: Infinity,
+//         easing: 'linear'
+//       }
+//     );
+//   }
+// }
+// customElements.define('logo-strip-ticker', LogoStripTicker);
 
 class EmblaSlider extends HTMLElement {
   constructor() {

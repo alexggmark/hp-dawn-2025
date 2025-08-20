@@ -87,6 +87,95 @@
         "margin_bottom": "0"
       }
     },
+    "wm_logo_strip_aGJHrL": {
+      "type": "wm__logo-strip",
+      "blocks": {
+        "logo_Pgcj4B": {
+          "type": "logo",
+          "settings": {
+            "logo_image": "shopify://shop_images/womens-health.svg",
+            "logo_width": 215
+          }
+        },
+        "logo_GFDNia": {
+          "type": "logo",
+          "settings": {
+            "logo_image": "shopify://shop_images/country-town-house.svg",
+            "logo_width": 215
+          }
+        },
+        "logo_JQUN7W": {
+          "type": "logo",
+          "settings": {
+            "logo_image": "shopify://shop_images/top-sante.svg",
+            "logo_width": 215
+          }
+        },
+        "logo_RYLee3": {
+          "type": "logo",
+          "settings": {
+            "logo_image": "shopify://shop_images/the-sun.svg",
+            "logo_width": 215
+          }
+        },
+        "logo_LcdjJ7": {
+          "type": "logo",
+          "settings": {
+            "logo_image": "shopify://shop_images/stylist.svg",
+            "logo_width": 215
+          }
+        },
+        "logo_q8ALnq": {
+          "type": "logo",
+          "settings": {
+            "logo_image": "shopify://shop_images/vogue.svg",
+            "logo_width": 215
+          }
+        },
+        "logo_gztF4C": {
+          "type": "logo",
+          "settings": {
+            "logo_image": "shopify://shop_images/daily-mail.svg",
+            "logo_width": 215
+          }
+        },
+        "logo_mQGbE7": {
+          "type": "logo",
+          "settings": {
+            "logo_image": "shopify://shop_images/the-independent.svg",
+            "logo_width": 215
+          }
+        },
+        "logo_FYLpDF": {
+          "type": "logo",
+          "settings": {
+            "logo_image": "shopify://shop_images/Metro.svg",
+            "logo_width": 215
+          }
+        },
+        "logo_CrWFnh": {
+          "type": "logo",
+          "settings": {
+            "logo_image": "shopify://shop_images/get-the-gloss.svg",
+            "logo_width": 215
+          }
+        }
+      },
+      "block_order": [
+        "logo_Pgcj4B",
+        "logo_GFDNia",
+        "logo_JQUN7W",
+        "logo_RYLee3",
+        "logo_LcdjJ7",
+        "logo_q8ALnq",
+        "logo_gztF4C",
+        "logo_mQGbE7",
+        "logo_FYLpDF",
+        "logo_CrWFnh"
+      ],
+      "name": "WM Logo Strip",
+      "settings": {}
+    },
     "wm_product_card_scroll_zyx8Jr": {
       "type": "wm__product-card-scroll",
       "settings": {
@@ -423,6 +512,7 @@
   },
   "order": [
     "wm_hero_banner_image_CPaEAD",
+    "wm_logo_strip_aGJHrL",
     "wm_product_card_scroll_zyx8Jr",
     "wm_image_block_4_ky3R3J",
     "wm_image_block_3_LmLwpJ",

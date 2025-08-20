@@ -1,0 +1,93 @@
+<div class="_py-4 _overflow-hidden _w-full">
+  <div class="_flex _flex-nowrap _py-2">
+    <div class="ticker-track _flex _opacity-80" id="tickerTrack">
+      {%- for block in section.blocks -%}
+        {%- case block.type -%}
+          {%- when 'logo' -%}
+            <div class="_mx-4 md:_w-44 _w-40 _flex _items-center _justify-center">
+              {{
+                block.settings.logo_image
+                | image_url: width: 400
+                | image_tag: class: '_max-h-8 _max-w-36 _w-auto'
+              }}
+            </div>
+
+        {%- endcase -%}
+      {%- endfor -%}
+    </div>
+  </div>
+</div>
+
+<style>
+.ticker {
+  display: flex;
+  white-space: nowrap;
+}
+
+.ticker-track {
+  animation: ticker-scroll 40s linear infinite;
+}
+</style>
+
+<script>
+  const track = document.getElementById('tickerTrack');
+  const trackWidth = track.offsetWidth;
+
+  const clone = track.cloneNode(true);
+  const clone2 = track.cloneNode(true);
+
+  track.parentElement.appendChild(clone);
+  track.parentElement.appendChild(clone2);
+  
+  track.parentElement.style.setProperty('--ticker-width', `${trackWidth}px`);
+
+  // Inject CSS animation
+  const style = document.createElement('style');
+  style.innerHTML = `
+    @keyframes ticker-scroll {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-${trackWidth}px); }
+    }
+  `;
+  document.head.appendChild(style);
+</script>
+
+{% schema %}
+{
+  "name": "WM Logo Strip",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+  ],
+  "blocks": [
+    {
+      "type": "logo",
+      "name": "Logo image",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "logo_image",
+          "label": "Pick an image for logo"
+        },
+        {
+          "type": "range",
+          "id": "logo_width",
+          "min": 40,
+          "max": 250,
+          "step": 5,
+          "default": 100,
+          "unit": "px",
+          "label": "Pick logo width"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "WM Logo Strip"
+    }
+  ]
+}
+{% endschema %}
