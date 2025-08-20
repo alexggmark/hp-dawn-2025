@@ -6,7 +6,6 @@ async function globalMonsterCartFunction(event, variantId, product, quantity) {
   event.preventDefault();
 
   const CTA = event.currentTarget;
-  console.log(CTA);
   const id = variantId ? variantId : product.variants[0].id;
 
   CTA.setAttribute('aria-disabled', true);

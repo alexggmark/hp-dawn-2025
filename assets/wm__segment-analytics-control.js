@@ -112,7 +112,6 @@
         ...window.quizAnswers
       });
     */
-
     flushTraitsAndIdentify(userId, extraTraits = {}) {
       const stored = storage.get(KEYS.TRAITS, {});
       const merged = cleanTraits({ ...stored, ...this.traits, ...extraTraits });
@@ -127,7 +126,7 @@
         return;
       }
 
-      w.analytics.identify(userId, merged);
+      w.analytics.identify(userId.trim(), merged);
       if (this.debug) console.log('[SegmentClient] identify', userId, merged);
 
       this.traits = {};
@@ -135,37 +134,39 @@
     },
 
     /*
-      This is super complicated; needs to store "first touch", but also check if "first touch" already exists (from other device)
-      - Can't be just cookie based, so needs to check user traits from Segment
+      First touch:
+      - Bail if local flag exists
+      - If profile already has first_touch_at, mirror flag locally and bail
+      - Else build payload, persist locally, and SEND via identify:
+          • identified if a userId exists
+          • otherwise anonymous identify(payload)
+      - Only set local flag after the identify call is attempted
     */
     storeFirstTouch() {
-      // 1) Device-level bail: becomes a no-op after the first success/mirror.
-      console.log("storeFirstTouch");
+      // 1) Device-level bail.
       if (storage.get(KEYS.FIRST_TOUCH_FLAG, null)) return;
-      console.log("Running storeFirstTouch");
 
       const run = () => {
-        console.log("Run");
-        // 2) Check current profile traits (works for anonymous or identified).
-        const u = (window.analytics && typeof window.analytics.user === 'function')
-          ? window.analytics.user()
-          : null;
-
-        const traits = u
-          ? (typeof u.traits === 'function' ? u.traits() : u.traits)
-          : null;
-
-        // If first touch already on the profile, mirror locally and stop.
-        if (traits && (traits.first_touch_at || traits.firstTouchAt)) {
-          storage.set(KEYS.FIRST_TOUCH_FLAG, { mirrored: true, at: Date.now() });
+        // Ensure analytics exists; if not, retry briefly.
+        if (!w.analytics) {
+          setTimeout(run, 250);
           return;
         }
 
-        // 3) Otherwise set it once (your setTraits cleaner will drop blanks).
-        const url = new URL(window.location.href);
-        const qp = url.searchParams;
+        // 2) Check current profile traits (anonymous or identified).
+        const u = (typeof w.analytics.user === 'function') ? w.analytics.user() : null;
+        const traits = u ? (typeof u.traits === 'function' ? u.traits() : u.traits) : null;
 
-        const payload = {
+        // If first_touch already exists on profile, mirror locally and stop.
+        if (traits && (traits.first_touch_at || traits.firstTouchAt)) {
+          storage.set(KEYS.FIRST_TOUCH_FLAG, { mirrored: true, at: Date.now() });
+          if (SegmentClient.debug) console.log('[SegmentClient] first touch exists on profile, mirrored');
+          return;
+        }
+
+        // 3) Build payload, persist locally, and send identify (anon or identified).
+        const qp = new URL(w.location.href).searchParams;
+        const payload = cleanTraits({
           first_touch_at: new Date().toISOString(),
           utm_source: qp.get('utm_source'),
           utm_medium: qp.get('utm_medium'),
@@ -173,27 +174,45 @@
           utm_term: qp.get('utm_term'),
           utm_content: qp.get('utm_content'),
           referrer: document.referrer || undefined,
-          first_touch_url: window.location.href
-        };
+          first_touch_url: w.location.href
+        });
 
-        console.log("Setting traits first touch");
+        // Save to local traits so it's included in your next identify as well
+        SegmentClient.setTraits(payload);
 
-        this.setTraits(payload);
-        storage.set(KEYS.FIRST_TOUCH_FLAG, { storedAt: Date.now() });
+        try {
+          // If already identified, send with id; otherwise anonymous identify
+          const id = u ? (typeof u.id === 'function' ? u.id() : u.id) : null;
+          if (id) {
+            if (SegmentClient.debug) console.log('Running firstTouch identify - with user ID');
+            w.analytics.identify(id, payload);
+          } else {
+            if (SegmentClient.debug) console.log('Running firstTouch identify - without user ID');
+            w.analytics.identify(payload);
+          }
+
+          // Mark success (prevents re-sending next page)
+          storage.set(KEYS.FIRST_TOUCH_FLAG, { storedAt: Date.now() });
+          if (SegmentClient.debug) {
+            console.log('[SegmentClient] first touch identify sent', id ? '(identified)' : '(anonymous)', payload);
+          }
+        } catch (e) {
+          if (SegmentClient.debug) console.warn('[SegmentClient] first touch identify failed; will retry', e);
+          // Do NOT set the flag; we'll try again on a later page.
+        }
       };
 
-      // 4) Run when Segment is ready (preferred), otherwise soon/idle.
-      if (window.analytics && typeof window.analytics.ready === 'function') {
-        window.analytics.ready(run);
-      } else if ('requestIdleCallback' in window) {
-        console.log("requestIdleCallback running");
-        requestIdleCallback(run, { timeout: 1000 });
+      // 4) Prefer Segment's ready hook; otherwise schedule soon.
+      if (w.analytics && typeof w.analytics.ready === 'function') {
+        w.analytics.ready(run);
+      } else if ('requestIdleCallback' in w) {
+        w.requestIdleCallback(run, { timeout: 1000 });
       } else {
         setTimeout(run, 0);
       }
     },
 
-    // Probably useful, can just run to remove everything
+    // Clear everything (local)
     reset() {
       this.traits = {};
       storage.remove(KEYS.TRAITS);
@@ -205,5 +224,6 @@
   w.SegmentClient = SegmentClient;
 })(typeof window !== 'undefined' ? window : null);
 
-SegmentClient.init({ debug: false });
+// Initialize + run on every page
+SegmentClient.init({ debug: true });
 SegmentClient.storeFirstTouch();
