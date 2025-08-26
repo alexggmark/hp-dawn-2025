@@ -1,9 +1,14 @@
 /* Alex's SegmentClient object
   (Note: this is for safely sending analytics.track() and .identify() events without confusion; we use cookies to be safer)
-  - "First touch flag" used so we can track first interaction
-  - "Traits" are what gets attached to user profiles in Segment - sent using analytics.identify()
-  - "Events" are just quick notes attached to user account (less permanent than Traits) - send using analytics.track()
-  - "cleanTraits()" - removing blank entries in object before pushing to Segment
+
+  Usage: from anywhere on site (i.e. inside a ConvertFlow JS snippet) you can run these commands:
+
+  - SegmentClient.setTrait('trait_name', 'trait_value') - store singular trait
+  - SegmentClient.setTraits({'trait_name1': 'trait_value1', 'trait_name2': 'trait_value2'}) - store multiple traits
+  - SegmentClient.identify(null) - push all stored traits anonymously
+  - SegmentClient.identify(user@email.com) - push all stored traits with email (once you have it)
+  - SegmentClient.trackEvent('event_name', {'property1': 'value1', 'property2': 'value2'})
+  - SegmentClient.reset() - just in case you want to clear everything in localStorage
 */
 
 (function (w) {
@@ -80,6 +85,7 @@
       if (this.debug) console.log('[SegmentClient] init', this.traits);
     },
 
+    // Stores singular trait in local storage
     setTrait(key, value) {
       const cv = cleanValue(value);
       if (cv === undefined) delete this.traits[key];
@@ -89,6 +95,7 @@
       if (this.debug) console.log(`[SegmentClient] setTrait: ${key} =`, cv);
     },
 
+    // Stores multiples traits in local storage as an object
     setTraits(obj = {}) {
       const cleaned = cleanTraits(obj);
       this.traits = { ...this.traits, ...cleaned };
@@ -96,58 +103,75 @@
       if (this.debug) console.log('[SegmentClient] setTraits', cleaned);
     },
 
+    // Push a singular "event" to Segment
+    // - Not using localStorage here just because "events" fire too often and are less important (e.g. page scroll on every page)
     trackEvent(name, props = {}) {
       if (typeof w.analytics === 'undefined') {
         if (this.debug) console.warn('[SegmentClient] analytics not ready: track dropped');
         return;
       }
       const p = cleanTraits(props) || {};
-      w.analytics.track(name, p);
-      if (this.debug) console.log('[SegmentClient] track', name, p);
+      try {
+        w.analytics.track(name, p);
+        if (this.debug) console.log('[SegmentClient] track', name, p);
+      } catch (e) {
+        if (this.debug) console.warn('[SegmentClient] track failed', e);
+      }
     },
 
-    /*
-      🟢 USAGE --> identify()
-      SegmentClient.flushTraitsAndIdentify(data.fields.email, {
-        ...window.quizAnswers
-      });
-    */
-    flushTraitsAndIdentify(userId, extraTraits = {}) {
+    // Push localStorage traits to Segment via .identify() call
+    // - Can use with OR without userID (e.g. run SegmentClient.identify(null) to be anonymous, or SegmentClient.identify(user@email.com))
+    identify(userId, extraTraits = {}) {
       const stored = storage.get(KEYS.TRAITS, {});
       const merged = cleanTraits({ ...stored, ...this.traits, ...extraTraits });
 
-      if (typeof userId !== 'string' || !userId.trim()) {
-        if (this.debug) console.warn('[SegmentClient] identify skipped: missing userId');
-        return;
-      }
-
+      // If analytics isn't available, keep traits and bail
       if (typeof w.analytics === 'undefined') {
-        if (this.debug) console.warn('[SegmentClient] analytics not ready: identify skipped');
-        return;
+        if (this.debug) console.warn('[SegmentClient] analytics not ready: identify skipped (traits kept)');
+        this.traits = merged;
+        storage.set(KEYS.TRAITS, this.traits);
+        return false;
       }
 
-      w.analytics.identify(userId.trim(), merged);
-      if (this.debug) console.log('[SegmentClient] identify', userId, merged);
+      const exec = () => {
+        const hasId = (typeof userId === 'string' && userId.trim());
+        try {
+          if (hasId) {
+            w.analytics.identify(userId.trim(), merged);
+            if (this.debug) console.log('[SegmentClient] identify (with id)', userId, merged);
+          } else {
+            // anonymous identify – attaches traits to the current anonymous profile
+            w.analytics.identify(merged);
+            if (this.debug) console.log('[SegmentClient] identify (anonymous)', merged);
+          }
 
-      this.traits = {};
-      storage.remove(KEYS.TRAITS);
+          // Clear only after a successful identify
+          this.traits = {};
+          storage.remove(KEYS.TRAITS);
+          return true;
+        } catch (e) {
+          if (this.debug) console.warn('[SegmentClient] identify failed; traits kept for retry', e);
+          this.traits = merged;
+          storage.set(KEYS.TRAITS, this.traits);
+          return false;
+        }
+      };
+
+      // Prefer Segment's ready hook to avoid racing the loader
+      if (typeof w.analytics.ready === 'function') {
+        w.analytics.ready(exec);
+        return true; // scheduled
+      } else {
+        return exec();
+      }
     },
 
-    /*
-      First touch:
-      - Bail if local flag exists
-      - If profile already has first_touch_at, mirror flag locally and bail
-      - Else build payload, persist locally, and SEND via identify:
-          • identified if a userId exists
-          • otherwise anonymous identify(payload)
-      - Only set local flag after the identify call is attempted
-    */
+    // Push "First Touch" data (with URL params) to Segment IF first touch cookie doesn't exist/trait doesn't exist
     storeFirstTouch() {
       // 1) Device-level bail.
       if (storage.get(KEYS.FIRST_TOUCH_FLAG, null)) return;
 
       const run = () => {
-        // Ensure analytics exists; if not, retry briefly.
         if (!w.analytics) {
           setTimeout(run, 250);
           return;
@@ -224,6 +248,6 @@
   w.SegmentClient = SegmentClient;
 })(typeof window !== 'undefined' ? window : null);
 
-// Initialize + run on every page
+// Init and run on every page
 SegmentClient.init({ debug: true });
 SegmentClient.storeFirstTouch();
