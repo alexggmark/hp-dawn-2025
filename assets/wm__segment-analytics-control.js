@@ -11,6 +11,32 @@
   - SegmentClient.reset() - just in case you want to clear everything in localStorage
 */
 
+/*
+window.addEventListener("cfSubmit", function (e) {
+  const data = e.detail;
+
+  if (data.step_name == "Quiz" && data.step == 2) {
+    SegmentClient.trackEvent("2025 Skin Quiz Started", {
+      quiz_id: data.cta?.id,
+      quiz_name: data.cta?.name
+    });
+  }
+
+  if (data.step_name == "Quiz") {
+    SegmentClient.setTraits(data.fields);
+
+  } else if (data.step_name == "Email Form") {
+    SegmentClient.identify(data.fields.email);
+    SegmentClient.trackEvent("2025 Skin Quiz Completed", {
+      quiz_id: data.cta?.id,
+      quiz_name: data.cta?.name,
+      variant: data.variant,
+      answers: window.quizAnswers
+    });
+  }
+});
+*/
+
 (function (w) {
   if (!w) return;
 
@@ -163,6 +189,54 @@
         return true; // scheduled
       } else {
         return exec();
+      }
+    },
+
+    setConsent(consent = false) {
+      // window.addEventListener('cfSubmit', function (e) {
+      // const d = e.detail || {};
+      // if (d.step_name !== 'Email Form') return;
+
+      // const email = (d.fields?.email || '').trim();
+      // const optedIn = !!d.fields?.email_opt_in; // your CF checkbox field
+
+      let prev = null;
+      try {
+        const u = window.analytics?.user?.();
+        const t = u ? (typeof u.traits === 'function' ? u.traits() : u.traits) : null;
+        prev = t?.consents?.email?.status || null;
+      } catch (_) {}
+
+      if (optedIn) {
+        SegmentClient.identify(email || null, {
+          consents: {
+            email: {
+              status: 'subscribed',
+              collected_at: new Date().toISOString(),
+              collected_from: 'convertflow_form',
+              collected_text_version: 'v1',
+              jurisdiction: 'UK-PECR/GDPR'
+            }
+          }
+        });
+      } else {
+        // Do NOT auto-unsubscribe just because box is unchecked.
+        // If they’ve never subscribed, keep/mark as never_subscribed; otherwise leave as-is.
+        if (!prev || prev === 'never_subscribed') {
+          SegmentClient.identify(email || null, {
+            consents: {
+              email: {
+                status: 'never_subscribed',
+                collected_at: new Date().toISOString(),
+                collected_from: 'convertflow_form',
+                collected_text_version: 'v1',
+                jurisdiction: 'UK-PECR/GDPR'
+              }
+            }
+          });
+        } else {
+          SegmentClient.identify(email || null, {}); // attach other traits if you have them
+        }
       }
     },
 
