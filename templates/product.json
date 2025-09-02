@@ -16,16 +16,20 @@
           "type": "badge",
           "settings": {}
         },
+        "rating_xbiqGz": {
+          "type": "rating",
+          "settings": {}
+        },
         "title": {
           "type": "title",
           "settings": {}
         },
-        "price": {
-          "type": "price",
+        "pills_Gf7TDK": {
+          "type": "pills",
           "settings": {}
         },
-        "rating_xbiqGz": {
-          "type": "rating",
+        "price": {
+          "type": "price",
           "settings": {}
         },
         "description": {
@@ -48,6 +52,7 @@
         },
         "usps_H6VVPr": {
           "type": "usps",
+          "disabled": true,
           "settings": {
             "usp_image": "shopify://shop_images/HPWeb-PDP-Desktop-BrandIcons.gif"
           }
@@ -59,9 +64,10 @@
       },
       "block_order": [
         "badge_EVc6gV",
-        "title",
-        "price",
         "rating_xbiqGz",
+        "title",
+        "pills_Gf7TDK",
+        "price",
         "description",
         "variant_picker",
         "buy_buttons",
@@ -74,8 +80,8 @@
         "media_size": "medium",
         "constrain_to_viewport": true,
         "media_fit": "cover",
-        "gallery_layout": "stacked",
-        "mobile_thumbnails": "hide",
+        "gallery_layout": "thumbnail_slider",
+        "mobile_thumbnails": "show",
         "image_zoom": "lightbox",
         "hide_variants": true,
         "enable_video_looping": true,
