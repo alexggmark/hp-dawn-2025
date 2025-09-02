@@ -16,16 +16,12 @@
           "type": "badge",
           "settings": {}
         },
-        "rating_xbiqGz": {
-          "type": "rating",
-          "settings": {}
-        },
         "title": {
           "type": "title",
           "settings": {}
         },
-        "pills_Gf7TDK": {
-          "type": "pills",
+        "rating_xbiqGz": {
+          "type": "rating",
           "settings": {}
         },
         "price": {
@@ -64,9 +60,8 @@
       },
       "block_order": [
         "badge_EVc6gV",
-        "rating_xbiqGz",
         "title",
-        "pills_Gf7TDK",
+        "rating_xbiqGz",
         "price",
         "description",
         "variant_picker",
@@ -80,8 +75,8 @@
         "media_size": "medium",
         "constrain_to_viewport": true,
         "media_fit": "cover",
-        "gallery_layout": "thumbnail_slider",
-        "mobile_thumbnails": "show",
+        "gallery_layout": "stacked",
+        "mobile_thumbnails": "hide",
         "image_zoom": "lightbox",
         "hide_variants": true,
         "enable_video_looping": true,

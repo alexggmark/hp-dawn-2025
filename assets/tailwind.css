@@ -1287,6 +1287,10 @@ video {
   margin-bottom: 1.25rem !important;
 }
 
+._-mb-0\.5 {
+  margin-bottom: -0.125rem !important;
+}
+
 ._-ml-\[0\.2rem\] {
   margin-left: -0.2rem !important;
 }
@@ -2568,6 +2572,10 @@ video {
   font-size: 12px !important;
 }
 
+._text-\[13px\] {
+  font-size: 13px !important;
+}
+
 ._text-base {
   font-size: 14px !important;
   line-height: auto !important;
@@ -2672,6 +2680,10 @@ video {
 
 ._no-underline {
   text-decoration-line: none !important;
+}
+
+._underline-offset-2 {
+  text-underline-offset: 2px !important;
 }
 
 ._underline-offset-4 {

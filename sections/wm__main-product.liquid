@@ -1,12 +1,3 @@
-<script>
-  console.log("Metafields:")
-  console.log({% if product.metafields %}"EXISTS"{% else %}"NOPE"{% endif %})
-  console.log({{product.metafields | json }})
-  {% for mf in product.metafields %}
-    console.log("{{ mf.namespace }} - {{ mf.key }}: {{ mf.value }}");
-  {% endfor %}
-</script>
-
 <product-info
   id="MainProduct-{{ section.id }}"
   class="md:_pb-12 _pb-8 [.quick-shop-drawer_&]:md:_py-0"
@@ -24,7 +15,8 @@
   {{ 'component-slider.css' | asset_url | stylesheet_tag }}
   {{ 'wm__component-rating.css' | asset_url | stylesheet_tag }}
   {{ 'component-deferred-media.css' | asset_url | stylesheet_tag }}
-
+  {{ 'wm__component-topline-callout.css' | asset_url | stylesheet_tag }}
+  
   {% unless product.has_only_default_variant %}
     {{ 'component-product-variant-picker.css' | asset_url | stylesheet_tag }}
     {{ 'component-swatch-input.css' | asset_url | stylesheet_tag }}
@@ -98,6 +90,12 @@
                     price_class: ''
                   -%}
                 </div> {% endcomment %}
+              {%- when 'pills' -%}
+                <div class="_flex _flex-wrap _gap-1.5 _mt-3">
+                  <div class="_border _border-brand-dark _rounded-full _px-2 _text-[13px] _font-heading-small _text-brand-dark _bg-brand-background-light">Peptide Complex</div>
+                  <div class="_border _border-brand-dark _rounded-full _px-2 _text-[13px] _font-heading-small _text-brand-dark _bg-brand-background-light">Peptide Reunion</div>
+                  <div class="_border _border-brand-dark _rounded-full _px-2 _text-[13px] _font-heading-small _text-brand-dark _bg-brand-background-light">Peptide-ify</div>
+                </div>
               {%- when 'inventory' -%}
                 <p
                   class="product__inventory{% if block.settings.text_style == 'uppercase' %} caption-with-letter-spacing{% elsif block.settings.text_style == 'subtitle' %} subtitle{% endif %}{% if product.selected_or_first_available_variant.inventory_management != 'shopify' %} visibility-hidden{% endif %}"
@@ -180,6 +178,22 @@
                   <span class="visually-hidden">{{ 'products.product.sku' | t }}:</span>
                   {{- product.selected_or_first_available_variant.sku -}}
                 </p>
+              {%- when 'topline_callout' -%}
+                {% comment %} Note: this is the small "20 years of epigenetic research…" modal, likely positioned by JS {% endcomment %}
+                <modal-opener
+                  class="_flex _flex-col _items-start quick-add-hidden _mb-3"
+                  data-modal="#PopupModal-epigenetic-modal"
+                >
+                  <span class="_text-sm _-mb-0.5">20 years of epigenetic research in 1 bottle.</span>
+                  <button
+                    id="ProductPopup-epigenetic-modal"
+                    class="_underline hover:_no-underline _underline-offset-2 _text-brand-primary-500 _text-sm"
+                    type="button"
+                    aria-haspopup="dialog"
+                  >
+                    Learn More About Epigenetic Skincare >
+                  </button>
+                </modal-opener>
               {%- when 'custom_liquid' -%}
                 {{ block.settings.custom_liquid }}
               {%- when 'collapsible_tab' -%}
@@ -614,6 +628,8 @@
     {% render 'product-media-modal', variant_images: variant_images %}
 
     {% assign popups = section.blocks | where: 'type', 'popup' %}
+    {% assign topline_popups = section.blocks | where: 'type', 'topline_callout' %}
+
     {%- for block in popups -%}
       <modal-dialog id="PopupModal-{{ block.id }}" class="product-popup-modal" {{ block.shopify_attributes }}>
         <div
@@ -638,6 +654,31 @@
         </div>
       </modal-dialog>
     {%- endfor -%}
+
+    {%- for block in topline_popups -%}
+      <modal-dialog id="PopupModal-epigenetic-modal" class="topline-callout-modal">
+        <div
+          role="dialog"
+          aria-label="Test test"
+          aria-modal="true"
+          class="topline-callout-modal__content"
+          tabindex="-1"
+        >
+          <button
+            id="ModalClose-epigenetic-modal"
+            type="button"
+            class="topline-callout-modal__toggle"
+            aria-label="{{ 'accessibility.close' | t }}"
+          >
+            {{- 'icon-close.svg' | inline_asset_content -}}
+          </button>
+          <div class="topline-callout-modal__content-info">
+            <h1 class="h2">Title</h1>
+            <p>Title</p>
+          </div>
+        </div>
+      </modal-dialog>
+    {%- endfor %}
 
     {%- if product.media.size > 0 -%}
       <script src="{{ 'product-modal.js' | asset_url }}" defer="defer"></script>
@@ -675,6 +716,11 @@
     {
       "type": "title",
       "name": "t:sections.main-product.blocks.title.name",
+      "limit": 1
+    },
+    {
+      "type": "topline_callout",
+      "name": "Topline Callout",
       "limit": 1
     },
     {
