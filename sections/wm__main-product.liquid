@@ -22,7 +22,7 @@
   {{ 'component-accordion.css' | asset_url | stylesheet_tag }}
   {{ 'wm__component-price.css' | asset_url | stylesheet_tag }}
   {{ 'component-slider.css' | asset_url | stylesheet_tag }}
-  {{ 'component-rating.css' | asset_url | stylesheet_tag }}
+  {{ 'wm__component-rating.css' | asset_url | stylesheet_tag }}
   {{ 'component-deferred-media.css' | asset_url | stylesheet_tag }}
 
   {% unless product.has_only_default_variant %}
@@ -353,7 +353,7 @@
                 </div>
               {%- when 'rating' -%}
                 <div class="_mt-3 _mb-2">
-                  <div class="klaviyo-star-rating-widget" data-id="{{product.id}}" data-product-title="{{product.title}}" data-product-type="{{product.type}}"></div>
+                  {% render 'wm__rating-stars', main_product: product %}
                 </div>
               {%- when 'usps' -%}
                 <div class="_w-full _my-5" data-js-product-usps>

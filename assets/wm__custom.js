@@ -1,3 +1,71 @@
+// Main Klaviyo rating controls
+// Storing in "wm__custom" because it's used on more than 50% of pages on site
+class ProductRating extends HTMLElement {
+  connectedCallback() {
+    if (this._bound) return;
+    this._bound = true;
+
+    this.loadedClass = 'js-has-reviews';
+    this.fallbackClass = 'js-fallback-reviews';
+    // This was originally 1200 timeout, might have to check this is safe
+    this.timeoutMs = parseInt(this.getAttribute('timeout') || '600', 10);
+
+    const hasContent = (el) => {
+      const first = el?.firstElementChild;
+      if (!first) return false;
+      return ((first.textContent || '').trim() !== '') || !!first.querySelector('*');
+    };
+
+    const cleanup = () => {
+      if (this._mo) { this._mo.disconnect(); this._mo = null; }
+      if (this._fallbackTimer) { clearTimeout(this._fallbackTimer); this._fallbackTimer = null; }
+    };
+
+    const setLoaded = (widget) => {
+      this.classList.add(this.loadedClass);
+      this.classList.remove(this.fallbackClass);
+      widget?.setAttribute('aria-hidden', 'false');
+      cleanup();
+    };
+
+    const evaluate = () => {
+      const widget = this.querySelector('.klaviyo-star-rating-widget');
+      if (!widget) return false;
+
+      if (hasContent(widget)) {
+        setLoaded(widget);
+        return true;
+      }
+      return false;
+    };
+
+    // weird JS but this basically means "evaluate" runs after DOM finished loading in elements (because Klaviyo is slow!)
+    queueMicrotask(() => {
+      if (evaluate()) return;
+
+      const target = this;
+      this._mo = new MutationObserver(() => { if (evaluate()) cleanup(); });
+      this._mo.observe(target, { childList: true, subtree: true, characterData: true });
+
+      // only show fallback after timeout if still no klav (stops flickering)
+      this._fallbackTimer = setTimeout(() => {
+        if (!evaluate()) {
+          this.classList.add(this.fallbackClass);
+        }
+        // remove observer
+        cleanup();
+      }, this.timeoutMs);
+    });
+  }
+
+  disconnectedCallback() {
+    if (this._mo) this._mo.disconnect();
+    if (this._fallbackTimer) clearTimeout(this._fallbackTimer);
+  }
+}
+
+customElements.define('product-rating', ProductRating);
+
 // Used to generate working "Add to Cart" when CTA rendered dynamically
 async function globalMonsterCartFunction(event, variantId, product, quantity) {
   console.log("globalMonsterCartFunction");
@@ -31,38 +99,7 @@ async function globalMonsterCartFunction(event, variantId, product, quantity) {
   }
 }
 
-// TODO: delete this if unused
-// class LogoStripTicker extends HTMLElement {
-//   connectedCallback() {
-//     const ticker = this.querySelector('#ticker');
-//     const content = ticker.querySelector('[data-js-ticker-content]');
-//     const width = content.offsetWidth;
-
-//     if (!window.Motion?.animate) {
-//       console.warn('[LogoStrip] Motion One not available.');
-//       return;
-//     }
-
-//     // Clone content twice for safety
-//     const clone1 = content.cloneNode(true);
-//     const clone2 = content.cloneNode(true);
-//     ticker.appendChild(clone1);
-//     ticker.appendChild(clone2);
-
-//     // Animate container endlessly
-//     Motion.animate(
-//       ticker,
-//       { x: [`0`, `-${width}px`] },
-//       {
-//         duration: 5,
-//         repeat: Infinity,
-//         easing: 'linear'
-//       }
-//     );
-//   }
-// }
-// customElements.define('logo-strip-ticker', LogoStripTicker);
-
+// Main carousel controller
 class EmblaSlider extends HTMLElement {
   constructor() {
     super();

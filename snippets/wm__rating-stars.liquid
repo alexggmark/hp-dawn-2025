@@ -9,49 +9,63 @@
   %}
 {% endcomment %}
 
-<div class="_flex _flex-row _items-center _gap-1">
+<product-rating>
+  {% comment %} Klaviyo reviews if available {% endcomment %}
+  <div class="product-rating__dynamic">
+    <div class="klaviyo-star-rating-widget" data-id="{{main_product.id}}" data-product-title="{{main_product.title}}" data-product-type="{{main_product.type}}"></div>
+  </div>
+  {% comment %} US reviews if available {% endcomment %}
+  {% comment %} 
+    assign rating_metafield = main_product.metafields.reviews.rating.value.rating | default: main_product.metafields.reviews.rating.value | default: nil
+    assign rating_metafield_scale_max = main_product.metafields.reviews.rating.scale_max | default: main_product.metafields.reviews.rating.value.scale_max | nil 
+    assign rating_metafield_count = main_product.metafields.reviews.rating_count
+  {% endcomment %}
+  {% liquid
+    assign rating_metafield = 4.4
+    assign rating_metafield_scale_max = 5
+    assign rating_metafield_count = 20
+    assign rating_decimal = 0
+    assign decimal = rating_metafield | modulo: 1
+    if decimal >= 0.3 and decimal <= 0.7
+      assign rating_decimal = 0.5
+    elsif decimal > 0.7
+      assign rating_decimal = 1
+    endif
+  %}
+  
+  <div class="product-rating__fallback">
+    {%- unless rating_metafield == nil -%}
+      <div class="_flex _flex-row _items-center _gap-1">
+        <div
+          class="rating"
+          role="img"
+          aria-label="{{ 'accessibility.star_reviews_info' | t: rating_value: rating_metafield, rating_max: rating_metafield_scale_max }}"
+        >
+          <span
+            aria-hidden="true"
+            class="rating-star"
+            style="--rating: {{ rating_metafield | floor }}; --rating-max: {{ rating_metafield_scale_max }}; --rating-decimal: {{ rating_decimal }};"
+          ></span>
+        </div>
+        <p class="rating-text caption">
+          <span aria-hidden="true">
+            {{- rating_metafield }} /
+            {{ rating_metafield_scale_max -}}
+          </span>
+        </p>
+        <span class="_font-body-condensed _font-medium _text-brand-dark _text-sm">
+          {{- rating_metafield }} ({{ rating_metafield_count }} US Reviews)
+        </span>
+        <span class="visually-hidden">
+          {{- rating_metafield_count }}
+          {{ 'accessibility.total_reviews' | t -}}
+        </span>
+      </div>
+    {%- endunless -%}
+  </div>
+</product-rating>
+
+{% comment %} <div class="_flex _flex-row _items-center _gap-1">
   <span class="_text-sm _text-brand-primary-500">★★★★★</span>
   <span class="_font-body-condensed _font-medium _text-brand-dark _text-sm">4.5 (100)</span>
-</div>
-
-{% comment %}
- FIXME: TBC
- {% liquid
-  assign rating_metafield = main_product.metafields.reviews.rating.value.rating | default: main_product.metafields.reviews.rating.value | default: nil
-  assign rating_metafield_scale_max = main_product.metafields.reviews.rating.scale_max | default: main_product.metafields.reviews.rating.value.scale_max | nil
-  assign rating_decimal = 0
-  assign decimal = rating_metafield | modulo: 1
-  if decimal >= 0.3 and decimal <= 0.7
-    assign rating_decimal = 0.5
-  elsif decimal > 0.7
-    assign rating_decimal = 1
-  endif
-%}
-
-{%- unless rating_metafield == nil -%}
-  <div
-    class="rating"
-    role="img"
-    aria-label="{{ 'accessibility.star_reviews_info' | t: rating_value: rating_metafield, rating_max: rating_metafield_scale_max }}"
-  >
-    <span
-      aria-hidden="true"
-      class="rating-star"
-      style="--rating: {{ rating_metafield | floor }}; --rating-max: {{ rating_metafield_scale_max }}; --rating-decimal: {{ rating_decimal }};"
-    ></span>
-  </div>
-  <p class="rating-text caption">
-    <span aria-hidden="true">
-      {{- main_product.metafields.reviews.rating.value }} /
-      {{ rating_metafield_scale_max -}}
-    </span>
-  </p>
-  <p class="_text-xs _text-brand-primary-700 _inline-block">
-    <span aria-hidden="true">{{ main_product.metafields.reviews.rating_count }} Reviews</span>
-    <span class="visually-hidden">
-      {{- main_product.metafields.reviews.rating_count }}
-      {{ 'accessibility.total_reviews' | t -}}
-    </span>
-  </p>
-{%- endunless -%}
- {% endcomment %}
+</div> {% endcomment %}
