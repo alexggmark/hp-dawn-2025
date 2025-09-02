@@ -1,12 +1,3 @@
-<script>
-  console.log("Metafields:")
-  console.log({% if product.metafields %}"EXISTS"{% else %}"NOPE"{% endif %})
-  console.log({{product.metafields | json }})
-  {% for mf in product.metafields %}
-    console.log("{{ mf.namespace }} - {{ mf.key }}: {{ mf.value }}");
-  {% endfor %}
-</script>
-
 <product-info
   id="MainProduct-{{ section.id }}"
   class="md:_pb-12 _pb-8 [.quick-shop-drawer_&]:md:_py-0"
@@ -50,7 +41,16 @@
 
   {% assign variant_images = product.images | where: 'attached_to_variant?', true | map: 'src' %}
   <div class="page-width">
-    <div class="product product--medium product--left product--stacked product--mobile-{{ section.settings.mobile_thumbnails }} grid grid--1-col grid--2-col-tablet">
+    <div class="_pb-3 md:_hidden">
+      <div class="_flex _flex-row _gap-2 _items-center _justify-center">
+        {% comment %} <div class="_w-4 _h-4 _bg-brand-primary-500">/</div> {% endcomment %}
+        <div class="_flex _flex-col _justify-start">
+          <span class="_text-sm _-mb-0.5">20 years of epigenetic research in 1 bottle.</span>
+          <a href="#" class="_underline hover:_no-underline _underline-offset-2 _text-brand-primary-500 _text-sm">Learn More About Epigenetic Skincare ></a>
+        </div>
+      </div>
+    </div>
+    <div class="product product--{{ section.settings.media_size }} product--left product--thumbnail_slider product--mobile-{{ section.settings.mobile_thumbnails }} grid grid--1-col {% if product.media.size > 0 %}grid--2-col-tablet{% else %}product--no-media{% endif %}">
       <div class="grid__item product__media-wrapper">
         {% render 'wm__product-media-gallery', variant_images: variant_images %}
       </div>
@@ -75,7 +75,7 @@
                 {% comment %} Product Title {% endcomment %}
                 <div {{ block.shopify_attributes }}>
                   <h1 class="
-                    _font-heading-primary _text-brand-dark md:_text-2.5xl _text-2.5xl
+                    _font-heading-primary _text-brand-dark md:_text-2.5xl _text-[30px]
                   ">
                     {{ product.title | escape }}</h1>
                   <a href="{{ product.url }}" class="_hidden">
@@ -98,6 +98,12 @@
                     price_class: ''
                   -%}
                 </div> {% endcomment %}
+              {%- when 'pills' -%}
+                <div class="_flex _flex-wrap _gap-1.5 _mt-3">
+                  <div class="_border _border-brand-dark _rounded-full _px-2 _text-[13px] _font-heading-small _text-brand-dark _bg-brand-background-light">Peptide Complex</div>
+                  <div class="_border _border-brand-dark _rounded-full _px-2 _text-[13px] _font-heading-small _text-brand-dark _bg-brand-background-light">Peptide Reunion</div>
+                  <div class="_border _border-brand-dark _rounded-full _px-2 _text-[13px] _font-heading-small _text-brand-dark _bg-brand-background-light">Peptide-ify</div>
+                </div>
               {%- when 'inventory' -%}
                 <p
                   class="product__inventory{% if block.settings.text_style == 'uppercase' %} caption-with-letter-spacing{% elsif block.settings.text_style == 'subtitle' %} subtitle{% endif %}{% if product.selected_or_first_available_variant.inventory_management != 'shopify' %} visibility-hidden{% endif %}"
@@ -702,6 +708,13 @@
           "default": "body",
           "label": "t:sections.main-product.blocks.sku.settings.text_style.label"
         }
+      ]
+    },
+    {
+      "type": "pills",
+      "name": "Pills",
+      "limit": 1,
+      "settings": [
       ]
     },
     {

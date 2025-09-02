@@ -4,6 +4,9 @@
   This is alternative to adding lots of "quick-shop-drawer" class logic to main CSS files which could get confusing
 */
 
+/* Alex - removing for now as we're rewriting thumbnails as vertical */
+
+/*
 .quick-shop-drawer .slider.slider--mobile {
   position: relative!important;
   flex-wrap: inherit!important;
@@ -14,47 +17,55 @@
   -webkit-overflow-scrolling: touch!important;
   margin-bottom: 0!important;
 }
-
 .quick-shop-drawer .slider.slider--mobile .slider__slide {
   margin-bottom: 0!important;
   padding-top: 0;
   padding-bottom: 0;
 }
-
 .quick-shop-drawer .slider.slider--mobile.contains-card--standard .slider__slide:not(.collection-list__item--no-media) {
   padding-bottom: var(--focus-outline-padding)!important;
 }
-
 .quick-shop-drawer .slider.slider--mobile.contains-content-container .slider__slide {
   --focus-outline-padding: 0rem!important;
 }
-
 .quick-shop-drawer .product-media-container.media-fit-cover .media {
-    position: initial!important;
+  position: initial!important;
 }
-
 .quick-shop-drawer .slider--mobile + .slider-buttons {
   display: flex!important;
 }
+.quick-shop-drawer .product__media-wrapper .slider-mobile-gutter .slider-button {
+  display: flex!important;
+}
+*/
 
+.quick-shop-drawer .product__info-wrapper {
+  padding: 0!important;
+}
+.quick-shop-drawer .product--thumbnail_slider media-gallery {
+  margin-left: 0;
+  margin-right: 0;
+}
+.quick-shop-drawer .grid--peek.slider .grid__item:first-of-type {
+  margin-left: 0;
+}
+.quick-shop-drawer .product--thumbnail_slider .product__media-item {
+  max-width: calc(100% - var(--grid-desktop-horizontal-spacing) / 2)!important;
+}
 .quick-shop-drawer .product--medium:not(.product--no-media) .product__media-wrapper,
 .quick-shop-drawer .product--medium:not(.product--no-media) .product__info-wrapper {
   max-width: 100%!important;
   width: calc(100% - var(--grid-desktop-horizontal-spacing) / 2)!important;
 }
-
-.quick-shop-drawer .product__info-wrapper {
-  padding: 0!important;
-}
-
-.quick-shop-drawer .product--stacked .product__media-item {
-  max-width: calc(100% - var(--grid-desktop-horizontal-spacing) / 2)!important;
-}
-
 .quick-shop-drawer .grid--2-col-tablet .grid__item {
   width: calc(100% - var(--grid-desktop-horizontal-spacing) / 2)!important;
 }
-
-.quick-shop-drawer .product__media-wrapper .slider-mobile-gutter .slider-button {
-  display: flex!important;
+.quick-shop-drawer .product--thumbnail_slider .product__media-wrapper slider-component.thumbnail-slider {
+  max-height: 76vw;
+  overflow: scroll;
+}
+@media (min-width: 750px) {
+  .quick-shop-drawer .product--thumbnail_slider .product__media-wrapper slider-component.thumbnail-slider {
+    max-height: 23vw;
+  }
 }
