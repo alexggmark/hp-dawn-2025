@@ -264,11 +264,14 @@ class AnimatedDetails extends HTMLElement {
 
     if (!this.details || !this.summary || !this.content) return;
 
-    this.details.removeAttribute('open');
-    this.content.style.overflow = 'hidden';
-    this.content.style.opacity = 0;
-    this.content.style.height = '0px';
-    this.content.style.display = 'none';
+    // Adding in check to allow details to be "open" by default
+    if (!this.details.hasAttribute('open')) {
+      this.details.removeAttribute('open');
+      this.content.style.overflow = 'hidden';
+      this.content.style.opacity = 0;
+      this.content.style.height = '0px';
+      this.content.style.display = 'none';
+    }
 
     this.summary.addEventListener('click', (e) => {
       e.preventDefault();

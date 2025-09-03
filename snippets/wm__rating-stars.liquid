@@ -23,7 +23,7 @@
   {% liquid
     assign rating_metafield = 4.4
     assign rating_metafield_scale_max = 5
-    assign rating_metafield_count = 20
+    assign rating_metafield_count = 200
     assign rating_decimal = 0
     assign decimal = rating_metafield | modulo: 1
     if decimal >= 0.3 and decimal <= 0.7
@@ -53,9 +53,13 @@
             {{ rating_metafield_scale_max -}}
           </span>
         </p>
-        <span class="_font-body-condensed _font-medium _text-brand-dark _text-sm">
-          {{- rating_metafield }} ({{ rating_metafield_count }} US Reviews)
-        </span>
+        <div class="_flex _gap-0 _items-center">
+          <span class="_font-body-condensed _font-medium _text-brand-dark _text-sm">
+            {% comment %} {{- rating_metafield }}  {% endcomment %}
+            {{ rating_metafield_count }}+ U.S. Reviews
+          </span>
+          <span class="flag-icon _w-4 _h-4 _ml-1 _inline-block">{{ 'icon-us-flag.svg' | inline_asset_content }}</span>
+        </div>
         <span class="visually-hidden">
           {{- rating_metafield_count }}
           {{ 'accessibility.total_reviews' | t -}}

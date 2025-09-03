@@ -125,8 +125,8 @@ quick-shop-drawer.menu-opening .quick-shop-drawer__content {
   MASK FADE TO BOTTOM
 ------------------ */
 .mask-fade-bottom {
-  mask-image: linear-gradient(to bottom, black 60%, transparent);
-  -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent);
+  mask-image: linear-gradient(to bottom, white 0%, transparent);
+  -webkit-mask-image: linear-gradient(to bottom, white 0%, transparent);
 }
 
 /* ----------------------------

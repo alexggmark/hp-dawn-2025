@@ -9,11 +9,81 @@
   {% render 'wm__badges', product: product/card_product, placement: 'main'/'card' %}
 {% endcomment %}
 
+{% comment %} FIXME: temporary badges {% endcomment %}
+ <span
+  class="
+    _border
+    _border-transparent
+    _inline-block _font-body-condensed _uppercase
+    md:_text-base _text-sm
+    _px-1.5
+    _py-0.5
+    _text-center
+    _text-brand-light
+    _bg-brand-primary-500/50
+    _break-words
+    _pointer-events-none
+  "
+>
+  Best Seller
+</span>
+<span
+  class="
+    _border
+    _border-transparent
+    _inline-block _font-body-condensed _uppercase
+    md:_text-base _text-sm
+    _px-1.5
+    _py-0.5
+    _text-center
+    _text-brand-light
+    _bg-[#898642]/50
+    _break-words
+    _pointer-events-none
+  "
+>
+  Dermatologist-approved
+</span>
+{% comment %} <span
+  class="
+    _border
+    _border-brand-primary-500
+    _inline-block _font-body-condensed _uppercase
+    md:_text-base _text-sm
+    _px-1.5
+    _py-0.5
+    _text-center
+    _text-brand-primary-500
+    _bg-brand-light
+    _break-words
+    _pointer-events-none
+  "
+>
+  Best Seller
+</span>
+<span
+  class="
+    _border
+    _border-brand-grey
+    _inline-block _font-body-condensed _uppercase
+    md:_text-base _text-sm
+    _px-1.5
+    _py-0.5
+    _text-center
+    _text-brand-grey
+    _bg-brand-light
+    _break-words
+    _pointer-events-none
+  "
+>
+  Dermatologist-approved
+</span> {% endcomment %}
+
 {%- if placement == 'main' -%}
   {%- if product.available == false -%}
     <span
       class="
-        _border_1
+        _border
         _border-transparent
         _inline-block _font-medium _uppercase
         md:_text-base _text-sm
@@ -30,7 +100,7 @@
   {%- elsif product.compare_at_price > product.price and product.available -%}
     <span
       class="
-      _border_1
+      _border
       _border-transparent
       _inline-block _font-medium _uppercase
       md:_text-base _text-sm
@@ -49,7 +119,7 @@
       {%- assign percent_off = discount | times: 100 | divided_by: product.compare_at_price | round -%}
       <span
         class="
-        _border_1
+        _border
         _border-transparent
         _inline-block _font-medium _uppercase
         md:_text-base _text-sm
@@ -70,7 +140,7 @@
     <span
       id="NoMediaStandardBadge-{{ section_id }}-{{ product.id }}"
       class="
-        _border_1
+        _border
         _border-transparent
         _inline-block _font-medium _uppercase
         _text-xs
@@ -88,7 +158,7 @@
     <span
       id="NoMediaStandardBadge-{{ section_id }}-{{ product.id }}"
       class="
-        _border_1
+        _border
         _border-transparent
         _inline-block _font-medium _uppercase
         _text-xs
