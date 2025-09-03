@@ -20,12 +20,20 @@
           "type": "badge",
           "settings": {}
         },
+        "rating_xbiqGz": {
+          "type": "rating",
+          "settings": {}
+        },
+        "title_tagline_Mkf46y": {
+          "type": "title_tagline",
+          "settings": {}
+        },
         "title": {
           "type": "title",
           "settings": {}
         },
-        "rating_xbiqGz": {
-          "type": "rating",
+        "pills_CttUgx": {
+          "type": "pills",
           "settings": {}
         },
         "price": {
@@ -65,8 +73,10 @@
       "block_order": [
         "topline_callout_Kg4CHU",
         "badge_EVc6gV",
-        "title",
         "rating_xbiqGz",
+        "title_tagline_Mkf46y",
+        "title",
+        "pills_CttUgx",
         "price",
         "description",
         "variant_picker",
