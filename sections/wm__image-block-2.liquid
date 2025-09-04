@@ -30,32 +30,34 @@
             {%- assign title = section.settings[title_key] -%}
             {%- assign description = section.settings[description_key] -%}
 
-            <div class="_w-full _flex _flex-row _items-center _gap-3 md:_py-8 _py-5{% unless forloop.last %} _border-b _border-brand-border{% endunless %}">
-              <div class="_w-20 _flex _flex-shrink-0 _items-center _justify-center">
-                {%- if icon -%}
-                  {{
-                    icon
-                    | image_url: width: 100
-                    | image_tag:
-                      class: '_w-16',
-                      width: 100,
-                      height: 100
-                  }}
-                {%- endif -%}
+            {%- unless icon == blank and title == blank and description == blank -%}
+              <div class="_w-full _flex _flex-row _items-center _gap-3 md:_py-8 _py-5{% unless forloop.last %} _border-b _border-brand-border{% endunless %}">
+                <div class="_w-20 _flex _flex-shrink-0 _items-center _justify-center">
+                  {%- if icon -%}
+                    {{
+                      icon
+                      | image_url: width: 100
+                      | image_tag:
+                        class: '_w-16',
+                        width: 100,
+                        height: 100
+                    }}
+                  {%- endif -%}
+                </div>
+                <div>
+                  {%- if title -%}
+                    <h3 class="_font-heading-primary _text-brand-dark _mb-3 md:_text-2xl _text-xl">
+                      {{ title }}
+                    </h3>
+                  {%- endif -%}
+                  {%- if description -%}
+                    <p class="_text-brand-dark _text-base">
+                      {{ description }}
+                    </p>
+                  {%- endif -%}
+                </div>
               </div>
-              <div>
-                {%- if title -%}
-                  <h3 class="_font-heading-primary _text-brand-dark _mb-3 md:_text-2xl _text-xl">
-                    {{ title }}
-                  </h3>
-                {%- endif -%}
-                {%- if description -%}
-                  <p class="_text-brand-dark _text-base">
-                    {{ description }}
-                  </p>
-                {%- endif -%}
-              </div>
-            </div>
+            {%- endunless -%}
           {%- endfor -%}
 
         </div>

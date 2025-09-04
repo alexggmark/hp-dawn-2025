@@ -822,19 +822,23 @@ video {
 
 ._prose ul li {
   position: relative;
-  padding-left: 2rem;
+  padding-left: 1em;
+  /* Doing this instead of _pl-4 so bullet points space sizes up with font size ("em" vs "rem") */
 }
 
 ._prose ul li::before {
-  content: "";
+  content: "+";
+  top: -0.06rem;
   position: absolute;
   left: 0px;
   height: 1.5rem;
   width: 1.5rem;
-  background-image: url("data:image/svg+xml;utf8,%3Csvg%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Cpath%20d%3D%22M12%2021C14.0822%2021%2016.1%2020.278%2017.7095%2018.9571C19.3191%2017.6362%2020.4209%2015.798%2020.8271%2013.7558C21.2333%2011.7136%2020.9188%209.59376%2019.9373%207.75743C18.9558%205.9211%2017.3679%204.48191%2015.4442%203.68508C13.5205%202.88826%2011.38%202.78311%209.38744%203.38754C7.3949%203.99197%205.67358%205.26858%204.51677%206.99987C3.35997%208.73115%202.83925%2010.81%203.04334%2012.8822C3.24743%2014.9543%204.1637%2016.8916%205.63604%2018.364%22%20stroke%3D%22%230F2D64%22%20stroke-linecap%3D%22round%22/%3E%3Cpath%20d%3D%22M16%2010L12.402%2014.3175C11.7465%2015.1042%2011.4187%2015.4976%2010.9781%2015.5176C10.5375%2015.5375%2010.1755%2015.1755%209.45139%2014.4514L8%2013%22%20stroke%3D%22%230F2D64%22%20stroke-linecap%3D%22round%22/%3E%3C/svg%3E");
-  background-size: 100%;
-  background-position: center;
-  background-repeat: no-repeat;
+  --tw-text-opacity: 1;
+  color: rgb(61 114 246 / var(--tw-text-opacity, 1));
+  /* background-image: url("data:image/svg+xml;utf8,%3Csvg%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Cpath%20d%3D%22M12%2021C14.0822%2021%2016.1%2020.278%2017.7095%2018.9571C19.3191%2017.6362%2020.4209%2015.798%2020.8271%2013.7558C21.2333%2011.7136%2020.9188%209.59376%2019.9373%207.75743C18.9558%205.9211%2017.3679%204.48191%2015.4442%203.68508C13.5205%202.88826%2011.38%202.78311%209.38744%203.38754C7.3949%203.99197%205.67358%205.26858%204.51677%206.99987C3.35997%208.73115%202.83925%2010.81%203.04334%2012.8822C3.24743%2014.9543%204.1637%2016.8916%205.63604%2018.364%22%20stroke%3D%22%230F2D64%22%20stroke-linecap%3D%22round%22/%3E%3Cpath%20d%3D%22M16%2010L12.402%2014.3175C11.7465%2015.1042%2011.4187%2015.4976%2010.9781%2015.5176C10.5375%2015.5375%2010.1755%2015.1755%209.45139%2014.4514L8%2013%22%20stroke%3D%22%230F2D64%22%20stroke-linecap%3D%22round%22/%3E%3C/svg%3E"); */
+  /* background-size: 100%;
+    background-position: center;
+    background-repeat: no-repeat; */
 }
 
 ._prose ul li ul {
@@ -1018,19 +1022,23 @@ video {
 
 .shopify-policy__body .rte ul li {
   position: relative;
-  padding-left: 2rem;
+  padding-left: 1em;
+  /* Doing this instead of _pl-4 so bullet points space sizes up with font size ("em" vs "rem") */
 }
 
 .shopify-policy__body .rte ul li::before {
-  content: "";
+  content: "+";
+  top: -0.06rem;
   position: absolute;
   left: 0px;
   height: 1.5rem;
   width: 1.5rem;
-  background-image: url("data:image/svg+xml;utf8,%3Csvg%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Cpath%20d%3D%22M12%2021C14.0822%2021%2016.1%2020.278%2017.7095%2018.9571C19.3191%2017.6362%2020.4209%2015.798%2020.8271%2013.7558C21.2333%2011.7136%2020.9188%209.59376%2019.9373%207.75743C18.9558%205.9211%2017.3679%204.48191%2015.4442%203.68508C13.5205%202.88826%2011.38%202.78311%209.38744%203.38754C7.3949%203.99197%205.67358%205.26858%204.51677%206.99987C3.35997%208.73115%202.83925%2010.81%203.04334%2012.8822C3.24743%2014.9543%204.1637%2016.8916%205.63604%2018.364%22%20stroke%3D%22%230F2D64%22%20stroke-linecap%3D%22round%22/%3E%3Cpath%20d%3D%22M16%2010L12.402%2014.3175C11.7465%2015.1042%2011.4187%2015.4976%2010.9781%2015.5176C10.5375%2015.5375%2010.1755%2015.1755%209.45139%2014.4514L8%2013%22%20stroke%3D%22%230F2D64%22%20stroke-linecap%3D%22round%22/%3E%3C/svg%3E");
-  background-size: 100%;
-  background-position: center;
-  background-repeat: no-repeat;
+  --tw-text-opacity: 1;
+  color: rgb(61 114 246 / var(--tw-text-opacity, 1));
+  /* background-image: url("data:image/svg+xml;utf8,%3Csvg%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Cpath%20d%3D%22M12%2021C14.0822%2021%2016.1%2020.278%2017.7095%2018.9571C19.3191%2017.6362%2020.4209%2015.798%2020.8271%2013.7558C21.2333%2011.7136%2020.9188%209.59376%2019.9373%207.75743C18.9558%205.9211%2017.3679%204.48191%2015.4442%203.68508C13.5205%202.88826%2011.38%202.78311%209.38744%203.38754C7.3949%203.99197%205.67358%205.26858%204.51677%206.99987C3.35997%208.73115%202.83925%2010.81%203.04334%2012.8822C3.24743%2014.9543%204.1637%2016.8916%205.63604%2018.364%22%20stroke%3D%22%230F2D64%22%20stroke-linecap%3D%22round%22/%3E%3Cpath%20d%3D%22M16%2010L12.402%2014.3175C11.7465%2015.1042%2011.4187%2015.4976%2010.9781%2015.5176C10.5375%2015.5375%2010.1755%2015.1755%209.45139%2014.4514L8%2013%22%20stroke%3D%22%230F2D64%22%20stroke-linecap%3D%22round%22/%3E%3C/svg%3E"); */
+  /* background-size: 100%;
+    background-position: center;
+    background-repeat: no-repeat; */
 }
 
 .shopify-policy__body .rte ul li ul {
@@ -1535,10 +1543,6 @@ video {
   height: 3rem !important;
 }
 
-._h-28 {
-  height: 7rem !important;
-}
-
 ._h-3 {
   height: 0.75rem !important;
 }
@@ -1649,10 +1653,6 @@ video {
 
 ._w-24 {
   width: 6rem !important;
-}
-
-._w-28 {
-  width: 7rem !important;
 }
 
 ._w-3 {
@@ -2070,20 +2070,12 @@ video {
   border-radius: 0px !important;
 }
 
-._rounded-sm {
-  border-radius: 0.125rem !important;
-}
-
 ._border {
   border-width: 1px !important;
 }
 
 ._border-0 {
   border-width: 0px !important;
-}
-
-._border-2 {
-  border-width: 2px !important;
 }
 
 ._border-b {
@@ -2135,11 +2127,6 @@ video {
   background-color: rgb(252 181 45 / var(--tw-bg-opacity, 1)) !important;
 }
 
-._bg-black {
-  --tw-bg-opacity: 1 !important;
-  background-color: rgb(0 0 0 / var(--tw-bg-opacity, 1)) !important;
-}
-
 ._bg-brand-background {
   --tw-bg-opacity: 1 !important;
   background-color: rgb(241 241 241 / var(--tw-bg-opacity, 1)) !important;
@@ -2188,11 +2175,6 @@ video {
 ._bg-red-100 {
   --tw-bg-opacity: 1 !important;
   background-color: rgb(254 226 226 / var(--tw-bg-opacity, 1)) !important;
-}
-
-._bg-red-200 {
-  --tw-bg-opacity: 1 !important;
-  background-color: rgb(254 202 202 / var(--tw-bg-opacity, 1)) !important;
 }
 
 ._bg-transparent {

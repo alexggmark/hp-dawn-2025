@@ -207,6 +207,17 @@
 
       {%- for block in section.blocks -%}
         {%- case block.type -%}
+          {%- when 'image-block' -%}
+            <div class="_mb-{{ block.settings.margin_bottom | divided_by: 2 }} md:_mb-{{ block.settings.margin_bottom }}">
+              {{
+                block.settings.image
+                | image_url: width: 400
+                | image_tag:
+                  width: block.settings.image_max_width,
+                  class: ''
+              }}
+            </div>
+
           {%- when 'heading-type-1' -%}
             {%- assign decoration_tag_on = block.settings.decoration_tag_on -%}
             
@@ -637,6 +648,79 @@
     }
   ],
   "blocks": [
+    {
+      "type": "image-block",
+      "name": "Image Block",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Main background image"
+        },
+        {
+          "type": "range",
+          "id": "image_max_width",
+          "min": 100,
+          "max": 600,
+          "step": 10,
+          "unit": "%",
+          "label": "Max image width",
+          "default": 200
+        },
+        {
+          "type": "select",
+          "id": "margin_bottom",
+          "options": [
+            {
+              "value": "0",
+              "label": "0rem"
+            },
+            {
+              "value": "2",
+              "label": "0.5rem"
+            },
+            {
+              "value": "4",
+              "label": "1rem"
+            },
+            {
+              "value": "6",
+              "label": "1.5rem"
+            },
+            {
+              "value": "8",
+              "label": "2rem"
+            },
+            {
+              "value": "12",
+              "label": "3rem"
+            },
+            {
+              "value": "16",
+              "label": "4rem"
+            },
+            {
+              "value": "20",
+              "label": "5rem"
+            },
+            {
+              "value": "24",
+              "label": "6rem"
+            },
+            {
+              "value": "28",
+              "label": "7rem"
+            },
+            {
+              "value": "32",
+              "label": "8rem"
+            }
+          ],
+          "default": "0",
+          "label": "Margin bottom"
+        }
+      ]
+    },
     {
       "type": "heading-type-1",
       "name": "Heading Type 1",
