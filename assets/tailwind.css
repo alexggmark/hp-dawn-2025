@@ -822,19 +822,24 @@ video {
 
 ._prose ul li {
   position: relative;
-  padding-left: 2rem;
+  padding-left: 1em;
+  /* Doing this instead of _pl-4 so bullet points space sizes up with font size ("em" vs "rem") */
 }
 
 ._prose ul li::before {
-  content: "";
+  content: "+";
+  top: -0.06rem;
+  font-weight: 600;
   position: absolute;
   left: 0px;
   height: 1.5rem;
   width: 1.5rem;
-  background-image: url("data:image/svg+xml;utf8,%3Csvg%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Cpath%20d%3D%22M12%2021C14.0822%2021%2016.1%2020.278%2017.7095%2018.9571C19.3191%2017.6362%2020.4209%2015.798%2020.8271%2013.7558C21.2333%2011.7136%2020.9188%209.59376%2019.9373%207.75743C18.9558%205.9211%2017.3679%204.48191%2015.4442%203.68508C13.5205%202.88826%2011.38%202.78311%209.38744%203.38754C7.3949%203.99197%205.67358%205.26858%204.51677%206.99987C3.35997%208.73115%202.83925%2010.81%203.04334%2012.8822C3.24743%2014.9543%204.1637%2016.8916%205.63604%2018.364%22%20stroke%3D%22%230F2D64%22%20stroke-linecap%3D%22round%22/%3E%3Cpath%20d%3D%22M16%2010L12.402%2014.3175C11.7465%2015.1042%2011.4187%2015.4976%2010.9781%2015.5176C10.5375%2015.5375%2010.1755%2015.1755%209.45139%2014.4514L8%2013%22%20stroke%3D%22%230F2D64%22%20stroke-linecap%3D%22round%22/%3E%3C/svg%3E");
-  background-size: 100%;
-  background-position: center;
-  background-repeat: no-repeat;
+  --tw-text-opacity: 1;
+  color: rgb(61 114 246 / var(--tw-text-opacity, 1));
+  /* background-image: url("data:image/svg+xml;utf8,%3Csvg%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Cpath%20d%3D%22M12%2021C14.0822%2021%2016.1%2020.278%2017.7095%2018.9571C19.3191%2017.6362%2020.4209%2015.798%2020.8271%2013.7558C21.2333%2011.7136%2020.9188%209.59376%2019.9373%207.75743C18.9558%205.9211%2017.3679%204.48191%2015.4442%203.68508C13.5205%202.88826%2011.38%202.78311%209.38744%203.38754C7.3949%203.99197%205.67358%205.26858%204.51677%206.99987C3.35997%208.73115%202.83925%2010.81%203.04334%2012.8822C3.24743%2014.9543%204.1637%2016.8916%205.63604%2018.364%22%20stroke%3D%22%230F2D64%22%20stroke-linecap%3D%22round%22/%3E%3Cpath%20d%3D%22M16%2010L12.402%2014.3175C11.7465%2015.1042%2011.4187%2015.4976%2010.9781%2015.5176C10.5375%2015.5375%2010.1755%2015.1755%209.45139%2014.4514L8%2013%22%20stroke%3D%22%230F2D64%22%20stroke-linecap%3D%22round%22/%3E%3C/svg%3E"); */
+  /* background-size: 100%;
+    background-position: center;
+    background-repeat: no-repeat; */
 }
 
 ._prose ul li ul {
@@ -1018,19 +1023,24 @@ video {
 
 .shopify-policy__body .rte ul li {
   position: relative;
-  padding-left: 2rem;
+  padding-left: 1em;
+  /* Doing this instead of _pl-4 so bullet points space sizes up with font size ("em" vs "rem") */
 }
 
 .shopify-policy__body .rte ul li::before {
-  content: "";
+  content: "+";
+  top: -0.06rem;
+  font-weight: 600;
   position: absolute;
   left: 0px;
   height: 1.5rem;
   width: 1.5rem;
-  background-image: url("data:image/svg+xml;utf8,%3Csvg%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Cpath%20d%3D%22M12%2021C14.0822%2021%2016.1%2020.278%2017.7095%2018.9571C19.3191%2017.6362%2020.4209%2015.798%2020.8271%2013.7558C21.2333%2011.7136%2020.9188%209.59376%2019.9373%207.75743C18.9558%205.9211%2017.3679%204.48191%2015.4442%203.68508C13.5205%202.88826%2011.38%202.78311%209.38744%203.38754C7.3949%203.99197%205.67358%205.26858%204.51677%206.99987C3.35997%208.73115%202.83925%2010.81%203.04334%2012.8822C3.24743%2014.9543%204.1637%2016.8916%205.63604%2018.364%22%20stroke%3D%22%230F2D64%22%20stroke-linecap%3D%22round%22/%3E%3Cpath%20d%3D%22M16%2010L12.402%2014.3175C11.7465%2015.1042%2011.4187%2015.4976%2010.9781%2015.5176C10.5375%2015.5375%2010.1755%2015.1755%209.45139%2014.4514L8%2013%22%20stroke%3D%22%230F2D64%22%20stroke-linecap%3D%22round%22/%3E%3C/svg%3E");
-  background-size: 100%;
-  background-position: center;
-  background-repeat: no-repeat;
+  --tw-text-opacity: 1;
+  color: rgb(61 114 246 / var(--tw-text-opacity, 1));
+  /* background-image: url("data:image/svg+xml;utf8,%3Csvg%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Cpath%20d%3D%22M12%2021C14.0822%2021%2016.1%2020.278%2017.7095%2018.9571C19.3191%2017.6362%2020.4209%2015.798%2020.8271%2013.7558C21.2333%2011.7136%2020.9188%209.59376%2019.9373%207.75743C18.9558%205.9211%2017.3679%204.48191%2015.4442%203.68508C13.5205%202.88826%2011.38%202.78311%209.38744%203.38754C7.3949%203.99197%205.67358%205.26858%204.51677%206.99987C3.35997%208.73115%202.83925%2010.81%203.04334%2012.8822C3.24743%2014.9543%204.1637%2016.8916%205.63604%2018.364%22%20stroke%3D%22%230F2D64%22%20stroke-linecap%3D%22round%22/%3E%3Cpath%20d%3D%22M16%2010L12.402%2014.3175C11.7465%2015.1042%2011.4187%2015.4976%2010.9781%2015.5176C10.5375%2015.5375%2010.1755%2015.1755%209.45139%2014.4514L8%2013%22%20stroke%3D%22%230F2D64%22%20stroke-linecap%3D%22round%22/%3E%3C/svg%3E"); */
+  /* background-size: 100%;
+    background-position: center;
+    background-repeat: no-repeat; */
 }
 
 .shopify-policy__body .rte ul li ul {
@@ -1272,6 +1282,11 @@ video {
   margin: 0px !important;
 }
 
+._mx-1 {
+  margin-left: 0.25rem !important;
+  margin-right: 0.25rem !important;
+}
+
 ._mx-4 {
   margin-left: 1rem !important;
   margin-right: 1rem !important;
@@ -1363,10 +1378,6 @@ video {
   margin-bottom: 1.5rem !important;
 }
 
-._mb-7 {
-  margin-bottom: 1.75rem !important;
-}
-
 ._mb-8 {
   margin-bottom: 2rem !important;
 }
@@ -1377,10 +1388,6 @@ video {
 
 ._ml-0 {
   margin-left: 0px !important;
-}
-
-._ml-1 {
-  margin-left: 0.25rem !important;
 }
 
 ._ml-14 {
@@ -1423,10 +1430,6 @@ video {
   margin-top: 0.25rem !important;
 }
 
-._mt-1\.5 {
-  margin-top: 0.375rem !important;
-}
-
 ._mt-12 {
   margin-top: 3rem !important;
 }
@@ -1461,10 +1464,6 @@ video {
 
 ._mt-4 {
   margin-top: 1rem !important;
-}
-
-._mt-5 {
-  margin-top: 1.25rem !important;
 }
 
 ._mt-6 {
@@ -1537,10 +1536,6 @@ video {
 
 ._aspect-\[8\/9\] {
   aspect-ratio: 8/9 !important;
-}
-
-._aspect-\[9\/4\] {
-  aspect-ratio: 9/4 !important;
 }
 
 ._aspect-square {
@@ -2184,8 +2179,29 @@ video {
   border-color: rgb(255 255 255 / 0.5) !important;
 }
 
-._bg-\[\#898642\]\/50 {
-  background-color: rgb(137 134 66 / 0.5) !important;
+._border-brand-background {
+  --tw-border-opacity: 1 !important;
+  border-color: rgb(241 241 241 / var(--tw-border-opacity, 1)) !important;
+}
+
+._border-brand-grey\/60 {
+  border-color: rgb(118 118 118 / 0.6) !important;
+}
+
+._border-brand-grey\/50 {
+  border-color: rgb(118 118 118 / 0.5) !important;
+}
+
+._border-brand-grey\/30 {
+  border-color: rgb(118 118 118 / 0.3) !important;
+}
+
+._border-brand-grey\/20 {
+  border-color: rgb(118 118 118 / 0.2) !important;
+}
+
+._border-brand-grey\/10 {
+  border-color: rgb(118 118 118 / 0.1) !important;
 }
 
 ._bg-\[\#FCB52D\] {
@@ -2201,6 +2217,11 @@ video {
 ._bg-brand-background-light {
   --tw-bg-opacity: 1 !important;
   background-color: rgb(247 248 249 / var(--tw-bg-opacity, 1)) !important;
+}
+
+._bg-brand-border {
+  --tw-bg-opacity: 1 !important;
+  background-color: rgb(218 222 226 / var(--tw-bg-opacity, 1)) !important;
 }
 
 ._bg-brand-dark {
@@ -2221,10 +2242,6 @@ video {
 ._bg-brand-primary-500 {
   --tw-bg-opacity: 1 !important;
   background-color: rgb(61 114 246 / var(--tw-bg-opacity, 1)) !important;
-}
-
-._bg-brand-primary-500\/50 {
-  background-color: rgb(61 114 246 / 0.5) !important;
 }
 
 ._bg-brand-primary-700 {
@@ -2263,6 +2280,31 @@ video {
 ._bg-white {
   --tw-bg-opacity: 1 !important;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1)) !important;
+}
+
+._bg-brand-grey {
+  --tw-bg-opacity: 1 !important;
+  background-color: rgb(118 118 118 / var(--tw-bg-opacity, 1)) !important;
+}
+
+._bg-brand-grey\/60 {
+  background-color: rgb(118 118 118 / 0.6) !important;
+}
+
+._bg-brand-grey\/50 {
+  background-color: rgb(118 118 118 / 0.5) !important;
+}
+
+._bg-brand-grey\/30 {
+  background-color: rgb(118 118 118 / 0.3) !important;
+}
+
+._bg-brand-grey\/20 {
+  background-color: rgb(118 118 118 / 0.2) !important;
+}
+
+._bg-brand-grey\/10 {
+  background-color: rgb(118 118 118 / 0.1) !important;
 }
 
 ._bg-opacity-50 {
@@ -2633,6 +2675,10 @@ video {
   font-size: 10px !important;
 }
 
+._text-\[11px\] {
+  font-size: 11px !important;
+}
+
 ._text-\[12px\] {
   font-size: 12px !important;
 }
@@ -2708,10 +2754,6 @@ video {
 ._text-brand-grey {
   --tw-text-opacity: 1 !important;
   color: rgb(118 118 118 / var(--tw-text-opacity, 1)) !important;
-}
-
-._text-brand-grey\/60 {
-  color: rgb(118 118 118 / 0.6) !important;
 }
 
 ._text-brand-light {
@@ -2814,10 +2856,6 @@ video {
 
 ._duration-100 {
   transition-duration: 100ms !important;
-}
-
-._duration-200 {
-  transition-duration: 200ms !important;
 }
 
 ._duration-300 {
@@ -3046,11 +3084,6 @@ video {
 .hover\:_bg-brand-primary-500:hover {
   --tw-bg-opacity: 1 !important;
   background-color: rgb(61 114 246 / var(--tw-bg-opacity, 1)) !important;
-}
-
-.hover\:_px-3:hover {
-  padding-left: 0.75rem !important;
-  padding-right: 0.75rem !important;
 }
 
 .hover\:_text-brand-light:hover {
@@ -3974,6 +4007,10 @@ video {
   .md\:_text-xl {
     font-size: 20px !important;
     line-height: auto !important;
+  }
+
+  .md\:_text-\[22px\] {
+    font-size: 22px !important;
   }
 
   .md\:_text-brand-dark {

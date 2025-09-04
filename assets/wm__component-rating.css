@@ -38,6 +38,7 @@ product-rating.js-fallback-reviews .product-rating__fallback { display: block; }
 
 .rating-star {
   --color-rating-star: var(--color-brand-primary-500);
+  /* --color-rating-star: #f6ca3d; */
   --percent: calc(
     (
         var(--rating) / var(--rating-max) + var(--rating-decimal) * var(--font-size) /

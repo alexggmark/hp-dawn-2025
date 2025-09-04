@@ -54,11 +54,12 @@
           </span>
         </p>
         <div class="_flex _gap-0 _items-center">
-          <span class="_font-body-condensed _font-medium _text-brand-dark _text-sm">
+          {% comment %} <span class="_font-body-condensed _text-brand-dark _text-sm">({{ rating_metafield }})</span> {% endcomment %}
+          {% comment %} <span class="svg-wrapper _w-4 _h-4 _mx-1">{{ 'icon-us-flag.svg' | inline_asset_content }}</span> {% endcomment %}
+          <span class="_font-body-condensed _text-brand-dark _text-sm">
             {% comment %} {{- rating_metafield }}  {% endcomment %}
-            {{ rating_metafield_count }}+ U.S. Reviews
+            ({{ rating_metafield }}) {{ rating_metafield_count }}+ U.S. Reviews
           </span>
-          <span class="svg-wrapper _w-4 _h-4 _ml-1">{{ 'icon-us-flag.svg' | inline_asset_content }}</span>
         </div>
         <span class="visually-hidden">
           {{- rating_metafield_count }}
