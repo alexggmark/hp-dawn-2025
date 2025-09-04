@@ -60,7 +60,6 @@
         },
         "usps_H6VVPr": {
           "type": "usps",
-          "disabled": true,
           "settings": {
             "usp_image": "shopify://shop_images/HPWeb-PDP-Desktop-BrandIcons.gif"
           }
