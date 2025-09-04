@@ -199,22 +199,17 @@
       md:_max-w-[70%]
     ">
       {%- assign decoration_tag_on = false -%}
-      
-      {% comment %} <a href="#_" class="_relative _inline-flex _items-center _justify-start _px-6 _py-3 _overflow-hidden _font-medium _transition-all _bg-white _rounded _hover:bg-white _group">
-        <span class="_w-48 _h-48 _rounded _rotate-[90deg] _bg-purple-600 _absolute _bottom-0 _left-0 _-translate-x-full _ease-out _duration-500 _transition-all _translate-y-full _mb-9 _ml-9 group-hover:_ml-0 group-hover:_mb-32 group-hover:_translate-x-0"></span>
-        <span class="_relative _w-full _text-left _text-black _transition-colors _duration-300 _ease-in-out group-hover:_text-white">Button Text</span>
-      </a> {% endcomment %}
 
       {%- for block in section.blocks -%}
         {%- case block.type -%}
           {%- when 'image-block' -%}
-            <div class="_mb-{{ block.settings.margin_bottom | divided_by: 2 }} md:_mb-{{ block.settings.margin_bottom }}">
+            <div class="_inline-block _mb-{{ block.settings.margin_bottom | divided_by: 2 }} md:_mb-{{ block.settings.margin_bottom }}">
               {{
                 block.settings.image
-                | image_url: width: 400
+                | image_url: width: 600
                 | image_tag:
                   width: block.settings.image_max_width,
-                  class: ''
+                  class: '_max-w-full'
               }}
             </div>
 

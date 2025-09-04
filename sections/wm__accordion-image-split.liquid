@@ -4,7 +4,7 @@
   <div class="page-width _relative">
     <accordion-image-split>
       <div class="_grid md:_grid-cols-12 _grid-cols-1 _gap-8">
-        <div class="md:_col-span-6 _col-span-1 _flex _flex-col _items-start _justify-start">
+        <div class="md:_col-span-6 _col-span-1 _flex _flex-col _items-start _justify-start {% if section.settings.reverse_order %} md:_order-2 md:_pl-14{% endif %}">
           {%- unless section.settings.main_heading == blank -%}
             <h2 class="_font-heading-primary _text-brand-dark md:_text-3xl _text-2.5xl _mb-6">
               {{ section.settings.main_heading }}
@@ -44,7 +44,7 @@
                   data-js-accordion-panel="{{ forloop.index }}"
                 >
                   {%- unless block.settings.image == blank -%}
-                    {{ block.settings.image | image_url: width: 1000 | image_tag: loading: 'lazy', width: '100%', height: '100%', class: '_object-cover _w-full _h-full' }}
+                    {{ block.settings.image | image_url: width: 2000 | image_tag: loading: 'lazy', width: '100%', height: '100%', class: '_object-cover _w-full _h-full' }}
                   {%- endunless -%}
                 </div>
             {%- endcase -%}
@@ -68,6 +68,12 @@
       "id": "show_background",
       "default": false,
       "label": "Turn on background"
+    },
+    {
+      "type": "checkbox",
+      "id": "reverse_order",
+      "default": false,
+      "label": "Reverse order of image and text content"
     },
     {
       "type": "inline_richtext",
