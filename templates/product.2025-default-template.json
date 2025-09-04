@@ -88,15 +88,6 @@
     },
     "175007490287b4d42b": {
       "type": "wm__apps",
-      "blocks": {
-        "klaviyo_reviews_product_reviews_Ex74EG": {
-          "type": "shopify://apps/klaviyo-reviews/blocks/product-reviews/db20e365-d984-4ac4-9655-e1588d951ca9",
-          "settings": {}
-        }
-      },
-      "block_order": [
-        "klaviyo_reviews_product_reviews_Ex74EG"
-      ],
       "settings": {
         "include_margins": true,
         "show_background": true,

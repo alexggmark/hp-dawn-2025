@@ -1,12 +1,5 @@
 <script src="{{ 'wm__experts-carousel.js' | asset_url }}" defer="defer"></script>
 
-{%- liquid
-  assign fetch_priority = 'auto'
-  if section.index == 1
-    assign fetch_priority = 'high'
-  endif
--%}
-
 {% style %}
   .expert-slide {
     margin-top: 6rem;
