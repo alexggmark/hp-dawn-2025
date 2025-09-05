@@ -24,16 +24,12 @@
           "type": "rating",
           "settings": {}
         },
-        "title_tagline_Mkf46y": {
-          "type": "title_tagline",
-          "settings": {}
-        },
         "title": {
           "type": "title",
           "settings": {}
         },
-        "pills_CttUgx": {
-          "type": "pills",
+        "title_tagline_Mkf46y": {
+          "type": "title_tagline",
           "settings": {}
         },
         "price": {
@@ -43,6 +39,28 @@
         "description": {
           "type": "description",
           "settings": {}
+        },
+        "divider_nbwdbP": {
+          "type": "divider",
+          "settings": {
+            "margin_bottom": "4",
+            "margin_top": "4"
+          }
+        },
+        "pills_CttUgx": {
+          "type": "pills",
+          "settings": {}
+        },
+        "benefit_bullets_jiLJwd": {
+          "type": "benefit_bullets",
+          "settings": {}
+        },
+        "divider_NwQcgC": {
+          "type": "divider",
+          "settings": {
+            "margin_bottom": "6",
+            "margin_top": "6"
+          }
         },
         "variant_picker": {
           "type": "variant_picker",
@@ -73,11 +91,14 @@
         "topline_callout_Kg4CHU",
         "badge_EVc6gV",
         "rating_xbiqGz",
-        "title_tagline_Mkf46y",
         "title",
-        "pills_CttUgx",
+        "title_tagline_Mkf46y",
         "price",
         "description",
+        "divider_nbwdbP",
+        "pills_CttUgx",
+        "benefit_bullets_jiLJwd",
+        "divider_NwQcgC",
         "variant_picker",
         "buy_buttons",
         "usps_H6VVPr",

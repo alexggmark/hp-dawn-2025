@@ -2179,27 +2179,6 @@ video {
   border-color: rgb(255 255 255 / 0.5) !important;
 }
 
-._border-brand-background {
-  --tw-border-opacity: 1 !important;
-  border-color: rgb(241 241 241 / var(--tw-border-opacity, 1)) !important;
-}
-
-._border-brand-grey\/60 {
-  border-color: rgb(118 118 118 / 0.6) !important;
-}
-
-._border-brand-grey\/50 {
-  border-color: rgb(118 118 118 / 0.5) !important;
-}
-
-._border-brand-grey\/30 {
-  border-color: rgb(118 118 118 / 0.3) !important;
-}
-
-._border-brand-grey\/20 {
-  border-color: rgb(118 118 118 / 0.2) !important;
-}
-
 ._border-brand-grey\/10 {
   border-color: rgb(118 118 118 / 0.1) !important;
 }
@@ -2227,6 +2206,10 @@ video {
 ._bg-brand-dark {
   --tw-bg-opacity: 1 !important;
   background-color: rgb(44 44 44 / var(--tw-bg-opacity, 1)) !important;
+}
+
+._bg-brand-grey\/10 {
+  background-color: rgb(118 118 118 / 0.1) !important;
 }
 
 ._bg-brand-light {
@@ -2280,31 +2263,6 @@ video {
 ._bg-white {
   --tw-bg-opacity: 1 !important;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1)) !important;
-}
-
-._bg-brand-grey {
-  --tw-bg-opacity: 1 !important;
-  background-color: rgb(118 118 118 / var(--tw-bg-opacity, 1)) !important;
-}
-
-._bg-brand-grey\/60 {
-  background-color: rgb(118 118 118 / 0.6) !important;
-}
-
-._bg-brand-grey\/50 {
-  background-color: rgb(118 118 118 / 0.5) !important;
-}
-
-._bg-brand-grey\/30 {
-  background-color: rgb(118 118 118 / 0.3) !important;
-}
-
-._bg-brand-grey\/20 {
-  background-color: rgb(118 118 118 / 0.2) !important;
-}
-
-._bg-brand-grey\/10 {
-  background-color: rgb(118 118 118 / 0.1) !important;
 }
 
 ._bg-opacity-50 {
@@ -3989,6 +3947,10 @@ video {
     line-height: 1 !important;
   }
 
+  .md\:_text-\[22px\] {
+    font-size: 22px !important;
+  }
+
   .md\:_text-base {
     font-size: 14px !important;
     line-height: auto !important;
@@ -4007,10 +3969,6 @@ video {
   .md\:_text-xl {
     font-size: 20px !important;
     line-height: auto !important;
-  }
-
-  .md\:_text-\[22px\] {
-    font-size: 22px !important;
   }
 
   .md\:_text-brand-dark {
