@@ -15,8 +15,8 @@
         "image_block_hiNiyC": {
           "type": "image-block",
           "settings": {
-            "image": "shopify://shop_images/HydroPeptide-Medical-Logo-white_1_1.png",
-            "image_max_width": 160,
+            "image": "shopify://shop_images/hydropeptide-and-peptide-logo-professional-range-page_clearer.png",
+            "image_max_width": 240,
             "margin_bottom": "4"
           }
         },
@@ -26,7 +26,7 @@
             "heading": "Optimal Skin Health",
             "heading_tag": "h1",
             "desktop_text_size": "5xl",
-            "mobile_text_size": "3xl",
+            "mobile_text_size": "2.5xl",
             "margin_bottom": "2",
             "invert_colours": true,
             "mobile_invert_colours": true,
@@ -41,7 +41,7 @@
             "heading": "<em>Reactivated</em>",
             "heading_tag": "h1",
             "desktop_text_size": "5xl",
-            "mobile_text_size": "3xl",
+            "mobile_text_size": "2.5xl",
             "margin_bottom": "0",
             "invert_colours": true,
             "mobile_invert_colours": true,
@@ -96,8 +96,8 @@
         "show_text_box": false,
         "desktop_content_alignment": "left",
         "mobile_image": "shopify://shop_images/hero-banner-mobile-ReActivate-Rx-Serum.png",
-        "mobile_image_overlay_opacity": 0,
-        "mobile_image_height": "medium",
+        "mobile_image_overlay_opacity": 60,
+        "mobile_image_height": "small",
         "mobile_content_alignment": "center",
         "mobile_content_position": "middle-center",
         "show_mobile_text_box": false,
@@ -180,7 +180,7 @@
         "bullet_5_description": "",
         "image_1": "shopify://shop_images/hero-banner-mobile-ReActivate-Rx-Serum.png",
         "image_2": "shopify://shop_images/HydroStem-Model-Image-01_1_2.png",
-        "image_3": "shopify://shop_images/reactivate-rx-standalone-image.png",
+        "image_3": "shopify://shop_images/ReActivateRxSerumMoisturizer_Hero_Image_02_Web_3000px_1_2_1.png",
         "margin_bottom": "0"
       }
     },
@@ -220,6 +220,7 @@
       "name": "WM AccordionImgSplit",
       "settings": {
         "show_background": true,
+        "reverse_order": true,
         "main_heading": "ReActivate RX Moisturiser <em>Pro-Collage Night Complex</em>",
         "margin_bottom": "0"
       }
