@@ -116,7 +116,7 @@
 .beer-reveal[data-beer-label]:after,
 .beer-slider[data-beer-label]:after {
   content: attr(data-beer-label);
-  font-size: var(--font-size-base);
+  font-size: var(--font-size-sm);
   font-family: var(--font-body-condensed);
   white-space: nowrap;
   color: var(--color-brand-light);
@@ -125,6 +125,14 @@
   position: absolute;
   top: 1.5rem;
 }
+.beer-reveal.label-background[data-beer-label]:after,
+.beer-slider.label-background[data-beer-label]:after {
+  background-color: var(--color-brand-light);
+  color: var(--color-brand-primary-700);
+  padding: 0.2rem 0.3rem;
+  font-size: 0.7rem;
+}
+
 .beer-slider[data-beer-label]:after {
   right: 1.5rem;
 }

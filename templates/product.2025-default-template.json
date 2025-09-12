@@ -86,6 +86,15 @@
       "type": "wm__pdp-metaobject-blocks",
       "settings": {}
     },
+    "175007490287b4d42b": {
+      "type": "wm__apps",
+      "settings": {
+        "include_margins": true,
+        "show_background": true,
+        "padding": "8",
+        "margin_bottom": "0"
+      }
+    },
     "related-products": {
       "type": "wm__related-products",
       "settings": {
@@ -123,6 +132,7 @@
   "order": [
     "main",
     "pdp-metaobject-blocks",
+    "175007490287b4d42b",
     "related-products",
     "wm_pdp_metaobject_blocks_footer_BX93gM",
     "wm_cta_banner"

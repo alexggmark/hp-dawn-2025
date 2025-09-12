@@ -9,21 +9,12 @@
  */
 {
   "sections": {
-    "quiz-results": {
-      "type": "wm__quiz-results",
-      "settings": {
-        "default_product": "age-reversal-regimen",
-        "top_heading": "Regime Builder",
-        "main_heading": "Build Your Hydropeptide Regime",
-        "description": "<p>Carefully curated by our in-house product experts, every step of your regime is meticulously considered; optimised product combinations, layering sequence and synergies of active ingredients.</p>",
-        "routine_image_hero": "shopify://shop_images/icon-bullseye.svg",
-        "routine_image_routine": "shopify://shop_images/icon-lab.svg",
-        "routine_image_pm": "shopify://shop_images/Hydrates-and-balances.svg",
-        "routine_image_bonus": "shopify://shop_images/Improves-the-appearance-of-radiance-and-clarity.svg"
-      }
+    "gwp-picker": {
+      "type": "wm__gwp-picker",
+      "settings": {}
     }
   },
   "order": [
-    "quiz-results"
+    "gwp-picker"
   ]
 }

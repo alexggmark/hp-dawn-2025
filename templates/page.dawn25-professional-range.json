@@ -1,0 +1,286 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "wm_hero_banner_image_GNU7Bz": {
+      "type": "wm__hero-banner-image",
+      "blocks": {
+        "image_block_hiNiyC": {
+          "type": "image-block",
+          "settings": {
+            "image": "shopify://shop_images/hydropeptide-and-peptide-logo-professional-range-page_clearer.png",
+            "image_max_width": 240,
+            "margin_bottom": "4"
+          }
+        },
+        "heading_type_1_QpUaQF": {
+          "type": "heading-type-1",
+          "settings": {
+            "heading": "Optimal Skin Health",
+            "heading_tag": "h1",
+            "desktop_text_size": "5xl",
+            "mobile_text_size": "2.5xl",
+            "margin_bottom": "2",
+            "invert_colours": true,
+            "mobile_invert_colours": true,
+            "decoration_tag_on": false,
+            "decoration_tag_text": "",
+            "decoration_tag_invert": false
+          }
+        },
+        "heading_type_1_cgbcrL": {
+          "type": "heading-type-1",
+          "settings": {
+            "heading": "<em>Reactivated</em>",
+            "heading_tag": "h1",
+            "desktop_text_size": "5xl",
+            "mobile_text_size": "2.5xl",
+            "margin_bottom": "0",
+            "invert_colours": true,
+            "mobile_invert_colours": true,
+            "decoration_tag_on": true,
+            "decoration_tag_text": "NEW REACTIVE RX SERUM & MOISTURIZER",
+            "decoration_tag_invert": true
+          }
+        },
+        "text_VTCCpX": {
+          "type": "text",
+          "settings": {
+            "text": "A clinically proven regenerative skincare line powered by our most advanced peptide technology, designed exclusively for healthcare professionals and their patients.",
+            "margin_bottom": "6",
+            "invert_colours": true,
+            "mobile_invert_colours": true
+          }
+        },
+        "buttons_Minmxc": {
+          "type": "buttons",
+          "settings": {
+            "button_label_1": "Find a clinic",
+            "button_link_1": "shopify://pages/store-locator",
+            "button_style_1": "primary",
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_2": "primary"
+          }
+        },
+        "custom_liquid_R3X6zm": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "",
+            "margin_bottom": "0"
+          }
+        }
+      },
+      "block_order": [
+        "image_block_hiNiyC",
+        "heading_type_1_QpUaQF",
+        "heading_type_1_cgbcrL",
+        "text_VTCCpX",
+        "buttons_Minmxc",
+        "custom_liquid_R3X6zm"
+      ],
+      "name": "WM Hero Banner Image",
+      "settings": {
+        "image": "shopify://shop_images/hero-banner-desktop-ReActivate-Rx-Serum.png",
+        "image_overlay_opacity": 0,
+        "container_width": "page",
+        "image_height": "large",
+        "desktop_content_position": "middle-left",
+        "show_text_box": false,
+        "desktop_content_alignment": "left",
+        "mobile_image": "shopify://shop_images/hero-banner-mobile-ReActivate-Rx-Serum.png",
+        "mobile_image_overlay_opacity": 60,
+        "mobile_image_height": "small",
+        "mobile_content_alignment": "center",
+        "mobile_content_position": "middle-center",
+        "show_mobile_text_box": false,
+        "margin_bottom": "0"
+      }
+    },
+    "wm_image_block_text_1_6xWiWj": {
+      "type": "wm__image-block-text-1",
+      "name": "WM ImageBlockText 1",
+      "settings": {
+        "reverse_order": false,
+        "show_background": false,
+        "top_heading": "",
+        "main_heading": "Introducing ReActivate Rx <em>Serum</em>",
+        "description": "<p>Stacked with patented technologies to optimise skin’s cellular function. This powerful medical-grade serum blends triple the NIMNI™ Technology, enhanced Micellular CellRenew-16, and NMN, an NAD+ precursor, to boost collagen and visibly reduce signs of ageing.</p><ul><li>Smoother fine lines and wrinkles</li><li>Restored firmness and elasticity</li><li>Improved skin texture and tone</li><li>Boosted radiance</li><li>Improved barrier function</li></ul>",
+        "cta_text": "Find a clinic",
+        "cta_url": "shopify://pages/store-locator",
+        "image": "shopify://shop_images/ReActivate-Rx-Serum-Hero_Wide_1_1_2.png",
+        "margin_bottom": "0"
+      }
+    },
+    "wm_before_after_grid_Lpt87X": {
+      "type": "wm__before-after-grid",
+      "blocks": {
+        "before_after_image_PXGfaH": {
+          "type": "before_after_image",
+          "settings": {
+            "label_background": true,
+            "after_image": "shopify://shop_images/HydroPeptide_Barbara_before.png",
+            "before_text": "Before",
+            "before_image": "shopify://shop_images/HydroPeptide_Barbara_after.png",
+            "after_text": "After 6 weeks"
+          }
+        },
+        "before_after_image_qNy4et": {
+          "type": "before_after_image",
+          "settings": {
+            "label_background": true,
+            "after_image": "shopify://shop_images/HydroPeptide_Arina_before.png",
+            "before_text": "Before",
+            "before_image": "shopify://shop_images/HydroPeptide_Arina_after.png",
+            "after_text": "After 6 weeks"
+          }
+        }
+      },
+      "block_order": [
+        "before_after_image_PXGfaH",
+        "before_after_image_qNy4et"
+      ],
+      "name": "WM BeforeAfter Grid",
+      "settings": {
+        "show_background": true,
+        "main_heading": "",
+        "description": "",
+        "custom_liquid": "<div class=\"_flex _justify-center _items-center _text-center _flex-col _mb-8\">\n  <h1 class=\"_font-heading-primary md:_text-3xl _text-2.5xl _mb-8\">\n    Leave Lines Behind with<br>Tech <em>Ahead of its Time</em>\n  </h1>\n  <span class=\"_mb-2 _font-heading-small _text-sm\">Clinically proven to smooth, firm & lift*</span>\n  <div class=\"_flex md:_flex-row _flex-col _justify-center _items-center md:_gap-12 _gap-2 _mb-4\">\n    <div>\n      <span class=\"_font-heading-primary md:_text-2.5xl _text-2xl\"><span class=\"_text-brand-primary-500\">2X more</span> collagen</span>\n    </div>\n    <div>\n      <span class=\"_font-heading-primary md:_text-2.5xl _text-2xl\"><span class=\"_text-brand-primary-500\">3X more</span> elastin</span>\n    </div>\n    <div>\n      <span class=\"_font-heading-primary md:_text-2.5xl _text-2xl\"><span class=\"_text-brand-primary-500\">4X stronger</span> collagen</span>\n    </div>\n  </div>\n  <span class=\"_text-sm\">*From a clinical study conducted at the USC Laboratory of Tissue Development and Regeneration.</span>\n</div>",
+        "margin_bottom": "0"
+      }
+    },
+    "wm_image_block_2_UREjwN": {
+      "type": "wm__image-block-2",
+      "name": "WM ImageBlock 2",
+      "settings": {
+        "top_heading": "",
+        "main_heading": "Powered by <em>Synergistic Technologies</em>",
+        "cta_text": "Find a clinic",
+        "cta_url": "shopify://pages/store-locator",
+        "bullet_1_title": "NIMNI Technology",
+        "bullet_1_description": "Now amplified with 3x amino acid concentration to provide the building blocks for thriving collagen. This patented collagen support complex supplies cells with the optimal nutrients needed to stimulate, sustain, and shield healthy collagen. ",
+        "bullet_1_icon": "shopify://shop_images/icon-science.svg",
+        "bullet_2_title": "Micellular CellRenew-16",
+        "bullet_2_description": "Featuring an innovative new upgrade, this patented encapsulated peptide enhances collagen gene expression and chaperones NIMNI(tm) Technology into the cells where synthesis occurs.",
+        "bullet_2_icon": "shopify://shop_images/icon-cubes.svg",
+        "bullet_3_title": "Cell-Targeted Actives",
+        "bullet_3_description": "Potent actives help reduce inflammation, inhibit melanin production, brighten skin, and support collagen synthesis.",
+        "bullet_3_icon": "shopify://shop_images/icon-bullseye.svg",
+        "bullet_4_title": "NAD+ Precursor: Nicotinamide Mononucleotide (NMN)",
+        "bullet_4_description": "Helps reduce inflammation by boosting SIRT1 activity, an enzyme that inhibits key inflammatory pathways. ",
+        "bullet_4_icon": "shopify://shop_images/icon-lab.svg",
+        "bullet_5_title": "",
+        "bullet_5_description": "",
+        "image_1": "shopify://shop_images/hero-banner-mobile-ReActivate-Rx-Serum.png",
+        "image_2": "shopify://shop_images/HydroStem-Model-Image-01_1_2.png",
+        "image_3": "shopify://shop_images/ReActivateRxSerumMoisturizer_Hero_Image_02_Web_3000px_1_2_1.png",
+        "margin_bottom": "0"
+      }
+    },
+    "wm_accordion_image_split_jFPPw8": {
+      "type": "wm__accordion-image-split",
+      "blocks": {
+        "dropdown_T78cfr": {
+          "type": "dropdown",
+          "settings": {
+            "title": "NIMNI Technology",
+            "text": "<p>Now with 2x amino acids. Collagen support complex mimics the skin’s natural collagen production process.</p>",
+            "image": "shopify://shop_images/ReActivateRxSerumMoisturizer_Hero_Image_02_Web_3000px_1_2_1.png"
+          }
+        },
+        "dropdown_aeWMaA": {
+          "type": "dropdown",
+          "settings": {
+            "title": "0.25% Time-Release Retinol",
+            "text": "<p>Supports healthy collagen production to improve skin’s fullness and elasticity while resurfacing skin for a more even tone and texture</p>",
+            "image": "shopify://shop_images/HydroStem-Model-Image-01_1_2.png"
+          }
+        },
+        "dropdown_tYNiMQ": {
+          "type": "dropdown",
+          "settings": {
+            "title": "Peptide & Amino Acid Complexes",
+            "text": "<p>To support collagen and elastin production</p>",
+            "image": "shopify://shop_images/hero-banner-desktop-ReActivate-Rx-Serum.png"
+          }
+        }
+      },
+      "block_order": [
+        "dropdown_T78cfr",
+        "dropdown_aeWMaA",
+        "dropdown_tYNiMQ"
+      ],
+      "name": "WM AccordionImgSplit",
+      "settings": {
+        "show_background": true,
+        "reverse_order": true,
+        "main_heading": "ReActivate RX Moisturiser <em>Pro-Collage Night Complex</em>",
+        "margin_bottom": "0"
+      }
+    },
+    "wm_image_block_text_2_XxjLdB": {
+      "type": "wm__image-block-text-2",
+      "name": "WM ImageBlockText 2",
+      "settings": {
+        "reverse_order": true,
+        "show_background": false,
+        "content": "<h2>Double the Concentration</h2><p><strong>91%</strong> Saw Fewer Fine Lines and Wrinkles and Improved Texture*</p><p><em>*The efficacy and safety of the ReActivate Rx Moisturizer formulation was studied in a clinical trial published in the Journal of Drugs in Dermatology </em></p><ul><li>Smoother fine lines and wrinkles</li><li>Restored firmness and elasticity</li><li>Improved skin texture and tone</li><li>Boosted radiance</li><li>Improved barrier function</li></ul>",
+        "image": "shopify://shop_images/reactive-rx-before-after.png",
+        "media_contain": "contain",
+        "margin_bottom": "0"
+      }
+    },
+    "wm_experts_carousel_E9NFDU": {
+      "type": "wm__experts-carousel",
+      "blocks": {
+        "expert_f6BjAB": {
+          "type": "expert",
+          "settings": {
+            "expert_quote": "<p>“This new line represents the next evolution in clinical skincare, bridging powerful, peptide driven science with the results providers and patients demand. Every formula is designed to support skin health at the cellular level, delivering real results that patients can see and feel.” </p>",
+            "is_quote": true,
+            "expert_name": "Dr Lauren Jamieson",
+            "expert_jobtitle": "Aesthetic Doctor",
+            "expert_image": "shopify://shop_images/dr-laura-jamieson.png"
+          }
+        },
+        "expert_MFCkmC": {
+          "type": "expert",
+          "settings": {
+            "expert_quote": "<p>“These formulas are intentional, effective, and grounded in science made to support real skin, real concerns, and real outcomes. It's about giving professionals confidence in what they recommend and giving patients skincare they can truly rely on.” </p>",
+            "is_quote": true,
+            "expert_name": "Anna Baker",
+            "expert_jobtitle": "Aesthetic Nurse",
+            "expert_image": "shopify://shop_images/anna-baker.png"
+          }
+        }
+      },
+      "block_order": [
+        "expert_f6BjAB",
+        "expert_MFCkmC"
+      ],
+      "name": "WM Experts Carousel",
+      "settings": {
+        "main_heading": "Validated by Experts",
+        "cta_text": "Find a clinic",
+        "cta_url": "shopify://pages/store-locator",
+        "margin_bottom": "0"
+      }
+    }
+  },
+  "order": [
+    "wm_hero_banner_image_GNU7Bz",
+    "wm_image_block_text_1_6xWiWj",
+    "wm_before_after_grid_Lpt87X",
+    "wm_image_block_2_UREjwN",
+    "wm_accordion_image_split_jFPPw8",
+    "wm_image_block_text_2_XxjLdB",
+    "wm_experts_carousel_E9NFDU"
+  ]
+}

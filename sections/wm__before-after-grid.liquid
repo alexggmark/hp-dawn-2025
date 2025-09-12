@@ -1,3 +1,5 @@
+{% comment %} Alex - yes I screwed up before/after, so before_image is after, and after_image is before…… I'm truly sorry :'( {% endcomment %}
+
 <script src="{{ 'wm__beer-slider.js' | asset_url }}" defer="defer"></script>
 {{ 'wm__beer-slider.css' | asset_url | stylesheet_tag }}
 
@@ -14,30 +16,63 @@
 <div
   class="
     md:_py-20 _py-12
+    {% if section.settings.show_background %} _bg-brand-background-light{% endif %}
     {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}
     _mb-{{ section.settings.margin_bottom | divided_by: 2 }} md:_mb-{{ section.settings.margin_bottom }}
   "
 >
+{% comment %} <div class="_flex _justify-center _items-center _text-center _flex-col _mb-8">
+  <h1 class="_font-heading-primary md:_text-3xl _text-2.5xl _mb-8">
+    Leave Lines Behind with<br>Tech <em>Ahead of its Time</em>
+  </h1>
+  <span class="_mb-2 _font-heading-small _text-sm">Clinically proven to smooth, firm & lift*</span>
+  <div class="_flex md:_flex-row _flex-col _justify-center _items-center md:_gap-12 _gap-2 _mb-4">
+    <div>
+      <span class="_font-heading-primary md:_text-2.5xl _text-2xl"><span class="_text-brand-primary-500">2X more</span> collagen</span>
+    </div>
+    <div>
+      <span class="_font-heading-primary md:_text-2.5xl _text-2xl"><span class="_text-brand-primary-500">3X more</span> elastin</span>
+    </div>
+    <div>
+      <span class="_font-heading-primary md:_text-2.5xl _text-2xl"><span class="_text-brand-primary-500">4X stronger</span> collagen</span>
+    </div>
+  </div>
+  <span class="_text-sm">*From a clinical study conducted at the USC Laboratory of Tissue Development and Regeneration.</span>
+</div> {% endcomment %}
+
   <div class="page-width">
     <div class="_flex _justify-center">
       <div class="md:_w-[570px] _text-center">
-        <h1 class="_font-heading-primary md:_text-3xl _text-2.5xl _mb-2">
-          {{ section.settings.main_heading }}
-        </h1>
-        <p class="_text-base _mb-8">
-          {{ section.settings.description }}
-        </p>
+        {%- if section.settings.main_heading != blank -%}
+          <h1 class="_font-heading-primary md:_text-3xl _text-2.5xl _mb-2">
+            {{ section.settings.main_heading }}
+          </h1>
+        {%- endif -%}
+        {%- if section.settings.description != blank -%}
+          <p class="_text-base _mb-8">
+            {{ section.settings.description }}
+          </p>
+        {%- endif -%}
       </div>
     </div>
+    {% comment %} Dirty hack just to throw some extra HTML in without building more into this {% endcomment %}
+    {%- if section.settings.custom_liquid != blank -%}
+      <div>
+        {{ section.settings.custom_liquid }}
+      </div>
+    {%- endif -%}
     <div class="_grid _grid-cols-6 md:_gap-7 _gap-4">
       {%- for block in section.blocks -%}
         {%- case block.type -%}
           {%- when 'before_after_image' -%}
-            {% comment %}
+          {% comment %}
               Good example of "beer-slider" in action, copy this setup
             {% endcomment %}
             <div
-              class="_aspect-square {{ block_width_class }} _bg-brand-background beer-slider"
+              class="
+                beer-slider{% if block.settings.label_background %} label-background{% endif %}
+                _aspect-square {{ block_width_class }} _bg-brand-background
+              "
               data-beer-label="{{ block.settings.after_text }}"
             >
               <img
@@ -46,7 +81,10 @@
                 height="{{ block.settings.before_image.height }}"
                 alt="{{ block.settings.before_image.alt }}"
               >
-              <div class="beer-reveal" data-beer-label="{{ block.settings.before_text }}">
+              <div
+                class="beer-reveal{% if block.settings.label_background %} label-background{% endif %}"
+                data-beer-label="{{ block.settings.before_text }}"
+              >
                 <img
                   src="{{ block.settings.after_image | image_url: width: 1000 }}"
                   width="{{ block.settings.after_image.width }}"
@@ -71,6 +109,12 @@
   },
   "settings": [
     {
+      "type": "checkbox",
+      "id": "show_background",
+      "default": false,
+      "label": "Turn on background"
+    },
+    {
       "type": "inline_richtext",
       "id": "main_heading",
       "default": "Validated Results",
@@ -81,6 +125,12 @@
       "id": "description",
       "default": "Our extensive clinical and consumer testing processes guarantee formulas that deliver high-performance, visible results in product offerings our customers love to use.",
       "label": "Description text"
+    },
+    {
+      "type": "liquid",
+      "id": "custom_liquid",
+      "label": "Custom LIQUID section",
+      "info": "This is quick hack to put stuff before heading"
     },
     {
       "type": "header",
@@ -129,8 +179,14 @@
       "name": "Before After Image",
       "settings": [
         {
+          "type": "checkbox",
+          "id": "label_background",
+          "default": false,
+          "label": "Turn on background for labels"
+        },
+        {
           "type": "image_picker",
-          "id": "before_image",
+          "id": "after_image",
           "label": "Pick a product image for before"
         },
         {
@@ -141,7 +197,7 @@
         },
         {
           "type": "image_picker",
-          "id": "after_image",
+          "id": "before_image",
           "label": "Pick a product image for after"
         },
         {
