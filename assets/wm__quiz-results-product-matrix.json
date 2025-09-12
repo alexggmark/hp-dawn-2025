@@ -1,0 +1,1682 @@
+[
+ {
+   "skincare_routine": "hero_product",
+   "skin_type": "oily",
+   "sensitive_skin": "sensitive_skin_yes",
+   "skin_goal": "youthful_skin",
+   "product_hero": "anti-aging-power-face-serum",
+   "product_routine": "",
+   "product_pm_only": "",
+   "product_bonus": ""
+ },
+ {
+   "skincare_routine": "hero_product",
+   "skin_type": "oily",
+   "sensitive_skin": "sensitive_skin_yes",
+   "skin_goal": "oil_control",
+   "product_hero": "clarifying-toner-pads",
+   "product_routine": "",
+   "product_pm_only": "",
+   "product_bonus": ""
+ },
+ {
+   "skincare_routine": "hero_product",
+   "skin_type": "oily",
+   "sensitive_skin": "sensitive_skin_yes",
+   "skin_goal": "hydration",
+   "product_hero": "aquaboost-oil-free-face-moisturizer",
+   "product_routine": "",
+   "product_pm_only": "",
+   "product_bonus": ""
+ },
+ {
+   "skincare_routine": "hero_product",
+   "skin_type": "oily",
+   "sensitive_skin": "sensitive_skin_yes",
+   "skin_goal": "improve_dull_skin",
+   "product_hero": "lumapro-face-serum",
+   "product_routine": "",
+   "product_pm_only": "",
+   "product_bonus": ""
+ },
+ {
+   "skincare_routine": "hero_product",
+   "skin_type": "oily",
+   "sensitive_skin": "sensitive_skin_yes",
+   "skin_goal": "reduce_redness",
+   "product_hero": "soothing-face-serum",
+   "product_routine": "",
+   "product_pm_only": "",
+   "product_bonus": ""
+ },
+ {
+   "skincare_routine": "hero_product",
+   "skin_type": "oily",
+   "sensitive_skin": "sensitive_skin_yes",
+   "skin_goal": "even_skin_tone",
+   "product_hero": "firma-bright-20-vitamin-c-booster",
+   "product_routine": "",
+   "product_pm_only": "",
+   "product_bonus": ""
+ },
+ {
+   "skincare_routine": "hero_product",
+   "skin_type": "oily",
+   "sensitive_skin": "sensitive_skin_yes",
+   "skin_goal": "reduce_acne",
+   "product_hero": "spot-correction-treatment",
+   "product_routine": "",
+   "product_pm_only": "",
+   "product_bonus": ""
+ },
+ {
+   "skincare_routine": "hero_product",
+   "skin_type": "oily",
+   "sensitive_skin": "sensitive_skin_no",
+   "skin_goal": "youthful_skin",
+   "product_hero": "anti-aging-power-face-serum",
+   "product_routine": "",
+   "product_pm_only": "",
+   "product_bonus": ""
+ },
+ {
+   "skincare_routine": "hero_product",
+   "skin_type": "oily",
+   "sensitive_skin": "sensitive_skin_no",
+   "skin_goal": "oil_control",
+   "product_hero": "clarifying-toner-pads",
+   "product_routine": "",
+   "product_pm_only": "",
+   "product_bonus": ""
+ },
+ {
+   "skincare_routine": "hero_product",
+   "skin_type": "oily",
+   "sensitive_skin": "sensitive_skin_no",
+   "skin_goal": "hydration",
+   "product_hero": "aquaboost-oil-free-face-moisturizer",
+   "product_routine": "",
+   "product_pm_only": "",
+   "product_bonus": ""
+ },
+ {
+   "skincare_routine": "hero_product",
+   "skin_type": "oily",
+   "sensitive_skin": "sensitive_skin_no",
+   "skin_goal": "improve_dull_skin",
+   "product_hero": "lumapro-face-serum",
+   "product_routine": "",
+   "product_pm_only": "",
+   "product_bonus": ""
+ },
+ {
+   "skincare_routine": "hero_product",
+   "skin_type": "oily",
+   "sensitive_skin": "sensitive_skin_no",
+   "skin_goal": "reduce_redness",
+   "product_hero": "soothing-face-serum",
+   "product_routine": "",
+   "product_pm_only": "",
+   "product_bonus": ""
+ },
+ {
+   "skincare_routine": "hero_product",
+   "skin_type": "oily",
+   "sensitive_skin": "sensitive_skin_no",
+   "skin_goal": "even_skin_tone",
+   "product_hero": "firma-bright-20-vitamin-c-booster",
+   "product_routine": "",
+   "product_pm_only": "",
+   "product_bonus": ""
+ },
+ {
+   "skincare_routine": "hero_product",
+   "skin_type": "oily",
+   "sensitive_skin": "sensitive_skin_no",
+   "skin_goal": "reduce_acne",
+   "product_hero": "spot-correction-treatment",
+   "product_routine": "",
+   "product_pm_only": "",
+   "product_bonus": ""
+ },
+ {
+   "skincare_routine": "hero_product",
+   "skin_type": "dry",
+   "sensitive_skin": "sensitive_skin_yes",
+   "skin_goal": "youthful_skin",
+   "product_hero": "anti-aging-power-face-serum",
+   "product_routine": "",
+   "product_pm_only": "",
+   "product_bonus": ""
+ },
+ {
+   "skincare_routine": "hero_product",
+   "skin_type": "dry",
+   "sensitive_skin": "sensitive_skin_yes",
+   "skin_goal": "oil_control",
+   "product_hero": "clarifying-toner-pads",
+   "product_routine": "",
+   "product_pm_only": "",
+   "product_bonus": ""
+ },
+ {
+   "skincare_routine": "hero_product",
+   "skin_type": "dry",
+   "sensitive_skin": "sensitive_skin_yes",
+   "skin_goal": "hydration",
+   "product_hero": "aquaboost-oil-free-face-moisturizer",
+   "product_routine": "",
+   "product_pm_only": "",
+   "product_bonus": ""
+ },
+ {
+   "skincare_routine": "hero_product",
+   "skin_type": "dry",
+   "sensitive_skin": "sensitive_skin_yes",
+   "skin_goal": "improve_dull_skin",
+   "product_hero": "lumapro-face-serum",
+   "product_routine": "",
+   "product_pm_only": "",
+   "product_bonus": ""
+ },
+ {
+   "skincare_routine": "hero_product",
+   "skin_type": "dry",
+   "sensitive_skin": "sensitive_skin_yes",
+   "skin_goal": "reduce_redness",
+   "product_hero": "soothing-face-serum",
+   "product_routine": "",
+   "product_pm_only": "",
+   "product_bonus": ""
+ },
+ {
+   "skincare_routine": "hero_product",
+   "skin_type": "dry",
+   "sensitive_skin": "sensitive_skin_yes",
+   "skin_goal": "even_skin_tone",
+   "product_hero": "firma-bright-20-vitamin-c-booster",
+   "product_routine": "",
+   "product_pm_only": "",
+   "product_bonus": ""
+ },
+ {
+   "skincare_routine": "hero_product",
+   "skin_type": "dry",
+   "sensitive_skin": "sensitive_skin_yes",
+   "skin_goal": "reduce_acne",
+   "product_hero": "spot-correction-treatment",
+   "product_routine": "",
+   "product_pm_only": "",
+   "product_bonus": ""
+ },
+ {
+   "skincare_routine": "hero_product",
+   "skin_type": "dry",
+   "sensitive_skin": "sensitive_skin_no",
+   "skin_goal": "youthful_skin",
+   "product_hero": "anti-aging-power-face-serum",
+   "product_routine": "",
+   "product_pm_only": "",
+   "product_bonus": ""
+ },
+ {
+   "skincare_routine": "hero_product",
+   "skin_type": "dry",
+   "sensitive_skin": "sensitive_skin_no",
+   "skin_goal": "oil_control",
+   "product_hero": "clarifying-toner-pads",
+   "product_routine": "",
+   "product_pm_only": "",
+   "product_bonus": ""
+ },
+ {
+   "skincare_routine": "hero_product",
+   "skin_type": "dry",
+   "sensitive_skin": "sensitive_skin_no",
+   "skin_goal": "hydration",
+   "product_hero": "daily-drench",
+   "product_routine": "",
+   "product_pm_only": "",
+   "product_bonus": ""
+ },
+ {
+   "skincare_routine": "hero_product",
+   "skin_type": "dry",
+   "sensitive_skin": "sensitive_skin_no",
+   "skin_goal": "improve_dull_skin",
+   "product_hero": "lumapro-face-serum",
+   "product_routine": "",
+   "product_pm_only": "",
+   "product_bonus": ""
+ },
+ {
+   "skincare_routine": "hero_product",
+   "skin_type": "dry",
+   "sensitive_skin": "sensitive_skin_no",
+   "skin_goal": "reduce_redness",
+   "product_hero": "soothing-face-serum",
+   "product_routine": "",
+   "product_pm_only": "",
+   "product_bonus": ""
+ },
+ {
+   "skincare_routine": "hero_product",
+   "skin_type": "dry",
+   "sensitive_skin": "sensitive_skin_no",
+   "skin_goal": "even_skin_tone",
+   "product_hero": "firma-bright-20-vitamin-c-booster",
+   "product_routine": "",
+   "product_pm_only": "",
+   "product_bonus": ""
+ },
+ {
+   "skincare_routine": "hero_product",
+   "skin_type": "dry",
+   "sensitive_skin": "sensitive_skin_no",
+   "skin_goal": "reduce_acne",
+   "product_hero": "spot-correction-treatment",
+   "product_routine": "",
+   "product_pm_only": "",
+   "product_bonus": ""
+ },
+ {
+   "skincare_routine": "hero_product",
+   "skin_type": "normal",
+   "sensitive_skin": "sensitive_skin_yes",
+   "skin_goal": "youthful_skin",
+   "product_hero": "anti-aging-power-face-serum",
+   "product_routine": "",
+   "product_pm_only": "",
+   "product_bonus": ""
+ },
+ {
+   "skincare_routine": "hero_product",
+   "skin_type": "normal",
+   "sensitive_skin": "sensitive_skin_yes",
+   "skin_goal": "oil_control",
+   "product_hero": "clarifying-toner-pads",
+   "product_routine": "",
+   "product_pm_only": "",
+   "product_bonus": ""
+ },
+ {
+   "skincare_routine": "hero_product",
+   "skin_type": "normal",
+   "sensitive_skin": "sensitive_skin_yes",
+   "skin_goal": "hydration",
+   "product_hero": "daily-drench",
+   "product_routine": "",
+   "product_pm_only": "",
+   "product_bonus": ""
+ },
+ {
+   "skincare_routine": "hero_product",
+   "skin_type": "normal",
+   "sensitive_skin": "sensitive_skin_yes",
+   "skin_goal": "improve_dull_skin",
+   "product_hero": "lumapro-face-serum",
+   "product_routine": "",
+   "product_pm_only": "",
+   "product_bonus": ""
+ },
+ {
+   "skincare_routine": "hero_product",
+   "skin_type": "normal",
+   "sensitive_skin": "sensitive_skin_yes",
+   "skin_goal": "reduce_redness",
+   "product_hero": "soothing-face-serum",
+   "product_routine": "",
+   "product_pm_only": "",
+   "product_bonus": ""
+ },
+ {
+   "skincare_routine": "hero_product",
+   "skin_type": "normal",
+   "sensitive_skin": "sensitive_skin_yes",
+   "skin_goal": "even_skin_tone",
+   "product_hero": "firma-bright-20-vitamin-c-booster",
+   "product_routine": "",
+   "product_pm_only": "",
+   "product_bonus": ""
+ },
+ {
+   "skincare_routine": "hero_product",
+   "skin_type": "normal",
+   "sensitive_skin": "sensitive_skin_yes",
+   "skin_goal": "reduce_acne",
+   "product_hero": "spot-correction-treatment",
+   "product_routine": "",
+   "product_pm_only": "",
+   "product_bonus": ""
+ },
+ {
+   "skincare_routine": "hero_product",
+   "skin_type": "normal",
+   "sensitive_skin": "sensitive_skin_no",
+   "skin_goal": "youthful_skin",
+   "product_hero": "anti-aging-power-face-serum",
+   "product_routine": "",
+   "product_pm_only": "",
+   "product_bonus": ""
+ },
+ {
+   "skincare_routine": "hero_product",
+   "skin_type": "normal",
+   "sensitive_skin": "sensitive_skin_no",
+   "skin_goal": "oil_control",
+   "product_hero": "clarifying-toner-pads",
+   "product_routine": "",
+   "product_pm_only": "",
+   "product_bonus": ""
+ },
+ {
+   "skincare_routine": "hero_product",
+   "skin_type": "normal",
+   "sensitive_skin": "sensitive_skin_no",
+   "skin_goal": "hydration",
+   "product_hero": "daily-drench",
+   "product_routine": "",
+   "product_pm_only": "",
+   "product_bonus": ""
+ },
+ {
+   "skincare_routine": "hero_product",
+   "skin_type": "normal",
+   "sensitive_skin": "sensitive_skin_no",
+   "skin_goal": "improve_dull_skin",
+   "product_hero": "lumapro-face-serum",
+   "product_routine": "",
+   "product_pm_only": "",
+   "product_bonus": ""
+ },
+ {
+   "skincare_routine": "hero_product",
+   "skin_type": "normal",
+   "sensitive_skin": "sensitive_skin_no",
+   "skin_goal": "reduce_redness",
+   "product_hero": "soothing-face-serum",
+   "product_routine": "",
+   "product_pm_only": "",
+   "product_bonus": ""
+ },
+ {
+   "skincare_routine": "hero_product",
+   "skin_type": "normal",
+   "sensitive_skin": "sensitive_skin_no",
+   "skin_goal": "even_skin_tone",
+   "product_hero": "firma-bright-20-vitamin-c-booster",
+   "product_routine": "",
+   "product_pm_only": "",
+   "product_bonus": ""
+ },
+ {
+   "skincare_routine": "hero_product",
+   "skin_type": "normal",
+   "sensitive_skin": "sensitive_skin_no",
+   "skin_goal": "reduce_acne",
+   "product_hero": "spot-correction-treatment",
+   "product_routine": "",
+   "product_pm_only": "",
+   "product_bonus": ""
+ },
+ {
+   "skincare_routine": "hero_product",
+   "skin_type": "combination",
+   "sensitive_skin": "sensitive_skin_yes",
+   "skin_goal": "youthful_skin",
+   "product_hero": "anti-aging-power-face-serum",
+   "product_routine": "",
+   "product_pm_only": "",
+   "product_bonus": ""
+ },
+ {
+   "skincare_routine": "hero_product",
+   "skin_type": "combination",
+   "sensitive_skin": "sensitive_skin_yes",
+   "skin_goal": "oil_control",
+   "product_hero": "clarifying-toner-pads",
+   "product_routine": "",
+   "product_pm_only": "",
+   "product_bonus": ""
+ },
+ {
+   "skincare_routine": "hero_product",
+   "skin_type": "combination",
+   "sensitive_skin": "sensitive_skin_yes",
+   "skin_goal": "hydration",
+   "product_hero": "aquaboost-oil-free-face-moisturizer",
+   "product_routine": "",
+   "product_pm_only": "",
+   "product_bonus": ""
+ },
+ {
+   "skincare_routine": "hero_product",
+   "skin_type": "combination",
+   "sensitive_skin": "sensitive_skin_yes",
+   "skin_goal": "improve_dull_skin",
+   "product_hero": "lumapro-face-serum",
+   "product_routine": "",
+   "product_pm_only": "",
+   "product_bonus": ""
+ },
+ {
+   "skincare_routine": "hero_product",
+   "skin_type": "combination",
+   "sensitive_skin": "sensitive_skin_yes",
+   "skin_goal": "reduce_redness",
+   "product_hero": "soothing-face-serum",
+   "product_routine": "",
+   "product_pm_only": "",
+   "product_bonus": ""
+ },
+ {
+   "skincare_routine": "hero_product",
+   "skin_type": "combination",
+   "sensitive_skin": "sensitive_skin_yes",
+   "skin_goal": "even_skin_tone",
+   "product_hero": "firma-bright-20-vitamin-c-booster",
+   "product_routine": "",
+   "product_pm_only": "",
+   "product_bonus": ""
+ },
+ {
+   "skincare_routine": "hero_product",
+   "skin_type": "combination",
+   "sensitive_skin": "sensitive_skin_yes",
+   "skin_goal": "reduce_acne",
+   "product_hero": "spot-correction-treatment",
+   "product_routine": "",
+   "product_pm_only": "",
+   "product_bonus": ""
+ },
+ {
+   "skincare_routine": "hero_product",
+   "skin_type": "combination",
+   "sensitive_skin": "sensitive_skin_no",
+   "skin_goal": "youthful_skin",
+   "product_hero": "anti-aging-power-face-serum",
+   "product_routine": "",
+   "product_pm_only": "",
+   "product_bonus": ""
+ },
+ {
+   "skincare_routine": "hero_product",
+   "skin_type": "combination",
+   "sensitive_skin": "sensitive_skin_no",
+   "skin_goal": "oil_control",
+   "product_hero": "clarifying-toner-pads",
+   "product_routine": "",
+   "product_pm_only": "",
+   "product_bonus": ""
+ },
+ {
+   "skincare_routine": "hero_product",
+   "skin_type": "combination",
+   "sensitive_skin": "sensitive_skin_no",
+   "skin_goal": "hydration",
+   "product_hero": "aquaboost-oil-free-face-moisturizer",
+   "product_routine": "",
+   "product_pm_only": "",
+   "product_bonus": ""
+ },
+ {
+   "skincare_routine": "hero_product",
+   "skin_type": "combination",
+   "sensitive_skin": "sensitive_skin_no",
+   "skin_goal": "improve_dull_skin",
+   "product_hero": "lumapro-face-serum",
+   "product_routine": "",
+   "product_pm_only": "",
+   "product_bonus": ""
+ },
+ {
+   "skincare_routine": "hero_product",
+   "skin_type": "combination",
+   "sensitive_skin": "sensitive_skin_no",
+   "skin_goal": "reduce_redness",
+   "product_hero": "soothing-face-serum",
+   "product_routine": "",
+   "product_pm_only": "",
+   "product_bonus": ""
+ },
+ {
+   "skincare_routine": "hero_product",
+   "skin_type": "combination",
+   "sensitive_skin": "sensitive_skin_no",
+   "skin_goal": "even_skin_tone",
+   "product_hero": "firma-bright-20-vitamin-c-booster",
+   "product_routine": "",
+   "product_pm_only": "",
+   "product_bonus": ""
+ },
+ {
+   "skincare_routine": "hero_product",
+   "skin_type": "combination",
+   "sensitive_skin": "sensitive_skin_no",
+   "skin_goal": "reduce_acne",
+   "product_hero": "spot-correction-treatment",
+   "product_routine": "",
+   "product_pm_only": "",
+   "product_bonus": ""
+ },
+ {
+   "skincare_routine": "simple_routine",
+   "skin_type": "oily",
+   "sensitive_skin": "sensitive_skin_yes",
+   "skin_goal": "youthful_skin",
+   "product_hero": "",
+   "product_routine": "cleansing-face-wash-gel, clarifying-toner-pads, face-lift-anti-aging-moisturizer",
+   "product_pm_only": "",
+   "product_bonus": "anti-aging-power-face-serum"
+ },
+ {
+   "skincare_routine": "simple_routine",
+   "skin_type": "oily",
+   "sensitive_skin": "sensitive_skin_yes",
+   "skin_goal": "oil_control",
+   "product_hero": "",
+   "product_routine": "cleansing-face-wash-gel, liquid-resurfacing-solution, aquaboost-oil-free-face-moisturizer",
+   "product_pm_only": "",
+   "product_bonus": "5x-power-peel-face-exfoliator"
+ },
+ {
+   "skincare_routine": "simple_routine",
+   "skin_type": "oily",
+   "sensitive_skin": "sensitive_skin_yes",
+   "skin_goal": "hydration",
+   "product_hero": "",
+   "product_routine": "cleansing-face-wash-gel, clarifying-toner-pads, aquaboost-oil-free-face-moisturizer",
+   "product_pm_only": "",
+   "product_bonus": "moisture-reset-phytonutrient-facial-oil"
+ },
+ {
+   "skincare_routine": "simple_routine",
+   "skin_type": "oily",
+   "sensitive_skin": "sensitive_skin_yes",
+   "skin_goal": "improve_dull_skin",
+   "product_hero": "",
+   "product_routine": "cleansing-face-wash-gel, lumapro-face-serum, aquaboost-oil-free-face-moisturizer",
+   "product_pm_only": "",
+   "product_bonus": "hydraflora-probiotic-face-toner"
+ },
+ {
+   "skincare_routine": "simple_routine",
+   "skin_type": "oily",
+   "sensitive_skin": "sensitive_skin_yes",
+   "skin_goal": "reduce_redness",
+   "product_hero": "",
+   "product_routine": "cleansing-face-wash-gel, soothing-face-serum, rejuvenating-face-mask",
+   "product_pm_only": "",
+   "product_bonus": "soothing-skin-balm"
+ },
+ {
+   "skincare_routine": "simple_routine",
+   "skin_type": "oily",
+   "sensitive_skin": "sensitive_skin_yes",
+   "skin_goal": "even_skin_tone",
+   "product_hero": "",
+   "product_routine": "cleansing-face-wash-gel, aquaboost-oil-free-face-moisturizer",
+   "product_pm_only": "triple-acid-peptide-peel",
+   "product_bonus": "polish-plump-face-peel"
+ },
+ {
+   "skincare_routine": "simple_routine",
+   "skin_type": "oily",
+   "sensitive_skin": "sensitive_skin_yes",
+   "skin_goal": "reduce_acne",
+   "product_hero": "",
+   "product_routine": "purifying-facial-cleanser, spot-correction-treatment, aquaboost-oil-free-face-moisturizer",
+   "product_pm_only": "",
+   "product_bonus": "liquid-resurfacing-solution"
+ },
+ {
+   "skincare_routine": "simple_routine",
+   "skin_type": "oily",
+   "sensitive_skin": "sensitive_skin_no",
+   "skin_goal": "youthful_skin",
+   "product_hero": "",
+   "product_routine": "cleansing-face-wash-gel, aquaboost-oil-free-face-moisturizer",
+   "product_pm_only": "retinol-routine-booster",
+   "product_bonus": "anti-aging-power-face-serum"
+ },
+ {
+   "skincare_routine": "simple_routine",
+   "skin_type": "oily",
+   "sensitive_skin": "sensitive_skin_no",
+   "skin_goal": "oil_control",
+   "product_hero": "",
+   "product_routine": "cleansing-face-wash-gel, clarifying-toner-pads, aquaboost-oil-free-face-moisturizer",
+   "product_pm_only": "",
+   "product_bonus": "5x-power-peel-face-exfoliator"
+ },
+ {
+   "skincare_routine": "simple_routine",
+   "skin_type": "oily",
+   "sensitive_skin": "sensitive_skin_no",
+   "skin_goal": "hydration",
+   "product_hero": "",
+   "product_routine": "cleansing-face-wash-gel, aquaboost-oil-free-face-moisturizer, hydro-lock-sleep-mask-royal-peptide-treatment",
+   "product_pm_only": "",
+   "product_bonus": "moisture-reset-phytonutrient-facial-oil"
+ },
+ {
+   "skincare_routine": "simple_routine",
+   "skin_type": "oily",
+   "sensitive_skin": "sensitive_skin_no",
+   "skin_goal": "improve_dull_skin",
+   "product_hero": "",
+   "product_routine": "cleansing-face-wash-gel, lumapro-face-serum, aquaboost-oil-free-face-moisturizer",
+   "product_pm_only": "",
+   "product_bonus": "hydraflora-probiotic-face-toner"
+ },
+ {
+   "skincare_routine": "simple_routine",
+   "skin_type": "oily",
+   "sensitive_skin": "sensitive_skin_no",
+   "skin_goal": "reduce_redness",
+   "product_hero": "",
+   "product_routine": "cleansing-face-wash-gel, aquaboost-oil-free-face-moisturizer, soothing-face-serum",
+   "product_pm_only": "",
+   "product_bonus": "rejuvenating-face-mask"
+ },
+ {
+   "skincare_routine": "simple_routine",
+   "skin_type": "oily",
+   "sensitive_skin": "sensitive_skin_no",
+   "skin_goal": "even_skin_tone",
+   "product_hero": "",
+   "product_routine": "cleansing-face-wash-gel, aquaboost-oil-free-face-moisturizer",
+   "product_pm_only": "triple-acid-peptide-peel",
+   "product_bonus": "polish-plump-face-peel"
+ },
+ {
+   "skincare_routine": "simple_routine",
+   "skin_type": "oily",
+   "sensitive_skin": "sensitive_skin_no",
+   "skin_goal": "reduce_acne",
+   "product_hero": "",
+   "product_routine": "purifying-facial-cleanser, spot-correction-treatment, aquaboost-oil-free-face-moisturizer",
+   "product_pm_only": "",
+   "product_bonus": "liquid-resurfacing-solution"
+ },
+ {
+   "skincare_routine": "simple_routine",
+   "skin_type": "dry",
+   "sensitive_skin": "sensitive_skin_yes",
+   "skin_goal": "youthful_skin",
+   "product_hero": "",
+   "product_routine": "cashmere-cleanse-facial-rose-milk, face-lift-anti-aging-moisturizer, solar-dew",
+   "product_pm_only": "",
+   "product_bonus": "anti-aging-power-face-serum"
+ },
+ {
+   "skincare_routine": "simple_routine",
+   "skin_type": "dry",
+   "sensitive_skin": "sensitive_skin_yes",
+   "skin_goal": "oil_control",
+   "product_hero": "",
+   "product_routine": "cleansing-face-wash-gel, clarifying-toner-pads, aquaboost-oil-free-face-moisturizer-oil-free-face-moisturizer",
+   "product_pm_only": "",
+   "product_bonus": "5x-power-peel-face-exfoliator"
+ },
+ {
+   "skincare_routine": "simple_routine",
+   "skin_type": "dry",
+   "sensitive_skin": "sensitive_skin_yes",
+   "skin_goal": "hydration",
+   "product_hero": "",
+   "product_routine": "cashmere-cleanse-facial-rose-milk, daily-drench, hydro-lock-sleep-mask-royal-peptide-treatment",
+   "product_pm_only": "",
+   "product_bonus": "moisture-reset-phytonutrient-facial-oil"
+ },
+ {
+   "skincare_routine": "simple_routine",
+   "skin_type": "dry",
+   "sensitive_skin": "sensitive_skin_yes",
+   "skin_goal": "improve_dull_skin",
+   "product_hero": "",
+   "product_routine": "cashmere-cleanse-facial-rose-milk, lumapro-face-serum, solar-dew",
+   "product_pm_only": "",
+   "product_bonus": "hydraflora-probiotic-face-toner"
+ },
+ {
+   "skincare_routine": "simple_routine",
+   "skin_type": "dry",
+   "sensitive_skin": "sensitive_skin_yes",
+   "skin_goal": "reduce_redness",
+   "product_hero": "",
+   "product_routine": "cashmere-cleanse-facial-rose-milk, soothing-skin-balm, solar-dew",
+   "product_pm_only": "",
+   "product_bonus": "soothing-face-serum"
+ },
+ {
+   "skincare_routine": "simple_routine",
+   "skin_type": "dry",
+   "sensitive_skin": "sensitive_skin_yes",
+   "skin_goal": "even_skin_tone",
+   "product_hero": "",
+   "product_routine": "cashmere-cleanse-facial-rose-milk, triple-acid-peptide-peel, solar-dew",
+   "product_pm_only": "",
+   "product_bonus": "polish-plump-face-peel"
+ },
+ {
+   "skincare_routine": "simple_routine",
+   "skin_type": "dry",
+   "sensitive_skin": "sensitive_skin_yes",
+   "skin_goal": "reduce_acne",
+   "product_hero": "",
+   "product_routine": "purifying-facial-cleanser, spot-correction-treatment, aquaboost-oil-free-face-moisturizer",
+   "product_pm_only": "",
+   "product_bonus": "liquid-resurfacing-solution"
+ },
+ {
+   "skincare_routine": "simple_routine",
+   "skin_type": "dry",
+   "sensitive_skin": "sensitive_skin_no",
+   "skin_goal": "youthful_skin",
+   "product_hero": "",
+   "product_routine": "cashmere-cleanse-facial-rose-milk, face-lift-anti-aging-moisturizer, solar-dew",
+   "product_pm_only": "",
+   "product_bonus": "anti-aging-power-face-serum"
+ },
+ {
+   "skincare_routine": "simple_routine",
+   "skin_type": "dry",
+   "sensitive_skin": "sensitive_skin_no",
+   "skin_goal": "oil_control",
+   "product_hero": "",
+   "product_routine": "cleansing-face-wash-gel, clarifying-toner-pads, aquaboost-oil-free-face-moisturizer",
+   "product_pm_only": "",
+   "product_bonus": "5x-power-peel-face-exfoliator"
+ },
+ {
+   "skincare_routine": "simple_routine",
+   "skin_type": "dry",
+   "sensitive_skin": "sensitive_skin_no",
+   "skin_goal": "hydration",
+   "product_hero": "",
+   "product_routine": "cashmere-cleanse-facial-rose-milk, daily-drench, hydro-lock-sleep-mask-royal-peptide-treatment",
+   "product_pm_only": "",
+   "product_bonus": "moisture-reset-phytonutrient-facial-oil"
+ },
+ {
+   "skincare_routine": "simple_routine",
+   "skin_type": "dry",
+   "sensitive_skin": "sensitive_skin_no",
+   "skin_goal": "improve_dull_skin",
+   "product_hero": "",
+   "product_routine": "cashmere-cleanse-facial-rose-milk, lumapro-face-serum, daily-drench",
+   "product_pm_only": "",
+   "product_bonus": "hydraflora-probiotic-face-toner"
+ },
+ {
+   "skincare_routine": "simple_routine",
+   "skin_type": "dry",
+   "sensitive_skin": "sensitive_skin_no",
+   "skin_goal": "reduce_redness",
+   "product_hero": "",
+   "product_routine": "cashmere-cleanse-facial-rose-milk, daily-drench, soothing-face-serum",
+   "product_pm_only": "",
+   "product_bonus": "rejuvenating-face-mask"
+ },
+ {
+   "skincare_routine": "simple_routine",
+   "skin_type": "dry",
+   "sensitive_skin": "sensitive_skin_no",
+   "skin_goal": "even_skin_tone",
+   "product_hero": "",
+   "product_routine": "cashmere-cleanse-facial-rose-milk, daily-drench",
+   "product_pm_only": "triple-acid-peptide-peel",
+   "product_bonus": "polish-plump-face-peel"
+ },
+ {
+   "skincare_routine": "simple_routine",
+   "skin_type": "dry",
+   "sensitive_skin": "sensitive_skin_no",
+   "skin_goal": "reduce_acne",
+   "product_hero": "",
+   "product_routine": "purifying-facial-cleanser, spot-correction-treatment, aquaboost-oil-free-face-moisturizer",
+   "product_pm_only": "",
+   "product_bonus": "liquid-resurfacing-solution"
+ },
+ {
+   "skincare_routine": "simple_routine",
+   "skin_type": "normal",
+   "sensitive_skin": "sensitive_skin_yes",
+   "skin_goal": "youthful_skin",
+   "product_hero": "",
+   "product_routine": "cleansing-face-wash-gel, face-lift-anti-aging-moisturizer, solar-dew",
+   "product_pm_only": "",
+   "product_bonus": "anti-aging-power-face-serum"
+ },
+ {
+   "skincare_routine": "simple_routine",
+   "skin_type": "normal",
+   "sensitive_skin": "sensitive_skin_yes",
+   "skin_goal": "oil_control",
+   "product_hero": "",
+   "product_routine": "cleansing-face-wash-gel, clarifying-toner-pads, aquaboost-oil-free-face-moisturizer",
+   "product_pm_only": "",
+   "product_bonus": "5x-power-peel-face-exfoliator"
+ },
+ {
+   "skincare_routine": "simple_routine",
+   "skin_type": "normal",
+   "sensitive_skin": "sensitive_skin_yes",
+   "skin_goal": "hydration",
+   "product_hero": "",
+   "product_routine": "cashmere-cleanse-facial-rose-milk, daily-drench, hydro-lock-sleep-mask-royal-peptide-treatment",
+   "product_pm_only": "",
+   "product_bonus": "moisture-reset-phytonutrient-facial-oil"
+ },
+ {
+   "skincare_routine": "simple_routine",
+   "skin_type": "normal",
+   "sensitive_skin": "sensitive_skin_yes",
+   "skin_goal": "improve_dull_skin",
+   "product_hero": "",
+   "product_routine": "cashmere-cleanse-facial-rose-milk, lumapro-face-serum, solar-dew",
+   "product_pm_only": "",
+   "product_bonus": "hydraflora-probiotic-face-toner"
+ },
+ {
+   "skincare_routine": "simple_routine",
+   "skin_type": "normal",
+   "sensitive_skin": "sensitive_skin_yes",
+   "skin_goal": "reduce_redness",
+   "product_hero": "",
+   "product_routine": "cashmere-cleanse-facial-rose-milk, soothing-skin-balm, solar-dew",
+   "product_pm_only": "",
+   "product_bonus": "soothing-face-serum"
+ },
+ {
+   "skincare_routine": "simple_routine",
+   "skin_type": "normal",
+   "sensitive_skin": "sensitive_skin_yes",
+   "skin_goal": "even_skin_tone",
+   "product_hero": "",
+   "product_routine": "cashmere-cleanse-facial-rose-milk, solar-dew",
+   "product_pm_only": "triple-acid-peptide-peel",
+   "product_bonus": "polish-plump-face-peel"
+ },
+ {
+   "skincare_routine": "simple_routine",
+   "skin_type": "normal",
+   "sensitive_skin": "sensitive_skin_yes",
+   "skin_goal": "reduce_acne",
+   "product_hero": "",
+   "product_routine": "purifying-facial-cleanser, spot-correction-treatment, aquaboost-oil-free-face-moisturizer",
+   "product_pm_only": "",
+   "product_bonus": "liquid-resurfacing-solution"
+ },
+ {
+   "skincare_routine": "simple_routine",
+   "skin_type": "normal",
+   "sensitive_skin": "sensitive_skin_no",
+   "skin_goal": "youthful_skin",
+   "product_hero": "",
+   "product_routine": "cashmere-cleanse-facial-rose-milk, face-lift-anti-aging-moisturizer, solar-dew",
+   "product_pm_only": "",
+   "product_bonus": "anti-aging-power-face-serum"
+ },
+ {
+   "skincare_routine": "simple_routine",
+   "skin_type": "normal",
+   "sensitive_skin": "sensitive_skin_no",
+   "skin_goal": "oil_control",
+   "product_hero": "",
+   "product_routine": "cleansing-face-wash-gel, clarifying-toner-pads, aquaboost-oil-free-face-moisturizer",
+   "product_pm_only": "",
+   "product_bonus": "5x-power-peel-face-exfoliator"
+ },
+ {
+   "skincare_routine": "simple_routine",
+   "skin_type": "normal",
+   "sensitive_skin": "sensitive_skin_no",
+   "skin_goal": "hydration",
+   "product_hero": "",
+   "product_routine": "cashmere-cleanse-facial-rose-milk, daily-drench, hydro-lock-sleep-mask-royal-peptide-treatment",
+   "product_pm_only": "",
+   "product_bonus": "moisture-reset-phytonutrient-facial-oil"
+ },
+ {
+   "skincare_routine": "simple_routine",
+   "skin_type": "normal",
+   "sensitive_skin": "sensitive_skin_no",
+   "skin_goal": "improve_dull_skin",
+   "product_hero": "",
+   "product_routine": "cashmere-cleanse-facial-rose-milk, lumapro-face-serum, daily-drench",
+   "product_pm_only": "",
+   "product_bonus": "hydraflora-probiotic-face-toner"
+ },
+ {
+   "skincare_routine": "simple_routine",
+   "skin_type": "normal",
+   "sensitive_skin": "sensitive_skin_no",
+   "skin_goal": "reduce_redness",
+   "product_hero": "",
+   "product_routine": "cashmere-cleanse-facial-rose-milk, daily-drench, soothing-skin-balm",
+   "product_pm_only": "",
+   "product_bonus": "soothing-face-serum"
+ },
+ {
+   "skincare_routine": "simple_routine",
+   "skin_type": "normal",
+   "sensitive_skin": "sensitive_skin_no",
+   "skin_goal": "even_skin_tone",
+   "product_hero": "",
+   "product_routine": "cashmere-cleanse-facial-rose-milk",
+   "product_pm_only": "triple-acid-peptide-peel",
+   "product_bonus": "polish-plump-face-peel"
+ },
+ {
+   "skincare_routine": "simple_routine",
+   "skin_type": "normal",
+   "sensitive_skin": "sensitive_skin_no",
+   "skin_goal": "reduce_acne",
+   "product_hero": "",
+   "product_routine": "purifying-facial-cleanser, spot-correction-treatment, aquaboost-oil-free-face-moisturizer",
+   "product_pm_only": "",
+   "product_bonus": "liquid-resurfacing-solution"
+ },
+ {
+   "skincare_routine": "simple_routine",
+   "skin_type": "combination",
+   "sensitive_skin": "sensitive_skin_yes",
+   "skin_goal": "youthful_skin",
+   "product_hero": "",
+   "product_routine": "cleansing-face-wash-gel, face-lift-anti-aging-moisturizer, solar-dew",
+   "product_pm_only": "",
+   "product_bonus": "anti-aging-power-face-serum"
+ },
+ {
+   "skincare_routine": "simple_routine",
+   "skin_type": "combination",
+   "sensitive_skin": "sensitive_skin_yes",
+   "skin_goal": "oil_control",
+   "product_hero": "",
+   "product_routine": "cleansing-face-wash-gel, clarifying-toner-pads, aquaboost-oil-free-face-moisturizer",
+   "product_pm_only": "",
+   "product_bonus": "5x-power-peel-face-exfoliator"
+ },
+ {
+   "skincare_routine": "simple_routine",
+   "skin_type": "combination",
+   "sensitive_skin": "sensitive_skin_yes",
+   "skin_goal": "hydration",
+   "product_hero": "",
+   "product_routine": "cashmere-cleanse-facial-rose-milk, daily-drench, hydro-lock-sleep-mask-royal-peptide-treatment",
+   "product_pm_only": "",
+   "product_bonus": "moisture-reset-phytonutrient-facial-oil"
+ },
+ {
+   "skincare_routine": "simple_routine",
+   "skin_type": "combination",
+   "sensitive_skin": "sensitive_skin_yes",
+   "skin_goal": "improve_dull_skin",
+   "product_hero": "",
+   "product_routine": "cashmere-cleanse-facial-rose-milk, lumapro-face-serum, solar-dew",
+   "product_pm_only": "",
+   "product_bonus": "hydraflora-probiotic-face-toner"
+ },
+ {
+   "skincare_routine": "simple_routine",
+   "skin_type": "combination",
+   "sensitive_skin": "sensitive_skin_yes",
+   "skin_goal": "reduce_redness",
+   "product_hero": "",
+   "product_routine": "cashmere-cleanse-facial-rose-milk, soothing-skin-balm, solar-dew",
+   "product_pm_only": "",
+   "product_bonus": "soothing-face-serum"
+ },
+ {
+   "skincare_routine": "simple_routine",
+   "skin_type": "combination",
+   "sensitive_skin": "sensitive_skin_yes",
+   "skin_goal": "even_skin_tone",
+   "product_hero": "",
+   "product_routine": "cashmere-cleanse-facial-rose-milk, solar-dew",
+   "product_pm_only": "triple-acid-peptide-peel",
+   "product_bonus": "polish-plump-face-peel"
+ },
+ {
+   "skincare_routine": "simple_routine",
+   "skin_type": "combination",
+   "sensitive_skin": "sensitive_skin_yes",
+   "skin_goal": "reduce_acne",
+   "product_hero": "",
+   "product_routine": "purifying-facial-cleanser, spot-correction-treatment, aquaboost-oil-free-face-moisturizer",
+   "product_pm_only": "",
+   "product_bonus": "liquid-resurfacing-solution"
+ },
+ {
+   "skincare_routine": "simple_routine",
+   "skin_type": "combination",
+   "sensitive_skin": "sensitive_skin_no",
+   "skin_goal": "youthful_skin",
+   "product_hero": "",
+   "product_routine": "cashmere-cleanse-facial-rose-milk, face-lift-anti-aging-moisturizer, solar-dew",
+   "product_pm_only": "",
+   "product_bonus": "anti-aging-power-face-serum"
+ },
+ {
+   "skincare_routine": "simple_routine",
+   "skin_type": "combination",
+   "sensitive_skin": "sensitive_skin_no",
+   "skin_goal": "oil_control",
+   "product_hero": "",
+   "product_routine": "cleansing-face-wash-gel, clarifying-toner-pads, aquaboost-oil-free-face-moisturizer",
+   "product_pm_only": "",
+   "product_bonus": "5x-power-peel-face-exfoliator"
+ },
+ {
+   "skincare_routine": "simple_routine",
+   "skin_type": "combination",
+   "sensitive_skin": "sensitive_skin_no",
+   "skin_goal": "hydration",
+   "product_hero": "",
+   "product_routine": "cashmere-cleanse-facial-rose-milk, daily-drench, hydro-lock-sleep-mask-royal-peptide-treatment",
+   "product_pm_only": "",
+   "product_bonus": "moisture-reset-phytonutrient-facial-oil"
+ },
+ {
+   "skincare_routine": "simple_routine",
+   "skin_type": "combination",
+   "sensitive_skin": "sensitive_skin_no",
+   "skin_goal": "improve_dull_skin",
+   "product_hero": "",
+   "product_routine": "cashmere-cleanse-facial-rose-milk, lumapro-face-serum, daily-drench",
+   "product_pm_only": "",
+   "product_bonus": "hydraflora-probiotic-face-toner"
+ },
+ {
+   "skincare_routine": "simple_routine",
+   "skin_type": "combination",
+   "sensitive_skin": "sensitive_skin_no",
+   "skin_goal": "reduce_redness",
+   "product_hero": "",
+   "product_routine": "cashmere-cleanse-facial-rose-milk, daily-drench, soothing-skin-balm",
+   "product_pm_only": "",
+   "product_bonus": "soothing-face-serum"
+ },
+ {
+   "skincare_routine": "simple_routine",
+   "skin_type": "combination",
+   "sensitive_skin": "sensitive_skin_no",
+   "skin_goal": "even_skin_tone",
+   "product_hero": "",
+   "product_routine": "cashmere-cleanse-facial-rose-milk, daily-drench",
+   "product_pm_only": "triple-acid-peptide-peel",
+   "product_bonus": "polish-plump-face-peel"
+ },
+ {
+   "skincare_routine": "simple_routine",
+   "skin_type": "combination",
+   "sensitive_skin": "sensitive_skin_no",
+   "skin_goal": "reduce_acne",
+   "product_hero": "",
+   "product_routine": "purifying-facial-cleanser, spot-correction-treatment, aquaboost-oil-free-face-moisturizer",
+   "product_pm_only": "",
+   "product_bonus": "liquid-resurfacing-solution"
+ },
+ {
+   "skincare_routine": "luxury_routine",
+   "skin_type": "oily",
+   "sensitive_skin": "sensitive_skin_yes",
+   "skin_goal": "youthful_skin",
+   "product_hero": "",
+   "product_routine": "cleansing-face-wash-gel, clarifying-toner-pads, anti-aging-power-face-serum, power-lift-face-moisturizer",
+   "product_pm_only": "collagen-reactivate-pm",
+   "product_bonus": "eye-authority-eye-cream"
+ },
+ {
+   "skincare_routine": "luxury_routine",
+   "skin_type": "oily",
+   "sensitive_skin": "sensitive_skin_yes",
+   "skin_goal": "oil_control",
+   "product_hero": "",
+   "product_routine": "cleansing-face-wash-gel, clarifying-toner-pads, liquid-resurfacing-solution, aquaboost-oil-free-face-moisturizer",
+   "product_pm_only": "retinol-routine-booster",
+   "product_bonus": ""
+ },
+ {
+   "skincare_routine": "luxury_routine",
+   "skin_type": "oily",
+   "sensitive_skin": "sensitive_skin_yes",
+   "skin_goal": "hydration",
+   "product_hero": "",
+   "product_routine": "cleansing-face-wash-gel, pre-treatment-face-toner, moisture-reset-phytonutrient-facial-oil, power-luxe",
+   "product_pm_only": "collagen-reactivate-pm",
+   "product_bonus": ""
+ },
+ {
+   "skincare_routine": "luxury_routine",
+   "skin_type": "oily",
+   "sensitive_skin": "sensitive_skin_yes",
+   "skin_goal": "improve_dull_skin",
+   "product_hero": "",
+   "product_routine": "cleansing-face-wash-gel, pre-treatment-face-toner, lumapro-face-serum, polish-plump-face-peel",
+   "product_pm_only": "collagen-reactivate-pm",
+   "product_bonus": "radiance-face-mask"
+ },
+ {
+   "skincare_routine": "luxury_routine",
+   "skin_type": "oily",
+   "sensitive_skin": "sensitive_skin_yes",
+   "skin_goal": "reduce_redness",
+   "product_hero": "",
+   "product_routine": "cleansing-face-wash-gel, hydraflora-probiotic-face-toner, soothing-face-serum,rejuvenating-face-mask, anti-aging-power-face-serum",
+   "product_pm_only": "",
+   "product_bonus": "power-lift-face-moisturizer"
+ },
+ {
+   "skincare_routine": "luxury_routine",
+   "skin_type": "oily",
+   "sensitive_skin": "sensitive_skin_yes",
+   "skin_goal": "even_skin_tone",
+   "product_hero": "",
+   "product_routine": "cleansing-face-wash-gel, pre-treatment-face-toner, lumapro-face-serum, power-lift-face-moisturizer",
+   "product_pm_only": "collagen-reactivate-pm",
+   "product_bonus": ""
+ },
+ {
+   "skincare_routine": "luxury_routine",
+   "skin_type": "oily",
+   "sensitive_skin": "sensitive_skin_yes",
+   "skin_goal": "reduce_acne",
+   "product_hero": "",
+   "product_routine": "purifying-facial-cleanser, clarifying-toner-pads, liquid-resurfacing-solution, spot-correction-treatment, aquaboost-oil-free-face-moisturizer",
+   "product_pm_only": "",
+   "product_bonus": "anti-aging-power-face-serum"
+ },
+ {
+   "skincare_routine": "luxury_routine",
+   "skin_type": "oily",
+   "sensitive_skin": "sensitive_skin_no",
+   "skin_goal": "youthful_skin",
+   "product_hero": "",
+   "product_routine": "cleansing-face-wash-gel, clarifying-toner-pads, anti-aging-power-face-serum, power-lift-face-moisturizer",
+   "product_pm_only": "collagen-reactivate-pm",
+   "product_bonus": "eye-authority-eye-cream"
+ },
+ {
+   "skincare_routine": "luxury_routine",
+   "skin_type": "oily",
+   "sensitive_skin": "sensitive_skin_no",
+   "skin_goal": "oil_control",
+   "product_hero": "",
+   "product_routine": "cleansing-face-wash-gel, clarifying-toner-pads, liquid-resurfacing-solution, aquaboost-oil-free-face-moisturizer",
+   "product_pm_only": "retinol-routine-booster",
+   "product_bonus": ""
+ },
+ {
+   "skincare_routine": "luxury_routine",
+   "skin_type": "oily",
+   "sensitive_skin": "sensitive_skin_no",
+   "skin_goal": "hydration",
+   "product_hero": "",
+   "product_routine": "cleansing-face-wash-gel, pre-treatment-face-toner, moisture-reset-phytonutrient-facial-oil, power-luxe",
+   "product_pm_only": "collagen-reactivate-pm",
+   "product_bonus": ""
+ },
+ {
+   "skincare_routine": "luxury_routine",
+   "skin_type": "oily",
+   "sensitive_skin": "sensitive_skin_no",
+   "skin_goal": "improve_dull_skin",
+   "product_hero": "",
+   "product_routine": "cleansing-face-wash-gel, pre-treatment-face-toner, lumapro-face-serum, polish-plump-face-peel",
+   "product_pm_only": "collagen-reactivate-pm",
+   "product_bonus": "radiance-face-mask"
+ },
+ {
+   "skincare_routine": "luxury_routine",
+   "skin_type": "oily",
+   "sensitive_skin": "sensitive_skin_no",
+   "skin_goal": "reduce_redness",
+   "product_hero": "",
+   "product_routine": "cleansing-face-wash-gel, hydraflora-probiotic-face-toner, soothing-face-serum,rejuvenating-face-mask, anti-aging-power-face-serum",
+   "product_pm_only": "",
+   "product_bonus": "power-lift-face-moisturizer"
+ },
+ {
+   "skincare_routine": "luxury_routine",
+   "skin_type": "oily",
+   "sensitive_skin": "sensitive_skin_no",
+   "skin_goal": "even_skin_tone",
+   "product_hero": "",
+   "product_routine": "cleansing-face-wash-gel, pre-treatment-face-toner, lumapro-face-serum, power-lift-face-moisturizer",
+   "product_pm_only": "collagen-reactivate-pm",
+   "product_bonus": ""
+ },
+ {
+   "skincare_routine": "luxury_routine",
+   "skin_type": "oily",
+   "sensitive_skin": "sensitive_skin_no",
+   "skin_goal": "reduce_acne",
+   "product_hero": "",
+   "product_routine": "purifying-facial-cleanser, clarifying-toner-pads, liquid-resurfacing-solution, spot-correction-treatment, aquaboost-oil-free-face-moisturizer",
+   "product_pm_only": "",
+   "product_bonus": "anti-aging-power-face-serum"
+ },
+ {
+   "skincare_routine": "luxury_routine",
+   "skin_type": "dry",
+   "sensitive_skin": "sensitive_skin_yes",
+   "skin_goal": "youthful_skin",
+   "product_hero": "",
+   "product_routine": "cashmere-cleanse-facial-rose-milk, pre-treatment-face-toner, anti-aging-power-face-serum, power-lift-face-moisturizer",
+   "product_pm_only": "collagen-reactivate-pm",
+   "product_bonus": "eye-authority-eye-cream"
+ },
+ {
+   "skincare_routine": "luxury_routine",
+   "skin_type": "dry",
+   "sensitive_skin": "sensitive_skin_yes",
+   "skin_goal": "oil_control",
+   "product_hero": "",
+   "product_routine": "cleansing-face-wash-gel, clarifying-toner-pads, liquid-resurfacing-solution, aquaboost-oil-free-face-moisturizer",
+   "product_pm_only": "collagen-reactivate-pm",
+   "product_bonus": ""
+ },
+ {
+   "skincare_routine": "luxury_routine",
+   "skin_type": "dry",
+   "sensitive_skin": "sensitive_skin_yes",
+   "skin_goal": "hydration",
+   "product_hero": "",
+   "product_routine": "cashmere-cleanse-facial-rose-milk, pre-treatment-face-toner, moisture-reset-phytonutrient-facial-oil, power-luxe",
+   "product_pm_only": "collagen-reactivate-pm",
+   "product_bonus": ""
+ },
+ {
+   "skincare_routine": "luxury_routine",
+   "skin_type": "dry",
+   "sensitive_skin": "sensitive_skin_yes",
+   "skin_goal": "improve_dull_skin",
+   "product_hero": "",
+   "product_routine": "cashmere-cleanse-facial-rose-milk, pre-treatment-face-toner, lumapro-face-serum, power-lift-face-moisturizer",
+   "product_pm_only": "collagen-reactivate-pm",
+   "product_bonus": "radiance-face-mask"
+ },
+ {
+   "skincare_routine": "luxury_routine",
+   "skin_type": "dry",
+   "sensitive_skin": "sensitive_skin_yes",
+   "skin_goal": "reduce_redness",
+   "product_hero": "",
+   "product_routine": "cashmere-cleanse-facial-rose-milk, soothing-face-serum, soothing-skin-balm, rejuvenating-face-mask, anti-aging-power-face-serum",
+   "product_pm_only": "",
+   "product_bonus": "power-lift-face-moisturizer"
+ },
+ {
+   "skincare_routine": "luxury_routine",
+   "skin_type": "dry",
+   "sensitive_skin": "sensitive_skin_yes",
+   "skin_goal": "even_skin_tone",
+   "product_hero": "",
+   "product_routine": "cashmere-cleanse-facial-rose-milk, pre-treatment-face-toner, lumapro-face-serum, power-lift-face-moisturizer",
+   "product_pm_only": "collagen-reactivate-pm",
+   "product_bonus": ""
+ },
+ {
+   "skincare_routine": "luxury_routine",
+   "skin_type": "dry",
+   "sensitive_skin": "sensitive_skin_yes",
+   "skin_goal": "reduce_acne",
+   "product_hero": "",
+   "product_routine": "purifying-facial-cleanser, clarifying-toner-pads, liquid-resurfacing-solution, spot-correction-treatment, aquaboost-oil-free-face-moisturizer",
+   "product_pm_only": "",
+   "product_bonus": "anti-aging-power-face-serum"
+ },
+ {
+   "skincare_routine": "luxury_routine",
+   "skin_type": "dry",
+   "sensitive_skin": "sensitive_skin_no",
+   "skin_goal": "youthful_skin",
+   "product_hero": "",
+   "product_routine": "cashmere-cleanse-facial-rose-milk, pre-treatment-face-toner, anti-aging-power-face-serum, power-lift-face-moisturizer",
+   "product_pm_only": "collagen-reactivate-pm",
+   "product_bonus": "eye-authority-eye-cream"
+ },
+ {
+   "skincare_routine": "luxury_routine",
+   "skin_type": "dry",
+   "sensitive_skin": "sensitive_skin_no",
+   "skin_goal": "oil_control",
+   "product_hero": "",
+   "product_routine": "cleansing-face-wash-gel, clarifying-toner-pads, liquid-resurfacing-solution, aquaboost-oil-free-face-moisturizer",
+   "product_pm_only": "collagen-reactivate-pm",
+   "product_bonus": ""
+ },
+ {
+   "skincare_routine": "luxury_routine",
+   "skin_type": "dry",
+   "sensitive_skin": "sensitive_skin_no",
+   "skin_goal": "hydration",
+   "product_hero": "",
+   "product_routine": "cashmere-cleanse-facial-rose-milk, pre-treatment-face-toner, moisture-reset-phytonutrient-facial-oil, power-luxe",
+   "product_pm_only": "collagen-reactivate-pm",
+   "product_bonus": ""
+ },
+ {
+   "skincare_routine": "luxury_routine",
+   "skin_type": "dry",
+   "sensitive_skin": "sensitive_skin_no",
+   "skin_goal": "improve_dull_skin",
+   "product_hero": "",
+   "product_routine": "cashmere-cleanse-facial-rose-milk, pre-treatment-face-toner, lumapro-face-serum, power-lift-face-moisturizer",
+   "product_pm_only": "collagen-reactivate-pm",
+   "product_bonus": "radiance-face-mask"
+ },
+ {
+   "skincare_routine": "luxury_routine",
+   "skin_type": "dry",
+   "sensitive_skin": "sensitive_skin_no",
+   "skin_goal": "reduce_redness",
+   "product_hero": "",
+   "product_routine": "cashmere-cleanse-facial-rose-milk, soothing-face-serum, soothing-skin-balm, rejuvenating-face-mask, anti-aging-power-face-serum",
+   "product_pm_only": "",
+   "product_bonus": "power-lift-face-moisturizer"
+ },
+ {
+   "skincare_routine": "luxury_routine",
+   "skin_type": "dry",
+   "sensitive_skin": "sensitive_skin_no",
+   "skin_goal": "even_skin_tone",
+   "product_hero": "",
+   "product_routine": "cashmere-cleanse-facial-rose-milk, pre-treatment-face-toner, lumapro-face-serum, power-lift-face-moisturizer",
+   "product_pm_only": "collagen-reactivate-pm",
+   "product_bonus": ""
+ },
+ {
+   "skincare_routine": "luxury_routine",
+   "skin_type": "dry",
+   "sensitive_skin": "sensitive_skin_no",
+   "skin_goal": "reduce_acne",
+   "product_hero": "",
+   "product_routine": "purifying-facial-cleanser, clarifying-toner-pads, liquid-resurfacing-solution, spot-correction-treatment, aquaboost-oil-free-face-moisturizer",
+   "product_pm_only": "",
+   "product_bonus": "anti-aging-power-face-serum"
+ },
+ {
+   "skincare_routine": "luxury_routine",
+   "skin_type": "normal",
+   "sensitive_skin": "sensitive_skin_yes",
+   "skin_goal": "youthful_skin",
+   "product_hero": "",
+   "product_routine": "cleansing-face-wash-gel, pre-treatment-face-toner, anti-aging-power-face-serum, power-lift-face-moisturizer",
+   "product_pm_only": "collagen-reactivate-pm",
+   "product_bonus": "eye-authority-eye-cream"
+ },
+ {
+   "skincare_routine": "luxury_routine",
+   "skin_type": "normal",
+   "sensitive_skin": "sensitive_skin_yes",
+   "skin_goal": "oil_control",
+   "product_hero": "",
+   "product_routine": "cleansing-face-wash-gel, clarifying-toner-pads, liquid-resurfacing-solution, aquaboost-oil-free-face-moisturizer",
+   "product_pm_only": "retinol-routine-booster",
+   "product_bonus": ""
+ },
+ {
+   "skincare_routine": "luxury_routine",
+   "skin_type": "normal",
+   "sensitive_skin": "sensitive_skin_yes",
+   "skin_goal": "hydration",
+   "product_hero": "",
+   "product_routine": "cashmere-cleanse-facial-rose-milk, pre-treatment-face-toner, moisture-reset-phytonutrient-facial-oil, power-luxe",
+   "product_pm_only": "collagen-reactivate-pm",
+   "product_bonus": ""
+ },
+ {
+   "skincare_routine": "luxury_routine",
+   "skin_type": "normal",
+   "sensitive_skin": "sensitive_skin_yes",
+   "skin_goal": "improve_dull_skin",
+   "product_hero": "",
+   "product_routine": "cleansing-face-wash-gel, pre-treatment-face-toner, lumapro-face-serum, power-lift-face-moisturizer",
+   "product_pm_only": "collagen-reactivate-pm",
+   "product_bonus": "radiance-face-mask"
+ },
+ {
+   "skincare_routine": "luxury_routine",
+   "skin_type": "normal",
+   "sensitive_skin": "sensitive_skin_yes",
+   "skin_goal": "reduce_redness",
+   "product_hero": "",
+   "product_routine": "cashmere-cleanse-facial-rose-milk, soothing-face-serum, soothing-skin-balm, rejuvenating-face-mask, anti-aging-power-face-serum",
+   "product_pm_only": "",
+   "product_bonus": "power-lift-face-moisturizer"
+ },
+ {
+   "skincare_routine": "luxury_routine",
+   "skin_type": "normal",
+   "sensitive_skin": "sensitive_skin_yes",
+   "skin_goal": "even_skin_tone",
+   "product_hero": "",
+   "product_routine": "cleansing-face-wash-gel, pre-treatment-face-toner, lumapro-face-serum, power-lift-face-moisturizer",
+   "product_pm_only": "collagen-reactivate-pm",
+   "product_bonus": ""
+ },
+ {
+   "skincare_routine": "luxury_routine",
+   "skin_type": "normal",
+   "sensitive_skin": "sensitive_skin_yes",
+   "skin_goal": "reduce_acne",
+   "product_hero": "",
+   "product_routine": "purifying-facial-cleanser, clarifying-toner-pads, liquid-resurfacing-solution, spot-correction-treatment, aquaboost-oil-free-face-moisturizer",
+   "product_pm_only": "",
+   "product_bonus": "anti-aging-power-face-serum"
+ },
+ {
+   "skincare_routine": "luxury_routine",
+   "skin_type": "normal",
+   "sensitive_skin": "sensitive_skin_no",
+   "skin_goal": "youthful_skin",
+   "product_hero": "",
+   "product_routine": "cleansing-face-wash-gel, pre-treatment-face-toner, anti-aging-power-face-serum, power-lift-face-moisturizer",
+   "product_pm_only": "collagen-reactivate-pm",
+   "product_bonus": "eye-authority-eye-cream"
+ },
+ {
+   "skincare_routine": "luxury_routine",
+   "skin_type": "normal",
+   "sensitive_skin": "sensitive_skin_no",
+   "skin_goal": "oil_control",
+   "product_hero": "",
+   "product_routine": "cleansing-face-wash-gel, clarifying-toner-pads, liquid-resurfacing-solution, aquaboost-oil-free-face-moisturizer",
+   "product_pm_only": "retinol-routine-booster",
+   "product_bonus": ""
+ },
+ {
+   "skincare_routine": "luxury_routine",
+   "skin_type": "normal",
+   "sensitive_skin": "sensitive_skin_no",
+   "skin_goal": "hydration",
+   "product_hero": "",
+   "product_routine": "cashmere-cleanse-facial-rose-milk, pre-treatment-face-toner, moisture-reset-phytonutrient-facial-oil, power-luxe",
+   "product_pm_only": "collagen-reactivate-pm",
+   "product_bonus": ""
+ },
+ {
+   "skincare_routine": "luxury_routine",
+   "skin_type": "normal",
+   "sensitive_skin": "sensitive_skin_no",
+   "skin_goal": "improve_dull_skin",
+   "product_hero": "",
+   "product_routine": "cleansing-face-wash-gel, pre-treatment-face-toner, lumapro-face-serum, power-lift-face-moisturizer",
+   "product_pm_only": "collagen-reactivate-pm",
+   "product_bonus": "radiance-face-mask"
+ },
+ {
+   "skincare_routine": "luxury_routine",
+   "skin_type": "normal",
+   "sensitive_skin": "sensitive_skin_no",
+   "skin_goal": "reduce_redness",
+   "product_hero": "",
+   "product_routine": "cashmere-cleanse-facial-rose-milk, soothing-face-serum, soothing-skin-balm, rejuvenating-face-mask, anti-aging-power-face-serum",
+   "product_pm_only": "",
+   "product_bonus": "power-lift-face-moisturizer"
+ },
+ {
+   "skincare_routine": "luxury_routine",
+   "skin_type": "normal",
+   "sensitive_skin": "sensitive_skin_no",
+   "skin_goal": "even_skin_tone",
+   "product_hero": "",
+   "product_routine": "cleansing-face-wash-gel, pre-treatment-face-toner, lumapro-face-serum, power-lift-face-moisturizer",
+   "product_pm_only": "collagen-reactivate-pm",
+   "product_bonus": ""
+ },
+ {
+   "skincare_routine": "luxury_routine",
+   "skin_type": "normal",
+   "sensitive_skin": "sensitive_skin_no",
+   "skin_goal": "reduce_acne",
+   "product_hero": "",
+   "product_routine": "purifying-facial-cleanser, clarifying-toner-pads, liquid-resurfacing-solution, spot-correction-treatment, aquaboost-oil-free-face-moisturizer",
+   "product_pm_only": "",
+   "product_bonus": "anti-aging-power-face-serum"
+ },
+ {
+   "skincare_routine": "luxury_routine",
+   "skin_type": "combination",
+   "sensitive_skin": "sensitive_skin_yes",
+   "skin_goal": "youthful_skin",
+   "product_hero": "",
+   "product_routine": "cleansing-face-wash-gel, pre-treatment-face-toner, anti-aging-power-face-serum, power-lift-face-moisturizer",
+   "product_pm_only": "collagen-reactivate-pm",
+   "product_bonus": "eye-authority-eye-cream"
+ },
+ {
+   "skincare_routine": "luxury_routine",
+   "skin_type": "combination",
+   "sensitive_skin": "sensitive_skin_yes",
+   "skin_goal": "oil_control",
+   "product_hero": "",
+   "product_routine": "cleansing-face-wash-gel, clarifying-toner-pads, liquid-resurfacing-solution, aquaboost-oil-free-face-moisturizer",
+   "product_pm_only": "retinol-routine-booster",
+   "product_bonus": ""
+ },
+ {
+   "skincare_routine": "luxury_routine",
+   "skin_type": "combination",
+   "sensitive_skin": "sensitive_skin_yes",
+   "skin_goal": "hydration",
+   "product_hero": "",
+   "product_routine": "cleansing-face-wash-gel, pre-treatment-face-toner, moisture-reset-phytonutrient-facial-oil, power-luxe",
+   "product_pm_only": "collagen-reactivate-pm",
+   "product_bonus": ""
+ },
+ {
+   "skincare_routine": "luxury_routine",
+   "skin_type": "combination",
+   "sensitive_skin": "sensitive_skin_yes",
+   "skin_goal": "improve_dull_skin",
+   "product_hero": "",
+   "product_routine": "cleansing-face-wash-gel, pre-treatment-face-toner, lumapro-face-serum, power-lift-face-moisturizer",
+   "product_pm_only": "collagen-reactivate-pm",
+   "product_bonus": "radiance-face-mask"
+ },
+ {
+   "skincare_routine": "luxury_routine",
+   "skin_type": "combination",
+   "sensitive_skin": "sensitive_skin_yes",
+   "skin_goal": "reduce_redness",
+   "product_hero": "",
+   "product_routine": "cashmere-cleanse-facial-rose-milk, soothing-face-serum, soothing-skin-balm, rejuvenating-face-mask, anti-aging-power-face-serum",
+   "product_pm_only": "",
+   "product_bonus": "power-lift-face-moisturizer"
+ },
+ {
+   "skincare_routine": "luxury_routine",
+   "skin_type": "combination",
+   "sensitive_skin": "sensitive_skin_yes",
+   "skin_goal": "even_skin_tone",
+   "product_hero": "",
+   "product_routine": "cleansing-face-wash-gel, pre-treatment-face-toner, lumapro-face-serum, power-lift-face-moisturizer",
+   "product_pm_only": "collagen-reactivate-pm",
+   "product_bonus": ""
+ },
+ {
+   "skincare_routine": "luxury_routine",
+   "skin_type": "combination",
+   "sensitive_skin": "sensitive_skin_yes",
+   "skin_goal": "reduce_acne",
+   "product_hero": "",
+   "product_routine": "purifying-facial-cleanser, clarifying-toner-pads, liquid-resurfacing-solution, spot-correction-treatment, aquaboost-oil-free-face-moisturizer",
+   "product_pm_only": "",
+   "product_bonus": "anti-aging-power-face-serum"
+ },
+ {
+   "skincare_routine": "luxury_routine",
+   "skin_type": "combination",
+   "sensitive_skin": "sensitive_skin_no",
+   "skin_goal": "youthful_skin",
+   "product_hero": "",
+   "product_routine": "cleansing-face-wash-gel, pre-treatment-face-toner, anti-aging-power-face-serum, power-lift-face-moisturizer",
+   "product_pm_only": "collagen-reactivate-pm",
+   "product_bonus": "eye-authority-eye-cream"
+ },
+ {
+   "skincare_routine": "luxury_routine",
+   "skin_type": "combination",
+   "sensitive_skin": "sensitive_skin_no",
+   "skin_goal": "oil_control",
+   "product_hero": "",
+   "product_routine": "cleansing-face-wash-gel, clarifying-toner-pads, liquid-resurfacing-solution, aquaboost-oil-free-face-moisturizer",
+   "product_pm_only": "retinol-routine-booster",
+   "product_bonus": ""
+ },
+ {
+   "skincare_routine": "luxury_routine",
+   "skin_type": "combination",
+   "sensitive_skin": "sensitive_skin_no",
+   "skin_goal": "hydration",
+   "product_hero": "",
+   "product_routine": "cleansing-face-wash-gel, pre-treatment-face-toner, moisture-reset-phytonutrient-facial-oil, power-luxe",
+   "product_pm_only": "collagen-reactivate-pm",
+   "product_bonus": ""
+ },
+ {
+   "skincare_routine": "luxury_routine",
+   "skin_type": "combination",
+   "sensitive_skin": "sensitive_skin_no",
+   "skin_goal": "improve_dull_skin",
+   "product_hero": "",
+   "product_routine": "cleansing-face-wash-gel, pre-treatment-face-toner, lumapro-face-serum, power-lift-face-moisturizer",
+   "product_pm_only": "",
+   "product_bonus": ""
+ },
+ {
+   "skincare_routine": "luxury_routine",
+   "skin_type": "combination",
+   "sensitive_skin": "sensitive_skin_no",
+   "skin_goal": "reduce_redness",
+   "product_hero": "",
+   "product_routine": "cashmere-cleanse-facial-rose-milk, soothing-face-serum, soothing-skin-balm, rejuvenating-face-mask, anti-aging-power-face-serum",
+   "product_pm_only": "",
+   "product_bonus": "power-lift-face-moisturizer"
+ },
+ {
+   "skincare_routine": "luxury_routine",
+   "skin_type": "combination",
+   "sensitive_skin": "sensitive_skin_no",
+   "skin_goal": "even_skin_tone",
+   "product_hero": "",
+   "product_routine": "cleansing-face-wash-gel, pre-treatment-face-toner, lumapro-face-serum, power-lift-face-moisturizer",
+   "product_pm_only": "collagen-reactivate-pm",
+   "product_bonus": ""
+ },
+ {
+   "skincare_routine": "luxury_routine",
+   "skin_type": "combination",
+   "sensitive_skin": "sensitive_skin_no",
+   "skin_goal": "reduce_acne",
+   "product_hero": "",
+   "product_routine": "purifying-facial-cleanser, clarifying-toner-pads, liquid-resurfacing-solution, spot-correction-treatment, aquaboost-oil-free-face-moisturizer",
+   "product_pm_only": "",
+   "product_bonus": "anti-aging-power-face-serum"
+ }
+]

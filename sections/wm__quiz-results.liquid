@@ -1,0 +1,473 @@
+{% comment %} 
+  TEST: section for ConvertFlow quiz results designed to pick up UTMs and use to generate quiz results
+
+  {
+    skincare_routine: [hero_product, simple_routine, luxury_routine],
+    sensitive_skin: [sensitive_skin_yes, sensitive_skin_no],
+    skin_goal: [youthful_skin, oil_control, hydration, improve_dull_skin, reduce_redness, even_skin_tone, reduce_acne],
+    skin_type: [oily, dry, normal, combination]
+  }
+{% endcomment %}
+
+{% comment %} TODO: note - ConvertFlow code is at bottom of this page {% endcomment %}
+
+{% style %}
+  .content-block.hidden,
+  .loading__spinner--block.hidden {
+    display: none;
+    opacity: 0;
+  }
+  .content-block,
+  .loading__spinner--block {
+    display: block;
+    opacity: 1;
+  }
+{% endstyle %}
+
+{% comment %} _bg-brand-background-light {% endcomment %}
+<div class="_w-full">
+  <div class="page-width _max-w-[920px] _bg-brand-light _py-16">
+    <div class="_pb-12 _text-center">
+      {% unless section.settings.top_heading == blank %}
+        <h3 class="_font-heading-small _text-brand-dark _text-sm">
+          {{ section.settings.top_heading }}
+        </h3>
+      {% endunless %}
+      {% unless section.settings.main_heading == blank %}
+        <h2 class="_font-heading-primary _text-brand-dark md:_text-4xl _text-2.5xl _mt-1">
+          {{ section.settings.main_heading }}
+        </h2>
+      {% endunless %}
+      {% unless section.settings.description == blank %}
+        <div class="_text-base _mt-4 _prose">
+          {{ section.settings.description }}
+        </div>
+      {% endunless %}
+      {%- unless section.settings.cta_text == blank -%}
+        <a
+          href="{{ section.settings.cta_url }}"
+          class="_button-primary _mt-6"
+        >
+          <span>{{- section.settings.cta_text -}}</span>
+        </a>
+      {%- endunless -%}
+    </div>
+
+
+    <quiz-results-page>
+      <div class="loading__spinner--block hidden _flex _min-h-72 _items-center _justify-center">
+        {%- render 'loading-spinner' -%}
+      </div>
+      <div class="content-block hidden" id="output">
+        <div data-js-block="product_hero" class="_hidden _border-t _border-brand-border _mb-20">
+          <div class="_flex _flex-row _items-center _flex-wrap _gap-2 _mt-8 _mb-12">
+            {%- if section.settings.routine_image_hero -%}
+              {{
+                section.settings.routine_image_hero
+                | image_url: width: 100
+                | image_tag:
+                class: '_w-10',
+                width: 100,
+                height: 100
+              }}
+            {%- endif -%}
+            <h2 class="_font-heading-primary _text-2.5xl">Your big hero product</h2>
+          </div>
+          <div data-js-content class="_flex _flex-col _gap-12"></div>
+        </div>
+        <div data-js-block="product_routine" class="_hidden _border-t _border-brand-border _mb-20">
+          <div class="_flex _flex-row _items-center _flex-wrap _gap-2 _mt-8 _mb-12">
+            {%- if section.settings.routine_image_routine -%}
+              {{
+                section.settings.routine_image_routine
+                | image_url: width: 100
+                | image_tag:
+                  class: '_w-10',
+                  width: 100,
+                  height: 100
+              }}
+            {%- endif -%}
+            <h2 class="_font-heading-primary _text-2.5xl">Your AM & PM routine</h2>
+          </div>
+          <div data-js-content class="_flex _flex-col _gap-12"></div>
+        </div>
+        <div data-js-block="product_pm_only" class="_hidden _border-t _border-brand-border _mb-20">
+          <div class="_flex _flex-row _items-center _flex-wrap _gap-2 _mt-8 _mb-12">
+            {%- if section.settings.routine_image_pm -%}
+              {{
+                section.settings.routine_image_pm
+                | image_url: width: 100
+                | image_tag:
+                  class: '_w-10',
+                  width: 100,
+                  height: 100
+              }}
+            {%- endif -%}
+            <h2 class="_font-heading-primary _text-2.5xl">Your PM-only routine</h2>
+          </div>
+          <div data-js-content class="_flex _flex-col _gap-12"></div>
+        </div>
+        <div data-js-block="product_bonus" class="_hidden _border-t _border-brand-border _mb-20">
+          <div class="_flex _flex-row _items-center _flex-wrap _gap-2 _mt-8 _mb-12">
+            {%- if section.settings.routine_image_bonus -%}
+              {{
+                section.settings.routine_image_bonus
+                | image_url: width: 100
+                | image_tag:
+                  class: '_w-10',
+                  width: 100,
+                  height: 100
+              }}
+            {%- endif -%}
+            <h2 class="_font-heading-primary _text-2.5xl">Your bonus</h2>
+          </div>
+          <div data-js-content class="_flex _flex-col _gap-12"></div>
+        </div>
+      </div>
+
+      <template data-js-product-card-template>
+        <simple-product-card data-js-product-handle>
+          <div class="_grid _grid-cols-5 _gap-4">
+            <div class="_col-span-2">
+              <div class="_flex _justify-center _items-center _aspect-square _bg-brand-background-light">
+                <img data-js-product-image height="100%" width="100%">
+                {% comment %} FIXME: this might be causing problems with selector {% endcomment %}
+                {% comment %} {%- render 'loading-spinner' -%} {% endcomment %}
+              </div>
+            </div>
+            <div class="_col-span-3">
+              <h2 class="_font-heading-primary _text-2xl _mb-2" data-js-product-title></h2>
+              <p class="_prose _text-base _mb-6" data-js-product-description></p>
+              
+              {%- assign product_form_id = 'product-form-' | append: section.id -%}
+              <div class="_flex _flex-row _items-start _flex-wrap _gap-2">
+                {%- form 'product',
+                  section.settings.default_product,
+                  id: product_form_id,
+                  class: 'form',
+                  novalidate: 'novalidate',
+                  data-type: 'add-to-cart-form'
+                -%}
+                  <input
+                    type="hidden"
+                    name="id"
+                    value="" {% comment %} DO SOMETHING HERE {% endcomment %}
+                    disabled
+                    class="product-variant-id"
+                  >
+                  <button
+                    id="ProductSubmitButton-{{ section.id }}"
+                    type="submit"
+                    name="add"
+                    class="_button-secondary"
+                    data-js-product-main-cta
+                  >
+                    <span>
+                      <span data-js-product-cta-text>Add to cart</span>
+                    </span>
+                    {%- render 'loading-spinner' -%}
+                  </button>
+                {%- endform -%}
+                <a
+                  class="_button-primary"
+                  data-js-product-main-url
+                >
+                  <span>
+                    See product
+                  </span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </simple-product-card>
+      </template>
+    </quiz-results-page>
+  </div>
+</div>
+
+<script>
+  class QuizResultsPage extends HTMLElement {
+    async connectedCallback() {
+      const spinner = this.querySelector('.loading__spinner');
+      const spinnerBlock = this.querySelector('.loading__spinner--block');
+      if (spinner) spinner.classList.toggle('hidden');
+      if (spinnerBlock) spinnerBlock.classList.toggle('hidden');
+
+      const output = this.querySelector('#output');
+      const params = new URLSearchParams(window.location.search);
+      {% comment %} TODO: you need to prevent it reading other UTMs!! {% endcomment %}
+      const filters = Object.fromEntries(params.entries());
+
+      try {
+        const res = await fetch('{{ 'wm__quiz-results-product-matrix.json' | asset_url }}');
+        const data = await res.json();
+
+        const routineSubset = data.filter(
+          item => item.skincare_routine === filters.skincare_routine
+        );
+
+        const match = routineSubset.find(item =>
+          Object.keys(filters).every(key => item[key] === filters[key])
+        );
+
+        if (!match) {
+          console.warn("No match found for:", filters);
+          output.innerHTML = `<p>No matching product found.</p>`;
+          return;
+        }
+
+        const isHero = filters.skincare_routine === 'hero_product';
+
+        if (isHero) {
+          this.renderProductsFromHandles(match.product_hero, this.querySelector('[data-js-block="product_hero"]'));
+        } else {
+          this.renderProductsFromHandles(match.product_routine, this.querySelector('[data-js-block="product_routine"]'));
+          this.renderProductsFromHandles(match.product_pm_only, this.querySelector('[data-js-block="product_pm_only"]'));
+          this.renderProductsFromHandles(match.product_bonus, this.querySelector('[data-js-block="product_bonus"]'));
+        }
+
+        console.log(`Matched:`);
+        console.log(match);
+      } catch (err) {
+        console.error("Error fetching quiz results:", err);
+        output.innerHTML = `<p>Something went wrong. Try again later.</p>`;
+      } finally {
+        setTimeout(() => {
+          if (spinner) spinner.classList.toggle('hidden');
+          if (spinnerBlock) spinnerBlock.classList.toggle('hidden');
+          const contentBlock = this.querySelector('.content-block');
+          if (contentBlock) contentBlock.classList.remove('hidden');
+        }, 300);
+      }
+    }
+
+    renderProductsFromHandles(handlesString, outputElement) {
+      const handles = handlesString.split(',').map(h => h.trim()).filter(Boolean);
+      if (!handles.length) return;
+      const template = this.querySelector('[data-js-product-card-template]');
+
+      handles.forEach(handle => {
+        const clone = template.content.cloneNode(true);
+        const card = clone.querySelector('simple-product-card');
+        card.setAttribute('data-js-product-handle', handle);
+        outputElement.querySelector('[data-js-content]').appendChild(clone);
+      });
+      outputElement.classList.toggle('_hidden');
+    }
+  }
+
+  customElements.define('quiz-results-page', QuizResultsPage);
+
+  class SimpleProductCard extends HTMLElement {
+    constructor() {
+      super();
+      this.variant = '';
+    }
+
+    async connectedCallback() {
+      const handle = this.dataset.jsProductHandle;
+      if (!handle) return;
+
+      try {
+        const res = await fetch(`/products/${handle}.js`);
+        const product = await res.json();
+
+        console.log("PRODUCT:");
+        console.log(product);
+
+        this.querySelector('[data-js-product-title]').textContent = product.title;
+        this.querySelector('[data-js-product-image]').src = product.media[0].src;
+        this.querySelector('[data-js-product-description]').innerHTML = product.description;
+        this.renderCTA(this.querySelector('[data-js-product-main-cta]'), product);
+        this.querySelector('[data-js-product-main-url]').href = product.url;
+      } catch (err) {
+        console.error(`Error fetching product ${handle}:`, err);
+        this.innerHTML = `<p class="_text-red-500">Error loading product</p>`;
+      }
+    }
+
+    formatMoney(pence, currency = 'GBP', locale = 'en-GB') {
+      const formatted = new Intl.NumberFormat(locale, {
+        style: 'currency',
+        currency: currency,
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+      }).format(pence / 100);
+
+      return formatted.replace(/\.00$/, '');
+    }
+
+    renderCTA(buttonEl, product) {
+      const variant = product.variants[0];
+      const price = this.formatMoney(variant.price);
+
+      const ctaTextEl = buttonEl.querySelector('[data-js-product-cta-text]');
+      ctaTextEl.textContent = product.available && variant.available
+        ? `Add ${price} to Cart`
+        : "Not available";
+
+      buttonEl.disabled = !product.available || !variant.available;
+
+      const form = this.querySelector('[data-type="add-to-cart-form"]');
+      const variantInput = form?.querySelector('input[name="id"]');
+      if (variantInput) {
+        variantInput.value = variant.id;
+        variantInput.disabled = false;
+      }
+
+      // connecting to global MonsterCart function (falls back to just normal button if no Monster app)
+      buttonEl.addEventListener('click', (e) => {
+        globalMonsterCartFunction(e, false, product, 1);
+      });
+    }
+  }
+
+  customElements.define('simple-product-card', SimpleProductCard);
+</script>
+
+{% schema %}
+{
+  "name": "WM Quiz Results",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "product",
+      "id": "default_product",
+      "label": "Default product (for templating purposes only)"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "top_heading",
+      "default": "t:sections.footer.blocks.link_list.settings.heading.default",
+      "label": "Top Heading"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "main_heading",
+      "default": "t:sections.footer.blocks.link_list.settings.heading.default",
+      "label": "Main Heading"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "default": "<p>Description text</p>",
+      "label": "Description text"
+    },
+    {
+      "type": "image_picker",
+      "id": "routine_image_hero",
+      "label": "Routine icon - Hero Product"
+    },
+    {
+      "type": "image_picker",
+      "id": "routine_image_routine",
+      "label": "Routine icon - Main Routine"
+    },
+    {
+      "type": "image_picker",
+      "id": "routine_image_pm",
+      "label": "Routine icon - PM Only"
+    },
+    {
+      "type": "image_picker",
+      "id": "routine_image_bonus",
+      "label": "Routine icon - Bonus"
+    },
+  ]
+}
+{% endschema %}
+
+{% comment %} 
+  Code used in ConvertFlow to get to this page - just taking note here for safe-keeping:
+
+  Custom code in main settings:
+
+  <script>
+    window.quizAnswers = {};
+    
+    window.addEventListener("cfSubmit", function (e) {
+      const data = e.detail;
+  
+      if (data.step_name == "Quiz") {
+        console.log("QUIZ SUBMIT:", "cfSubmit", e.detail);
+        window.quizAnswers = data.fields;
+      } else if (data.step_name == "Email Form") {
+        console.log("EMAIL SUBMIT:", "cfSubmit", e.detail);
+        
+        console.log("SUBMITTING: ", window.quizAnswers);
+        
+        // Attach answers and emails as "traits" (persists)
+        analytics.identify(data.fields.email, {
+          email: data.fields.email,
+          ...window.quizAnswers
+        });
+        
+        // Track answers and quiz info as events (just useful)
+        analytics.track("2025 Skin Quiz Completed", {
+          quiz_id: data.cta?.id,
+          quiz_name: data.cta?.name,
+          variant: data.variant,
+          answers: window.quizAnswers
+        });
+      }
+    });
+  </script>
+
+  Results page:
+
+  <script>
+    console.log("Running");
+
+    function extractValueByMergeField(fieldName) {
+      const el = document.querySelector(`[data-merge="${fieldName}"]`);
+      const raw = el?.textContent?.trim();
+      if (!raw || raw === fieldName || raw === `{{person.fields.${fieldName}}}`) return null;
+      return raw;
+    }
+
+    function tryRedirect() {
+      console.log("Trying redirect");
+      const skincareRoutine = extractValueByMergeField("skincare_routine");
+      const sensitiveSkin = extractValueByMergeField("sensitive_skin");
+      const skincareGoal = extractValueByMergeField("skin_goal");
+      const skinType = extractValueByMergeField("skin_type");
+
+      const params = {
+        skincare_routine: skincareRoutine,
+        sensitive_skin: sensitiveSkin,
+        skin_goal: skincareGoal,
+        skin_type: skinType
+      };
+
+      console.log("Extracted params:", params);
+
+      const searchParams = new URLSearchParams();
+      for (const [key, val] of Object.entries(params)) {
+        if (val) searchParams.append(key, val);
+      }
+
+      if ([...searchParams].length === Object.keys(params).length) {
+        const target = `/pages/hydropeptide-skin-quiz-2025-results-page?${searchParams.toString()}`;
+        console.log("Redirecting to:", target);
+        window.location.href = target;
+      }
+    }
+
+    // Poll until merge fields are populated
+    const interval = setInterval(() => {
+      console.log("Setting interval");
+      const ready =
+        extractValueByMergeField("skincare_routine") &&
+        extractValueByMergeField("sensitive_skin") &&
+        extractValueByMergeField("skin_goal") &&
+        extractValueByMergeField("skin_type");
+
+      if (ready) {
+        console.log("Ready Freddie");
+        clearInterval(interval);
+        tryRedirect();
+      }
+    }, 300);
+  </script>
+{% endcomment %}
