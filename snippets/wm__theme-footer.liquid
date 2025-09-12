@@ -3,11 +3,26 @@
 <script src="https://unpkg.com/embla-carousel-progress-bar/embla-carousel-progress-bar.umd.js"></script>
 {% # theme-check-enable %}
 
+{% comment %} ----------------------- {% endcomment %}
+{% comment %} CUSTOM JAVASCRIPT FILES {% endcomment %}
+{% comment %} ----------------------- {% endcomment %}
+
+<script src="{{ 'wm__custom.js' | asset_url }}" defer="defer"></script>
+
 {% # theme-check-disable %}
 <script src="https://cdn.jsdelivr.net/npm/motion@latest/dist/motion.js"></script>
 {% # theme-check-enable %}
 
-{% comment %} TODO: turn back on {% endcomment %}
+{% comment %} ------------------------ {% endcomment %}
+{% comment %} CUSTOM CART CONTROL FILE {% endcomment %}
+{% comment %} ------------------------ {% endcomment %}
+
+<script src="{{ 'wm__custom-cart-controls.js' | asset_url }}" defer="defer"></script>
+
+{% comment %} ------------------------ {% endcomment %}
+{% comment %} SEGMENT JAVASCRIPT FILES {% endcomment %}
+{% comment %} ------------------------ {% endcomment %}
+
 <script src="{{ 'wm__segment-analytics-control.js' | asset_url }}" defer="defer"></script>
 
 {% comment %} Testing ConvertFlow integration {% endcomment %}
