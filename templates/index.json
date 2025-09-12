@@ -87,6 +87,95 @@
         "margin_bottom": "0"
       }
     },
+    "wm_logo_strip_aGJHrL": {
+      "type": "wm__logo-strip",
+      "blocks": {
+        "logo_Pgcj4B": {
+          "type": "logo",
+          "settings": {
+            "logo_image": "shopify://shop_images/womens-health.svg",
+            "logo_width": 215
+          }
+        },
+        "logo_GFDNia": {
+          "type": "logo",
+          "settings": {
+            "logo_image": "shopify://shop_images/country-town-house.svg",
+            "logo_width": 215
+          }
+        },
+        "logo_JQUN7W": {
+          "type": "logo",
+          "settings": {
+            "logo_image": "shopify://shop_images/top-sante.svg",
+            "logo_width": 215
+          }
+        },
+        "logo_RYLee3": {
+          "type": "logo",
+          "settings": {
+            "logo_image": "shopify://shop_images/the-sun.svg",
+            "logo_width": 215
+          }
+        },
+        "logo_LcdjJ7": {
+          "type": "logo",
+          "settings": {
+            "logo_image": "shopify://shop_images/stylist.svg",
+            "logo_width": 215
+          }
+        },
+        "logo_q8ALnq": {
+          "type": "logo",
+          "settings": {
+            "logo_image": "shopify://shop_images/vogue.svg",
+            "logo_width": 215
+          }
+        },
+        "logo_gztF4C": {
+          "type": "logo",
+          "settings": {
+            "logo_image": "shopify://shop_images/daily-mail.svg",
+            "logo_width": 215
+          }
+        },
+        "logo_mQGbE7": {
+          "type": "logo",
+          "settings": {
+            "logo_image": "shopify://shop_images/the-independent.svg",
+            "logo_width": 215
+          }
+        },
+        "logo_FYLpDF": {
+          "type": "logo",
+          "settings": {
+            "logo_image": "shopify://shop_images/Metro.svg",
+            "logo_width": 215
+          }
+        },
+        "logo_CrWFnh": {
+          "type": "logo",
+          "settings": {
+            "logo_image": "shopify://shop_images/get-the-gloss.svg",
+            "logo_width": 215
+          }
+        }
+      },
+      "block_order": [
+        "logo_Pgcj4B",
+        "logo_GFDNia",
+        "logo_JQUN7W",
+        "logo_RYLee3",
+        "logo_LcdjJ7",
+        "logo_q8ALnq",
+        "logo_gztF4C",
+        "logo_mQGbE7",
+        "logo_FYLpDF",
+        "logo_CrWFnh"
+      ],
+      "name": "WM Logo Strip",
+      "settings": {}
+    },
     "wm_product_card_scroll_zyx8Jr": {
       "type": "wm__product-card-scroll",
       "settings": {
@@ -225,15 +314,6 @@
             "collection_color": "#0f2c64"
           }
         },
-        "featured_collection_HL7ftW": {
-          "type": "featured_collection",
-          "settings": {
-            "collection": "restore",
-            "title": "",
-            "collection_image": "shopify://shop_images/collection-scroll-4.png",
-            "collection_color": "#ead1cd"
-          }
-        },
         "featured_collection_zpRgeC": {
           "type": "featured_collection",
           "settings": {
@@ -270,34 +350,33 @@
             "collection_color": "#fcfbf6"
           }
         },
-        "featured_collection_Xkap3L": {
-          "type": "featured_collection",
-          "settings": {
-            "collection": "moisturizers",
-            "title": "",
-            "collection_image": "shopify://shop_images/collection-scroll-4.png",
-            "collection_color": "#c8d3f3"
-          }
-        },
         "featured_collection_xGU99C": {
           "type": "featured_collection",
           "settings": {
-            "collection": "treatment-serums",
+            "collection": "clarify",
             "title": "",
             "collection_image": "shopify://shop_images/collection-scroll-7_aacf25fb-70f4-42c4-9160-5749f704f5b8.png",
             "collection_color": "#5da8ab"
+          }
+        },
+        "featured_collection_HL7ftW": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "restore",
+            "title": "",
+            "collection_image": "shopify://shop_images/collection-scroll-4.png",
+            "collection_color": "#ead1cd"
           }
         }
       },
       "block_order": [
         "featured_collection_VeQbYa",
-        "featured_collection_HL7ftW",
         "featured_collection_zpRgeC",
         "featured_collection_7qUtUi",
         "featured_collection_4gUHkC",
         "featured_collection_JbnGRG",
-        "featured_collection_Xkap3L",
-        "featured_collection_xGU99C"
+        "featured_collection_xGU99C",
+        "featured_collection_HL7ftW"
       ],
       "settings": {
         "top_heading": "",
@@ -433,6 +512,7 @@
   },
   "order": [
     "wm_hero_banner_image_CPaEAD",
+    "wm_logo_strip_aGJHrL",
     "wm_product_card_scroll_zyx8Jr",
     "wm_image_block_4_ky3R3J",
     "wm_image_block_3_LmLwpJ",

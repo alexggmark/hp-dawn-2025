@@ -137,6 +137,67 @@
     "cart_color_scheme": "scheme-1",
     "default_banner_lighttext": true,
     "default_invisible_header": true,
+    "sections": {
+      "main-password-header": {
+        "type": "main-password-header",
+        "settings": {
+          "color_scheme": "scheme-1"
+        }
+      },
+      "main-password-footer": {
+        "type": "main-password-footer",
+        "settings": {
+          "color_scheme": "scheme-1"
+        }
+      }
+    },
+    "content_for_index": [],
+    "blocks": {
+      "6810535121229352664": {
+        "type": "shopify://apps/monster-cart-upsell-free-gifts/blocks/app-embed/a1b8e58a-bf1d-4e0f-8768-a387c3f643c0",
+        "disabled": false,
+        "settings": {
+          "markets_rounding": false,
+          "send_gtag_atc": false,
+          "disable_tiktok_tracking": false,
+          "disable_klaviyo_tracking": false,
+          "stop_cart_page": true,
+          "apply_discount_before_checkout": false,
+          "bag_selector": "#cart-count-number-for-monster",
+          "hide_when_opened": "",
+          "show_item_properties": false,
+          "stop_shopify_rate": false,
+          "dev_mode": false,
+          "beta_version": false,
+          "custom_code": "<script>\n    // custom code here\n</script>"
+        }
+      },
+      "11532412952436166569": {
+        "type": "shopify://apps/loox-reviews/blocks/loox-inject/5c3b337f-fd14-4df5-b1d6-80ec13e6e28e",
+        "disabled": false,
+        "settings": {}
+      },
+      "11797761893487868451": {
+        "type": "shopify://apps/convertflow/blocks/convertflow_script/f6367d00-7b7b-4ff9-aea4-2576ea814ccc",
+        "disabled": false,
+        "settings": {}
+      },
+      "855628211100114053": {
+        "type": "shopify://apps/klaviyo-email-marketing-sms/blocks/klaviyo-onsite-embed/2632fe16-c075-4321-a88b-50b567f42507",
+        "disabled": false,
+        "settings": {}
+      },
+      "15351435345818755577": {
+        "type": "shopify://apps/pandectes-gdpr/blocks/banner/58c0baa2-6cc1-480c-9ea6-38d6d559556a",
+        "disabled": false,
+        "settings": {}
+      },
+      "8258174021033898507": {
+        "type": "shopify://apps/segment/blocks/LittledataLayer/901e78a7-344b-49bf-b4cb-155b4c714d58",
+        "disabled": false,
+        "settings": {}
+      }
+    },
     "color_schemes": {
       "scheme-1": {
         "settings": {
@@ -192,62 +253,6 @@
           "secondary_button_label": "#ffffff",
           "shadow": "#121212"
         }
-      }
-    },
-    "sections": {
-      "main-password-header": {
-        "type": "main-password-header",
-        "settings": {
-          "color_scheme": "scheme-1"
-        }
-      },
-      "main-password-footer": {
-        "type": "main-password-footer",
-        "settings": {
-          "color_scheme": "scheme-1"
-        }
-      }
-    },
-    "content_for_index": [],
-    "blocks": {
-      "6810535121229352664": {
-        "type": "shopify://apps/monster-cart-upsell-free-gifts/blocks/app-embed/a1b8e58a-bf1d-4e0f-8768-a387c3f643c0",
-        "disabled": false,
-        "settings": {
-          "markets_rounding": false,
-          "send_gtag_atc": false,
-          "disable_tiktok_tracking": false,
-          "disable_klaviyo_tracking": false,
-          "stop_cart_page": true,
-          "apply_discount_before_checkout": false,
-          "bag_selector": "#cart-count-number-for-monster",
-          "hide_when_opened": "",
-          "show_item_properties": false,
-          "stop_shopify_rate": false,
-          "dev_mode": false,
-          "beta_version": false,
-          "custom_code": "<script>\n    // custom code here\n</script>"
-        }
-      },
-      "11797761893487868451": {
-        "type": "shopify://apps/convertflow/blocks/convertflow_script/f6367d00-7b7b-4ff9-aea4-2576ea814ccc",
-        "disabled": false,
-        "settings": {}
-      },
-      "855628211100114053": {
-        "type": "shopify://apps/klaviyo-email-marketing-sms/blocks/klaviyo-onsite-embed/2632fe16-c075-4321-a88b-50b567f42507",
-        "disabled": false,
-        "settings": {}
-      },
-      "15351435345818755577": {
-        "type": "shopify://apps/pandectes-gdpr/blocks/banner/58c0baa2-6cc1-480c-9ea6-38d6d559556a",
-        "disabled": false,
-        "settings": {}
-      },
-      "8258174021033898507": {
-        "type": "shopify://apps/segment/blocks/LittledataLayer/901e78a7-344b-49bf-b4cb-155b4c714d58",
-        "disabled": false,
-        "settings": {}
       }
     }
   },

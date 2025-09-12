@@ -14,7 +14,7 @@
 {% endcomment %}
 
 {%- unless skip_styles -%}
-  {{ 'component-rating.css' | asset_url | stylesheet_tag }}
+  {{ 'wm__component-rating.css' | asset_url | stylesheet_tag }}
   {{ 'wm__component-price.css' | asset_url | stylesheet_tag }}
   {{ 'quick-order-list.css' | asset_url | stylesheet_tag }}
   {{ 'quantity-popover.css' | asset_url | stylesheet_tag }}
@@ -222,8 +222,8 @@
               {% comment %} -- (D) Review stars -- {% endcomment %}
               {% comment %} ---------------------- {% endcomment %}
               <div class="_flex _items-center [grid-area:D] md:_justify-self-end">
-                {% comment %} {% render 'wm__rating-stars-loox', product: card_product, force_show_empty: false %} {% endcomment %}
-                <div class="klaviyo-star-rating-widget" data-id="{{card_product.id}}" data-product-title="{{card_product.title}}" data-product-type="{{card_product.type}}"></div>
+                {% render 'wm__rating-stars', main_product: card_product %}
+                {% comment %} <div class="klaviyo-star-rating-widget" data-id="{{card_product.id}}" data-product-title="{{card_product.title}}" data-product-type="{{card_product.type}}"></div> {% endcomment %}
               </div>
             {%- endunless -%}
           </div>

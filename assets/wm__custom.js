@@ -1,3 +1,105 @@
+// Main Klaviyo rating controls
+// Storing in "wm__custom" because it's used on more than 50% of pages on site
+class ProductRating extends HTMLElement {
+  connectedCallback() {
+    if (this._bound) return;
+    this._bound = true;
+
+    this.loadedClass = 'js-has-reviews';
+    this.fallbackClass = 'js-fallback-reviews';
+    // This was originally 1200 timeout, might have to check this is safe
+    this.timeoutMs = parseInt(this.getAttribute('timeout') || '600', 10);
+
+    const hasContent = (el) => {
+      const first = el?.firstElementChild;
+      if (!first) return false;
+      return ((first.textContent || '').trim() !== '') || !!first.querySelector('*');
+    };
+
+    const cleanup = () => {
+      if (this._mo) { this._mo.disconnect(); this._mo = null; }
+      if (this._fallbackTimer) { clearTimeout(this._fallbackTimer); this._fallbackTimer = null; }
+    };
+
+    const setLoaded = (widget) => {
+      this.classList.add(this.loadedClass);
+      this.classList.remove(this.fallbackClass);
+      widget?.setAttribute('aria-hidden', 'false');
+      cleanup();
+    };
+
+    const evaluate = () => {
+      const widget = this.querySelector('.klaviyo-star-rating-widget');
+      if (!widget) return false;
+
+      if (hasContent(widget)) {
+        setLoaded(widget);
+        return true;
+      }
+      return false;
+    };
+
+    // weird JS but this basically means "evaluate" runs after DOM finished loading in elements (because Klaviyo is slow!)
+    queueMicrotask(() => {
+      if (evaluate()) return;
+
+      const target = this;
+      this._mo = new MutationObserver(() => { if (evaluate()) cleanup(); });
+      this._mo.observe(target, { childList: true, subtree: true, characterData: true });
+
+      // only show fallback after timeout if still no klav (stops flickering)
+      this._fallbackTimer = setTimeout(() => {
+        if (!evaluate()) {
+          this.classList.add(this.fallbackClass);
+        }
+        // remove observer
+        cleanup();
+      }, this.timeoutMs);
+    });
+  }
+
+  disconnectedCallback() {
+    if (this._mo) this._mo.disconnect();
+    if (this._fallbackTimer) clearTimeout(this._fallbackTimer);
+  }
+}
+
+customElements.define('product-rating', ProductRating);
+
+// Used to generate working "Add to Cart" when CTA rendered dynamically
+async function globalMonsterCartFunction(event, variantId, product, quantity) {
+  console.log("globalMonsterCartFunction");
+  if (typeof window.monster_addToCart !== 'function') return;
+  
+  event.preventDefault();
+
+  const CTA = event.currentTarget;
+  const id = variantId ? variantId : product.variants[0].id;
+
+  CTA.setAttribute('aria-disabled', true);
+  CTA.classList.add('loading');
+  CTA.querySelector('.loading__spinner').classList.remove('hidden');
+
+  try {
+    await new Promise((resolve, reject) => {
+      try {
+        window.monster_addToCart({ id, quantity }, true, () => {
+          resolve();
+        });
+      } catch (err) {
+        reject(err);
+      }
+    });
+  } catch (e) {
+    console.error(e);
+  } finally {
+    CTA.removeAttribute('aria-disabled');
+    CTA.classList.remove('loading');
+    CTA.querySelector('.loading__spinner').classList.add('hidden');
+  }
+}
+
+// Main carousel controller
 class EmblaSlider extends HTMLElement {
   constructor() {
     super();
@@ -162,11 +264,14 @@ class AnimatedDetails extends HTMLElement {
 
     if (!this.details || !this.summary || !this.content) return;
 
-    this.details.removeAttribute('open');
-    this.content.style.overflow = 'hidden';
-    this.content.style.opacity = 0;
-    this.content.style.height = '0px';
-    this.content.style.display = 'none';
+    // Adding in check to allow details to be "open" by default
+    if (!this.details.hasAttribute('open')) {
+      this.details.removeAttribute('open');
+      this.content.style.overflow = 'hidden';
+      this.content.style.opacity = 0;
+      this.content.style.height = '0px';
+      this.content.style.display = 'none';
+    }
 
     this.summary.addEventListener('click', (e) => {
       e.preventDefault();
