@@ -137,11 +137,14 @@ details[open].menu-opening > .menu-drawer__submenu {
   z-index: 1;
   transform: translateX(100%);
   visibility: hidden;
-}
-
-.js .menu-drawer__submenu .menu-drawer__submenu {
+  /* Alex - fix to allow vertical scroll */
   overflow-y: auto;
 }
+
+/* Alex - removing this, from old layout, make sure safe */
+/* .js .menu-drawer__submenu .menu-drawer__submenu {
+  overflow-y: auto;
+} */
 
 .menu-drawer__close-button {
   /* margin-top: 1.5rem; */
