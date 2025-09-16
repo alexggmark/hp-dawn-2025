@@ -1,52 +1,22 @@
-/* Alex's SegmentClient object
-  (Note: this is for safely sending analytics.track() and .identify() events without confusion; we use cookies to be safer)
-
-  Usage: from anywhere on site (i.e. inside a ConvertFlow JS snippet) you can run these commands:
-
-  - SegmentClient.setTrait('trait_name', 'trait_value') - store singular trait
-  - SegmentClient.setTraits({'trait_name1': 'trait_value1', 'trait_name2': 'trait_value2'}) - store multiple traits
-  - SegmentClient.identify(null) - push all stored traits anonymously
-  - SegmentClient.identify(user@email.com) - push all stored traits with email (once you have it)
-  - SegmentClient.trackEvent('event_name', {'property1': 'value1', 'property2': 'value2'})
-  - SegmentClient.reset() - just in case you want to clear everything in localStorage
-*/
-
-/*
-window.addEventListener("cfSubmit", function (e) {
-  const data = e.detail;
-
-  if (data.step_name == "Quiz" && data.step == 2) {
-    SegmentClient.trackEvent("2025 Skin Quiz Started", {
-      quiz_id: data.cta?.id,
-      quiz_name: data.cta?.name
-    });
-  }
-
-  if (data.step_name == "Quiz") {
-    SegmentClient.setTraits(data.fields);
-
-  } else if (data.step_name == "Email Form") {
-    SegmentClient.identify(data.fields.email);
-    SegmentClient.trackEvent("2025 Skin Quiz Completed", {
-      quiz_id: data.cta?.id,
-      quiz_name: data.cta?.name,
-      variant: data.variant,
-      answers: window.quizAnswers
-    });
-  }
-});
-*/
-
 (function (w) {
   if (!w) return;
 
   const NS = 'segment_client_v1';
   const KEYS = {
     TRAITS: `${NS}__queued_traits`,
-    FIRST_TOUCH_FLAG: `${NS}__first_touch_stored`,
+    TOUCHES: `${NS}__touches_v2`,
+    TOUCH_WRITE_LOCK: `${NS}__touch_lock`,
   };
 
-  // Safe storage helpers (no-throw)
+  const CONFIG = {
+    maxTouches: 5,
+    minHoursBetweenTouches: 48,
+    requireMeaningfulChange: true,
+  };
+
+  const TOUCH_NAMES = ['first', 'second', 'third', 'fourth', 'fifth'];
+
+  // ---------- Safe storage ----------
   const storage = {
     get(key, fallback) {
       try {
@@ -57,18 +27,14 @@ window.addEventListener("cfSubmit", function (e) {
       }
     },
     set(key, val) {
-      try {
-        w.localStorage.setItem(key, JSON.stringify(val));
-      } catch (_) {}
+      try { w.localStorage.setItem(key, JSON.stringify(val)); } catch (_) {}
     },
     remove(key) {
-      try {
-        w.localStorage.removeItem(key);
-      } catch (_) {}
+      try { w.localStorage.removeItem(key); } catch (_) {}
     },
   };
 
-  // ---- Cleaning ----
+  // ---------- Cleaning ----------
   function cleanValue(v) {
     if (v == null) return undefined;
     if (v instanceof Date) return v.toISOString();
@@ -91,7 +57,6 @@ window.addEventListener("cfSubmit", function (e) {
     }
     return v;
   }
-
   function cleanTraits(raw) {
     const out = {};
     Object.entries(raw || {}).forEach(([k, v]) => {
@@ -99,6 +64,124 @@ window.addEventListener("cfSubmit", function (e) {
       if (cv !== undefined) out[k] = cv;
     });
     return out;
+  }
+
+  // ---------- Helpers ----------
+  function nowISO() { return new Date().toISOString(); }
+  function hoursSince(iso) {
+    if (!iso) return Infinity;
+    const then = new Date(iso).getTime();
+    if (isNaN(then)) return Infinity;
+    return (Date.now() - then) / 36e5;
+  }
+  function getRefDomain(ref) {
+    try {
+      if (!ref) return undefined;
+      const u = new URL(ref);
+      return u.hostname.replace(/^www\./, '');
+    } catch {
+      return undefined;
+    }
+  }
+  function getLandingPath(href) {
+    try { return new URL(href).pathname || '/'; } catch { return '/'; }
+  }
+  function pickUTMsFromURL(u) {
+    const qp = new URL(u).searchParams;
+    const utm_source = qp.get('utm_source') || undefined;
+    const utm_medium = qp.get('utm_medium') || undefined;
+    const utm_campaign = qp.get('utm_campaign') || undefined;
+    const utm_term = qp.get('utm_term') || undefined;
+    const utm_content = qp.get('utm_content') || undefined;
+    const any = utm_source || utm_medium || utm_campaign || utm_term || utm_content;
+    return any ? { source: utm_source, medium: utm_medium, campaign: utm_campaign, term: utm_term, content: utm_content } : null;
+  }
+  function utmEqual(a, b) {
+    if (!a && !b) return true;
+    if (!a || !b) return false;
+    return ['source','medium','campaign','term','content'].every(k => (a[k] || null) === (b[k] || null));
+  }
+
+  // Decide if the current visit is new touch relative to the last recorded touch
+  function shouldAddNewTouch(touches, current) {
+    if (!touches.length) return true;
+    const last = touches[touches.length - 1];
+
+    // cooldown
+    if (hoursSince(last.at) < CONFIG.minHoursBetweenTouches) return false;
+
+    if (!CONFIG.requireMeaningfulChange) return true;
+
+    const lastHasUTM = !!last.utm;
+    const curHasUTM  = !!current.utm;
+
+    // If either side has UTMs, require UTMs to differ to count as a new touch
+    if (lastHasUTM || curHasUTM) {
+      return !utmEqual(last.utm, current.utm);
+    }
+
+    // When neither side has UTMs, fall back to referrer domain change
+    const lastRef = last.ref_domain || null;
+    const curRef  = current.ref_domain || null;
+    return (lastRef !== curRef);
+  }
+
+  function flattenTouchesToTraits(touches) {
+    const traits = {};
+    const limit = Math.min(touches.length, CONFIG.maxTouches);
+
+    for (let i = 0; i < limit; i++) {
+      const label = TOUCH_NAMES[i]; // first, second, ...
+      const t = touches[i];
+
+      traits[`${label}_touch_at`] = t.at;
+      traits[`${label}_touch_url`] = t.url;
+      traits[`${label}_touch_path`] = t.path;
+      traits[`${label}_touch_referrer_domain`] = t.ref_domain || undefined;
+
+      // UTM flatten
+      if (t.utm) {
+        traits[`${label}_touch_source`] = t.utm.source || undefined;
+        traits[`${label}_touch_medium`] = t.utm.medium || undefined;
+        traits[`${label}_touch_campaign`] = t.utm.campaign || undefined;
+        traits[`${label}_touch_term`] = t.utm.term || undefined;
+        traits[`${label}_touch_content`] = t.utm.content || undefined;
+      }
+    }
+
+    // Always include "last touch" snapshot
+    const last = touches[limit - 1];
+    if (last) {
+      traits.last_touch_at = last.at;
+      traits.last_touch_url = last.url;
+      traits.last_touch_path = last.path;
+      traits.last_touch_referrer_domain = last.ref_domain || undefined;
+      if (last.utm) {
+        traits.last_touch_source = last.utm.source || undefined;
+        traits.last_touch_medium = last.utm.medium || undefined;
+        traits.last_touch_campaign = last.utm.campaign || undefined;
+        traits.last_touch_term = last.utm.term || undefined;
+        traits.last_touch_content = last.utm.content || undefined;
+      }
+    }
+
+    // Backward-compat for anything using only "first"
+    if (touches[0]) {
+      const t0 = touches[0];
+      traits.first_touch_at = t0.at;
+      traits.first_touch_url = t0.url;
+      traits.first_touch_path = t0.path;
+      traits.first_touch_referrer_domain = t0.ref_domain || undefined;
+      if (t0.utm) {
+        traits.utm_source = t0.utm.source || undefined;
+        traits.utm_medium = t0.utm.medium || undefined;
+        traits.utm_campaign = t0.utm.campaign || undefined;
+        traits.utm_term = t0.utm.term || undefined;
+        traits.utm_content = t0.utm.content || undefined;
+      }
+    }
+
+    return cleanTraits(traits);
   }
 
   const SegmentClient = {
@@ -111,17 +194,14 @@ window.addEventListener("cfSubmit", function (e) {
       if (this.debug) console.log('[SegmentClient] init', this.traits);
     },
 
-    // Stores singular trait in local storage
     setTrait(key, value) {
       const cv = cleanValue(value);
       if (cv === undefined) delete this.traits[key];
       else this.traits[key] = cv;
-
       storage.set(KEYS.TRAITS, this.traits);
       if (this.debug) console.log(`[SegmentClient] setTrait: ${key} =`, cv);
     },
 
-    // Stores multiples traits in local storage as an object
     setTraits(obj = {}) {
       const cleaned = cleanTraits(obj);
       this.traits = { ...this.traits, ...cleaned };
@@ -129,8 +209,6 @@ window.addEventListener("cfSubmit", function (e) {
       if (this.debug) console.log('[SegmentClient] setTraits', cleaned);
     },
 
-    // Push a singular "event" to Segment
-    // - Not using localStorage here just because "events" fire too often and are less important (e.g. page scroll on every page)
     trackEvent(name, props = {}) {
       if (typeof w.analytics === 'undefined') {
         if (this.debug) console.warn('[SegmentClient] analytics not ready: track dropped');
@@ -145,13 +223,10 @@ window.addEventListener("cfSubmit", function (e) {
       }
     },
 
-    // Push localStorage traits to Segment via .identify() call
-    // - Can use with OR without userID (e.g. run SegmentClient.identify(null) to be anonymous, or SegmentClient.identify(user@email.com))
     identify(userId, extraTraits = {}) {
       const stored = storage.get(KEYS.TRAITS, {});
       const merged = cleanTraits({ ...stored, ...this.traits, ...extraTraits });
 
-      // If analytics isn't available, keep traits and bail
       if (typeof w.analytics === 'undefined') {
         if (this.debug) console.warn('[SegmentClient] analytics not ready: identify skipped (traits kept)');
         this.traits = merged;
@@ -166,12 +241,10 @@ window.addEventListener("cfSubmit", function (e) {
             w.analytics.identify(userId.trim(), merged);
             if (this.debug) console.log('[SegmentClient] identify (with id)', userId, merged);
           } else {
-            // anonymous identify – attaches traits to the current anonymous profile
             w.analytics.identify(merged);
             if (this.debug) console.log('[SegmentClient] identify (anonymous)', merged);
           }
-
-          // Clear only after a successful identify
+          // only clear queued local traits we manage
           this.traits = {};
           storage.remove(KEYS.TRAITS);
           return true;
@@ -183,125 +256,84 @@ window.addEventListener("cfSubmit", function (e) {
         }
       };
 
-      // Prefer Segment's ready hook to avoid racing the loader
-      if (typeof w.analytics.ready === 'function') {
+      if (typeof w.analytics?.ready === 'function') {
         w.analytics.ready(exec);
-        return true; // scheduled
+        return true;
       } else {
         return exec();
       }
     },
 
-    setConsent(consent = false) {
-      // window.addEventListener('cfSubmit', function (e) {
-      // const d = e.detail || {};
-      // if (d.step_name !== 'Email Form') return;
-
-      // const email = (d.fields?.email || '').trim();
-      // const optedIn = !!d.fields?.email_opt_in; // your CF checkbox field
-
-      let prev = null;
-      try {
-        const u = window.analytics?.user?.();
-        const t = u ? (typeof u.traits === 'function' ? u.traits() : u.traits) : null;
-        prev = t?.consents?.email?.status || null;
-      } catch (_) {}
-
-      if (optedIn) {
-        SegmentClient.identify(email || null, {
-          consents: {
-            email: {
-              status: 'subscribed',
-              collected_at: new Date().toISOString(),
-              collected_from: 'convertflow_form',
-              collected_text_version: 'v1',
-              jurisdiction: 'UK-PECR/GDPR'
-            }
-          }
-        });
-      } else {
-        // Do NOT auto-unsubscribe just because box is unchecked.
-        // If they’ve never subscribed, keep/mark as never_subscribed; otherwise leave as-is.
-        if (!prev || prev === 'never_subscribed') {
-          SegmentClient.identify(email || null, {
-            consents: {
-              email: {
-                status: 'never_subscribed',
-                collected_at: new Date().toISOString(),
-                collected_from: 'convertflow_form',
-                collected_text_version: 'v1',
-                jurisdiction: 'UK-PECR/GDPR'
-              }
-            }
-          });
-        } else {
-          SegmentClient.identify(email || null, {}); // attach other traits if you have them
-        }
-      }
-    },
-
-    // Push "First Touch" data (with URL params) to Segment IF first touch cookie doesn't exist/trait doesn't exist
-    storeFirstTouch() {
-      // 1) Device-level bail.
-      if (storage.get(KEYS.FIRST_TOUCH_FLAG, null)) return;
+    // NEW: generalized multi-touch capture (first..fifth + last)
+    storeTouch() {
+      // lightweight lock to prevent concurrent double-writes on fast nav
+      const lock = storage.get(KEYS.TOUCH_WRITE_LOCK, null);
+      if (lock && Date.now() - lock < 1500) return;
+      storage.set(KEYS.TOUCH_WRITE_LOCK, Date.now());
 
       const run = () => {
         if (!w.analytics) {
-          setTimeout(run, 250);
+          setTimeout(run, 200);
           return;
         }
 
-        // 2) Check current profile traits (anonymous or identified).
-        const u = (typeof w.analytics.user === 'function') ? w.analytics.user() : null;
-        const traits = u ? (typeof u.traits === 'function' ? u.traits() : u.traits) : null;
+        // Build the current touch context
+        const cur = {
+          at: nowISO(),
+          url: w.location.href,
+          path: getLandingPath(w.location.href),
+          ref_domain: getRefDomain(document.referrer),
+          utm: pickUTMsFromURL(w.location.href)
+        };
 
-        // If first_touch already exists on profile, mirror locally and stop.
-        if (traits && (traits.first_touch_at || traits.firstTouchAt)) {
-          storage.set(KEYS.FIRST_TOUCH_FLAG, { mirrored: true, at: Date.now() });
-          if (SegmentClient.debug) console.log('[SegmentClient] first touch exists on profile, mirrored');
+        let touches = storage.get(KEYS.TOUCHES, []);
+        touches = Array.isArray(touches) ? touches : [];
+
+        let added = false;
+
+        if (!touches.length) {
+          touches.push(cur);
+          added = true;
+        } else {
+          // Decide if current visit should become a new touch
+          if (touches.length < CONFIG.maxTouches && shouldAddNewTouch(touches, cur)) {
+            touches.push(cur);
+            added = true;
+          } else {
+            // blank on purpose
+          }
+        }
+
+        // Persist locally
+        storage.set(KEYS.TOUCHES, touches);
+        storage.set(KEYS.TOUCH_WRITE_LOCK, null);
+
+        // Flatten to traits and enqueue locally so any later identify() includes them
+        const flattened = flattenTouchesToTraits(touches);
+        this.setTraits(flattened);
+
+        if (!added) {
+          if (this.debug) console.log('[SegmentClient] touch not added (cooldown or not meaningful); traits updated for last touch snapshot');
           return;
         }
 
-        // 3) Build payload, persist locally, and send identify (anon or identified).
-        const qp = new URL(w.location.href).searchParams;
-        const payload = cleanTraits({
-          first_touch_at: new Date().toISOString(),
-          utm_source: qp.get('utm_source'),
-          utm_medium: qp.get('utm_medium'),
-          utm_campaign: qp.get('utm_campaign'),
-          utm_term: qp.get('utm_term'),
-          utm_content: qp.get('utm_content'),
-          referrer: document.referrer || undefined,
-          first_touch_url: w.location.href
-        });
-
-        // Save to local traits so it's included in your next identify as well
-        SegmentClient.setTraits(payload);
-
+        // Send an immediate identify with the updated touch traits
         try {
-          // If already identified, send with id; otherwise anonymous identify
+          const u = (typeof w.analytics.user === 'function') ? w.analytics.user() : null;
           const id = u ? (typeof u.id === 'function' ? u.id() : u.id) : null;
           if (id) {
-            if (SegmentClient.debug) console.log('Running firstTouch identify - with user ID');
-            w.analytics.identify(id, payload);
+            if (this.debug) console.log('[SegmentClient] sending identify for new touch (identified)');
+            w.analytics.identify(id, flattened);
           } else {
-            if (SegmentClient.debug) console.log('Running firstTouch identify - without user ID');
-            w.analytics.identify(payload);
-          }
-
-          // Mark success (prevents re-sending next page)
-          storage.set(KEYS.FIRST_TOUCH_FLAG, { storedAt: Date.now() });
-          if (SegmentClient.debug) {
-            console.log('[SegmentClient] first touch identify sent', id ? '(identified)' : '(anonymous)', payload);
+            if (this.debug) console.log('[SegmentClient] sending identify for new touch (anonymous)');
+            w.analytics.identify(flattened);
           }
         } catch (e) {
-          if (SegmentClient.debug) console.warn('[SegmentClient] first touch identify failed; will retry', e);
-          // Do NOT set the flag; we'll try again on a later page.
+          if (this.debug) console.warn('[SegmentClient] identify for new touch failed; traits remain queued', e);
         }
       };
 
-      // 4) Prefer Segment's ready hook; otherwise schedule soon.
-      if (w.analytics && typeof w.analytics.ready === 'function') {
+      if (typeof w.analytics?.ready === 'function') {
         w.analytics.ready(run);
       } else if ('requestIdleCallback' in w) {
         w.requestIdleCallback(run, { timeout: 1000 });
@@ -310,11 +342,73 @@ window.addEventListener("cfSubmit", function (e) {
       }
     },
 
-    // Clear everything (local)
+    // Call like: SegmentClient.setConsent({ email, optedIn, source: 'convertflow_form', textVersion: 'v1' })
+    // Alex - all of these are default values except email + optedIn - so can leave blank
+    setConsent({
+      email = null,
+      optedIn = null,
+      channel = 'email',
+      source = 'convertflow_form',
+      textVersion = 'v1',
+      jurisdiction = 'UK-PECR/GDPR',
+      extraTraits = {} // any additional traits to attach alongside consent
+    } = {}) {
+      // Normalize email
+      const userId = (typeof email === 'string' && email.trim()) ? email.trim() : null;
+
+      // Read previous consent (best-effort)
+      let prev = null;
+      try {
+        const u = window.analytics?.user?.();
+        const t = u ? (typeof u.traits === 'function' ? u.traits() : u.traits) : null;
+        prev = t?.consents?.[channel]?.status || null; // e.g. 'subscribed' | 'unsubscribed' | 'never_subscribed'
+      } catch (_) {}
+
+      // Decide the next status
+      let nextStatus = null;
+
+      if (optedIn === true) {
+        // Positive opt-in always upgrades to 'subscribed'
+        nextStatus = 'subscribed';
+      } else if (optedIn === false) {
+        // Do NOT auto-unsubscribe if they were subscribed before.
+        // If there's no prior consent, record as never_subscribed; otherwise keep existing.
+        if (!prev || prev === 'never_subscribed') {
+          nextStatus = 'never_subscribed';
+        } else {
+          // Keep prev (subscribed or unsubscribed) without changing it.
+          nextStatus = prev;
+        }
+      } else {
+        // optedIn === null (unknown/no change) → don't touch consent status
+        nextStatus = prev || 'never_subscribed';
+      }
+
+      // Build consent trait payload
+      const consentTrait = {
+        consents: {
+          [channel]: {
+            status: nextStatus,
+            collected_at: new Date().toISOString(),
+            collected_from: source,
+            collected_text_version: textVersion,
+            jurisdiction
+          }
+        }
+      };
+
+      // Merge any extras (e.g., CF quiz fields) and send via your safe identify wrapper
+      const traits = { ...consentTrait, ...extraTraits };
+
+      // Identify with or without email (wrapper will queue if analytics isn't ready)
+      this.identify(userId, traits);
+    },
+
     reset() {
       this.traits = {};
       storage.remove(KEYS.TRAITS);
-      storage.remove(KEYS.FIRST_TOUCH_FLAG);
+      storage.remove(KEYS.TOUCHES);
+      storage.remove(KEYS.TOUCH_WRITE_LOCK);
       if (this.debug) console.log('[SegmentClient] reset');
     }
   };
@@ -322,6 +416,6 @@ window.addEventListener("cfSubmit", function (e) {
   w.SegmentClient = SegmentClient;
 })(typeof window !== 'undefined' ? window : null);
 
-// Init and run on every page
+// Init + run on every pageview
 SegmentClient.init({ debug: true });
-SegmentClient.storeFirstTouch();
+SegmentClient.storeTouch(); // replaces storeFirstTouch()
