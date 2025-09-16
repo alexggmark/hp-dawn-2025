@@ -342,66 +342,91 @@
       }
     },
 
-    // Call like: SegmentClient.setConsent({ email, optedIn, source: 'convertflow_form', textVersion: 'v1' })
+    // Call like: SegmentClient.setConsent({ email, optedIn, source: 'convertflow_form' })
     // Alex - all of these are default values except email + optedIn - so can leave blank
+    /*
+    Can use like:
+    window.addEventListener('cfSubmit', function (e) {
+      const d = e.detail || {};
+      if (d.step_name !== 'Email Form') return;
+
+      SegmentClient.setConsent({
+        email: (d.fields?.email || '').trim() || null,
+        optedIn: !!d.fields?.email_opt_in,   // your CF opt-in checkbox field
+        source: 'convertflow_form',
+        jurisdiction: 'UK-PECR/GDPR',
+        extraTraits: {
+          // anything else you want attached at this moment
+          form_variant: d.variant,
+          collected_flow: d.cta?.name
+        }
+      });
+
+      Or more simply:
+      SegmentClient.setConsent({
+        email: (d.fields?.email || '').trim() || null,
+        optedIn: !!d.fields?.email_opt_in,
+      });
+    });
+    */
+
     setConsent({
       email = null,
-      optedIn = null,
+      optedIn = null,                 // true | false | null (no change)
       channel = 'email',
       source = 'convertflow_form',
-      textVersion = 'v1',
       jurisdiction = 'UK-PECR/GDPR',
-      extraTraits = {} // any additional traits to attach alongside consent
+      extraTraits = {}
     } = {}) {
-      // Normalize email
       const userId = (typeof email === 'string' && email.trim()) ? email.trim() : null;
 
-      // Read previous consent (best-effort)
-      let prev = null;
+      // Read previous traits (best-effort)
+      let prevStatus = null;
+      let prevConsents = null;
       try {
         const u = window.analytics?.user?.();
         const t = u ? (typeof u.traits === 'function' ? u.traits() : u.traits) : null;
-        prev = t?.consents?.[channel]?.status || null; // e.g. 'subscribed' | 'unsubscribed' | 'never_subscribed'
+        prevConsents = (t && t.consents) || null;
+        prevStatus = prevConsents?.[channel]?.status || null; // 'subscribed' | 'unsubscribed' | 'never_subscribed' | null
       } catch (_) {}
 
-      // Decide the next status
-      let nextStatus = null;
-
+      // Decide next status
+      let nextStatus;
       if (optedIn === true) {
-        // Positive opt-in always upgrades to 'subscribed'
         nextStatus = 'subscribed';
       } else if (optedIn === false) {
-        // Do NOT auto-unsubscribe if they were subscribed before.
-        // If there's no prior consent, record as never_subscribed; otherwise keep existing.
-        if (!prev || prev === 'never_subscribed') {
-          nextStatus = 'never_subscribed';
-        } else {
-          // Keep prev (subscribed or unsubscribed) without changing it.
-          nextStatus = prev;
-        }
+        // Do not auto-downgrade a subscribed user
+        nextStatus = (!prevStatus || prevStatus === 'never_subscribed') ? 'never_subscribed' : prevStatus;
       } else {
-        // optedIn === null (unknown/no change) → don't touch consent status
-        nextStatus = prev || 'never_subscribed';
+        // optedIn === null → no change intended
+        nextStatus = prevStatus || 'never_subscribed';
       }
 
-      // Build consent trait payload
-      const consentTrait = {
-        consents: {
-          [channel]: {
-            status: nextStatus,
-            collected_at: new Date().toISOString(),
-            collected_from: source,
-            collected_text_version: textVersion,
-            jurisdiction
-          }
+      // If nothing changed and no new email and no extra traits → skip
+      const statusChanged = nextStatus !== prevStatus;
+      const hasNewEmail = !!userId && !prevStatus; // treat first-time identify with email as meaningful
+      const hasExtras = extraTraits && Object.keys(extraTraits).length > 0;
+
+      if (!statusChanged && !hasNewEmail && !hasExtras) {
+        if (this.debug) console.log('[SegmentClient] setConsent: no-op (no change)');
+        return false;
+      }
+
+      // Merge consents object so we don't wipe other channels
+      const mergedConsents = {
+        ...(prevConsents || {}),
+        [channel]: {
+          status: nextStatus,
+          collected_at: new Date().toISOString(),
+          collected_from: source,
+          jurisdiction
         }
       };
 
-      // Merge any extras (e.g., CF quiz fields) and send via your safe identify wrapper
-      const traits = { ...consentTrait, ...extraTraits };
+      const traits = { consents: mergedConsents, ...extraTraits };
 
-      // Identify with or without email (wrapper will queue if analytics isn't ready)
-      this.identify(userId, traits);
+      // Send via wrapper (queues if analytics not ready)
+      return this.identify(userId, traits);
     },
 
     reset() {
@@ -418,4 +443,4 @@
 
 // Init + run on every pageview
 SegmentClient.init({ debug: true });
-SegmentClient.storeTouch(); // replaces storeFirstTouch()
+SegmentClient.storeTouch();
