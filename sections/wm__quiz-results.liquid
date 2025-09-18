@@ -382,6 +382,65 @@
 {% comment %} 
   Code used in ConvertFlow to get to this page - just taking note here for safe-keeping:
 
+  🟢 This is same as code below, but using Segment JS in wm__segment-analytics-control.js
+  Kept in comments to show logic
+  <script>
+    // Keep most recent answers across steps
+    window.quizAnswers = {};
+
+    window.addEventListener("cfSubmit", function (e) {
+      const d = e.detail || {};
+      const fields = d.fields || {};
+
+      if (d.step_name === "Quiz") {
+        // Cache answers locally and queue as traits (no PII required here)
+        window.quizAnswers = { ...fields };
+        SegmentClient.setTraits(window.quizAnswers);
+        if (SegmentClient.debug) console.log("[CF] Quiz step captured traits:", window.quizAnswers);
+        return;
+      }
+
+      if (d.step_name === "Email Form") {
+        const email = (fields.email || "").trim() || null;
+        const optedIn = !!fields.email_opt_in; // <-- change if your CF checkbox uses a different key
+
+        // 1) Record consent safely (merges with existing consents; no downgrades)
+        SegmentClient.setConsent({
+          email,
+          optedIn,
+          source: "convertflow_form",
+          jurisdiction: "UK-PECR/GDPR",
+          extraTraits: {
+            // lightweight metadata tied to this consent capture
+            collected_flow: d.cta?.name,
+            form_variant: d.variant
+          }
+        });
+
+        // 2) Identify with email + any queued traits (includes quiz answers already queued)
+        //    Passing email again here is fine; wrapper will merge and clear local queue.
+        SegmentClient.identify(email, {
+          email,
+          // If you prefer to *not* duplicate all answers as top-level traits, remove the next line:
+          ...window.quizAnswers
+        });
+
+        // 3) Track quiz completion as an event
+        SegmentClient.trackEvent("2025 Skin Quiz Completed", {
+          quiz_id: d.cta?.id,
+          quiz_name: d.cta?.name,
+          variant: d.variant,
+          answers: window.quizAnswers
+        });
+
+        // Optional: clear answers after successful submit to avoid stale data across sessions
+        window.quizAnswers = {};
+        if (SegmentClient.debug) console.log("[CF] Email submit handled with consent + identify + track");
+      }
+    });
+  </script>
+
+  🔴 This is working code, but manual
   Custom code in main settings:
 
   <script>
