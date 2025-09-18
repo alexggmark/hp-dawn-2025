@@ -141,27 +141,11 @@
 
       // UTM flatten
       if (t.utm) {
-        traits[`${label}_touch_source`] = t.utm.source || undefined;
-        traits[`${label}_touch_medium`] = t.utm.medium || undefined;
+        traits[`${label}_touch_source`]   = t.utm.source   || undefined;
+        traits[`${label}_touch_medium`]   = t.utm.medium   || undefined;
         traits[`${label}_touch_campaign`] = t.utm.campaign || undefined;
-        traits[`${label}_touch_term`] = t.utm.term || undefined;
-        traits[`${label}_touch_content`] = t.utm.content || undefined;
-      }
-    }
-
-    // Always include "last touch" snapshot
-    const last = touches[limit - 1];
-    if (last) {
-      traits.last_touch_at = last.at;
-      traits.last_touch_url = last.url;
-      traits.last_touch_path = last.path;
-      traits.last_touch_referrer_domain = last.ref_domain || undefined;
-      if (last.utm) {
-        traits.last_touch_source = last.utm.source || undefined;
-        traits.last_touch_medium = last.utm.medium || undefined;
-        traits.last_touch_campaign = last.utm.campaign || undefined;
-        traits.last_touch_term = last.utm.term || undefined;
-        traits.last_touch_content = last.utm.content || undefined;
+        traits[`${label}_touch_term`]     = t.utm.term     || undefined;
+        traits[`${label}_touch_content`]  = t.utm.content  || undefined;
       }
     }
 
@@ -173,11 +157,11 @@
       traits.first_touch_path = t0.path;
       traits.first_touch_referrer_domain = t0.ref_domain || undefined;
       if (t0.utm) {
-        traits.utm_source = t0.utm.source || undefined;
-        traits.utm_medium = t0.utm.medium || undefined;
+        traits.utm_source   = t0.utm.source   || undefined;
+        traits.utm_medium   = t0.utm.medium   || undefined;
         traits.utm_campaign = t0.utm.campaign || undefined;
-        traits.utm_term = t0.utm.term || undefined;
-        traits.utm_content = t0.utm.content || undefined;
+        traits.utm_term     = t0.utm.term     || undefined;
+        traits.utm_content  = t0.utm.content  || undefined;
       }
     }
 
@@ -342,21 +326,6 @@
       }
     },
 
-    // Call like: SegmentClient.setConsent({ email, optedIn, source: 'convertflow_form' })
-    // Alex - all of these are default values except email + optedIn - so can leave blank
-    /*
-    Can use like:
-    window.addEventListener('cfSubmit', function (e) {
-      const d = e.detail || {};
-      if (d.step_name !== 'Email Form') return;
-
-      SegmentClient.setConsent({
-        email: (d.fields?.email || '').trim() || null,
-        optedIn: !!d.fields?.email_opt_in,
-      });
-    });
-    */
-
     setConsent({
       email = null,
       optedIn = null,
@@ -366,6 +335,8 @@
       extraTraits = {}
     } = {}) {
       const userId = (typeof email === 'string' && email.trim()) ? email.trim() : null;
+
+      if (this.debug) console.log('[SegmentClient] setConsent: running function');
 
       // Read previous traits (best-effort)
       let prevStatus = null;
@@ -431,76 +402,22 @@
 SegmentClient.init({ debug: true });
 SegmentClient.storeTouch();
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// 🔴🔴🔴 This is not a real function, it's just an example of code in use, 🔴🔴🔴
-// I'm not putting it in comments so we can actually visually understand it
-function notARealFunctionJustExampleCode() {
-  // 🟢 Example of ConvertFlow code that lives at top level of quiz ("custom JS")
-  // Keep most recent answers across steps
-  window.quizAnswers = {};
-  window.quizStarted = false;
-
-  window.addEventListener("cfSubmit", function (e) {
-    const d = e.detail || {};
-    const fields = d.fields || {};
-
-    if (d.step_name === "Quiz") {
-      window.quizAnswers = { ...fields };
-      SegmentClient.setTraits(window.quizAnswers);
-
-      if (!window.quizStarted) {
-        SegmentClient.trackEvent("2025 Skin Quiz Started", {
-          quiz_id: d.cta?.id,
-          quiz_name: d.cta?.name,
-          variant: d.variant
-        });
-        window.quizStarted = true; // prevent duplicate start events
-      }
-    }
-
-    if (d.step_name === "Email Form") {
-      const email = (fields.email || "").trim() || null;
-      const optedIn = !!fields.email_opt_in; // u can change to whatever consent checkbox is
-
-      // 1) Record consent safely (merges with existing consents; no downgrades)
-      SegmentClient.setConsent({
-        email,
-        optedIn,
-        source: "convertflow_form_skinquiz_2025"
+// This is just a debugger for ConvertFlow, it fires whenever something "happens" and reveals all data
+// E.g. when user clicks through a popup quiz, it fires everytime something happens
+if (SegmentClient.debug) {
+  window.addEventListener("DOMContentLoaded", function () {
+    [
+      "cfView",
+      "cfConversion",
+      "cfAnswer",
+      "cfSubmit",
+      "cfAddToCart",
+      "cfCompletion",
+      "cfClose"
+    ].forEach(function (eventType) {
+      window.addEventListener(eventType, function (e) {
+        console.log("[CF Debug]", eventType, e.detail);
       });
-
-      // 2) Identify with email + any queued traits (includes quiz answers already queued)
-      //    Passing email again here is fine; wrapper will merge and clear local queue.
-      SegmentClient.identify(email, {
-        email,
-        ...window.quizAnswers
-      });
-
-      // 3) Track quiz completion as an event
-      SegmentClient.trackEvent("2025 Skin Quiz Completed", {
-        quiz_id: d.cta?.id,
-        quiz_name: d.cta?.name,
-        variant: d.variant,
-        answers: window.quizAnswers
-      });
-
-      // Optional: clear answers after successful submit to avoid stale data across sessions
-      window.quizAnswers = {};
-      if (SegmentClient.debug) console.log("[CF] Email submit handled with consent + identify + track");
-    }
+    });
   });
 }

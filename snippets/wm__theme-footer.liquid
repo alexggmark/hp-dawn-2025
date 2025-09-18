@@ -16,33 +16,12 @@
 {% comment %} ------------------------ {% endcomment %}
 {% comment %} CUSTOM CART CONTROL FILE {% endcomment %}
 {% comment %} ------------------------ {% endcomment %}
+{% comment %} FIXME: turn back on later {% endcomment %}
 
-<script src="{{ 'wm__custom-cart-controls.js' | asset_url }}" defer="defer"></script>
+{% comment %} <script src="{{ 'wm__custom-cart-controls.js' | asset_url }}" defer="defer"></script> {% endcomment %}
 
 {% comment %} ------------------------ {% endcomment %}
 {% comment %} SEGMENT JAVASCRIPT FILES {% endcomment %}
 {% comment %} ------------------------ {% endcomment %}
 
 <script src="{{ 'wm__segment-analytics-control.js' | asset_url }}" defer="defer"></script>
-
-{% comment %} Testing ConvertFlow integration {% endcomment %}
-{% comment %}
-<script>
-console.log("Listening for ConvertFlow:")
-window.addEventListener("DOMContentLoaded", function () {
-  [
-    "cfView",
-    "cfConversion",
-    "cfAnswer",
-    "cfSubmit",
-    "cfAddToCart",
-    "cfCompletion",
-    "cfClose"
-  ].forEach(function (eventType) {
-    window.addEventListener(eventType, function (e) {
-      console.log("ConvertFlow event:", eventType, e.detail);
-    });
-  });
-});
-</script>
-{% endcomment %}
