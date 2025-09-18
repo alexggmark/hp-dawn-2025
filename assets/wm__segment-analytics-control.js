@@ -352,19 +352,6 @@
 
       SegmentClient.setConsent({
         email: (d.fields?.email || '').trim() || null,
-        optedIn: !!d.fields?.email_opt_in,   // your CF opt-in checkbox field
-        source: 'convertflow_form',
-        jurisdiction: 'UK-PECR/GDPR',
-        extraTraits: {
-          // anything else you want attached at this moment
-          form_variant: d.variant,
-          collected_flow: d.cta?.name
-        }
-      });
-
-      Or more simply:
-      SegmentClient.setConsent({
-        email: (d.fields?.email || '').trim() || null,
         optedIn: !!d.fields?.email_opt_in,
       });
     });
@@ -372,7 +359,7 @@
 
     setConsent({
       email = null,
-      optedIn = null,                 // true | false | null (no change)
+      optedIn = null,
       channel = 'email',
       source = 'convertflow_form',
       jurisdiction = 'UK-PECR/GDPR',
@@ -390,7 +377,6 @@
         prevStatus = prevConsents?.[channel]?.status || null; // 'subscribed' | 'unsubscribed' | 'never_subscribed' | null
       } catch (_) {}
 
-      // Decide next status
       let nextStatus;
       if (optedIn === true) {
         nextStatus = 'subscribed';
@@ -402,7 +388,7 @@
         nextStatus = prevStatus || 'never_subscribed';
       }
 
-      // If nothing changed and no new email and no extra traits → skip
+      // If nothing changed and no new email and no extra traits= skip
       const statusChanged = nextStatus !== prevStatus;
       const hasNewEmail = !!userId && !prevStatus; // treat first-time identify with email as meaningful
       const hasExtras = extraTraits && Object.keys(extraTraits).length > 0;
@@ -444,3 +430,77 @@
 // Init + run on every pageview
 SegmentClient.init({ debug: true });
 SegmentClient.storeTouch();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// 🔴🔴🔴 This is not a real function, it's just an example of code in use, 🔴🔴🔴
+// I'm not putting it in comments so we can actually visually understand it
+function notARealFunctionJustExampleCode() {
+  // 🟢 Example of ConvertFlow code that lives at top level of quiz ("custom JS")
+  // Keep most recent answers across steps
+  window.quizAnswers = {};
+  window.quizStarted = false;
+
+  window.addEventListener("cfSubmit", function (e) {
+    const d = e.detail || {};
+    const fields = d.fields || {};
+
+    if (d.step_name === "Quiz") {
+      window.quizAnswers = { ...fields };
+      SegmentClient.setTraits(window.quizAnswers);
+
+      if (!window.quizStarted) {
+        SegmentClient.trackEvent("2025 Skin Quiz Started", {
+          quiz_id: d.cta?.id,
+          quiz_name: d.cta?.name,
+          variant: d.variant
+        });
+        window.quizStarted = true; // prevent duplicate start events
+      }
+    }
+
+    if (d.step_name === "Email Form") {
+      const email = (fields.email || "").trim() || null;
+      const optedIn = !!fields.email_opt_in; // u can change to whatever consent checkbox is
+
+      // 1) Record consent safely (merges with existing consents; no downgrades)
+      SegmentClient.setConsent({
+        email,
+        optedIn,
+        source: "convertflow_form_skinquiz_2025"
+      });
+
+      // 2) Identify with email + any queued traits (includes quiz answers already queued)
+      //    Passing email again here is fine; wrapper will merge and clear local queue.
+      SegmentClient.identify(email, {
+        email,
+        ...window.quizAnswers
+      });
+
+      // 3) Track quiz completion as an event
+      SegmentClient.trackEvent("2025 Skin Quiz Completed", {
+        quiz_id: d.cta?.id,
+        quiz_name: d.cta?.name,
+        variant: d.variant,
+        answers: window.quizAnswers
+      });
+
+      // Optional: clear answers after successful submit to avoid stale data across sessions
+      window.quizAnswers = {};
+      if (SegmentClient.debug) console.log("[CF] Email submit handled with consent + identify + track");
+    }
+  });
+}
