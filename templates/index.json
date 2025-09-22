@@ -87,6 +87,16 @@
         "margin_bottom": "0"
       }
     },
+    "custom_liquid_f3kcT7": {
+      "type": "custom-liquid",
+      "name": "t:sections.custom-liquid.presets.name",
+      "settings": {
+        "custom_liquid": "<div class=\"_w-full _flex _justify-center\"><button class=\"_button-primary cta-189389-trigger\"><span>Test ConvertFlow trigger</span></button></div>",
+        "color_scheme": "",
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
     "wm_product_card_scroll_zyx8Jr": {
       "type": "wm__product-card-scroll",
       "settings": {
@@ -433,6 +443,7 @@
   },
   "order": [
     "wm_hero_banner_image_CPaEAD",
+    "custom_liquid_f3kcT7",
     "wm_product_card_scroll_zyx8Jr",
     "wm_image_block_4_ky3R3J",
     "wm_image_block_3_LmLwpJ",

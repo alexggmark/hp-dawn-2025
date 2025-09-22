@@ -399,7 +399,7 @@
 })(typeof window !== 'undefined' ? window : null);
 
 // Init + run on every pageview
-SegmentClient.init({ debug: true });
+SegmentClient.init({ debug: false });
 SegmentClient.storeTouch();
 
 // This is just a debugger for ConvertFlow, it fires whenever something "happens" and reveals all data

@@ -1,94 +1,103 @@
 (() => {
   if (typeof window === 'undefined') return;
 
-  if (x != true) return; // blocker
-
   const url = new URL(window.location.href);
-  const raw = url.searchParams.get('add_to_cart');
+  const raw = url.searchParams.get('add_to_cart'); // ?add_to_cart=41562314506379:1,40941346029707:1
   if (!raw) return;
 
+  console.log(`Add to cart: ${raw}`);
+
+  // Could use cookies to prevent multiple adds, but probably not useful right now
+  /*
   const dedupeKey = `param:add:${raw}`;
   if (sessionStorage.getItem(dedupeKey)) {
     url.searchParams.delete('add_to_cart');
     history.replaceState({}, '', url.toString());
     return;
   }
+  */
 
-  const ids = raw
+  // splitting up url params based on "," and ":" - maybe cleaner way to do this
+  const seen = new Set();
+  const items = raw
     .split(',')
     .map(s => s.trim())
     .filter(Boolean)
-    .map(Number)
-    .filter(n => Number.isInteger(n) && n > 0);
+    .map(token => {
+      const [idStr, qtyStr] = token.split(':').map(t => t.trim());
+      const id = Number(idStr);
+      const quantity = Math.max(1, Number(qtyStr || 1) || 1);
+      return { id, quantity };
+    })
+    .filter(({ id }) => Number.isInteger(id) && id > 0)
+    .filter(({ id }) => (seen.has(id) ? false : (seen.add(id), true)));
 
-  // Unique while preserving order
-  const seen = new Set();
-  const uniqueIds = ids.filter(id => (seen.has(id) ? false : (seen.add(id), true)));
-
-  if (uniqueIds.length === 0) {
+  if (items.length === 0) {
     url.searchParams.delete('add_to_cart');
     history.replaceState({}, '', url.toString());
     return;
   }
 
-  /*
-  const openCartUI = () => {
-    const drawer = document.querySelector('cart-drawer');
-    const notif = document.querySelector('cart-notification');
-    if (drawer && typeof drawer.open === 'function') {
-      drawer.open();
-    } else if (notif && typeof notif.renderContents === 'function') {
-      notif.classList.add('active');
-    } else {
-      location.assign('/cart');
-    }
-  };
-  */
-
   const cleanUp = () => {
-    sessionStorage.setItem(dedupeKey, '1');
+    // turning off cookies for now, no real risk of multiple adds
+    // sessionStorage.setItem(dedupeKey, '1');
     url.searchParams.delete('add_to_cart');
     history.replaceState({}, '', url.toString());
   };
 
-  // Try batch add first
-  const items = uniqueIds.map(id => ({ id, quantity: 1 }));
+  // small utilities
+  const sleep = (ms) => new Promise(r => setTimeout(r, ms));
 
-  fetch('/cart/add.js', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-    body: JSON.stringify({ items })
-  })
-    .then(async r => {
-      if (r.ok) return r.json();
+  const waitFor = async (check, { tries = 40, interval = 100 } = {}) => {
+    for (let i = 0; i < tries; i++) {
+      const val = check();
+      if (val) return val;
+      await sleep(interval);
+    }
+    return null;
+  };
 
-      // If batch fails (e.g., one invalid ID), try per-item fallback
-      const results = await Promise.allSettled(
-        uniqueIds.map(id =>
-          fetch('/cart/add.js', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-            body: JSON.stringify({ id, quantity: 1 })
-          })
-        )
-      );
+  const monsterAdd = async ({ id, quantity }, openDrawer) => {
+    // double check (with wait) if function exists in code
+    const fn = await waitFor(() => window?.monster_addToCart, { tries: 40, interval: 100 });
+    if (typeof fn !== 'function') {
+      throw new Error('monster_addToCart not available');
+    }
 
-      // If all failed, throw to hit global catch
-      const anyFulfilled = results.some(res => res.status === 'fulfilled' && res.value.ok);
-      if (!anyFulfilled) {
-        const text = await r.text().catch(() => '');
-        throw new Error(text || 'Batch add failed');
+    // small wait to fix monster freaking out about multiple calls
+    await sleep(100);
+
+    return new Promise((resolve, reject) => {
+      try {
+        fn({ id, quantity }, !!openDrawer, () => resolve());
+      } catch (err) {
+        reject(err);
       }
-    })
-    .then(() => {
-      openCartUI();
-    })
-    .catch(err => {
-      console.error('Param add_to_cart failed:', err);
-      // Last resort: go to cart
-      location.assign('/cart');
-    })
-    .finally(() => {
-      cleanUp();
     });
+  };
+
+  const addAllSequentially = async (list) => {
+    for (let i = 0; i < list.length; i++) {
+      const isLast = i === list.length - 1;
+      await monsterAdd(list[i], isLast);
+    }
+  };
+
+
+  // fallback, but this goes straight to checkout
+  const hardFallbackToCartUrl = (list) => {
+    const path = list.map(({ id, quantity }) => `${id}:${quantity}`).join(',');
+    location.assign(`/cart/${encodeURIComponent(path)}`);
+  };
+
+  (async () => {
+    try {
+      await addAllSequentially(items);
+    } catch (err) {
+      console.error('Param add_to_cart via Monster failed:', err);
+      hardFallbackToCartUrl(items);
+    } finally {
+      cleanUp();
+    }
+  })();
 })();
