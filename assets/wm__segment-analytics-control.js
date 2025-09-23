@@ -329,60 +329,29 @@
     setConsent({
       email = null,
       optedIn = null,
-      channel = 'email',
-      source = 'convertflow_form',
-      jurisdiction = 'UK-PECR/GDPR',
-      extraTraits = {}
+      channel = 'email', // email, sms
+      extraTraits = {} // any extras we want to send
     } = {}) {
+      if (optedIn === null) return false; // don't update anything if no optin
+
       const userId = (typeof email === 'string' && email.trim()) ? email.trim() : null;
+      const bool = optedIn === true;
 
-      if (this.debug) console.log('[SegmentClient] setConsent: running function');
+      const traits = { ...extraTraits };
 
-      // Read previous traits (best-effort)
-      let prevStatus = null;
-      let prevConsents = null;
-      try {
-        const u = window.analytics?.user?.();
-        const t = u ? (typeof u.traits === 'function' ? u.traits() : u.traits) : null;
-        prevConsents = (t && t.consents) || null;
-        prevStatus = prevConsents?.[channel]?.status || null; // 'subscribed' | 'unsubscribed' | 'never_subscribed' | null
-      } catch (_) {}
-
-      let nextStatus;
-      if (optedIn === true) {
-        nextStatus = 'subscribed';
-      } else if (optedIn === false) {
-        // Do not auto-downgrade a subscribed user
-        nextStatus = (!prevStatus || prevStatus === 'never_subscribed') ? 'never_subscribed' : prevStatus;
-      } else {
-        // optedIn === null → no change intended
-        nextStatus = prevStatus || 'never_subscribed';
+      if (channel === 'email') {
+        traits.email = userId || traits.email; // helps identity resolution
+        traits.email_subscribed = bool; // generic flag many tools map
+        traits.consent_email_subscribed = bool; // extra compatibility
       }
 
-      // If nothing changed and no new email and no extra traits= skip
-      const statusChanged = nextStatus !== prevStatus;
-      const hasNewEmail = !!userId && !prevStatus; // treat first-time identify with email as meaningful
-      const hasExtras = extraTraits && Object.keys(extraTraits).length > 0;
-
-      if (!statusChanged && !hasNewEmail && !hasExtras) {
-        if (this.debug) console.log('[SegmentClient] setConsent: no-op (no change)');
-        return false;
+      if (channel === 'sms') {
+        traits.sms_subscribed = bool;
+        traits.consent_sms_subscribed = bool;
       }
 
-      // Merge consents object so we don't wipe other channels
-      const mergedConsents = {
-        ...(prevConsents || {}),
-        [channel]: {
-          status: nextStatus,
-          collected_at: new Date().toISOString(),
-          collected_from: source,
-          jurisdiction
-        }
-      };
+      if (this.debug) console.log('[SegmentClient] setConsent(minimal):', { userId, channel, traits });
 
-      const traits = { consents: mergedConsents, ...extraTraits };
-
-      // Send via wrapper (queues if analytics not ready)
       return this.identify(userId, traits);
     },
 
