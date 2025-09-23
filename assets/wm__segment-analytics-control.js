@@ -4,17 +4,13 @@
   const NS = 'segment_client_v1';
   const KEYS = {
     TRAITS: `${NS}__queued_traits`,
-    TOUCHES: `${NS}__touches_v2`,
+    LAST_TOUCH_AT: `${NS}__last_touch_at`,
     TOUCH_WRITE_LOCK: `${NS}__touch_lock`,
   };
 
   const CONFIG = {
-    maxTouches: 5,
-    minHoursBetweenTouches: 48,
-    requireMeaningfulChange: true,
+    minHoursBetweenTouches: 4, // how long between recording "touch"
   };
-
-  const TOUCH_NAMES = ['first', 'second', 'third', 'fourth', 'fifth'];
 
   // ---------- Safe storage ----------
   const storage = {
@@ -83,7 +79,7 @@
       return undefined;
     }
   }
-  function getLandingPath(href) {
+  function getPath(href) {
     try { return new URL(href).pathname || '/'; } catch { return '/'; }
   }
   function pickUTMsFromURL(u) {
@@ -93,79 +89,9 @@
     const utm_campaign = qp.get('utm_campaign') || undefined;
     const utm_term = qp.get('utm_term') || undefined;
     const utm_content = qp.get('utm_content') || undefined;
-    const any = utm_source || utm_medium || utm_campaign || utm_term || utm_content;
-    return any ? { source: utm_source, medium: utm_medium, campaign: utm_campaign, term: utm_term, content: utm_content } : null;
-  }
-  function utmEqual(a, b) {
-    if (!a && !b) return true;
-    if (!a || !b) return false;
-    return ['source','medium','campaign','term','content'].every(k => (a[k] || null) === (b[k] || null));
-  }
-
-  // Decide if the current visit is new touch relative to the last recorded touch
-  function shouldAddNewTouch(touches, current) {
-    if (!touches.length) return true;
-    const last = touches[touches.length - 1];
-
-    // cooldown
-    if (hoursSince(last.at) < CONFIG.minHoursBetweenTouches) return false;
-
-    if (!CONFIG.requireMeaningfulChange) return true;
-
-    const lastHasUTM = !!last.utm;
-    const curHasUTM  = !!current.utm;
-
-    // If either side has UTMs, require UTMs to differ to count as a new touch
-    if (lastHasUTM || curHasUTM) {
-      return !utmEqual(last.utm, current.utm);
-    }
-
-    // When neither side has UTMs, fall back to referrer domain change
-    const lastRef = last.ref_domain || null;
-    const curRef  = current.ref_domain || null;
-    return (lastRef !== curRef);
-  }
-
-  function flattenTouchesToTraits(touches) {
-    const traits = {};
-    const limit = Math.min(touches.length, CONFIG.maxTouches);
-
-    for (let i = 0; i < limit; i++) {
-      const label = TOUCH_NAMES[i]; // first, second, ...
-      const t = touches[i];
-
-      traits[`${label}_touch_at`] = t.at;
-      traits[`${label}_touch_url`] = t.url;
-      traits[`${label}_touch_path`] = t.path;
-      traits[`${label}_touch_referrer_domain`] = t.ref_domain || undefined;
-
-      // UTM flatten
-      if (t.utm) {
-        traits[`${label}_touch_source`]   = t.utm.source   || undefined;
-        traits[`${label}_touch_medium`]   = t.utm.medium   || undefined;
-        traits[`${label}_touch_campaign`] = t.utm.campaign || undefined;
-        traits[`${label}_touch_term`]     = t.utm.term     || undefined;
-        traits[`${label}_touch_content`]  = t.utm.content  || undefined;
-      }
-    }
-
-    // Backward-compat for anything using only "first"
-    if (touches[0]) {
-      const t0 = touches[0];
-      traits.first_touch_at = t0.at;
-      traits.first_touch_url = t0.url;
-      traits.first_touch_path = t0.path;
-      traits.first_touch_referrer_domain = t0.ref_domain || undefined;
-      if (t0.utm) {
-        traits.utm_source   = t0.utm.source   || undefined;
-        traits.utm_medium   = t0.utm.medium   || undefined;
-        traits.utm_campaign = t0.utm.campaign || undefined;
-        traits.utm_term     = t0.utm.term     || undefined;
-        traits.utm_content  = t0.utm.content  || undefined;
-      }
-    }
-
-    return cleanTraits(traits);
+    return {
+      utm_source, utm_medium, utm_campaign, utm_term, utm_content
+    };
   }
 
   const SegmentClient = {
@@ -228,7 +154,6 @@
             w.analytics.identify(merged);
             if (this.debug) console.log('[SegmentClient] identify (anonymous)', merged);
           }
-          // only clear queued local traits we manage
           this.traits = {};
           storage.remove(KEYS.TRAITS);
           return true;
@@ -248,72 +173,45 @@
       }
     },
 
-    // NEW: generalized multi-touch capture (first..fifth + last)
+    /**
+     * Touch recorder: emit an immutable event with cooldown to avoid noise.
+     * Name: "Touch Recorded"
+     * Props: at, url, path, referrer_domain, utm_* (source/medium/campaign/term/content)
+     */
     storeTouch() {
-      // lightweight lock to prevent concurrent double-writes on fast nav
+      // prevent rapid double-writes on SPA nav/fast loads
       const lock = storage.get(KEYS.TOUCH_WRITE_LOCK, null);
       if (lock && Date.now() - lock < 1500) return;
       storage.set(KEYS.TOUCH_WRITE_LOCK, Date.now());
 
       const run = () => {
-        if (!w.analytics) {
-          setTimeout(run, 200);
+        const lastAt = storage.get(KEYS.LAST_TOUCH_AT, null);
+        if (hoursSince(lastAt) < CONFIG.minHoursBetweenTouches) {
+          if (this.debug) console.log('[SegmentClient] touch skipped (cooldown)');
+          storage.set(KEYS.TOUCH_WRITE_LOCK, null);
           return;
         }
 
-        // Build the current touch context
-        const cur = {
+        const props = {
           at: nowISO(),
           url: w.location.href,
-          path: getLandingPath(w.location.href),
-          ref_domain: getRefDomain(document.referrer),
-          utm: pickUTMsFromURL(w.location.href)
+          path: getPath(w.location.href),
+          referrer_domain: getRefDomain(document.referrer),
+          ...pickUTMsFromURL(w.location.href)
         };
 
-        let touches = storage.get(KEYS.TOUCHES, []);
-        touches = Array.isArray(touches) ? touches : [];
-
-        let added = false;
-
-        if (!touches.length) {
-          touches.push(cur);
-          added = true;
-        } else {
-          // Decide if current visit should become a new touch
-          if (touches.length < CONFIG.maxTouches && shouldAddNewTouch(touches, cur)) {
-            touches.push(cur);
-            added = true;
-          } else {
-            // blank on purpose
-          }
-        }
-
-        // Persist locally
-        storage.set(KEYS.TOUCHES, touches);
-        storage.set(KEYS.TOUCH_WRITE_LOCK, null);
-
-        // Flatten to traits and enqueue locally so any later identify() includes them
-        const flattened = flattenTouchesToTraits(touches);
-        this.setTraits(flattened);
-
-        if (!added) {
-          if (this.debug) console.log('[SegmentClient] touch not added (cooldown or not meaningful); traits updated for last touch snapshot');
-          return;
-        }
-
-        // Send an immediate identify with the updated touch traits
         try {
-          const u = (typeof w.analytics.user === 'function') ? w.analytics.user() : null;
-          const id = u ? (typeof u.id === 'function' ? u.id() : u.id) : null;
-          if (id) {
-            if (this.debug) console.log('[SegmentClient] sending identify for new touch (identified)');
-            w.analytics.identify(id, flattened);
+          if (typeof w.analytics?.track === 'function') {
+            w.analytics.track('Touch Recorded', cleanTraits(props));
+            if (this.debug) console.log('[SegmentClient] Touch Recorded', props);
+            storage.set(KEYS.LAST_TOUCH_AT, props.at);
           } else {
-            if (this.debug) console.log('[SegmentClient] sending identify for new touch (anonymous)');
-            w.analytics.identify(flattened);
+            if (this.debug) console.warn('[SegmentClient] analytics.track unavailable');
           }
         } catch (e) {
-          if (this.debug) console.warn('[SegmentClient] identify for new touch failed; traits remain queued', e);
+          if (this.debug) console.warn('[SegmentClient] Touch Recorded failed', e);
+        } finally {
+          storage.set(KEYS.TOUCH_WRITE_LOCK, null);
         }
       };
 
@@ -330,25 +228,28 @@
       email = null,
       optedIn = null,
       channel = 'email', // email, sms
-      extraTraits = {} // any extras we want to send
+      extraTraits = {}
     } = {}) {
-      if (optedIn === null) return false; // don't update anything if no optin
+      if (optedIn === null) return false;
 
-      const userId = (typeof email === 'string' && email.trim()) ? email.trim() : null;
+      const userId = (typeof email === 'string' && email.trim()) ? email.trim().toLowerCase() : null;
       const bool = optedIn === true;
 
       const traits = { ...extraTraits };
 
       if (channel === 'email') {
-        traits.email = userId || traits.email; // helps identity resolution
-        traits.email_subscribed = bool; // generic flag many tools map
-        traits.consent_email_subscribed = bool; // extra compatibility
+        traits.email = userId || traits.email;
+        traits.email_subscribed = bool;
+        traits.consent_email_subscribed = bool;
       }
 
-      if (channel === 'sms') {
-        traits.sms_subscribed = bool;
-        traits.consent_sms_subscribed = bool;
-      }
+      /* Example of expanding this in future - Alex
+        if (channel === 'sms') {
+          // ensure traits.phone_number (E.164) is provided via extraTraits for Klaviyo mapping
+          traits.sms_subscribed = bool;
+          traits.consent_sms_subscribed = bool;
+        }
+      */
 
       if (this.debug) console.log('[SegmentClient] setConsent(minimal):', { userId, channel, traits });
 
@@ -358,7 +259,7 @@
     reset() {
       this.traits = {};
       storage.remove(KEYS.TRAITS);
-      storage.remove(KEYS.TOUCHES);
+      storage.remove(KEYS.LAST_TOUCH_AT);
       storage.remove(KEYS.TOUCH_WRITE_LOCK);
       if (this.debug) console.log('[SegmentClient] reset');
     }
@@ -371,8 +272,7 @@
 SegmentClient.init({ debug: false });
 SegmentClient.storeTouch();
 
-// This is just a debugger for ConvertFlow, it fires whenever something "happens" and reveals all data
-// E.g. when user clicks through a popup quiz, it fires everytime something happens
+// CF debugger remains unchanged
 if (SegmentClient.debug) {
   window.addEventListener("DOMContentLoaded", function () {
     [
