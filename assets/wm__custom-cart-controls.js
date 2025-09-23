@@ -2,22 +2,13 @@
   if (typeof window === 'undefined') return;
 
   const url = new URL(window.location.href);
-  const raw = url.searchParams.get('add_to_cart'); // ?add_to_cart=41562314506379:1,40941346029707:1
+  const raw = url.searchParams.get('add_to_cart'); // e.g. ?add_to_cart=41562314506379:1,40941346029707:1
+  const discountCode = url.searchParams.get('discount'); // optional: ?discount=PEPTIDES90
   if (!raw) return;
 
-  console.log(`Add to cart: ${raw}`);
+  console.log(`Add to cart: ${raw}${discountCode ? ` (with discount ${discountCode})` : ''}`);
 
-  // Could use cookies to prevent multiple adds, but probably not useful right now
-  /*
-  const dedupeKey = `param:add:${raw}`;
-  if (sessionStorage.getItem(dedupeKey)) {
-    url.searchParams.delete('add_to_cart');
-    history.replaceState({}, '', url.toString());
-    return;
-  }
-  */
-
-  // splitting up url params based on "," and ":" - maybe cleaner way to do this
+  // Parse "id" or "id:qty" tokens, keep order, de-dupe by id (first wins)
   const seen = new Set();
   const items = raw
     .split(',')
@@ -34,18 +25,19 @@
 
   if (items.length === 0) {
     url.searchParams.delete('add_to_cart');
+    url.searchParams.delete('discount');
     history.replaceState({}, '', url.toString());
     return;
   }
 
+  // remove all this stuff from URL bar so people dont accidentally reload offer
   const cleanUp = () => {
-    // turning off cookies for now, no real risk of multiple adds
-    // sessionStorage.setItem(dedupeKey, '1');
     url.searchParams.delete('add_to_cart');
+    url.searchParams.delete('discount');
     history.replaceState({}, '', url.toString());
   };
 
-  // small utilities
+  // --- utilities ---
   const sleep = (ms) => new Promise(r => setTimeout(r, ms));
 
   const waitFor = async (check, { tries = 40, interval = 100 } = {}) => {
@@ -57,16 +49,48 @@
     return null;
   };
 
+  // Apply /discount/<CODE> silently in a hidden iframe
+  const applyDiscountSilently = (code, { timeoutMs = 2500 } = {}) => {
+    return new Promise((resolve) => {
+      if (!code) return resolve(false);
+
+      const iframe = document.createElement('iframe');
+      iframe.style.display = 'none';
+
+      const cleanup = () => {
+        try { iframe.removeEventListener('load', onLoad); } catch (_) {}
+        try { iframe.remove(); } catch (_) {}
+      };
+
+      const onLoad = () => {
+        cleanup();
+        resolve(true);
+      };
+
+      const t = setTimeout(() => {
+        cleanup();
+        resolve(false);
+      }, timeoutMs);
+
+      iframe.addEventListener('load', () => {
+        clearTimeout(t);
+        onLoad();
+      });
+
+      // Bounce back to current page inside the iframe so session gets set quickly
+      const back = location.pathname + location.search + location.hash;
+      iframe.src = `/discount/${encodeURIComponent(code)}?redirect=${encodeURIComponent(back)}`;
+      document.body.appendChild(iframe);
+    });
+  };
+
+  // Monster function with a bunch of waits in place
   const monsterAdd = async ({ id, quantity }, openDrawer) => {
-    // double check (with wait) if function exists in code
     const fn = await waitFor(() => window?.monster_addToCart, { tries: 40, interval: 100 });
     if (typeof fn !== 'function') {
       throw new Error('monster_addToCart not available');
     }
-
-    // small wait to fix monster freaking out about multiple calls
     await sleep(100);
-
     return new Promise((resolve, reject) => {
       try {
         fn({ id, quantity }, !!openDrawer, () => resolve());
@@ -83,8 +107,7 @@
     }
   };
 
-
-  // fallback, but this goes straight to checkout
+  // fallback to cart URL if not working (not good, goes straight to checkout)
   const hardFallbackToCartUrl = (list) => {
     const path = list.map(({ id, quantity }) => `${id}:${quantity}`).join(',');
     location.assign(`/cart/${encodeURIComponent(path)}`);
@@ -92,9 +115,18 @@
 
   (async () => {
     try {
+      if (discountCode) {
+        const applied = await applyDiscountSilently(discountCode);
+        console.log('Discount silently applied?', applied);
+        // tiny pause helps if Monsterccart app "reloads" for some reason
+        await sleep(150);
+      }
+
       await addAllSequentially(items);
+
+      // Alex note: you should open cart drawer here if not opened earlier for some reason
     } catch (err) {
-      console.error('Param add_to_cart via Monster failed:', err);
+      console.error('Param add_to_cart/discount flow failed:', err);
       hardFallbackToCartUrl(items);
     } finally {
       cleanUp();
