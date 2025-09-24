@@ -1,0 +1,117 @@
+.global-modal {
+  box-sizing: border-box;
+  opacity: 0;
+  position: fixed;
+  visibility: hidden;
+  z-index: -1;
+  margin: 0 auto;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(var(--color-foreground), 0.2);
+  height: 100%;
+}
+
+.global-modal[open] {
+  opacity: 1;
+  visibility: visible;
+  z-index: 101;
+}
+
+/* Might not need this? No clue what it does - Alex */
+/* .global-modal .scroll-trigger.scroll-trigger {
+  animation: none;
+  opacity: 1;
+  transform: none;
+} */
+
+.global-modal__content {
+  --modal-height-offset: 3.2rem;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: var(--modal-height-offset) auto;
+  background-color: rgb(var(--color-background));
+  overflow: hidden;
+  width: 100%;
+  max-width: 500px;
+}
+
+@media screen and (min-width: 750px) {
+  .global-modal__content {
+    --modal-height-offset: 10rem;
+    margin-top: var(--modal-height-offset);
+    width: 80%;
+    max-height: auto;
+    overflow-y: auto;
+  }
+}
+
+@media screen and (min-width: 990px) {
+  .global-modal__content {
+    width: 70%;
+  }
+}
+
+.global-modal__content img {
+  max-width: 100%;
+}
+
+.global-modal__content-info {
+  --modal-padding: 2.5rem;
+  padding-right: 4.4rem;
+  display: flex;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: var(--modal-padding);
+  height: 100%;
+}
+
+.global-modal__content-switch > div {
+  display: none;
+  text-align: center;
+}
+.global-modal__content-switch > div.active {
+  display: block;
+}
+
+.global-modal__content-info > * {
+  height: auto;
+  margin: 0 auto;
+  max-width: 100%;
+  width: 100%;
+}
+
+@media screen and (max-width: 749px) {
+  .global-modal__content-info > * {
+    max-height: 100%;
+  }
+}
+
+.global-modal__toggle {
+  background-color: rgb(var(--color-background));
+  border: 1px solid rgba(var(--color-foreground), 0.1);
+  border-radius: 50%;
+  color: rgba(var(--color-foreground), 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0.6rem;
+  z-index: 5;
+  width: 2.4rem;
+  position: fixed;
+  top: 1.5rem;
+  right: 1.5rem;
+}
+
+.global-modal__toggle:hover {
+  color: rgba(var(--color-foreground), 0.75);
+}
+
+.global-modal__toggle .icon {
+  height: auto;
+  margin: 0;
+  width: 2.2rem;
+}

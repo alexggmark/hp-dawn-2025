@@ -652,6 +652,41 @@ class ModalDialog extends HTMLElement {
 }
 customElements.define('modal-dialog', ModalDialog);
 
+// Custom global modal that strips out modal-dialog controls so it's very lightweight
+// Doesn't need to be appended to <body> because I'll just load at bottom of theme.liquid
+// This is designed to "flash" open/closed, so no need to pause media or anything else complicated
+class GlobalSimpleModal extends HTMLElement {
+  constructor() {
+    super();
+    this.querySelector('#GlobalModalClose').addEventListener('click', this.hide.bind(this, false));
+  }
+
+  connectedCallback() {
+    if (this.moved) return;
+    this.moved = true;
+  }
+
+  loadContent(content) {
+    const activeContent = !content ? this.querySelector('[data-js-content="default"]') : this.querySelector(`[data-js-content="${content}"]`);
+    const loadingSpinner = this.querySelector('.loading__spinner');
+    activeContent.classList.add('active');
+    if (loadingSpinner) loadingSpinner.classList.remove('hidden');
+  }
+
+  show(content) {
+    document.body.classList.add('overflow-hidden');
+    this.setAttribute('open', '');
+    this.loadContent(content);
+  }
+
+  hide() {
+    document.body.classList.remove('overflow-hidden');
+    document.body.dispatchEvent(new CustomEvent('modalClosed'));
+    this.removeAttribute('open');
+  }
+}
+customElements.define('global-simple-modal', GlobalSimpleModal);
+
 // New version of ModalDialog designed to work with drawer elements instead of modals
 class DrawerDialog extends HTMLElement {
   constructor() {

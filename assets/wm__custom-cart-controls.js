@@ -1,3 +1,6 @@
+/* -------------------------------------------------
+  ADD TO CART AND APPLY DISCOUNT BASED ON UTM IN URL
+------------------------------------------------- */
 (() => {
   if (typeof window === 'undefined') return;
 
@@ -115,6 +118,8 @@
 
   (async () => {
     try {
+      openGlobalModal(true, 'promo');
+
       if (discountCode) {
         const applied = await applyDiscountSilently(discountCode);
         console.log('Discount silently applied?', applied);
@@ -129,7 +134,17 @@
       console.error('Param add_to_cart/discount flow failed:', err);
       hardFallbackToCartUrl(items);
     } finally {
+      openGlobalModal(false);
       cleanUp();
     }
   })();
 })();
+
+function openGlobalModal(toggle, content) {
+  const open = toggle === true;
+  const modal = document.querySelector('.global-modal');
+
+  if (!modal) return;
+
+  open ? modal.show(content) : modal.hide();
+}

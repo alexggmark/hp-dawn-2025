@@ -1,0 +1,50 @@
+{% comment %} 
+  Alex - this is a global Modal Dialog (popup) lifted from other places on site
+  Goal is to have an everpresent modal LIQUID for popping up quick messages
+  - e.g. for loading "offer loading" popups
+{% endcomment %}
+
+<global-simple-modal
+  id="GlobalModal"
+  class="global-modal"
+>
+  <div
+    role="dialog"
+    aria-label="{{ 'products.product.choose_product_options' | t: product_name: card_product.title | escape }}"
+    aria-modal="true"
+    class="global-modal__content global-settings-popup"
+    tabindex="-1"
+  >
+    <button
+      id="GlobalModalClose"
+      type="button"
+      class="global-modal__toggle"
+      aria-label="{{ 'accessibility.close' | t }}"
+    >
+      {{- 'icon-close.svg' | inline_asset_content -}}
+    </button>
+    <div
+      id="GlobalModal-info"
+      class="global-modal__content-info"
+    >
+      <div class="global-modal__content-switch">
+        <div data-js-content="promo">
+          {% comment %} Bad {% endcomment %}
+          <div class="_pb-8">
+            {%- render 'loading-spinner' -%}
+          </div>
+          <h1 class="_font-heading-primary _text-3xl _mb-3">Applying Offer</h1>
+          <p>Please wait while we apply your offer</p>
+        </div>
+        <div data-js-content="test">
+          <h1>TEST Promo</h1>
+          <p>Brief message applying promo brief message</p>
+        </div>
+        <div data-js-content="default">
+          <h1>Loading…</h1>
+          <p>Please wait a few moments</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</global-simple-modal>
