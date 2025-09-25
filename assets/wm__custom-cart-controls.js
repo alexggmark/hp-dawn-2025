@@ -132,7 +132,8 @@
       // Alex note: you should open cart drawer here if not opened earlier for some reason
     } catch (err) {
       console.error('Param add_to_cart/discount flow failed:', err);
-      hardFallbackToCartUrl(items);
+      // FIXME: turning off for now, not much utility
+      // hardFallbackToCartUrl(items);
     } finally {
       openGlobalModal(false);
       cleanUp();

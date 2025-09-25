@@ -37,7 +37,7 @@
         <h2 class="_font-heading-primary _text-brand-dark md:_text-2.5xl _text-2xl _mt-1">
           Claim your complimentary gifts with code:
         </h2>
-        <div class="_text-lg _mt-4 _prose">
+        <div class="md:_text-lg _text-base _mt-4 _prose">
           <p class="_mb-6">
             Spend £90 or more and receive two HydroPeptide travel essentials, Daily Drench and Pre-Treatment Toner.
           </p>
@@ -47,7 +47,7 @@
           </copy-to-clipboard>
           <p class="_mt-6">
             {% comment %} FIXME: {% endcomment %}
-            Simply <a href="{{ request.path }}/add_to_cart=41562314506379:1,40941346029707:1">add both gifts to your basket</a> and enter the code at checkout to redeem.
+            Simply <a href="#">add both gifts to your basket</a> and enter the code at checkout to redeem.
           </p>
         </div>
       {% comment %} {%- unless section.settings.cta_text == blank -%}
@@ -78,7 +78,7 @@
                 height: 100
               }}
             {%- endif -%}
-            <h2 class="_font-heading-primary _text-2.5xl">Your big hero product</h2>
+            <h2 class="_font-heading-primary md:_text-2.5xl _text-[30px]">Your big hero product</h2>
           </div>
           <div data-js-content class="_flex _flex-col _gap-12"></div>
         </div>
@@ -94,7 +94,7 @@
                   height: 100
               }}
             {%- endif -%}
-            <h2 class="_font-heading-primary _text-2.5xl">Your AM & PM routine</h2>
+            <h2 class="_font-heading-primary md:_text-2.5xl _text-[30px]">Your AM & PM routine</h2>
           </div>
           <div data-js-content class="_flex _flex-col _gap-12"></div>
         </div>
@@ -110,7 +110,7 @@
                   height: 100
               }}
             {%- endif -%}
-            <h2 class="_font-heading-primary _text-2.5xl">Your PM-only routine</h2>
+            <h2 class="_font-heading-primary md:_text-2.5xl _text-[30px]">Your PM-only routine</h2>
           </div>
           <div data-js-content class="_flex _flex-col _gap-12"></div>
         </div>
@@ -126,7 +126,7 @@
                   height: 100
               }}
             {%- endif -%}
-            <h2 class="_font-heading-primary _text-2.5xl">Your bonus</h2>
+            <h2 class="_font-heading-primary md:_text-2.5xl _text-[30px]">Your bonus</h2>
           </div>
           <div data-js-content class="_flex _flex-col _gap-12"></div>
         </div>
@@ -135,14 +135,14 @@
       <template data-js-product-card-template>
         <simple-product-card data-js-product-handle>
           <div class="_grid _grid-cols-5 _gap-4">
-            <div class="_col-span-2">
+            <div class="md:_col-span-2 _col-span-full">
               <div class="_flex _justify-center _items-center _aspect-square _bg-brand-background-light">
                 <img data-js-product-image height="100%" width="100%">
                 {% comment %} FIXME: this might be causing problems with selector {% endcomment %}
                 {% comment %} {%- render 'loading-spinner' -%} {% endcomment %}
               </div>
             </div>
-            <div class="_col-span-3">
+            <div class="md:_col-span-3 _col-span-full">
               <h2 class="_font-heading-primary _text-2xl _mb-2" data-js-product-title></h2>
               <p class="_prose _text-base _mb-6" data-js-product-description></p>
               
@@ -195,7 +195,7 @@
         <h2 class="_font-heading-primary _text-brand-dark md:_text-2.5xl _text-2xl _mt-1">
           The HydroPeptide Difference
         </h2>
-        <div class="_text-lg _mt-4 _prose">
+        <div class="md:_text-lg _text-base _mt-4 _prose">
           <p class="_mb-8">
             Hear from Dr Lauren Jamieson on why our peptides and epigenetic science make all the difference in your personalised regimen.
           </p>
@@ -218,6 +218,8 @@
 <script>
   class QuizResultsPage extends HTMLElement {
     async connectedCallback() {
+      const ALLOWED_KEYS = ['skincare_routine', 'skin_goal', 'skin_type', 'sensitive_skin'];
+
       const spinner = this.querySelector('.loading__spinner');
       const spinnerBlock = this.querySelector('.loading__spinner--block');
       if (spinner) spinner.classList.toggle('hidden');
@@ -225,8 +227,9 @@
 
       const output = this.querySelector('#output');
       const params = new URLSearchParams(window.location.search);
-      {% comment %} TODO: you need to prevent it reading other UTMs!! {% endcomment %}
-      const filters = Object.fromEntries(params.entries());
+
+      const rawFilters = Object.fromEntries(params.entries());
+      const filters = Object.fromEntries(Object.entries(rawFilters).filter(([k]) => ALLOWED_KEYS.includes(k)));
 
       try {
         const res = await fetch('{{ 'wm__quiz-results-product-matrix.json' | asset_url }}');
@@ -298,6 +301,12 @@
       const handle = this.dataset.jsProductHandle;
       if (!handle) return;
 
+      this.buttonEl = this.querySelector('[data-js-product-main-cta]');
+      if (!this.buttonEl) {
+        console.warn('CTA not found inside simple-product-card');
+        return;
+      }
+
       try {
         const res = await fetch(`/products/${handle}.js`);
         const product = await res.json();
@@ -308,7 +317,7 @@
         this.querySelector('[data-js-product-title]').textContent = product.title;
         this.querySelector('[data-js-product-image]').src = product.media[0].src;
         this.querySelector('[data-js-product-description]').innerHTML = product.description;
-        this.renderCTA(this.querySelector('[data-js-product-main-cta]'), product);
+        this.renderCTA(product);
         this.querySelector('[data-js-product-main-url]').href = product.url;
       } catch (err) {
         console.error(`Error fetching product ${handle}:`, err);
@@ -327,16 +336,16 @@
       return formatted.replace(/\.00$/, '');
     }
 
-    renderCTA(buttonEl, product) {
+    renderCTA(product) {
       const variant = product.variants[0];
       const price = this.formatMoney(variant.price);
 
-      const ctaTextEl = buttonEl.querySelector('[data-js-product-cta-text]');
+      const ctaTextEl = this.buttonEl.querySelector('[data-js-product-cta-text]');
       ctaTextEl.textContent = product.available && variant.available
         ? `Add ${price} to Cart`
         : "Not available";
 
-      buttonEl.disabled = !product.available || !variant.available;
+      this.buttonEl.disabled = !product.available || !variant.available;
 
       const form = this.querySelector('[data-type="add-to-cart-form"]');
       const variantInput = form?.querySelector('input[name="id"]');
@@ -346,7 +355,11 @@
       }
 
       // connecting to global MonsterCart function (falls back to just normal button if no Monster app)
-      buttonEl.addEventListener('click', (e) => {
+      this.buttonEl.addEventListener('click', (e) => {
+        {% comment %} FIXME:
+          - Changed to this.buttonEl check, it registers, but still issues 
+          - Might still be wrong "currentTarget"?
+        {% endcomment %}
         globalMonsterCartFunction(e, false, product, 1);
       });
     }

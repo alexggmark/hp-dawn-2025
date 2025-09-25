@@ -9,13 +9,62 @@
  */
 {
   "sections": {
+    "wm_hero_banner_image_hCwaCT": {
+      "type": "wm__hero-banner-image",
+      "blocks": {
+        "heading_type_1_EwbXtw": {
+          "type": "heading-type-1",
+          "settings": {
+            "heading": "Your Personalised Peptide Regimen",
+            "heading_tag": "h1",
+            "desktop_text_size": "4xl",
+            "mobile_text_size": "3xl",
+            "margin_bottom": "4",
+            "invert_colours": true,
+            "mobile_invert_colours": true,
+            "decoration_tag_on": false,
+            "decoration_tag_text": "Brand New",
+            "decoration_tag_invert": false
+          }
+        },
+        "text_6PdiWT": {
+          "type": "text",
+          "settings": {
+            "text": "This tailored routine was developed with our expert in skin ageing, Dr Lauren Jamieson, utilising cutting-edge peptide technology and the science of epigenetics to deliver visible results that go way beyond the surface.",
+            "full_width": true,
+            "margin_bottom": "0",
+            "invert_colours": true,
+            "mobile_invert_colours": true
+          }
+        }
+      },
+      "block_order": [
+        "heading_type_1_EwbXtw",
+        "text_6PdiWT"
+      ],
+      "name": "WM Hero Banner Image",
+      "settings": {
+        "image": "shopify://shop_images/ReActivate-Rx-Serum-Hero_Wide_1_1_2.png",
+        "video": "shopify://files/videos/quiz-background-video.mp4",
+        "image_overlay_opacity": 0,
+        "container_width": "page",
+        "image_height": "small",
+        "desktop_content_position": "middle-center",
+        "show_text_box": false,
+        "desktop_content_alignment": "center",
+        "mobile_image_overlay_opacity": 0,
+        "mobile_image_height": "small",
+        "mobile_content_alignment": "center",
+        "mobile_content_position": "middle-center",
+        "show_mobile_text_box": false,
+        "margin_bottom": "0"
+      }
+    },
     "quiz-results": {
       "type": "wm__quiz-results",
       "settings": {
         "default_product": "age-reversal-regimen",
-        "top_heading": "Regime Builder",
-        "main_heading": "Build Your Hydropeptide Regime",
-        "description": "<p>Carefully curated by our in-house product experts, every step of your regime is meticulously considered; optimised product combinations, layering sequence and synergies of active ingredients.</p>",
+        "video": "shopify://files/videos/Aesthetic Doctor (2).mp4",
         "routine_image_hero": "shopify://shop_images/icon-bullseye.svg",
         "routine_image_routine": "shopify://shop_images/icon-lab.svg",
         "routine_image_pm": "shopify://shop_images/Hydrates-and-balances.svg",
@@ -24,6 +73,7 @@
     }
   },
   "order": [
+    "wm_hero_banner_image_hCwaCT",
     "quiz-results"
   ]
 }

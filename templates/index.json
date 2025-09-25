@@ -91,7 +91,7 @@
       "type": "custom-liquid",
       "name": "t:sections.custom-liquid.presets.name",
       "settings": {
-        "custom_liquid": "<div class=\"_w-full _flex _justify-center\"><button class=\"_button-primary cta-189389-trigger\"><span>Test ConvertFlow trigger</span></button></div>",
+        "custom_liquid": "<div class=\"_w-full _flex _justify-center\"><button class=\"_button-primary cta-189389-trigger\"><span>Test ConvertFlow trigger - affluent</span></button></div>\n<div class=\"_w-full _pt-4 _flex _justify-center\"><button class=\"_button-primary cta-189760-trigger\"><span>Test ConvertFlow trigger - aspirational</span></button></div>",
         "color_scheme": "",
         "padding_top": 40,
         "padding_bottom": 52
