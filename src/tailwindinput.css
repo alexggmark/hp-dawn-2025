@@ -114,7 +114,7 @@
     @apply _mb-3;
   }
   ._prose a {
-    @apply _text-brand-dark _underline _underline-offset-4;
+    @apply _text-brand-dark _underline _underline-offset-4 _decoration-1;
   }
   ._prose a:hover {
     @apply _no-underline;

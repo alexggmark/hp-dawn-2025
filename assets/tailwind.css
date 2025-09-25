@@ -733,6 +733,7 @@ video {
   --tw-text-opacity: 1;
   color: rgb(44 44 44 / var(--tw-text-opacity, 1));
   text-decoration-line: underline;
+  text-decoration-thickness: 1px;
   text-underline-offset: 4px;
 }
 
@@ -884,6 +885,7 @@ video {
   --tw-text-opacity: 1;
   color: rgb(44 44 44 / var(--tw-text-opacity, 1));
   text-decoration-line: underline;
+  text-decoration-thickness: 1px;
   text-underline-offset: 4px;
 }
 
@@ -1295,6 +1297,11 @@ video {
 ._my-5 {
   margin-top: 1.25rem !important;
   margin-bottom: 1.25rem !important;
+}
+
+._mx-auto {
+  margin-left: auto !important;
+  margin-right: auto !important;
 }
 
 ._-ml-\[0\.2rem\] {
@@ -1753,6 +1760,18 @@ video {
   max-width: 100% !important;
 }
 
+._max-w-\[300px\] {
+  max-width: 300px !important;
+}
+
+._max-w-\[302px\] {
+  max-width: 302px !important;
+}
+
+._max-w-\[400px\] {
+  max-width: 400px !important;
+}
+
 ._flex-1 {
   flex: 1 1 0% !important;
 }
@@ -2088,6 +2107,11 @@ video {
   border-color: rgb(15 45 100 / var(--tw-border-opacity, 1)) !important;
 }
 
+._border-emerald-600 {
+  --tw-border-opacity: 1 !important;
+  border-color: rgb(5 150 105 / var(--tw-border-opacity, 1)) !important;
+}
+
 ._border-red-500 {
   --tw-border-opacity: 1 !important;
   border-color: rgb(239 68 68 / var(--tw-border-opacity, 1)) !important;
@@ -2139,6 +2163,11 @@ video {
 ._bg-brand-primary-700 {
   --tw-bg-opacity: 1 !important;
   background-color: rgb(15 45 100 / var(--tw-bg-opacity, 1)) !important;
+}
+
+._bg-emerald-100 {
+  --tw-bg-opacity: 1 !important;
+  background-color: rgb(209 250 229 / var(--tw-bg-opacity, 1)) !important;
 }
 
 ._bg-gray-300 {
@@ -2440,12 +2469,20 @@ video {
   padding-top: 0.5rem !important;
 }
 
+._pt-3 {
+  padding-top: 0.75rem !important;
+}
+
 ._pt-4 {
   padding-top: 1rem !important;
 }
 
 ._pt-6 {
   padding-top: 1.5rem !important;
+}
+
+._pt-20 {
+  padding-top: 5rem !important;
 }
 
 ._text-left {
@@ -2606,6 +2643,11 @@ video {
 ._text-brand-primary-700 {
   --tw-text-opacity: 1 !important;
   color: rgb(15 45 100 / var(--tw-text-opacity, 1)) !important;
+}
+
+._text-emerald-600 {
+  --tw-text-opacity: 1 !important;
+  color: rgb(5 150 105 / var(--tw-text-opacity, 1)) !important;
 }
 
 ._text-red-500 {
@@ -2885,6 +2927,11 @@ video {
 .hover\:_bg-brand-background:hover {
   --tw-bg-opacity: 1 !important;
   background-color: rgb(241 241 241 / var(--tw-bg-opacity, 1)) !important;
+}
+
+.hover\:_bg-brand-background-light:hover {
+  --tw-bg-opacity: 1 !important;
+  background-color: rgb(247 248 249 / var(--tw-bg-opacity, 1)) !important;
 }
 
 .hover\:_text-brand-primary-500:hover {

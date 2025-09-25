@@ -440,3 +440,42 @@ class WmMenuDrawer extends HTMLElement {
 }
 
 customElements.define('wm-menu-drawer', WmMenuDrawer);
+
+/* -------------------------------------
+  GLOBAL COPY TO CLIPBOARD
+  - Alex: lifted from share.js
+  - For use with ConvertFlow/other tools
+------------------------------------- */
+/* Usage:
+<copy-to-clipboard for="#share-url">
+  <button type="button" id="share-url">Copy</button>
+
+  <!-- This starts hidden; will be unhidden after copy -->
+  <span data-success hidden>Copied!</span>
+</copy-to-clipboard>
+*/
+class CopyToClipboard extends HTMLElement {
+  connectedCallback() {
+    this.button = this.querySelector('button');
+    this.success = this.querySelector('[data-success]');
+    if (this.button) {
+      this.button.addEventListener('click', () => this._copy());
+    }
+  }
+
+  async _copy() {
+    const text = this.button.textContent.trim();
+    try {
+      await navigator.clipboard.writeText(text);
+      if (this.success) {
+        // Prefer the attribute, else keep whatever is inside already
+        const attrText = this.success.getAttribute('text');
+        if (attrText) this.success.textContent = attrText;
+        if (this.success.hidden) this.success.hidden = false;
+      }
+    } catch (err) {
+      console.error('Copy failed', err);
+    }
+  }
+}
+customElements.define('copy-to-clipboard', CopyToClipboard);

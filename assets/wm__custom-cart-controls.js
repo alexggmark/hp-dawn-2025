@@ -147,4 +147,5 @@ function openGlobalModal(toggle, content) {
   if (!modal) return;
 
   open ? modal.show(content) : modal.hide();
+  // open && modal.show(content);
 }

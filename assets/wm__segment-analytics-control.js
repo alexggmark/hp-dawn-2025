@@ -1,3 +1,13 @@
+/* --------------------------------------------------------------
+  Alex's SegmentClient that automates how we send data to Segment
+
+  - Auto runs with .init() on each page
+  - Auto runs .storeTouch() to manually track visits as events (with cooldown)
+  - Creates a SegmentClient object with .trackEvent(), .identify(), and setConsent()
+    (It's a window object so we can run it inside any marketing tool we want)
+    E.g. SegmentClient.identify(email, { extraDetails });
+    E.g. SegmentClient.trackEvent("User scrolled 50%");
+-------------------------------------------------------------- */
 (function (w) {
   if (!w) return;
 
@@ -269,10 +279,11 @@
 })(typeof window !== 'undefined' ? window : null);
 
 // Init + run on every pageview
-SegmentClient.init({ debug: false });
+SegmentClient.init({ debug: true });
 SegmentClient.storeTouch();
 
-// CF debugger remains unchanged
+// simple debugger for ConvertFlow, listens for events and returns details
+// totally unrelated to this file tbh but just useful lol (will delete)
 if (SegmentClient.debug) {
   window.addEventListener("DOMContentLoaded", function () {
     [

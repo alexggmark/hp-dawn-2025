@@ -1,0 +1,35 @@
+{% comment %}
+  Simplified version of wm__position to handle just horizontal positioning
+  - Only exists to horizontally position text inside wm__hero-banner-image pretty much
+  - This is probably horrible (using wm__position to justify/align parent div, then recreating for align in child because it's "flex col")
+    But… it's only ever going to be once on page (in hero banner), so meh
+{% endcomment %}
+
+{%- assign items = '_items-center' -%}
+{%- assign suffix = '' -%}
+{%- if screen != blank -%}
+  {%- assign suffix = screen | append: ':' -%}
+{%- endif -%}
+
+{%- case position -%}
+  {%- when 'top-left' -%}
+    {%- assign items = '_items-start' -%}
+  {%- when 'top-center' -%}
+    {%- assign items = '_items-center' -%}
+  {%- when 'top-right' -%}
+    {%- assign items = '_items-end' -%}
+  {%- when 'middle-left' -%}
+    {%- assign items = '_items-start' -%}
+  {%- when 'middle-center' -%}
+    {%- assign items = '_items-center' -%}
+  {%- when 'middle-right' -%}
+    {%- assign items = '_items-end' -%}
+  {%- when 'bottom-left' -%}
+    {%- assign items = '_items-start' -%}
+  {%- when 'bottom-center' -%}
+    {%- assign items = '_items-center' -%}
+  {%- when 'bottom-right' -%}
+    {%- assign items = '_items-end' -%}
+{%- endcase -%}
+
+{{ suffix }}{{ items }}

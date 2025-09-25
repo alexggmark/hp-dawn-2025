@@ -1,0 +1,117 @@
+(() => {
+  const OFFERS = [
+    {
+      id: 'affluent_quiz',
+      enabled: true,
+      selector: '.js-open-cf-affluent',
+      trait: [
+        { type: 'trait', key: 'isAffluent', equals: true }
+      ],
+      cooldownDaysAfterClose: 7,
+      cooldownDaysAfterComplete: 180,
+      oncePerSession: true
+    }
+  ];
+
+  // ----------------- Small helpers -----------------
+  const storage = {
+    get(n) {
+      return document.cookie.split('; ').find(r => r.startsWith(n+'='))?.split('=')[1] || null;
+    },
+    set(n, v, days) {
+      const d = new Date(); d.setDate(d.getDate() + (days || 365));
+      document.cookie = `${n}=${v}; expires=${d.toUTCString()}; path=/; SameSite=Lax`;
+    }
+  };
+  const sessionMark = {
+    has(n) { return sessionStorage.getItem(n) === '1'; },
+    set(n) { sessionStorage.setItem(n, '1'); }
+  };
+  const waitFor = (test, {tries=50, interval=100}={}) => new Promise((res, rej) => {
+    let n=0; const t=setInterval(() => {
+      try { const ok = test(); if (ok) { clearInterval(t); return res(ok); } } catch {}
+      if (++n>=tries) { clearInterval(t); rej(new Error('waitFor timeout')); }
+    }, interval);
+  });
+
+  // ----------------- Segment trait access (simple) -----------------
+  function getSegmentTraitsSafe() {
+    try {
+      const u = window.analytics?.user?.();
+      return u?.traits?.() || null;
+    } catch { return null; }
+  }
+  function traitMatches(traits, {key, equals}) {
+    if (!traits) return false;
+    // support a couple of common keys you might use interchangeably
+    const val = (key in traits) ? traits[key]
+              : (key === 'isAffluent' && 'affluent' in traits ? traits.affluent : undefined);
+    return equals === undefined ? !!val : val === equals;
+  }
+
+  // ----------------- ConvertFlow suppression via events -----------------
+  let lastTriggeredOfferId = null;
+
+  // When a popup is closed/submitted, set suppression cookie for the last triggered offer
+  window.addEventListener('cfClose', () => {
+    if (!lastTriggeredOfferId) return;
+    const offer = OFFERS.find(o => o.id === lastTriggeredOfferId);
+    if (offer) storage.set(`offer_sup_${offer.id}`, '1', offer.cooldownDaysAfterClose || 1);
+  });
+  window.addEventListener('cfCompletion', () => {
+    if (!lastTriggeredOfferId) return;
+    const offer = OFFERS.find(o => o.id === lastTriggeredOfferId);
+    if (offer) storage.set(`offer_sup_${offer.id}`, '1', offer.cooldownDaysAfterComplete || (offer.cooldownDaysAfterClose || 7));
+  });
+
+  // ----------------- Core runner -----------------
+  async function runOffers() {
+    const traits = getSegmentTraitsSafe();
+    // If Segment not ready/identified, you can bail silently
+    if (!traits) return;
+
+    for (const offer of OFFERS) {
+      if (!offer.enabled) continue;
+
+      // suppression
+      if (offer.oncePerSession && sessionMark.has(`seen_${offer.id}`)) continue;
+      if (storage.get(`offer_sup_${offer.id}`) === '1') continue;
+
+      // eligibility
+      if (offer.trait && !traitMatches(traits, offer.trait)) continue;
+
+      // trigger
+      const triggerEl = document.querySelector(offer.selector);
+      if (!triggerEl) continue;
+
+      // mark + click
+      lastTriggeredOfferId = offer.id;
+      sessionMark.set(`seen_${offer.id}`);
+      triggerEl.click();
+
+      // Fire only one offer per load by default
+      break;
+    }
+  }
+
+  // ----------------- Boot logic -----------------
+  const kick = () => { try { runOffers(); } catch(e) { /* noop */ } };
+
+  // Run after DOM is there
+  if (document.readyState === 'complete' || document.readyState === 'interactive') {
+    queueMicrotask(kick);
+  } else {
+    document.addEventListener('DOMContentLoaded', kick, { once: true });
+  }
+
+  // Also run when Segment says it’s ready (traits populated after identify)
+  if (window.analytics && typeof analytics.ready === 'function') {
+    analytics.ready(kick);
+  } else {
+    // Fallback polling in case Segment loads a bit later
+    waitFor(() => getSegmentTraitsSafe(), { tries: 30, interval: 200 }).then(kick).catch(()=>{});
+  }
+
+  // Optional: re-run on your signal
+  document.addEventListener('offers:run', kick);
+})();
