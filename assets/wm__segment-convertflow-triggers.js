@@ -1,3 +1,109 @@
+analytics.ready(() => {
+  return; // pausing this until we know it's fully working ❌
+  const anonId = analytics.user().anonymousId();
+  console.log(anonId);
+  const url = `https://segment-endpoint-hp.vercel.app/api/hydropeptide?anonymousId=${encodeURIComponent(anonId)}&trait=consents`;
+
+  fetch(url)
+    .then(res => res.json())
+    .then(data => {
+      console.log("Trait response:", data);
+
+      // Example: check if consents is true
+      if (data?.results?.consents?.value.email.status) {
+        console.log(`User has given consent ✅: ${data.results.consents.value.email.status}`);
+      } else {
+        console.log("No consent or trait missing ❌");
+      }
+    })
+    .catch(err => {
+      console.error("Error fetching trait:", err);
+    });
+});
+
+// Shouldn't hit endpoint until we're absolutely sure we want it to run
+// Will either do aspirational or affluent based on user traits
+
+// Check if aspirational, if so return; then check if affluent, if so return
+
+async function checkAffluentAspirational(anonId) {
+  const url = `https://segment-endpoint-hp.vercel.app/api/hydropeptide?anonymousId=${encodeURIComponent(anonId)}&traits=is_affluent,is_aspirational`;
+
+  try {
+    const res = await fetch(url);
+    const data = await res.json();
+    console.log("Trait response:", data);
+
+    return data?.results;
+  } catch (err) {
+    console.error("Error fetching trait:", err);
+    return false; // safe fallback
+  }
+}
+
+(function (w) {
+  if (!w) return;
+
+  const NS = 'convertflow_trigger';
+  const KEYS = {
+    CLOSED_AFFLUENT_QUIZ: `${NS}__closed_affluent_quiz`
+  };
+
+  // ---------- Safe storage ----------
+  const storage = {
+    get(key, fallback) {
+      try {
+        const raw = w.localStorage.getItem(key);
+        return raw ? JSON.parse(raw) : fallback;
+      } catch (_) {
+        return fallback;
+      }
+    },
+    set(key, val) {
+      try { w.localStorage.setItem(key, JSON.stringify(val)); } catch (_) {}
+    },
+    remove(key) {
+      try { w.localStorage.removeItem(key); } catch (_) {}
+    },
+  };
+
+  w.analytics.ready(async () => {
+    const anonId = analytics.user().anonymousId()
+    const userId = analytics.user().id()
+
+    if (userId) {
+      console.log("User already identified");
+      return;
+    }
+
+    if (!anonId) {
+      console.log("No anonymous ID");
+      return;
+    }
+
+    // ---------- Affluent/aspirational popup controls ----------
+
+    if (!(analytics.user().traits().is_affluent() || analytics.user().traits().is_aspirational())) {
+      const affluentAspirational = await checkAffluentAspirational(anonId);
+  
+      if (affluentAspirational?.is_affluent?.value) {
+        // launch affluent popup
+        return;
+      }
+  
+      if (affluentAspirational?.is_aspirational?.value) {
+        // launch aspirational popup
+        return;
+      }
+    }
+
+  });
+
+  // Run an identify call at some stage to store results
+
+})(typeof window !== 'undefined' ? window : null);
+
+/*
 (() => {
   const OFFERS = [
     {
@@ -95,7 +201,7 @@
   }
 
   // ----------------- Boot logic -----------------
-  const kick = () => { try { runOffers(); } catch(e) { /* noop */ } };
+  const kick = () => { try { runOffers(); } catch(e) {  } };
 
   // Run after DOM is there
   if (document.readyState === 'complete' || document.readyState === 'interactive') {
@@ -115,3 +221,4 @@
   // Optional: re-run on your signal
   document.addEventListener('offers:run', kick);
 })();
+*/

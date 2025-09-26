@@ -1248,10 +1248,6 @@ video {
   grid-column: span 1 / span 1 !important;
 }
 
-._col-span-2 {
-  grid-column: span 2 / span 2 !important;
-}
-
 ._col-span-3 {
   grid-column: span 3 / span 3 !important;
 }
@@ -2544,6 +2540,10 @@ video {
   font-size: 12px !important;
 }
 
+._text-\[30px\] {
+  font-size: 30px !important;
+}
+
 ._text-base {
   font-size: 14px !important;
   line-height: auto !important;
@@ -2567,10 +2567,6 @@ video {
 ._text-xs {
   font-size: 10px !important;
   line-height: auto !important;
-}
-
-._text-\[30px\] {
-  font-size: 30px !important;
 }
 
 ._font-medium {
