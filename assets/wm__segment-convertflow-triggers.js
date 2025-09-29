@@ -1,224 +1,195 @@
-analytics.ready(() => {
-  return; // pausing this until we know it's fully working ❌
-  const anonId = analytics.user().anonymousId();
-  console.log(anonId);
-  const url = `https://segment-endpoint-hp.vercel.app/api/hydropeptide?anonymousId=${encodeURIComponent(anonId)}&trait=consents`;
+/**
+ * ConvertFlow targeting via Segment traits (clear, linear version)
+ * Steps:
+ *  0) Basic guards
+ *  1) One-per-page + cooldown
+ *  2) Try existing Segment traits (already on the user object)
+ *  3) Try cache (sessionStorage, then localStorage with TTL)
+ *  4) Call endpoint (if still unknown)
+ *  5) Store traits locally via analytics.identify (to make future pages cheap)
+ *  6) Try aspirational popup (priority) then affluent popup
+ */
 
-  fetch(url)
-    .then(res => res.json())
-    .then(data => {
-      console.log("Trait response:", data);
+(() => {
+  if (typeof window === 'undefined') return;
 
-      // Example: check if consents is true
-      if (data?.results?.consents?.value.email.status) {
-        console.log(`User has given consent ✅: ${data.results.consents.value.email.status}`);
-      } else {
-        console.log("No consent or trait missing ❌");
-      }
-    })
-    .catch(err => {
-      console.error("Error fetching trait:", err);
-    });
-});
-
-// Shouldn't hit endpoint until we're absolutely sure we want it to run
-// Will either do aspirational or affluent based on user traits
-
-// Check if aspirational, if so return; then check if affluent, if so return
-
-async function checkAffluentAspirational(anonId) {
-  const url = `https://segment-endpoint-hp.vercel.app/api/hydropeptide?anonymousId=${encodeURIComponent(anonId)}&traits=is_affluent,is_aspirational`;
-
-  try {
-    const res = await fetch(url);
-    const data = await res.json();
-    console.log("Trait response:", data);
-
-    return data?.results;
-  } catch (err) {
-    console.error("Error fetching trait:", err);
-    return false; // safe fallback
-  }
-}
-
-(function (w) {
-  if (!w) return;
-
-  const NS = 'convertflow_trigger';
-  const KEYS = {
-    CLOSED_AFFLUENT_QUIZ: `${NS}__closed_affluent_quiz`
+  // ---- CONFIG (edit these) ---------------------------------------------------
+  const ENDPOINT = 'https://segment-endpoint-hp.vercel.app/api/hydropeptide';
+  // const TRAITS   = ['is_affluent', 'is_aspirational',];
+  const TRAITS   = ['last_touch_path', 'fourth_touch_path',]; // priority order (aspirational first)
+  const POPUPS   = {
+    is_aspirational: '#cta-189389-trigger',
+    is_affluent:     '#cta-189760-trigger'
   };
+  const NS = 'cf_trigger_linear_v1';
+  const TTL_HOURS      = 6;   // cache freshness
+  const COOLDOWN_HOURS = 24;  // don’t show any popup again within this window
 
-  // ---------- Safe storage ----------
-  const storage = {
-    get(key, fallback) {
-      try {
-        const raw = w.localStorage.getItem(key);
-        return raw ? JSON.parse(raw) : fallback;
-      } catch (_) {
-        return fallback;
-      }
-    },
-    set(key, val) {
-      try { w.localStorage.setItem(key, JSON.stringify(val)); } catch (_) {}
-    },
-    remove(key) {
-      try { w.localStorage.removeItem(key); } catch (_) {}
-    },
-  };
+  // ---- KEYS ------------------------------------------------------------------
+  const KEY_PAGE_FIRED   = `${NS}__popup_fired_this_page`;
+  const KEY_LAST_POPUP   = `${NS}__last_popup_at`;
+  const keyTraitCache    = (anonId) => `${NS}__traits__${anonId}`;        // localStorage
+  const keyTraitCacheSS  = (anonId) => `${NS}__traits__${anonId}__ss`;    // sessionStorage
 
-  w.analytics.ready(async () => {
-    const anonId = analytics.user().anonymousId()
-    const userId = analytics.user().id()
+  // ---- UTILS -----------------------------------------------------------------
+  const now = () => Date.now();
+  const hours = (h) => Math.max(0, h) * 3600 * 1000;
 
-    if (userId) {
-      console.log("User already identified");
-      return;
-    }
+  const getLS = (k, fb) => { try { const r = localStorage.getItem(k); return r ? JSON.parse(r) : fb; } catch { return fb; } };
+  const setLS = (k, v)  => { try { localStorage.setItem(k, JSON.stringify(v)); } catch {} };
+  const getSS = (k, fb) => { try { const r = sessionStorage.getItem(k); return r ? JSON.parse(r) : fb; } catch { return fb; } };
+  const setSS = (k, v)  => { try { sessionStorage.setItem(k, JSON.stringify(v)); } catch {} };
+
+  const within = (ts, ms) => typeof ts === 'number' && (now() - ts) < ms;
+
+  // ---- STEP 0: wait for analytics, basic guards --------------------------------
+  window.analytics.ready(async () => {
+    console.log('[0] Analytics ready');
+    const user   = window.analytics.user();
+    const anonId = user && typeof user.anonymousId === 'function' ? user.anonymousId() : null;
 
     if (!anonId) {
-      console.log("No anonymous ID");
+      console.log('[0] No anonymousId → stop');
       return;
     }
 
-    // ---------- Affluent/aspirational popup controls ----------
-
-    if (!(analytics.user().traits().is_affluent() || analytics.user().traits().is_aspirational())) {
-      const affluentAspirational = await checkAffluentAspirational(anonId);
-  
-      if (affluentAspirational?.is_affluent?.value) {
-        // launch affluent popup
-        return;
-      }
-  
-      if (affluentAspirational?.is_aspirational?.value) {
-        // launch aspirational popup
-        return;
-      }
+    // ---- STEP 1: One-per-page + cooldown --------------------------------------
+    console.log('[1] Check page-guard & cooldown');
+    if (getSS(KEY_PAGE_FIRED, false)) {
+      console.log('[1] Popup already fired this page → stop');
+      return;
+    }
+    const last = getLS(KEY_LAST_POPUP, 0);
+    if (within(last, hours(COOLDOWN_HOURS))) {
+      console.log('[1] In cooldown window → stop');
+      return;
     }
 
-  });
+    // We’ll fill this as soon as we know anything
+    let resolved = { is_aspirational: null, is_affluent: null };
 
-  // Run an identify call at some stage to store results
-
-})(typeof window !== 'undefined' ? window : null);
-
-/*
-(() => {
-  const OFFERS = [
-    {
-      id: 'affluent_quiz',
-      enabled: true,
-      selector: '.js-open-cf-affluent',
-      trait: [
-        { type: 'trait', key: 'isAffluent', equals: true }
-      ],
-      cooldownDaysAfterClose: 7,
-      cooldownDaysAfterComplete: 180,
-      oncePerSession: true
-    }
-  ];
-
-  // ----------------- Small helpers -----------------
-  const storage = {
-    get(n) {
-      return document.cookie.split('; ').find(r => r.startsWith(n+'='))?.split('=')[1] || null;
-    },
-    set(n, v, days) {
-      const d = new Date(); d.setDate(d.getDate() + (days || 365));
-      document.cookie = `${n}=${v}; expires=${d.toUTCString()}; path=/; SameSite=Lax`;
-    }
-  };
-  const sessionMark = {
-    has(n) { return sessionStorage.getItem(n) === '1'; },
-    set(n) { sessionStorage.setItem(n, '1'); }
-  };
-  const waitFor = (test, {tries=50, interval=100}={}) => new Promise((res, rej) => {
-    let n=0; const t=setInterval(() => {
-      try { const ok = test(); if (ok) { clearInterval(t); return res(ok); } } catch {}
-      if (++n>=tries) { clearInterval(t); rej(new Error('waitFor timeout')); }
-    }, interval);
-  });
-
-  // ----------------- Segment trait access (simple) -----------------
-  function getSegmentTraitsSafe() {
+    // ---- STEP 2: Try existing traits on the user object -----------------------
+    console.log('[2] Check analytics.user().traits()');
     try {
-      const u = window.analytics?.user?.();
-      return u?.traits?.() || null;
-    } catch { return null; }
-  }
-  function traitMatches(traits, {key, equals}) {
-    if (!traits) return false;
-    // support a couple of common keys you might use interchangeably
-    const val = (key in traits) ? traits[key]
-              : (key === 'isAffluent' && 'affluent' in traits ? traits.affluent : undefined);
-    return equals === undefined ? !!val : val === equals;
-  }
-
-  // ----------------- ConvertFlow suppression via events -----------------
-  let lastTriggeredOfferId = null;
-
-  // When a popup is closed/submitted, set suppression cookie for the last triggered offer
-  window.addEventListener('cfClose', () => {
-    if (!lastTriggeredOfferId) return;
-    const offer = OFFERS.find(o => o.id === lastTriggeredOfferId);
-    if (offer) storage.set(`offer_sup_${offer.id}`, '1', offer.cooldownDaysAfterClose || 1);
-  });
-  window.addEventListener('cfCompletion', () => {
-    if (!lastTriggeredOfferId) return;
-    const offer = OFFERS.find(o => o.id === lastTriggeredOfferId);
-    if (offer) storage.set(`offer_sup_${offer.id}`, '1', offer.cooldownDaysAfterComplete || (offer.cooldownDaysAfterClose || 7));
-  });
-
-  // ----------------- Core runner -----------------
-  async function runOffers() {
-    const traits = getSegmentTraitsSafe();
-    // If Segment not ready/identified, you can bail silently
-    if (!traits) return;
-
-    for (const offer of OFFERS) {
-      if (!offer.enabled) continue;
-
-      // suppression
-      if (offer.oncePerSession && sessionMark.has(`seen_${offer.id}`)) continue;
-      if (storage.get(`offer_sup_${offer.id}`) === '1') continue;
-
-      // eligibility
-      if (offer.trait && !traitMatches(traits, offer.trait)) continue;
-
-      // trigger
-      const triggerEl = document.querySelector(offer.selector);
-      if (!triggerEl) continue;
-
-      // mark + click
-      lastTriggeredOfferId = offer.id;
-      sessionMark.set(`seen_${offer.id}`);
-      triggerEl.click();
-
-      // Fire only one offer per load by default
-      break;
+      const t = typeof user.traits === 'function' ? user.traits() : {};
+      let found = false;
+      for (const name of TRAITS) {
+        if (Object.prototype.hasOwnProperty.call(t, name)) {
+          resolved[name] = !!t[name];
+          found = true;
+        }
+      }
+      if (found) {
+        console.log('[2] Found traits on user object:', resolved);
+      } else {
+        console.log('[2] No relevant traits on user object');
+      }
+    } catch (e) {
+      console.log('[2] Error reading user traits, continue:', e);
     }
+
+    // If both traits already known, we can jump to step 6
+    if (TRAITS.every(n => typeof resolved[n] === 'boolean')) {
+      console.log('[2→6] Traits fully resolved from user → try popups');
+      return tryPopupsAndFinish(resolved);
+    }
+
+    // ---- STEP 3: Try cache (sessionStorage, then localStorage) ----------------
+    console.log('[3] Check cache (session → local)');
+    const kSS = keyTraitCacheSS(anonId);
+    const kLS = keyTraitCache(anonId);
+
+    const ss = getSS(kSS, null);
+    if (ss && within(ss.ts, hours(TTL_HOURS))) {
+      console.log('[3] Using session cache');
+      resolved = { ...resolved, ...ss.value };
+      if (TRAITS.every(n => typeof resolved[n] === 'boolean')) {
+        console.log('[3→6] Traits fully resolved from session cache → try popups');
+        return tryPopupsAndFinish(resolved);
+      }
+    } else {
+      const ls = getLS(kLS, null);
+      if (ls && within(ls.ts, hours(TTL_HOURS))) {
+        console.log('[3] Using local cache');
+        resolved = { ...resolved, ...ls.value };
+        // hydrate session cache
+        setSS(kSS, { value: ls.value, ts: now() });
+        if (TRAITS.every(n => typeof resolved[n] === 'boolean')) {
+          console.log('[3→6] Traits fully resolved from local cache → try popups');
+          return tryPopupsAndFinish(resolved);
+        }
+      } else {
+        console.log('[3] No fresh cache');
+      }
+    }
+
+    // ---- STEP 4: Call endpoint (only if still unknown) ------------------------
+    console.log('[4] Call endpoint to resolve traits');
+    const url = `${ENDPOINT}?anonymousId=${encodeURIComponent(anonId)}&traits=${encodeURIComponent(TRAITS.join(','))}`;
+    let fetched = {};
+    try {
+      const res = await fetch(url);
+      const json = await res.json();
+      const results = json && json.results ? json.results : {};
+      // Normalize to booleans; default false if absent
+      for (const name of TRAITS) {
+        fetched[name] = !!(results[name] && results[name].value === true);
+        if (typeof resolved[name] !== 'boolean') {
+          resolved[name] = fetched[name];
+        }
+      }
+      console.log('[4] Fetched from endpoint:', fetched);
+      // Cache both places
+      const pack = { value: fetched, ts: now() };
+      setSS(kSS, pack);
+      setLS(kLS, pack);
+    } catch (e) {
+      console.log('[4] Endpoint error, proceed with what we have:', e);
+      // If still unknown, set safe defaults to false
+      for (const name of TRAITS) {
+        if (typeof resolved[name] !== 'boolean') resolved[name] = false;
+      }
+    }
+
+    // ---- STEP 5: Identify locally (so next page can stop at step 2) ----------
+    console.log('[5] Identify locally with resolved traits:', resolved);
+    try {
+      window.analytics.identify({ ...resolved });
+    } catch (e) {
+      console.log('[5] identify() failed (non-fatal):', e);
+    }
+
+    // ---- STEP 6: Try popups in priority order --------------------------------
+    console.log('[6] Try popups by priority:', TRAITS.join(' → '));
+    return tryPopupsAndFinish(resolved);
+  });
+
+  // ---- POPUP + FINISH ---------------------------------------------------------
+  function tryPopupsAndFinish(traits) {
+    // Priority: first true wins
+    for (const name of TRAITS) {
+      if (traits[name] === true) {
+        const sel = POPUPS[name];
+        const ok = firePopup(sel);
+        if (ok) {
+          console.log(`[6] Fired popup for "${name}"`);
+          return;
+        }
+        console.log(`[6] Popup element not found for "${name}" (${sel})`);
+        // If not found, keep checking the next trait
+      }
+    }
+    console.log('[6] No eligible popup to fire');
   }
 
-  // ----------------- Boot logic -----------------
-  const kick = () => { try { runOffers(); } catch(e) {  } };
-
-  // Run after DOM is there
-  if (document.readyState === 'complete' || document.readyState === 'interactive') {
-    queueMicrotask(kick);
-  } else {
-    document.addEventListener('DOMContentLoaded', kick, { once: true });
+  function firePopup(selector) {
+    if (!selector) return false;
+    if (getSS(KEY_PAGE_FIRED, false)) return false; // safety
+    const el = document.querySelector(selector);
+    if (!el) return false;
+    try { el.click(); } catch {}
+    setSS(KEY_PAGE_FIRED, true);
+    setLS(KEY_LAST_POPUP, now());
+    return true;
   }
-
-  // Also run when Segment says it’s ready (traits populated after identify)
-  if (window.analytics && typeof analytics.ready === 'function') {
-    analytics.ready(kick);
-  } else {
-    // Fallback polling in case Segment loads a bit later
-    waitFor(() => getSegmentTraitsSafe(), { tries: 30, interval: 200 }).then(kick).catch(()=>{});
-  }
-
-  // Optional: re-run on your signal
-  document.addEventListener('offers:run', kick);
 })();
-*/
