@@ -15,11 +15,15 @@
 
   // ---- CONFIG (edit these) ---------------------------------------------------
   const ENDPOINT = 'https://segment-endpoint-hp.vercel.app/api/hydropeptide';
-  // const TRAITS   = ['is_affluent', 'is_aspirational',];
-  const TRAITS   = ['last_touch_path', 'fourth_touch_path',]; // priority order (aspirational first)
+  const TRAITS = ['is_affluent', 'is_aspirational',];
+  // const TRAITS = ['last_touch_path', 'fourth_touch_path',]; // priority order (aspirational first)
+  // const POPUPS = {
+  //   last_touch_path: '.cta-189389-trigger',
+  //   fourth_touch_path: '.cta-189760-trigger'
+  // };
   const POPUPS   = {
-    is_aspirational: '#cta-189389-trigger',
-    is_affluent:     '#cta-189760-trigger'
+    is_aspirational: '.cta-189760-trigger',
+    is_affluent:     '.cta-189389-trigger'
   };
   const NS = 'cf_trigger_linear_v1';
   const TTL_HOURS      = 6;   // cache freshness
@@ -168,8 +172,10 @@
   function tryPopupsAndFinish(traits) {
     // Priority: first true wins
     for (const name of TRAITS) {
+      console.log(`Name of trait: ${name}, traits obj: ${traits[name]}`)
       if (traits[name] === true) {
         const sel = POPUPS[name];
+        console.log(`Sel: ${sel}`)
         const ok = firePopup(sel);
         if (ok) {
           console.log(`[6] Fired popup for "${name}"`);
@@ -184,10 +190,12 @@
 
   function firePopup(selector) {
     if (!selector) return false;
-    if (getSS(KEY_PAGE_FIRED, false)) return false; // safety
+    if (getSS(KEY_PAGE_FIRED, false)) return false;
     const el = document.querySelector(selector);
+    console.log(el);
     if (!el) return false;
-    try { el.click(); } catch {}
+    // el.click(); // Alex - removed try { .. } catch {} - seems to work okay
+    setTimeout(() => el.click(), 1000);
     setSS(KEY_PAGE_FIRED, true);
     setLS(KEY_LAST_POPUP, now());
     return true;
