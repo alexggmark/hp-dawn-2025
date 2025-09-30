@@ -8,12 +8,12 @@
  *  4) Try popups in priority order (first true wins)
  */
 
-(() => {
+(async () => {
   if (typeof window === 'undefined') return;
 
   // ---- CONFIG ---------------------------------------------------
   const ENDPOINT = 'https://segment-endpoint-hp.vercel.app/api/hydropeptide';
-  const AUDIENCES = ['alex_test_audience', 'quiz_takers']; // priority order
+  const AUDIENCES = ['quiz_takers', 'alex_test_audience']; // priority order
   const POPUPS = {
     alex_test_audience: '.cta-189760-trigger',
     quiz_takers: '.cta-189389-trigger'
@@ -27,6 +27,24 @@
   const KEY_LAST_POPUP = `${NS}__last_popup_at`;
   const keyAudienceCache   = (anonId) => `${NS}__audiences__${anonId}`;       // localStorage
   const keyAudienceCacheSS = (anonId) => `${NS}__audiences__${anonId}__ss`;   // sessionStorage
+
+  // ---- GENERATING BUTTONS ---------------------------------------
+  (function () {
+    const wrap = document.createElement('div');
+    wrap.id = 'cf-triggers';
+    wrap.setAttribute('aria-hidden', 'true');
+    wrap.setAttribute('role', 'presentation');
+    wrap.style.cssText = 'position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);clip-path:inset(50%);white-space:nowrap;';
+    wrap.innerHTML = `\
+      <button type="button" tabindex="-1" class="${POPUPS.alex_test_audience}"></button>\
+      <button type="button" tabindex="-1" class="${POPUPS.quiz_takers}"></button>`;
+    document.body.prepend(wrap);
+  })();
+
+  // ---- WAITING FOR DOM ------------------------------------------
+  // Forcing a wait so there's no race with buttons + triggers
+  const sleep = (ms) => new Promise(r => setTimeout(r, ms));
+  await sleep(1000);
 
   // ---- UTILS ----------------------------------------------------
   const now = () => Date.now();
@@ -132,7 +150,8 @@
   // ---- POPUP + FINISH -------------------------------------------
   function tryPopupsAndFinish(flags) {
     for (const name of AUDIENCES) {
-      if (flags[name] === true) {
+      // FIXME: change back to true
+      if (flags[name] === false) {
         const sel = POPUPS[name];
         console.log(POPUPS[name]);
         const ok = firePopup(sel);
@@ -148,10 +167,10 @@
 
   function firePopup(selector) {
     if (!selector) return false;
-    if (getSS(KEY_PAGE_FIRED, false)) return false;
+    // Removing here because not needed
+    // if (getSS(KEY_PAGE_FIRED, false)) return false;
+    // console.log("no cookie");
     const el = document.querySelector(selector);
-    console.log("FIRED");
-    console.log(el);
     if (!el) return false;
     el.click();
     setSS(KEY_PAGE_FIRED, true);
