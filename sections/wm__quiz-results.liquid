@@ -175,14 +175,14 @@
                     {%- render 'loading-spinner' -%}
                   </button>
                 {%- endform -%}
-                <a
+                {% comment %} <a
                   class="_button-primary"
                   data-js-product-main-url
                 >
                   <span>
                     See product
                   </span>
-                </a>
+                </a> {% endcomment %}
               </div>
             </div>
           </div>
@@ -318,7 +318,7 @@
         this.querySelector('[data-js-product-image]').src = product.media[0].src;
         this.querySelector('[data-js-product-description]').innerHTML = product.description;
         this.renderCTA(product);
-        this.querySelector('[data-js-product-main-url]').href = product.url;
+        {% comment %} this.querySelector('[data-js-product-main-url]').href = product.url; {% endcomment %}
       } catch (err) {
         console.error(`Error fetching product ${handle}:`, err);
         this.innerHTML = `<p class="_text-red-500">Error loading product</p>`;

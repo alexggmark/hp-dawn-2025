@@ -16,18 +16,13 @@
   // ---- CONFIG (edit these) ---------------------------------------------------
   const ENDPOINT = 'https://segment-endpoint-hp.vercel.app/api/hydropeptide';
   const TRAITS = ['is_affluent', 'is_aspirational',];
-  // const TRAITS = ['last_touch_path', 'fourth_touch_path',]; // priority order (aspirational first)
-  // const POPUPS = {
-  //   last_touch_path: '.cta-189389-trigger',
-  //   fourth_touch_path: '.cta-189760-trigger'
-  // };
   const POPUPS   = {
     is_aspirational: '.cta-189760-trigger',
     is_affluent:     '.cta-189389-trigger'
   };
   const NS = 'cf_trigger_linear_v1';
-  const TTL_HOURS      = 6;   // cache freshness
-  const COOLDOWN_HOURS = 24;  // don’t show any popup again within this window
+  const TTL_HOURS      = 6; // cache freshness
+  const COOLDOWN_HOURS = 24; // don’t show any popup again within this window
 
   // ---- KEYS ------------------------------------------------------------------
   const KEY_PAGE_FIRED   = `${NS}__popup_fired_this_page`;
@@ -158,6 +153,7 @@
     // ---- STEP 5: Identify locally (so next page can stop at step 2) ----------
     console.log('[5] Identify locally with resolved traits:', resolved);
     try {
+      // Update this to SegmentClient?
       window.analytics.identify({ ...resolved });
     } catch (e) {
       console.log('[5] identify() failed (non-fatal):', e);
