@@ -1,36 +1,34 @@
 /**
- * ConvertFlow targeting via Segment traits (clear, linear version)
+ * ConvertFlow targeting via Segment *audiences* (clear, linear version)
  * Steps:
  *  0) Basic guards
  *  1) One-per-page + cooldown
- *  2) Try existing Segment traits (already on the user object)
- *  3) Try cache (sessionStorage, then localStorage with TTL)
- *  4) Call endpoint (if still unknown)
- *  5) Store traits locally via analytics.identify (to make future pages cheap)
- *  6) Try aspirational popup (priority) then affluent popup
+ *  2) Try cache (sessionStorage, then localStorage with TTL)
+ *  3) Call endpoint (audiences only)
+ *  4) Try popups in priority order (first true wins)
  */
 
 (() => {
   if (typeof window === 'undefined') return;
 
-  // ---- CONFIG (edit these) ---------------------------------------------------
+  // ---- CONFIG ---------------------------------------------------
   const ENDPOINT = 'https://segment-endpoint-hp.vercel.app/api/hydropeptide';
-  const TRAITS = ['is_affluent', 'is_aspirational',];
-  const POPUPS   = {
-    is_aspirational: '.cta-189760-trigger',
-    is_affluent:     '.cta-189389-trigger'
+  const AUDIENCES = ['alex_test_audience', 'quiz_takers']; // priority order
+  const POPUPS = {
+    alex_test_audience: '.cta-189760-trigger',
+    quiz_takers: '.cta-189389-trigger'
   };
   const NS = 'cf_trigger_linear_v1';
-  const TTL_HOURS      = 6; // cache freshness
-  const COOLDOWN_HOURS = 24; // don’t show any popup again within this window
+  const TTL_HOURS = 6; // cache freshness
+  const COOLDOWN_HOURS = 336; // don’t show any popup again within this window
 
-  // ---- KEYS ------------------------------------------------------------------
-  const KEY_PAGE_FIRED   = `${NS}__popup_fired_this_page`;
-  const KEY_LAST_POPUP   = `${NS}__last_popup_at`;
-  const keyTraitCache    = (anonId) => `${NS}__traits__${anonId}`;        // localStorage
-  const keyTraitCacheSS  = (anonId) => `${NS}__traits__${anonId}__ss`;    // sessionStorage
+  // ---- KEYS -----------------------------------------------------
+  const KEY_PAGE_FIRED = `${NS}__popup_fired_this_page`;
+  const KEY_LAST_POPUP = `${NS}__last_popup_at`;
+  const keyAudienceCache   = (anonId) => `${NS}__audiences__${anonId}`;       // localStorage
+  const keyAudienceCacheSS = (anonId) => `${NS}__audiences__${anonId}__ss`;   // sessionStorage
 
-  // ---- UTILS -----------------------------------------------------------------
+  // ---- UTILS ----------------------------------------------------
   const now = () => Date.now();
   const hours = (h) => Math.max(0, h) * 3600 * 1000;
 
@@ -40,20 +38,19 @@
   const setSS = (k, v)  => { try { sessionStorage.setItem(k, JSON.stringify(v)); } catch {} };
 
   const within = (ts, ms) => typeof ts === 'number' && (now() - ts) < ms;
+  const initFlags = () => AUDIENCES.reduce((o, k) => (o[k] = null, o), {});
 
-  // ---- STEP 0: wait for analytics, basic guards --------------------------------
+  // ---- MAIN -----------------------------------------------------
   window.analytics.ready(async () => {
     console.log('[0] Analytics ready');
-    const user   = window.analytics.user();
+    const user = window.analytics.user();
     const anonId = user && typeof user.anonymousId === 'function' ? user.anonymousId() : null;
-
     if (!anonId) {
       console.log('[0] No anonymousId → stop');
       return;
     }
 
-    // ---- STEP 1: One-per-page + cooldown --------------------------------------
-    console.log('[1] Check page-guard & cooldown');
+    // Step 1: page guard + cooldown
     if (getSS(KEY_PAGE_FIRED, false)) {
       console.log('[1] Popup already fired this page → stop');
       return;
@@ -64,134 +61,99 @@
       return;
     }
 
-    // We’ll fill this as soon as we know anything
-    let resolved = { is_aspirational: null, is_affluent: null };
+    let resolved = initFlags();
 
-    // ---- STEP 2: Try existing traits on the user object -----------------------
-    console.log('[2] Check analytics.user().traits()');
-    try {
-      const t = typeof user.traits === 'function' ? user.traits() : {};
-      let found = false;
-      for (const name of TRAITS) {
-        if (Object.prototype.hasOwnProperty.call(t, name)) {
-          resolved[name] = !!t[name];
-          found = true;
-        }
-      }
-      if (found) {
-        console.log('[2] Found traits on user object:', resolved);
-      } else {
-        console.log('[2] No relevant traits on user object');
-      }
-    } catch (e) {
-      console.log('[2] Error reading user traits, continue:', e);
-    }
-
-    // If both traits already known, we can jump to step 6
-    if (TRAITS.every(n => typeof resolved[n] === 'boolean')) {
-      console.log('[2→6] Traits fully resolved from user → try popups');
-      return tryPopupsAndFinish(resolved);
-    }
-
-    // ---- STEP 3: Try cache (sessionStorage, then localStorage) ----------------
-    console.log('[3] Check cache (session → local)');
-    const kSS = keyTraitCacheSS(anonId);
-    const kLS = keyTraitCache(anonId);
+    // Step 2: cache (session → local)
+    const kSS = keyAudienceCacheSS(anonId);
+    const kLS = keyAudienceCache(anonId);
 
     const ss = getSS(kSS, null);
     if (ss && within(ss.ts, hours(TTL_HOURS))) {
-      console.log('[3] Using session cache');
+      console.log('[2] Using session cache');
       resolved = { ...resolved, ...ss.value };
-      if (TRAITS.every(n => typeof resolved[n] === 'boolean')) {
-        console.log('[3→6] Traits fully resolved from session cache → try popups');
+      if (AUDIENCES.every(n => typeof resolved[n] === 'boolean')) {
+        console.log('[2→4] Fully resolved from session cache → try popups');
         return tryPopupsAndFinish(resolved);
       }
     } else {
       const ls = getLS(kLS, null);
       if (ls && within(ls.ts, hours(TTL_HOURS))) {
-        console.log('[3] Using local cache');
+        console.log('[2] Using local cache');
         resolved = { ...resolved, ...ls.value };
-        // hydrate session cache
         setSS(kSS, { value: ls.value, ts: now() });
-        if (TRAITS.every(n => typeof resolved[n] === 'boolean')) {
-          console.log('[3→6] Traits fully resolved from local cache → try popups');
+        if (AUDIENCES.every(n => typeof resolved[n] === 'boolean')) {
+          console.log('[2→4] Fully resolved from local cache → try popups');
           return tryPopupsAndFinish(resolved);
         }
       } else {
-        console.log('[3] No fresh cache');
+        console.log('[2] No fresh cache');
       }
     }
 
-    // ---- STEP 4: Call endpoint (only if still unknown) ------------------------
-    console.log('[4] Call endpoint to resolve traits');
-    const url = `${ENDPOINT}?anonymousId=${encodeURIComponent(anonId)}&traits=${encodeURIComponent(TRAITS.join(','))}`;
+    // Step 3: fetch audiences from server
+    console.log('[3] Call endpoint to resolve audiences');
+    const url = `${ENDPOINT}?anonymousId=${encodeURIComponent(anonId)}&audiences=${encodeURIComponent(AUDIENCES.join(','))}`;
     let fetched = {};
     try {
       const res = await fetch(url);
       const json = await res.json();
-      const results = json && json.results ? json.results : {};
-      // Normalize to booleans; default false if absent
-      for (const name of TRAITS) {
-        fetched[name] = !!(results[name] && results[name].value === true);
-        if (typeof resolved[name] !== 'boolean') {
-          resolved[name] = fetched[name];
-        }
+      const results = (json && json.audiences) ? json.audiences : {};
+
+      for (const name of AUDIENCES) {
+        const node = results[name];
+        const bool =
+          !!(node &&
+             (node.boolean === true ||
+              node.value === true ||
+              (node.value && typeof node.value === 'object' && String(node.value.status || '').toLowerCase() === 'realized')));
+        fetched[name] = bool;
+        if (typeof resolved[name] !== 'boolean') resolved[name] = bool;
       }
-      console.log('[4] Fetched from endpoint:', fetched);
+
+      console.log('[3] Fetched from endpoint:', fetched);
+
       // Cache both places
       const pack = { value: fetched, ts: now() };
       setSS(kSS, pack);
       setLS(kLS, pack);
     } catch (e) {
-      console.log('[4] Endpoint error, proceed with what we have:', e);
-      // If still unknown, set safe defaults to false
-      for (const name of TRAITS) {
+      console.log('[3] Endpoint error, proceed with what we have:', e);
+      // Defaults for any still-unknown flags
+      for (const name of AUDIENCES) {
         if (typeof resolved[name] !== 'boolean') resolved[name] = false;
       }
     }
 
-    // ---- STEP 5: Identify locally (so next page can stop at step 2) ----------
-    console.log('[5] Identify locally with resolved traits:', resolved);
-    try {
-      // Update this to SegmentClient?
-      window.analytics.identify({ ...resolved });
-    } catch (e) {
-      console.log('[5] identify() failed (non-fatal):', e);
-    }
-
-    // ---- STEP 6: Try popups in priority order --------------------------------
-    console.log('[6] Try popups by priority:', TRAITS.join(' → '));
+    // Step 4: try popups
+    console.log('[4] Try popups by priority:', AUDIENCES.join(' → '));
     return tryPopupsAndFinish(resolved);
   });
 
-  // ---- POPUP + FINISH ---------------------------------------------------------
-  function tryPopupsAndFinish(traits) {
-    // Priority: first true wins
-    for (const name of TRAITS) {
-      console.log(`Name of trait: ${name}, traits obj: ${traits[name]}`)
-      if (traits[name] === true) {
+  // ---- POPUP + FINISH -------------------------------------------
+  function tryPopupsAndFinish(flags) {
+    for (const name of AUDIENCES) {
+      if (flags[name] === true) {
         const sel = POPUPS[name];
-        console.log(`Sel: ${sel}`)
+        console.log(POPUPS[name]);
         const ok = firePopup(sel);
         if (ok) {
-          console.log(`[6] Fired popup for "${name}"`);
+          console.log(`[4] Fired popup for "${name}"`);
           return;
         }
-        console.log(`[6] Popup element not found for "${name}" (${sel})`);
-        // If not found, keep checking the next trait
+        console.log(`[4] Popup element not found for "${name}" (${sel})`);
       }
     }
-    console.log('[6] No eligible popup to fire');
+    console.log('[4] No eligible popup to fire');
   }
 
   function firePopup(selector) {
     if (!selector) return false;
     if (getSS(KEY_PAGE_FIRED, false)) return false;
     const el = document.querySelector(selector);
+    console.log("FIRED");
     console.log(el);
     if (!el) return false;
-    // el.click(); // Alex - removed try { .. } catch {} - seems to work okay
-    setTimeout(() => el.click(), 1000);
+    el.click();
     setSS(KEY_PAGE_FIRED, true);
     setLS(KEY_LAST_POPUP, now());
     return true;
