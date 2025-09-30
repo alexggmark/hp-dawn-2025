@@ -8,8 +8,13 @@
  *  4) Try popups in priority order (first true wins)
  */
 
+// TODO:
+// - add a cookie that prevents running even if they don't get popup, don't need to check over and over
+
 (async () => {
   if (typeof window === 'undefined') return;
+
+  const debug = true;
 
   // ---- CONFIG ---------------------------------------------------
   const ENDPOINT = 'https://segment-endpoint-hp.vercel.app/api/hydropeptide';
@@ -25,8 +30,8 @@
   // ---- KEYS -----------------------------------------------------
   const KEY_PAGE_FIRED = `${NS}__popup_fired_this_page`;
   const KEY_LAST_POPUP = `${NS}__last_popup_at`;
-  const keyAudienceCache   = (anonId) => `${NS}__audiences__${anonId}`;       // localStorage
-  const keyAudienceCacheSS = (anonId) => `${NS}__audiences__${anonId}__ss`;   // sessionStorage
+  const keyAudienceCache = (anonId) => `${NS}__audiences__${anonId}`; // localStorage
+  const keyAudienceCacheSS = (anonId) => `${NS}__audiences__${anonId}__ss`; // sessionStorage
 
   // ---- GENERATING BUTTONS ---------------------------------------
   (function () {
@@ -60,22 +65,22 @@
 
   // ---- MAIN -----------------------------------------------------
   window.analytics.ready(async () => {
-    console.log('[0] Analytics ready');
+    if (debug === true) console.log('[0] Analytics ready');
     const user = window.analytics.user();
     const anonId = user && typeof user.anonymousId === 'function' ? user.anonymousId() : null;
     if (!anonId) {
-      console.log('[0] No anonymousId → stop');
+      if (debug === true) console.log('[0] No anonymousId → stop');
       return;
     }
 
     // Step 1: page guard + cooldown
     if (getSS(KEY_PAGE_FIRED, false)) {
-      console.log('[1] Popup already fired this page → stop');
+      if (debug === true) console.log('[1] Popup already fired this page → stop');
       return;
     }
     const last = getLS(KEY_LAST_POPUP, 0);
     if (within(last, hours(COOLDOWN_HOURS))) {
-      console.log('[1] In cooldown window → stop');
+      if (debug === true) console.log('[1] In cooldown window → stop');
       return;
     }
 
@@ -87,29 +92,29 @@
 
     const ss = getSS(kSS, null);
     if (ss && within(ss.ts, hours(TTL_HOURS))) {
-      console.log('[2] Using session cache');
+      if (debug === true) console.log('[2] Using session cache');
       resolved = { ...resolved, ...ss.value };
       if (AUDIENCES.every(n => typeof resolved[n] === 'boolean')) {
-        console.log('[2→4] Fully resolved from session cache → try popups');
+        if (debug === true) console.log('[2→4] Fully resolved from session cache → try popups');
         return tryPopupsAndFinish(resolved);
       }
     } else {
       const ls = getLS(kLS, null);
       if (ls && within(ls.ts, hours(TTL_HOURS))) {
-        console.log('[2] Using local cache');
+        if (debug === true) console.log('[2] Using local cache');
         resolved = { ...resolved, ...ls.value };
         setSS(kSS, { value: ls.value, ts: now() });
         if (AUDIENCES.every(n => typeof resolved[n] === 'boolean')) {
-          console.log('[2→4] Fully resolved from local cache → try popups');
+          if (debug === true) console.log('[2→4] Fully resolved from local cache → try popups');
           return tryPopupsAndFinish(resolved);
         }
       } else {
-        console.log('[2] No fresh cache');
+        if (debug === true) console.log('[2] No fresh cache');
       }
     }
 
     // Step 3: fetch audiences from server
-    console.log('[3] Call endpoint to resolve audiences');
+    if (debug === true) console.log('[3] Call endpoint to resolve audiences');
     const url = `${ENDPOINT}?anonymousId=${encodeURIComponent(anonId)}&audiences=${encodeURIComponent(AUDIENCES.join(','))}`;
     let fetched = {};
     try {
@@ -128,14 +133,14 @@
         if (typeof resolved[name] !== 'boolean') resolved[name] = bool;
       }
 
-      console.log('[3] Fetched from endpoint:', fetched);
+      if (debug === true) console.log('[3] Fetched from endpoint:', fetched);
 
       // Cache both places
       const pack = { value: fetched, ts: now() };
       setSS(kSS, pack);
       setLS(kLS, pack);
     } catch (e) {
-      console.log('[3] Endpoint error, proceed with what we have:', e);
+      if (debug === true) console.log('[3] Endpoint error, proceed with what we have:', e);
       // Defaults for any still-unknown flags
       for (const name of AUDIENCES) {
         if (typeof resolved[name] !== 'boolean') resolved[name] = false;
@@ -143,7 +148,7 @@
     }
 
     // Step 4: try popups
-    console.log('[4] Try popups by priority:', AUDIENCES.join(' → '));
+    if (debug === true) console.log('[4] Try popups by priority:', AUDIENCES.join(' → '));
     return tryPopupsAndFinish(resolved);
   });
 
@@ -153,23 +158,23 @@
       // FIXME: change back to true
       if (flags[name] === false) {
         const sel = POPUPS[name];
-        console.log(POPUPS[name]);
+        if (debug === true) console.log(POPUPS[name]);
         const ok = firePopup(sel);
         if (ok) {
-          console.log(`[4] Fired popup for "${name}"`);
+          if (debug === true) console.log(`[4] Fired popup for "${name}"`);
           return;
         }
-        console.log(`[4] Popup element not found for "${name}" (${sel})`);
+        if (debug === true) console.log(`[4] Popup element not found for "${name}" (${sel})`);
       }
     }
-    console.log('[4] No eligible popup to fire');
+    if (debug === true) console.log('[4] No eligible popup to fire');
   }
 
   function firePopup(selector) {
     if (!selector) return false;
     // Removing here because not needed
     // if (getSS(KEY_PAGE_FIRED, false)) return false;
-    // console.log("no cookie");
+    // if (debug === true) console.log("no cookie");
     const el = document.querySelector(selector);
     if (!el) return false;
     el.click();
