@@ -1300,6 +1300,11 @@ video {
   margin-bottom: 1.25rem !important;
 }
 
+._my-6 {
+  margin-top: 1.5rem !important;
+  margin-bottom: 1.5rem !important;
+}
+
 ._-ml-\[0\.2rem\] {
   margin-left: -0.2rem !important;
 }
@@ -1466,6 +1471,18 @@ video {
 
 ._mt-auto {
   margin-top: auto !important;
+}
+
+._-mt-6 {
+  margin-top: -1.5rem !important;
+}
+
+._-mt-4 {
+  margin-top: -1rem !important;
+}
+
+._-mt-5 {
+  margin-top: -1.25rem !important;
 }
 
 ._box-border {
