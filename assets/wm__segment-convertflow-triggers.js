@@ -4,12 +4,10 @@
  *  0) Basic guards
  *  1) One-per-page + cooldown
  *  2) Try cache (sessionStorage, then localStorage with TTL)
- *  3) Call endpoint (audiences only)
+ *  3) Call endpoint (audiences only) with timeout
  *  4) Try popups in priority order (first true wins)
+ *  5) If none fire, set a no-result cooldown to avoid re-checking every page
  */
-
-// TODO:
-// - add a cookie that prevents running even if they don't get popup, don't need to check over and over
 
 (async () => {
   if (typeof window === 'undefined') return;
@@ -23,15 +21,22 @@
     alex_test_audience: '.cta-189760-trigger',
     quiz_takers: '.cta-189389-trigger'
   };
+
   const NS = 'cf_trigger_linear_v1';
-  const TTL_HOURS = 6; // cache freshness
+  const TTL_HOURS = 6;        // cache freshness for audience flags
   const COOLDOWN_HOURS = 336; // don’t show any popup again within this window
+  const NO_RESULT_COOLDOWN_HOURS = 24; // skip checks for this long after "no eligible popup"
+  const FETCH_TIMEOUT_MS = 1500;
 
   // ---- KEYS -----------------------------------------------------
   const KEY_PAGE_FIRED = `${NS}__popup_fired_this_page`;
   const KEY_LAST_POPUP = `${NS}__last_popup_at`;
-  const keyAudienceCache = (anonId) => `${NS}__audiences__${anonId}`; // localStorage
-  const keyAudienceCacheSS = (anonId) => `${NS}__audiences__${anonId}__ss`; // sessionStorage
+  const KEY_NO_RESULT  = `${NS}__no_result_at`;
+
+  // versioned cache salt (auto-bust when you change audience names/order)
+  const AUDIENCE_KEY_SALT = `${NS}__v1__${AUDIENCES.join(',')}`;
+  const keyAudienceCache   = (anonId) => `${AUDIENCE_KEY_SALT}__audiences__${anonId}`;       // localStorage
+  const keyAudienceCacheSS = (anonId) => `${AUDIENCE_KEY_SALT}__audiences__${anonId}__ss`;   // sessionStorage
 
   // ---- GENERATING BUTTONS ---------------------------------------
   (function () {
@@ -73,13 +78,20 @@
       return;
     }
 
+    // Early exit if we recently found "no eligible popup"
+    const lastNoResult = getLS(KEY_NO_RESULT, 0);
+    if (within(lastNoResult, hours(NO_RESULT_COOLDOWN_HOURS))) {
+      if (debug === true) console.log('[0] No-result cooldown → stop');
+      return;
+    }
+
     // Step 1: page guard + cooldown
     if (getSS(KEY_PAGE_FIRED, false)) {
       if (debug === true) console.log('[1] Popup already fired this page → stop');
       return;
     }
-    const last = getLS(KEY_LAST_POPUP, 0);
-    if (within(last, hours(COOLDOWN_HOURS))) {
+    const lastPopupAt = getLS(KEY_LAST_POPUP, 0);
+    if (within(lastPopupAt, hours(COOLDOWN_HOURS))) {
       if (debug === true) console.log('[1] In cooldown window → stop');
       return;
     }
@@ -113,12 +125,18 @@
       }
     }
 
-    // Step 3: fetch audiences from server
+    // Step 3: fetch audiences from server (with timeout)
     if (debug === true) console.log('[3] Call endpoint to resolve audiences');
     const url = `${ENDPOINT}?anonymousId=${encodeURIComponent(anonId)}&audiences=${encodeURIComponent(AUDIENCES.join(','))}`;
+
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), FETCH_TIMEOUT_MS);
+
     let fetched = {};
     try {
-      const res = await fetch(url);
+      const res = await fetch(url, { signal: controller.signal });
+      clearTimeout(timer);
+
       const json = await res.json();
       const results = (json && json.audiences) ? json.audiences : {};
 
@@ -140,6 +158,7 @@
       setSS(kSS, pack);
       setLS(kLS, pack);
     } catch (e) {
+      clearTimeout(timer);
       if (debug === true) console.log('[3] Endpoint error, proceed with what we have:', e);
       // Defaults for any still-unknown flags
       for (const name of AUDIENCES) {
@@ -155,10 +174,9 @@
   // ---- POPUP + FINISH -------------------------------------------
   function tryPopupsAndFinish(flags) {
     for (const name of AUDIENCES) {
-      // FIXME: change back to true
-      if (flags[name] === false) {
+      if (flags[name] === true) { // fire only when in audience
         const sel = POPUPS[name];
-        if (debug === true) console.log(POPUPS[name]);
+        if (debug === true) console.log(`[4] Attempt popup for "${name}" → ${sel}`);
         const ok = firePopup(sel);
         if (ok) {
           if (debug === true) console.log(`[4] Fired popup for "${name}"`);
@@ -167,14 +185,14 @@
         if (debug === true) console.log(`[4] Popup element not found for "${name}" (${sel})`);
       }
     }
-    if (debug === true) console.log('[4] No eligible popup to fire');
+
+    // If no popup fired, set a "no-result" cooldown to avoid re-checking every page
+    if (debug === true) console.log('[4] No eligible popup to fire → set no-result cooldown');
+    setLS(KEY_NO_RESULT, now());
   }
 
   function firePopup(selector) {
     if (!selector) return false;
-    // Removing here because not needed
-    // if (getSS(KEY_PAGE_FIRED, false)) return false;
-    // if (debug === true) console.log("no cookie");
     const el = document.querySelector(selector);
     if (!el) return false;
     el.click();
