@@ -46,6 +46,7 @@
           "type": "text",
           "settings": {
             "text": "Powered by peptides and guided by science, our patented formulas improve your skin’s cellular function to deliver clinical-grade results.",
+            "full_width": false,
             "margin_bottom": "8",
             "invert_colours": true,
             "mobile_invert_colours": true
@@ -392,7 +393,7 @@
         "featured_collection_Ljd7Ct": {
           "type": "featured_collection",
           "settings": {
-            "collection": "acne",
+            "collection": "oily-skin",
             "collection_title": "Oily + Acne Prone"
           }
         }

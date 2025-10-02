@@ -237,25 +237,41 @@
     setConsent({
       email = null,
       optedIn = null,
-      channel = 'email', // email, sms
-      extraTraits = {}
+      source = 'unknown'
     } = {}) {
-      if (optedIn === null) return false;
-
-      const userId = (typeof email === 'string' && email.trim()) ? email.trim().toLowerCase() : null;
-      const bool = optedIn === true;
-
-      const traits = { ...extraTraits };
-
-      if (channel === 'email') {
-        traits.email = userId || traits.email;
-        traits.email_subscribed = bool;
-        traits.consent_email_subscribed = bool;
+      if (optedIn !== true) {
+        if (this.debug) console.log('[SegmentClient] consent skipped (no positive opt-in)');
+        return;
       }
 
-      if (this.debug) console.log('[SegmentClient] setConsent(minimal):', { userId, channel, traits });
+      const userId = (typeof email === 'string' && email.trim())
+        ? email.trim().toLowerCase()
+        : null;
 
-      return this.identify(userId, traits);
+      const traits = {
+        // Klaviyo traits
+        $consent: ['email'],
+        consent_source: source,
+        consent_given_at: new Date().toISOString(),
+
+        // generic traits
+        email_subscribed: true,
+        consent_email_subscribed: true
+      };
+
+      if (userId) {
+        traits.$email = userId; // Klaviyo trait
+        traits.email = userId;  // generic trait
+      }
+
+      if (!userId) {
+        this.setTraits(traits); // queue for next identify
+        if (this.debug) console.log('[SegmentClient] consent queued (awaiting $email)', traits);
+        return;
+      }
+
+      this.identify(userId, traits); // fire identify with additive consent
+      if (this.debug) console.log('[SegmentClient] identify with Klaviyo consent', { userId, traits });
     },
 
     reset() {
