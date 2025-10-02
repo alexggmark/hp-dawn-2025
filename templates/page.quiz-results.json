@@ -65,6 +65,7 @@
       "settings": {
         "default_product": "age-reversal-regimen",
         "video": "shopify://files/videos/Aesthetic Doctor (2).mp4",
+        "free_gift_image": "shopify://shop_images/free-gift-pretreatmenttoner-dailydrench.png",
         "routine_image_hero": "shopify://shop_images/icon-bullseye.svg",
         "routine_image_routine": "shopify://shop_images/icon-lab.svg",
         "routine_image_pm": "shopify://shop_images/Hydrates-and-balances.svg",

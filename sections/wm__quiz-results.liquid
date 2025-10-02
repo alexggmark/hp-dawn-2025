@@ -165,8 +165,6 @@
             <div class="md:_col-span-2 _col-span-full">
               <div class="_flex _justify-center _items-center _aspect-square _bg-brand-background-light">
                 <img data-js-product-image height="100%" width="100%">
-                {% comment %} FIXME: this might be causing problems with selector {% endcomment %}
-                {% comment %} {%- render 'loading-spinner' -%} {% endcomment %}
               </div>
             </div>
             <div class="md:_col-span-3 _col-span-full">
@@ -242,7 +240,7 @@
   </div>
 </div>
 
-<script>
+<script defer>
   class QuizResultsPage extends HTMLElement {
     async connectedCallback() {
       const ALLOWED_KEYS = ['skincare_routine', 'skin_goal', 'skin_type', 'sensitive_skin'];
@@ -338,8 +336,8 @@
         const res = await fetch(`/products/${handle}.js`);
         const product = await res.json();
 
-        console.log("PRODUCT:");
-        console.log(product);
+        {% comment %} console.log("PRODUCT:");
+        console.log(product); {% endcomment %}
 
         this.querySelector('[data-js-product-title]').textContent = product.title;
         this.querySelector('[data-js-product-image]').src = product.media[0].src;
@@ -383,11 +381,8 @@
 
       // connecting to global MonsterCart function (falls back to just normal button if no Monster app)
       this.buttonEl.addEventListener('click', (e) => {
-        {% comment %} FIXME:
-          - Changed to this.buttonEl check, it registers, but still issues 
-          - Might still be wrong "currentTarget"?
-        {% endcomment %}
-        globalMonsterCartFunction(e, false, product, 1);
+        e.preventDefault();
+        globalMonsterCartFunction(e, undefined, product, 1);
       });
     }
   }

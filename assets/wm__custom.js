@@ -3,18 +3,14 @@ async function globalMonsterCartFunction(event, variantId, product, quantity) {
   console.log("globalMonsterCartFunction");
   if (typeof window.monster_addToCart !== 'function') return;
   
+  // if (event?.preventDefault) event.preventDefault();
+  
   const CTA =
     event?.currentTarget
     || event?.target?.closest?.('[data-add-to-cart], button, [role="button"]')
     || null;
 
-  console.log(CTA);
-
-  if (event?.preventDefault) event.preventDefault();
-
   const id = variantId ? variantId : product.variants[0].id;
-
-  console.log(id);
 
   CTA.setAttribute('aria-disabled', true);
   CTA.classList.add('loading');
@@ -28,9 +24,12 @@ async function globalMonsterCartFunction(event, variantId, product, quantity) {
     } catch (err) {
       reject(err);
     } finally {
-      CTA.removeAttribute('aria-disabled');
-      CTA.classList.remove('loading');
-      CTA.querySelector('.loading__spinner').classList.add('hidden');
+      // Alex - added in timeout because it was too quick
+      setTimeout(() => {
+        CTA.removeAttribute('aria-disabled');
+        CTA.classList.remove('loading');
+        CTA.querySelector('.loading__spinner').classList.add('hidden');
+      }, 1000)
     }
   })
 }

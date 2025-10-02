@@ -253,14 +253,6 @@
         traits.consent_email_subscribed = bool;
       }
 
-      /* Example of expanding this in future - Alex
-        if (channel === 'sms') {
-          // ensure traits.phone_number (E.164) is provided via extraTraits for Klaviyo mapping
-          traits.sms_subscribed = bool;
-          traits.consent_sms_subscribed = bool;
-        }
-      */
-
       if (this.debug) console.log('[SegmentClient] setConsent(minimal):', { userId, channel, traits });
 
       return this.identify(userId, traits);
