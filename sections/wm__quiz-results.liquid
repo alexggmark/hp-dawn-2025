@@ -436,6 +436,146 @@
 {% endschema %}
 
 {% comment %} 
+
+  UPDATED RECORD 25/10/02:
+  ConvertFlow Affluent Skin Quiz code: 🟢
+
+  <script>
+    window.quizAnswers = {};
+    
+    window.addEventListener("cfView", function (e) {
+      const d = e.detail || {};
+      
+      if (d.step_name === "Quiz") {
+        SegmentClient.trackEvent("2025 Skin Quiz Started", {
+            quiz_id: d.cta?.id,
+            quiz_name: d.cta?.name
+        });
+      }
+    });
+
+    window.addEventListener("cfSubmit", function (e) {
+      const d = e.detail || {};
+      const fields = d.fields || {};
+
+      if (d.step_name === "Quiz") {
+        window.quizAnswers = { ...fields };
+        SegmentClient.setTraits(window.quizAnswers);
+      }
+
+      if (d.step_name === "Email Form") {
+        const email = (fields.email || "").trim() || null;
+        const optedIn = fields.marketing_consent == "true"; // u can change to whatever consent checkbox is
+
+        // 1) Record consent safely (merges with existing consents; no downgrades)
+        SegmentClient.setConsent({
+          email,
+          optedIn,
+          source: "convertflow_form_affluent_skinquiz_2025"
+        });
+
+        // 2) Identify with email + any queued traits (includes quiz answers already queued)
+        //    Passing email again here is fine; wrapper will merge and clear local queue.
+        SegmentClient.identify(email, {
+          email,
+          ...window.quizAnswers
+        });
+
+        // 3) Track quiz completion as an event
+        SegmentClient.trackEvent("2025 Skin Quiz Completed", {
+          quiz_id: d.cta?.id,
+          quiz_name: d.cta?.name,
+          answers: window.quizAnswers,
+          quiz_results_url: `https://hydropeptide.co.uk/pages/hydropeptide-skin-quiz-2025-results-page?skincare_routine=${window.quizAnswers.skincare_routine}&sensitive_skin=${window.quizAnswers.sensitive_skin}&skin_goal=${window.quizAnswers.skin_goal}&skin_type=${window.quizAnswers.skin_type}`
+        });
+
+        // Optional: clear answers after successful submit to avoid stale data across sessions
+        window.quizAnswers = {};
+        if (SegmentClient.debug) console.log("[CF] Email submit handled with consent + identify + track");
+      }
+    });
+  </script>
+
+  <style>
+    .hydropeptide-form .cf-button-primary p {
+      font-family: var(--font-body-condensed)!important;
+      padding: 0 0.6rem!important;
+    }
+    .hydropeptide-form .cf-consent-field.cf-marketing-consent {
+      width: 100%!important;
+    }
+    .hydropeptide-codereveal {
+      border: 1px solid rgba(255,255,255,0.6) !important;
+      font-family: var(--font-body-family)!important;
+      display: inline!important;
+      font-size: 26px !important;
+      letter-spacing: 1px!important;
+      padding: 0.6rem 1.2rem!important;
+      border-radius: 7px!important;
+    }
+    .hydropeptide-copysuccess {
+      font-family: var(--font-body-family) !important;
+      margin-top: 1rem;
+      animation: var(--animation-slide-in);
+    }
+  </style>
+
+  ConvertFlow Aspirationl popup code: 🟢
+  <script>
+    window.addEventListener("cfSubmit", function (e) {
+      const d = e.detail || {};
+      const fields = d.fields || {};
+      
+      console.log(d);
+      console.log(fields);
+
+      if (d.step_name === "Email Form") {
+        const email = (fields.email || "").trim() || null;
+        const optedIn = fields.marketing_consent == "true";
+
+        // 1) Record consent safely (merges with existing consents; no downgrades)
+        SegmentClient.setConsent({
+          email,
+          optedIn,
+          source: "convertflow_form_aspirational_2025"
+        });
+
+        // 2) Identify with email + any queued traits (includes quiz answers already queued)
+        //    Passing email again here is fine; wrapper will merge and clear local queue.
+        SegmentClient.identify(email);
+
+        // 3) Track quiz completion as an event
+        SegmentClient.trackEvent("2025 Aspirational Signup", {
+          quiz_id: d.cta?.id,
+          quiz_name: d.cta?.name,
+        });
+        
+        if (SegmentClient.debug) console.log("[CF] Email submit handled with consent + identify + track");
+      }
+    });
+  </script>
+
+  <style>
+    .hydropeptide-form .cf-button-primary p {
+      font-family: var(--font-body-condensed)!important;
+      padding: 0 0.6rem!important;
+    }
+    .hydropeptide-form .cf-consent-field.cf-marketing-consent {
+      width: 100%!important;
+    }
+    .hydropeptide-codereveal {
+      border: 1px solid rgba(255,255,255,0.6) !important;
+      font-family: var(--font-body-family)!important;
+      display: inline!important;
+      font-size: 26px !important;
+      letter-spacing: 1px!important;
+      padding: 0.6rem 1.2rem!important;
+      border-radius: 7px!important;
+    }
+  </style>
+
+
+  OLDER:
   Code used in ConvertFlow to get to this page - just taking note here for safe-keeping:
 
   🟢 This is same as code below, but using Segment JS in wm__segment-analytics-control.js
