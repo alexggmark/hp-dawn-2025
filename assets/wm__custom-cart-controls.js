@@ -7,11 +7,13 @@
   const url = new URL(window.location.href);
   const raw = url.searchParams.get('add_to_cart'); // e.g. ?add_to_cart=41562314506379:1,40941346029707:1
   const discountCode = url.searchParams.get('discount'); // optional: ?discount=PEPTIDES90
-  if (!raw) return;
+  if (!raw && !discountCode) return;
+
+  if (discountCode) console.log(`Discount: ${discountCode}`)
 
   // Parse "id" or "id:qty" tokens, keep order, de-dupe by id (first wins)
   const seen = new Set();
-  const items = raw
+  const items = raw ? raw
     .split(',')
     .map(s => s.trim())
     .filter(Boolean)
@@ -22,9 +24,9 @@
       return { id, quantity };
     })
     .filter(({ id }) => Number.isInteger(id) && id > 0)
-    .filter(({ id }) => (seen.has(id) ? false : (seen.add(id), true)));
+    .filter(({ id }) => (seen.has(id) ? false : (seen.add(id), true))) : [];
 
-  if (items.length === 0) {
+  if (items.length === 0 && !discountCode) {
     url.searchParams.delete('add_to_cart');
     url.searchParams.delete('discount');
     history.replaceState({}, '', url.toString());
@@ -52,6 +54,7 @@
 
   // Apply /discount/<CODE> silently in a hidden iframe
   const applyDiscountSilently = (code, { timeoutMs = 2500 } = {}) => {
+    // console.log("applyDiscountSilently");
     return new Promise((resolve) => {
       if (!code) return resolve(false);
 
@@ -109,14 +112,16 @@
   };
 
   // fallback to cart URL if not working (not good, goes straight to checkout)
+  /*
   const hardFallbackToCartUrl = (list) => {
     const path = list.map(({ id, quantity }) => `${id}:${quantity}`).join(',');
     location.assign(`/cart/${encodeURIComponent(path)}`);
   };
+  */
 
   (async () => {
     try {
-      openGlobalModal(true, 'promo');
+      openGlobalModal(true, items && !discountCode ? 'promo' : 'discount');
 
       if (discountCode) {
         const applied = await applyDiscountSilently(discountCode);
@@ -125,7 +130,9 @@
         await sleep(150);
       }
 
-      await addAllSequentially(items);
+      if (items) {
+        await addAllSequentially(items);
+      }
 
       // Alex note: you should open cart drawer here if not opened earlier for some reason
     } catch (err) {

@@ -69,7 +69,7 @@
   height: 100%;
 }
 
-.global-modal__content-switch > div {
+.global-modal__content-switch > div:not(.always-visible) {
   display: none;
   text-align: center;
 }

@@ -16,15 +16,15 @@
 
   // ---- CONFIG ---------------------------------------------------
   const ENDPOINT = 'https://segment-endpoint-hp.vercel.app/api/hydropeptide';
-  const AUDIENCES = ['affluent_pop_up_trigger_to_edit_conditions', 'aspirational_audience'];
+  const AUDIENCES = ['affluent_pop_up_trigger_to_edit_conditions', 'aspirational_audience']; // priority order
   const POPUPS = {
-    alex_test_audience: '.cta-189760-trigger',
-    quiz_takers: '.cta-189389-trigger'
+    aspirational_audience: '.cta-189760-trigger',
+    affluent_pop_up_trigger_to_edit_conditions: '.cta-189389-trigger'
   };
 
   const NS = 'cf_trigger_linear_v1';
   const TTL_HOURS = 6;        // cache freshness for audience flags
-  const COOLDOWN_HOURS = 336; // don’t show any popup again within this window
+  const COOLDOWN_HOURS = 72; // don’t show any popup again within this window
   const NO_RESULT_COOLDOWN_HOURS = 24; // skip checks for this long after "no eligible popup"
   const FETCH_TIMEOUT_MS = 1500;
 
@@ -46,8 +46,8 @@
     wrap.setAttribute('role', 'presentation');
     wrap.style.cssText = 'position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);clip-path:inset(50%);white-space:nowrap;';
     wrap.innerHTML = `\
-      <button type="button" tabindex="-1" class="${POPUPS.alex_test_audience}"></button>\
-      <button type="button" tabindex="-1" class="${POPUPS.quiz_takers}"></button>`;
+      <button type="button" tabindex="-1" class="${POPUPS.affluent_pop_up_trigger_to_edit_conditions}"></button>\
+      <button type="button" tabindex="-1" class="${POPUPS.aspirational_audience}"></button>`;
     document.body.prepend(wrap);
   })();
 

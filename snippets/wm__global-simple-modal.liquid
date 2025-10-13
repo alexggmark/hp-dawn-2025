@@ -28,17 +28,17 @@
       class="global-modal__content-info"
     >
       <div class="global-modal__content-switch">
+        {% comment %} .always-visible just used to prevent > div hiding {% endcomment %}
+        <div class="_pt-3 _pb-8 always-visible _flex _items-center _justify-center">
+          {%- render 'loading-spinner' -%}
+        </div>
         <div data-js-content="promo">
-          {% comment %} Bad {% endcomment %}
           <h1 class="_font-heading-primary md:_text-3xl _text-2.5xl _mb-3">Applying Gifts</h1>
-          <div class="_pt-3 _pb-8">
-            {%- render 'loading-spinner' -%}
-          </div>
           <p class="md:_text-lg _text-base">Please wait while we apply your gifts</p>
         </div>
-        <div data-js-content="test">
-          <h1>TEST Promo</h1>
-          <p>Brief message applying promo brief message</p>
+        <div data-js-content="discount">
+          <h1 class="_font-heading-primary md:_text-3xl _text-2.5xl _mb-3">Applying Discount</h1>
+          <p class="md:_text-lg _text-base">Please wait while we apply your discount</p>
         </div>
         <div data-js-content="default">
           <h1>Loading…</h1>
