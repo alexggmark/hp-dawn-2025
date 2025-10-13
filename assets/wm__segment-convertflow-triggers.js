@@ -16,7 +16,7 @@
 
   // ---- CONFIG ---------------------------------------------------
   const ENDPOINT = 'https://segment-endpoint-hp.vercel.app/api/hydropeptide';
-  const AUDIENCES = ['quiz_takers', 'alex_test_audience']; // priority order
+  const AUDIENCES = ['affluent_pop_up_trigger_to_edit_conditions', 'aspirational_audience'];
   const POPUPS = {
     alex_test_audience: '.cta-189760-trigger',
     quiz_takers: '.cta-189389-trigger'

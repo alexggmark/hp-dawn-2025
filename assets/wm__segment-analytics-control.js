@@ -256,7 +256,6 @@
 
         // generic traits
         email_subscribed: true,
-        consent_email_subscribed: true
       };
 
       if (userId) {
