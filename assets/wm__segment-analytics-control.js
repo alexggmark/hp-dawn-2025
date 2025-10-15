@@ -6,7 +6,6 @@
   - Creates a SegmentClient object with .trackEvent(), .identify(), and setConsent()
     (It's a window object so we can run it inside any marketing tool we want)
     E.g. SegmentClient.identify(email, { extraDetails });
-    E.g. SegmentClient.trackEvent("User scrolled 50%");
 -------------------------------------------------------------- */
 (function (w) {
   if (!w) return;
@@ -244,33 +243,39 @@
         return;
       }
 
-      const userId = (typeof email === 'string' && email.trim())
-        ? email.trim().toLowerCase()
-        : null;
+      const normalized = (typeof email === 'string' ? email.trim().toLowerCase() : '');
+      const hasEmail = !!(normalized && normalized.includes('@'));
+      const ts = nowISO();
 
-      const traits = {
-        // Klaviyo traits
-        $consent: ['email'],
-        consent_source: source,
-        consent_given_at: new Date().toISOString(),
+      const traits = { $consent: ['email'] };
 
-        // generic traits
-        email_subscribed: true,
-      };
-
-      if (userId) {
-        traits.$email = userId; // Klaviyo trait
-        traits.email = userId;  // generic trait
-      }
-
-      if (!userId) {
-        this.setTraits(traits); // queue for next identify
-        if (this.debug) console.log('[SegmentClient] consent queued (awaiting $email)', traits);
+      if (!hasEmail) {
+        this.setTraits(traits);
+        if (this.debug) console.log('[SegmentClient] consent queued (awaiting email)', traits);
         return;
       }
 
-      this.identify(userId, traits); // fire identify with additive consent
-      if (this.debug) console.log('[SegmentClient] identify with Klaviyo consent', { userId, traits });
+      this.identify(normalized, {
+        ...traits,
+        email: normalized,
+        $email: normalized
+      });
+
+      this.trackEvent('Email Consent Granted', {
+        email: normalized,
+        channel: 'email',
+        source,
+        consent_timestamp: ts
+      });
+
+      if (this.debug) {
+        console.log('[SegmentClient] Email Consent Granted', {
+          userId: normalized,
+          traits,
+          event: 'Email Consent Granted',
+          at: ts
+        });
+      }
     },
 
     reset() {
