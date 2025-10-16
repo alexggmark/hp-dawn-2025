@@ -5,7 +5,8 @@
 
   Usage:
   {% render 'wm__rating-stars',
-    main_product: product
+    main_product: product,
+    type: card / page
   %}
 {% endcomment %}
 
@@ -58,7 +59,7 @@
           {% comment %} <span class="svg-wrapper _w-4 _h-4 _mx-1">{{ 'icon-us-flag.svg' | inline_asset_content }}</span> {% endcomment %}
           <span class="_font-body-condensed _text-brand-dark _text-sm">
             {% comment %} {{- rating_metafield }}  {% endcomment %}
-            ({{ rating_metafield }}) {{ rating_metafield_count }}+ U.S. Reviews
+            {% unless type == 'card' %}({{ rating_metafield }}) {{ rating_metafield_count }}+ U.S. Reviews{% endunless %}
           </span>
         </div>
         <span class="visually-hidden">

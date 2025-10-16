@@ -1,9 +1,9 @@
 {% comment %} FIXME: this is dummy variables for 'pills' {% endcomment %}
-{%- assign dummy_pill_title_1 = 'Peptide Complex' -%}
+{%- assign dummy_pill_title_1 = 'SYN®-TC' -%}
 {%- assign dummy_pill_content_1 = 'Content of pill 1' -%}
-{%- assign dummy_pill_title_2 = 'Advanced Peptide' -%}
+{%- assign dummy_pill_title_2 = 'Hydrolzyed Oat Protein' -%}
 {%- assign dummy_pill_content_2 = 'Content of pill 2' -%}
-{%- assign dummy_pill_title_3 = 'Mega Peptide' -%}
+{%- assign dummy_pill_title_3 = 'Idealift™' -%}
 {%- assign dummy_pill_content_3 = 'Content of pill 3' -%}
 {% comment %} FIXME: end dummy variables for 'pills' {% endcomment %}
 
@@ -77,12 +77,12 @@
                   _mt-{{ block.settings.margin_top | divided_by: 2 }} md:_mt-{{ block.settings.margin_top }}
                 "></div>
               {%- when 'badge' -%}
-                <div class="_mb-5">
+                <div class="_mb-2">
                   {% render 'wm__badges', product: product, placement: 'main' %}
                 </div>
               {%- when 'title' -%}
                 {% comment %} Product Title {% endcomment %}
-                <div {{ block.shopify_attributes }}>
+                <div class="_mt-2"{{ block.shopify_attributes }}>
                   <h1 class="
                     _font-heading-primary _text-brand-dark md:_text-2.5xl _text-2.5xl
                   ">
@@ -110,8 +110,8 @@
                   -%}
                 </div> {% endcomment %}
               {%- when 'pills' -%}
-                <div class="_mt-3 _mb-5 _flex md:_flex-row _flex-col md:_items-center _items-start _gap-1.5">
-                  <span class="_flex-shrink-0 _text-base">Peptides</span>
+                <div class="_mt-3 _mb-3 _flex md:_flex-col _flex-col md:_items-start _items-start _gap-0.5">
+                  <span class="_flex-shrink-0 _text-sm _font-semibold">Peptide Complexes</span>
                   <div class="_flex _flex-wrap _gap-1.5">
                     {%- assign pill_title = '' -%}
                     {%- assign pill_content = '' -%}
@@ -134,38 +134,17 @@
                         <button
                           id="ProductPopup-pill-{{ i }}"
                           class="
+                            _rounded-full
                             _border _border-brand-grey/10
-                            _px-1.5 _py-0.5
-                            _text-base _font-body-condensed _text-brand-dark _uppercase
-                            _bg-brand-grey/10 hover:_bg-brand-background
+                            _px-1.5 _py-[1px]
+                            _text-[12px] _font-body-condensed _text-brand-primary-500 _uppercase
+                            _border-brand-primary-500 _bg-brand-background-light hover:_bg-brand-light
                             hover:_border-brand-primary-500 hover:_text-brand-primary-500
                           "
                           type="button"
                           aria-haspopup="dialog"
                         >
-                        {% comment %} <button
-                          id="ProductPopup-pill-{{ i }}"
-                          class="
-                            _border _border-transparent hover:_border-brand-primary-500 _rounded-full
-                            _px-2 _py-0.5
-                            _text-base _font-body-condensed _text-brand-light hover:_text-brand-light _uppercase
-                            _bg-brand-primary-700/40 hover:_bg-brand-primary-500
-                          "
-                          type="button"
-                          aria-haspopup="dialog"
-                        > {% endcomment %}
-                        {% comment %} <button
-                          id="ProductPopup-pill-{{ i }}"
-                          class="
-                            _border _border-brand-border hover:_border-brand-primary-500 _rounded-full
-                            _px-2 _py-0.5
-                            _text-base _font-body-condensed _text-brand-dark hover:_text-brand-primary-500 _uppercase
-                            _bg-brand-background-light hover:_bg-brand-background
-                          "
-                          type="button"
-                          aria-haspopup="dialog"
-                        > {% endcomment %}
-                          {{ pill_title }} +
+                          {{ pill_title }}
                         </button>
                       </modal-opener>
                     {%- endfor %}
@@ -245,7 +224,7 @@
                 {%- endif -%}
 
               {%- when 'benefit_bullets' -%}
-                <div class="_prose _mt-3 _mb-3 _text-base">
+                <div class="_prose _mt-3 _mb-10 _text-base">
                   <ul>
                     <li>Results in just 4 weeks - 100% participants</li>
                     <li>4 peptide complexes to boost collagen</li>
@@ -478,7 +457,7 @@
                 </div>
               {%- when 'rating' -%}
                 <div class="">
-                  {% render 'wm__rating-stars', main_product: product %}
+                  {% render 'wm__rating-stars', main_product: product, type: 'page' %}
                 </div>
               {%- when 'usps' -%}
                 <div class="_w-full _my-5" data-js-product-usps>
@@ -506,7 +485,8 @@
 
                   {% assign detail_entries = product.metafields.custom.product_detail_entries.value %}
 
-                  {% comment %} TODO: dummy dropdown to be replaced with metafield content when ready {% endcomment %}
+                  {% comment %} Dummy dropdown to be replaced with metafield content when ready {% endcomment %}
+                  {% comment %}
                   <animated-details>
                     <details open="true" class="_border-t _border-brand-border">
                       <summary class="_py-4 _flex _justify-between _items-center _w-full _group/faq">
@@ -528,7 +508,6 @@
 
                             <div class="_flex _flex-row _gap-5 md:_items-center _items-start">
                               <div class="md:_w-[30%] _w-[40%] md:_min-w-[140px] _min-w-[100px] _aspect-square _overflow-hidden _rounded-full _bg-gray-500 _text-gray-100 _flex _items-center _justify-center">
-                                {% comment %} [Image] {% endcomment %}
                                  <img width="100%" height="100%" src="https://cdn.shopify.com/s/files/1/0345/0444/1995/files/dr-laura-jamieson.png?v=1748528668" />
                               </div>
                               <div class="md:_w-[70%] _w-[60%]">
@@ -542,6 +521,7 @@
                       </div>
                     </details>
                   </animated-details>
+                  {% endcomment %}
 
                   {%- for entry in detail_entries -%}
                     <animated-details>
@@ -815,13 +795,13 @@
       {% case i %}
         {% when 1 %}
           {% assign pill_title = dummy_pill_title_1 %}
-          {% assign pill_content = dummy_pill_content_1 %}
+          {% comment %} {% assign pill_content = dummy_pill_content_1 %} {% endcomment %}
         {% when 2 %}
           {% assign pill_title = dummy_pill_title_2 %}
-          {% assign pill_content = dummy_pill_content_2 %}
+          {% comment %} {% assign pill_content = dummy_pill_content_2 %} {% endcomment %}
         {% when 3 %}
           {% assign pill_title = dummy_pill_title_3 %}
-          {% assign pill_content = dummy_pill_content_3 %}
+          {% comment %} {% assign pill_content = dummy_pill_content_3 %} {% endcomment %}
       {% endcase %}
       
       <modal-dialog id="PopupModal-pill-{{ i }}" class="topline-callout-modal">
@@ -842,7 +822,12 @@
           </button>
           <div class="topline-callout-modal__content-info">
             <h1 class="h2">{{ pill_title }}</h1>
-            <p>{{ pill_content }}</p>
+            <div class="_prose md:_text-lg _text-base">
+              <p><strong>Information:</strong> Smooths Skin</p>
+              <p><strong>Ingredients:</strong> Tetradecyl Aminobutyroylvalylaminobutyric Urea Trifluoroacetate, Palmitoyl Tripeptide-5, Palmitoyl Dipeptide-5 Diaminobutyroyl Hydroxythreonine, Glycerin, Water</p>
+              <p class="_font-semibold">What is the complex's purpose?</p>
+              <p class="">Peptide-based complex tailor-made for optimal activity. In vitro, SYN®-TC peptides increase the formation of undamaged, stable and homogeneous collagens to facilitate their unique contribution to beautiful smooth skin.</p>
+            </div>
           </div>
         </div>
       </modal-dialog>
@@ -882,38 +867,6 @@
       "settings": [
         {
           "type": "select",
-          "id": "margin_bottom",
-          "options": [
-            {
-              "value": "0",
-              "label": "0rem"
-            },
-            {
-              "value": "2",
-              "label": "0.5rem"
-            },
-            {
-              "value": "4",
-              "label": "1rem"
-            },
-            {
-              "value": "6",
-              "label": "1.5rem"
-            },
-            {
-              "value": "8",
-              "label": "2rem"
-            },
-            {
-              "value": "12",
-              "label": "3rem"
-            }
-          ],
-          "default": "12",
-          "label": "Margin bottom"
-        },
-        {
-          "type": "select",
           "id": "margin_top",
           "options": [
             {
@@ -943,6 +896,38 @@
           ],
           "default": "12",
           "label": "Margin top"
+        },
+        {
+          "type": "select",
+          "id": "margin_bottom",
+          "options": [
+            {
+              "value": "0",
+              "label": "0rem"
+            },
+            {
+              "value": "2",
+              "label": "0.5rem"
+            },
+            {
+              "value": "4",
+              "label": "1rem"
+            },
+            {
+              "value": "6",
+              "label": "1.5rem"
+            },
+            {
+              "value": "8",
+              "label": "2rem"
+            },
+            {
+              "value": "12",
+              "label": "3rem"
+            }
+          ],
+          "default": "12",
+          "label": "Margin bottom"
         }
       ]
     },

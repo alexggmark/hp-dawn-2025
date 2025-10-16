@@ -33,7 +33,7 @@ product-rating.js-fallback-reviews .product-rating__fallback { display: block; }
 
 .card-wrapper .rating-star {
   --letter-spacing: 0;
-  --font-size: 0.8;
+  --font-size: 1;
 }
 
 .rating-star {
