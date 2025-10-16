@@ -46,7 +46,7 @@
             "invert_colours": true,
             "mobile_invert_colours": true,
             "decoration_tag_on": true,
-            "decoration_tag_text": "NEW REACTIVE RX SERUM & MOISTURIZER",
+            "decoration_tag_text": "NEW REACTIVATE RX SERUM & MOISTURIZER",
             "decoration_tag_invert": true
           }
         },
@@ -168,7 +168,7 @@
         "bullet_1_description": "Now amplified with 3x amino acid concentration to provide the building blocks for thriving collagen. This patented collagen support complex supplies cells with the optimal nutrients needed to stimulate, sustain, and shield healthy collagen. ",
         "bullet_1_icon": "shopify://shop_images/icon-science.svg",
         "bullet_2_title": "Micellular CellRenew-16",
-        "bullet_2_description": "Featuring an innovative new upgrade, this patented encapsulated peptide enhances collagen gene expression and chaperones NIMNI(tm) Technology into the cells where synthesis occurs.",
+        "bullet_2_description": "Featuring an innovative new upgrade, this patented encapsulated peptide enhances collagen gene expression and chaperones NIMNI™ Technology into the cells where synthesis occurs.",
         "bullet_2_icon": "shopify://shop_images/icon-cubes.svg",
         "bullet_3_title": "Cell-Targeted Actives",
         "bullet_3_description": "Potent actives help reduce inflammation, inhibit melanin production, brighten skin, and support collagen synthesis.",
@@ -221,7 +221,7 @@
       "settings": {
         "show_background": true,
         "reverse_order": true,
-        "main_heading": "ReActivate RX Moisturiser <em>Pro-Collage Night Complex</em>",
+        "main_heading": "ReActivate RX Moisturiser <em>Pro-Collagen Night Complex</em>",
         "margin_bottom": "0"
       }
     },
@@ -272,6 +272,42 @@
         "cta_url": "shopify://pages/store-locator",
         "margin_bottom": "0"
       }
+    },
+    "wm_faq_section_JNiFXk": {
+      "type": "wm__faq-section",
+      "blocks": {
+        "faq_BRxDG9": {
+          "type": "faq",
+          "settings": {
+            "question": "Dr Lauren Medical Aesthetics",
+            "answer": "<p>First Floor, </p><p>16 Haddow Street, Hamilton, ML3 7HX</p><p><a href=\"https://drlauren.co.uk/\" target=\"_blank\" title=\"https://drlauren.co.uk/\">drlauren.co.uk</a><br/><br/></p>"
+          }
+        },
+        "faq_RJ6ccf": {
+          "type": "faq",
+          "settings": {
+            "question": "Anna Baker Aesthetics",
+            "answer": "<p>56 High St, East Grinstead, RH19 3DE</p><p><a href=\"https://annabakeraesthetics.uk/\" target=\"_blank\" title=\"https://annabakeraesthetics.uk/\">annabakeraesthetics.uk</a></p>"
+          }
+        }
+      },
+      "block_order": [
+        "faq_BRxDG9",
+        "faq_RJ6ccf"
+      ],
+      "name": "WM FAQ section",
+      "settings": {
+        "data_source": "block_settings",
+        "meta_object_source": "",
+        "top_heading": "Professional range",
+        "main_heading": "Now available on:",
+        "right_side_show": true,
+        "side_box_heading": "Looking for more clinics?",
+        "side_box_content": "",
+        "side_box_cta_label": "Find a Clinic",
+        "side_box_cta_url": "shopify://pages/store-locator",
+        "margin_bottom": "0"
+      }
     }
   },
   "order": [
@@ -281,6 +317,7 @@
     "wm_image_block_2_UREjwN",
     "wm_accordion_image_split_jFPPw8",
     "wm_image_block_text_2_XxjLdB",
-    "wm_experts_carousel_E9NFDU"
+    "wm_experts_carousel_E9NFDU",
+    "wm_faq_section_JNiFXk"
   ]
 }
