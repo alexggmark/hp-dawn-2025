@@ -12,10 +12,6 @@
     "main": {
       "type": "wm__main-product",
       "blocks": {
-        "rating_xbiqGz": {
-          "type": "rating",
-          "settings": {}
-        },
         "topline_callout_jbMegk": {
           "type": "topline_callout",
           "settings": {}
@@ -24,13 +20,28 @@
           "type": "badge",
           "settings": {}
         },
+        "rating_xbiqGz": {
+          "type": "rating",
+          "settings": {}
+        },
         "title": {
           "type": "title",
+          "settings": {}
+        },
+        "title_tagline_R7B4ai": {
+          "type": "title_tagline",
           "settings": {}
         },
         "pills_GKNjM6": {
           "type": "pills",
           "settings": {}
+        },
+        "divider_D6aL8b": {
+          "type": "divider",
+          "settings": {
+            "margin_top": "0",
+            "margin_bottom": "4"
+          }
         },
         "price": {
           "type": "price",
@@ -43,13 +54,6 @@
         "benefit_bullets_gGRigX": {
           "type": "benefit_bullets",
           "settings": {}
-        },
-        "divider_D6aL8b": {
-          "type": "divider",
-          "settings": {
-            "margin_bottom": "12",
-            "margin_top": "12"
-          }
         },
         "variant_picker": {
           "type": "variant_picker",
@@ -77,15 +81,16 @@
         }
       },
       "block_order": [
-        "rating_xbiqGz",
         "topline_callout_jbMegk",
         "badge_EVc6gV",
+        "rating_xbiqGz",
         "title",
+        "title_tagline_R7B4ai",
         "pills_GKNjM6",
+        "divider_D6aL8b",
         "price",
         "description",
         "benefit_bullets_gGRigX",
-        "divider_D6aL8b",
         "variant_picker",
         "buy_buttons",
         "usps_H6VVPr",
@@ -107,6 +112,7 @@
     },
     "pdp-metaobject-blocks": {
       "type": "wm__pdp-metaobject-blocks",
+      "disabled": true,
       "settings": {}
     },
     "175007490287b4d42b": {
