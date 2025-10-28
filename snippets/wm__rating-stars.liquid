@@ -21,10 +21,11 @@
     assign rating_metafield_scale_max = main_product.metafields.reviews.rating.scale_max | default: main_product.metafields.reviews.rating.value.scale_max | nil 
     assign rating_metafield_count = main_product.metafields.reviews.rating_count
   {% endcomment %}
+
   {% liquid
-    assign rating_metafield = 4.4
+    assign rating_metafield = product.metafields.custom.product_us_reviews_rating
     assign rating_metafield_scale_max = 5
-    assign rating_metafield_count = 200
+    assign rating_metafield_count = product.metafields.custom.product_us_reviews_count
     assign rating_decimal = 0
     assign decimal = rating_metafield | modulo: 1
     if decimal >= 0.3 and decimal <= 0.7
@@ -59,7 +60,7 @@
           {% comment %} <span class="svg-wrapper _w-4 _h-4 _mx-1">{{ 'icon-us-flag.svg' | inline_asset_content }}</span> {% endcomment %}
           <span class="_font-body-condensed _text-brand-dark _text-sm">
             {% comment %} {{- rating_metafield }}  {% endcomment %}
-            {% unless type == 'card' %}({{ rating_metafield }}) {{ rating_metafield_count }}+ U.S. Reviews{% endunless %}
+            {% unless type == 'card' %}({{ rating_metafield }}){% unless rating_metafield_count == blank %} {{ rating_metafield_count }}+{% endunless %} U.S. Reviews{% endunless %}
           </span>
         </div>
         <span class="visually-hidden">
@@ -70,8 +71,3 @@
     {%- endunless -%}
   </div>
 </product-rating>
-
-{% comment %} <div class="_flex _flex-row _items-center _gap-1">
-  <span class="_text-sm _text-brand-primary-500">★★★★★</span>
-  <span class="_font-body-condensed _font-medium _text-brand-dark _text-sm">4.5 (100)</span>
-</div> {% endcomment %}
