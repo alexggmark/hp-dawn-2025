@@ -45,7 +45,7 @@
       {%- elsif picker_type == 'button' -%}
         {% comment %} This is the one {% endcomment %}
         <fieldset class="js product-form__input _flex _flex-row _gap-2 _items-center _flex-wrap">
-          <div class="_text-base">{{ option.name }}</div>
+          <div class="md:_text-base _text-sm">{{ option.name }}</div>
           {% render 'wm__product-variant-options',
             product: product,
             option: option,
