@@ -14,7 +14,11 @@
       "blocks": {
         "topline_callout_jbMegk": {
           "type": "topline_callout",
-          "settings": {}
+          "settings": {
+            "title": "<p>20 years of Epigenetic Research in 1 bottle.</p>",
+            "link": "Learn more about Epigenetic Skincare >",
+            "url": "shopify://pages/our-science"
+          }
         },
         "badge_EVc6gV": {
           "type": "badge",
@@ -35,13 +39,6 @@
         "pills_GKNjM6": {
           "type": "pills",
           "settings": {}
-        },
-        "divider_D6aL8b": {
-          "type": "divider",
-          "settings": {
-            "margin_top": "0",
-            "margin_bottom": "4"
-          }
         },
         "price": {
           "type": "price",
@@ -72,7 +69,12 @@
         "usps_H6VVPr": {
           "type": "usps",
           "settings": {
-            "usp_image": "shopify://shop_images/HPWeb-PDP-Desktop-BrandIcons.gif"
+            "usp_1_text": "Free Next-Day Shipping Over £50",
+            "usp_1_icon": "truck",
+            "usp_2_text": "",
+            "usp_2_icon": "check_mark",
+            "usp_3_text": "",
+            "usp_3_icon": "check_mark"
           }
         },
         "product_details_CfyEpb": {
@@ -87,7 +89,6 @@
         "title",
         "title_tagline_R7B4ai",
         "pills_GKNjM6",
-        "divider_D6aL8b",
         "price",
         "description",
         "benefit_bullets_gGRigX",

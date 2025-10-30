@@ -9,6 +9,8 @@
   {% render 'wm__badges', product: product/card_product, placement: 'main'/'card' %}
 {% endcomment %}
 
+{%- assign metafield_badges = product.metafields.custom.product_custom_badges -%}
+
 {%- assign badge_classes_base = "_border _inline-block _font-body-condensed _uppercase _text-center _whitespace-nowrap _pointer-events-none" -%}
 
 {%- assign badge_classes_lg = "_text-sm _px-1.5 _py-0.5 _text-brand-dark _bg-brand-light" -%}
@@ -64,13 +66,15 @@
     {%- assign badge_counter = badge_counter | plus: 1 -%}
   {%- endif -%}
 
-  {% comment %} Dermatologist-approved badge {% endcomment %}
-  {%- if badge_counter <= badge_limit and placement != "card" -%}
-    <span class="{{ badge_classes_base }} {{ badge_classes_color_light }} {{ badge_size }}">
-      Dermatologist-approved
-    </span>
+  {% comment %} Custom metafield badges {% endcomment %}
+  {%- for badge in metafield_badges.value -%}
+    {%- if badge_counter <= badge_limit and placement != "card" -%}
+      <span class="{{ badge_classes_base }} {{ badge_classes_color_light }} {{ badge_size }}">
+        {{ badge.text }}
+      </span>
 
-    {%- assign badge_counter = badge_counter | plus: 1 -%}
-  {%- endif -%}
+      {%- assign badge_counter = badge_counter | plus: 1 -%}
+    {%- endif -%}
+  {%- endfor -%}
 
 {%- endif -%}
