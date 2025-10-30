@@ -23,9 +23,9 @@
   {% endcomment %}
 
   {% liquid
-    assign rating_metafield = product.metafields.custom.product_us_reviews_rating
+    assign rating_metafield = main_product.metafields.custom.product_us_reviews_rating
     assign rating_metafield_scale_max = 5
-    assign rating_metafield_count = product.metafields.custom.product_us_reviews_count
+    assign rating_metafield_count = main_product.metafields.custom.product_us_reviews_count
     assign rating_decimal = 0
     assign decimal = rating_metafield | modulo: 1
     if decimal >= 0.3 and decimal <= 0.7
@@ -37,7 +37,7 @@
   
   <div class="product-rating__fallback">
     {%- unless rating_metafield == nil -%}
-      <div class="_flex _flex-row _items-center _gap-1">
+      <div class="_flex _flex-row _items-center {% if type == 'card' %} _gap-0.5{% else %} _gap-1{% endif %}">
         <div
           class="rating"
           role="img"
@@ -57,10 +57,14 @@
         </p>
         <div class="_flex _gap-0 _items-center">
           {% comment %} <span class="_font-body-condensed _text-brand-dark _text-sm">({{ rating_metafield }})</span> {% endcomment %}
-          {% comment %} <span class="svg-wrapper _w-4 _h-4 _mx-1">{{ 'icon-us-flag.svg' | inline_asset_content }}</span> {% endcomment %}
+          <span class="svg-wrapper {% if type == 'card' %} _w-3 _h-3{% else %} _w-4 _h-4{% endif %} _mx-1">{{ 'icon-us-flag.svg' | inline_asset_content }}</span>
           <span class="_font-body-condensed _text-brand-dark _text-sm">
             {% comment %} {{- rating_metafield }}  {% endcomment %}
-            {% unless type == 'card' %}({{ rating_metafield }}){% unless rating_metafield_count == blank %} {{ rating_metafield_count }}+{% endunless %} U.S. Reviews{% endunless %}
+            {%- if type == 'card' -%}
+              {% unless rating_metafield_count == blank %}({{ rating_metafield_count }}){% endunless %}
+            {%- else -%}
+              ({{ rating_metafield }}){% unless rating_metafield_count == blank %} {{ rating_metafield_count }}+{% endunless %} U.S. Reviews
+            {%- endif -%}
           </span>
         </div>
         <span class="visually-hidden">

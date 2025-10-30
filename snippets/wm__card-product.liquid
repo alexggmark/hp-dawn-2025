@@ -212,11 +212,13 @@
               {% comment %} --------------------- {% endcomment %}
               {% comment %} -- (C) Description -- {% endcomment %}
               {% comment %} --------------------- {% endcomment %}
-              <span class="_text-sm _text-brand-dark [grid-area:C]">
-                {%- unless card_product.metafields.custom.product_tagline == blank -%}
-                  {{ card_product.metafields.custom.product_tagline }}
-                {%- endunless -%}
-              </span>
+              <div class="_flex _items-center _overflow-hidden [grid-area:C]">
+                <span class="_text-sm _text-brand-dark _overflow-hidden _text-ellipsis _whitespace-nowrap">
+                  {%- unless card_product.metafields.custom.product_tagline == blank -%}
+                    {{ card_product.metafields.custom.product_tagline }}
+                  {%- endunless -%}
+                </span>
+              </div>
 
               {% comment %} ---------------------- {% endcomment %}
               {% comment %} -- (D) Review stars -- {% endcomment %}

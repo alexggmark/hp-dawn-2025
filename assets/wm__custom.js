@@ -25,6 +25,11 @@ class ProductRating extends HTMLElement {
       this.classList.add(this.loadedClass);
       this.classList.remove(this.fallbackClass);
       widget?.setAttribute('aria-hidden', 'false');
+
+      // Small workaround to fix how Klaviyo shows reviews
+      this.updateKlaviyoDom(widget);
+      setTimeout(() => this.updateKlaviyoDom(widget), 100);
+
       cleanup();
     };
 
@@ -61,6 +66,15 @@ class ProductRating extends HTMLElement {
   disconnectedCallback() {
     if (this._mo) this._mo.disconnect();
     if (this._fallbackTimer) clearTimeout(this._fallbackTimer);
+  }
+
+  // Helper method that replaces "12 Reviews" with "(12)""
+  updateKlaviyoDom(widget) {
+    const label = widget?.querySelector('.kl_reviews__star_rating_widget__label');
+    if (!label) return;
+    const match = (label.textContent || '').match(/(\d+(?:\.\d+)?)/);
+    if (!match) return;
+    label.textContent = `(${match[1]})`;
   }
 }
 

@@ -181,11 +181,11 @@
                   {%- endif -%}
                 </p>
               {%- when 'description' -%}
-                <div class=" _mb-10">
+                <div class="_mb-10 _mt-4">
                   {%- if product.description != blank -%}
                     <div class="_pb-2">
                       {%- assign word_count = product.description | strip_html | strip | split: ' ' | size -%}
-                      {%- assign max_height = 70 -%}
+                      {%- assign max_height = 50 -%}
 
                       {%- if word_count <= 30 -%}
                         <div class="_prose quick-add-hidden" {{ block.shopify_attributes }}>
@@ -204,7 +204,20 @@
                   {%- endif -%}
 
                   {% if product.metafields.custom.product_description_bullets %}
-                    <div class="_prose _mt-3 _text-base">
+                    <style>
+                      {% comment %}
+                        One off helper class that turns <em> (italic) into small text
+                        - So we can include "* According to XYZ" after benefit bullets
+                      {% endcomment %}
+                      .special-citation-class em {
+                        line-height: 1.4 !important;
+                        font-size: 0.7rem;
+                        display: block;
+                        margin-top: 1.5rem;
+                        opacity: 0.4;
+                      }
+                    </style>
+                    <div class="_prose _mt-3 _text-base special-citation-class">
                       {{ product.metafields.custom.product_description_bullets | metafield_tag }}
                     </div>
                   {%- endif -%}
@@ -304,10 +317,10 @@
                 {% render 'wm__product-variant-picker', product: product, block: block, product_form_id: product_form_id %}
               {%- when 'buy_buttons' -%}
                 <div class="[.quick-shop-drawer_&]:_sticky [.quick-shop-drawer_&]:_bottom-0 [.quick-shop-drawer_&]:_bg-brand-light [.quick-shop-drawer_&]:_py-4">
-                  <div class="_flex _flex-row _items-stretch [.quick-shop-drawer_&]:_flex-col lg:_gap-4 _gap-2 [.quick-shop-drawer_&]:md:_gap-2">
+                  <div class="_flex _flex-row _items-stretch [.quick-shop-drawer_&]:_flex-row lg:_gap-4 _gap-2 [.quick-shop-drawer_&]:md:_gap-2">
                     <div
                       id="Quantity-Form-{{ section.id }}"
-                      class="lg:_max-w-36 _max-w-[25%] [.quick-shop-drawer_&]:_max-w-full _w-full"
+                      class="lg:_max-w-36 _max-w-[25%] [.quick-shop-drawer_&]:_max-w-[25%] _w-full"
                       data-js-quantity-form
                       {{ block.shopify_attributes }}
                     >
