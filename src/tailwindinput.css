@@ -54,7 +54,7 @@
   ------------ */
   ._button-primary {
     @apply
-    _flex _relative _items-center _justify-center _gap-3 _text-nowrap
+    _flex _relative _items-center _justify-center _gap-3 _text-nowrap _whitespace-nowrap
     _font-semibold _text-base _uppercase _tracking-widest
     _text-brand-dark hover:_text-brand-light
     _bg-white
@@ -64,7 +64,7 @@
   }
   ._button-secondary {
     @apply
-    _flex _relative _items-center _justify-center _gap-3 _text-nowrap
+    _flex _relative _items-center _justify-center _gap-3 _text-nowrap _whitespace-nowrap
     _font-semibold _text-base _uppercase _tracking-widest
     _text-brand-light
     _bg-brand-primary-700 hover:_bg-brand-primary-500
@@ -74,7 +74,7 @@
   }
   ._button-tertiary {
     @apply
-    _flex _relative _items-center _justify-center _gap-3 _text-nowrap
+    _flex _relative _items-center _justify-center _gap-3 _text-nowrap _whitespace-nowrap
     _font-semibold _text-base _uppercase _tracking-widest
     _text-brand-light
     _bg-transparent hover:_bg-brand-primary-500

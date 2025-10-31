@@ -113,7 +113,6 @@
     },
     "pdp-metaobject-blocks": {
       "type": "wm__pdp-metaobject-blocks",
-      "disabled": true,
       "settings": {}
     },
     "175007490287b4d42b": {

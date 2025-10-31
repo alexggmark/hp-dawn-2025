@@ -124,7 +124,7 @@
     ">
        <div class="md:_max-w-[550px] _mb-3">
          <h1 class="_text-2.5xl md:_text-4xl _font-heading-primary{% if collection_light_text == true %} _text-brand-light{% else %} _text-brand-dark{% endif %}">
-           <span class="visually-hidden">{{ 'sections.collection_template.title' | t }}: </span>
+           {% comment %} <span class="visually-hidden">{{ 'sections.collection_template.title' | t }}: </span> {% endcomment %}
            {{- collection.title | escape -}}
          </h1>
        </div>

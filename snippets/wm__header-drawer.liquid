@@ -37,9 +37,9 @@
         ">
           <nav class="menu-drawer__navigation _py-2">
             <div class="_flex _flex-row _justify-between _items-center _w-full _mb-2">
-              <h3 class="_font-body-fancy _text-xl _text-brand-dark">
+              <span class="_font-body-fancy _text-xl _text-brand-dark">
                 Best Sellers
-              </h3>
+              </span>
               <a href="{{ slider_collection.url }}" class="_underline _underline-offset-4 _text-sm _font-link">See All</a>
             </div>
             <embla-slider data-lazy>
@@ -385,9 +385,9 @@
           </nav>
           <div class="_w-full">
             <div class="_flex-grow _flex _flex-col _items-start">
-              <h3 class="_font-body-fancy _text-xl _text-brand-dark _mb-2">
+              <span class="_font-body-fancy _text-xl _text-brand-dark _mb-2">
                 Featured
-              </h3>
+              </span>
               <div class="_flex _flex-row _gap-2.5 _w-full">
                 {%- for banner in banner_entries -%}
                   <div class="_flex-1 _flex _flex-col _relative _group/menubanner link-underline-trigger">
@@ -402,7 +402,7 @@
                       </div>
                     </div>
                     <div class="_flex-1 _flex _flex-col _justify-between _items-start">
-                      {%- if banner.title -%}<h3 class="link-underline _text-sm _font-link _inline">{{ banner.title }}</h3>{%- endif -%}
+                      {%- if banner.title -%}<span class="link-underline _text-sm _font-link _inline">{{ banner.title }}</span>{%- endif -%}
                       {%- if banner.cta_text -%}
                         <a
                           href="{{ banner.link.value.url }}"
