@@ -7,8 +7,9 @@ class ProductRating extends HTMLElement {
 
     this.loadedClass = 'js-has-reviews';
     this.fallbackClass = 'js-fallback-reviews';
-    // This was originally 1200 timeout, might have to check this is safe
-    this.timeoutMs = parseInt(this.getAttribute('timeout') || '600', 10);
+    // this.timeoutMs = parseInt(this.getAttribute('timeout') || '2000', 10);
+    // Updating value as slower load on mobile vs desktop (Klaviyo issue)
+    this.timeoutMs = window.matchMedia('(pointer: coarse)').matches ? 2000 : 1000;
 
     const hasContent = (el) => {
       const first = el?.firstElementChild;

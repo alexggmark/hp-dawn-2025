@@ -9,9 +9,16 @@
   {% render 'wm__badges', product: product/card_product, placement: 'main'/'card' %}
 {% endcomment %}
 
+{% comment %} SAFELIST - used to generate classes in tailwind even if locked inside variables {% endcomment %}
+{% if false %}
+  <div class="_border _inline-block _font-body-condensed _uppercase _text-center _whitespace-nowrap _pointer-events-none
+    _text-sm _px-1.5 _py-0.5
+    _border-brand-dark _border-transparent"></div>
+{% endif %}
+
 {%- assign metafield_badges = product.metafields.custom.product_custom_badges -%}
 
-{%- assign badge_classes_base = "_border _inline-block _font-body-condensed _uppercase _text-center _whitespace-nowrap _pointer-events-none" -%}
+{%- assign badge_classes_base = "_border _inline-block _font-body-condensed _uppercase _text-center _whitespace-nowrap _pointer-events-none badge-mobile-fix" -%}
 
 {%- assign badge_classes_lg = "_text-sm _px-1.5 _py-0.5 _text-brand-dark _bg-brand-light" -%}
 {% comment %} {%- assign badge_classes_sm = "_text-sm _px-1.5 _py-0.5 _text-brand-dark _bg-brand-light" -%} {% endcomment %}
@@ -32,9 +39,9 @@
 {%- assign badge_limit = 2 -%}
 
 {%- if product.available == false -%}
-  <span class="{{ badge_classes_base }} {{ badge_classes_color_disabled }} {{ badge_size }}">
+  <div class="{{ badge_classes_base }} {{ badge_classes_color_disabled }} {{ badge_size }}">
     {{- 'products.product.sold_out' | t -}}
-  </span>
+  </div>
 {%- else -%}
   {% comment %} Compare price -X% off {% endcomment %}
   {% comment %}
@@ -50,18 +57,18 @@
 
   {% comment %} New Tag {% endcomment %}
   {%- if product.collections contains collections['whats-new'] and badge_counter <= badge_limit -%}
-    <span class="{{ badge_classes_base }} {{ badge_classes_color_light }} {{ badge_size }}">
+    <div class="{{ badge_classes_base }} {{ badge_classes_color_light }} {{ badge_size }}">
       New Arrival
-    </span>
+    </div>
 
     {%- assign badge_counter = badge_counter | plus: 1 -%}
   {%- endif -%}
 
   {% comment %} Best Seller Tag {% endcomment %}
   {%- if product.tags contains 'Best Seller' and badge_counter <= badge_limit -%}
-    <span class="{{ badge_classes_base }} {{ badge_classes_color_light }} {{ badge_size }}">
+    <div class="{{ badge_classes_base }} {{ badge_classes_color_light }} {{ badge_size }}">
       Best Seller
-    </span>
+    </div>
 
     {%- assign badge_counter = badge_counter | plus: 1 -%}
   {%- endif -%}
@@ -69,9 +76,9 @@
   {% comment %} Custom metafield badges {% endcomment %}
   {%- for badge in metafield_badges.value -%}
     {%- if badge_counter <= badge_limit and placement != "card" -%}
-      <span class="{{ badge_classes_base }} {{ badge_classes_color_light }} {{ badge_size }}">
+      <div class="{{ badge_classes_base }} {{ badge_classes_color_light }} {{ badge_size }}">
         {{ badge.text }}
-      </span>
+      </div>
 
       {%- assign badge_counter = badge_counter | plus: 1 -%}
     {%- endif -%}
