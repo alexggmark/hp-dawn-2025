@@ -57,7 +57,6 @@
                       _items-center
                       _snap-start
                       _h-auto
-                      {% if forloop.last %} md:_mr-12 _mr-4{% endif %}
                     ">
                       {% render 'wm__card-product',
                         card_product: product,
@@ -125,7 +124,7 @@
                               </span>
                               {{ link.title | escape }}
                             </button> {% endcomment %}
-                            <ul class="menu-drawer__menu list-menu" role="list" tabindex="-1">
+                            <ul class="menu-drawer__menu list-menu _pb-4" role="list" tabindex="-1">
                               {%- for childlink in link.links -%}
 
                                 {%- assign active_child = nil -%}
@@ -166,7 +165,7 @@
                                         <div
                                           id="childlink-{{ childlink.handle | escape }}"
                                           class="
-                                            _px-4
+                                            _px-4 _pb-4
                                             menu-drawer__submenu has-submenu
                                           "
                                         >

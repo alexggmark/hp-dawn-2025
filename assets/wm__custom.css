@@ -6,6 +6,14 @@ html {
   scroll-behavior: smooth;
 }
 
+/* ------------------------
+  PANDECTES COOKIE ICON FIX
+------------------------ */
+/* No better way to handle, the app itself forces z-index to "2147483647"! */
+.cc-revoke.cc-bottom.cc-left {
+  z-index: 2!important;
+}
+
 /* --------------
   SCROLLBAR STYLE
 -------------- */
