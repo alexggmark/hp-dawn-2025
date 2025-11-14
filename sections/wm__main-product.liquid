@@ -181,7 +181,7 @@
                   {%- endif -%}
                 </p>
               {%- when 'description' -%}
-                <div class="_mb-10 _mt-4">
+                <div class="md:_mb-10 _mb-6 _mt-4">
                   {%- if product.description != blank -%}
                     <div class="_pb-2">
                       {%- assign word_count = product.description | strip_html | strip | split: ' ' | size -%}
