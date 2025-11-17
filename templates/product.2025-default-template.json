@@ -48,9 +48,7 @@
         },
         "usps_H6VVPr": {
           "type": "usps",
-          "settings": {
-            "usp_image": "shopify://shop_images/HPWeb-PDP-Desktop-BrandIcons.gif"
-          }
+          "settings": {}
         },
         "product_details_CfyEpb": {
           "type": "product_details",
