@@ -1,0 +1,22 @@
+/* Hide all B variants by default */
+[data-abtest] [data-abtest-var="b"], [data-abtest-var="b"] {
+  display: none;
+}
+
+/* "active-search" */
+header.ab-test-active-search [data-abtest-var="a"] {
+  display: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+header.ab-test-active-search [data-abtest-var="b"] {
+  display: block;
+}
+
+@media screen and (min-width: 990px) {
+  header.ab-test-active-search [data-abtest-var="a"] {
+    display: block;
+    opacity: 1;
+  }
+}

@@ -1,5 +1,7 @@
-<div>
-  {% render 'wm__ab-test-recently-viewed' %}
+<div data-abtest="recently-viewed">
+  <div data-abtest-var="b">
+    {% render 'wm__ab-test-recently-viewed' %}
+  </div>
 </div>
 
 {% schema %}

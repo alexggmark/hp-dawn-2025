@@ -456,6 +456,7 @@
               {%- when 'usps' -%}
                 {% comment %} TODO: A/B TEST = rotating-usps {% endcomment %}
                 <div class="_w-full _my-3" data-js-product-usps>
+
                   {% capture variant_a %}
                     <div class="_flex _flex-row _justify-start">
                       {%- unless block.settings.usp_1_text == blank -%}
@@ -501,17 +502,28 @@
                         <span class="svg-wrapper _w-6 _h-6">
                           {{ 'icon-newbuild-blue-tick.svg' | inline_asset_content }}
                         </span>
-                        <span class="_text-sm _font-system _text-black">Formulated by dermatologists – trusted by 1,000+ clinics</span>
+                        <span class="_text-sm _font-system _text-black" data-abtest-multivar="text">Formulated by dermatologists – trusted by 1,000+ clinics</span>
                       </div>
                     </div>
                   {% endcapture %}
 
-                  {{ variant_b }}
+                  <div data-abtest="rotating-usps">
+                    <div data-abtest-var="a">
+                      {{ variant_a }}
+                    </div>
+                    <div data-abtest-var="b">
+                      {{ variant_b }}
+                    </div>
+                  </div>
                 </div>
 
                 {% comment %} TODO: A/B TEST = rotating-usps {% endcomment %}
                 {% comment %} Note: this should be own block eventually {% endcomment %}
-                {% render 'wm__ab-test-related-products-pdp' %}
+                <div data-abtest="atf-paired">
+                  <div data-abtest-var="b">
+                    {% render 'wm__ab-test-related-products-pdp' %}
+                  </div>
+                </div>
 
               {%- when 'product_details' -%}
                 <div class="_w-full _block _mt-6" data-js-product-details>

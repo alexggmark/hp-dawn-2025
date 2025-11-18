@@ -133,6 +133,11 @@
         "margin_bottom": "0"
       }
     },
+    "wm_recently_viewed_xHeGYY": {
+      "type": "wm__recently-viewed",
+      "name": "WM Recently Viewed",
+      "settings": {}
+    },
     "related-products": {
       "type": "wm__related-products",
       "settings": {
@@ -171,6 +176,7 @@
     "main",
     "pdp-metaobject-blocks",
     "175007490287b4d42b",
+    "wm_recently_viewed_xHeGYY",
     "related-products",
     "wm_pdp_metaobject_blocks_footer_BX93gM",
     "wm_cta_banner"

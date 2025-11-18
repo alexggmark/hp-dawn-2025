@@ -16,6 +16,7 @@
     "default_collection_invisible_header": true,
     "default_collection_overlay_opacity": 30,
     "default_ingredients_image": "shopify://shop_images/glass-jars.webp",
+    "default_product": "5x-power-peel-face-exfoliator",
     "logo": "shopify://shop_images/HydroPeptide-logo-dark.svg",
     "logo_width": 160,
     "favicon": "shopify://shop_images/hydropeptide-favicon.jpg",

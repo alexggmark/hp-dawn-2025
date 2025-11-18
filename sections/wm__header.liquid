@@ -290,7 +290,7 @@
         {%- endunless -%}
 
         {% comment %} TODO: A/B TEST = active-search {% endcomment %}
-        <div class="lg:_block _hidden">
+        <div data-abtest-var="a">
           {% render 'wm__header-search', input_id: 'Search-In-Modal' %}
         </div>
         {% comment %} TODO: END A/B TEST = active-search {% endcomment %}
@@ -321,7 +321,9 @@
     </div>
     {% comment %} TODO: A/B TEST = active-search {% endcomment %}
     {%- unless request.page_type == 'product' -%}
-      {% render 'wm__ab-test-active-search', input_id: 'Search-In-Modal' %}
+      <div data-abtest-var="b">
+        {% render 'wm__ab-test-active-search', input_id: 'Search-In-Modal' %}
+      </div>
     {%- endunless -%}
     {% comment %} TODO: END A/B TEST = active-search {% endcomment %}
   </header>
