@@ -289,7 +289,11 @@
           </div>
         {%- endunless -%}
 
-        {% render 'wm__header-search', input_id: 'Search-In-Modal' %}
+        {% comment %} TODO: A/B TEST = active-search {% endcomment %}
+        <div class="lg:_block _hidden">
+          {% render 'wm__header-search', input_id: 'Search-In-Modal' %}
+        </div>
+        {% comment %} TODO: END A/B TEST = active-search {% endcomment %}
 
         {%- if shop.customer_accounts_enabled -%}
           <a
@@ -315,6 +319,11 @@
         </a>
       </div>
     </div>
+    {% comment %} TODO: A/B TEST = active-search {% endcomment %}
+    {%- unless request.page_type == 'product' -%}
+      {% render 'wm__ab-test-active-search', input_id: 'Search-In-Modal' %}
+    {%- endunless -%}
+    {% comment %} TODO: END A/B TEST = active-search {% endcomment %}
   </header>
 </{{ header_tag }}>
 

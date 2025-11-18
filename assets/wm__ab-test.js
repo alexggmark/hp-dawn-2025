@@ -8,9 +8,9 @@ Use this file to control variants. I.e. "if test A running, querySelect this ele
 - data-abtest-var="b" (default hidden)
 
 - "active-bundles"
-- "atf-paired"
-- "active-search"
-- "usps"
+- "atf-paired" X
+- "active-search" X
+- "rotating-usps" X
 - "recently-viewed"
 
 IDEA?: TODO:

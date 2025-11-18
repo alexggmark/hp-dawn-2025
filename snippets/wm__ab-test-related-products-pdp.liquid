@@ -200,18 +200,102 @@
                             {% comment %} --------------- {% endcomment %}
                             {% comment %} -- (B) Price -- {% endcomment %}
                             {% comment %} --------------- {% endcomment %}
-                            <div class="">
+                            {% comment %} Temporary class just to fix sizing {% endcomment %}
+                            {% style %}
+                              .related-products-price-controls .price {
+                                font-size: 0.8rem!important;
+                              }
+                              .related-products-price-controls .price ._text-base {
+                                font-size: 0.8rem!important;
+                              }
+                            {% endstyle %}
+                            <div class="related-products-price-controls">
                               {% render 'wm__price', product: card_product, price_class: '', show_compare_at_price: true %}
                             </div>
                           </div>
-
                         </div>
                         {% comment %} {% assign product_form_id = 'quick-add-' | append: section_id | append: card_product.id %} {% endcomment %}
 
                         <div class="">
-                          <button class="_button-primary _w-full _py-2 _text-xs">
-                            <span>Add to Cart</span>
-                          </button>
+                          {% comment %} <button class="_button-primary _w-full _py-2.5 _text-xs"> {% endcomment %}
+                            {% comment %} <span>Add to Cart</span> {% endcomment %}
+                             
+                            {% comment %} TODO: START PRODUCT FORM {% endcomment %}
+
+                            {%- assign product_form_id = 'product-form-' | append: section.id | append: '-' | append: forloop.index -%}
+
+                            <product-form
+                              class="product-form"
+                              data-hide-errors="false"
+                              data-section-id="{{ section.id }}"
+                            >
+                              <div class="product-form__error-message-wrapper" role="alert" hidden>
+                                <span class="svg-wrapper">
+                                  {{- 'icon-error.svg' | inline_asset_content -}}
+                                </span>
+                                <span class="product-form__error-message"></span>
+                              </div>
+
+                              {%- form 'product',
+                                card_product,
+                                id: product_form_id,
+                                class: 'form',
+                                novalidate: 'novalidate',
+                                data-type: 'add-to-cart-form'
+                              -%}
+                                <input
+                                  type="hidden"
+                                  name="id"
+                                  value="{{ card_product.selected_or_first_available_variant.id }}"
+                                  {% if card_product.selected_or_first_available_variant.available == false
+                                    or quantity_rule_soldout
+                                    or card_product.selected_or_first_available_variant == null
+                                  %}
+                                    disabled
+                                  {% endif %}
+                                  class="product-variant-id"
+                                >
+
+                                <div class="product-form__buttons">
+                                  {%- liquid
+                                    assign check_against_inventory = true
+                                    if card_product.selected_or_first_available_variant.inventory_management != 'shopify' or card_product.selected_or_first_available_variant.inventory_policy == 'continue'
+                                      assign check_against_inventory = false
+                                    endif
+                                    if card_product.selected_or_first_available_variant.quantity_rule.min > card_product.selected_or_first_available_variant.inventory_quantity and check_against_inventory
+                                      assign quantity_rule_soldout = true
+                                    endif
+                                  -%}
+                                  <button
+                                    id="ProductSubmitButton-{{ section_id }}"
+                                    type="submit"
+                                    name="add"
+                                    class="_button-primary _px-1 _py-2.5 _text-xs _w-full"
+                                    {% if card_product.selected_or_first_available_variant.available == false
+                                      or quantity_rule_soldout
+                                      or card_product.selected_or_first_available_variant == null
+                                    %}
+                                      disabled
+                                    {% endif %}
+                                  >
+                                    <span>
+                                      {%- if card_product.selected_or_first_available_variant == null -%}
+                                        {{ 'products.product.unavailable' | t }}
+                                      {%- elsif card_product.selected_or_first_available_variant.available == false or quantity_rule_soldout -%}
+                                        {{ 'products.product.sold_out' | t }}
+                                      {%- else -%}
+                                        {% comment %} {{ 'products.product.add_to_cart_with_price' | t: price: product.price }} {% endcomment %}
+                                        Add to cart
+                                      {%- endif -%}
+                                    </span>
+                                    {%- render 'loading-spinner' -%}
+                                  </button>
+                                </div>
+                              {%- endform -%}
+                            </product-form>
+
+                            {% comment %} TODO: END PRODUCT FORM {% endcomment %}
+                          {% comment %} </button> {% endcomment %}
                         </div>
                       </div>
                     </div>
