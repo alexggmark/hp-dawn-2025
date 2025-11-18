@@ -12,3 +12,24 @@
 
 {% comment %} A/B testing in PostHog feature flag controls {% endcomment %}
 <script src="{{ 'wm__ab-test.js' | asset_url }}" defer="defer"></script>
+
+{%- if request.page_type == 'product' -%}
+  <script>
+    function addToRecentlyViewed(productHandle) {
+      const maxProducts = 12;
+      let recentlyViewed = JSON.parse(localStorage.getItem('shopifyProductRecentlyViewed') || '[]');
+      
+      recentlyViewed = recentlyViewed.filter(handle => handle !== productHandle);
+      
+      recentlyViewed.unshift(productHandle);
+      
+      if (recentlyViewed.length > maxProducts) {
+        recentlyViewed = recentlyViewed.slice(0, maxProducts);
+      }
+      
+      localStorage.setItem('shopifyProductRecentlyViewed', JSON.stringify(recentlyViewed));
+    }
+
+    addToRecentlyViewed('{{ product.handle }}');
+  </script>
+{%- endif -%}

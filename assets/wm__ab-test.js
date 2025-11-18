@@ -11,7 +11,7 @@ Use this file to control variants. I.e. "if test A running, querySelect this ele
 - "atf-paired" X
 - "active-search" X
 - "rotating-usps" X
-- "recently-viewed"
+- "recently-viewed" X
 
 IDEA?: TODO:
 {% capture "original_content" %}

@@ -65,6 +65,16 @@
         "label": "Pick a default image for ingredients block",
         "info": "This will be default if no ingredient image is available or active"
       },
+      {
+        "type": "header",
+        "content": "Default product for loading"
+      },
+      {
+        "type": "product",
+        "id": "default_product",
+        "label": "Default Product",
+        "info": "Default product used for loading recently viewed and others"
+      }
     ]
   },
   {
