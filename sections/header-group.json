@@ -14,8 +14,16 @@
     "announcement-bar": {
       "type": "wm__announcement-bar",
       "blocks": {
+        "announcement_iJ7n8n": {
+          "type": "announcement",
+          "settings": {
+            "text": "Black Friday Event – 25% Off Everything",
+            "link": "shopify://collections/best-sellers"
+          }
+        },
         "announcement-bar-0": {
           "type": "announcement",
+          "disabled": true,
           "settings": {
             "text": "Free Next-Day Shipping Over £50*",
             "link": "shopify://collections/best-sellers"
@@ -23,7 +31,11 @@
         }
       },
       "block_order": [
+        "announcement_iJ7n8n",
         "announcement-bar-0"
+      ],
+      "custom_css": [
+        ".announcement-bar-section > div {background-color: black !important;}"
       ],
       "settings": {}
     },

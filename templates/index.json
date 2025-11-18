@@ -17,7 +17,7 @@
           "settings": {
             "heading": "Black Friday Event",
             "heading_tag": "h1",
-            "desktop_text_size": "3xl",
+            "desktop_text_size": "5xl",
             "mobile_text_size": "3xl",
             "margin_bottom": "0",
             "invert_colours": false,
@@ -32,9 +32,9 @@
           "settings": {
             "heading": "25% Off Sitewide",
             "heading_tag": "h1",
-            "desktop_text_size": "3xl",
+            "desktop_text_size": "5xl",
             "mobile_text_size": "3xl",
-            "margin_bottom": "0",
+            "margin_bottom": "4",
             "invert_colours": false,
             "mobile_invert_colours": false,
             "decoration_tag_on": true,
@@ -47,7 +47,7 @@
           "settings": {
             "heading": "Complimentary Gifts",
             "heading_tag": "h2",
-            "desktop_text_size": "lg",
+            "desktop_text_size": "base",
             "mobile_text_size": "base",
             "margin_bottom": "2",
             "invert_colours": false,
@@ -57,7 +57,16 @@
         "text_aLQVFW": {
           "type": "text",
           "settings": {
-            "text": "+ Spend £125 and receive a Bright Eyes Kit",
+            "text": "+ Spend £125 and receive a <strong>Bright Eyes Kit</strong>",
+            "margin_bottom": "0",
+            "invert_colours": false,
+            "mobile_invert_colours": false
+          }
+        },
+        "text_FjCcpE": {
+          "type": "text",
+          "settings": {
+            "text": "+ Spend £250 and receive a box of <strong>Polypeptide Face Masks</strong>",
             "margin_bottom": "6",
             "invert_colours": false,
             "mobile_invert_colours": false
@@ -66,12 +75,14 @@
         "buttons_UHghyR": {
           "type": "buttons",
           "settings": {
-            "button_label_1": "Button label",
-            "button_link_1": "",
-            "button_style_1": "primary",
-            "button_label_2": "Button label",
+            "button_label_1": "Shop Now",
+            "button_link_1": "shopify://collections/best-sellers",
+            "button_style_1": "custom",
+            "button_custom_color_1": "#000000",
+            "button_label_2": "",
             "button_link_2": "",
-            "button_style_2": "primary"
+            "button_style_2": "custom",
+            "button_custom_color_2": "#692f2f"
           }
         }
       },
@@ -80,11 +91,12 @@
         "heading_type_1_LRtA3W",
         "top_heading_type_1_z8getC",
         "text_aLQVFW",
+        "text_FjCcpE",
         "buttons_UHghyR"
       ],
       "name": "WM Hero Banner Image",
       "settings": {
-        "image": "shopify://shop_images/black-friday-banner.png",
+        "image": "shopify://shop_images/black-friday-banner-centered-cut_2.png",
         "image_overlay_opacity": 0,
         "container_width": "page",
         "image_height": "medium",
@@ -92,7 +104,7 @@
         "show_text_box": false,
         "desktop_content_alignment": "left",
         "mobile_image_overlay_opacity": 0,
-        "mobile_image_height": "medium",
+        "mobile_image_height": "small",
         "mobile_content_alignment": "center",
         "mobile_content_position": "middle-center",
         "show_mobile_text_box": false,
@@ -147,9 +159,11 @@
             "button_label_1": "Shop Now",
             "button_link_1": "shopify://collections/best-sellers",
             "button_style_1": "primary",
+            "button_custom_color_1": "",
             "button_label_2": "",
             "button_link_2": "shopify://collections",
-            "button_style_2": "tertiary"
+            "button_style_2": "tertiary",
+            "button_custom_color_2": ""
           }
         }
       },
