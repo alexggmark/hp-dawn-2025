@@ -1,0 +1,159 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "wm__main-product",
+      "blocks": {
+        "topline_callout_jbMegk": {
+          "type": "topline_callout",
+          "settings": {
+            "title": "<p>20 years of Epigenetic Research in 1 bottle.</p>",
+            "link": "Learn more about Epigenetic Skincare >",
+            "url": "shopify://pages/our-science"
+          }
+        },
+        "badge_EVc6gV": {
+          "type": "badge",
+          "settings": {}
+        },
+        "rating_xbiqGz": {
+          "type": "rating",
+          "settings": {}
+        },
+        "title": {
+          "type": "title",
+          "settings": {}
+        },
+        "title_tagline_R7B4ai": {
+          "type": "title_tagline",
+          "settings": {}
+        },
+        "pills_GKNjM6": {
+          "type": "pills",
+          "settings": {}
+        },
+        "price": {
+          "type": "price",
+          "settings": {}
+        },
+        "description": {
+          "type": "description",
+          "settings": {}
+        },
+        "benefit_bullets_gGRigX": {
+          "type": "benefit_bullets",
+          "settings": {}
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button",
+            "swatch_shape": "circle"
+          }
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": false,
+            "show_gift_card_recipient": false
+          }
+        },
+        "usps_H6VVPr": {
+          "type": "usps",
+          "settings": {
+            "usp_1_text": "Free Next-Day Shipping Over £50",
+            "usp_1_icon": "truck",
+            "usp_2_text": "",
+            "usp_2_icon": "check_mark",
+            "usp_3_text": "",
+            "usp_3_icon": "check_mark"
+          }
+        },
+        "product_details_CfyEpb": {
+          "type": "product_details",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "topline_callout_jbMegk",
+        "badge_EVc6gV",
+        "rating_xbiqGz",
+        "title",
+        "title_tagline_R7B4ai",
+        "pills_GKNjM6",
+        "price",
+        "description",
+        "benefit_bullets_gGRigX",
+        "variant_picker",
+        "buy_buttons",
+        "usps_H6VVPr",
+        "product_details_CfyEpb"
+      ],
+      "settings": {
+        "enable_sticky_info": true,
+        "color_scheme": "scheme-1",
+        "media_size": "medium",
+        "constrain_to_viewport": true,
+        "media_fit": "cover",
+        "gallery_layout": "stacked",
+        "mobile_thumbnails": "hide",
+        "image_zoom": "lightbox",
+        "hide_variants": true,
+        "enable_video_looping": true,
+        "margin_bottom": "12"
+      }
+    },
+    "pdp-metaobject-blocks": {
+      "type": "wm__pdp-metaobject-blocks",
+      "settings": {}
+    },
+    "related-products": {
+      "type": "wm__related-products",
+      "settings": {
+        "heading": "Pairs Well With",
+        "image_ratio": "square",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "padding_top": 36,
+        "padding_bottom": 28
+      }
+    },
+    "wm_pdp_metaobject_blocks_footer_BX93gM": {
+      "type": "wm__pdp-metaobject-blocks-footer",
+      "settings": {}
+    },
+    "wm_cta_banner": {
+      "type": "wm__cta-banner",
+      "disabled": true,
+      "settings": {
+        "top_heading": "Elevated by Science",
+        "main_heading": "Pick Your <em>Perfect</em> Peptides",
+        "description": "Our patented peptide technology and epigenetics work together to boost your skin's natural repair and target genes involved in ageing",
+        "cta_label": "Contact us",
+        "cta_url": "",
+        "invert_colours": true,
+        "image": "shopify://shop_images/Retail_SunSlick_PDP_HowToUse.jpg",
+        "video": "shopify://files/videos/power luxe SMALL FOR WEB.mp4",
+        "image_overlay_opacity": 40,
+        "margin_bottom": "0"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "pdp-metaobject-blocks",
+    "related-products",
+    "wm_pdp_metaobject_blocks_footer_BX93gM",
+    "wm_cta_banner"
+  ]
+}
