@@ -30,10 +30,10 @@
 
 {%- case request.page_type -%}
   {%- when 'index' -%}
-    {%- if settings.invisible_overlay_header -%}
+    {%- if settings.invisible_overlay_header and settings.homepage_invisible_header -%}
       {%- assign invisible_header = true -%}
     {%- endif -%}
-    {%- if settings.invert_invisible_overlay_header_colors -%}
+    {%- if settings.invert_invisible_overlay_header_colors and settings.homepage_lighttext -%}
       {%- assign invert_header_colors = true -%}
     {%- endif -%}
 

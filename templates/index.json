@@ -9,6 +9,96 @@
  */
 {
   "sections": {
+    "wm_hero_banner_image_tTcqLP": {
+      "type": "wm__hero-banner-image",
+      "blocks": {
+        "heading_type_1_piqMwh": {
+          "type": "heading-type-1",
+          "settings": {
+            "heading": "Black Friday Event",
+            "heading_tag": "h1",
+            "desktop_text_size": "3xl",
+            "mobile_text_size": "3xl",
+            "margin_bottom": "0",
+            "invert_colours": false,
+            "mobile_invert_colours": false,
+            "decoration_tag_on": false,
+            "decoration_tag_text": "Brand New",
+            "decoration_tag_invert": false
+          }
+        },
+        "heading_type_1_LRtA3W": {
+          "type": "heading-type-1",
+          "settings": {
+            "heading": "25% Off Sitewide",
+            "heading_tag": "h1",
+            "desktop_text_size": "3xl",
+            "mobile_text_size": "3xl",
+            "margin_bottom": "0",
+            "invert_colours": false,
+            "mobile_invert_colours": false,
+            "decoration_tag_on": true,
+            "decoration_tag_text": "Black Friday",
+            "decoration_tag_invert": false
+          }
+        },
+        "top_heading_type_1_z8getC": {
+          "type": "top-heading-type-1",
+          "settings": {
+            "heading": "Complimentary Gifts",
+            "heading_tag": "h2",
+            "desktop_text_size": "lg",
+            "mobile_text_size": "base",
+            "margin_bottom": "2",
+            "invert_colours": false,
+            "mobile_invert_colours": false
+          }
+        },
+        "text_aLQVFW": {
+          "type": "text",
+          "settings": {
+            "text": "+ Spend £125 and receive a Bright Eyes Kit",
+            "margin_bottom": "6",
+            "invert_colours": false,
+            "mobile_invert_colours": false
+          }
+        },
+        "buttons_UHghyR": {
+          "type": "buttons",
+          "settings": {
+            "button_label_1": "Button label",
+            "button_link_1": "",
+            "button_style_1": "primary",
+            "button_label_2": "Button label",
+            "button_link_2": "",
+            "button_style_2": "primary"
+          }
+        }
+      },
+      "block_order": [
+        "heading_type_1_piqMwh",
+        "heading_type_1_LRtA3W",
+        "top_heading_type_1_z8getC",
+        "text_aLQVFW",
+        "buttons_UHghyR"
+      ],
+      "name": "WM Hero Banner Image",
+      "settings": {
+        "image": "shopify://shop_images/black-friday-banner.png",
+        "image_overlay_opacity": 0,
+        "container_width": "page",
+        "image_height": "medium",
+        "desktop_content_position": "middle-left",
+        "show_text_box": false,
+        "desktop_content_alignment": "left",
+        "mobile_image_overlay_opacity": 0,
+        "mobile_image_height": "medium",
+        "mobile_content_alignment": "center",
+        "mobile_content_position": "middle-center",
+        "show_mobile_text_box": false,
+        "margin_bottom": "0"
+      }
+    },
     "wm_hero_banner_image_CPaEAD": {
       "type": "wm__hero-banner-image",
       "blocks": {
@@ -69,6 +159,7 @@
         "text_UHBFJV",
         "buttons_WVW8ht"
       ],
+      "disabled": true,
       "settings": {
         "image": "shopify://shop_images/7-22_HP-SummerKits-banner-Desktop.jpg",
         "video": "shopify://files/videos/hp-homepage-hb-compressed (1).mp4",
@@ -432,6 +523,7 @@
     }
   },
   "order": [
+    "wm_hero_banner_image_tTcqLP",
     "wm_hero_banner_image_CPaEAD",
     "wm_product_card_scroll_zyx8Jr",
     "wm_image_block_4_ky3R3J",

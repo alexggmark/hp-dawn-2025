@@ -28,7 +28,21 @@
       },
       {
         "type": "header",
+        "content": "Control homepage settings"
+      },
+      {
+        "type": "header",
         "content": "Control default collection settings"
+      },
+      {
+        "type": "checkbox",
+        "id": "homepage_invisible_header",
+        "label": "Turn on invisible header for homepage header"
+      },
+      {
+        "type": "checkbox",
+        "id": "homepage_lighttext",
+        "label": "Turn on light text for homepage header"
       },
       {
         "type": "image_picker",

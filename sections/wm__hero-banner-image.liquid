@@ -225,7 +225,7 @@
                 {% if decoration_tag_on %} _inline _flex-shrink-0{% endif %}
                 _text-{{ block.settings.mobile_text_size }}
                 md:_text-{{ block.settings.desktop_text_size }}
-                _text-brand-light _font-heading-primary
+                _font-heading-primary
                 _mb-{{ block.settings.margin_bottom | divided_by: 2 }} md:_mb-{{ block.settings.margin_bottom }}
                 {% if block.settings.invert_colours %} md:_text-white{% else %} md:_text-brand-dark{% endif %}
                 {% if block.settings.mobile_invert_colours %} _text-white{% else %} _text-brand-dark{% endif %}
@@ -292,8 +292,15 @@
                     href="{{ block.settings.button_link_1 }}"
                   {% endif %}
                   class="
-                    _button-{{ block.settings.button_style_1 }}
-                  "
+                    {% if block.settings.button_style_1 == "custom" %}
+                      _button-secondary
+                    {% else %}
+                      _button-{{ block.settings.button_style_1 }}
+                    {% endif %}
+                    "
+                  {% if block.settings.button_style_1 == "custom" and block.settings.button_custom_color_1 %}
+                    style="background-color: {{ block.settings.button_custom_color_1 }}!important"
+                  {% endif %}
                 >
                   <span>{{- block.settings.button_label_1 | escape -}}</span>
                 </a>
@@ -306,8 +313,15 @@
                     href="{{ block.settings.button_link_2 }}"
                   {% endif %}
                   class="
-                    _button-{{ block.settings.button_style_2 }}
-                  "
+                    {% if block.settings.button_style_2 == "custom" %}
+                      _button-secondary
+                    {% else %}
+                      _button-{{ block.settings.button_style_2 }}
+                    {% endif %}
+                    "
+                  {% if block.settings.button_style_2 == "custom" and block.settings.button_custom_color_2 %}
+                    style="background-color: {{ block.settings.button_custom_color_2 }}!important"
+                  {% endif %}
                 >
                   <span>{{- block.settings.button_label_2 | escape -}}</span>
                 </a>
@@ -1106,7 +1120,6 @@
     {
       "type": "text",
       "name": "t:sections.image-banner.blocks.text.name",
-      "limit": 1,
       "settings": [
         {
           "type": "inline_richtext",
@@ -1214,10 +1227,19 @@
             {
               "value": "tertiary",
               "label": "Tertiary"
+            },
+            {
+              "value": "custom",
+              "label": "Custom"
             }
           ],
           "default": "primary",
           "label": "Select what kind of button this is"
+        },
+        {
+          "type": "color",
+          "id": "button_custom_color_1",
+          "label": "Select custom color if active"
         },
         {
           "type": "text",
@@ -1246,11 +1268,20 @@
             {
               "value": "tertiary",
               "label": "Tertiary"
+            },
+            {
+              "value": "custom",
+              "label": "Custom"
             }
           ],
           "default": "primary",
           "label": "Select what kind of button this is"
-        }
+        },
+        {
+          "type": "color",
+          "id": "button_custom_color_2",
+          "label": "Select custom color if active"
+        },
       ]
     },
     {
