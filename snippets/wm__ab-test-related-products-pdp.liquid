@@ -224,11 +224,12 @@
 
                             {%- assign product_form_id = 'product-form-' | append: section.id | append: '-' | append: forloop.index -%}
 
-                            <product-form
+                            {% comment %} Removing this because it screwed up Monster cart override {% endcomment %}
+                            {% comment %} <product-form
                               class="product-form"
                               data-hide-errors="false"
                               data-section-id="{{ section.id }}"
-                            >
+                            > {% endcomment %}
                               <div class="product-form__error-message-wrapper" role="alert" hidden>
                                 <span class="svg-wrapper">
                                   {{- 'icon-error.svg' | inline_asset_content -}}
@@ -267,7 +268,7 @@
                                     endif
                                   -%}
                                   <button
-                                    id="ProductSubmitButton-{{ section_id }}"
+                                    id="ProductSubmitButton-{{ section_id }}-{{ forloop.index }}"
                                     type="submit"
                                     name="add"
                                     class="_button-primary _px-1 _py-2.5 _text-xs _w-full"
@@ -292,7 +293,7 @@
                                   </button>
                                 </div>
                               {%- endform -%}
-                            </product-form>
+                            {% comment %} </product-form> {% endcomment %}
 
                             {% comment %} TODO: END PRODUCT FORM {% endcomment %}
                           {% comment %} </button> {% endcomment %}
