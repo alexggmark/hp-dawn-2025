@@ -1,0 +1,37 @@
+<style>
+  /* Hide all B variants by default */
+  [data-abtest] [data-abtest-var="b"], [data-abtest-var="b"] {
+    display: none;
+  }
+
+  /* "active-search" */
+  .scrolled-past-header header.ab-test-active-search [data-abtest-var="a"] {
+    display: block;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+  }
+  .scrolled-past-header header.ab-test-active-search [data-abtest-var="b"] {
+    display: none;
+  }
+  {%- unless request.page_type == 'product' -%}
+    header.ab-test-active-search {
+      margin-bottom: 2rem;
+    }
+    header.ab-test-active-search [data-abtest-var="a"] {
+      display: none;
+      opacity: 0;
+    }
+  {%- endunless -%}
+  header.ab-test-active-search [data-abtest-var="b"] {
+    display: block;
+  }
+  @media screen and (min-width: 990px) {
+    header.ab-test-active-search {
+      margin-bottom: 0;
+    }
+    header.ab-test-active-search [data-abtest-var="a"] {
+      display: block;
+      opacity: 1;
+    }
+  }
+</style>

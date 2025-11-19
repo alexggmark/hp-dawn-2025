@@ -90,5 +90,5 @@
   id="HotSpot-{{ block_id }}"
 >
   {% assign product_form_id = 'quick-add-' | append: section.id | append: product_select.id %}
-  {% render 'wm__quick-shop', custom_button_html: hotspot_button_content, card_product: product_select, product_form_id: product_form_id, section_id: section.id %}
+  {% render 'wm__quick-shop', custom_html: hotspot_button_content, card_product: product_select, product_form_id: product_form_id, section_id: section.id %}
 </div>

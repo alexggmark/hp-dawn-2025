@@ -10,29 +10,9 @@ Use this file to control variants. I.e. "if test A running, querySelect this ele
 
 - "active-bundles"
 - "atf-paired" XX
-
-data-abtest="atf-paired"
-data-abtest-var="b"
-
 - "active-search" XX
-
-data-abtest="active-search"
-data-abtest-var="a"
-data-abtest-var="b"
-
-- "rotating-usps" X
-
-data-abtest="rotating-usps"
-data-abtest-var="a"
-data-abtest-var="b"
-  data-abtest-multivar="a"
-  data-abtest-multivar="b"
-  data-abtest-multivar="c"
-
+- "rotating-usps" XX
 - "recently-viewed" XX
-
-data-abtest="recently-viewed"
-data-abtest-var="b"
 */
 
 // MASTER TEST BUS
@@ -45,6 +25,14 @@ posthog.onFeatureFlags(function() {
 
   // if (posthog.getFeatureFlag('recently-viewed')  == 'test') {
   if (posthog.isFeatureEnabled('recently-viewed')) handleRecentlyViewed();
+
+  if (posthog.isFeatureEnabled('rotating-usps')) {
+    const variant = posthog.getFeatureFlag('rotating-usps');
+    if (!variant) return;
+    if (variant == 'control') return;
+    handleRotatingUSPs(variant);
+  }
+  // if (posthog.isFeatureEnabled('rotating-usps')) handleRotatingUSPs();
 })
 
 function handleAtfPairedTest() {
@@ -67,4 +55,28 @@ function handleRecentlyViewed() {
   if (!testElement) return;
 
   testElement.style.display = "block";
+}
+
+function handleRotatingUSPs(variant) {
+  if (!variant) return;
+  console.log(`Variant: ${variant}`);
+  const test = document.querySelector('[data-abtest="rotating-usps"]');
+  if (!test) return;
+  const controlElement = test.querySelector('[data-abtest-var="a"]');
+  if (!controlElement) return;
+  const testElement = test.querySelector('[data-abtest-var="b"]');
+  if (!testElement) return;
+  
+  controlElement.style.display = "none";
+  testElement.style.display = "block";
+
+  const copy = {
+    b: "Formulated by dermatologists – trusted by 1,000+ clinics",
+    c: "Free Next-Day Shipping Over £50"
+  }
+
+  const testElementText = testElement.querySelector('[data-abtest-multivar="text"]');
+  if (!testElementText) return;
+
+  testElementText.textContent = copy[variant];
 }

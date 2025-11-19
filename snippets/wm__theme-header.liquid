@@ -5,7 +5,8 @@
 {{ 'tailwind.css' | asset_url | stylesheet_tag }}
 {{ 'wm__base.css' | asset_url | stylesheet_tag }}
 {{ 'wm__custom.css' | asset_url | stylesheet_tag }}
-{{ 'wm__ab-test.css' | asset_url | stylesheet_tag }}
+{% comment %} {{ 'wm__ab-test.css' | asset_url | stylesheet_tag }} {% endcomment %}
+{% render 'wm__ab-test' %}
 
 {{ 'wm__quick-shop-overrides.css' | asset_url | stylesheet_tag }}
 
