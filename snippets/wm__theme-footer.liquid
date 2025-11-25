@@ -24,7 +24,33 @@
 {% comment %} ------------------------ {% endcomment %}
 
 {% comment %} <script src="{{ 'wm__segment-analytics-control.js' | asset_url }}" defer="defer"></script> {% endcomment %}
-<script src="{{ 'wm__segment-convertflow-triggers.js' | asset_url }}" defer="defer"></script>
+{% comment %} <script src="{{ 'wm__segment-convertflow-triggers.js' | asset_url }}" defer="defer"></script> {% endcomment %}
+
+{%- if request.page_type == 'product' -%}
+  {%- assign product_popup_trigger_metaobject = metaobjects.audience_analytics_trigger.values -%}
+
+  {%- for entry in product_popup_trigger_metaobject -%}
+    {%- assign audience_key = entry.audience_key -%}
+    {%- assign product_handles = entry.products.value -%}
+    {%- assign popup_element_key = entry.popup_element_key -%}
+    {%- assign number_to_view_to_trigger = entry.number_to_view_to_trigger -%}
+
+    {%- for item in product_handles -%}
+      {%- if item.handle == product.handle -%}
+        <script>
+          window.popup_trigger = {
+            audience_key: "{{ audience_key }}",
+            product: "{{ item.handle }}",
+            popup_element: "{{ popup_element_key }}",
+            number_to_view_to_trigger: {{ number_to_view_to_trigger }}
+          };
+        </script>
+      {%- endif -%}
+    {%- endfor -%}
+  {%- endfor -%}
+{%- endif -%}
+
+<script src="{{ 'wm__popup-triggers.js' | asset_url }}" defer="defer"></script>
 
 {% comment %} Global listener for cart crossing threshold, only activates if cookies set in wm__gwp-picker.liquid active {% endcomment %}
 {% comment %} <script src="{{ 'wm__gwp-picker-listener.js' | asset_url }}" defer="defer"></script> {% endcomment %}

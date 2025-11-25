@@ -119,7 +119,6 @@ if (!customElements.get('quick-shop-drawer')) {
           quickShopCTA.classList.remove('loading');
           quickShopCTA.querySelector('.loading__spinner').classList.add('hidden');
         }
-
       }
 
       preprocessHTML(productElement) {
