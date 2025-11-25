@@ -227,5 +227,9 @@ quick-shop-drawer.menu-opening .quick-shop-drawer__content {
   padding-right: 0!important;
 }
 .card-product-grid .kl_reviews__star_rating_widget .kl_reviews__star_rating_widget__label {
-  display: none!important;
+  padding-left: 0.25rem;
+}
+.kl_reviews__star_rating_widget .kl_reviews__star_rating_widget__label {
+  font-family: var(--font-body-condensed) !important;
+  font-size: 12px;
 }

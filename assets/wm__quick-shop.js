@@ -159,6 +159,9 @@ if (!customElements.get('quick-shop-drawer')) {
         const productUSPSBlock = productElement.querySelector('[data-js-product-usps]');
         if (productUSPSBlock) productUSPSBlock.remove();
 
+        const productToplineBlock = productElement.querySelector('[data-js-topline-callout]');
+        if (productToplineBlock) productToplineBlock.remove();
+
         const productDetailsBlock = productElement.querySelectorAll('[data-js-product-details]');
         if (productDetailsBlock) productDetailsBlock.forEach((details) => details.remove());
       }

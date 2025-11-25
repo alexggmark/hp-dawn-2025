@@ -14,11 +14,19 @@
 {% endcomment %}
 
 {%- unless skip_styles -%}
-  {{ 'component-rating.css' | asset_url | stylesheet_tag }}
+  {{ 'wm__component-rating.css' | asset_url | stylesheet_tag }}
   {{ 'wm__component-price.css' | asset_url | stylesheet_tag }}
   {{ 'quick-order-list.css' | asset_url | stylesheet_tag }}
   {{ 'quantity-popover.css' | asset_url | stylesheet_tag }}
 {%- endunless -%}
+
+{% liquid
+  assign product_title_tag = 'h3'
+
+  if simple_card
+    assign product_title_tag = 'span'
+  endif
+%}
 
 {%- if card_product and card_product != empty -%}
   {% comment %} Keeping card-wrapper for rating star component {% endcomment %}
@@ -114,7 +122,7 @@
           <div class="
             _row-start-2 _py-6 _px-4 md:_py-6 md:_px-7 _hidden
           ">
-            <h3
+            <{{ product_title_tag }}
               class="
                 _mt-0
                 _mb-0
@@ -131,7 +139,7 @@
               >
                 {{ card_product.title | escape }}
               </a>
-            </h3>
+            </{{ product_title_tag }}>
           </div>
           {% comment %} Badge {% endcomment %}
           {%- unless simple_card -%}
@@ -173,7 +181,7 @@
             {% comment %} ----------------------- {% endcomment %}
             {% comment %} -- (A) Product title -- {% endcomment %}
             {% comment %} ----------------------- {% endcomment %}
-            <h3
+            <{{ product_title_tag }}
               class="_text-brand-dark _overflow-hidden _whitespace-nowrap _pr-2 [grid-area:A]"
               {% if card_product.featured_media or settings.card_style == 'card' %}
                 id="title-{{ section_id }}-{{ card_product.id }}"
@@ -199,7 +207,7 @@
               >
                 {{ card_product.title | escape }}
               </a>
-            </h3>
+            </{{ product_title_tag }}>
 
             {% comment %} --------------- {% endcomment %}
             {% comment %} -- (B) Price -- {% endcomment %}
@@ -212,18 +220,20 @@
               {% comment %} --------------------- {% endcomment %}
               {% comment %} -- (C) Description -- {% endcomment %}
               {% comment %} --------------------- {% endcomment %}
-              <span class="_text-sm _text-brand-dark [grid-area:C]">
-                {%- unless card_product.metafields.custom.product_tagline == blank -%}
-                  {{ card_product.metafields.custom.product_tagline }}
-                {%- endunless -%}
-              </span>
+              <div class="_flex _items-center _overflow-hidden [grid-area:C]">
+                <span class="_text-sm _text-brand-dark _overflow-hidden _text-ellipsis _whitespace-nowrap">
+                  {%- unless card_product.metafields.custom.product_tagline == blank -%}
+                    {{ card_product.metafields.custom.product_tagline }}
+                  {%- endunless -%}
+                </span>
+              </div>
 
               {% comment %} ---------------------- {% endcomment %}
               {% comment %} -- (D) Review stars -- {% endcomment %}
               {% comment %} ---------------------- {% endcomment %}
               <div class="_flex _items-center [grid-area:D] md:_justify-self-end">
-                {% comment %} {% render 'wm__rating-stars-loox', product: card_product, force_show_empty: false %} {% endcomment %}
-                <div class="klaviyo-star-rating-widget" data-id="{{card_product.id}}" data-product-title="{{card_product.title}}" data-product-type="{{card_product.type}}"></div>
+                {% render 'wm__rating-stars', main_product: card_product, type: 'card' %}
+                {% comment %} <div class="klaviyo-star-rating-widget" data-id="{{card_product.id}}" data-product-title="{{card_product.title}}" data-product-type="{{card_product.type}}"></div> {% endcomment %}
               </div>
             {%- endunless -%}
           </div>

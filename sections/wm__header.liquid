@@ -30,10 +30,10 @@
 
 {%- case request.page_type -%}
   {%- when 'index' -%}
-    {%- if settings.invisible_overlay_header -%}
+    {%- if settings.invisible_overlay_header and settings.homepage_invisible_header -%}
       {%- assign invisible_header = true -%}
     {%- endif -%}
-    {%- if settings.invert_invisible_overlay_header_colors -%}
+    {%- if settings.invert_invisible_overlay_header_colors and settings.homepage_lighttext -%}
       {%- assign invert_header_colors = true -%}
     {%- endif -%}
 
@@ -216,14 +216,6 @@
 
 <script src="{{ 'cart-notification.js' | asset_url }}" defer="defer"></script>
 
-{%- liquid
-  for block in section.blocks
-    if block.type == '@app'
-      assign has_app_block = true
-    endif
-  endfor
--%}
-
 {% liquid
   assign header_tag = 'div'
 
@@ -255,7 +247,11 @@
 
     <div class="lg:_flex-none _flex _items-center">
       {%- if request.page_type == 'index' -%}
-        <h1 class="header__heading">
+        {% comment %} Alex - Dawn wraps "index" logo in <h1>s for SEO, which messes up styling,
+                      this line removes everything so it doesn't mess up layout
+                      - definitely a better way to handle this but 🤷🏼‍♂️
+        {% endcomment %}
+        <h1 style="all: unset">
       {%- endif -%}
       <a href="{{ routes.root_url }}" class="header__heading-link link link--text focus-inset">
         <div class="header__heading-logo-wrapper hover:_opacity-80">

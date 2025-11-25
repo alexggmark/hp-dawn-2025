@@ -87,9 +87,10 @@
                 role="navigation">
                   {% comment %} ⬅️ LEFT COLUMN: CHILD LINKS {% endcomment %}
                   <nav aria-label="Category options" class="_col-span-3 _bg-brand-background-light _pt-10  mega-menu--padding-left _pr-12">
-                    <h3 class="_font-heading-primary _text-2xl _text-brand-dark _mb-4">
+                    {% comment %} Keeping this a <p> instead of <span> so we can use mb- {% endcomment %}
+                    <p class="_font-heading-primary _text-2xl _text-brand-dark _mb-3">
                       {{ link.title | escape }}
-                    </h3>
+                    </p>
                     <ul role="list" id="menu-category-list">
                       {%- for childlink in link.links -%}
                         {%- assign active_child = nil -%}
@@ -133,9 +134,9 @@
                     <div data-js-panel-initial class="js-panel js-panel--active">
                       {%- if default_content == 'collection' -%}
                         <div class="_flex _flex-row _justify-between _items-center _w-full _mb-4">
-                          <h3 class="_font-heading-primary _text-2xl _text-brand-dark">
+                          <span class="_font-heading-primary _text-2xl _text-brand-dark">
                             Best Sellers
-                          </h3>
+                          </span>
                           <a href="{{ routes.collections_url }}/best-sellers" class="_underline _underline-offset-4 hover:_no-underline _text-sm _font-link">See All</a>
                         </div>
                         <div class="animation-content">
@@ -181,9 +182,9 @@
                         </div>
                       {%- elsif default_content == 'blog' -%}
                         <div class="_flex _flex-row _justify-between _items-center _w-full _mb-4">
-                          <h3 class="_font-heading-primary _text-2xl _text-brand-dark">
+                          <span class="_font-heading-primary _text-2xl _text-brand-dark">
                             Articles
-                          </h3>
+                          </span>
                           <a href="{{ blogs[slider_blog].url }}" class="_underline _underline-offset-4 hover:_no-underline _text-sm _font-link">See All</a>
                         </div>
                         <div class="">
@@ -254,9 +255,9 @@
                       {%- unless active_child == nil -%}
                         <div data-js-panel="grandchild-panel-{{ childlink.handle }}" class="js-panel">
                           <div class="_flex _flex-row _justify-between _items-center _w-full _mb-4">
-                            <h3 class="_font-heading-primary _text-2xl _text-brand-dark">
+                            <span class="_font-heading-primary _text-2xl _text-brand-dark">
                               {{ childlink.title }}
-                            </h3>
+                            </span>
                             <a href="{{ childlink.url }}" class="_underline _underline-offset-4 hover:_no-underline _text-sm _font-link">See All</a>
                           </div>
                           {%- case active_child.type_of_menu -%}
@@ -448,9 +449,9 @@
                   {% comment %} ➡️ RIGHT COLUMN: BANNER IMAGES {% endcomment %}
                   <aside aria-label="Featured content" class="_col-span-4 _border-l _border-brand-border _pt-10 mega-menu--padding-right">
                     <div class="_flex-grow _flex _flex-col _items-start _ml-8">
-                      <h3 class="_font-heading-primary _text-2xl _text-brand-dark _mb-4">
+                      <span class="_font-heading-primary _text-2xl _text-brand-dark _mb-4">
                         Featured
-                      </h3>
+                      </span>
                       <div class="_flex _flex-row _gap-2.5 _w-full">
                         {%- for banner in banner_entries -%}
                           <div class="_flex-1 _flex _flex-col _relative _group/menubanner link-underline-trigger">
@@ -463,7 +464,7 @@
                               {%- endif -%}
                             </div>
                             <div class="_flex-1 _flex _flex-col _justify-between _items-start">
-                              {%- if banner.title -%}<h3 class="link-underline _text-sm _font-link _inline">{{ banner.title }}</h3>{%- endif -%}
+                              {%- if banner.title -%}<span class="link-underline _text-sm _font-link _inline">{{ banner.title }}</span>{%- endif -%}
                               {%- if banner.cta_text -%}
                                 <a
                                   href="{{ banner.link.value.url }}"

@@ -18,6 +18,14 @@
   {% render 'article-card' blog: blog, article: article, show_image: section.settings.show_image %}
 {% endcomment %}
 
+{% liquid
+  assign article_title_tag = 'h3'
+
+  if simple_card
+    assign article_title_tag = 'span'
+  endif
+%}
+
 {%- if article and article != empty -%}
   <div class="_group/articlecard _h-full _w-full _relative">
     <div
@@ -78,7 +86,7 @@
           <div class="
             _row-start-2 _py-6 _px-4 md:_py-6 md:_px-7 _hidden
           ">
-            <h3
+            <{{ article_title_tag }}
               class="
                 _mt-0
                 _mb-0
@@ -90,7 +98,7 @@
               <a href="{{ article.url }}" class="full-unstyled-link">
                 {{ article.title | truncate: 50 | escape }}
               </a>
-            </h3>
+            </{{ article_title_tag }}>
           </div>
           {% comment %} Badge {% endcomment %}
           <div class="_row-start-1">
@@ -141,7 +149,7 @@
             {% comment %} -- Article title -- {% endcomment %}
             {% comment %} ------------------- {% endcomment %}
 
-            <h3
+            <{{ article_title_tag }}
               class="
                 _text-brand-dark _overflow-hidden _whitespace-nowrap _pr-2
               "
@@ -169,7 +177,7 @@
               >
                 <span class="">{{ article.title | truncate: 50 | escape }}</span>
               </a>
-            </h3>
+            </{{ article_title_tag }}>
           </div>
 
           {%- unless simple_card -%}

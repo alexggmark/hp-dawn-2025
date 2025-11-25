@@ -1,37 +1,117 @@
+// Main Klaviyo rating controls
+// Storing in "wm__custom" because it's used on more than 50% of pages on site
+class ProductRating extends HTMLElement {
+  connectedCallback() {
+    if (this._bound) return;
+    this._bound = true;
+
+    this.loadedClass = 'js-has-reviews';
+    this.fallbackClass = 'js-fallback-reviews';
+    // this.timeoutMs = parseInt(this.getAttribute('timeout') || '2000', 10);
+    // Updating value as slower load on mobile vs desktop (Klaviyo issue)
+    this.timeoutMs = window.matchMedia('(pointer: coarse)').matches ? 2000 : 1000;
+
+    const hasContent = (el) => {
+      const first = el?.firstElementChild;
+      if (!first) return false;
+      return ((first.textContent || '').trim() !== '') || !!first.querySelector('*');
+    };
+
+    const cleanup = () => {
+      if (this._mo) { this._mo.disconnect(); this._mo = null; }
+      if (this._fallbackTimer) { clearTimeout(this._fallbackTimer); this._fallbackTimer = null; }
+    };
+
+    const setLoaded = (widget) => {
+      this.classList.add(this.loadedClass);
+      this.classList.remove(this.fallbackClass);
+      widget?.setAttribute('aria-hidden', 'false');
+
+      // Small workaround to fix how Klaviyo shows reviews
+      this.updateKlaviyoDom(widget);
+      setTimeout(() => this.updateKlaviyoDom(widget), 100);
+
+      cleanup();
+    };
+
+    const evaluate = () => {
+      const widget = this.querySelector('.klaviyo-star-rating-widget');
+      if (!widget) return false;
+
+      if (hasContent(widget)) {
+        setLoaded(widget);
+        return true;
+      }
+      return false;
+    };
+
+    // weird JS but this basically means "evaluate" runs after DOM finished loading in elements (because Klaviyo is slow!)
+    queueMicrotask(() => {
+      if (evaluate()) return;
+
+      const target = this;
+      this._mo = new MutationObserver(() => { if (evaluate()) cleanup(); });
+      this._mo.observe(target, { childList: true, subtree: true, characterData: true });
+
+      // only show fallback after timeout if still no klav (stops flickering)
+      this._fallbackTimer = setTimeout(() => {
+        if (!evaluate()) {
+          this.classList.add(this.fallbackClass);
+        }
+        // remove observer
+        cleanup();
+      }, this.timeoutMs);
+    });
+  }
+
+  disconnectedCallback() {
+    if (this._mo) this._mo.disconnect();
+    if (this._fallbackTimer) clearTimeout(this._fallbackTimer);
+  }
+
+  // Helper method that replaces "12 Reviews" with "(12)""
+  updateKlaviyoDom(widget) {
+    const label = widget?.querySelector('.kl_reviews__star_rating_widget__label');
+    if (!label) return;
+    const match = (label.textContent || '').match(/(\d+(?:\.\d+)?)/);
+    if (!match) return;
+    label.textContent = `(${match[1]})`;
+  }
+}
+
+customElements.define('product-rating', ProductRating);
+
 // Used to generate working "Add to Cart" when CTA rendered dynamically
 async function globalMonsterCartFunction(event, variantId, product, quantity) {
   console.log("globalMonsterCartFunction");
   if (typeof window.monster_addToCart !== 'function') return;
   
-  // if (event?.preventDefault) event.preventDefault();
-  
-  const CTA =
-    event?.currentTarget
-    || event?.target?.closest?.('[data-add-to-cart], button, [role="button"]')
-    || null;
+  event.preventDefault();
 
+  const CTA = event.currentTarget;
   const id = variantId ? variantId : product.variants[0].id;
 
   CTA.setAttribute('aria-disabled', true);
   CTA.classList.add('loading');
   CTA.querySelector('.loading__spinner').classList.remove('hidden');
 
-  await new Promise((resolve, reject) => {
-    try {
-      window.monster_addToCart({ id, quantity }, true, () => {
-        resolve();
-      });
-    } catch (err) {
-      reject(err);
-    } finally {
-      // Alex - added in timeout because it was too quick
-      setTimeout(() => {
-        CTA.removeAttribute('aria-disabled');
-        CTA.classList.remove('loading');
-        CTA.querySelector('.loading__spinner').classList.add('hidden');
-      }, 1000)
-    }
-  })
+  try {
+    await new Promise((resolve, reject) => {
+      try {
+        window.monster_addToCart({ id, quantity }, true, () => {
+          resolve();
+        });
+      } catch (err) {
+        reject(err);
+      }
+    });
+  } catch (e) {
+    console.error(e);
+  } finally {
+    CTA.removeAttribute('aria-disabled');
+    CTA.classList.remove('loading');
+    CTA.querySelector('.loading__spinner').classList.add('hidden');
+  }
 }
 
 // Main carousel controller
@@ -199,11 +279,14 @@ class AnimatedDetails extends HTMLElement {
 
     if (!this.details || !this.summary || !this.content) return;
 
-    this.details.removeAttribute('open');
-    this.content.style.overflow = 'hidden';
-    this.content.style.opacity = 0;
-    this.content.style.height = '0px';
-    this.content.style.display = 'none';
+    // Adding in check to allow details to be "open" by default
+    if (!this.details.hasAttribute('open')) {
+      this.details.removeAttribute('open');
+      this.content.style.overflow = 'hidden';
+      this.content.style.opacity = 0;
+      this.content.style.height = '0px';
+      this.content.style.display = 'none';
+    }
 
     this.summary.addEventListener('click', (e) => {
       e.preventDefault();

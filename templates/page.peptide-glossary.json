@@ -1,0 +1,107 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "wm_page_hero_banner_WFqTxM": {
+      "type": "wm__page-hero-banner",
+      "settings": {
+        "main_heading": "Our Story",
+        "description": "<p>We are the experts in the science of skin ageing, HydroPeptide offers professional skincare developed by geneticists and powered by patented peptide technology.</p>",
+        "image": "shopify://shop_images/power-serum-banner-background.webp",
+        "image_overlay_opacity": 50,
+        "mobile_image_overlay_opacity": 50,
+        "margin_bottom": "8",
+        "invert_colours": true,
+        "mobile_invert_colours": true
+      }
+    },
+    "wm_image_block_text_1_4mbqyc": {
+      "type": "wm__image-block-text-1",
+      "settings": {
+        "reverse_order": true,
+        "show_background": false,
+        "top_heading": "",
+        "main_heading": "The <em>Experts</em> in Skin Ageing",
+        "description": "<p><strong>We believe that the key to unlocking your skin’s full potential lies in the development of the right support for immediate results and long-term reparative benefits.</strong></p><p>With advanced peptide technology and cutting-edge epigenetic research, HydroPeptide products work collaboratively with your skin (and with professional treatments) to provide it with the necessary delivery mechanisms to build a healthy foundation. Our formulas create healthy, invigorated skin that’s equipped to strengthen and rebuild itself from the inside out — ultimately transforming your skin and resetting your expectations for the way you see results.</p>",
+        "cta_text": "",
+        "cta_url": "",
+        "image": "shopify://shop_images/power-serum-hero-contained.webp",
+        "margin_bottom": "6"
+      }
+    },
+    "wm_icon_strip_metaobject_UyY6FN": {
+      "type": "wm__icon-strip-metaobject",
+      "name": "WM IconStrip Metaobject",
+      "settings": {
+        "show_background": true,
+        "meta_object_source": "professional-skincare-em-powered-em-by-peptides",
+        "top_heading": "",
+        "main_heading": "Professional Skincare <em>Powered</em> By Peptides",
+        "description": "",
+        "margin_bottom": "8"
+      }
+    },
+    "wm_image_block_1_j7nAjk": {
+      "type": "wm__image-block-1",
+      "name": "WM ImageBlock 1",
+      "settings": {
+        "reverse_order": true,
+        "show_background": false,
+        "top_heading": "",
+        "main_heading": "HydroPeptide <em>Patented</em> Technology",
+        "description": "<p>Our Sunscreens provide broad-spectrum protection that boost natural defences against ageing and free radical damage, all while nourishing and soothing skin.</p>",
+        "cta_text": "",
+        "cta_url": "",
+        "image_1": "shopify://shop_images/031425_SummerSkinRescue_Kit_HowToUse.webp",
+        "video_2": "shopify://files/videos/our-story-bubble-action-patented-hydropeptide-technology.mp4",
+        "margin_bottom": "8"
+      }
+    },
+    "wm_video_ALcLD3": {
+      "type": "wm__video",
+      "name": "WM Video",
+      "settings": {
+        "show_background": true,
+        "top_heading": "",
+        "main_heading": "The <em>HydroPeptide</em> Difference",
+        "main_description": "Learn about our dedication to creating clinically tested, effective, and luxurious products for every skin type.",
+        "margin_bottom": "0",
+        "enable_video_looping": false,
+        "video_url": "https://www.youtube.com/watch?v=ivIIoKSdQ0c",
+        "cover_image": "shopify://shop_images/power-serum-hero-contained.webp",
+        "description": ""
+      }
+    },
+    "wm_product_card_scroll_jFCPdy": {
+      "type": "wm__product-card-scroll",
+      "name": "WM Product Scroll",
+      "settings": {
+        "show_background": false,
+        "top_heading": "",
+        "main_heading": "<em>Your</em> Favourites",
+        "description": "<p>The peptide-powered essentials that consistently deliver and loved by you</p>",
+        "collection": "best-sellers",
+        "products_to_show": 11,
+        "show_rating": false,
+        "quick_add": "standard",
+        "cta_text": "Shop bestsellers",
+        "margin_bottom": "0"
+      }
+    }
+  },
+  "order": [
+    "wm_page_hero_banner_WFqTxM",
+    "wm_image_block_text_1_4mbqyc",
+    "wm_icon_strip_metaobject_UyY6FN",
+    "wm_image_block_1_j7nAjk",
+    "wm_video_ALcLD3",
+    "wm_product_card_scroll_jFCPdy"
+  ]
+}
