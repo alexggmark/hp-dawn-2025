@@ -17,11 +17,13 @@
   // ---- CONFIG ---------------------------------------------------
   const NS = 'cf_product_tracking_v1';
   const COOLDOWN_HOURS = 72; // don't show any popup again within this window
+  const TOUCH_COOLDOWN_HOURS = 4;
 
   // ---- KEYS -----------------------------------------------------
   const KEY_PAGE_FIRED = `${NS}__popup_fired_this_page`;
   const KEY_LAST_POPUP = `${NS}__last_popup_at`;
   const KEY_PRODUCT_VIEWS = `${NS}__product_views`; // stores {audience_key: [handle1, handle2, ...]}
+  const KEY_TOUCH_LOCK = `${NS}__touch_write_lock`;
   const KEY_THRESHOLDS = `${NS}__thresholds`; // stores {audience_key: number_to_view_to_trigger}
   const KEY_POPUP_ELEMENTS = `${NS}__popup_elements`; // stores {audience_key: popup_element_key}
 
@@ -57,6 +59,12 @@
   }
 
   if (debug) console.log('[0] Product page tracked:', { audience_key, product, popup_element, number_to_view_to_trigger });
+
+  // Step 0: STORE TOUCH CHECK
+  if (!storeTouch()) {
+    if (debug) console.log('[0] Touch cooldown active → stop (user recently active)');
+    return;
+  }
 
   // Step 1: page guard + cooldown
   if (getSS(KEY_PAGE_FIRED, false)) {
@@ -141,6 +149,38 @@
     }
 
     setLS(KEY_PRODUCT_VIEWS, views);
+  }
+
+  // ---- STORE TOUCH ----------------------------------------------
+  /**
+   * Returns true if we should proceed with tracking, false if in cooldown
+   * Prevents over-tracking when user is actively browsing
+   */
+  function storeTouch() {
+    // Prevent rapid double-writes (SPA nav, fast reloads)
+    const lock = getLS(KEY_TOUCH_LOCK, null);
+    if (lock && (now() - lock) < 1500) {
+      if (debug) console.log('[0] Touch write lock active → stop');
+      return false;
+    }
+
+    setLS(KEY_TOUCH_LOCK, now());
+
+    const lastTouchAt = getLS(KEY_LAST_TOUCH, 0);
+    
+    // If user was here recently, skip tracking this page view
+    if (within(lastTouchAt, hours(TOUCH_COOLDOWN_HOURS))) {
+      if (debug) console.log(`[0] Touch cooldown active (last: ${Math.round((now() - lastTouchAt) / 60000)}min ago)`);
+      setLS(KEY_TOUCH_LOCK, null);
+      return false;
+    }
+
+    // Update last touch timestamp
+    setLS(KEY_LAST_TOUCH, now());
+    setLS(KEY_TOUCH_LOCK, null);
+  
+    if (debug) console.log('[0] Touch recorded → proceed with tracking');
+    return true;
   }
 
   // ---- FIRE POPUP -----------------------------------------------
