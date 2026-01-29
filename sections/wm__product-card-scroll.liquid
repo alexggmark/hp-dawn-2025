@@ -60,7 +60,7 @@
                   _items-center
                   _snap-start
                   _h-auto
-                  {% if forloop.last %} _mr-4{% endif %}
+                  {% if forloop.last %} md:_mr-12 _mr-4{% endif %}
                   {% comment %} {% if forloop.last %} md:_mr-12 _mr-4{% endif %} {% endcomment %}
                 ">
                   {% render 'wm__card-product',
@@ -87,7 +87,7 @@
             </button>
           </div>
           {% comment %} md:_pr-12 _pr-4 {% endcomment %}
-          <div class="_w-full md:_pr-0 _pr-4">
+          <div class="_w-full md:_pr-12 _pr-4">
             <div class="_h-[1px] _mt-8 _bg-gray-300 _rounded _overflow-hidden">
               <div data-js-embla-progress class="_block _h-full _bg-brand-primary-500"></div>
             </div>
