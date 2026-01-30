@@ -17,21 +17,23 @@ Use this file to control variants. I.e. "if test A running, querySelect this ele
 
 // MASTER TEST BUS
 posthog.onFeatureFlags(function() {
+  // TODO: Alex - if you want to turn these back on, setup PostHog, or just run the functions straight
+  // - all AB tests built to default to "off" without these functions running (check wm__ab-tests.liquid)
   // if (posthog.getFeatureFlag('atf-paired')  == 'test') {
-  if (posthog.isFeatureEnabled('atf-paired')) handleAtfPairedTest();
+  // if (posthog.isFeatureEnabled('atf-paired')) handleAtfPairedTest();
 
   // if (posthog.getFeatureFlag('active-search')  == 'test') {
-  if (posthog.isFeatureEnabled('active-search')) handleActiveSearchTest()
+  // if (posthog.isFeatureEnabled('active-search')) handleActiveSearchTest()
 
   // if (posthog.getFeatureFlag('recently-viewed')  == 'test') {
-  if (posthog.isFeatureEnabled('recently-viewed')) handleRecentlyViewed();
+  // if (posthog.isFeatureEnabled('recently-viewed')) handleRecentlyViewed();
 
-  if (posthog.isFeatureEnabled('rotating-usps')) {
-    const variant = posthog.getFeatureFlag('rotating-usps');
-    if (!variant) return;
-    if (variant == 'control') return;
-    handleRotatingUSPs(variant);
-  }
+  // if (posthog.isFeatureEnabled('rotating-usps')) {
+  //   const variant = posthog.getFeatureFlag('rotating-usps');
+  //   if (!variant) return;
+  //   if (variant == 'control') return;
+  //   handleRotatingUSPs(variant);
+  // }
   // if (posthog.isFeatureEnabled('rotating-usps')) handleRotatingUSPs();
 })
 
